@@ -21,7 +21,7 @@ Este motor incluye
 ## Diseño
 
 Se ha extraido de las partes comunes de diversos sistemas de información,
-particularmente de SIVeL, SIAP y AI.
+particularmente de SIVeL, Cor440 y Sal7711.
 
 Roles: administrador y usuario
 
