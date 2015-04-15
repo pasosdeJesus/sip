@@ -33,9 +33,18 @@
           <% elsif atr == "id_pais" then %>
             <td><%= Sip::Pais.find(basica[atr]).nombre %></td>
           <% elsif atr == "id_departamento" then %>
-            <td><%= Sip::Departamento.find(basica[atr]).nombre %></td>
+						<td><%= 
+							dep= Sip::Departamento.find(basica[atr])
+							pais = Sip::Pais.find(dep.id_pais)
+							dep.nombre + " / " + pais.nombre
+					%></td>
           <% elsif atr == "id_municipio" then %>
-            <td><%= Sip::Municipio.find(basica[atr]).nombre %></td>
+						<td><%= 
+						  mun = Sip::Municipio.find(basica[atr])
+						  dep= Sip::Departamento.find(mun.id_departamento)
+							pais = Sip::Pais.find(dep.id_pais)
+							mun.nombre + " / " + dep.nombre + " / " + pais.nombre
+						%></td>
           <% elsif atr == "id_tclase" then %>
             <td><%= basica[atr].nil? ?
               "" : Sip::Tclase.find(basica[atr]).nombre

@@ -12,8 +12,7 @@
       <% if atr == 'id_pais' then %>
         <dd><%= Sip::Pais.find(@basica[atr]).nombre %></dd>
       <% elsif atr == 'id_departamento' then %>
-        <dd><%= Sip::Departamento.where(
-        id: @basica[atr], id_pais: @basica['id_pais']).first.nombre 
+        <dd><%= Sip::Departamento.find(@basica[atr]).nombre 
         %></dd>
       <% elsif atr == 'id_municipio' then %>
         <dd><%= Sip::Municipio.find(@basica[atr]).nombre %></dd>
