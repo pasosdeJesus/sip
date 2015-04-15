@@ -2,7 +2,7 @@
 module Sip
   module Concerns
     module Models
-      module Etiqueta
+      module Departamento
         extend ActiveSupport::Concern
 
         include Sip::Basica
@@ -19,7 +19,7 @@ module Sip
 					belongs_to :pais, foreign_key: "id_pais", validate: true, 
 						class_name: 'Sip::Pais'
 
-					validates :id, presence: true  # Diseñados 
+					validates :id, presence: true
 					validates :id_pais, presence: true
 				end
 			end

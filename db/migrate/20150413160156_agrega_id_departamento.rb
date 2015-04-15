@@ -9,6 +9,7 @@ class AgregaIdDepartamento < ActiveRecord::Migration
 		SQL
 		execute <<-SQL
 		  ALTER TABLE sip_departamento ALTER COLUMN id_deplocal DROP DEFAULT;
+		  ALTER TABLE sip_departamento ALTER COLUMN id_deplocal DROP NOT NULL;
 		SQL
 		execute <<-SQL
 			ALTER TABLE sip_departamento ADD COLUMN id INTEGER UNIQUE

@@ -216,9 +216,9 @@ CREATE SEQUENCE sip_clase_id_seq
 
 CREATE TABLE sip_clase (
     id integer DEFAULT nextval('sip_clase_id_seq'::regclass) NOT NULL,
-    id_clalocal integer,
     nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
     id_municipio integer NOT NULL,
+    id_clalocal integer,
     id_tclase character varying(10),
     latitud double precision,
     longitud double precision,
@@ -247,16 +247,16 @@ CREATE SEQUENCE sip_departamento_id_seq
 --
 
 CREATE TABLE sip_departamento (
-    id_deplocal integer NOT NULL,
+    id integer DEFAULT nextval('sip_departamento_id_seq'::regclass) NOT NULL,
     nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    id_pais integer NOT NULL,
+    id_deplocal integer,
     latitud double precision,
     longitud double precision,
     fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    id_pais integer NOT NULL,
-    id integer DEFAULT nextval('sip_departamento_id_seq'::regclass) NOT NULL,
     CONSTRAINT departamento_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -308,14 +308,14 @@ CREATE SEQUENCE sip_municipio_id_seq
 CREATE TABLE sip_municipio (
     id integer DEFAULT nextval('sip_municipio_id_seq'::regclass) NOT NULL,
     nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
-    id_munlocal integer NOT NULL,
+    id_departamento integer NOT NULL,
+    id_munlocal integer,
     latitud double precision,
     longitud double precision,
     fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    id_departamento integer,
     CONSTRAINT municipio_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -731,6 +731,14 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
+-- Name: clase_id_municipio_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sip_clase
+    ADD CONSTRAINT clase_id_municipio_fkey FOREIGN KEY (id_municipio) REFERENCES sip_municipio(id);
+
+
+--
 -- Name: clase_id_tclase_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -824,6 +832,14 @@ ALTER TABLE ONLY sip_municipio
 
 ALTER TABLE ONLY sip_ubicacion
     ADD CONSTRAINT ubicacion_id_clase_fkey FOREIGN KEY (id_clase) REFERENCES sip_clase(id);
+
+
+--
+-- Name: ubicacion_id_departamento_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sip_ubicacion
+    ADD CONSTRAINT ubicacion_id_departamento_fkey FOREIGN KEY (id_departamento) REFERENCES sip_departamento(id);
 
 
 --

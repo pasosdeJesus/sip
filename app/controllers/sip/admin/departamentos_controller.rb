@@ -15,7 +15,7 @@ module Sip
   
       def atributos_index
         [ 
-          "id", "id_pais", "nombre", "latitud", "longitud", 
+          "id", "id_pais", "nombre", "id_deplocal", "latitud", "longitud", 
           "fechacreacion", "fechadeshabilitacion"
         ]
       end

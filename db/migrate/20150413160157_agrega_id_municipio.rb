@@ -9,6 +9,7 @@ class AgregaIdMunicipio < ActiveRecord::Migration
 		SQL
 		execute <<-SQL
 		  ALTER TABLE sip_municipio ALTER COLUMN id_munlocal DROP DEFAULT;
+ 			ALTER TABLE sip_municipio ALTER COLUMN id_munlocal DROP NOT NULL
 		SQL
 		execute <<-SQL
 			ALTER TABLE sip_municipio ADD COLUMN id INTEGER UNIQUE
