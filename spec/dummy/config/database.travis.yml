@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+
+development:
+  <<: *default
+  database: sip_des
+
+test:
+  <<: *default
+  database: sip_pru
+
+production:
+  <<: *default
+  database: sip
