@@ -8,6 +8,9 @@ class AgregaIdMunicipio < ActiveRecord::Migration
 		 ALTER TABLE sip_municipio RENAME COLUMN id TO id_munlocal;
 		SQL
 		execute <<-SQL
+		  ALTER TABLE sip_municipio ALTER COLUMN id_munlocal DROP DEFAULT;
+		SQL
+		execute <<-SQL
 			ALTER TABLE sip_municipio ADD COLUMN id INTEGER UNIQUE
 				DEFAULT(nextval('sip_municipio_id_seq'));
 		SQL

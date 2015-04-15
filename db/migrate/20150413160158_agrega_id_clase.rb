@@ -7,6 +7,9 @@ class AgregaIdClase < ActiveRecord::Migration
     execute <<-SQL
      ALTER TABLE sip_clase RENAME COLUMN id TO id_clalocal;
     SQL
+		execute <<-SQL
+		  ALTER TABLE sip_clase ALTER COLUMN id_clalocal DROP DEFAULT;
+		SQL
     execute <<-SQL
       ALTER TABLE sip_clase ADD COLUMN id INTEGER UNIQUE
         DEFAULT(nextval('sip_clase_id_seq'));

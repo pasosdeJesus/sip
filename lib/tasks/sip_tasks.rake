@@ -9,7 +9,7 @@ namespace :sip do
     connection = ActiveRecord::Base.connection();
     puts "sip - indices"
 		# Primero tablas basicas creadas en Rails
-    tbn = Ability::basicas_seq_con_id
+    tbn = Ability::basicas_seq_con_id - Ability::basicas_id_noauto
     tbn.each do |t|
     	connection.execute("
       SELECT setval('#{Ability::tb_modelo t}_id_seq', MAX(id)) FROM 
@@ -25,13 +25,13 @@ namespace :sip do
     end
     # Finalmente otras tablas no basicas pero con índices
     tb = Ability::nobasicas_indice 
-    Ability::nobasicas_indice.each do |t|
+    tb.each do |t|
       connection.execute("
       SELECT setval('#{t[1]}_seq', MAX(id)) 
                          FROM #{Ability::tb_modelo t}");
     end
     tb = Ability::nobasicas_indice_seq_con_id
-    Ability::nobasicas_indice.each do |t|
+    tb.each do |t|
       connection.execute("
       SELECT setval('#{Ability::tb_modelo t}_id_seq', MAX(id)) 
                          FROM #{Ability::tb_modelo t}");
