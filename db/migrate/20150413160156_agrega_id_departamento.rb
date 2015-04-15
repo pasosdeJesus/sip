@@ -8,6 +8,9 @@ class AgregaIdDepartamento < ActiveRecord::Migration
 		  ALTER TABLE sip_departamento RENAME COLUMN id TO id_deplocal;
 		SQL
 		execute <<-SQL
+		  ALTER TABLE sip_departamento ALTER COLUMN id_deplocal DROP DEFAULT;
+		SQL
+		execute <<-SQL
 			ALTER TABLE sip_departamento ADD COLUMN id INTEGER UNIQUE
 				DEFAULT(nextval('sip_departamento_id_seq'));
 		SQL
@@ -147,6 +150,8 @@ class AgregaIdDepartamento < ActiveRecord::Migration
    SQL
 
 		execute <<-SQL
+		    DROP MATERIALIZED VIEW IF EXISTS sivel2_gen_conscaso;
+		    DROP VIEW IF EXISTS sivel2_gen_conscaso1;
 		    ALTER TABLE sip_ubicacion DROP COLUMN id_deplocal;
 		    ALTER TABLE sip_persona DROP COLUMN id_deplocal;
 			  ALTER TABLE sip_clase DROP COLUMN id_deplocal;
