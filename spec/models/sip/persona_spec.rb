@@ -17,7 +17,7 @@ module Sip
 
     it "no valido por documento errado" do
       persona = FactoryGirl.build(:sip_persona, tdocumento_id: 1, 
-                                  numerodocumento: 123)
+                                  numerodocumento: 'a')
       expect(persona).not_to be_valid
       persona.destroy
     end

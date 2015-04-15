@@ -3,7 +3,7 @@ require 'bcrypt'
 
 class UsuariosController < ApplicationController
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+  load_and_authorize_resource class: ::Usuario
 
   # GET /usuarios
   # GET /usuarios.json

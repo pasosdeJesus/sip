@@ -16,17 +16,18 @@ module Sip
       end
     end
 
-    it "no valido 1" do
-      ubicacion = FactoryGirl.build(:sip_ubicacion)
-      expect(ubicacion).not_to be_valid
-      ubicacion.destroy
-    end
-
-    it "no valido 2" do
+    it "no valido" do
       ubicacion = FactoryGirl.build(:sip_ubicacion, id_tsitio: nil) 
       expect(ubicacion).not_to be_valid
       ubicacion.destroy
     end
+
+		it "no valido 2" do
+      ubicacion = FactoryGirl.build(:sip_ubicacion, id_pais: nil) 
+      expect(ubicacion).not_to be_valid
+      ubicacion.destroy
+    end
+
 
 
   end

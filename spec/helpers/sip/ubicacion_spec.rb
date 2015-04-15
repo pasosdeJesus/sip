@@ -24,7 +24,7 @@ module Sip
       end
 
       context "con departamento" do
-        let(:d) { Departamento.where(id_pais: 862, id: 1).take }
+        let(:d) { Departamento.where(id: 1).take }
         before(:each) do
           ubicacion.departamento = d
         end
@@ -33,8 +33,7 @@ module Sip
         end
 
         context "con municipio" do
-          let (:m) { Municipio.where(id_pais: 862, 
-                                     id_departamento: 1, id: 1).take
+          let (:m) { Municipio.where(id: 25).take
           }
           before(:each) do
             ubicacion.municipio = m
@@ -46,8 +45,7 @@ module Sip
           end
 
           context "con clase" do
-            let (:c) { Clase.where(id_pais: 862, 
-                                   id_departamento: 1, id_municipio: 1).take
+            let (:c) { Clase.where(id_municipio: 25).take
             }
             before(:each) do
               ubicacion.clase = c

@@ -1,12 +1,19 @@
 # encoding: UTF-8
 require 'rails_helper'
 
-RSpec.describe "sip/usuarios/edit", :type => :view do
+RSpec.describe "usuarios/edit", :type => :view do
   before(:each) do
-    @usuario = assign(:usuario, Sip::Usuario.create!(
-      :nombre => "MyString",
+    @usuario = assign(:usuario, Usuario.create!(
+      nombre: "MyString",
+			nusuario: 'nusaurio',
+			email: 'x@x.org',
+			fechacreacion: '2014-1-1',
+			encrypted_password: 'x'
     ))
   end
+	 after(:each) do 
+		  @usuario.destroy!
+	 end
 
   it "presenta el formulario para editar usuario" do
     render

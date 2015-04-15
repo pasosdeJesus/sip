@@ -1,9 +1,9 @@
 # encoding: UTF-8
 require 'rails_helper'
 
-RSpec.describe "sip/usuarios/new", :type => :view do
+RSpec.describe "usuarios/new", :type => :view do
   before(:each) do
-    assign(:usuario, Sip::Usuario.new(
+    assign(:usuario, Usuario.new(
       :nombre => "MyString",
     ))
   end

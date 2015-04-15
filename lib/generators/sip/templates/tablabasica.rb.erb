@@ -1,9 +1,7 @@
 # encoding: UTF-8
-module Sip
-  class <%= nom_clase %> < ActiveRecord::Base
-    include Basica
+class <%= nom_clase %> < ActiveRecord::Base
+	include Basica
 
-    validates :nombre, presence: true, allow_blank: false
-    validates :fechacreacion, presence: true, allow_blank: false
-  end
+	validates :nombre, presence: true, allow_blank: false
+	validates :fechacreacion, presence: true, allow_blank: false
 end

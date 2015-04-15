@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Rails (internacionalización)
-gem "rails", '~> 4.2.0'
+gem "rails", '~> 4.2.1'
 gem "rails-i18n"
 
 # Problemas con arel 6.0.0 al ejecutar rspec
@@ -9,6 +9,8 @@ gem "rails-i18n"
 
 # Postgresql
 gem "pg"
+
+gem "sass"
 
 # API JSON facil. Ver: https://github.com/rails/jbuilder
 gem "jbuilder"

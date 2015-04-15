@@ -27,9 +27,13 @@ module Sip
       private
       def genera_modelo
         template "tablabasica.rb.erb", 
-          "app/model/#{nom_arch}.rb"
+          "app/models/#{nom_arch}.rb"
         gsub_file("app/models/ability.rb", /(@@tablasbasicas = \[.*)/, 
                   "\1\n    '#{nom_arch}',")
+				generate "migration", "Create#{nom_arch.camelize} " +
+					"nombre:string{1000} observaciones:string{5000} " +
+					"fechacreacion:date fechadeshabilitacion:date " +
+					"created_at:timestamp updated_at:timestamp"
         # Infleccion no regular en config/initializers/inflections.rb
         # Nombre en español en config/locales/es.yml
       end

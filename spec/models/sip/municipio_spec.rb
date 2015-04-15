@@ -16,7 +16,7 @@ module Sip
     end
 
     it "existente" do
-      municipio = Sip::Municipio.where(id_pais: 862, id_departamento:1, id:1).take
+      municipio = Sip::Municipio.where(id:25).take
       expect(municipio.nombre).to eq("BOLIVARIANO LIBERTADOR")
     end
 
