@@ -12,12 +12,11 @@ connection = ActiveRecord::Base.connection();
 
 connection.execute(IO.read("../../db/datos-basicas.sql"));
 
+# usuario sip, clave sip123
 connection.execute("INSERT INTO usuario 
-  (nusuario, email, encrypted_password, password, 
+	(nusuario, email, encrypted_password, password, 
   fechacreacion, created_at, updated_at, rol) 
-  VALUES ('sip', 'sip@localhost', 
-  '$2a$04$O4Q2QG/mdLN2/Hr2Nm1VJe.E8L954P/Q79/0bU1tjZKyt60h1Svmu',
-  '', '2014-08-26', '2014-08-26', '2014-08-26', 1);")
-
-
+	VALUES ('sip', 'sip@localhost', 
+	'$2a$04$O4Q2QH/mdLN2/Hr2Nm1VJe.E8L954P/Q79/0bU1tjZKyt60h1Svmu',
+	'', '2014-08-14', '2014-08-14', '2014-08-14', 1);")
 
