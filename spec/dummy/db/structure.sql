@@ -219,7 +219,7 @@ CREATE TABLE sip_clase (
     nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
     id_municipio integer NOT NULL,
     id_clalocal integer,
-    id_tclase character varying(10),
+    id_tclase character varying(10) DEFAULT 'CP'::character varying NOT NULL,
     latitud double precision,
     longitud double precision,
     fechacreacion date NOT NULL,
@@ -877,4 +877,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150413160156');
 INSERT INTO schema_migrations (version) VALUES ('20150413160157');
 
 INSERT INTO schema_migrations (version) VALUES ('20150413160158');
+
+INSERT INTO schema_migrations (version) VALUES ('20150416074423');
 
