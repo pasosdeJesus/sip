@@ -21,7 +21,7 @@ Este motor incluye
 ## Diseño
 
 Se ha extraido de las partes comunes de diversos sistemas de información,
-particularmente de SIVeL, Cor440 y Sal7711.
+particularmente de SIVeL 2, Cor440 y Sal7711.
 
 Roles: administrador y usuario
 
@@ -30,7 +30,7 @@ Roles: administrador y usuario
 ### Requerimientos
 * Ruby version >= 2.1
 * PostgreSQL >= 9.3 con extensión unaccent disponible
-* Recomendado sobre adJ 5.5p2 (que incluye todos los componentes mencionados).  
+* Recomendado sobre adJ 5.6 (que incluye todos los componentes mencionados).  
   Las siguientes instrucciones suponen que opera en este ambiente.
 
 
@@ -51,12 +51,12 @@ sistema la mayoría de estas, en adJ con:
   config/database.yml) y pongale una clave, por ejemplo en adJ
 ```sh
 sudo su - _postgresql
-$ createuser -Upostgres -h/var/www/tmp -s sivel2
+$ createuser -Upostgres -h/var/www/tmp -s sipdes
 $ psql -h/var/www/tmp -Upostgres
 psql (9.3.5)
 Type "help" for help.
 
-postgres=# ALTER USER sivel2 WITH password 'miclave';
+postgres=# ALTER USER sipdes WITH password 'miclave';
 ALTER ROLE
 postgres=# \q
 $ exit
@@ -98,7 +98,7 @@ directorio app/assets/javascript/ con:
 
 2 espacios de indentación.
 
-Para configurarlo en vim, agregue al final de ==~/.vim/ftplugin/ruby.vim==:
+Para configurarlo en vim, agregue al final de ```~/.vim/ftplugin/ruby.vim```:
 ``` vim
 set shiftwidth=2
 set softtabstop=2
@@ -116,7 +116,7 @@ Una vez estén bien los datos de tablas básicas en base de datos de la
 la aplicación de  prueba spec/dummy:
 ```sh
 cd spec/dummy
-RAILS_ENV=test rake sivel2:vuelcabasicas
+RAILS_ENV=test rake sip:vuelcabasicas
 cp db/datos-basicas.sql ../../db/datos-basicas.sql
 ```
 
