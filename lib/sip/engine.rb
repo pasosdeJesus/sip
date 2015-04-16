@@ -39,7 +39,7 @@ module Sip
     mattr_accessor :titulo
     self.ruta_anexos = "/var/www/resbase/anexos"
     self.ruta_volcados = "/var/www/resbase/sip"
-    self.titulo = "Motor de Sistema de Información estilo Pasos de Jesús" 
+    self.titulo = "Motor para Sistemas de Información estilo Pasos de Jesús" 
   end
 
   def self.setup(&block)
