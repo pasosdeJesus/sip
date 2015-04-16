@@ -20,6 +20,7 @@ module Sip
 
 					validates :id, presence: true
 					validates :id_municipio, presence:true
+					validates :id_tclase, presence:true
 				end
 			end
 		end
