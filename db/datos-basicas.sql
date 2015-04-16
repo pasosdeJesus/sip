@@ -15178,3 +15178,4 @@ INSERT INTO sip_tsitio (id, nombre, fechacreacion, fechadeshabilitacion, created
 -- PostgreSQL database dump complete
 --
 
+INSERT INTO sip_oficina (id, nombre, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (1, 'SIN INFORMACIÓN', '2014-09-01', NULL, '2014-09-01 12:54:42.630253', '2014-09-03 10:40:11.967004');

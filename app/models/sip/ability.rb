@@ -24,6 +24,7 @@ module Sip
       ['Sip', 'departamento'], 
       ['Sip', 'etiqueta'], 
       ['Sip', 'municipio'], 
+      ['Sip', 'oficina'],
       ['Sip', 'pais'],
       ['Sip', 'tclase'], 
       ['Sip', 'tdocumento'], 
@@ -40,6 +41,7 @@ module Sip
       ['Sip', 'departamento'], 
       ['Sip', 'etiqueta'], 
       ['Sip', 'municipio'], 
+      ['Sip', 'oficina'],
       ['Sip', 'pais'],
       ['Sip', 'tdocumento'], 
       ['Sip', 'tsitio']
@@ -85,6 +87,7 @@ module Sip
       ['Sip', 'departamento'], 
       ['Sip', 'municipio'], 
       ['Sip', 'clase'],
+      ['Sip', 'oficina'], 
     ];
 
     def self.tablasbasicas_prio

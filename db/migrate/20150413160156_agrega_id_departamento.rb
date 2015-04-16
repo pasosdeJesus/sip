@@ -1,24 +1,24 @@
 class AgregaIdDepartamento < ActiveRecord::Migration
   def up
-		execute <<-SQL
-		  ALTER TABLE sip_departamento 
-			DROP CONSTRAINT IF EXISTS departamento_pkey CASCADE;
-		SQL
-		execute <<-SQL
-		  ALTER TABLE sip_departamento RENAME COLUMN id TO id_deplocal;
-		SQL
-		execute <<-SQL
-		  ALTER TABLE sip_departamento ALTER COLUMN id_deplocal DROP DEFAULT;
-		  ALTER TABLE sip_departamento ALTER COLUMN id_deplocal DROP NOT NULL;
-		SQL
-		execute <<-SQL
-			ALTER TABLE sip_departamento ADD COLUMN id INTEGER UNIQUE
-				DEFAULT(nextval('sip_departamento_id_seq'));
-		SQL
-		execute <<-SQL
-		  ALTER TABLE sip_departamento ADD UNIQUE(id_pais, id_deplocal);
-		SQL
-		execute <<-SQL
+    execute <<-SQL
+      ALTER TABLE sip_departamento 
+      DROP CONSTRAINT IF EXISTS departamento_pkey CASCADE;
+    SQL
+    execute <<-SQL
+      ALTER TABLE sip_departamento RENAME COLUMN id TO id_deplocal;
+    SQL
+    execute <<-SQL
+      ALTER TABLE sip_departamento ALTER COLUMN id_deplocal DROP DEFAULT;
+      ALTER TABLE sip_departamento ALTER COLUMN id_deplocal DROP NOT NULL;
+    SQL
+    execute <<-SQL
+      ALTER TABLE sip_departamento ADD COLUMN id INTEGER UNIQUE
+        DEFAULT(nextval('sip_departamento_id_seq'));
+    SQL
+    execute <<-SQL
+      ALTER TABLE sip_departamento ADD UNIQUE(id_pais, id_deplocal);
+    SQL
+    execute <<-SQL
       UPDATE sip_departamento SET id='1' WHERE id_deplocal='1' AND id_pais='862';
       UPDATE sip_departamento SET id='2' WHERE id_deplocal='10' AND id_pais='862';
       UPDATE sip_departamento SET id='3' WHERE id_deplocal='10000' AND id_pais='170';
@@ -78,92 +78,92 @@ class AgregaIdDepartamento < ActiveRecord::Migration
       UPDATE sip_departamento SET id='57' WHERE id_deplocal='95' AND id_pais='170';
       UPDATE sip_departamento SET id='58' WHERE id_deplocal='97' AND id_pais='170';
       UPDATE sip_departamento SET id='59' WHERE id_deplocal='99' AND id_pais='170';
-		SQL
+    SQL
 
-		execute <<-SQL
-		  ALTER TABLE sip_departamento ALTER COLUMN id
-			  SET NOT NULL;
-		SQL
-		execute <<-SQL
-		  ALTER TABLE sip_departamento ADD CONSTRAINT 
-			  sip_departamento_pkey PRIMARY KEY (id);
-		SQL
-		execute <<-SQL
-		  SELECT setval('sip_departamento_id_seq', MAX(id)) FROM  
-				(SELECT 100 as id UNION  
-					SELECT MAX(id) FROM sip_departamento) AS s;
-		SQL
+    execute <<-SQL
+      ALTER TABLE sip_departamento ALTER COLUMN id
+        SET NOT NULL;
+    SQL
+    execute <<-SQL
+      ALTER TABLE sip_departamento ADD CONSTRAINT 
+        sip_departamento_pkey PRIMARY KEY (id);
+    SQL
+    execute <<-SQL
+      SELECT setval('sip_departamento_id_seq', MAX(id)) FROM  
+        (SELECT 100 as id UNION  
+          SELECT MAX(id) FROM sip_departamento) AS s;
+    SQL
 
-		execute <<-SQL
-		  ALTER TABLE sip_municipio RENAME COLUMN id_departamento TO id_deplocal
-		SQL
-		execute <<-SQL
-		  ALTER TABLE sip_municipio ADD COLUMN id_departamento 
-				INTEGER REFERENCES sip_departamento(id);
-		SQL
-		execute <<-SQL
-		  UPDATE sip_municipio SET id_departamento=sip_departamento.id 
-			  FROM sip_departamento 
-				WHERE sip_municipio.id_pais=sip_departamento.id_pais
-			    AND sip_municipio.id_deplocal=sip_departamento.id_deplocal;
-		SQL
-
-		execute <<-SQL
-		  ALTER TABLE sip_clase RENAME COLUMN id_departamento TO id_deplocal
-		SQL
-		execute <<-SQL
-		  ALTER TABLE sip_clase ADD COLUMN id_departamento 
-				INTEGER REFERENCES sip_departamento(id);
-		SQL
-		execute <<-SQL
-		  UPDATE sip_clase SET id_departamento=sip_departamento.id 
-			  FROM sip_departamento 
-				WHERE sip_clase.id_pais=sip_departamento.id_pais
-			    AND sip_clase.id_deplocal=sip_departamento.id_deplocal;
-		SQL
-
-	 execute <<-SQL
-    ALTER TABLE sip_ubicacion RENAME COLUMN id_departamento TO id_deplocal
-   SQL
-   execute <<-SQL
-    ALTER TABLE sip_ubicacion ADD COLUMN id_departamento 
+    execute <<-SQL
+      ALTER TABLE sip_municipio RENAME COLUMN id_departamento TO id_deplocal
+    SQL
+    execute <<-SQL
+      ALTER TABLE sip_municipio ADD COLUMN id_departamento 
         INTEGER REFERENCES sip_departamento(id);
-   SQL
-   execute <<-SQL
-    UPDATE sip_ubicacion SET id_departamento=sip_departamento.id 
-      FROM sip_departamento 
-			WHERE sip_ubicacion.id_pais=sip_departamento.id_pais
-        AND sip_ubicacion.id_deplocal=sip_departamento.id_deplocal;
-   SQL
+    SQL
+    execute <<-SQL
+      UPDATE sip_municipio SET id_departamento=sip_departamento.id 
+        FROM sip_departamento 
+        WHERE sip_municipio.id_pais=sip_departamento.id_pais
+          AND sip_municipio.id_deplocal=sip_departamento.id_deplocal;
+    SQL
 
-	 execute <<-SQL
-    ALTER TABLE sip_persona RENAME COLUMN id_departamento TO id_deplocal
-   SQL
-   execute <<-SQL
-    ALTER TABLE sip_persona ADD COLUMN id_departamento 
+    execute <<-SQL
+      ALTER TABLE sip_clase RENAME COLUMN id_departamento TO id_deplocal
+    SQL
+    execute <<-SQL
+      ALTER TABLE sip_clase ADD COLUMN id_departamento 
         INTEGER REFERENCES sip_departamento(id);
-   SQL
-   execute <<-SQL
-    UPDATE sip_persona SET id_departamento=sip_departamento.id 
-      FROM sip_departamento 
-			WHERE sip_persona.id_pais=sip_departamento.id_pais
-        AND sip_persona.id_deplocal=sip_departamento.id_deplocal;
-   SQL
+    SQL
+    execute <<-SQL
+      UPDATE sip_clase SET id_departamento=sip_departamento.id 
+        FROM sip_departamento 
+        WHERE sip_clase.id_pais=sip_departamento.id_pais
+          AND sip_clase.id_deplocal=sip_departamento.id_deplocal;
+    SQL
 
-		execute <<-SQL
-		    DROP MATERIALIZED VIEW IF EXISTS sivel2_gen_conscaso;
-		    DROP VIEW IF EXISTS sivel2_gen_conscaso1;
-		    ALTER TABLE sip_ubicacion DROP COLUMN id_deplocal;
-		    ALTER TABLE sip_persona DROP COLUMN id_deplocal;
-			  ALTER TABLE sip_clase DROP COLUMN id_deplocal;
-			  ALTER TABLE sip_municipio DROP COLUMN id_deplocal;
-		SQL
-		#Pendiente
-		#  execute <<-SQL
-		#    ALTER TABLE sip_municipio DROP COLUMN id_pais;
-		#   SQL
-	end
-	def down
-		raise ActiveRecord::IrreversibleMigration    
-	end
+    execute <<-SQL
+      ALTER TABLE sip_ubicacion RENAME COLUMN id_departamento TO id_deplocal
+    SQL
+    execute <<-SQL
+      ALTER TABLE sip_ubicacion ADD COLUMN id_departamento 
+        INTEGER REFERENCES sip_departamento(id);
+    SQL
+    execute <<-SQL
+      UPDATE sip_ubicacion SET id_departamento=sip_departamento.id 
+        FROM sip_departamento 
+        WHERE sip_ubicacion.id_pais=sip_departamento.id_pais
+          AND sip_ubicacion.id_deplocal=sip_departamento.id_deplocal;
+    SQL
+
+    execute <<-SQL
+      ALTER TABLE sip_persona RENAME COLUMN id_departamento TO id_deplocal
+    SQL
+    execute <<-SQL
+      ALTER TABLE sip_persona ADD COLUMN id_departamento 
+        INTEGER REFERENCES sip_departamento(id);
+    SQL
+    execute <<-SQL
+      UPDATE sip_persona SET id_departamento=sip_departamento.id 
+        FROM sip_departamento 
+        WHERE sip_persona.id_pais=sip_departamento.id_pais
+          AND sip_persona.id_deplocal=sip_departamento.id_deplocal;
+    SQL
+
+    execute <<-SQL
+      DROP MATERIALIZED VIEW IF EXISTS sivel2_gen_conscaso;
+      DROP VIEW IF EXISTS sivel2_gen_conscaso1;
+      DROP VIEW IF EXISTS cons2;
+    SQL
+    execute <<-SQL
+      ALTER TABLE sip_ubicacion DROP COLUMN id_deplocal;
+      ALTER TABLE sip_persona DROP COLUMN id_deplocal;
+      ALTER TABLE sip_clase DROP COLUMN id_deplocal CASCADE;
+      ALTER TABLE sip_municipio DROP COLUMN id_deplocal CASCADE;
+    SQL
+
+  end
+  def down
+    raise ActiveRecord::IrreversibleMigration    
+  end
 end

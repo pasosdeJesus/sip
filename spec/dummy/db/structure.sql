@@ -321,6 +321,33 @@ CREATE TABLE sip_municipio (
 
 
 --
+-- Name: sip_oficina_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sip_oficina_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_oficina; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE sip_oficina (
+    id integer DEFAULT nextval('sip_oficina_id_seq'::regclass) NOT NULL,
+    nombre character varying(50) NOT NULL,
+    fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    CONSTRAINT regionsjr_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
 -- Name: sip_pais_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -618,6 +645,14 @@ ALTER TABLE ONLY sip_etiqueta
 
 ALTER TABLE ONLY sip_municipio
     ADD CONSTRAINT municipio_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: oficina_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY sip_oficina
+    ADD CONSTRAINT oficina_pkey PRIMARY KEY (id);
 
 
 --
