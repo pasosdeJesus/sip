@@ -7,6 +7,9 @@ es:
     id_municipio: Municipio
     id_departamento: Departamento/Estado
     id_tclase: Tipo de Centro Poblado
+    id_clalocal: Código dentro del Municipio
+    id_munlocal: Código dentro del Departamento/Estado
+    id_deplocal: Código dentro del País
     id_pais: País
     id_supracategoria: Supracategoria
     id_tviolencia: Tipo de Violencia

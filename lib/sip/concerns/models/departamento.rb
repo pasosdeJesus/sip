@@ -19,7 +19,7 @@ module Sip
 					belongs_to :pais, foreign_key: "id_pais", validate: true, 
 						class_name: 'Sip::Pais'
 
-					validates :id, presence: true
+					#validates :id, presence: true
 					validates :id_pais, presence: true
 				end
 			end

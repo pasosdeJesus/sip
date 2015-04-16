@@ -20,10 +20,6 @@ module Sip
         ]
       end
   
-      def atributos_form
-        atributos_index
-      end
-  
       def genclase
         return 'M';
       end

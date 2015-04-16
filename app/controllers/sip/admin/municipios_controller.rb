@@ -18,10 +18,6 @@ module Sip
 				 "latitud", "longitud", "fechacreacion", "fechadeshabilitacion"]
       end
       
-      def atributos_form
-        atributos_index
-      end
-  
       def genclase
         return 'M';
       end

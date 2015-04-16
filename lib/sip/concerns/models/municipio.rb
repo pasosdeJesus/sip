@@ -18,7 +18,7 @@ module Sip
 					belongs_to :departamento, foreign_key: "id_departamento", 
 						validate: true, class_name: 'Sip::Departamento'
 
-					validates :id, presence: true
+					#validates :id, presence: true
 					validates :id_departamento, presence: true
 				end
 			end

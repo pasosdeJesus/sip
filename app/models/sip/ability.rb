@@ -51,9 +51,6 @@ module Sip
 
     # Tablas básicas cuyo id no es autoincremental
     @@basicas_id_noauto = [ 
-      ['Sip', 'clase'], 
-      ['Sip', 'departamento'], 
-      ['Sip', 'municipio'], 
       ['Sip', 'tclase']
     ]
 

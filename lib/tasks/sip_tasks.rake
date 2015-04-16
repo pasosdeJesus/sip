@@ -11,10 +11,18 @@ namespace :sip do
 		# Primero tablas basicas creadas en Rails
     tbn = Ability::basicas_seq_con_id - Ability::basicas_id_noauto
     tbn.each do |t|
-    	connection.execute("
-      SELECT setval('#{Ability::tb_modelo t}_id_seq', MAX(id)) FROM 
-             (SELECT 100 as id UNION 
-             SELECT MAX(id) FROM #{Ability::tb_modelo t}) AS s;")
+			nomt = Ability::tb_modelo t
+			case nomt
+			when 'sip_departamento', 'sip_municipio', 'sip_pais', 'sip_clase'
+				maxv = 100000
+			else	
+				maxv = 100
+			end
+			q = "SELECT setval('#{nomt}_id_seq', MAX(id)) FROM 
+          (SELECT #{maxv} as id UNION 
+            SELECT MAX(id) FROM #{Ability::tb_modelo t}) AS s;"
+		  #puts q
+    	connection.execute(q)
 		end
 		# Otras tablas basicas excluyendo las que no tienen id autoincremental
     tb= (Ability::tablasbasicas - tbn) - Ability::basicas_id_noauto
