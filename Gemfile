@@ -37,7 +37,7 @@ gem "bootstrap-datepicker-rails"
 gem "simple_form", '~> 3.1.0'
 
 # Formularios anidados (algunos con ajax)
-gem "cocoon", github: "vtamara/cocoon"
+# gem "cocoon", github: "vtamara/cocoon"
 
 # Autenticación y roles
 gem "devise"
@@ -49,7 +49,7 @@ gem "bcrypt"
 gem "will_paginate"
 
 # ICU con CLDR
-gem 'twitter_cldr'
+#gem 'twitter_cldr'
  
 # Maneja adjuntos
 gem "paperclip", "~> 4.1"
