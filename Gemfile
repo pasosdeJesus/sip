@@ -49,7 +49,7 @@ gem "bcrypt"
 gem "will_paginate"
 
 # ICU con CLDR
-#gem 'twitter_cldr'
+gem 'twitter_cldr'
  
 # Maneja adjuntos
 gem "paperclip", "~> 4.1"
