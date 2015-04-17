@@ -26,6 +26,7 @@ Este motor incluye
 * Facilidades de configuración en lib/sip/engine.rb, como inclusión automática 
   de sus migraciones en las aplicaciones que usen el motor y variables típicas 
   de configuración.
+* Localización con twitter_cldr
 * Tareas rake para actualizar indices, sacar copia de respaldo de base de datos
 * Generador de nuevas tablas básicas
 * Aplicación de prueba completa en spec/dummy con diseño adaptable (responsive) 
@@ -101,6 +102,11 @@ Puede iniciar un servidor de desarrollo con:
 ```
 y examinar desde el mismo computador con un navegador en: 
 http://127.0.0.1:3000
+
+Puede ingresar con usuario sip y clave sip123 para interactuar con el 
+manejo de usuarios (menú Clave para cambiar datos de su cuenta y clave, 
+menú Usuarios para administrar usuarios) y con el manejo de tablas básicas.
+
 
 ## Desarrollo
 

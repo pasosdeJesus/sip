@@ -10,6 +10,7 @@ gem "rails-i18n"
 # Postgresql
 gem "pg"
 
+# Unifica CSSs
 gem "sass"
 
 # API JSON facil. Ver: https://github.com/rails/jbuilder
