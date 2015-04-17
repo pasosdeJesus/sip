@@ -12,7 +12,7 @@ module Sip
             :content_type => ['text/plain', /.*/]
           validates_attachment_presence :adjunto
 
-          validates_presence_of :fecha, :descripcion
+          validates_presence_of :descripcion
         end
 
       end
