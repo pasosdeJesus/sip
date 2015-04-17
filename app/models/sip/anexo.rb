@@ -1,12 +1,8 @@
 # encoding: UTF-8
+require 'sip/concerns/models/anexo'
+
 module Sip
   class Anexo < ActiveRecord::Base
-    has_attached_file :adjunto, 
-      :path => Sip.ruta_anexos + "/:id_:filename"
-    validates_attachment_content_type :adjunto, 
-      :content_type => ['text/plain', /.*/]
-    validates_attachment_presence :adjunto
-
-    validates_presence_of :fecha, :descripcion
+    include Sip::Concerns::Models::Anexo
   end
 end
