@@ -7,18 +7,30 @@
 * [Pruebas](#pruebas)
 * [Desarrollo](#pruebas)
 
-Este es un motor para un sistema de información sobre Ruby on Rails y
-PostgreSQL.
+Este es un motor para un sistema de información sobre Ruby on Rails 4.2 y
+PostgreSQL (preferiblemente cifrado como en adJ).
 
 Este motor incluye 
 * Autenticación con devise, 
 * Roles con cancancan, 
-* Esqueleto para tablas básicas (o parámetros de la aplicación).
-* Propuesta de tablas básicas para paises, departamentos/estados, municipios y ciudades
-  con  datos de Colombia y Venezuela.
-* Estructura de unas para tablas típicas: persona
+* Pruebas con rspec y factory girl,
+* Propuesta para manejar tablas básicas (parámetros de la aplicación) y esqueletos 
+  para: paises, departamentos/estados, municipios, centros poblados, tipos de 
+  centros poblados, tipos de sitios, ubicaciones, tipos de relaciones entre 
+  personas, tipos de documentos de identificación, oficinas.  Faciles de 
+  modificar en aplicaciones que usen el motor vía ActiveSupport::Cocern.
+* Datos geográficos completos para Colombia y Venezuela.
+* Propuesta de estructura para otros modelos típicos persona, anexo, también 
+  modificables en aplicación que use el motor via ActiveSupport::Concern.
+* Manejo de anexos con paperclip 
+* Facilidades de configuración en lib/sip/engine.rb, como inclusión automática 
+  de sus migraciones en las aplicaciones que usen el motor y variables típicas 
+  de configuración.
 * Tareas rake para actualizar indices, sacar copia de respaldo de base de datos
-* Generador de rails para nuevas tablas básicas
+* Generador de nuevas tablas básicas
+* Aplicación de prueba completa en spec/dummy con diseño adaptable (responsive) 
+  usando bootstrap, simple_form y jquery que permite modificar las tablas 
+  básicas paginando con will_paginate
 
 ## Diseño
 
@@ -87,6 +99,8 @@ Puede iniciar un servidor de desarrollo con:
   cd spec/dummy
   rails s -b 127.0.0.1 -p 3000
 ```
+y examinar desde el mismo computador con un navegador en: 
+http://127.0.0.1:3000
 
 ## Desarrollo
 
