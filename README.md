@@ -13,10 +13,12 @@ PostgreSQL.
 Este motor incluye 
 * Autenticación con devise, 
 * Roles con cancancan, 
-* Esqueleto para tablas básicas (o parámetros de la aplicación), y datos
-  geográficos como paises y departamentos/estados, municipios y ciudades
-  con  ubicación de Colombia y Venezuela.
+* Esqueleto para tablas básicas (o parámetros de la aplicación).
+* Propuesta de tablas básicas para paises, departamentos/estados, municipios y ciudades
+  con  datos de Colombia y Venezuela.
 * Estructura de unas para tablas típicas: persona
+* Tareas rake para actualizar indices, sacar copia de respaldo de base de datos
+* Generador de rails para nuevas tablas básicas
 
 ## Diseño
 
