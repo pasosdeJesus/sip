@@ -11,7 +11,7 @@ Este es un motor para un sistema de información sobre Ruby on Rails 4.2 y
 PostgreSQL (preferiblemente cifrado como en adJ).
 
 Este motor incluye 
-* Autenticación con devise, 
+* Autenticación con devise y bcrypt,  
 * Roles con cancancan, 
 * Pruebas con rspec y factory girl,
 * Propuesta para manejar tablas básicas (parámetros de la aplicación) y esqueletos 

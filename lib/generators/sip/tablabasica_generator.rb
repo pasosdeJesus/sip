@@ -12,7 +12,7 @@ module Sip
         :desc => "Genera modelo"  
       class_option :controlador, :type => :boolean, :default => true, 
         :desc => "Genera controlador"  
-      class_option :mspec, :type => :boolean, :default => true, 
+      class_option :rspec, :type => :boolean, :default => true, 
         :desc => "Genera prueba rspec para el modelo"  
       class_option :factory, :type => :boolean, :default => true, 
         :desc => "Genera ejemplo de datos para factory_girl"  
@@ -20,7 +20,7 @@ module Sip
       def genera_tablabasica
         genera_modelo if options.modelo
         genera_controlador if options.controlador
-        genera_mspec if options.mspec
+        genera_rspec if options.rspec
         genera_factory if options.factory
       end
 
@@ -34,8 +34,12 @@ module Sip
 					"nombre:string{1000} observaciones:string{5000} " +
 					"fechacreacion:date fechadeshabilitacion:date " +
 					"created_at:timestamp updated_at:timestamp"
-        # Infleccion no regular en config/initializers/inflections.rb
-        # Nombre en español en config/locales/es.yml
+        puts "Aregue manualmente infleccion no regular en config/initializers/inflections.rb al estilo:"
+        puts "  inflect.irregular 'financiador', 'financiadores' "
+        puts "Aregue nombre en español en config/locales/es.yml al estilo:"
+        puts "  \"cor1440_gen/rangoedadac\":"
+        puts "    Rangoedadac: Rango de edad en Actividades"
+        puts "    Rangosedadac: Rangos de edad en Actividades"
       end
 
       def genera_controlador
@@ -43,7 +47,7 @@ module Sip
           "app/controllers/admin/#{nom_arch_plural}_controller.rb"
       end
 
-      def genera_mspec
+      def genera_rspec
         template "tablabasica_spec.rb.erb", 
           "spec/models/#{nom_arch}_spec.rb"
       end
