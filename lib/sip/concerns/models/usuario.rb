@@ -22,12 +22,23 @@ module Sip
           end
           validates_uniqueness_of :nusuario, :case_sensitive => false
           validates_format_of :nusuario, :with  => /\A[a-zA-Z_0-9]+\z/
-
+          validates_length_of :nusuario, maximum: 15
           validates_presence_of :nusuario
+ 
+          validates_length_of :nombre, maximum: 50
+          
+          validates_length_of :descripcion, maximum: 50
+
           validates_presence_of :idioma
+          validates_length_of :idioma, maximum: 6
+
           validates_presence_of :rol
+
           validates_presence_of :email
+          validates_length_of :email, maximum: 255
+
           validates_presence_of :sign_in_count
+
           validates_presence_of :fechacreacion
 
           validates_presence_of   :encrypted_password, :on=>:create
