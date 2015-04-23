@@ -12,8 +12,7 @@ class AgregaIdMunicipio < ActiveRecord::Migration
  			ALTER TABLE sip_municipio ALTER COLUMN id_munlocal DROP NOT NULL
 		SQL
 		execute <<-SQL
-			ALTER TABLE sip_municipio ADD COLUMN id INTEGER UNIQUE
-				DEFAULT(nextval('sip_municipio_id_seq'));
+			ALTER TABLE sip_municipio ADD COLUMN id INTEGER;
 		SQL
 		execute <<-SQL
 		 ALTER TABLE sip_municipio ADD UNIQUE(id_departamento, id_munlocal);
@@ -1499,7 +1498,14 @@ class AgregaIdMunicipio < ActiveRecord::Migration
 				(SELECT 100 as id UNION  
 					SELECT MAX(id) FROM sip_municipio) AS s;
 		SQL
-
+		execute <<-SQL
+        ALTER TABLE sip_municipio ALTER COLUMN id
+            SET UNIQUE;
+		SQL
+		execute <<-SQL
+        ALTER TABLE sip_municipio ALTER COLUMN id
+				    DEFAULT(nextval('sip_municipio_id_seq'));
+		SQL
 		execute <<-SQL
 		ALTER TABLE sip_clase RENAME COLUMN id_municipio TO id_munlocal
 		SQL
