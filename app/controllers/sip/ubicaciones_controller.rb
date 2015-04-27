@@ -8,7 +8,7 @@ module Sip
     # Crea un nuevo registro para el caso que recibe por parametro 
     # params[:caso_id].  Pone valores simples en los campos requeridos
     def nuevo
-      if !params[:caso_id].nil?
+      if params[:caso_id]
         @ubicacion = Ubicacion.new
         @ubicacion.id_caso = params[:caso_id]
         @ubicacion.id_pais = 170
