@@ -14,29 +14,31 @@ Este motor incluye
 * Autenticación con devise y bcrypt,  
 * Roles con cancancan, 
 * Pruebas con rspec y factory girl,
-* Propuesta para manejar tablas básicas (parámetros de la aplicación) y esqueletos 
-  para: paises, departamentos/estados, municipios, centros poblados, tipos de 
+* Propuesta para manejar tablas básicas (parámetros de la aplicación) y ejemplos
+  de estas para: paises, departamentos/estados, municipios, centros poblados, tipos de 
   centros poblados, tipos de sitios, ubicaciones, tipos de relaciones entre 
   personas, tipos de documentos de identificación, oficinas.  Faciles de 
-  modificar en aplicaciones que usen el motor vía ActiveSupport::Cocern.
+  modificar en aplicaciones que usen el motor vía ActiveSupport::Concern.
 * Datos geográficos completos para Colombia y Venezuela.
-* Propuesta de estructura para otros modelos típicos persona, anexo, también 
-  modificables en aplicación que use el motor via ActiveSupport::Concern.
+* Propuesta de estructura para otros modelos típicos: persona, anexo; también 
+  modificables en una aplicación que use el motor via ActiveSupport::Concern.
 * Manejo de anexos con paperclip 
-* Facilidades de configuración en lib/sip/engine.rb, como inclusión automática 
+* Facilidades de configuración en ```lib/sip/engine.rb''', como inclusión automática 
   de sus migraciones en las aplicaciones que usen el motor y variables típicas 
   de configuración.
-* Localización con twitter_cldr
-* Tareas rake para actualizar indices, sacar copia de respaldo de base de datos
+* Localización con ```twitter_cldr'''
+* Tareas ```rake''' para actualizar indices, sacar copia de respaldo de base de datos
 * Generador de nuevas tablas básicas
-* Aplicación de prueba completa en spec/dummy con diseño adaptable (responsive) 
-  usando bootstrap, simple_form y jquery que permite modificar las tablas 
-  básicas paginando con will_paginate
+* Aplicación de prueba completa en directorio ```spec/dummy''' con diseño 
+  web adaptable (responsive) usando ```bootstrap''', ```simple_form''' y ```jquery''',
+  que permite autenticación, manejo de clave y de usuarios y modificar las tablas básicas 
+  paginando con ```will_paginate'''
 
 ## Diseño
 
-Se ha extraido de las partes comunes de diversos sistemas de información,
-particularmente de SIVeL 2, Cor440 y Sal7711.
+Se han extraido de las partes comunes de diversos sistemas de información,
+particularmente de SIVeL 2, Cor440 y Sal7711 (disponibles en el sitio
+de Pasos de Jeśus en github.com)
 
 Roles: administrador y usuario
 
@@ -62,13 +64,13 @@ sistema la mayoría de estas, en adJ con:
 ```sh
   grep "^ *gem" Gemfile | sed -e "s/gem [\"']//g;s/[\"'].*//g" | xargs sudo NOKOGIRI_USE_SYSTEM_LIBRARIES=1 make=gmake gem install
 ```
-* Cree usuario para PostgreSQL (recomendado sipdes o el que especifique en 
-  config/database.yml) y pongale una clave, por ejemplo en adJ
+* Cree usuario para PostgreSQL (recomendado ```sipdes''' o el que usted 
+  especifique en ```config/database.yml''') y pongale una clave, por ejemplo en adJ
 ```sh
 sudo su - _postgresql
 $ createuser -Upostgres -h/var/www/tmp -s sipdes
 $ psql -h/var/www/tmp -Upostgres
-psql (9.3.5)
+psql (9.4.1)
 Type "help" for help.
 
 postgres=# ALTER USER sipdes WITH password 'miclave';
@@ -76,7 +78,7 @@ ALTER ROLE
 postgres=# \q
 $ exit
 ```
-* Prepare spec/dummy/config/database.yml con los datos de la base que creo:
+* Prepare ```spec/dummy/config/database.yml''' con los datos de la base que creo:
 ```sh
   cp spec/dummy/config/database.yml.plantilla spec/dummy/config/database.yml
   vim spec/dummy/config/database.yml
@@ -101,9 +103,9 @@ Puede iniciar un servidor de desarrollo con:
   rails s -b 127.0.0.1 -p 3000
 ```
 y examinar desde el mismo computador con un navegador en: 
-http://127.0.0.1:3000
+```http://127.0.0.1:3000'''
 
-Puede ingresar con usuario sip y clave sip123 para interactuar con el 
+Puede ingresar con usuario ```sip''' y clave ```sip123''' para interactuar con el 
 manejo de usuarios (menú Clave para cambiar datos de su cuenta y clave, 
 menú Usuarios para administrar usuarios) y con el manejo de tablas básicas.
 
