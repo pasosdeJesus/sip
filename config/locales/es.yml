@@ -39,6 +39,9 @@ es:
       "sip/tdocumento":
         Tdocumento: Tipo de Documento
         Tdocumentos: Tipos de Documentos
+      "sip/trelacion": 
+        Trelacion: Tipo de Relación Familiar
+        Trelaciones: Tipos de Relaciones Familiares
       "sip/tsitio": 
         Tsitio: Tipo de Sitios
         Tsitios: Tipos de Sitios

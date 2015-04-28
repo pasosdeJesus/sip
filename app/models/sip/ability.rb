@@ -28,6 +28,7 @@ module Sip
       ['Sip', 'pais'],
       ['Sip', 'tclase'], 
       ['Sip', 'tdocumento'], 
+      ['Sip', 'trelacion'], 
       ['Sip', 'tsitio']
     ]
 
@@ -53,7 +54,8 @@ module Sip
 
     # Tablas básicas cuyo id no es autoincremental
     @@basicas_id_noauto = [ 
-      ['Sip', 'tclase']
+      ['Sip', 'tclase'],
+      ['Sip', 'trelacion']
     ]
 
     def self.basicas_id_noauto
