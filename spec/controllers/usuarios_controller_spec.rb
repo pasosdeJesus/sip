@@ -1,7 +1,6 @@
 # encoding: UTF-8
 
 require 'rails_helper'
-#require 'pry-byebug'
 
 # Rspec puede probar cuando el controlador está en SIP, así
 # que lo definimos
@@ -33,12 +32,13 @@ RSpec.describe Sip::UsuariosController, :type => :controller do
   }
 
   let(:invalid_attributes) {
-    { nombre: "",
-      created_at: "2014-11-11" }
+    { nombre: '',
+			nusuario: '',
+      created_at: '2014-11-11' }
   }
 
   # Atributos mínimos de valores de sesión para pasar filtros (como 
-  # autenticación) definidos en UsuarioesController.
+  # autenticación) definidos en UsuariosController.
   # De http://luisalima.github.io/blog/2013/01/09/how-i-test-part-iv/
   let(:valid_session) { 
     {"warden.user.user.key" => session["warden.user.user.key"]}
@@ -46,7 +46,6 @@ RSpec.describe Sip::UsuariosController, :type => :controller do
 
   describe "GET index" do
     it "asigna todos los usuarios como @usuarios" do
-      #byebug
       if Usuario.where(nusuario: 'nusuario').count > 0 
         usuario = Usuario.where(nusuario: 'nusuario').take
       else
@@ -143,7 +142,7 @@ RSpec.describe Sip::UsuariosController, :type => :controller do
         usuario.destroy!
       end
 
-      it "redirige a la usuario" do
+      it "redirige al usuario" do
         usuario = Usuario.create! valid_attributes
         put :update, {:id => usuario.to_param, :usuario => valid_attributes}, valid_session
         expect(response).to redirect_to(usuario)
@@ -152,7 +151,7 @@ RSpec.describe Sip::UsuariosController, :type => :controller do
     end
 
     describe "con parametros inválidos" do
-      it "asinga la usuario como @usuario" do
+      it "asinga el usuario como @usuario" do
         usuario = Usuario.create! valid_attributes
         put :update, {:id => usuario.to_param, :usuario => invalid_attributes}, valid_session
         expect(assigns(:usuario)).to eq(usuario)
@@ -160,7 +159,6 @@ RSpec.describe Sip::UsuariosController, :type => :controller do
       end
 
       it "vuelve a presentar la plantilla 'editar'" do
-        skip
         usuario = Usuario.create! valid_attributes
         put :update, {:id => usuario.to_param, :usuario => invalid_attributes}, valid_session
         expect(response).to render_template("edit")
@@ -170,7 +168,7 @@ RSpec.describe Sip::UsuariosController, :type => :controller do
   end
 
   describe "DELETE destroy" do
-    it "elimina la usuario requerida" do
+    it "elimina el usuario requerido" do
       if Usuario.where(nusuario: 'nusuario').count > 0 
         usuario = Usuario.where(nusuario: 'nusuario').take
       else

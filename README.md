@@ -23,16 +23,16 @@ Este motor incluye
 * Propuesta de estructura para otros modelos típicos: persona, anexo; también 
   modificables en una aplicación que use el motor via ActiveSupport::Concern.
 * Manejo de anexos con paperclip 
-* Facilidades de configuración en ```lib/sip/engine.rb''', como inclusión automática 
+* Facilidades de configuración en ```lib/sip/engine.rb```, como inclusión automática 
   de sus migraciones en las aplicaciones que usen el motor y variables típicas 
   de configuración.
-* Localización con ```twitter_cldr'''
-* Tareas ```rake''' para actualizar indices, sacar copia de respaldo de base de datos
+* Localización con ```twitter_cldr```
+* Tareas ```rake``` para actualizar indices, sacar copia de respaldo de base de datos
 * Generador de nuevas tablas básicas
-* Aplicación de prueba completa en directorio ```spec/dummy''' con diseño 
-  web adaptable (responsive) usando ```bootstrap''', ```simple_form''' y ```jquery''',
+* Aplicación de prueba completa en directorio ```spec/dummy``` con diseño 
+  web adaptable (responsive) usando ```bootstrap```, ```simple_form``` y ```jquery```,
   que permite autenticación, manejo de clave y de usuarios y modificar las tablas básicas 
-  paginando con ```will_paginate'''
+  paginando con ```will_paginate```
 
 ## Diseño
 
@@ -41,6 +41,9 @@ particularmente de SIVeL 2, Cor440 y Sal7711 (disponibles en el sitio
 de Pasos de Jeśus en github.com)
 
 Roles: administrador y usuario
+
+Todo se maneja como motor aislado, excepto usuario para facilitar uso de Devise.
+
 
 ## Uso
 
@@ -64,8 +67,9 @@ sistema la mayoría de estas, en adJ con:
 ```sh
   grep "^ *gem" Gemfile | sed -e "s/gem [\"']//g;s/[\"'].*//g" | xargs sudo NOKOGIRI_USE_SYSTEM_LIBRARIES=1 make=gmake gem install
 ```
-* Cree usuario para PostgreSQL (recomendado ```sipdes''' o el que usted 
-  especifique en ```config/database.yml''') y pongale una clave, por ejemplo en adJ
+* Cree usuario para PostgreSQL (recomendado ```sipdes``` o el que usted 
+  especifique en ```config/database.yml```) y pongale una clave, por ejemplo 
+  en adJ
 ```sh
 sudo su - _postgresql
 $ createuser -Upostgres -h/var/www/tmp -s sipdes
@@ -73,12 +77,13 @@ $ psql -h/var/www/tmp -Upostgres
 psql (9.4.1)
 Type "help" for help.
 
-postgres=# ALTER USER sipdes WITH password 'miclave';
+postgres=# ALTER USER sipdes WITH password 'aquilaclave';
 ALTER ROLE
 postgres=# \q
 $ exit
 ```
-* Prepare ```spec/dummy/config/database.yml''' con los datos de la base que creo:
+* Prepare ```spec/dummy/config/database.yml``` con los datos de la base 
+	que creo:
 ```sh
   cp spec/dummy/config/database.yml.plantilla spec/dummy/config/database.yml
   vim spec/dummy/config/database.yml
@@ -103,10 +108,10 @@ Puede iniciar un servidor de desarrollo con:
   rails s -b 127.0.0.1 -p 3000
 ```
 y examinar desde el mismo computador con un navegador en: 
-```http://127.0.0.1:3000'''
+```http://127.0.0.1:3000```
 
-Puede ingresar con usuario ```sip''' y clave ```sip123''' para interactuar con el 
-manejo de usuarios (menú Clave para cambiar datos de su cuenta y clave, 
+Puede ingresar con usuario ```sip``` y clave ```sip123``` para interactuar 
+con el manejo de usuarios (menú Clave para cambiar datos de su cuenta y clave, 
 menú Usuarios para administrar usuarios) y con el manejo de tablas básicas.
 
 

@@ -9,6 +9,6 @@ FactoryGirl.define do
     fechacreacion "2014-08-04"
     fechadeshabilitacion "2014-08-04"
 		id_municipio 1
-		id_tclase 2
+		id_tclase 'CAS'
   end
 end
