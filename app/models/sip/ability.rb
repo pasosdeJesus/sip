@@ -19,7 +19,7 @@ module Sip
       ["", 0] #6
     ]
 
-    @@tablasbasicas = [
+    TABLAS_SIP = [
       ['Sip', 'clase'], 
       ['Sip', 'departamento'], 
       ['Sip', 'etiqueta'], 
@@ -31,6 +31,9 @@ module Sip
       ['Sip', 'trelacion'], 
       ['Sip', 'tsitio']
     ]
+
+
+    @@tablasbasicas = TABLAS_SIP
 
     def self.tablasbasicas
       @@tablasbasicas
