@@ -13215,8 +13215,7 @@ class AgregaIdClase < ActiveRecord::Migration
           SELECT MAX(id) FROM sip_departamento) AS s;
     SQL
     execute <<-SQL
-        ALTER TABLE sip_clase ALTER COLUMN id
-            SET UNIQUE;
+     ALTER TABLE sip_clase ADD UNIQUE(id);
     SQL
     execute <<-SQL
         ALTER TABLE sip_clase ALTER COLUMN id

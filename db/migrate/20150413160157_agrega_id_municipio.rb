@@ -1499,8 +1499,7 @@ class AgregaIdMunicipio < ActiveRecord::Migration
 					SELECT MAX(id) FROM sip_municipio) AS s;
 		SQL
 		execute <<-SQL
-        ALTER TABLE sip_municipio ALTER COLUMN id
-            SET UNIQUE;
+		 	ALTER TABLE sip_municipio ADD UNIQUE(id);
 		SQL
 		execute <<-SQL
         ALTER TABLE sip_municipio ALTER COLUMN id
