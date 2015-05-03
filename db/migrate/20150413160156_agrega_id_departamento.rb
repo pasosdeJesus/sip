@@ -97,7 +97,7 @@ class AgregaIdDepartamento < ActiveRecord::Migration
     SQL
     execute <<-SQL
       ALTER TABLE sip_departamento ALTER COLUMN id
-        DEFAULT(nextval('sip_departamento_id_seq'));
+        SET DEFAULT(nextval('sip_departamento_id_seq'));
     SQL
     execute <<-SQL
       ALTER TABLE sip_municipio RENAME COLUMN id_departamento TO id_deplocal

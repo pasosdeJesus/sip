@@ -1503,7 +1503,7 @@ class AgregaIdMunicipio < ActiveRecord::Migration
 		SQL
 		execute <<-SQL
         ALTER TABLE sip_municipio ALTER COLUMN id
-				    DEFAULT(nextval('sip_municipio_id_seq'));
+				    SET DEFAULT(nextval('sip_municipio_id_seq'));
 		SQL
 		execute <<-SQL
 		ALTER TABLE sip_clase RENAME COLUMN id_municipio TO id_munlocal

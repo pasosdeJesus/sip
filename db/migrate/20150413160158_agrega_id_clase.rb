@@ -13219,7 +13219,7 @@ class AgregaIdClase < ActiveRecord::Migration
     SQL
     execute <<-SQL
         ALTER TABLE sip_clase ALTER COLUMN id
-            DEFAULT(nextval('sip_clase_id_seq'));
+            SET DEFAULT(nextval('sip_clase_id_seq'));
     SQL
     execute <<-SQL
     	ALTER TABLE sip_ubicacion RENAME COLUMN id_clase TO id_clalocal
