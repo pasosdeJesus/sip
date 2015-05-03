@@ -117,7 +117,7 @@ namespace :sip do
     puts "sip - vuelca"
 		abcs = ActiveRecord::Base.configurations
 		fecha = DateTime.now.strftime('%Y-%m-%d') 
-    archcopia = Sivel2Gen.ruta_volcados + "/" + abcs[Rails.env]['database'] +
+    archcopia = Sip.ruta_volcados + "/" + abcs[Rails.env]['database'] +
       "-" + fecha + ".sql"
 		File.open(archcopia, "w") { |f| f << "-- Volcado del #{fecha}\n\n" }
 		set_psql_env(abcs[Rails.env])
