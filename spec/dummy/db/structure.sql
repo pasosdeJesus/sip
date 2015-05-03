@@ -343,6 +343,7 @@ CREATE TABLE sip_oficina (
     fechadeshabilitacion date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
+    observaciones character varying(5000),
     CONSTRAINT regionsjr_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -922,4 +923,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150413160157');
 INSERT INTO schema_migrations (version) VALUES ('20150413160158');
 
 INSERT INTO schema_migrations (version) VALUES ('20150416074423');
+
+INSERT INTO schema_migrations (version) VALUES ('20150503120915');
 
