@@ -2,12 +2,6 @@
 
 require 'rails_helper'
 
-# Rspec puede probar cuando el controlador está en SIP, así
-# que lo definimos
-module Sip
-  class UsuariosController < ::UsuariosController
-  end
-end
 
 RSpec.describe Sip::UsuariosController, :type => :controller do
   routes { Sip::Engine.routes }

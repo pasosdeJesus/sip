@@ -1,7 +1,7 @@
 # encoding: UTF-8
 require 'bcrypt'
 
-class UsuariosController < Sip::UsuariosController
+class Sip::UsuariosController < ApplicationController
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource class: ::Usuario
 

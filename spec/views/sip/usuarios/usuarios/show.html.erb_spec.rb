@@ -1,7 +1,7 @@
 # encoding: UTF-8
 require 'rails_helper'
 
-RSpec.describe "usuarios/show", :type => :view do
+RSpec.describe "sip/usuarios/show", :type => :view do
   before(:each) do
     @usuario = assign(:usuario, Usuario.create!(
       nombre: "Nombre2", 
