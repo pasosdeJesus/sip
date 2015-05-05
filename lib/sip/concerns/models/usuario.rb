@@ -34,6 +34,7 @@ module Sip
 
           validates_presence_of :rol
 
+          validates_uniqueness_of :email, :case_sensitive => false
           validates_presence_of :email
           validates_length_of :email, maximum: 255
 
