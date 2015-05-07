@@ -39,8 +39,7 @@ module Sip
       @@tablasbasicas
     end
 
-    # Tablas basicas cuya secuencia es de la forma tabla_id_seq  (convención rails)
-    @@basicas_seq_con_id = [ 
+    TABLAS_SIP_SEQID= [ 
       ['Sip', 'clase'], 
       ['Sip', 'departamento'], 
       ['Sip', 'etiqueta'], 
@@ -50,6 +49,9 @@ module Sip
       ['Sip', 'tdocumento'], 
       ['Sip', 'tsitio']
     ]
+
+    # Tablas basicas cuya secuencia es de la forma tabla_id_seq  (convención rails)
+    @@basicas_seq_con_id = TABLAS_SIP_SEQID
 
     def self.basicas_seq_con_id
       @@basicas_seq_con_id
