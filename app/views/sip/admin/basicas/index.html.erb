@@ -28,45 +28,47 @@
     <% @basica.try(:each) do |basica| %>
       <tr>
         <% atributos_index.each do |atr| %>
+          <td>
           <% if atr == "id" then %>
-            <td><%= link_to basica[atr], admin_basica_path(basica) %></td>
+            <%= link_to basica[atr], admin_basica_path(basica) %>
           <% elsif atr == "id_pais" then %>
-            <td><%= Sip::Pais.find(basica[atr]).nombre %></td>
+            <%= Sip::Pais.find(basica[atr]).nombre %>
           <% elsif atr == "id_departamento" then %>
-						<td><%= 
+						<%= 
 							dep= Sip::Departamento.find(basica[atr])
 							pais = Sip::Pais.find(dep.id_pais)
 							dep.nombre + " / " + pais.nombre
-					%></td>
+					%>
           <% elsif atr == "id_municipio" then %>
-						<td><%= 
+						<%= 
 						  mun = Sip::Municipio.find(basica[atr])
 						  dep= Sip::Departamento.find(mun.id_departamento)
 							pais = Sip::Pais.find(dep.id_pais)
 							mun.nombre + " / " + dep.nombre + " / " + pais.nombre
-						%></td>
+						%>
           <% elsif atr == "id_tclase" then %>
-            <td><%= basica[atr].nil? ?
+            <%= basica[atr].nil? ?
               "" : Sip::Tclase.find(basica[atr]).nombre
-              %></td>
+              %>
           <% elsif atr == "id_supracategoria" then %>
-            <td><%= Sip::Supracategoria.find(basica[atr]).nombre %></td>
+            <%= Sip::Supracategoria.find(basica[atr]).nombre %>
           <% elsif atr == "id_tviolencia" then %>
-            <td><%= Sip::Tviolencia.find(basica[atr]).nombre %></td>
+            <%= Sip::Tviolencia.find(basica[atr]).nombre %>
           <% elsif atr == "id_pconsolidado" then %>
-            <td><%= Sip::Pconsolidado.find(basica[atr]).nombre %></td>
+            <%= Sip::Pconsolidado.find(basica[atr]).nombre %>
           <% elsif atr == "derecho_id" then %>
-            <td><%= Sivel2Sjr::Derecho.find(basica[atr]).nombre if basica[atr] %></td>
+            <%= Sivel2Sjr::Derecho.find(basica[atr]).nombre if basica[atr] %>
           <% elsif atr == {:derecho_ids => []} then %>
-            <td><%= basica.derecho.map { |i| i.nombre} %></td>
+            <%= basica.derecho.map { |i| i.nombre} %>
           <% elsif atr == "tipocat" then %>
-            <td>
               <% h={C: "Colectivo", I: "Individual", O: "Otro"} %>
               <%= h[basica[atr].to_sym]%>
-            </td>
+          <% elsif @basica.columns_hash[atr].type == :boolean then %>
+            <%= basica[atr] ? "Si" : "No" %>
           <% else %>
-            <td><%= basica[atr] %></td>
+            <%= basica[atr] %>
           <% end %>
+          </td>
         <% end %>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
