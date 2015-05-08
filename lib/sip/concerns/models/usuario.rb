@@ -22,7 +22,10 @@ module Sip
           end
           validates_uniqueness_of :nusuario, :case_sensitive => false
           validates_format_of :nusuario, :with  => /\A[a-zA-Z_0-9]+\z/
-          validates_length_of :nusuario, maximum: 15
+          # NO se valida longitud de nusuario para permitir
+          # cambiarla en aplicaciones o motores que usen este --pero
+          # debe hacerse alli
+          # validates_length_of :nusuario, maximum: 15 
           validates_presence_of :nusuario
  
           validates_length_of :nombre, maximum: 50
