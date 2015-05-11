@@ -15123,6 +15123,73 @@ SET client_min_messages = warning;
 SET search_path = public, pg_catalog;
 
 --
+-- Data for Name: sip_fuenteprensa; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (1, 'EL TIEMPO', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (10, 'EL UNIVERSAL', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (11, 'EL MERIDIANO', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (12, 'VANGUARDIA LIBERAL', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (13, 'VANGUARDIA LIBERAL BARRANCA', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (14, 'LA OPINIÓN', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (15, 'EL LIBERAL', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (16, 'EL NUEVO DIA', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (17, 'VOZ', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (18, 'LLANO 7 DÍAS', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (19, 'LA NACIÓN', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (2, 'EL ESPECTADOR', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (24, 'CRONICA JUDICIAL', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (3, 'EL COLOMBIANO', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (36, 'EL NUEVO ORIENTE', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (39, 'DIARIO DEL MAGDALENA', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (4, 'EL MUNDO', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (41, 'BOYACÁ 7 DÍAS', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (42, 'DIARIO DEL SUR', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (43, 'SU MERIDIANO DE SUCRE', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (44, 'DIARIO DEL CAUCA', NULL, '2015-05-11', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (45, 'EL BOGOTANO', NULL, '2015-05-11', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (46, 'EL CATOLICISMO', NULL, '2015-05-11', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (47, 'EL LIBERTADOR', NULL, '2015-05-11', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (48, 'EL VESPERTINO', NULL, '2015-05-11', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (49, 'EXTRA', NULL, '2015-05-11', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (5, 'LA PATRIA', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (50, 'LA REPÚBLICA', NULL, '2015-05-11', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (51, 'LA UNION', NULL, '2015-05-11', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (52, 'NUEVO SIGLO', NULL, '2015-05-11', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (53, 'VOZ PROLETARIA', NULL, '2015-05-11', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (54, 'LA LIBERTAD', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (6, 'LA TARDE', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (7, 'EL PAIS', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (8, 'EL HERALDO', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (9, 'EL ESPACIO', NULL, '2015-05-11', NULL, '2015-05-11 00:00:00', NULL);
+
+
+--
+-- Name: sip_fuenteprensa_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('sip_fuenteprensa_id_seq', 1, false);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+SET search_path = public, pg_catalog;
+
+--
 -- Data for Name: sip_tdocumento; Type: TABLE DATA; Schema: public; Owner: -
 --
 

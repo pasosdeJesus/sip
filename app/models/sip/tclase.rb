@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 module Sip
   class Tclase < ActiveRecord::Base
     include Basica

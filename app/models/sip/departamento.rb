@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 require 'sip/concerns/models/departamento'
 
 module Sip

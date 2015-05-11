@@ -290,6 +290,40 @@ CREATE TABLE sip_etiqueta (
 
 
 --
+-- Name: sip_fuenteprensa; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE sip_fuenteprensa (
+    id integer NOT NULL,
+    nombre character varying(500),
+    observaciones character varying(5000),
+    fechacreacion date,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: sip_fuenteprensa_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sip_fuenteprensa_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_fuenteprensa_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE sip_fuenteprensa_id_seq OWNED BY sip_fuenteprensa.id;
+
+
+--
 -- Name: sip_municipio_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -613,6 +647,13 @@ CREATE TABLE usuario (
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY sip_fuenteprensa ALTER COLUMN id SET DEFAULT nextval('sip_fuenteprensa_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY sip_tdocumento ALTER COLUMN id SET DEFAULT nextval('sip_tdocumento_id_seq'::regclass);
 
 
@@ -702,6 +743,14 @@ ALTER TABLE ONLY sip_departamento
 
 ALTER TABLE ONLY sip_departamento
     ADD CONSTRAINT sip_departamento_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sip_fuenteprensa_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY sip_fuenteprensa
+    ADD CONSTRAINT sip_fuenteprensa_pkey PRIMARY KEY (id);
 
 
 --
@@ -863,14 +912,6 @@ ALTER TABLE ONLY sip_municipio
 
 
 --
--- Name: trelacion_inverso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sip_trelacion
-    ADD CONSTRAINT trelacion_inverso_fkey FOREIGN KEY (inverso) REFERENCES sip_trelacion(id);
-
-
---
 -- Name: ubicacion_id_clase_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -914,7 +955,7 @@ ALTER TABLE ONLY sip_ubicacion
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user",public;
+SET search_path TO public, pg_catalog;
 
 INSERT INTO schema_migrations (version) VALUES ('20150413160156');
 
@@ -925,4 +966,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150413160158');
 INSERT INTO schema_migrations (version) VALUES ('20150416074423');
 
 INSERT INTO schema_migrations (version) VALUES ('20150503120915');
+
+INSERT INTO schema_migrations (version) VALUES ('20150510125926');
 

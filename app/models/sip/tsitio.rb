@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 module Sip
   class Tsitio < ActiveRecord::Base
     include Basica

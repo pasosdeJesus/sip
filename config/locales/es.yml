@@ -26,6 +26,9 @@ es:
       "sip/departamento":
         Departamento: Departamento/Estado
         Departamentos: Departamentos/Estados
+      "sip/fuenteprensa":
+        Fuenteprensa: Fuente de Prensa
+        Fuentesprensa: Fuentes de Prensa
       "sip/municipio":
         Municipio: Municipio
         Municipios: Municipios

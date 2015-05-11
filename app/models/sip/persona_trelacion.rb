@@ -1,4 +1,6 @@
 # encoding: UTF-8
+
+
 module Sip
   class PersonaTrelacion < ActiveRecord::Base
     belongs_to :persona, foreign_key: "persona1", validate: true, 

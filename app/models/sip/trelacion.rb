@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 module Sip
   class Trelacion < ActiveRecord::Base
     include Basica
