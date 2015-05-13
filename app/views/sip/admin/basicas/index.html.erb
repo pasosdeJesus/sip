@@ -63,7 +63,8 @@
           <% elsif atr == "tipocat" then %>
               <% h={C: "Colectivo", I: "Individual", O: "Otro"} %>
               <%= h[basica[atr].to_sym]%>
-          <% elsif @basica.columns_hash[atr].type == :boolean then %>
+          <% elsif @basica.columns_hash[atr] && 
+              @basica.columns_hash[atr].type == :boolean then %>
             <%= basica[atr] ? "Si" : "No" %>
           <% else %>
             <%= basica[atr] %>
