@@ -1,7 +1,8 @@
 Sip::Engine.routes.draw do
 
   get '/acercade' => 'hogar#acercade'
-  get '/anexos/descarga_anexo/:id' => 'anexos#descarga_anexo'
+  get '/anexos/descarga_anexo/:id', to: 'anexos#descarga_anexo', 
+    as: 'descarga_anexo'
   get "/hogar" => 'hogar#index'
   get "/personas" => 'personas#index'
   get "/personas/remplazar" => 'personas#remplazar'
