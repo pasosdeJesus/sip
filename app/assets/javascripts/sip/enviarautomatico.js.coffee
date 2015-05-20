@@ -1,5 +1,11 @@
 # Envia formulario cuando cambian campos que tienen data-enviarautomatico
 
+# Añade endsWith a la clase String
+# http://stackoverflow.com/questions/280634/endswith-in-javascript
+if (typeof String.prototype.endsWith != 'function') 
+  String.prototype.endsWith = (suffix) ->
+    return this.indexOf(suffix, this.length - suffix.length) != -1
+
 # Verifica que una fecha sea válida
 # De: http://stackoverflow.com/questions/8098202/javascript-detecting-valid-dates
 @fecha_valida = (text) ->
