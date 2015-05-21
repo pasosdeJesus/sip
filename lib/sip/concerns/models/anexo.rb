@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 module Sip
   module Concerns
     module Models
@@ -12,7 +13,11 @@ module Sip
             :content_type => ['text/plain', /.*/]
           validates_attachment_presence :adjunto
 
-          validates_presence_of :descripcion
+          validates :descripcion, presence: true, allow_blank: false, 
+            length: { maximum: 1500 } 
+          validates :archivo, length: { maximum: 255 }
+          validates :adjunto_file_name, length: { maximum: 255 }
+          validates :adjunto_content_type, length: { maximum: 255 }
         end
 
       end

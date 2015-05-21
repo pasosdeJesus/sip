@@ -20,6 +20,9 @@ module Sip
             
           validates_presence_of :pais
           validates_presence_of :id_tsitio
+
+          validates :lugar, length: { maximum: 500 } 
+          validates :sitio, length: { maximum: 500 } 
         end
       end
     end

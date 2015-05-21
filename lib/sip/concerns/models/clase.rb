@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 module Sip
   module Concerns
     module Models
@@ -18,9 +19,8 @@ module Sip
 					belongs_to :tclase, foreign_key: "id_tclase", validate: true,
 						class_name: 'Sip::Tclase'
 
-					#validates :id, presence: true
 					validates :id_municipio, presence:true
-					validates :id_tclase, presence:true
+					validates :id_tclase, presence:true, length: { maximum: 10 } 
 				end
 			end
 		end

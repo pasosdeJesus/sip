@@ -10,6 +10,7 @@ module Sip
         included do
           validates :nombre, presence: true, allow_blank: false
           validates :fechacreacion, presence: true, allow_blank: false
+          validates :observaciones, length: { maximum: 500 }
         end
       end
     end

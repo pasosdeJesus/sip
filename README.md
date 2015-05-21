@@ -129,8 +129,10 @@ En adJ para instalar coffeescript basta:
 ```
 
 
-
 ### Convenciones
+
+Los nombres de tablas en la base --a diferencia de la convención rails-- se
+dejan en singular.
 
 2 espacios de indentación.
 
@@ -145,6 +147,15 @@ set autoindent
 http://betterspecs.org/
 http://www.caliban.org/ruby/rubyguide.shtml
 https://hakiri.io/blog/ruby-security-tools-and-resources
+
+
+### Tablas básicas
+
+Una tabla básica tiene por lo menos: 
+- id (por defecto un entero autoincremental, pero puede ser otro tipo)
+- nombre (por defecto máximo de 500 caracteres y obligatorio),
+- observaciones (por defecto máximo de 5000 caracteres)
+
 
 ### Generación de datos de tablas básicas
 

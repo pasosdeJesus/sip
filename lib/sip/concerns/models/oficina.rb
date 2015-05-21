@@ -8,8 +8,6 @@ module Sip
 
         include Sip::Basica
         included do
-          validates :nombre, presence: true, allow_blank: false
-          validates :fechacreacion, presence: true, allow_blank: false
         end
       end
     end
