@@ -5,7 +5,7 @@
 * [Diseño](#diseño)
 * [Uso](#uso)
 * [Pruebas](#pruebas)
-* [Desarrollo](#pruebas)
+* [Desarrollo](#desarrollo)
 
 Este es un motor para un sistema de información sobre Ruby on Rails 4.2 y
 PostgreSQL (preferiblemente cifrado como en adJ).
@@ -117,11 +117,18 @@ menú Usuarios para administrar usuarios) y con el manejo de tablas básicas.
 
 ## Desarrollo
 
-Si tiene instalado coffescript, podrá verificar sintaxis de archivos del 
+Si tiene instalado coffeescript, podrá verificar sintaxis de archivos del 
 directorio app/assets/javascript/ con:
 ```sh
   make
 ```
+
+En adJ para instalar coffeescript basta:
+```sh
+  sudo npm install -g coffee-script
+```
+
+
 
 ### Convenciones
 
