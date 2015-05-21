@@ -8,7 +8,9 @@ module Sip
       scope :habilitados, -> (campoord = "nombre") {
         where(fechadeshabilitacion: nil).order(campoord.to_sym)
       }
-      validates :nombre, presence: true, allow_blank: false
+      validates :nombre, presence: true, allow_blank: false, 
+        length: { maximum: 500 } 
+      validates :observaciones, length: { maximum: 5000 }
       validates :fechacreacion, presence: true, allow_blank: false
 
       def presenta(atr)
