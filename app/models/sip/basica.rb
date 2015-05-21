@@ -10,7 +10,21 @@ module Sip
       }
       validates :nombre, presence: true, allow_blank: false
       validates :fechacreacion, presence: true, allow_blank: false
+
+      def presenta(atr)
+        if self.class.columns_hash && self.class.columns_hash[atr] && 
+          self.class.columns_hash[atr].type == :boolean 
+          self[atr] ? "Si" : "No" 
+        elsif atr.to_s.ends_with? "_ids"
+          "map"
+        elsif atr.to_s.ends_with? "_id"
+          "ref"
+        else
+          self[atr.to_s].to_s
+        end
+      end
     end
+
 
   end
 end

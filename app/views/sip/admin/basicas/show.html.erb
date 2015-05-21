@@ -32,7 +32,7 @@
         <%= h[@basica[atr].to_sym]%>
         </dd>
       <% else %>
-        <dd><%= @basica[atr] %></dd>
+        <dd><%= @basica.presenta(atr) %></dd>
       <% end%>
     <% end %>
   <% end %>
