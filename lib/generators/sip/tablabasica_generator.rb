@@ -31,9 +31,10 @@ module Sip
         gsub_file("app/models/ability.rb", /(@@tablasbasicas = \[.*)/, 
                   "\1\n    '#{nom_arch}',")
 				generate "migration", "Create#{nom_arch.camelize} " +
-					"nombre:string{1000} observaciones:string{5000} " +
+					"nombre:string{500} observaciones:string{5000} " +
 					"fechacreacion:date fechadeshabilitacion:date " +
 					"created_at:timestamp updated_at:timestamp"
+        puts "Aregue manualmente null:false en :nombre, :fechacreacion, :created_at y :update_at en migración"
         puts "Aregue manualmente infleccion no regular en config/initializers/inflections.rb al estilo:"
         puts "  inflect.irregular 'financiador', 'financiadores' "
         puts "Aregue nombre en español en config/locales/es.yml al estilo:"

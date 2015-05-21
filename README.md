@@ -148,6 +148,20 @@ http://betterspecs.org/
 http://www.caliban.org/ruby/rubyguide.shtml
 https://hakiri.io/blog/ruby-security-tools-and-resources
 
+### Modelos faciles de personalizar
+
+Casi todos están en el espacio de nombres sip excepto usuario y ability
+(usados por Devise y CanCanCan sin espacio de nombres).
+
+Esto da 2 técnicas para personalizar modelos:
+
+- mixins para todos los modelos en espacio de nombres sip, por lo cual se 
+  definen de verdad en lib/sip/concerns/models y en app/models/sip sólo
+  se incluyen.
+- para ability herencia, pero aprovechando el espacio de nombres (seria
+  bueno probar que también es posible con usuario).
+  
+
 
 ### Tablas básicas
 
