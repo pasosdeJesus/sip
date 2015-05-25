@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 module Sip
   module Concerns
     module Models
@@ -23,8 +24,11 @@ module Sip
 
           # identificación autogenerada en este y demás modelos (excepto los de
           # información geográfica).
-          validates :nombres, presence: true, allow_blank: false
-          validates :apellidos, presence: true, allow_blank: false
+          validates :nombres, presence: true, allow_blank: false, 
+            length: { maximum: 100 }
+          validates :apellidos, presence: true, allow_blank: false,
+            length: { maximum: 100 }
+          validates :numerodocumento, length: { maximum: 100 }
           validates :sexo, presence: true
           validates :anionac, :numericality => {:allow_blank => true}
           validates :mesnac, :numericality => {:allow_blank => true}

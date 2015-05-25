@@ -1,14 +1,10 @@
 # encoding: UTF-8
 
+require 'sip/concerns/models/tclase'
+
 module Sip
   class Tclase < ActiveRecord::Base
-    include Basica
-
-    has_many :clase, foreign_key: "id_tclase", validate: true, 
-      class_name: 'Sip::Clase'
-
-    validates_presence_of :id
-    validates_uniqueness_of :id, case_sensitive: false
-
+    include Sip::Concerns::Models::Tclase
   end
 end
+

@@ -29,7 +29,7 @@ module Sip
           validates_presence_of :nusuario
  
           validates_length_of :nombre, maximum: 50
-          
+          validates_length_of :password, maximum: 64
           validates_length_of :descripcion, maximum: 50
 
           validates_presence_of :idioma

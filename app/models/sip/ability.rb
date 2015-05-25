@@ -88,9 +88,10 @@ module Sip
       @@nobasicas_indice_seq_con_id
     end
 
+    
     # Tablas básicas que deben volcarse primero --por ser requeridas 
     # por otras básicas
-    @@tablasbasicas_prio = [
+    BASICAS_PRIO = [
       ['Sip', 'tclase'], 
       ['Sip', 'pais'], 
       ['Sip', 'departamento'], 
@@ -98,6 +99,8 @@ module Sip
       ['Sip', 'clase'],
       ['Sip', 'oficina'], 
     ];
+
+    @@tablasbasicas_prio = BASICAS_PRIO
 
     def self.tablasbasicas_prio
       @@tablasbasicas_prio

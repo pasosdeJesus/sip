@@ -5,7 +5,7 @@
 * [Diseño](#diseño)
 * [Uso](#uso)
 * [Pruebas](#pruebas)
-* [Desarrollo](#pruebas)
+* [Desarrollo](#desarrollo)
 
 Este es un motor para un sistema de información sobre Ruby on Rails 4.2 y
 PostgreSQL (preferiblemente cifrado como en adJ).
@@ -117,13 +117,22 @@ menú Usuarios para administrar usuarios) y con el manejo de tablas básicas.
 
 ## Desarrollo
 
-Si tiene instalado coffescript, podrá verificar sintaxis de archivos del 
+Si tiene instalado coffeescript, podrá verificar sintaxis de archivos del 
 directorio app/assets/javascript/ con:
 ```sh
   make
 ```
 
+En adJ para instalar coffeescript basta:
+```sh
+  sudo npm install -g coffee-script
+```
+
+
 ### Convenciones
+
+Los nombres de tablas en la base --a diferencia de la convención rails-- se
+dejan en singular.
 
 2 espacios de indentación.
 
@@ -138,6 +147,29 @@ set autoindent
 http://betterspecs.org/
 http://www.caliban.org/ruby/rubyguide.shtml
 https://hakiri.io/blog/ruby-security-tools-and-resources
+
+### Modelos faciles de personalizar
+
+Casi todos están en el espacio de nombres sip excepto usuario y ability
+(usados por Devise y CanCanCan sin espacio de nombres).
+
+Esto da 2 técnicas para personalizar modelos:
+
+- mixins para todos los modelos en espacio de nombres sip, por lo cual se 
+  definen de verdad en lib/sip/concerns/models y en app/models/sip sólo
+  se incluyen.
+- para ability herencia, pero aprovechando el espacio de nombres (seria
+  bueno probar que también es posible con usuario).
+  
+
+
+### Tablas básicas
+
+Una tabla básica tiene por lo menos: 
+- id (por defecto un entero autoincremental, pero puede ser otro tipo)
+- nombre (por defecto máximo de 500 caracteres y obligatorio),
+- observaciones (por defecto máximo de 5000 caracteres)
+
 
 ### Generación de datos de tablas básicas
 

@@ -102,7 +102,7 @@ module Sip
 
       # Campos de la tabla
       def atributos_index
-        ["id", "nombre", "fechacreacion", "fechadeshabilitacion"]
+        ["id", "nombre", "observaciones", "fechacreacion", "fechadeshabilitacion"]
       end
 
       # Campos que se esperan del formulario

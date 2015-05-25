@@ -49,7 +49,7 @@ namespace :sip do
 
 	# De implementacion de structure:dump de rake y de
 	# https://github.com/opdemand/puppet-modules/blob/master/rails/files/databases.rakeset
-  desc "Vuelca tablas básicas en orden"
+  desc "Vuelca tablas básicas de aplicación en orden"
   task vuelcabasicas: :environment do
     puts "sip - vuelcabasicas"
 		abcs = ActiveRecord::Base.configurations
@@ -69,34 +69,36 @@ namespace :sip do
     File.open(filename, "w") { |f| 
       f << "-- Volcado de tablas basicas\n\n"
       tb.each do |t|
-        command = "pg_dump -i -a -x -O --column-inserts -t #{Ability::tb_modelo t}  #{search_path} #{Shellwords.escape(abcs[Rails.env]['database'])} | sed -e \"s/SET lock_timeout = 0;//g\" > #{archt}"
-        puts command
-        raise "Error al volcar tabla #{Ability::tb_modelo t}" unless Kernel.system(command)
-        inserto = false
-        ordeno = false
-        porord = []
-        # Agrega volcado pero ordenando los INSERTS
-        # (pues pg_dump reordena arbitrariamente haciendo que entre
-        # un volcado y otro se vean diferencias con diff cuando no hay)
-        File.open(archt, "r") { |ent| 
-          ent.each_line { |line| 
-            if line[0,6] == "INSERT"
-              inserto=true
-              porord << line
-            else
-              if !inserto || (inserto && ordeno) 
-                f << line
+        if t[0] == ''
+          command = "pg_dump -i -a -x -O --column-inserts -t #{Ability::tb_modelo t}  #{search_path} #{Shellwords.escape(abcs[Rails.env]['database'])} | sed -e \"s/SET lock_timeout = 0;//g\" > #{archt}"
+          puts command
+          raise "Error al volcar tabla #{Ability::tb_modelo t}" unless Kernel.system(command)
+          inserto = false
+          ordeno = false
+          porord = []
+          # Agrega volcado pero ordenando los INSERTS
+          # (pues pg_dump reordena arbitrariamente haciendo que entre
+          # un volcado y otro se vean diferencias con diff cuando no hay)
+          File.open(archt, "r") { |ent| 
+            ent.each_line { |line| 
+              if line[0,6] == "INSERT"
+                inserto=true
+                porord << line
               else
-                porord.sort!
-                porord.each { |l|
-                  f << l
-                }
-                ordeno = true
-                f << line
+                if !inserto || (inserto && ordeno) 
+                  f << line
+                else
+                  porord.sort!
+                  porord.each { |l|
+                    f << l
+                  }
+                  ordeno = true
+                  f << line
+                end
               end
-            end
+            }
           }
-        }
+        end
       end
     }
   end

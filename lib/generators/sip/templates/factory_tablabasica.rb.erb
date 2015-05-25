@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 FactoryGirl.define do
-  factory :sip_<%= nom_arch %>, class: 'Sip::<%= nom_clase %>' do
+  factory :<%= nom_arch %>, class: '<%= nom_clase %>' do
 		id 1000 # Buscamos que no interfiera con existentes
     nombre "<%= nom_clase %>"
     fechacreacion "<%= Date.today %>"
