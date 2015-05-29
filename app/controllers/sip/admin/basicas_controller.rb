@@ -10,7 +10,7 @@ module Sip
       def index
         c = clase.constantize
         if params[:term] && params[:term] != ''
-          term = Sip::Municipio.connection.quote_string(params[:term])
+          term = params[:term]
           consNom = term.downcase.strip #sin_tildes
           consNom.gsub!(/ +/, ":* & ")
           if consNom.length > 0
@@ -18,9 +18,9 @@ module Sip
           end
           where = " to_tsvector('spanish', unaccent(" +
             c.busca_etiqueta_campos.join(" || ' ' || ") +
-            ")) @@ to_tsquery('spanish', '#{consNom}')";
+            ")) @@ to_tsquery('spanish', ?)";
           # autocomplete de jquery requiere label, val
-          c = c.where(where)
+          c = c.where(where, consNom)
         end
         @basica = c.order(camponombre).paginate(
           :page => params[:pagina], per_page: 20
