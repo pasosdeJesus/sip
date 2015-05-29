@@ -25,6 +25,24 @@ module Sip
           self[atr.to_s].to_s
         end
       end
+
+      # Para búsquedas tipo autocompletacion en base de datos campos a observar
+      def self.busca_etiqueta_campos
+        ['nombre']
+      end
+
+      # Para búsquedas tipo autocompletacion etiqueta que se retorna
+      def busca_etiqueta
+        v = self.class.busca_etiqueta_campos.map { |c|
+          self[c]
+        }
+        return v.join(" ")
+      end
+
+      # Para búsquedas tipo autocompletacion valor que se retorna
+      def busca_valor
+        self['id']
+      end
     end
 
 
