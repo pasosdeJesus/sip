@@ -13,6 +13,7 @@ module Sip
       validates :observaciones, length: { maximum: 5000 }
       validates :fechacreacion, presence: true, allow_blank: false
 
+      # Para presentar en index y show
       def presenta(atr)
         if self.class.columns_hash && self.class.columns_hash[atr] && 
           self.class.columns_hash[atr].type == :boolean 
