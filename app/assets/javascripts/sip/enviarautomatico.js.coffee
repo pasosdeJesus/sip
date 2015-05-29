@@ -41,13 +41,6 @@ if (typeof String.prototype.endsWith != 'function')
 
 
 $(document).on 'ready page:load',  -> 
-  root = exports ? this
-  $('[data-behaviour~=datepicker]').datepicker({
-    format: 'yyyy-mm-dd'
-    autoclose: true
-    todayHighlight: true
-    language: 'es'	
-  });
   $(document).on('change', 'select[data-enviarautomatico]', 
     (e) -> 
       enviarautomatico_formulario(root, $(e.target.form))
