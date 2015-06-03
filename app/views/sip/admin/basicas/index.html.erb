@@ -32,7 +32,12 @@
           <% if atr == "id" then %>
             <%= link_to basica[atr], admin_basica_path(basica) %>
           <% else %>
-            <%= basica.presenta(atr) %>
+            <% s = basica.presenta(atr) %>
+            <% if s.include?("\n") %>
+              <pre><%= s %></pre>
+            <% else %>
+              <%= s %>
+            <% end %>
           <% end %>
           </td>
         <% end %>
