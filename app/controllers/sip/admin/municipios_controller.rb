@@ -15,7 +15,9 @@ module Sip
   
       def atributos_index
         ["id",  "nombre", "id_departamento", "id_munlocal", 
-				 "latitud", "longitud", "fechacreacion", "fechadeshabilitacion"]
+          "latitud", "longitud", "observaciones",
+          "fechacreacion", "fechadeshabilitacion"
+        ]
       end
       
       def genclase

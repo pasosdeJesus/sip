@@ -14,7 +14,8 @@ module Sip
       end
   
       def atributos_index
-        ["id", "nombre", "formatoregex", "fechacreacion", "fechadeshabilitacion"]
+        ["id", "nombre", "formatoregex", "observaciones",
+         "fechacreacion", "fechadeshabilitacion"]
       end
   
       def tdocumento_params
