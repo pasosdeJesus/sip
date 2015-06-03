@@ -170,19 +170,30 @@ Una tabla básica tiene por lo menos:
 - nombre (por defecto máximo de 500 caracteres y obligatorio),
 - observaciones (por defecto máximo de 5000 caracteres)
 
-Las acciones index y show presentan cada campo usando
-el método presenta del modelo. Este método por defecto presenta:
+Las acciones ```index``` y ```show``` presentan los nombres de campos usando
+el método de clase ```human_attribute_name(campo)```
+Los valores de cada campo los genera con el método presenta del modelo. 
+Este método por defecto presenta:
 * Booleanos como si y no
-* Campos que sean llaves foraneas con el método presenta_nombre de 
+* Campos que sean llaves foraneas con el método ```presenta_nombre``` de 
   la tabla relacionada
-* Otros campos como texto
+* Asociaciones ```has_many``` en tablas combinadas concatendando los nombres
+  (mediante ```presenta_nombre```) y separando con ';'
+* Otros campos como cadena
 
-Puede sobrecargarse los métodos presenta_nombre y presenta para personalizar
-más.
+En los modelos puede sobrecargar los métodos de objeto ```presenta_nombre```
+y presenta, así como definir traducciones o sobrecargar el método de clase
+```human_attribute_name``` para personalizar más.
 
-En el formulario de edición/creación se presentarán campos de texto por 
-defecto, pero puede personalizarse otro digamos con nombre ```tfuente``` 
-creando en la aplicación la vista parcial 
+En el formulario de edición/creación como controles de edición se usaran:
+* Campos de selección para llaves foraneas
+* Campos de selección múltiple para asociaciones has_many
+* Campos de feha para campos con tipo ```:date```
+* Campos enteros para campos con tipo ```:integer```
+* Campos de texto para los demás casos.
+
+Sin embargo puede personalizarse el control para edición para un campo
+digamos con nombre ```tfuente``` creando en la aplicación la vista parcial 
 ```app/views/sip/admin/basicas/_tfuente.html.erb```
 
 

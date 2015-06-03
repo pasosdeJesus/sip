@@ -7,6 +7,9 @@ module Sip
         extend ActiveSupport::Concern
 
         included do
+          scope :habilitados, -> (campoord = "nusuario") {
+            where(fechadeshabilitacion: nil).order(campoord.to_sym)
+          }
           @current_usuario = -1
           attr_accessor :current_usuario
 
@@ -47,6 +50,14 @@ module Sip
 
           validates_presence_of   :encrypted_password, :on=>:create
           validates_confirmation_of   :encrypted_password, :on=>:create
+
+          def presenta_nombre
+            r = self.nusuario
+            if self.nombre
+              r += ' - ' + self.nombre
+            end
+            r 
+          end
         end
       end
     end

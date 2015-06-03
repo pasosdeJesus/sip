@@ -7,18 +7,10 @@
 
 <dl class="dl-horizontal">
   <% atributos_index.each do |atr|  %>
-    <% if !@basica[atr].nil? && @basica[atr].to_s.length > 0 %>
-      <dt><strong><%= model_class.human_attribute_name(atr.to_sym) %>:</strong></dt>
-      <% elsif atr == "derecho_id" then %>
-        <dd><%= Sivel2Sjr::Derecho.find(@basica[atr]).nombre%></dd>
-      <% elsif atr == "tipocat" then %>
-        <dd>
-        <% h={C: "Colectivo", I: "Individual", O: "Otro"} %>
-        <%= h[@basica[atr].to_sym]%>
-        </dd>
-      <% else %>
-        <dd><%= @basica.presenta(atr) %></dd>
-      <% end%>
+    <% p = @basica.presenta(atr) %>
+    <% if p && p.length > 0 %>
+      <dt><strong><%= model_class.human_attribute_name(atr) %>:</strong></dt>
+      <dd><%= p %></dd>
     <% end %>
   <% end %>
 </dl>

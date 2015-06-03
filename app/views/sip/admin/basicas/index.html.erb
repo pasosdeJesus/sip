@@ -31,13 +31,6 @@
           <td>
           <% if atr == "id" then %>
             <%= link_to basica[atr], admin_basica_path(basica) %>
-          <% elsif atr == "derecho_id" then %>
-            <%= Sivel2Sjr::Derecho.find(basica[atr]).nombre if basica[atr] %>
-          <% elsif atr == {:derecho_ids => []} then %>
-            <%= basica.derecho.map { |i| i.presenta_nombre} %>
-          <% elsif atr == "tipocat" then %>
-              <% h={C: "Colectivo", I: "Individual", O: "Otro"} %>
-              <%= h[basica[atr].to_sym]%>
           <% else %>
             <%= basica.presenta(atr) %>
           <% end %>
