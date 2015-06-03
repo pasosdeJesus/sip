@@ -1,5 +1,8 @@
 # Envia formulario cuando cambian campos que tienen data-enviarautomatico
 
+# http://stackoverflow.com/questions/4214731/coffeescript-global-variables
+@root = exports ? this
+
 # Añade endsWith a la clase String
 # http://stackoverflow.com/questions/280634/endswith-in-javascript
 if (typeof String.prototype.endsWith != 'function') 
