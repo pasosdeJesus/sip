@@ -52,11 +52,12 @@ module Sip
         #c2 = clase.underscore().gsub(/\//, '_')
         c2 = clase.demodulize.underscore
         @basica = clase.constantize.new(send(c2 + '_params'))
+        creada = genclase == 'M' ? 'creado' : 'creada';
         respond_to do |format|
           if @basica.save
             format.html { 
               redirect_to admin_basica_path(@basica), 
-              notice: clase + ' creada.' 
+              notice: clase + " #{creada}."
             }
             format.json { 
               render action: 'show', status: :created, location: @basica
@@ -72,12 +73,13 @@ module Sip
 
       # Actualiza un registro con información recibida de formulario
       def update
+        actualizada = genclase == 'M' ? 'actualizado' : 'actualizada';
         respond_to do |format|
           c2 = clase.demodulize.underscore
           if @basica.update(send(c2 + "_params"))
             format.html { 
               redirect_to admin_basica_path(@basica), 
-              notice: clase + ' actualizada.' 
+              notice: clase + " #{actualizada}." 
             }
             format.json { head :no_content }
           else
