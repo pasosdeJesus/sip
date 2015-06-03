@@ -1,37 +1,38 @@
 <%= simple_form_for @basica, 
   url: @basica.id.nil? ? (admin_basicas_path(@basica)) : 
-  admin_basica_path(@basica), defaults: { input_html: { class: 'span10' } } do |f| %>
-	<% atributos_form.each do |atr|  %>
-      <% if atr == {:derecho_ids => [] } %>
-        <%= f.association :derecho,
-          collection: Sivel2Sjr::Derecho.habilitados,
-          label_method: :nombre,
-          value_method: :id 
-        %>
-      <% elsif @basica.class.columns_hash[atr].type == :date then %>
+  admin_basica_path(@basica), 
+  defaults: { input_html: { class: 'span10' } } do |f| %>
+  <% atributos_form.each do |atr|  %>
+    <% if atr == {:derecho_ids => [] } %>
+      <%= f.association :derecho,
+        collection: Sivel2Sjr::Derecho.habilitados,
+        label_method: :nombre,
+        value_method: :id 
+      %>
+    <% elsif @basica.class.columns_hash[atr].type == :date then %>
         <%= f.input atr.to_sym,
-          :input_html => { "data-behaviour" => "datepicker"}, 
-          :as => :string 
-        %>
-      <% elsif atr == "id_pais" %>
+        :input_html => { "data-behaviour" => "datepicker"}, 
+        :as => :string 
+      %>
+    <% elsif atr == "id_pais" %>
 				<%= f.association :pais,
-          collection: Sip::Pais.habilitados,
-          label: "País",
-          label_method: :nombre,
-          value_method: :id 
-        %>
-      <% elsif atr == "id_departamento" %>
-        <%= f.association :departamento,
-          collection: (Sip::Departamento.habilitados), #.where(id_pais: f.object.departamento.id_pais)),
-          label: "Departamento",
-          label_method: lambda {|t| t.nombre + " (" + 
-            Sip::Pais.find(t.id_pais).nombre + ")"},
-          value_method: :id 
-        %>
-      <% elsif atr == "id_municipio" %>
-        <%= f.association :municipio,
+        collection: Sip::Pais.habilitados,
+        label: "País",
+        label_method: :nombre,
+        value_method: :id 
+      %>
+    <% elsif atr == "id_departamento" %>
+      <%= f.association :departamento,
+        collection: (Sip::Departamento.habilitados), #.where(id_pais: f.object.departamento.id_pais)),
+        label: "Departamento",
+        label_method: lambda {|t| t.nombre + " (" + 
+          Sip::Pais.find(t.id_pais).nombre + ")"},
+        value_method: :id 
+      %>
+    <% elsif atr == "id_municipio" %>
+      <%= f.association :municipio,
 					collection: (Sip::Municipio.habilitados), #.where( id_departamento: f.object.id_departamento)),
-          label: "Municipio",
+        label: "Municipio",
 					label_method: lambda {|t| 
 						dep = Sip::Departamento.find(t.id_departamento)
 						pais = Sip::Pais.find(dep.id_pais)
@@ -39,61 +40,61 @@
 						dep.nombre + " / " +
 						pais.nombre + ")"
 					},
-          value_method: :id 
-        %>
+        value_method: :id 
+      %>
 			<% elsif atr == "id_tclase" %>
 				<%= f.association :tclase,
 					collection: (Sip::Tclase.habilitados),
-          label: "Tipo de Clase",
-          label_method: :nombre,
-          value_method: :id 
-        %>
-      <% elsif atr == "id_supracategoria" then %>
-        <%= f.association :supracategoria,
-          collection: Sip::Supracategoria.habilitados,
-          label: "Supracategoria",
-          label_method: lambda {|t| t.nombre + " (" + 
-                                Sip::Tviolencia.find(t.id_tviolencia).nombre + 
-                                ")"},
-          value_method: :id 
-        %>
-      <% elsif atr == "id_tviolencia" then %>
-        <%= f.association :tviolencia,
-          collection: Sip::Tviolencia.habilitados,
-          label: "Tipo de Violencia",
-          label_method: :nombre,
-          value_method: :id 
-        %>
-      <% elsif atr == "id_pconsolidado" then %>
-        <%= f.association :pconsolidado,
-          collection: Sip::Pconsolidad.habilitados,
-          label: "Consolidado",
-          label_method: :nombre,
-          value_method: :id 
-        %>
-      <% elsif atr == "derecho_id" then %>
-        <%= f.association :derecho,
-          collection: Sivel2Sjr::Derecho.habilitados,
-          label_method: :nombre,
-          value_method: :id 
-        %>
-      <% elsif atr == "tipocat" then %>
-        <%= f.input :tipocat, 
-          collection: [["COLECTIVO", :C], ["INDIVIDUAL", :I], ["OTRO", :O]], 
-          include_blank: false 
-        %>
-      <% elsif lookup_context.find_all('basica_#{atr}').any? %>
-        <%= render "basica_#{atr}", f: f %>
-      <% else %>
-        <%= f.input atr.to_sym %>
-      <% end %>
+        label: "Tipo de Clase",
+        label_method: :nombre,
+        value_method: :id 
+      %>
+    <% elsif atr == "id_supracategoria" then %>
+      <%= f.association :supracategoria,
+        collection: Sip::Supracategoria.habilitados,
+        label: "Supracategoria",
+        label_method: lambda {|t| t.nombre + " (" + 
+                              Sip::Tviolencia.find(t.id_tviolencia).nombre + 
+                              ")"},
+        value_method: :id 
+      %>
+    <% elsif atr == "id_tviolencia" then %>
+      <%= f.association :tviolencia,
+        collection: Sip::Tviolencia.habilitados,
+        label: "Tipo de Violencia",
+        label_method: :nombre,
+        value_method: :id 
+      %>
+    <% elsif atr == "id_pconsolidado" then %>
+      <%= f.association :pconsolidado,
+        collection: Sip::Pconsolidad.habilitados,
+        label: "Consolidado",
+        label_method: :nombre,
+        value_method: :id 
+      %>
+    <% elsif atr == "derecho_id" then %>
+      <%= f.association :derecho,
+        collection: Sivel2Sjr::Derecho.habilitados,
+        label_method: :nombre,
+        value_method: :id 
+      %>
+    <% elsif atr == "tipocat" then %>
+      <%= f.input :tipocat, 
+        collection: [["COLECTIVO", :C], ["INDIVIDUAL", :I], ["OTRO", :O]], 
+        include_blank: false 
+      %>
+    <% elsif lookup_context.find_all("sip/admin/basicas/#{atr}", [], true).any? %>
+      <%= render partial: "sip/admin/basicas/#{atr}", locals: {f: f} %>
+    <% else %>
+      <%= f.input atr.to_sym %>
     <% end %>
-    <div class="form-actions">
-			<%= f.button :submit, (f.object.new_record? ? 'Crear' : 'Actualizar'), 
-        :class => 'btn-primary' 
-      %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-        admin_basicas_path(@basica), :class => 'btn' 
-      %>
-    </div>
   <% end %>
+  <div class="form-actions">
+			<%= f.button :submit, (f.object.new_record? ? 'Crear' : 'Actualizar'), 
+      :class => 'btn-primary' 
+    %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+      admin_basicas_path(@basica), :class => 'btn' 
+    %>
+  </div>
+<% end %>

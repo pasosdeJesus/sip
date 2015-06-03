@@ -170,8 +170,13 @@ Una tabla básica tiene por lo menos:
 - nombre (por defecto máximo de 500 caracteres y obligatorio),
 - observaciones (por defecto máximo de 5000 caracteres)
 
+En el formulario de edición/creación se presentarán campos
+de texto por defecto, pero puede personalizarse otro digamos con nombre
+tfuente creando en la aplicación la vista parcial:
+app/views/sip/admin/basicas/_tfuente.html.erb
 
-### Generación de datos de tablas básicas
+
+#### Generación de datos de tablas básicas
 
 Una vez estén bien los datos de tablas básicas en base de datos de la
 la aplicación de  prueba spec/dummy:
