@@ -21,7 +21,8 @@ module Sip
 
 					validates :id_municipio, presence:true
 					validates :id_tclase, presence:true, length: { maximum: 10 } 
-				end
+
+ 				end
 			end
 		end
   end

@@ -9,21 +9,6 @@
   <% atributos_index.each do |atr|  %>
     <% if !@basica[atr].nil? && @basica[atr].to_s.length > 0 %>
       <dt><strong><%= model_class.human_attribute_name(atr.to_sym) %>:</strong></dt>
-      <% if atr == 'id_pais' then %>
-        <dd><%= Sip::Pais.find(@basica[atr]).nombre %></dd>
-      <% elsif atr == 'id_departamento' then %>
-        <dd><%= Sip::Departamento.find(@basica[atr]).nombre 
-        %></dd>
-      <% elsif atr == 'id_municipio' then %>
-        <dd><%= Sip::Municipio.find(@basica[atr]).nombre %></dd>
-      <% elsif atr == "id_tclase" then %>
-        <dd><%= Sip::Tclase.find(@basica[atr]).nombre%></dd>
-      <% elsif atr == "id_supracategoria" then %>
-        <dd><%= Sip::Supracategoria.find(@basica[atr]).nombre%></dd>
-      <% elsif atr == "id_tviolencia" then %>
-        <dd><%= Sip::Tviolencia.find(@basica[atr]).nombre%></dd>
-      <% elsif atr == "id_pconsolidado" then %>
-        <dd><%= Sip::Pconsolidado.find(@basica[atr]).nombre%></dd>
       <% elsif atr == "derecho_id" then %>
         <dd><%= Sivel2Sjr::Derecho.find(@basica[atr]).nombre%></dd>
       <% elsif atr == "tipocat" then %>

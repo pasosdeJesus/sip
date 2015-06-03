@@ -170,10 +170,15 @@ Una tabla básica tiene por lo menos:
 - nombre (por defecto máximo de 500 caracteres y obligatorio),
 - observaciones (por defecto máximo de 5000 caracteres)
 
-Las acciones index y show por defecto presentan:
+Las acciones index y show presentan cada campo usando
+el método presenta del modelo. Este método por defecto presenta:
 * Booleanos como si y no
-* Lo demás como textos
-Esto puede personlizarse en la función presenta del modelo.
+* Campos que sean llaves foraneas con el método presenta_nombre de 
+  la tabla relacionada
+* Otros campos como texto
+
+Puede sobrecargarse los métodos presenta_nombre y presenta para personalizar
+más.
 
 En el formulario de edición/creación se presentarán campos de texto por 
 defecto, pero puede personalizarse otro digamos con nombre ```tfuente``` 

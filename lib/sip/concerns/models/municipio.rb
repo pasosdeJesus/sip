@@ -9,18 +9,24 @@ module Sip
         include Sip::Basica
 				included do
 
-					has_many :clase, foreign_key: "id_municipio", validate: true, 
-						class_name: 'Sip::Clase'
-					has_many :persona, foreign_key: "id_municipio", validate: true, 
-						class_name: 'Sip::Persona'
-					has_many :ubicacion, foreign_key: "id_municipio", validate: true, 
-						class_name: 'Sip::Ubicacion'
+          has_many :clase, foreign_key: "id_municipio", validate: true, 
+            class_name: 'Sip::Clase'
+          has_many :persona, foreign_key: "id_municipio", validate: true, 
+            class_name: 'Sip::Persona'
+          has_many :ubicacion, foreign_key: "id_municipio", validate: true, 
+            class_name: 'Sip::Ubicacion'
 
-					belongs_to :departamento, foreign_key: "id_departamento", 
-						validate: true, class_name: 'Sip::Departamento'
+          belongs_to :departamento, foreign_key: "id_departamento", 
+            validate: true, class_name: 'Sip::Departamento'
 
-					validates :id_departamento, presence: true
-				end
+          validates :id_departamento, presence: true
+
+          def presenta_nombre
+            dep= Sip::Departamento.find(self.id_departamento)
+            pais = Sip::Pais.find(dep.id_pais)
+            self.nombre + " / " + dep.nombre + " / " + pais.nombre
+          end
+        end
 			end
 		end
   end

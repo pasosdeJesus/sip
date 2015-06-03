@@ -31,35 +31,10 @@
           <td>
           <% if atr == "id" then %>
             <%= link_to basica[atr], admin_basica_path(basica) %>
-          <% elsif atr == "id_pais" then %>
-            <%= Sip::Pais.find(basica[atr]).nombre %>
-          <% elsif atr == "id_departamento" then %>
-						<%= 
-							dep= Sip::Departamento.find(basica[atr])
-							pais = Sip::Pais.find(dep.id_pais)
-							dep.nombre + " / " + pais.nombre
-					%>
-          <% elsif atr == "id_municipio" then %>
-						<%= 
-						  mun = Sip::Municipio.find(basica[atr])
-						  dep= Sip::Departamento.find(mun.id_departamento)
-							pais = Sip::Pais.find(dep.id_pais)
-							mun.nombre + " / " + dep.nombre + " / " + pais.nombre
-						%>
-          <% elsif atr == "id_tclase" then %>
-            <%= basica[atr].nil? ?
-              "" : Sip::Tclase.find(basica[atr]).nombre
-              %>
-          <% elsif atr == "id_supracategoria" then %>
-            <%= Sip::Supracategoria.find(basica[atr]).nombre %>
-          <% elsif atr == "id_tviolencia" then %>
-            <%= Sip::Tviolencia.find(basica[atr]).nombre %>
-          <% elsif atr == "id_pconsolidado" then %>
-            <%= Sip::Pconsolidado.find(basica[atr]).nombre %>
           <% elsif atr == "derecho_id" then %>
             <%= Sivel2Sjr::Derecho.find(basica[atr]).nombre if basica[atr] %>
           <% elsif atr == {:derecho_ids => []} then %>
-            <%= basica.derecho.map { |i| i.nombre} %>
+            <%= basica.derecho.map { |i| i.presenta_nombre} %>
           <% elsif atr == "tipocat" then %>
               <% h={C: "Colectivo", I: "Individual", O: "Otro"} %>
               <%= h[basica[atr].to_sym]%>

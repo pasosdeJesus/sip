@@ -13,15 +13,27 @@ module Sip
       validates :observaciones, length: { maximum: 5000 }
       validates :fechacreacion, presence: true, allow_blank: false
 
-      # Para presentar en index y show
+      # Presentar nombre del registro en index y show
+      def presenta_nombre
+        self['nombre']
+      end
+
+      # Presentar campo atr del registro en index y show
       def presenta(atr)
+        a = self.class.reflect_on_all_associations
+        b = a.select { |a| a.macro == :belongs_to } 
+        fk = b.map(&:foreign_key)
         if self.class.columns_hash && self.class.columns_hash[atr] && 
           self.class.columns_hash[atr].type == :boolean 
           self[atr] ? "Si" : "No" 
         elsif atr.to_s.ends_with? "_ids"
           "map"
-        elsif atr.to_s.ends_with? "_id"
-          "ref"
+        elsif fk.include? atr
+          r = a.select { |a| a.foreign_key == atr }[0] 
+          if !r
+             byebug
+          end
+          r.class_name.constantize.find(self[atr]).presenta_nombre
         else
           self[atr.to_s].to_s
         end
