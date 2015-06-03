@@ -14,8 +14,8 @@ module Sip
       end
 
       def atributos_index
-        ["id", "nombre", "observaciones", "inverso", 
-         "observaciones", "fechacreacion", "fechadeshabilitacion"]
+        ["id", "nombre", "inverso", "observaciones", 
+         "fechacreacion", "fechadeshabilitacion"]
       end
  
       def atributos_form
