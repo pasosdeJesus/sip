@@ -10,6 +10,9 @@ gem "rails-i18n"
 # Postgresql
 gem "pg"
 
+# Colores en terminal
+gem "colorize"
+
 # Unifica CSSs
 gem "sass"
 

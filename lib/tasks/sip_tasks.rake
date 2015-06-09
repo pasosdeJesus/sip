@@ -2,6 +2,7 @@
 
 require 'active_support/core_ext/object/inclusion'
 require 'active_record'
+require 'colorize'
 
 namespace :sip do
   desc "Actualiza indices"
@@ -66,12 +67,18 @@ namespace :sip do
     end
     archt = Dir::Tmpname.make_tmpname(["/tmp/vb", ".sql"], nil)
 		filename = "db/datos-basicas.sql"
+    modobj = '';
+    if Rails.application.class.parent_name == 'Dummy'
+      # en aplicaciones de prueba de motor el modulo objetivo es el del motor
+      modobj = Ability.superclass.name.deconstantize;
+    end
     File.open(filename, "w") { |f| 
       f << "-- Volcado de tablas basicas\n\n"
       tb.each do |t|
-        if t[0] == ''
+        printf "%s:%s - ", t[0], t[1]
+        if t[0] == modobj
           command = "pg_dump -i -a -x -O --column-inserts -t #{Ability::tb_modelo t}  #{search_path} #{Shellwords.escape(abcs[Rails.env]['database'])} | sed -e \"s/SET lock_timeout = 0;//g\" > #{archt}"
-          puts command
+          puts command.green
           raise "Error al volcar tabla #{Ability::tb_modelo t}" unless Kernel.system(command)
           inserto = false
           ordeno = false
@@ -98,7 +105,10 @@ namespace :sip do
               end
             }
           }
+        else
+          puts "Saltando".red
         end
+        
       end
     }
   end
