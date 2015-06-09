@@ -59,11 +59,13 @@ module Sip
       @@basicas_seq_con_id
     end
 
-    # Tablas básicas cuyo id no es autoincremental
-    @@basicas_id_noauto = [ 
+    TABLAS_ID_NOAUTO = [ 
       ['Sip', 'tclase'],
       ['Sip', 'trelacion']
     ]
+
+    # Tablas básicas cuyo id no es autoincremental
+    @@basicas_id_noauto =  TABLAS_ID_NOAUTO
 
     def self.basicas_id_noauto
       @@basicas_id_noauto
@@ -77,12 +79,14 @@ module Sip
       @@nobasicas_indice
     end
 
-    # Tablas no básicas pero que tienen índice
-    @@nobasicas_indice_seq_con_id = [
+    NOBASICAS_INDSEQID = [
       ['Sip', 'persona'], 
       ['Sip', 'ubicacion'], 
       ['', 'usuario']
     ]
+
+    # Tablas no básicas pero que tienen índice
+    @@nobasicas_indice_seq_con_id = NOBASICAS_INDSEQID
 
     def self.nobasicas_indice_seq_con_id
       @@nobasicas_indice_seq_con_id
