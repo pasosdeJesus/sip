@@ -14,25 +14,28 @@ Este motor incluye
 * Autenticación con devise y bcrypt,  
 * Roles con cancancan, 
 * Pruebas con rspec y factory girl,
-* Propuesta para manejar tablas básicas (parámetros de la aplicación) y ejemplos
-  de estas para: paises, departamentos/estados, municipios, centros poblados, tipos de 
-  centros poblados, tipos de sitios, ubicaciones, tipos de relaciones entre 
-  personas, tipos de documentos de identificación, oficinas.  Faciles de 
-  modificar en aplicaciones que usen el motor vía ActiveSupport::Concern.
+* Propuesta para manejar tablas básicas (parámetros de la aplicación) 
+  y ejemplos de estas para: paises, departamentos/estados, municipios, 
+  centros poblados, tipos de centros poblados, tipos de sitios, ubicaciones, 
+  tipos de relaciones entre personas, tipos de documentos de identificación, 
+  oficinas.  Faciles de modificar en aplicaciones que usen el motor vía 
+  ```ActiveSupport::Concern```
 * Datos geográficos completos para Colombia y Venezuela.
 * Propuesta de estructura para otros modelos típicos: persona, anexo; también 
-  modificables en una aplicación que use el motor via ActiveSupport::Concern.
+  modificables en una aplicación que use el motor via 
+  ```ActiveSupport::Concern```
 * Manejo de anexos con paperclip 
-* Facilidades de configuración en ```lib/sip/engine.rb```, como inclusión automática 
-  de sus migraciones en las aplicaciones que usen el motor y variables típicas 
-  de configuración.
+* Facilidades de configuración en ```lib/sip/engine.rb```, como inclusión 
+  automática de sus migraciones en las aplicaciones que usen el motor y 
+  variables típicas de configuración.
 * Localización con ```twitter_cldr```
-* Tareas ```rake``` para actualizar indices, sacar copia de respaldo de base de datos
+* Tareas ```rake``` para actualizar indices, sacar copia de respaldo de base 
+  de datos
 * Generador de nuevas tablas básicas
 * Aplicación de prueba completa en directorio ```spec/dummy``` con diseño 
-  web adaptable (responsive) usando ```bootstrap```, ```simple_form``` y ```jquery```,
-  que permite autenticación, manejo de clave y de usuarios y modificar las tablas básicas 
-  paginando con ```will_paginate```
+  web adaptable (responsive) usando ```bootstrap```, ```simple_form``` 
+  y ```jquery```, que permite autenticación, manejo de clave y de usuarios 
+  y modificar las tablas básicas paginando con ```will_paginate```
 
 ## Diseño
 
@@ -45,9 +48,7 @@ Roles: administrador y usuario
 Todo se maneja como motor aislado, excepto usuario para facilitar uso de Devise.
 
 
-## Uso
-
-### Requerimientos
+## Requerimientos
 * Ruby version >= 2.1
 * PostgreSQL >= 9.3 con extensión unaccent disponible
 * Recomendado sobre adJ 5.6 (que incluye todos los componentes mencionados).  
@@ -100,51 +101,6 @@ $ exit
   rspec
 ```
 
-## Aplicación de prueba
+## Resto de la documentación 
 
-Puede iniciar un servidor de desarrollo con:
-```sh
-  cd spec/dummy
-  rails s -b 127.0.0.1 -p 3000
-```
-y examinar desde el mismo computador con un navegador en: 
-```http://127.0.0.1:3000```
-
-Puede ingresar con usuario ```sip``` y clave ```sip123``` para interactuar 
-con el manejo de usuarios (menú Clave para cambiar datos de su cuenta y clave, 
-menú Usuarios para administrar usuarios) y con el manejo de tablas básicas.
-
-
-## Desarrollo
-
-Si tiene instalado coffeescript, podrá verificar sintaxis de archivos del 
-directorio app/assets/javascript/ con:
-```sh
-  make
-```
-
-En adJ para instalar coffeescript basta:
-```sh
-  sudo npm install -g coffee-script
-```
-
-
-### Convenciones
-
-Los nombres de tablas en la base --a diferencia de la convención rails-- se
-dejan en singular.
-
-2 espacios de indentación.
-
-Para configurarlo en vim, agregue al final de ```~/.vim/ftplugin/ruby.vim```:
-``` vim
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-set autoindent
-```
-
-http://betterspecs.org/
-http://www.caliban.org/ruby/rubyguide.shtml
-https://hakiri.io/blog/ruby-security-tools-and-resources
-
+https://github.com/pasosdeJesus/sip/wiki
