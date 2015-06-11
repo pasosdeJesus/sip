@@ -7,6 +7,7 @@ module Sip
         extend ActiveSupport::Concern
 
         included do
+          self.table_name = 'usuario'
           scope :habilitados, -> (campoord = "nusuario") {
             where(fechadeshabilitacion: nil).order(campoord.to_sym)
           }
