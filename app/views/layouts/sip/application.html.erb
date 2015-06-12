@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : Sip.titulo %></title>
+    <title><%= content_for?(:titulo) ? yield(:titulo) : Sip.titulo %></title>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -39,8 +39,8 @@
   <body>
 
     <%= nav_bar :fixed => :top, 
-      :brand => content_for?(:title) ? yield(:title) : Sip.titulo,
-      brand_link: sip.root_url, 
+      :brand => content_for?(:titulo) ? yield(:titulo) : Sip.titulo,
+      brand_link: root_url, 
       :responsive => true do 
     %>
       <%= yield :menu %>
@@ -55,7 +55,7 @@
     </div>
 
     <footer align='right'>
-      <%= yield :footer %>
+      <%= yield :piedepagina %>
     </footer>
 
     </div> <!-- /container -->
