@@ -1,12 +1,6 @@
 # Motor para Sistemas de Información estilo Pasos de Jesús
 [![Estado Construcción](https://api.travis-ci.org/pasosdeJesus/sip.svg?branch=master)](https://travis-ci.org/pasosdeJesus/sip) [![Clima del Código](https://codeclimate.com/github/pasosdeJesus/sip/badges/gpa.svg)](https://codeclimate.com/github/pasosdeJesus/sip) [![Cobertura de Pruebas](https://codeclimate.com/github/pasosdeJesus/sip/badges/coverage.svg)](https://codeclimate.com/github/pasosdeJesus/sip) [![security](https://hakiri.io/github/pasosdeJesus/sip/master.svg)](https://hakiri.io/github/pasosdeJesus/sip/master) [![Dependencias](https://gemnasium.com/pasosdeJesus/sip.svg)](https://gemnasium.com/pasosdeJesus/sip) 
 
-## Tabla de Contenido
-* [Diseño](#diseño)
-* [Uso](#uso)
-* [Pruebas](#pruebas)
-* [Desarrollo](#desarrollo)
-
 Este es un motor para sistemas de información sobre Ruby on Rails 4.2 y
 PostgreSQL (preferiblemente cifrado como en adJ).
 
@@ -44,10 +38,10 @@ Este motor incluye
 * Recomendado sobre adJ 5.6 (que incluye todos los componentes mencionados).  
   Las siguientes instrucciones suponen que opera en este ambiente.
 
-## Ejemplo de uso para crear un nuevo sistema de información
+## Ejemplo de uso para crear un nuevo sistema de información usando sip
 
 Cree una aplicación rails, incluya sip como gema, cree los archivos app/models/ability.rb, app/models/usuario.rb, modifique app/controller/application_controller, app/assets/javascript/application.js, app/assets/stylesheet/application.css, app/views/layout/application_layout.html.erb, config/routes copie estructura de base de datos, cree base, lance aplicación.
 
 ## Resto de la documentación 
 
-https://github.com/pasosdeJesus/sip/wiki
+Después de tener su primer ejemplo peude generar tablas básicas para su aplicación, personalizar los modelos, vistas y controladores que sip ofrece. Consulte: https://github.com/pasosdeJesus/sip/wiki
