@@ -7,12 +7,12 @@
 * [Pruebas](#pruebas)
 * [Desarrollo](#desarrollo)
 
-Este es un motor para un sistema de información sobre Ruby on Rails 4.2 y
+Este es un motor para sistemas de información sobre Ruby on Rails 4.2 y
 PostgreSQL (preferiblemente cifrado como en adJ).
 
 Este motor incluye 
 * Autenticación con devise y bcrypt,  
-* Roles con cancancan, 
+* Roles con cancancan, inicialmente Administrador y Usuario
 * Pruebas con rspec y factory girl,
 * Propuesta para manejar tablas básicas (parámetros de la aplicación) 
   y ejemplos de estas para: paises, departamentos/estados, municipios, 
@@ -37,16 +37,6 @@ Este motor incluye
   y ```jquery```, que permite autenticación, manejo de clave y de usuarios 
   y modificar las tablas básicas paginando con ```will_paginate```
 
-## Diseño
-
-Se han extraido de las partes comunes de diversos sistemas de información,
-particularmente de SIVeL 2, Cor440 y Sal7711 (disponibles en el sitio
-de Pasos de Jeśus en github.com)
-
-Roles: administrador y usuario
-
-Todo se maneja como motor aislado, excepto usuario para facilitar uso de Devise.
-
 
 ## Requerimientos
 * Ruby version >= 2.1
@@ -54,6 +44,9 @@ Todo se maneja como motor aislado, excepto usuario para facilitar uso de Devise.
 * Recomendado sobre adJ 5.6 (que incluye todos los componentes mencionados).  
   Las siguientes instrucciones suponen que opera en este ambiente.
 
+## Ejemplo de uso para crear un nuevo sistema de información
+
+Cree una aplicación rails, incluya sip como gema, cree los archivos app/models/ability.rb, app/models/usuario.rb, modifique app/controller/application_controller, app/assets/javascript/application.js, app/assets/stylesheet/application.css, app/views/layout/application_layout.html.erb, config/routes copie estructura de base de datos, cree base, lance aplicación.
 
 ## Resto de la documentación 
 
