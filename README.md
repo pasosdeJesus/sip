@@ -11,28 +11,28 @@ Este es un motor para sistemas de información sobre Ruby on Rails 4.2 y
 PostgreSQL (preferiblemente cifrado como en adJ).
 
 Este motor incluye 
-* Autenticación con devise y bcrypt,  
-* Roles con cancancan, inicialmente Administrador y Usuario
-* Pruebas con rspec y factory girl,
-* Propuesta para manejar tablas básicas (parámetros de la aplicación) 
+- Autenticación con devise y bcrypt,  
+- Roles con cancancan, inicialmente Administrador y Usuario
+- Pruebas con rspec y factory girl,
+- Propuesta para manejar tablas básicas (parámetros de la aplicación) 
   y ejemplos de estas para: paises, departamentos/estados, municipios, 
   centros poblados, tipos de centros poblados, tipos de sitios, ubicaciones, 
   tipos de relaciones entre personas, tipos de documentos de identificación, 
   oficinas.  Faciles de modificar en aplicaciones que usen el motor vía 
-  ```ActiveSupport::Concern```
-* Datos geográficos completos para Colombia y Venezuela.
-* Propuesta de estructura para otros modelos típicos: persona, anexo; también 
+  ```ActiveSupport::Concern```.
+- Datos geográficos completos para Colombia y Venezuela.
+- Propuesta de estructura para otros modelos típicos: persona, anexo; también 
   modificables en una aplicación que use el motor via 
-  ```ActiveSupport::Concern```
-* Manejo de anexos con paperclip 
-* Facilidades de configuración en ```lib/sip/engine.rb```, como inclusión 
+  ```ActiveSupport::Concern```.
+- Manejo de anexos con paperclip 
+- Facilidades de configuración en ```lib/sip/engine.rb```, como inclusión 
   automática de sus migraciones en las aplicaciones que usen el motor y 
   variables típicas de configuración.
-* Localización con ```twitter_cldr```
-* Tareas ```rake``` para actualizar indices, sacar copia de respaldo de base 
+- Localización con ```twitter_cldr```
+- Tareas ```rake``` para actualizar indices, sacar copia de respaldo de base 
   de datos
-* Generador de nuevas tablas básicas
-* Aplicación de prueba completa en directorio ```spec/dummy``` con diseño 
+- Generador de nuevas tablas básicas
+- Aplicación de prueba completa en directorio ```spec/dummy``` con diseño 
   web adaptable (responsive) usando ```bootstrap```, ```simple_form``` 
   y ```jquery```, que permite autenticación, manejo de clave y de usuarios 
   y modificar las tablas básicas paginando con ```will_paginate```
