@@ -55,52 +55,6 @@ Todo se maneja como motor aislado, excepto usuario para facilitar uso de Devise.
   Las siguientes instrucciones suponen que opera en este ambiente.
 
 
-## Pruebas
-Se han implementado algunas pruebas con RSpec a modelos y pruebas de regresión.
-
-* Instale gemas requeridas (como Rails 4.2) con:
-``` sh
-  cd spec/dummy
-  bundle install
-```
-Aunque para minimizar descargas vale la pena instalar como gemas del
-sistema la mayoría de estas, en adJ con:
-```sh
-  grep "^ *gem" Gemfile | sed -e "s/gem [\"']//g;s/[\"'].*//g" | xargs sudo NOKOGIRI_USE_SYSTEM_LIBRARIES=1 make=gmake gem install
-```
-* Cree usuario para PostgreSQL (recomendado ```sipdes``` o el que usted 
-  especifique en ```config/database.yml```) y pongale una clave, por ejemplo 
-  en adJ
-```sh
-sudo su - _postgresql
-$ createuser -Upostgres -h/var/www/tmp -s sipdes
-$ psql -h/var/www/tmp -Upostgres
-psql (9.4.1)
-Type "help" for help.
-
-postgres=# ALTER USER sipdes WITH password 'aquilaclave';
-ALTER ROLE
-postgres=# \q
-$ exit
-```
-* Prepare ```spec/dummy/config/database.yml``` con los datos de la base 
-	que creo:
-```sh
-  cp spec/dummy/config/database.yml.plantilla spec/dummy/config/database.yml
-  vim spec/dummy/config/database.yml
-```
-* Prepare base de prueba con:
-``` sh
-  cd spec/dummy
-  RAILS_ENV=test rake db:drop
-  RAILS_ENV=test rake db:setup
-  RAILS_ENV=test rake sip:indices
-```
-* Ejecute las pruebas desde el directorio del motor con:
-```sh
-  rspec
-```
-
 ## Resto de la documentación 
 
 https://github.com/pasosdeJesus/sip/wiki
