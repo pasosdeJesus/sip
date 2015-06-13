@@ -3,7 +3,7 @@ require 'date'
 
 module Sip
   class PersonasController < ApplicationController
-    load_and_authorize_resource class: Sip::Ubicacion
+    load_and_authorize_resource class: Sip::Persona
 
     # Busca y lista persona(s)
     def index
@@ -49,24 +49,5 @@ module Sip
       end
     end
 
-    
-    # Busca y lista persona(s)
-    def remplazar
-      @persona = Persona.find(params[:id_persona].to_i)
-      #@persona.current_usuario = current_usuario
-      victima = Victima.find(params[:id_victima].to_i)
-      personaant = victima.persona
-      @caso = victima.caso
-      @caso.current_usuario = current_usuario
-      victima.persona = @persona
-      victima.save!
-      if (personaant.nombres == 'N' && personaant.apellidos == 'N') ||
-        (personaant.nombres == '' && personaant.apellidos == '')
-        personaant.destroy
-      end
-      respond_to do |format|
-        format.html { render('remplazar', layout: false) }
-      end
-    end
   end
 end
