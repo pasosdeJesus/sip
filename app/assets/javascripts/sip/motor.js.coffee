@@ -2,9 +2,15 @@
 # 
 # Por compartir entre motores que operen sobre sip
 
+#//= require jquery
+#//= require jquery_ujs
 #//= require jquery-ui/autocomplete
+#//= require bootstrap-datepicker
+#//= require twitter/bootstrap
+#//= require turbolinks
 #//= require cocoon
 #//= require sip/geo
+
 
 # AUTOCOMPLETACIÓN PERSONA
 # Elije una persona en autocompletación
@@ -55,9 +61,48 @@
     })
   return
 
+# Añade endsWith a la clase String
+# http://stackoverflow.com/questions/280634/endswith-in-javascript
+if (typeof String.prototype.endsWith != 'function') 
+  String.prototype.endsWith = (suffix) ->
+    return this.indexOf(suffix, this.length - suffix.length) != -1
+
+# Verifica que una fecha sea válida
+# De: http://stackoverflow.com/questions/8098202/javascript-detecting-valid-dates
+@fecha_valida = (text) ->
+  date = Date.parse(text)
+  if (isNaN(date))
+      return false
+  comp = text.split('-')
+  if (comp.length != 3)
+    return false;
+
+  y = parseInt(comp[0], 10)
+  m = parseInt(comp[1], 10)
+  d = parseInt(comp[2], 10)
+  date = new Date(y, m - 1, d);
+  return (date.getFullYear() == y && 
+    date.getMonth() + 1 == m && date.getDate() == d);
+
+# Envia con AJAX datos del formulario, junto con el botón submit.
+# @param root Raiz del documento, para guardar allí variable global.
+# @param f    Formulario jquery-sado
+@enviarautomatico_formulario = (root, f) ->
+  a = f.attr('action')
+  d = f.serialize()
+  d += '&commit=Enviar'
+  # En ocasiones lanza 2 veces seguidas el mismo evento. 
+  # Evitamos enviar lo mismo.
+  if (!root.dant || root.dant != d)
+    $.ajax(url: a, data: d, dataType: "script").fail( (jqXHR, texto) ->
+      alert("Error con ajax " + texto)
+    )
+  root.dant = d 
+  return
+
 # Prepara eventos comunes al usar sip
 # root es espacio para poner variables globales
-@prepara_eventos_comunes_sip = (root) ->
+@sip_prepara_eventos_comunes = (root) ->
   # Formato de campos de fecha con datepicker
   $(document).on('cocoon:after-insert', (e) ->
     $('[data-behaviour~=datepicker]').datepicker({
@@ -68,12 +113,9 @@
     })
   )
 
-  # En victimas permite autocompletar nombres
-  #$(document).on('focusin', 
-  #'input[id^=caso_victima_attributes][id$=persona_attributes_nombres]', 
-  #(e) ->
-  #  busca_persona_nombre($(this))
-  #)
+  jQuery ->
+    $("a[rel~=popover], .has-popover").popover()
+    $("a[rel~=tooltip], .has-tooltip").tooltip()
 
   # Al cambiar país se recalcula lista de departamentos
   $(document).on('change', 'select[id$=_id_pais]', (e) ->
