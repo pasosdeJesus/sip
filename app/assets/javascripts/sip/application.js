@@ -10,7 +10,15 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery_ujs
+//= require jquery-ui/autocomplete
+//= require bootstrap-datepicker
+//= require twitter/bootstrap
+//= require turbolinks
+//= require sip/geo
 //= require_tree .
+
 
 $(document).on('ready page:load', function() {
 	var root;
