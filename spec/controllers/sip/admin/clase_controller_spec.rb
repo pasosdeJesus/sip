@@ -17,6 +17,10 @@ describe Sip::Admin::ClasesController do
       get :index
       expect(response).to render_template("index")
     end
+    it "presenta plantilla de indice filtradas por termino" do
+      get :index, term: 'x'
+      expect(response).to render_template("index")
+    end
     it "presenta plantilla admin/basicas/index" do
       get :index
       expect(response).to render_template("admin/basicas/index")
