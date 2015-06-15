@@ -157,8 +157,11 @@ class AgregaIdDepartamento < ActiveRecord::Migration
 
     execute <<-SQL
       DROP MATERIALIZED VIEW IF EXISTS sivel2_gen_conscaso;
+      DROP MATERIALIZED VIEW IF EXISTS conscaso;
       DROP VIEW IF EXISTS sivel2_gen_conscaso1;
+      DROP VIEW IF EXISTS conscaso1;
       DROP VIEW IF EXISTS cons2;
+      DROP VIEW IF EXISTS cben2;
     SQL
     execute <<-SQL
       ALTER TABLE sip_ubicacion DROP COLUMN id_deplocal;

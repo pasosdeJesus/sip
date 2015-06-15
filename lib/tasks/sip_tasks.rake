@@ -26,7 +26,7 @@ namespace :sip do
     	connection.execute(q)
 		end
 		# Otras tablas basicas excluyendo las que no tienen id autoincremental
-    tb= (Ability::tablasbasicas - tbn) - Ability::basicas_id_noauto
+    tb= (::Ability::tablasbasicas - tbn) - ::Ability::basicas_id_noauto
     tb.each do |t|
       connection.execute("SELECT setval('#{t[1]}_seq', MAX(id)) FROM 
              (SELECT 100 as id UNION 
@@ -58,8 +58,8 @@ namespace :sip do
     search_path = abcs[Rails.env]['schema_search_path']
     connection = ActiveRecord::Base.connection()
 		# Asegurasmo que primero se vuelcan superbasicas y otras en orden correcto
-    tb = Ability::tablasbasicas_prio + 
-      (Ability::tablasbasicas - Ability::tablasbasicas_prio);
+    tb = ::Ability::tablasbasicas_prio + 
+      (::Ability::tablasbasicas - ::Ability::tablasbasicas_prio);
     unless search_path.blank?
       search_path = search_path.split(",").map{|search_path_part| 
         "--schema=#{Shellwords.escape(search_path_part.strip)}" 

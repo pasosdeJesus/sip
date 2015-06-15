@@ -9,6 +9,17 @@ module Sip
         "Sip::Clase"
       end
   
+      def index
+        c = nil
+        if params[:id_municipio] && params[:id_municipio].to_i > 0
+          idmun = params[:id_municipio].to_i
+          c = Sip::Clase.where(
+            fechadeshabilitacion:nil,
+            id_municipio: idmun).all
+        end
+        super(c)
+      end  
+
       def set_clase
         @basica = Clase.find(params[:id])
       end

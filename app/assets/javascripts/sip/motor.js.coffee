@@ -120,14 +120,23 @@ if (typeof String.prototype.endsWith != 'function')
   $(document).on('change', 'select[id$=_id_pais]', (e) ->
     llena_departamento($(this))
   )
+  $(document).on('change', 'select[id$=_pais_id]', (e) ->
+    llena_departamento($(this))
+  )
 
   # Al cambiar departamento se recalcula lista de municipios
   $(document).on('change', 'select[id$=_id_departamento]', (e) ->
     llena_municipio($(this))
   )
+  $(document).on('change', 'select[id$=_departamento_id]', (e) ->
+    llena_municipio($(this))
+  )
 
   # Al cambiar municipio se recalcula lista de centros poblados
   $(document).on('change', 'select[id$=_id_municipio]', (e) ->
+    llena_clase($(this))
+  )
+  $(document).on('change', 'select[id$=_municipio_id]', (e) ->
     llena_clase($(this))
   )
 

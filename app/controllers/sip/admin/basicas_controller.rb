@@ -7,8 +7,10 @@ module Sip
       #load_and_authorize_resource debe hacerse en heredadas
 
       # Despliega listado de registros
-      def index
-        c = clase.constantize
+      def index(c = nil)
+        if (c == nil) 
+          c = clase.constantize
+        end
         if params[:term] && params[:term] != ''
           term = params[:term]
           consNom = term.downcase.strip #sin_tildes
@@ -22,10 +24,22 @@ module Sip
           # autocomplete de jquery requiere label, val
           c = c.where(where, consNom)
         end
-        @basica = c.order(camponombre).paginate(
-          :page => params[:pagina], per_page: 20
-        )
-        render layout: 'application'
+        respond_to do |format|
+         format.html {  
+           @basica = c.order(camponombre).paginate(
+             :page => params[:pagina], per_page: 20
+           );
+          render layout: 'application'
+         }
+         format.json {
+           @basica = c.order(camponombre)
+           render json: @basica
+         }
+         format.js {
+           @basica = c.order(camponombre)
+           render json: @basica
+         }
+        end
       end
 
       # Despliega detalle de un registro

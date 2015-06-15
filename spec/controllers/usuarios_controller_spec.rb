@@ -126,7 +126,7 @@ RSpec.describe Sip::UsuariosController, :type => :controller do
         put :update, {:id => usuario.to_param, :usuario => new_attributes}, valid_session
         usuario.reload
         usuario.destroy!
-        #expect(usuario.regionsjr_id).to eq(1)
+        #expect(usuario.oficina_id).to eq(1)
       end
 
       it "asigna el usuario requerido como @usuario" do

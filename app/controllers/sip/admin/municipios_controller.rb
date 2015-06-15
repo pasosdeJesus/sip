@@ -8,7 +8,18 @@ module Sip
       def clase 
         "Sip::Municipio"
       end
-  
+ 
+      def index
+        c = nil
+        if params[:id_departamento] && params[:id_departamento].to_i > 0
+          iddep  = params[:id_departamento].to_i
+          c = Sip::Municipio.where(
+            fechadeshabilitacion:nil,
+            id_departamento: iddep).all
+        end
+        super(c)
+      end  
+
       def set_municipio
         @basica = Municipio.find(params[:id])
       end

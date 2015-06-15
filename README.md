@@ -38,9 +38,35 @@ Este motor incluye
 * Recomendado sobre adJ 5.6 (que incluye todos los componentes mencionados).  
   Las siguientes instrucciones suponen que opera en este ambiente.
 
-## Ejemplo de uso para crear un nuevo sistema de información usando sip
+## Ejemplo mínimo de uso para crear un nuevo sistema de información usando sip
 
-Cree una aplicación rails, incluya sip como gema, cree los archivos app/models/ability.rb, app/models/usuario.rb, modifique app/controller/application_controller, app/assets/javascript/application.js, app/assets/stylesheet/application.css, app/views/layout/application_layout.html.erb, config/routes copie estructura de base de datos, cree base, lance aplicación.
+- Cree una aplicación rails
+- Incluya sip como gema
+- Cree el archivo app/models/ability.rb
+- Cree el archivo app/models/usuario.rb
+- Para establecer ruta de anexos cree el archivo config/initializers/sip.rb
+```
+Sip.setup do |config|
+      config.ruta_anexos = "/var/www/resbase/miap/anexos/"
+      config.ruta_volcados = "/var/www/resbase/miap/volcados/"
+      # En heroku los anexos son super-temporales
+      if !ENV["HEROKU_POSTGRESQL_GREEN_URL"].nil?
+        config.ruta_anexos = "#{Rails.root}/tmp/"
+      end
+      config.titulo = "Titulo de mi aplicacion"
+end
+```
+- Remplace app/controller/application_controller por
+- Remplace app/assets/javascript/application.js por
+- Remplace app/assets/stylesheet/application.css por
+- Replace app/views/layout/application_layout.html.erb por
+- Remplace config/routes por
+- Copie estructura de base de datos y creela
+```
+cp ruta_sip/spec/dummy/db/structure.sql db/
+rake db:setup sip:indices
+```
+- Lance aplicación
 
 ## Resto de la documentación 
 

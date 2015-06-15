@@ -21,7 +21,7 @@ RSpec.describe "sip/usuarios/edit", :type => :view do
 
       assert_select "input#usuario_nombre[name=?]", "usuario[nombre]"
 
-      #assert_select "select#usuario_regionsjr_id[name=?]", "usuario[regionsjr_id]"
+      #assert_select "select#usuario_oficina_id[name=?]", "usuario[oficina_id]"
     end
   end
 end

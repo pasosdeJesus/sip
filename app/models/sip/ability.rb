@@ -148,6 +148,9 @@ module Sip
       # 
       # Detalles en el wiki de cancan: 
       #   https://github.com/ryanb/cancan/wiki/Defining-Abilities
+     
+      # Sin autenticación puede consultarse información geográfica 
+      can :read, [Sip::Pais, Sip::Departamento, Sip::Municipio, Sip::Clase]
       if !usuario || usuario.fechadeshabilitacion
         return
       end

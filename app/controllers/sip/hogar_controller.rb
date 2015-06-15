@@ -5,7 +5,7 @@ module Sip
     def tablasbasicas
       authorize! :manage, :tablasbasicas
       @ntablas = {}
-      Ability::tablasbasicas.each { |t|
+      ::Ability::tablasbasicas.each { |t|
         k = Ability::tb_clase(t)
         n = k.human_attribute_name(t[1].pluralize.capitalize) 
         r = "admin/#{t[1].pluralize}"
