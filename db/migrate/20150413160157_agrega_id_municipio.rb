@@ -1557,9 +1557,9 @@ class AgregaIdMunicipio < ActiveRecord::Migration
 		execute <<-SQL
 				ALTER TABLE sip_municipio DROP COLUMN id_pais;
 		SQL
-	end
+  end
 
-	def down
+  def down
 		raise ActiveRecord::IrreversibleMigration    
-	end
+  end
 end

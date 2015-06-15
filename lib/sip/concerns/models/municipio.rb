@@ -7,7 +7,7 @@ module Sip
         extend ActiveSupport::Concern
 
         include Sip::Basica
-				included do
+        included do
 
           has_many :clase, foreign_key: "id_municipio", validate: true, 
             class_name: 'Sip::Clase'
@@ -27,8 +27,9 @@ module Sip
             self.nombre + " / " + dep.nombre + " / " + pais.nombre
           end
         end
-			end
-		end
+
+      end
+    end
   end
 end
 

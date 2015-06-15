@@ -7,24 +7,24 @@ module Sip
         extend ActiveSupport::Concern
 
         include Sip::Basica
-				included do
+        included do
 
-					has_many :persona, foreign_key: "id_clase", validate: true,
-						class_name: 'Sip::Persona'
-					has_many :ubicacion, foreign_key: "id_clase", validate: true,
-						class_name: 'Sip::Ubicacion'
+          has_many :persona, foreign_key: "id_clase", validate: true,
+            class_name: 'Sip::Persona'
+          has_many :ubicacion, foreign_key: "id_clase", validate: true,
+            class_name: 'Sip::Ubicacion'
 
-					belongs_to :municipio, foreign_key: "id_municipio", 
-						validate: true, class_name: 'Sip::Municipio'
-					belongs_to :tclase, foreign_key: "id_tclase", validate: true,
-						class_name: 'Sip::Tclase'
+          belongs_to :municipio, foreign_key: "id_municipio", 
+            validate: true, class_name: 'Sip::Municipio'
+          belongs_to :tclase, foreign_key: "id_tclase", validate: true,
+            class_name: 'Sip::Tclase'
 
-					validates :id_municipio, presence:true
-					validates :id_tclase, presence:true, length: { maximum: 10 } 
+          validates :id_municipio, presence:true
+          validates :id_tclase, presence:true, length: { maximum: 10 } 
+        end
 
- 				end
-			end
-		end
+      end
+    end
   end
 end
 

@@ -28,11 +28,11 @@ module Sip
       # Si atr es llave foranea retorna asociación a este modelo
       # en otro caso retorna nil
       def asociacion_llave_foranea(atr)
-        a = self.class.reflect_on_all_associations
-        b = a.select { |a| a.macro == :belongs_to } 
-        fk = b.map(&:foreign_key)
+        aso = self.class.reflect_on_all_associations
+        bel = aso.select { |a| a.macro == :belongs_to } 
+        fk = bel.map(&:foreign_key)
         if fk.include? atr
-          r = a.select { |a| a.foreign_key == atr }[0] 
+          r = aso.select { |a| a.foreign_key == atr }[0] 
           return r
         end
         return nil
