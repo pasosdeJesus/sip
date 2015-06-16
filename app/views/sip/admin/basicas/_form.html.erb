@@ -6,7 +6,7 @@
     <% alf = @basica.asociacion_llave_foranea(atr) %>
     <% if lookup_context.find_all("sip/admin/basicas/#{atr}", [], true).any? %>
       <% # Hay un parcial para presentar el campo %>
-      <%= render partial: "sip/admin/basicas/#{atr}", locals: {f: f} %>}
+      <%= render partial: "sip/admin/basicas/#{atr}", locals: {f: f} %>
     <% elsif alf  %>
       <% # Llave Foranea 
         n = alf.name %>
