@@ -66,7 +66,11 @@ module Sip
             (memo == "" ? "" : memo + "; ") + i.presenta_nombre 
           }
         elsif clf
-          clf.find(self[atr]).presenta_nombre
+          if (self[atr.to_s])
+            clf.find(self[atr.to_s]).presenta_nombre
+          else
+            ""
+          end
         else
           self[atr.to_s].to_s
         end
@@ -94,6 +98,7 @@ module Sip
       def busca_valor
         self['id']
       end
+
     end
 
 
