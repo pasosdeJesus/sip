@@ -80,6 +80,7 @@ module Sip
     end
 
     NOBASICAS_INDSEQID = [
+      ['Sip', 'anexo'], 
       ['Sip', 'persona'], 
       ['Sip', 'ubicacion'], 
       ['', 'usuario']
