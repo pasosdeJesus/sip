@@ -139,6 +139,18 @@ if (typeof String.prototype.endsWith != 'function')
   $(document).on('change', 'select[id$=_municipio_id]', (e) ->
     llena_clase($(this))
   )
+  
+  $(document).on('change', 'select[data-enviarautomatico]', 
+    (e) -> 
+      enviarautomatico_formulario(root, $(e.target.form))
+  )
+  $(document).on('change', 'input[data-enviarautomatico]', 
+    (e) -> 
+      #debugger
+      # No procesa selección de fecha, pero si cuando se teclea
+      #if typeof $(e.target).attr('data-behaviour') == 'undefined' || e.bubbles
+      enviarautomatico_formulario(root, $(e.target.form))
+  )
 
   return
 
