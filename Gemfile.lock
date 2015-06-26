@@ -266,7 +266,7 @@ DEPENDENCIES
   pry-byebug
   pry-rescue
   pry-stack_explorer
-  rails (~> 4.2.1)
+  rails (~> 4.2.3.rc1)
   rails-i18n
   rspec-rails
   sass
