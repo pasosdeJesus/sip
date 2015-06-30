@@ -38,7 +38,35 @@ module Sip
       def municipio_params
         params.require(:municipio).permit( *atributos_form)
       end
-  
+
+      # Para responder a solicitudes AJAX de autocompletación de
+      # municipio / departamento
+      def mundep
+        if !params[:term]
+          respond_to do |format|
+            format.html { render inline: 'Falta variable term' }
+            format.json { render inline: 'Falta variable term' }
+          end
+        else
+          term = Sip::Municipio.connection.quote_string(params[:term])
+          consNom = term.downcase.strip #sin_tildes
+          consNom.gsub!(/ +/, ":* & ")
+          if consNom.length > 0
+            consNom += ":*"
+          end
+          where = " mundep  @@ to_tsquery('spanish', '#{consNom}')";
+          # autocomplete de jquery requiere label, val
+          qstring = "SELECT nombre as label, idlocal as value
+                FROM sip_mundep 
+                WHERE #{where} ORDER BY 1;"
+
+                r = ActiveRecord::Base.connection.select_all qstring
+                respond_to do |format|
+                  format.json { render :json, inline: r.to_json }
+                end
+        end
+      end
+      
     end
   end
 end

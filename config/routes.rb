@@ -8,6 +8,7 @@ Sip::Engine.routes.draw do
   get "/personas/remplazar" => 'personas#remplazar'
   get "/tablasbasicas" => 'hogar#tablasbasicas'
   get '/ubicaciones/nuevo' => 'ubicaciones#nuevo'
+  get 'mundep' => 'admin/municipios#mundep'
 
   devise_scope :usuario do
     get 'sign_out' => 'devise/sessions#destroy'
