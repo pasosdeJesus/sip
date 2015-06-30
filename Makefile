@@ -1,5 +1,5 @@
 
-valida: valida-ruby valida-js
+valida: valida-js valida-ruby
 
 valida-js:
 	for i in `find app/assets/javascripts/ -name "*coffee"`; do \

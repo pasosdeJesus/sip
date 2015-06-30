@@ -12,14 +12,15 @@
   return ""
 
 #  Completa departamento
-@llena_departamento = ($this) -> 
+@llena_departamento = ($this, puntomontaje) -> 
+  puntomontaje = '/' if puntomontaje == 'undefined'
   idpais = $this.attr('id')
   iddep = busca_campo_similar(idpais, 'pais', 'departamento')
   idmun = busca_campo_similar(idpais, 'pais', 'municipio')
   idcla = busca_campo_similar(idpais, 'pais', 'clase')
   pais = $this.val()
   if (+pais > 0 && iddep) 
-      x = $.getJSON("/admin/departamentos", {id_pais: pais})
+      x = $.getJSON(puntomontaje + "/admin/departamentos", {id_pais: pais})
       x.done((data) -> 
           op = '<option value=""></option>'
           $.each( data, ( i, item ) -> 
@@ -49,14 +50,15 @@
 
 
 #  Completa municipio.
-@llena_municipio = ($this) -> 
+@llena_municipio = ($this, puntomontaje) -> 
+  puntomontaje = '/' if puntomontaje == 'undefined'
   iddep = $this.attr('id')
   idpais = busca_campo_similar(iddep, 'departamento', 'pais')
   idmun = busca_campo_similar(iddep, 'departamento', 'municipio')
   idcla = busca_campo_similar(iddep, 'departamento', 'clase')
   dep = $this.val()
   if (+dep > 0 && idmun != '') 
-      x = $.getJSON("/admin/municipios", {id_departamento: dep})
+      x = $.getJSON(puntomontaje + "/admin/municipios", {id_departamento: dep})
       x.done((data) -> 
           op = '<option value=""></option>'
           $.each( data, ( i, item ) -> 
@@ -81,14 +83,15 @@
 
 
 # Completa cuadro de selección para clase de acuerdo a depto y mcpio.
-@llena_clase = ($this) -> 
+@llena_clase = ($this, puntomontaje) -> 
+  puntomontaje = '/' if puntomontaje == 'undefined'
   idmun = $this.attr('id')
   idpais = busca_campo_similar(idmun, 'municipio', 'pais')
   iddep = busca_campo_similar(idmun, 'municipio', 'departamento')
   idcla = busca_campo_similar(idmun, 'municipio', 'clase')
   mun = $this.val()
   if (+mun > 0 && idcla != '') 
-    x = $.getJSON("/admin/clases", {id_municipio: mun})
+    x = $.getJSON(puntomontaje + "/admin/clases", {id_municipio: mun})
     x.done( ( data ) ->
       op = '<option value=""></option>';
       $.each( data, ( i, item ) ->
