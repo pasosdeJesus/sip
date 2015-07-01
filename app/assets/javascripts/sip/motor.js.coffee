@@ -127,7 +127,7 @@ if (typeof String.prototype.endsWith != 'function')
 # @param root espacio para poner variables globales
 # @param puntomontaje string punto de montaje de la aplicación (por defecto /)
 @sip_prepara_eventos_comunes = (root, puntomontaje) ->
-  puntomontaje = '/' if puntomontaje == 'undefined'
+  puntomontaje = '/' if typeof puntomontaje == 'undefined'
 
   # Formato de campos de fecha con datepicker
   $(document).on('cocoon:after-insert', (e) ->
