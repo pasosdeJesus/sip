@@ -54,16 +54,17 @@ module Sip
           if consNom.length > 0
             consNom += ":*"
           end
-          where = " mundep  @@ to_tsquery('spanish', '#{consNom}')";
+          where = " ";
           # autocomplete de jquery requiere label, val
-          qstring = "SELECT nombre as label, idlocal as value
+          consc = ActiveRecord::Base.sanitize_sql_array([
+            "SELECT nombre as label, idlocal as value
                 FROM sip_mundep 
-                WHERE #{where} ORDER BY 1;"
-
-                r = ActiveRecord::Base.connection.select_all qstring
-                respond_to do |format|
-                  format.json { render :json, inline: r.to_json }
-                end
+                WHERE mundep  @@ to_tsquery('spanish', ?) ORDER BY 1;",
+                consnom])
+          r = ActiveRecord::Base.connection.select_all consc
+          respond_to do |format|
+            format.json { render :json, inline: r.to_json }
+          end
         end
       end
       
