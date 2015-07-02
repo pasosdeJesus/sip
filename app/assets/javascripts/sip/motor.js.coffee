@@ -11,7 +11,31 @@
 #//= require sip/geo
 
 
-# AUTOCOMPLETACIÓN PERSONA
+# AUTOCOMPLETACIÓN
+
+# Para autocompletación busca regitros que coincidan con lo ingresado por 
+#   usuario en el campo s
+#
+# @param s {object} es campo texto con foco donde se busca 
+# @param sel_id {string} selector de campo donde quedará identificación 
+# @param fuente {mixed} arreglo, url o función que busca y retorna
+#  datos de la forma label: 'l1', value: 'v1' 
+#
+# @return {void}
+@busca_gen= (s, sel_id, fuente) ->
+  s.autocomplete({
+    source: fuente,
+    minLength: 2,
+    select: ( event, ui ) -> 
+      if (ui.item) 
+        $(sel_id).val(ui.item.value) if sel_id != null
+        s.val(ui.item.label)
+        event.stopPropagation()
+        event.preventDefault()
+  })
+  return
+
+# PERSONA
 # Elije una persona en autocompletación
 @autocompleta_persona = (label, id, id_victima, divcp) ->
   cs = id.split(";")
@@ -100,8 +124,11 @@ if (typeof String.prototype.endsWith != 'function')
   return
 
 # Prepara eventos comunes al usar sip
-# root es espacio para poner variables globales
-@sip_prepara_eventos_comunes = (root) ->
+# @param root espacio para poner variables globales
+# @param puntomontaje string punto de montaje de la aplicación (por defecto /)
+@sip_prepara_eventos_comunes = (root, puntomontaje) ->
+  puntomontaje = '/' if typeof puntomontaje == 'undefined'
+
   # Formato de campos de fecha con datepicker
   $(document).on('cocoon:after-insert', (e) ->
     $('[data-behaviour~=datepicker]').datepicker({
@@ -118,28 +145,32 @@ if (typeof String.prototype.endsWith != 'function')
 
   # Al cambiar país se recalcula lista de departamentos
   $(document).on('change', 'select[id$=_id_pais]', (e) ->
-    llena_departamento($(this))
+    llena_departamento($(this), puntomontaje)
   )
   $(document).on('change', 'select[id$=_pais_id]', (e) ->
-    llena_departamento($(this))
+    llena_departamento($(this), puntomontaje)
   )
 
   # Al cambiar departamento se recalcula lista de municipios
   $(document).on('change', 'select[id$=_id_departamento]', (e) ->
-    llena_municipio($(this))
+    llena_municipio($(this), puntomontaje)
   )
   $(document).on('change', 'select[id$=_departamento_id]', (e) ->
-    llena_municipio($(this))
+    llena_municipio($(this), puntomontaje)
   )
 
   # Al cambiar municipio se recalcula lista de centros poblados
   $(document).on('change', 'select[id$=_id_municipio]', (e) ->
-    llena_clase($(this))
+    llena_clase($(this), puntomontaje)
   )
   $(document).on('change', 'select[id$=_municipio_id]', (e) ->
-    llena_clase($(this))
+    llena_clase($(this), puntomontaje)
   )
-  
+
+  $('#mundep').on('focusin', (e) ->
+    busca_gen($(this), null, puntomontaje + "/mundep.json")
+  )
+
   $(document).on('change', 'select[data-enviarautomatico]', 
     (e) -> 
       enviarautomatico_formulario(root, $(e.target.form))
