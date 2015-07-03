@@ -56,11 +56,11 @@ module Sip
           end
           where = " ";
           # autocomplete de jquery requiere label, val
-          consc = ActiveRecord::Base.sanitize_sql_array([
+          consc = ActiveRecord::Base.send(:sanitize_sql_array, [
             "SELECT nombre as label, idlocal as value
                 FROM sip_mundep 
                 WHERE mundep  @@ to_tsquery('spanish', ?) ORDER BY 1;",
-                consnom])
+                consNom])
           r = ActiveRecord::Base.connection.select_all consc
           respond_to do |format|
             format.json { render :json, inline: r.to_json }
