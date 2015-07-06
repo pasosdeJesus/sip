@@ -3,6 +3,7 @@
   admin_basica_path(@basica), 
   defaults: { input_html: { class: 'span10' } } do |f| %>
   <% atributos_form.each do |atr|  %>
+    <% #byebug %>
     <% alf = @basica.asociacion_llave_foranea(atr) %>
     <% if lookup_context.find_all("sip/admin/basicas/#{atr}", [], true).any? %>
       <% # Hay un parcial para presentar el campo %>
