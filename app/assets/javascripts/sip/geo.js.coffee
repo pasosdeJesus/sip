@@ -13,7 +13,7 @@
 
 #  Completa departamento
 @llena_departamento = ($this, puntomontaje) -> 
-  puntomontaje = '/' if puntomontaje == 'undefined'
+  puntomontaje = '/' if typeof puntomontaje == 'undefined'
   idpais = $this.attr('id')
   iddep = busca_campo_similar(idpais, 'pais', 'departamento')
   idmun = busca_campo_similar(idpais, 'pais', 'municipio')
@@ -51,7 +51,7 @@
 
 #  Completa municipio.
 @llena_municipio = ($this, puntomontaje) -> 
-  puntomontaje = '/' if puntomontaje == 'undefined'
+  puntomontaje = '/' if typeof puntomontaje == 'undefined'
   iddep = $this.attr('id')
   idpais = busca_campo_similar(iddep, 'departamento', 'pais')
   idmun = busca_campo_similar(iddep, 'departamento', 'municipio')
@@ -84,7 +84,7 @@
 
 # Completa cuadro de selección para clase de acuerdo a depto y mcpio.
 @llena_clase = ($this, puntomontaje) -> 
-  puntomontaje = '/' if puntomontaje == 'undefined'
+  puntomontaje = '/' if typeof puntomontaje == 'undefined'
   idmun = $this.attr('id')
   idpais = busca_campo_similar(idmun, 'municipio', 'pais')
   iddep = busca_campo_similar(idmun, 'municipio', 'departamento')
