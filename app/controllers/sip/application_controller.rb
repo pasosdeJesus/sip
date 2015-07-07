@@ -9,7 +9,7 @@ module Sip
 
     before_action :configure_permitted_parameters, if: :devise_controller?
 
-    # Clas que hereda debe llamar 
+    # Clase que hereda debe llamar 
     #protect_from_forgery with: :exception
 
     def current_ability
