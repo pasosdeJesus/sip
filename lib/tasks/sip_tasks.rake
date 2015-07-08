@@ -10,8 +10,10 @@ namespace :sip do
     connection = ActiveRecord::Base.connection();
     puts "sip - indices"
 		# Primero tablas basicas creadas en Rails
+    #byebug
     tbn = Ability::basicas_seq_con_id - Ability::basicas_id_noauto
     tbn.each do |t|
+      #puts "OJO tbn, t=#{t}"
 			nomt = Ability::tb_modelo t
 			case nomt
 			when 'sip_departamento', 'sip_municipio', 'sip_pais', 'sip_clase'
@@ -28,6 +30,7 @@ namespace :sip do
 		# Otras tablas basicas excluyendo las que no tienen id autoincremental
     tb= (::Ability::tablasbasicas - tbn) - ::Ability::basicas_id_noauto
     tb.each do |t|
+      #puts "OJO basicas excluyendo sin id autoinc, t=#{t}"
       connection.execute("SELECT setval('#{t[1]}_seq', MAX(id)) FROM 
              (SELECT 100 as id UNION 
              SELECT MAX(id) FROM #{Ability::tb_modelo t}) AS s;");
@@ -35,12 +38,14 @@ namespace :sip do
     # Finalmente otras tablas no basicas pero con índices
     tb = Ability::nobasicas_indice 
     tb.each do |t|
+      #puts "OJO no basicas con indice, t=#{t}"
       connection.execute("
       SELECT setval('#{t[1]}_seq', MAX(id)) 
                          FROM #{Ability::tb_modelo t}");
     end
     tb = Ability::nobasicas_indice_seq_con_id
     tb.each do |t|
+      #puts "OJO no basica con indice, t=#{t}"
       connection.execute("
       SELECT setval('#{Ability::tb_modelo t}_id_seq', MAX(id)) 
                          FROM #{Ability::tb_modelo t}");
