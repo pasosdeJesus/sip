@@ -14,6 +14,7 @@
 #  Completa departamento
 @llena_departamento = ($this, puntomontaje) -> 
   puntomontaje = '/' if typeof puntomontaje == 'undefined'
+  puntomontaje += '/' if puntomontaje[puntomontaje.length-1] != '/'
   idpais = $this.attr('id')
   iddep = busca_campo_similar(idpais, 'pais', 'departamento')
   idmun = busca_campo_similar(idpais, 'pais', 'municipio')
@@ -86,13 +87,14 @@
 # Completa cuadro de selección para clase de acuerdo a depto y mcpio.
 @llena_clase = ($this, puntomontaje) -> 
   puntomontaje = '/' if typeof puntomontaje == 'undefined'
+  puntomontaje += '/' if puntomontaje[puntomontaje.length-1] != '/'
   idmun = $this.attr('id')
   idpais = busca_campo_similar(idmun, 'municipio', 'pais')
   iddep = busca_campo_similar(idmun, 'municipio', 'departamento')
   idcla = busca_campo_similar(idmun, 'municipio', 'clase')
   mun = $this.val()
   if (+mun > 0 && idcla != '') 
-    x = $.getJSON(puntomontaje + "/admin/clases", {id_municipio: mun})
+    x = $.getJSON(puntomontaje + "admin/clases", {id_municipio: mun})
     x.done( ( data ) ->
       op = '<option value=""></option>';
       $.each( data, ( i, item ) ->
