@@ -19,7 +19,7 @@ module Sip
       ["", 0] #6
     ]
 
-    TABLAS_SIP = [
+    BASICAS_PROPIAS = [
       ['Sip', 'clase'], 
       ['Sip', 'departamento'], 
       ['Sip', 'etiqueta'], 
@@ -33,50 +33,22 @@ module Sip
       ['Sip', 'tsitio']
     ]
 
-
-    @@tablasbasicas = TABLAS_SIP
+    @@tablasbasicas = BASICAS_PROPIAS
 
     def self.tablasbasicas
       @@tablasbasicas
     end
 
-    TABLAS_SIP_SEQID= [ 
-      ['Sip', 'clase'], 
-      ['Sip', 'departamento'], 
-      ['Sip', 'etiqueta'], 
-      ['Sip', 'fuenteprensa'], 
-      ['Sip', 'municipio'], 
-      ['Sip', 'oficina'],
-      ['Sip', 'pais'],
-      ['Sip', 'tdocumento'], 
-      ['Sip', 'tsitio']
-    ]
-
-    # Tablas basicas cuya secuencia es de la forma tabla_id_seq  (convención rails)
-    @@basicas_seq_con_id = TABLAS_SIP_SEQID
-
-    def self.basicas_seq_con_id
-      @@basicas_seq_con_id
-    end
-
-    TABLAS_ID_NOAUTO = [ 
+    BASICAS_ID_NOAUTO = [ 
       ['Sip', 'tclase'],
       ['Sip', 'trelacion']
     ]
 
     # Tablas básicas cuyo id no es autoincremental
-    @@basicas_id_noauto =  TABLAS_ID_NOAUTO
+    @@basicas_id_noauto =  BASICAS_ID_NOAUTO
 
     def self.basicas_id_noauto
       @@basicas_id_noauto
-    end
-
-    # Tablas no básicas pero que tienen índice
-    @@nobasicas_indice = [
-    ]
-
-    def self.nobasicas_indice
-      @@nobasicas_indice
     end
 
     NOBASICAS_INDSEQID = [
@@ -86,7 +58,7 @@ module Sip
       ['', 'usuario']
     ]
 
-    # Tablas no básicas pero que tienen índice
+    # Tablas no básicas pero que tienen índice *_seq_id
     @@nobasicas_indice_seq_con_id = NOBASICAS_INDSEQID
 
     def self.nobasicas_indice_seq_con_id
@@ -131,7 +103,6 @@ module Sip
         t[1]
       end
     end
-
 
     # Se definen habilidades con cancancan
     def initialize(usuario)
