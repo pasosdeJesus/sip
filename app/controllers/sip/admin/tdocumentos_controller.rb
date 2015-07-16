@@ -13,6 +13,10 @@ module Sip
         @basica = Tdocumento.find(params[:id])
       end
   
+      def genclase
+        return 'M';
+      end
+
       def atributos_index
         ["id", "nombre", "formatoregex", "observaciones",
          "fechacreacion", "fechadeshabilitacion"]
