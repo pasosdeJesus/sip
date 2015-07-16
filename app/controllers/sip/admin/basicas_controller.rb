@@ -49,7 +49,6 @@ module Sip
 
       # Presenta formulario para crear nuevo registro
       def new
-        c = clase.constantize
         @basica = clase.constantize.new
         @basica.fechacreacion = DateTime.now.strftime('%Y-%m-%d')
         render layout: 'application'

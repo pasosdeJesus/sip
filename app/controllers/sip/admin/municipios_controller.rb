@@ -54,7 +54,6 @@ module Sip
           if consNom.length > 0
             consNom += ":*"
           end
-          where = " ";
           # autocomplete de jquery requiere label, val
           consc = ActiveRecord::Base.send(:sanitize_sql_array, [
             "SELECT nombre as label, idlocal as value
