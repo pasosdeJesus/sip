@@ -676,7 +676,7 @@ CREATE TABLE usuario (
     updated_at timestamp without time zone,
     regionsjr_id integer,
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
-    CONSTRAINT usuario_rol_check CHECK (((rol >= 1) AND (rol <= 6)))
+    CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
 
 
@@ -999,7 +999,7 @@ ALTER TABLE ONLY sip_ubicacion
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user",public;
+SET search_path TO public, pg_catalog;
 
 INSERT INTO schema_migrations (version) VALUES ('20150413160156');
 
@@ -1022,4 +1022,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150528100944');
 INSERT INTO schema_migrations (version) VALUES ('20150707164448');
 
 INSERT INTO schema_migrations (version) VALUES ('20150710114451');
+
+INSERT INTO schema_migrations (version) VALUES ('20150717101243');
 

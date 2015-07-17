@@ -6,7 +6,7 @@ module Sip
 		it "valido" do
 			clase = FactoryGirl.build(:sip_clase)
 			expect(clase).to be_valid
-			clase.destroy
+			clase.destroy!
 		end
 
 		it "no valido" do
