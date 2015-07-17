@@ -20,14 +20,23 @@ module Sip
 
           validates :id, presence: true, uniqueness: true
           validates :nombreiso, presence: true, allow_blank: false, 
-            length: { maximum: 200 } 
+            length: { maximum: 200 }, 
+            uniqueness: { case_sensitive: false, allow_blank: true}
           validates :nombre, presence: true, allow_blank: false, 
-            length: { maximum: 200 } 
-          validates :alfa2, length: { maximum: 2 } 
-          validates :alfa3, length: { maximum: 3 } 
+            length: { maximum: 200 },
+            uniqueness: { case_sensitive: false, allow_blank: true}
+          validates :alfa2, length: { maximum: 2 }, 
+            uniqueness: { case_sensitive: false, allow_blank: true}
+          validates :alfa3, length: { maximum: 3 },
+            uniqueness: { case_sensitive: false, allow_blank: true}
           validates :div1, length: { maximum: 100 } 
           validates :div2, length: { maximum: 100 } 
           validates :div3, length: { maximum: 100 } 
+
+          def nombreiso=(val)
+            self[:nombreiso] = val.upcase.squish
+          end
+
         end
 
       end

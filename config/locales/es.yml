@@ -5,10 +5,6 @@ es:
     formatoregex: Formato (exp. reg)
     municipio: Municipio
     departamento: Departamento/Estado
-    tclase: Tipo de Centro Poblado
-    clalocal: Código dentro del Municipio
-    munlocal: Código dentro del Departamento/Estado
-    deplocal: Código dentro del País
     pais: País
     supracategoria: Supracategoria
     tviolencia: Tipo de Violencia
@@ -26,18 +22,22 @@ es:
       "sip/departamento":
         Departamento: Departamento/Estado
         Departamentos: Departamentos/Estados
+        id_deplocal: Código dentro del país
       "sip/fuenteprensa":
         Fuenteprensa: Fuente de Prensa
         Fuentesprensa: Fuentes de Prensa
       "sip/municipio":
         Municipio: Municipio
         Municipios: Municipios
+        id_munlocal: Código dentro del Departamento/Estado
       "sip/pais":
         Pais: Pais
         Paises: Paises
       "sip/tclase":
         Tclase: Tipo de Centro Poblado
         Tclases: Tipos de Centros Poblados
+        id_tclase: Tipo de Centro Poblado
+        id_clalocal: Código dentro del Municipio
       "sip/tdocumento":
         Tdocumento: Tipo de Documento
         Tdocumentos: Tipos de Documentos

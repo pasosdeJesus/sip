@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :sip_departamento, class: 'Sip::Departamento' do
 		id 1000  # No interfiere
-    nombre "Departamento1"
+    nombre "DEPARTAMENTO1"
     latitud 1.5
     longitud 1.5
     fechacreacion "2014-08-04"

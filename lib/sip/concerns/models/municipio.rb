@@ -21,6 +21,16 @@ module Sip
 
           validates :id_departamento, presence: true
 
+          validates_uniqueness_of :nombre, 
+            scope: :id_departamento,
+            case_sensitive: false, 
+            message: "debe ser único en el departamento/estado"
+          validates_uniqueness_of :id_munlocal,
+            scope: :id_departamento,
+            case_sensitive: false, 
+            message: "debe ser único en el departamento/estado",
+            allow_blank: true
+
           def presenta_nombre
             dep= Sip::Departamento.find(self.id_departamento)
             pais = Sip::Pais.find(dep.id_pais)

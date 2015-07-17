@@ -21,6 +21,17 @@ module Sip
 
           validates :id_municipio, presence:true
           validates :id_tclase, presence:true, length: { maximum: 10 } 
+
+          validates_uniqueness_of :id_clalocal, 
+            scope: :id_municipio,
+            message: "debe ser único en el municipio",
+            allow_blank: true 
+
+          validates_uniqueness_of :nombre, 
+            scope: :id_municipio,
+            case_sensitive: false, 
+            message: "debe ser único en el municpio"
+
         end
 
       end

@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :sip_municipio, class: 'Sip::Municipio' do
 		id 100000
-    nombre "Municipio1"
+    nombre "MUNICIPIO1"
     latitud 1.5
     longitud 1.5
     fechacreacion "2014-08-04"

@@ -21,6 +21,15 @@ module Sip
             class_name: 'Sip::Pais'
 
           validates :id_pais, presence: true
+          
+          validates_uniqueness_of :nombre, 
+            scope: :id_pais,
+            case_sensitive: false, 
+            message: "debe ser único en el país"
+          validates_uniqueness_of :id_deplocal, 
+            scope: :id_pais, 
+            message: "debe ser único en el país", 
+            allow_blank: true
 
           def presenta_nombre
             pais = Sip::Pais.find(self.id_pais)

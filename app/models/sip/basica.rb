@@ -9,9 +9,18 @@ module Sip
         where(fechadeshabilitacion: nil).order(campoord.to_sym)
       }
       validates :nombre, presence: true, allow_blank: false, 
-        length: { maximum: 500 } 
+        length: { maximum: 500 }
       validates :observaciones, length: { maximum: 5000 }
       validates :fechacreacion, presence: true, allow_blank: false
+
+      # El siguiente es problemático para deptos/mcpios y centros poblados
+      # Los repetidos de esos deben inclurise en SQL por el momento
+      validates_uniqueness_of :nombre, case_sensitive: false
+
+      # Por defecto tablas básicas con datos en mayúsculas y sin espacios redundantes
+      def nombre=(val)
+        self[:nombre] = val.upcase.squish
+      end
 
       # Si atr corresponde a tabla combinada la retorna
       # en otro caso retorna nil

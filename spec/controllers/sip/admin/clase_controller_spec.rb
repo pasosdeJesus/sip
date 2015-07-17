@@ -56,6 +56,8 @@ describe Sip::Admin::ClasesController do
 				atc = FactoryGirl.attributes_for(:sip_clase)
         expect {
           post :create, {:clase => atc}
+          #puts response.body
+          #byebug
         }.to change(Sip::Clase, :count).by(1)
 				c = Sip::Clase.where(nombre: atc[:nombre]).take
 				c.destroy!
