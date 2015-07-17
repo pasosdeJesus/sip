@@ -2,6 +2,24 @@
   url: @basica.id.nil? ? (admin_basicas_path(@basica)) : 
   admin_basica_path(@basica), 
   defaults: { input_html: { class: 'span10' } } do |f| %>
+
+  <div id="errores">
+    <% if f.object.errors.any? %>
+      <div id="error_explanation">
+        <div class="alert alert-error">
+          El formulario tiene 
+          <%= pluralize(f.object.errors.count, "error") %>.
+        </div>
+        <ul>
+          <% f.object.errors.full_messages.each do |msg| %>
+            <li>* <%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= f.error_notification %>
+  </div>
+
   <% atributos_form.each do |atr|  %>
     <% #byebug %>
     <% alf = @basica.asociacion_llave_foranea(atr) %>
