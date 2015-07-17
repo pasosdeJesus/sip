@@ -18,7 +18,7 @@ module Sip
           has_many :ubicacion, foreign_key: "id_pais", validate: true,
             class_name: 'Sip::Ubicacion' 
 
-          validates :id, presence: true
+          validates :id, presence: true, uniqueness: true
           validates :nombreiso, presence: true, allow_blank: false, 
             length: { maximum: 200 } 
           validates :nombre, presence: true, allow_blank: false, 

@@ -13,7 +13,7 @@ module Sip
             class_name: 'Sip::Clase'
 
           validates :id, presence: true, allow_blank: false, 
-            length: { maximum: 10} 
+            length: { maximum: 10}
           validates_uniqueness_of :id, case_sensitive: false
         end
       end

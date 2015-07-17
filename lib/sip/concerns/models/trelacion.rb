@@ -13,10 +13,10 @@ module Sip
 
           validates :id, presence: true, allow_blank: false, 
             length: { maximum: 2} 
+          validates_uniqueness_of :id, case_sensitive: false
           validates :inverso, presence: true, allow_blank: false, 
             length: { maximum: 2} 
           validates :observaciones, length: { maximum: 200}
-          validates_uniqueness_of :id, case_sensitive: false
         end
       end
     end
