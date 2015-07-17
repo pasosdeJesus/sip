@@ -33,7 +33,7 @@ module Sip
       end
   
       def genclase
-        return 'F';
+        return 'M'; # Centro poblado
       end
 
       def clase_params
