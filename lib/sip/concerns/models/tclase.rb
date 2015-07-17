@@ -15,6 +15,11 @@ module Sip
           validates :id, presence: true, allow_blank: false, 
             length: { maximum: 10}
           validates_uniqueness_of :id, case_sensitive: false
+
+          def id=(val)
+            self[:id] = val.upcase.squish
+          end
+
         end
       end
     end
