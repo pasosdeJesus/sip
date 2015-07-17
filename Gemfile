@@ -85,7 +85,7 @@ group :development, :test do
   # https://www.relishapp.com/womply/rails-style-guide/docs/developing-rails-applications/bundler
   # Lanza programas para examinar resultados
   gem "launchy"
-
+  
   # Depurar
   #gem 'byebug'
   
