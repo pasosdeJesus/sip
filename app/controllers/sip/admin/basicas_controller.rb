@@ -29,15 +29,15 @@ module Sip
            @basica = c.order(camponombre).paginate(
              :page => params[:pagina], per_page: 20
            );
-          render layout: 'application'
+          render :index, layout: 'application'
          }
          format.json {
            @basica = c.order(camponombre)
-           render json: @basica
+           render :index, json: @basica
          }
          format.js {
            @basica = c.order(camponombre)
-           render json: @basica
+           render :index, json: @basica
          }
         end
       end
@@ -105,7 +105,24 @@ module Sip
       end
 
       # Elimina un registro 
-      def destroy
+      def destroy(mens = "")
+        if @basica.class.columns_hash
+          m = @basica.class.reflect_on_all_associations(:has_many)
+          m.each do |r|
+            if !r.options[:through]
+              rel = @basica.send(r.name)
+              if (rel.count > 0) 
+                nom = @basica.class.human_attribute_name(r.name)
+                mens += " Hay #{rel.count} elementos relacionados en " +
+                  " la tabla #{nom}, no puede eliminarse aún. "
+              end
+            end
+          end
+          if mens
+            redirect_to(:back, {:flash => { :error => mens }})
+            return
+          end
+        end
         @basica.destroy
         respond_to do |format|
           format.html { redirect_to admin_basicas_url(@basica) }
