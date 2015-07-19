@@ -118,7 +118,7 @@ module Sip
               end
             end
           end
-          if mens
+          if mens != ''
             redirect_to(:back, {:flash => { :error => mens }})
             return
           end
