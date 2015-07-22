@@ -11,10 +11,10 @@ module Sip
 
           has_many :departamento, foreign_key: "id_pais", validate: true,
             class_name: 'Sip::Departamento' 
-          has_one :personanacionalde, foreign_key: "nacionalde", validate: true,
+          has_one :personanacionalde, foreign_key: "nacionalde", 
+            validate: true, class_name: "Sip::Persona"
+          has_one :personapais, foreign_key: "id_pais", 
             class_name: "Sip::Persona"
-          has_many :persona, foreign_key: "id_pais", validate: true,
-            class_name: 'Sip::Victima' 
           has_many :ubicacion, foreign_key: "id_pais", validate: true,
             class_name: 'Sip::Ubicacion' 
 
