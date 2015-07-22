@@ -1,6 +1,6 @@
 <%= simple_form_for @basica, 
   url: @basica.id.nil? ? (admin_basicas_path(@basica)) : 
-  admin_basica_path(@basica), 
+    admin_basica_path(@basica), 
   defaults: { input_html: { class: 'span10' } } do |f| %>
 
   <div id="errores">
