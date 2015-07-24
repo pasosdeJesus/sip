@@ -21,8 +21,8 @@ class AgregaIdClase2 < ActiveRecord::Migration
      ALTER TABLE sip_clase ADD UNIQUE(id);
     SQL
     execute <<-SQL
-        ALTER TABLE sip_clase ALTER COLUMN id
-            SET DEFAULT(nextval('sip_clase_id_seq'));
+     ALTER TABLE sip_clase ALTER COLUMN id
+       SET DEFAULT(nextval('sip_clase_id_seq'));
     SQL
     execute <<-SQL
     	ALTER TABLE sip_ubicacion RENAME COLUMN id_clase TO id_clalocal
