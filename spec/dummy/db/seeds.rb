@@ -1,19 +1,21 @@
 # encoding: UTF-8
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
-# Examples:
+# Este archivo debe contener todas las creaciones de registros
+# necesarias para alimentar la base de datos con sus valores por defecto.
+# Los datos puede cargarse con la tarea rake db:seed (o creados junto
+# con la tarea db:setup).
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# Ejemplos:
+#
+#   ciudades = Ciudad.create([{ name: 'Chia' }, { name: 'Cúcuta' }])
+#   Alcalde.create(name: 'Emanuel', ciudad: ciudades.first)
 
+conexion = ActiveRecord::Base.connection();
 
-connection = ActiveRecord::Base.connection();
-
-connection.execute(IO.read("../../db/datos-basicas.sql"));
+Sip::carga_semillas_sql(conexion, '../..', :datos)
 
 # usuario sip, clave sip123
-connection.execute("INSERT INTO usuario 
+conexion.execute("INSERT INTO usuario 
 	(nusuario, email, encrypted_password, password, 
   fechacreacion, created_at, updated_at, rol) 
 	VALUES ('sip', 'sip@localhost', 
