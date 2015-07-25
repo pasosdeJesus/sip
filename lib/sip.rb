@@ -54,13 +54,14 @@ module Sip
   # Renombra una secuncia
   # @return bool true sii puede renombrar
   def self.renombra_secuencia(conexion, anterior, nuevo)
-      if Sip::existe_secuencia?(conexion, anterior) && !Sip::existe_secuencia?(conexion, nuevo)
-        conexion.execute <<-SQL
-            ALTER SEQUENCE #{anterior}
-                RENAME TO #{nuevo};
-        SQL
-        return true
-      end
-      return false
+    if Sip::existe_secuencia?(conexion, anterior) && !Sip::existe_secuencia?(conexion, nuevo)
+      conexion.execute <<-SQL
+        ALTER SEQUENCE #{anterior}
+          RENAME TO #{nuevo};
+      SQL
+      return true
+    end
+    return false
   end
+
 end
