@@ -1,12 +1,12 @@
 #!/bin/sh
 # Hace prueba de regresión y envia a github
 
-grep "^ *gem *.debugger*" Gemfile > /dev/null 2> /dev/null
+grep "^ *gem.*debugger" Gemfile > /dev/null 2> /dev/null
 if (test "$?" = "0") then {
 	echo "Gemfile incluye debugger que heroku no quiere"
 	exit 1;
 } fi;
-grep "^ *gem *.byebug*" Gemfile > /dev/null 2> /dev/null
+grep "^ *gem.*byebug" Gemfile > /dev/null 2> /dev/null
 if (test "$?" = "0") then {
 	echo "Gemfile incluye byebug que rbx de travis-ci no quiere"
 	exit 1;
