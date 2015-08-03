@@ -7,13 +7,13 @@ module Sip
     it "valido" do
       trelacion = FactoryGirl.build(:sip_trelacion)
       expect(trelacion).to be_valid
-      trelacion.destroy
+      trelacion.destroy!
     end
 
     it "no valido" do
       trelacion = FactoryGirl.build(:sip_trelacion, nombre: '')
       expect(trelacion).not_to be_valid
-      trelacion.destroy
+      trelacion.destroy!
     end
 
     it "existente" do

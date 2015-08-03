@@ -7,14 +7,18 @@ module Sip
         extend ActiveSupport::Concern
         included do
 
-          belongs_to :persona, foreign_key: "persona1", validate: true, 
-            class_name: 'Sip::Persona'
-          belongs_to :persona, foreign_key: "persona2", validate: true, 
+          belongs_to :personauno, foreign_key: "persona1", validate: true, 
+            class_name: 'Sip::Persona' 
+          belongs_to :personados, foreign_key: "persona2", validate: true, 
             class_name: 'Sip::Persona'
           belongs_to :trelacion, foreign_key: "id_trelacion", validate: true, 
             class_name: 'Sip::Trelacion'
 
-          validates :observaciones, length: { maximum: 200 }
+          validates :personauno, presence: true
+          validates :personados, presence: true
+          validates :trelacion, presence: true
+
+          validates_uniqueness_of :persona1, scope: [:persona2, :id_trelacion]
         end
       end
     end
