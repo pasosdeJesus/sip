@@ -52,6 +52,13 @@ module Sip
           validates_presence_of   :encrypted_password, :on=>:create
           validates_confirmation_of   :encrypted_password, :on=>:create
 
+          def confirmation_token=(value)
+            if value == '' 
+              value = nil;
+            end
+            super(value);
+          end
+
           def presenta_nombre
             r = self.nusuario
             if self.nombre
