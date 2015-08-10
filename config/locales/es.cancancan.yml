@@ -1,0 +1,8 @@
+es:
+  unauthorized:
+    default: "No está autorizado para ingresar a esta página."
+    manage:
+      all: "No está autorizado para %{action} %{subject}."
+      user: "No se le permite manejar otras cuentas de usuario."
+    update:
+      project: "No se le permite actualizar este proyecto."
