@@ -12,9 +12,10 @@ module Sip
   #     cambios-basica.sql o datos-basica.sql. El primero debería tener cambios
   #     a tablas básicas de motor del cual desciende directamente.
   #     El segundo debería tener nuevos datos para las tablas básicas.
+  # @param patexcluye Excluir lineas que cumplan el patrón
   #
   # @return void Si el archivo existe lo ejecuta
-  def self.carga_semillas_sql(conexion, motor, tipoarchivo)
+  def self.carga_semillas_sql(conexion, motor, tipoarchivo, patexcluye = nil)
     if (tipoarchivo.to_s != 'datos' && tipoarchivo.to_s != 'cambios')
       raise 'Las semillas solo pueden ser cambios o datos'
     end
@@ -30,6 +31,9 @@ module Sip
     n = "#{motor}db/#{tipoarchivo.to_s}-basicas.sql"
     if File.exists?(n) then
       l = File.readlines(n)
+      if (patexcluye) 
+        l = l.select { |u| !u[patexcluye] }
+      end
       conexion.execute(l.join("\n"))
     end
   end
