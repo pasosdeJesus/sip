@@ -28,12 +28,12 @@
               op += '<option value="' + 
                 item.id + '">' + item.nombre + '</option>'
           )
-          $("#" + iddep).html(op) 
-          $("#" + iddep).attr("disabled", false) 
-          $("#" + idmun).html('') if idmun
-          $("#" + idmun).attr("disabled", true) if idmun 
-          $("#" + idcla).html('') if idcla
-          $("#" + idcla).attr("disabled", true) if idcla
+          $('#' + iddep).html(op) 
+          $('#' + iddep).attr('disabled', false) 
+          $('#' + idmun).html('') if idmun
+          $('#' + idmun).attr('disabled', true) if idmun 
+          $('#' + idcla).html('') if idcla
+          $('#' + idcla).attr('disabled', true) if idcla
       )
       x.error((m1, m2, m3) -> 
           alert(
