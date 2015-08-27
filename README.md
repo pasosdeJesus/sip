@@ -72,4 +72,4 @@ rake db:setup sip:indices
 
 ## Resto de la documentación 
 
-Después de tener su primer ejemplo peude generar tablas básicas para su aplicación, personalizar los modelos, vistas y controladores que sip ofrece. Consulte: https://github.com/pasosdeJesus/sip/wiki
+Después de tener su primer ejemplo puede generar tablas básicas para su aplicación, personalizar los modelos, vistas y controladores que sip ofrece. Consulte: https://github.com/pasosdeJesus/sip/wiki
