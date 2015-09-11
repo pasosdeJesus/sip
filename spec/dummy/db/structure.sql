@@ -812,14 +812,6 @@ ALTER TABLE ONLY sip_persona_trelacion
 
 
 --
--- Name: sip_persona_trelacion_persona1_persona2_id_trelacion_key1; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY sip_persona_trelacion
-    ADD CONSTRAINT sip_persona_trelacion_persona1_persona2_id_trelacion_key1 UNIQUE (persona1, persona2, id_trelacion);
-
-
---
 -- Name: sip_persona_trelacion_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
