@@ -119,8 +119,9 @@ namespace :sip do
     puts "sip - vuelca"
 		abcs = ActiveRecord::Base.configurations
 		fecha = DateTime.now.strftime('%Y-%m-%d') 
+		dia = DateTime.now.strftime('%d') 
     archcopia = Sip.ruta_volcados + "/" + abcs[Rails.env]['database'] +
-      "-" + fecha + ".sql"
+      "-" + dia + ".sql"
 		File.open(archcopia, "w") { |f| f << "-- Volcado del #{fecha}\n\n" }
 		set_psql_env(abcs[Rails.env])
 		search_path = abcs[Rails.env]['schema_search_path']
