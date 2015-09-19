@@ -76,6 +76,7 @@ module Sip
               render action: 'show', status: :created, location: @basica
             }
           else
+            @basica.id = nil; # Volver a elegir Id
             format.html { render action: 'new', layout: 'application' }
             format.json { 
               render json: @basica.errors, status: :unprocessable_entity 
