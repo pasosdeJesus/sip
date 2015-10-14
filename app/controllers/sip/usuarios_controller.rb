@@ -8,7 +8,7 @@ class Sip::UsuariosController < ApplicationController
   # GET /usuarios
   # GET /usuarios.json
   def index
-    @usuarios = Usuario.order('nusuario').paginate(:page => params[:pagina], per_page: 20)
+    @usuarios = Usuario.order('LOWER(nusuario)').paginate(:page => params[:pagina], per_page: 20)
   end
 
   # GET /usuarios/1
