@@ -10,13 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require jquery-ui/autocomplete
-//= require bootstrap-datepicker
-//= require twitter/bootstrap
-//= require turbolinks
-//= require sip/geo
+//= require sip/motor
 //= require_tree .
 
 
@@ -24,6 +18,17 @@ $(document).on('ready page:load', function() {
 	var root;
 	root = typeof exports !== "undefined" && exports !== null ? exports : this;
 	sip_prepara_eventos_comunes(root);
+
+	formato_fecha = 'yyyy-mm-dd'
+	if ($('meta[name=formato_fecha]').length > 0) {
+		formato_fecha = $('meta[name=formato_fecha]').attr('content')
+	}
+	$('[data-behaviour~=datepicker]').datepicker({
+		format: formato_fecha,
+		autoclose: true,
+		todayHighlight: true,
+		language: 'es'	
+	});
 });
 
 
