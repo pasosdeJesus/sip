@@ -18,7 +18,6 @@ module Sip
       validates_uniqueness_of :nombre, case_sensitive: false
 
       validate :fechacreacion_posible?
-
       def fechacreacion_posible?
         if fechacreacion < Date.new(2001,1,1)
           errors.add(:fechacreacion, 'Debe ser reciente (posterior a 2001)')
@@ -26,7 +25,6 @@ module Sip
       end
 
       validate :fechadeshabilitacion_posible?
-
       def fechadeshabilitacion_posible?
         if (!fechadeshabilitacion.blank? && fechadeshabilitacion < fechacreacion)
           errors.add(:fechadeshabilitacion, 'Debe ser posterior a la de creación')
