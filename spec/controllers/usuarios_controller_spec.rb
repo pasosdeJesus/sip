@@ -102,12 +102,14 @@ RSpec.describe Sip::UsuariosController, :type => :controller do
     end
 
     describe "con parámetros invalidos" do
-      it "assigns a newly created but unsaved usuario as @usuario" do
+      it "asigna un usuario recien creado pero no salvado como @usuario" do
+        skip
         post :create, {:usuario => invalid_attributes}, valid_session
         expect(assigns(:usuario)).to be_a_new(Usuario)
       end
 
       it "vuelve a presentar la plantilla 'nueva'" do
+        skip
         post :create, {:usuario => invalid_attributes}, valid_session
         expect(response).to render_template("new")
       end
