@@ -105,6 +105,7 @@ module Sip
     end
 
     # Se definen habilidades con cancancan
+    # @usuario Usuario que hace petición
     def initialize(usuario)
       # El primer argumento para can es la acción a la que se da permiso, 
       # el segundo es el recurso sobre el que puede realizar la acción, 
@@ -120,7 +121,7 @@ module Sip
       # 
       # Detalles en el wiki de cancan: 
       #   https://github.com/ryanb/cancan/wiki/Defining-Abilities
-     
+   
       # Sin autenticación puede consultarse información geográfica 
       can :read, [Sip::Pais, Sip::Departamento, Sip::Municipio, Sip::Clase]
       if !usuario || usuario.fechadeshabilitacion
