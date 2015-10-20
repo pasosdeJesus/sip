@@ -1,17 +1,20 @@
 # encoding: UTF-8
+
 module Sip
   class ApplicationController < ActionController::Base
+
     before_filter do
       resource = controller_name.singularize.to_sym
       method = "#{resource}_params"
       params[resource] &&= send(method) if respond_to?(method, true)
     end
 
-    before_action :configure_permitted_parameters, if: :devise_controller?
+    before_action :configure_permitted_parameters, 
+      if: :devise_controller?
 
-    # Clase que hereda debe llamar 
+    # Aplicación final debe hacer algo como:
     #protect_from_forgery with: :exception
-
+    
     def current_ability
       @current_ability ||= ::Ability.new(current_usuario)
     end
@@ -23,5 +26,6 @@ module Sip
       devise_parameter_sanitizer.for(:account_update) << 
       [:nombre, :email, :descripcion]
     end
+
   end
 end
