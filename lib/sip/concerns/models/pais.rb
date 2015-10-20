@@ -34,7 +34,7 @@ module Sip
           validates :div3, length: { maximum: 100 } 
 
           def nombreiso=(val)
-            self[:nombreiso] = val.upcase.squish
+            self[:nombreiso] = val.upcase.squish if val
           end
 
         end

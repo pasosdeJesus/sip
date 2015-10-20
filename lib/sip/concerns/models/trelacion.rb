@@ -32,11 +32,11 @@ module Sip
           end
 
           def id=(val)
-            self[:id] = val.upcase.squish
+            self[:id] = val.upcase.squish if val
           end
 
           def inverso=(val)
-            self[:inverso] = val.upcase.squish
+            self[:inverso] = val.upcase.squish if val
           end
 
         end

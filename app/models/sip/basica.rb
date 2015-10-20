@@ -35,7 +35,7 @@ module Sip
 
       # Por defecto tablas básicas con datos en mayúsculas y sin espacios redundantes
       def nombre=(val)
-        self[:nombre] = val.upcase.squish
+        self[:nombre] = val.upcase.squish if val
       end
 
       # Si atr corresponde a tabla combinada la retorna

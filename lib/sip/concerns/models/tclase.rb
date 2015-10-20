@@ -17,7 +17,7 @@ module Sip
           validates_uniqueness_of :id, case_sensitive: false
 
           def id=(val)
-            self[:id] = val.upcase.squish
+            self[:id] = val.upcase.squish if val
           end
 
         end
