@@ -48,6 +48,19 @@ module Sip
           validates_presence_of :sign_in_count
 
           validates_presence_of :fechacreacion
+          validate :fechacreacion_posible?
+          def fechacreacion_posible?
+            if fechacreacion < Date.new(2001,1,1)
+              errors.add(:fechacreacion, 'Debe ser reciente (posterior a 2001)')
+            end
+          end
+
+          validate :fechadeshabilitacion_posible?
+          def fechadeshabilitacion_posible?
+            if (!fechadeshabilitacion.blank? && fechadeshabilitacion < fechacreacion)
+              errors.add(:fechadeshabilitacion, 'Debe ser posterior a la de creación')
+            end
+          end
 
           validates_presence_of   :encrypted_password, :on=>:create
           validates_confirmation_of   :encrypted_password, :on=>:create
