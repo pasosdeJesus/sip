@@ -14,14 +14,23 @@ module Sip
         if params[:term] && params[:term] != ''
           term = params[:term]
           consNom = term.downcase.strip #sin_tildes
-          consNom.gsub!(/ +/, ":* & ")
-          if consNom.length > 0
-            consNom += ":*"
+          if (c.all.count > 1000) 
+            #  Búsqueda rápida pero imprecisa cuando son muchos registros
+            #  Se vio error al buscar politi pero no politica en consulta en
+            #  PostgreSQL, se reportó por http://www.postgresql.org/support/submitbug/
+            #  quedó con #13690
+            consNom.gsub!(/ +/, ":* & ")
+            if consNom.length > 0
+              consNom += ":*"
+            end
+            where = " to_tsvector('spanish', unaccent(" +
+              c.busca_etiqueta_campos.join(" || ' ' || ") +
+              ")) @@ to_tsquery('spanish', ?)";
+            # autocomplete de jquery requiere label, val
+          else
+            where = "LOWER(UNACCENT(codigo || ' ' || nombre)) LIKE " +
+             "('%' || unaccent(?) || '%')"
           end
-          where = " to_tsvector('spanish', unaccent(" +
-            c.busca_etiqueta_campos.join(" || ' ' || ") +
-            ")) @@ to_tsquery('spanish', ?)";
-          # autocomplete de jquery requiere label, val
           c = c.where(where, consNom)
         end
         respond_to do |format|
