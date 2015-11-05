@@ -10,12 +10,14 @@ Este motor incluye
 - Autenticación con devise y bcrypt,  
 - Roles con cancancan, inicialmente Administrador y Usuario
 - Pruebas con rspec y factory girl,
-- Propuesta para manejar tablas básicas (parámetros de la aplicación) 
+- Propuesta para manejar automaticamente tablas básicas (parámetros de la aplicación) 
   y ejemplos de estas para: paises, departamentos/estados, municipios, 
   centros poblados, tipos de centros poblados, tipos de sitios, ubicaciones, 
   tipos de relaciones entre personas, tipos de documentos de identificación, 
   oficinas.  Faciles de modificar en aplicaciones que usen el motor vía 
   ```ActiveSupport::Concern```.
+- En tablas basicas los campos has_many seran validados automaticamente cuando se borra
+  un registro para reportar si antes deben cambiarse registros que dependan.
 - Datos geográficos completos para Colombia y Venezuela.
 - Propuesta de estructura para otros modelos típicos: persona, anexo; también 
   modificables en una aplicación que use el motor via 
