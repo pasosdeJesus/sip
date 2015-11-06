@@ -17,7 +17,7 @@
 $(document).on('ready page:load', function() {
 	var root;
 	root = typeof exports !== "undefined" && exports !== null ? exports : this;
-	sip_prepara_eventos_comunes(root);
+	sip_prepara_eventos_comunes(root, "/");
 
 	formato_fecha = 'yyyy-mm-dd'
 	if ($('meta[name=formato_fecha]').length > 0) {

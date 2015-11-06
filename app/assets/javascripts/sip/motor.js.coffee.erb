@@ -123,11 +123,21 @@ if (typeof String.prototype.endsWith != 'function')
   root.dant = d 
   return
 
+
+# Pone / al final de root.puntomontaje (que debe corresponder al
+# punto de montaje de la aplicación) o lo inicializa en / si no hay
+#
+# @param root espacio para poner variables globales
+@sip_arregla_puntomontaje = (root) ->
+  root.puntomontaje = '/' if typeof root.puntomontaje == 'undefined'
+  root.puntomontaje += '/' if root.puntomontaje[root.puntomontaje.length-1] != '/'
+
 # Prepara eventos comunes al usar sip
 # @param root espacio para poner variables globales
 # @param puntomontaje string punto de montaje de la aplicación (por defecto /)
-@sip_prepara_eventos_comunes = (root, puntomontaje) ->
-  puntomontaje = '/' if typeof puntomontaje == 'undefined'
+@sip_prepara_eventos_comunes = (root) ->
+  root.puntomontaje = <%= Rails.configuration.relative_url_root %>
+  sip_arregla_puntomontaje(root)
 
   # Formato de campos de fecha con datepicker
   $(document).on('cocoon:after-insert', (e) ->
@@ -145,30 +155,31 @@ if (typeof String.prototype.endsWith != 'function')
 
   # Al cambiar país se recalcula lista de departamentos
   $(document).on('change', 'select[id$=_id_pais]', (e) ->
-    llena_departamento($(this), puntomontaje)
+    llena_departamento($(this), root)
   )
   $(document).on('change', 'select[id$=_pais_id]', (e) ->
-    llena_departamento($(this), puntomontaje)
+    llena_departamento($(this), root)
   )
 
   # Al cambiar departamento se recalcula lista de municipios
   $(document).on('change', 'select[id$=_id_departamento]', (e) ->
-    llena_municipio($(this), puntomontaje)
+    llena_municipio($(this), root)
   )
   $(document).on('change', 'select[id$=_departamento_id]', (e) ->
-    llena_municipio($(this), puntomontaje)
+    llena_municipio($(this), root)
   )
 
   # Al cambiar municipio se recalcula lista de centros poblados
   $(document).on('change', 'select[id$=_id_municipio]', (e) ->
-    llena_clase($(this), puntomontaje)
+    llena_clase($(this), root)
   )
   $(document).on('change', 'select[id$=_municipio_id]', (e) ->
-    llena_clase($(this), puntomontaje)
+    llena_clase($(this), root)
   )
 
   $('#mundep').on('focusin', (e) ->
-    busca_gen($(this), null, puntomontaje + "/mundep.json")
+    sip_arregla_puntomontaje(root)
+    busca_gen($(this), null, root.puntomontaje + "/mundep.json")
   )
 
   $(document).on('change', 'select[data-enviarautomatico]', 

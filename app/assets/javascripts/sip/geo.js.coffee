@@ -12,16 +12,15 @@
   return ""
 
 #  Completa departamento
-@llena_departamento = ($this, puntomontaje) -> 
-  puntomontaje = '/' if typeof puntomontaje == 'undefined'
-  puntomontaje += '/' if puntomontaje[puntomontaje.length-1] != '/'
+@llena_departamento = ($this, root) -> 
+  sip_arregla_puntomontaje(root)
   idpais = $this.attr('id')
   iddep = busca_campo_similar(idpais, 'pais', 'departamento')
   idmun = busca_campo_similar(idpais, 'pais', 'municipio')
   idcla = busca_campo_similar(idpais, 'pais', 'clase')
   pais = $this.val()
   if (+pais > 0 && iddep) 
-      x = $.getJSON(puntomontaje + "admin/departamentos", {id_pais: pais})
+      x = $.getJSON(root.puntomontaje + "admin/departamentos", {id_pais: pais})
       x.done((data) -> 
           op = '<option value=""></option>'
           $.each( data, ( i, item ) -> 
@@ -51,16 +50,15 @@
 
 
 #  Completa municipio.
-@llena_municipio = ($this, puntomontaje) -> 
-  puntomontaje = '/' if typeof puntomontaje == 'undefined'
-  puntomontaje += '/' if puntomontaje[puntomontaje.length-1] != '/'
+@llena_municipio = ($this, root) -> 
+  sip_arregla_puntomontaje(root)
   iddep = $this.attr('id')
   idpais = busca_campo_similar(iddep, 'departamento', 'pais')
   idmun = busca_campo_similar(iddep, 'departamento', 'municipio')
   idcla = busca_campo_similar(iddep, 'departamento', 'clase')
   dep = $this.val()
   if (+dep > 0 && idmun != '') 
-      x = $.getJSON(puntomontaje + "admin/municipios", {id_departamento: dep})
+      x = $.getJSON(root.puntomontaje + "admin/municipios", {id_departamento: dep})
       x.done((data) -> 
           op = '<option value=""></option>'
           $.each( data, ( i, item ) -> 
@@ -85,16 +83,15 @@
 
 
 # Completa cuadro de selección para clase de acuerdo a depto y mcpio.
-@llena_clase = ($this, puntomontaje) -> 
-  puntomontaje = '/' if typeof puntomontaje == 'undefined'
-  puntomontaje += '/' if puntomontaje[puntomontaje.length-1] != '/'
+@llena_clase = ($this, root) -> 
+  sip_arregla_puntomontaje = (root)
   idmun = $this.attr('id')
   idpais = busca_campo_similar(idmun, 'municipio', 'pais')
   iddep = busca_campo_similar(idmun, 'municipio', 'departamento')
   idcla = busca_campo_similar(idmun, 'municipio', 'clase')
   mun = $this.val()
   if (+mun > 0 && idcla != '') 
-    x = $.getJSON(puntomontaje + "admin/clases", {id_municipio: mun})
+    x = $.getJSON(root.puntomontaje + "admin/clases", {id_municipio: mun})
     x.done( ( data ) ->
       op = '<option value=""></option>';
       $.each( data, ( i, item ) ->
