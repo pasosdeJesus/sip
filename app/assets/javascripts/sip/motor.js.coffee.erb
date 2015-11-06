@@ -134,9 +134,8 @@ if (typeof String.prototype.endsWith != 'function')
 
 # Prepara eventos comunes al usar sip
 # @param root espacio para poner variables globales
-# @param puntomontaje string punto de montaje de la aplicación (por defecto /)
 @sip_prepara_eventos_comunes = (root) ->
-  root.puntomontaje = <%= Rails.configuration.relative_url_root %>
+  root.puntomontaje = '<%= Rails.configuration.relative_url_root %>'
   sip_arregla_puntomontaje(root)
 
   # Formato de campos de fecha con datepicker
