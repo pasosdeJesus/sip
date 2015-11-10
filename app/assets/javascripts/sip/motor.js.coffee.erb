@@ -193,6 +193,19 @@ if (typeof String.prototype.endsWith != 'function')
       enviarautomatico_formulario(root, $(e.target.form))
   )
 
+  # Rotador: http://blog.emaillenin.com/2014/06/showing-a-spinnerloading-cursor-icon-for-rails-4-turbolink.html
+  iniciaRotador = ->
+    $("html").css "cursor", "progress"
+    return
+
+  detieneRotador = ->
+    $("html").css "cursor", "auto"
+    return
+
+  $(document).on "page:fetch", iniciaRotador
+
+  $(document).on "page:receive", detieneRotador
+
   return
 
 
