@@ -19,9 +19,21 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "jquery-rails"
+  s.add_dependency "colorize"
 
   s.add_runtime_dependency "rails"
+  s.add_runtime_dependency "rails-i18n"
   s.add_runtime_dependency "devise"
+  s.add_runtime_dependency "devise-i18n"
+  s.add_runtime_dependency "paperclip"
+  s.add_runtime_dependency "cancancan"
+  s.add_runtime_dependency "simple_form"
+  s.add_runtime_dependency "will_paginate"
+  s.add_runtime_dependency "twitter-bootstrap-rails"
+  s.add_runtime_dependency "jquery-ui-rails"
+  s.add_runtime_dependency "jquery-ui-bootstrap-rails"
+  s.add_runtime_dependency "bootstrap-datepicker-rails"
+  s.add_runtime_dependency "twitter_cldr"
 
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "capybara"
