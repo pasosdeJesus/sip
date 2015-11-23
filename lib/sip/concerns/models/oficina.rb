@@ -8,6 +8,7 @@ module Sip
 
         include Sip::Basica
         included do
+          self.table_name = 'sip_oficina'
         end
       end
     end
