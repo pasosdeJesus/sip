@@ -8,7 +8,7 @@ module Sip
 
         include Sip::Basica
         included do
-
+          self.table_name = 'sip_tdocumento'
           validates :sigla, length: { maximum: 100 }
           validates :formatoregex, length: { maximum: 500 }
         end

@@ -5,7 +5,9 @@ module Sip
     module Models
       module Persona
         extend ActiveSupport::Concern
+
         included do
+          self.table_name = 'sip_persona'
           has_many :persona_trelacion1, foreign_key: "persona1", validate: true,
             class_name: "Sip::PersonaTrelacion"
           has_many :persona_trelacion2, foreign_key: "persona2", validate: true,
