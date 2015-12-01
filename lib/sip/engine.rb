@@ -37,8 +37,8 @@ module Sip
     mattr_accessor :ruta_anexos
     mattr_accessor :ruta_volcados
     mattr_accessor :titulo
-    self.ruta_anexos = "/var/www/resbase/anexos"
-    self.ruta_volcados = "/var/www/resbase/sip"
+    self.ruta_anexos = "/var/www/resbase/sip/anexos"
+    self.ruta_volcados = "/var/www/resbase/sip/bd"
     self.titulo = "Motor para Sistemas de Información estilo Pasos de Jesús" 
   end
 
