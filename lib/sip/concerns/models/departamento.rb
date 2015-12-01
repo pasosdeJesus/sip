@@ -8,6 +8,7 @@ module Sip
 
         include Sip::Basica
         included do
+          self.table_name = 'sip_departamento'
           has_many :municipio, foreign_key: "id_departamento", validate: true, 
             class_name: 'Sip::Municipio'
           has_many :persona, foreign_key: "id_departamento", validate: true, 

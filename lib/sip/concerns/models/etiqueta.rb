@@ -8,6 +8,7 @@ module Sip
 
         include Sip::Basica
         included do
+          self.table_name = 'sip_etiqueta'
           validates :nombre, presence: true, allow_blank: false
           validates :fechacreacion, presence: true, allow_blank: false
           validates :observaciones, length: { maximum: 500 }
