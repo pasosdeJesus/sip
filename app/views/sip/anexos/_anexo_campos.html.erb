@@ -1,5 +1,5 @@
 <%= a.input :descripcion %>
-<% if !a.object || !a.object.adjunto_file_name %>
+<% if !a.object || !a.object.adjunto_file_name || !a.object.id %>
   <%= a.input :adjunto, as: :file, label: 'Archivo' %>
 <% else %>
   <div class="sip_anexo_adjunto">
