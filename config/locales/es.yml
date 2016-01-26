@@ -51,7 +51,6 @@ es:
         Ubicacion: Ubicación
       "usuario":
         nusuario: Usuario
-        regionsjr: Oficina
         descripcion: Descripción
         encrypted_password: Clave
         created_at: Fecha Registro
