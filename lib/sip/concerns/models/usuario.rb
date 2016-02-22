@@ -31,6 +31,7 @@ module Sip
           # debe hacerse alli
           # validates_length_of :nusuario, maximum: 15 
           validates_presence_of :nusuario
+          validates_length_of :nusuario, maximum: 15
  
           validates_length_of :nombre, maximum: 50
           validates_length_of :password, maximum: 64
