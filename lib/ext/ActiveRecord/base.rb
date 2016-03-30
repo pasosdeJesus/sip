@@ -36,7 +36,11 @@ class ActiveRecord::Base
         d = val[0, 2]
         meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 
                'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
-        m = 1 + meses.index(nomm)
+        m = 1
+        nm = meses.index(nomm)
+        if nm
+          m = 1 + meses.index(nomm)
+        end
         write_attribute(f, "#{a}-#{m}-#{d}")
       end
     end
