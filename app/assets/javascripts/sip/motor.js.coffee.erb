@@ -141,7 +141,7 @@ if (typeof String.prototype.endsWith != 'function')
   # Formato de campos de fecha con datepicker
   $(document).on('cocoon:after-insert', (e) ->
     $('[data-behaviour~=datepicker]').datepicker({
-      format: '<%= Rails.configuration.x.formato_fecha %>'
+      format: '<%= Rails.configuration.x.formato_fecha  ? Rails.configuration.x.formato_fecha : 'yyyy-mm-dd' %>'
       autoclose: true
       todayHighlight: true
       language: 'es'
