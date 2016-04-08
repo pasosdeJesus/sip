@@ -18,14 +18,29 @@ module Sip
       render layout: 'application'
     end
 
+    def verificarutas
+      em = ""
+      if !File.directory?(Sip.ruta_anexos) 
+      	em += "No existe ruta de anexos '#{Sip.ruta_anexos}'. "
+      end
+      if !File.directory?(Sip.ruta_volcados) 
+      	em += "No existe ruta de volcados '#{Sip.ruta_volcados}'. "
+      end
+      if em != ''
+        flash[:error] = em
+      end
+    end
+
     def index
       if current_usuario
         authorize! :contar, Sip::Ubicacion
       end
+      verificarutas
       render layout: 'application'
     end
 
     def acercade
+      verificarutas
       render layout: 'application'
     end
 
