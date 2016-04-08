@@ -139,9 +139,16 @@ if (typeof String.prototype.endsWith != 'function')
   sip_arregla_puntomontaje(root)
 
   # Formato de campos de fecha con datepicker
+  root.formato_fecha = '<%= Rails.configuration.x.formato_fecha  ? Rails.configuration.x.formato_fecha : "yyyy-mm-dd" %>'
+  $('[data-behaviour~=datepicker]').datepicker({
+    format: root.formato_fecha,
+    autoclose: true,
+    todayHighlight: true,
+    language: 'es'	
+  })
   $(document).on('cocoon:after-insert', (e) ->
     $('[data-behaviour~=datepicker]').datepicker({
-      format: '<%= Rails.configuration.x.formato_fecha  ? Rails.configuration.x.formato_fecha : 'yyyy-mm-dd' %>'
+      format: root.formato_fecha
       autoclose: true
       todayHighlight: true
       language: 'es'
