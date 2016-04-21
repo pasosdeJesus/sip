@@ -42,8 +42,16 @@ Este motor incluye
 * Ruby version >= 2.3
 * Ruby on Rails 4.2.x
 * PostgreSQL >= 9.4 con extensión unaccent disponible
-* Recomendado sobre adJ 5.8 (que incluye todos los componentes mencionados) usando
-  bundler con doas, ver [http://dhobsd.pasosdejesus.org/bundler-doas.html].  
+* Recomendado sobre adJ 5.8 (que incluye todos los componentes mencionados) 
+  usando ```bundler``` con ```doas```, ver 
+  <http://dhobsd.pasosdejesus.org/bundler-doas.html>.  
+* El usuario que utilice la aplicación debe tener permiso de usar al menos 
+  1024M en RAM y para abrir al menos 2048 archivos.  En adJ asegurese de poner
+  un valor alto de archivos que se pueden abrir simultanemanete en la variable 
+  de configuración del kernel ```kern.maxfiles``` por ejemplo 20000
+  (en ```/etc/sysctl.conf```) y en la clase del usuario (en
+   ```/etc/login.conf```) que al menos diga ```:datasize-cur=1024M:``` 
+   y  ```:openfiles-cur=2048:```
 
 Estas instrucciones suponen que opera en este ambiente, puedes ver más sobre
 la instalación de Ruby on Rails en adJ en 
