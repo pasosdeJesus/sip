@@ -39,30 +39,17 @@ Este motor incluye
 
 
 ## Requerimientos
-* Ruby version >= 2.3
-* Ruby on Rails 4.2.x
-* PostgreSQL >= 9.4 con extensión unaccent disponible
-* Recomendado sobre adJ 5.8 (que incluye todos los componentes mencionados) 
-  usando ```bundler``` con ```doas```, ver 
-  <http://dhobsd.pasosdejesus.org/bundler-doas.html>.  
-* El usuario que utilice la aplicación debe tener permiso de usar al menos 
-  1024M en RAM y para abrir al menos 2048 archivos.  En adJ asegurate de poner
-  un valor alto al máximo de archivos que el kernel pueden abrir 
-  simultanemanete en la variable de configuración ```kern.maxfiles``` por 
-  ejemplo 20000 en ```/etc/sysctl.conf``` y en la clase del usuario que
-  inicia la aplicación (en ```/etc/login.conf```) que al menos diga 
-  ```:datasize-cur=1024M:``` y  ```:openfiles-cur=2048:```
 
-Estas instrucciones suponen que operas en este ambiente, puedes ver más sobre
-la instalación de Ruby on Rails en adJ en 
-[http://dhobsd.pasosdejesus.org/Ruby_on_Rails_en_OpenBSD.html]
+Ver <https://github.com/pasosdeJesus/sip/wiki/Requerimientos>
 
-## Creación de un sistema de información mínimo usando sip
+## Aplicación mínima incluida en sip
 
 **sip** ya viene con una aplicación mínima que es la usada para hacer
 pruebas de regresión, antes de iniciar una aplicación aparte, puedes
 intentar ejecutar esa aplicación, siguiendo las instrucciones de:
 <https://github.com/pasosdeJesus/sip/wiki/Aplicaci%C3%B3n-de-prueba>
+
+## Creación de un sistema de información mínimo usando sip
 
 Para iniciar una aplicación que usará **sip** sugerimos:
 
