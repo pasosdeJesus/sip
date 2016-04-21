@@ -46,18 +46,25 @@ Este motor incluye
   usando ```bundler``` con ```doas```, ver 
   <http://dhobsd.pasosdejesus.org/bundler-doas.html>.  
 * El usuario que utilice la aplicación debe tener permiso de usar al menos 
-  1024M en RAM y para abrir al menos 2048 archivos.  En adJ asegurese de poner
-  un valor alto de archivos que se pueden abrir simultanemanete en la variable 
-  de configuración del kernel ```kern.maxfiles``` por ejemplo 20000
-  (en ```/etc/sysctl.conf```) y en la clase del usuario (en
-   ```/etc/login.conf```) que al menos diga ```:datasize-cur=1024M:``` 
-   y  ```:openfiles-cur=2048:```
+  1024M en RAM y para abrir al menos 2048 archivos.  En adJ asegurate de poner
+  un valor alto al máximo de archivos que el kernel pueden abrir 
+  simultanemanete en la variable de configuración ```kern.maxfiles``` por 
+  ejemplo 20000 en ```/etc/sysctl.conf``` y en la clase del usuario que
+  inicia la aplicación (en ```/etc/login.conf```) que al menos diga 
+  ```:datasize-cur=1024M:``` y  ```:openfiles-cur=2048:```
 
-Estas instrucciones suponen que opera en este ambiente, puedes ver más sobre
+Estas instrucciones suponen que operas en este ambiente, puedes ver más sobre
 la instalación de Ruby on Rails en adJ en 
 [http://dhobsd.pasosdejesus.org/Ruby_on_Rails_en_OpenBSD.html]
 
 ## Creación de un sistema de información mínimo usando sip
+
+**sip** ya viene con una aplicación mínima que es la usada para hacer
+pruebas de regresión, antes de iniciar una aplicación aparte, puedes
+intentar ejecutar esa aplicación, siguiendo las instrucciones de:
+<https://github.com/pasosdeJesus/sip/wiki/Aplicaci%C3%B3n-de-prueba>
+
+Para iniciar una aplicación que usará **sip** sugerimos:
 
 - Crea una aplicación rails  que use PostgreSQL
 ```
