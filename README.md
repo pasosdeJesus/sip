@@ -39,17 +39,19 @@ Este motor incluye
 
 
 ## Requerimientos
-* Ruby version >= 2.3
-* Ruby on Rails 4.2.x
-* PostgreSQL >= 9.4 con extensión unaccent disponible
-* Recomendado sobre adJ 5.8 (que incluye todos los componentes mencionados) usando
-  bundler con doas, ver [http://dhobsd.pasosdejesus.org/bundler-doas.html].  
 
-Estas instrucciones suponen que opera en este ambiente, puedes ver más sobre
-la instalación de Ruby on Rails en adJ en 
-[http://dhobsd.pasosdejesus.org/Ruby_on_Rails_en_OpenBSD.html]
+Ver <https://github.com/pasosdeJesus/sip/wiki/Requerimientos>
+
+## Aplicación mínima incluida en sip
+
+**sip** ya viene con una aplicación mínima que es la usada para hacer
+pruebas de regresión, antes de iniciar una aplicación aparte, puedes
+intentar ejecutar esa aplicación, siguiendo las instrucciones de:
+<https://github.com/pasosdeJesus/sip/wiki/Aplicaci%C3%B3n-de-prueba>
 
 ## Creación de un sistema de información mínimo usando sip
+
+Para iniciar una aplicación que usará **sip** sugerimos:
 
 - Crea una aplicación rails  que use PostgreSQL
 ```
