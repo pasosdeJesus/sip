@@ -34,7 +34,7 @@ class ActualizaDivipola2015S < ActiveRecord::Migration
       UPDATE sip_municipio SET nombre = 'LA PAZ', observaciones='LA PAZ (ROBLES)' WHERE id='1035';
       UPDATE sip_municipio SET nombre = 'LEBRIJA', observaciones='LEBRÍJA' WHERE id='706';
       UPDATE sip_municipio SET nombre = 'LÓPEZ DE MICAY', observaciones='LÓPEZ (MICAY)' WHERE id='723';
-      UPDATE sip_municipio SET nombre = 'MAGÜI', observaciones='MAGüI (PAYAN)' WHERE id='735';
+      UPDATE sip_municipio SET nombre = 'MAGÜÍ', observaciones='MAGüI (PAYAN)' WHERE id='735';
       UPDATE sip_municipio SET nombre = 'MALLAMA', observaciones='MALLAMA (PIEDRANCHA)' WHERE id='748';
       UPDATE sip_municipio SET nombre = 'MEDIO BAUDÓ', observaciones='MEDIO BAUDO' WHERE id='742';
       UPDATE sip_municipio SET nombre = 'MIRITÍ - PARANÁ', observaciones='MIRITI-PARANÁ' WHERE id='777';
@@ -48,6 +48,7 @@ class ActualizaDivipola2015S < ActiveRecord::Migration
       UPDATE sip_municipio SET nombre = 'ROBERTO PAYÁN', observaciones='ROBERTO PAYÁN (SAN JOSÉ)' WHERE id='1036';
       UPDATE sip_municipio SET nombre = 'SAN ANDRÉS DE CUERQUÍA', observaciones='SAN ANDRÉS' WHERE id='1052';
       UPDATE sip_municipio SET nombre = 'SAN ANTONIO DEL TEQUENDAMA', observaciones='SAN ANTONIO DE TEQUENDAMA' WHERE id='1050';
+      UPDATE sip_municipio SET nombre = 'SAN JACINTO DEL CAUCA' WHERE id='1064';
       UPDATE sip_municipio SET nombre = 'SAN JUAN DE RIOSECO', observaciones='SAN JUAN DE RÍO SECO' WHERE id='1078';
       UPDATE sip_municipio SET nombre = 'SAN LUIS DE SINCÉ', observaciones='SINCÉ' WHERE id='1200';
       UPDATE sip_municipio SET nombre = 'SAN SEBASTIÁN DE MARIQUITA', observaciones='MARIQUITA' WHERE id='761';
