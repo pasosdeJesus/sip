@@ -1,4 +1,12 @@
 #!/bin/sh
+# Actualiza varios sistemas que usan sip. Dominio público. 2016
+#
+# Antes agregue a ~/.profile las siguientes 4:
+
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+	eval `ssh-agent -s`
+	ssh-add
+fi
 
 function actuno {
 	a=$1
