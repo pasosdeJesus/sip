@@ -12,7 +12,7 @@ function actuno {
 	a=$1
 	b=$2
 	if (test ! -d "$a") then {
-		echo "actuno: Primer parametro debería ser directorio de ap"
+		echo "actuno: Primer parametro debería ser directorio de ap (era $a)"
 		exit 1;
 	} fi;
 	acdir=`pwd`
