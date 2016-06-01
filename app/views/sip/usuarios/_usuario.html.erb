@@ -14,7 +14,11 @@
   </div>
 
   <%= f.input :id, label: "Código", readonly: true%>
-  <%= f.input :nusuario %>
+  <%= f.input :nusuario,
+    input_html: {
+    "data-toggle" => 'tooltip', 
+    "title" => 'Identificación personal ante el sistema (recomendada primera letra del nombre y apellido)'}
+  %>
   <%= f.input :nombre %>
   <%= f.input :descripcion %>
   <%= f.input :rol,
