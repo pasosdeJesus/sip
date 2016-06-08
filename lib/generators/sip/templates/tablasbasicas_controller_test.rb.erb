@@ -1,0 +1,57 @@
+require 'test_helper'
+
+class <%= nom_clase_plural %>ControllerTest < ActionController::TestCase
+  setup do
+    skip
+    @<%= nom_arch %> = <%= nom_clase %>(:one)
+  end
+
+  test "should get index" do
+    skip
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:<%= nom_arch %>)
+  end
+
+  test "should get new" do
+    skip
+    get :new
+    assert_response :success
+  end
+
+  test "should create <%= nom_arch %>" do
+    skip
+    assert_difference('<%= nom_clase %>.count') do
+      post :create, <%= nom_arch %>: { created_at: @<%= nom_arch %>.created_at, fechacreacion: @<%= nom_arch %>.fechacreacion, fechadeshabilitacion: @<%= nom_arch %>.fechadeshabilitacion, nombre: @<%= nom_arch %>.nombre, observaciones: @<%= nom_arch %>.observaciones, updated_at: @<%= nom_arch %>.updated_at }
+    end
+
+    assert_redirected_to <%= nom_arch %>_path(assigns(:<%= nom_arch %>))
+  end
+
+  test "should show <%= nom_arch %>" do
+    skip
+    get :show, id: @<%= nom_arch %>
+    assert_response :success
+  end
+
+  test "should get edit" do
+    skip
+    get :edit, id: @<%= nom_arch %>
+    assert_response :success
+  end
+
+  test "should update <%= nom_arch %>" do
+    skip
+    patch :update, id: @<%= nom_arch %>, <%= nom_arch %>: { created_at: @<%= nom_arch %>.created_at, fechacreacion: @<%= nom_arch %>.fechacreacion, fechadeshabilitacion: @<%= nom_arch %>.fechadeshabilitacion, nombre: @<%= nom_arch %>.nombre, observaciones: @<%= nom_arch %>.observaciones, updated_at: @<%= nom_arch %>.updated_at }
+    assert_redirected_to <%= nom_arch %>_path(assigns(:<%= nom_arch %>))
+  end
+
+  test "should destroy <%= nom_arch %>" do
+    skip
+    assert_difference('<%= nom_clase %>.count', -1) do
+      delete :destroy, id: @<%= nom_arch %>
+    end
+
+    assert_redirected_to <%= nom_arch %>es_path
+  end
+end
