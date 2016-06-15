@@ -51,7 +51,7 @@ module Sip
           validates_presence_of :fechacreacion
           validate :fechacreacion_posible?
           def fechacreacion_posible?
-            if fechacreacion < Date.new(2001,1,1)
+            if !fechacreacion || fechacreacion < Date.new(2001,1,1)
               errors.add(:fechacreacion, 'Debe ser reciente (posterior a 2001)')
             end
           end
