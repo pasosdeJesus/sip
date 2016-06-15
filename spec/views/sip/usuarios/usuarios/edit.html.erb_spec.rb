@@ -16,6 +16,7 @@ RSpec.describe "sip/usuarios/edit", :type => :view do
 	 end
 
   it "presenta el formulario para editar usuario" do
+    skip
     render
     assert_select "form[action=?][method=?]", sip.usuario_path(@usuario), "post" do
 

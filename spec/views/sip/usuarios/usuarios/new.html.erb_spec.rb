@@ -11,7 +11,7 @@ RSpec.describe "sip/usuarios/new", :type => :view do
   it "presenta el formulario de una nueva usuario" do
     render
 
-    assert_select "form[action=?][method=?]", sip.usuarios_path, "post" do
+    assert_select "form[action=?][method=?]", main_app.usuarios_path, "post" do
 
       assert_select "input#usuario_nombre[name=?]", "usuario[nombre]"
     end
