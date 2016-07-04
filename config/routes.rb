@@ -11,7 +11,7 @@ Sip::Engine.routes.draw do
   get 'mundep' => 'admin/municipios#mundep'
 
   # En su aplicación al emplear ayudadores de rutas utilice prefijo
-  # sip. si viene de sip o main_app. si es de las rutas de la aplicación.
+  # "sip." si viene de sip o "main_app." si es de las rutas de la aplicación.
   # Y en config/routes.rb utilice:
   #
 #  devise_scope :usuario do
@@ -23,6 +23,7 @@ Sip::Engine.routes.draw do
 #    if (Rails.configuration.relative_url_root != '/') 
 #      ruta = File.join(Rails.configuration.relative_url_root, 'usuarios/sign_in')
 #      post ruta, to: 'devise/sessions#create'
+#      get  ruta, to: 'devise/sessions#new'
 #    end
 #  end
 #  devise_for :usuarios, :skip => [:registrations], module: :devise
