@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     if (Rails.configuration.relative_url_root != '/') 
       ruta = File.join(Rails.configuration.relative_url_root, 'usuarios/sign_in')
       post ruta, to: 'devise/sessions#create'
+      get  ruta, to: 'devise/sessions#new'
     end
   end
   devise_for :usuarios, :skip => [:registrations], module: :devise
