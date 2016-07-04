@@ -33,6 +33,10 @@ es:
       "sip/pais":
         Pais: Pais
         Paises: Paises
+      "sip/persona":
+        anionac: Año nacimiento
+        mesnac: Mes nacimiento
+        dianac: Día nacimiento
       "sip/tclase":
         Tclase: Tipo de Centro Poblado
         Tclases: Tipos de Centros Poblados
