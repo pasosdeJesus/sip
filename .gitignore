@@ -30,4 +30,4 @@ spec/dummy/.sass-cache
 tmp/
 herram/
 
-
+spec/dummy/.byebug_history

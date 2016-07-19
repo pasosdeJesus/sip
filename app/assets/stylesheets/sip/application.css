@@ -10,8 +10,6 @@
  *
  *= require_self
  *= require jquery-ui
- *= require ui-bootstrap/jquery-ui-bootstrap
- *= require ui-bootstrap/ui-wijmo
  *= require bootstrap-datepicker
  *= require_tree .
  */

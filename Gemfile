@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'puma', '~> 3.0'
+
 # Rails (internacionalización)
-gem "rails", '~> 4.2.5'
+gem "rails", '~> 5.0.0'
 gem "rails-i18n"
 
 # Problemas con arel 6.0.0 al ejecutar rspec
@@ -28,7 +30,7 @@ gem "coffee-rails"
 # jquery como librería JavaScript
 gem "jquery-rails"
 gem "jquery-ui-rails"
-gem "jquery-ui-bootstrap-rails", git: "https://github.com/kristianmandrup/jquery-ui-bootstrap-rails"
+#gem "jquery-ui-bootstrap-rails", git: "https://github.com/kristianmandrup/jquery-ui-bootstrap-rails"
 
 # Seguir enlaces más rápido. Ver: https://github.com/rails/turbolinks
 gem "turbolinks", "2.5.3"
