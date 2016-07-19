@@ -45,8 +45,13 @@ module Sip
 					"nombre:string{500} observaciones:string{5000} " +
 					"fechacreacion:date fechadeshabilitacion:date " +
 					"created_at:timestamp updated_at:timestamp"
-        if File.readlines("app/models/ability.rb").grep(/#{nom_arch}/).size == 0
-          gsub_file("app/models/ability.rb", /(BASICAS_PROPIAS = \[.*)/, 
+        ab='app/models/ability.rb'
+        if !File.exist?(ab)
+          ab='spec/dummy/app/models/ability.rb'
+        end
+        if File.exist?(ab) && 
+          File.readlines(ab).grep(/#{nom_arch}/).size == 0
+          gsub_file(ab, /(BASICAS_PROPIAS = \[.*)/, 
                    "\1\n    ['', '#{nom_arch}'],")
         end
         puts "Aregue manualmente null:false en :nombre, :fechacreacion, :created_at y :update_at en migración"

@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 module Admin
-  class <%= nom_clase.pluralize %>Controller < Sip::Admin::BasicasController
+  class <%= nom_clase_plural %>Controller < Sip::Admin::BasicasController
     before_action :set_<%= nom_arch %>, 
       only: [:show, :edit, :update, :destroy]
     load_and_authorize_resource  class: ::<%= nom_clase %>
