@@ -21,11 +21,11 @@
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              usuarios_path, :class => 'btn'  %>
+              main_app.usuarios_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_usuario_path(@usuario), :class => 'btn' %>
+              main_app.edit_usuario_path(@usuario), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              usuario_path(@usuario),
+              main_app.usuario_path(@usuario),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-danger' %>

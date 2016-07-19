@@ -3,6 +3,7 @@ require 'rails_helper'
 
 RSpec.describe "sip/usuarios/new", :type => :view do
   before(:each) do
+    skip
     assign(:usuario, Usuario.new(
       :nombre => "MyString",
     ))

@@ -84,6 +84,8 @@ group :test do
   # Envia resultados de pruebas desde travis a codeclimate
   gem "codeclimate-test-reporter", require: nil
 
+  gem 'rails-controller-testing'
+
   # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
   gem "spring"
   
