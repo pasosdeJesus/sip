@@ -66,7 +66,7 @@
   if (v != 1 && v != "no") 
     $("#" + cnom).data('autocompleta', 1)
     divcp = s.closest('.campos_persona')
-    if (typeof divcp == 'undefined')
+    if (typeof divcp == 'undefined' || divcp.length == 0)
       alert('No se ubico .campos_persona')
       return
     idvictima = divcp.parent().find('.caso_victima_id').find('input').val()
