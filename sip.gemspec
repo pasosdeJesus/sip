@@ -31,7 +31,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "will_paginate"
   s.add_runtime_dependency "twitter-bootstrap-rails"
   s.add_runtime_dependency "jquery-ui-rails"
-  s.add_runtime_dependency "jquery-ui-bootstrap-rails"
   s.add_runtime_dependency "bootstrap-datepicker-rails"
   s.add_runtime_dependency "twitter_cldr"
 

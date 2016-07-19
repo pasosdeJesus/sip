@@ -1,3 +1,3 @@
 module Sip
-  VERSION = "2.0.a7"
+  VERSION = "2.0.b1"
 end
