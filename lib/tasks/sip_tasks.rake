@@ -67,7 +67,7 @@ namespace :sip do
       tb.each do |t|
         printf "%s:%s - ", t[0], t[1]
         if t[0] == modobj
-          command = "pg_dump -i -a -x -O --column-inserts -t #{Ability::tb_modelo t}  #{search_path} #{Shellwords.escape(abcs[Rails.env]['database'])} | sed -e \"s/SET lock_timeout = 0;//g\" > #{archt}"
+          command = "pg_dump --inserts --data-only --no-privileges --no-owner --column-inserts --table=#{Ability::tb_modelo t}  #{search_path} #{Shellwords.escape(abcs[Rails.env]['database'])} | sed -e \"s/SET lock_timeout = 0;//g\" > #{archt}"
           puts command.green
           raise "Error al volcar tabla #{Ability::tb_modelo t}" unless Kernel.system(command)
           inserto = false
