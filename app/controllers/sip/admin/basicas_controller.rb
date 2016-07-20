@@ -67,6 +67,9 @@ module Sip
         #c2 = clase.underscore().gsub(/\//, '_')
         c2 = clase.demodulize.underscore
         @basica = clase.constantize.new(send(c2 + '_params'))
+        if !@basica.fechacreacion
+          @basica.fechacreacion = DateTime.now.strftime('%Y-%m-%d')
+        end
         creada = genclase == 'M' ? 'creado' : 'creada';
         respond_to do |format|
           if @basica.save
