@@ -22,7 +22,7 @@ gem "sass"
 gem "jbuilder"
 
 # Uglifier comprime recursos Javascript
-gem "uglifier", '>= 1.3.0'
+gem "uglifier"#, '>= 1.3.0'
 
 # CoffeeScript para recuersos .js.coffee y vistas
 gem "coffee-rails"
@@ -33,10 +33,10 @@ gem "jquery-ui-rails"
 #gem "jquery-ui-bootstrap-rails", git: "https://github.com/kristianmandrup/jquery-ui-bootstrap-rails"
 
 # Seguir enlaces más rápido. Ver: https://github.com/rails/turbolinks
-gem "turbolinks", "2.5.3"
+gem "turbolinks"#, "2.5.3"
 
 # Ambiente de CSS
-gem "twitter-bootstrap-rails", '~> 3.2.0'
+gem "twitter-bootstrap-rails"#, '~> 3.2.0'
 gem "bootstrap-datepicker-rails"
 
 # Formularios simples 
@@ -55,7 +55,7 @@ gem "will_paginate"
 gem 'twitter_cldr'
  
 # Maneja adjuntos
-gem "paperclip", "~> 4.1"
+gem "paperclip"#, "~> 4.1"
 
 # Zonas horarias
 gem "tzinfo"
@@ -94,10 +94,10 @@ group :test do
   gem 'rspec-rails'
 
   # Un proceso para cada prueba -- acelera
-  gem 'spork', '~> 1.0rc'
+  gem 'spork'#, '~> 1.0rc'
 
   # Maneja datos de prueba
-  gem "factory_girl_rails", "~> 4.0", group: [:development, :test]
+  gem "factory_girl_rails", group: [:development, :test]#, "~> 4.0"
 
   # https://www.relishapp.com/womply/rails-style-guide/docs/developing-rails-applications/bundler
   # Lanza programas para examinar resultados
