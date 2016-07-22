@@ -1,0 +1,16 @@
+<div id="errores">
+  <% if f.object.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-error">
+        La ficha tiene 
+        <%= pluralize(f.object.errors.count, 'error', 'errores') %>.
+      </div>
+      <ul>
+        <% f.object.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+      <%= f.error_notification %>
+    </div>
+  <% end %> 
+</div> <!-- id: errores -->
