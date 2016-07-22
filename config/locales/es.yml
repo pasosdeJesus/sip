@@ -10,6 +10,40 @@ es:
     tviolencia: Tipo de Violencia
     limiteinferior: Límite Inferior
     limitesuperior: Límite Superior
+  errors:
+    format: "%{message}"
+    messages:
+      accepted: "En '%{model}' debe aceptar '%{attribute}'"
+      blank: "En '%{model}' falta un valor para '%{attribute}'"
+      present: "En '%{model}' debe estar en blanco '%{attribute}'"
+      confirmation: "En '%{model}' no coincide confirmación '%{attribute}'"
+      empty: "En '%{model}' no puede estar vacío '%{attribute}'"
+      equal_to: "En '%{model}' el valor de '%{attribute}' debe ser igual a %{count}"
+      even: "En '%{model}' el valor de '%{attribute}' debe ser par"
+      exclusion: "En '%{model}' está reservado '%{attribute}'"
+      greater_than: "En '%{model}' el valor de '%{attribute}' debe ser mayor que %{count}"
+      greater_than_or_equal_to: "En '%{model}' el valor de '%{attribute}' debe ser mayor o igual a %{count}"
+      inclusion: "En '%{model}' el valor de '%{attribute}' no está incluido en la lista"
+      invalid: "En '%{model}' no es válido '%{attribute}'"
+      less_than: "En '%{model}' el valor de '%{attribute}' debe ser menor que %{count}"
+      less_than_or_equal_to: "En '%{model}' el valor de '%{attribute}' debe ser menor o igual a %{count}"
+      model_invalid: "Falló la validación para '%{model}': %{errors}"
+      not_a_number: "En '%{model}' el valor de '%{attribute}' no es un número"
+      not_an_integer: "En '%{model}' el valor de '%{attribute}' no es un entero"
+      odd: "En '%{model}' el valor de '%{attribute}' debe ser impar"
+      required: "En '%{model}' debe existir '%{attribute}'"
+      taken: "En '%{model}' se repite '%{attribute}' (el valor repetido es '%{value}')"
+      too_long:
+        one: "En '%{model}' es demasiado largo el valor de '%{attribute}' (máximo 1 carácter)"
+        other: "En '%{model}' es demasiado largo el valor de '%{attribute}' (máximo %{count} caracteres)"
+      too_short:
+        one: "En '%{model}' es demasiado corto el valor de '%{attribute}' (mínimo 1 carácter)"
+        other: "En '%{model}' es demasiado corto el valor de '%{attribute}' (mínimo %{count} carácter)"
+      wrong_length:
+        one: "En '%{model}' el valor de '%{attribute}' no tiene la longitud corecta (exactamente 1 carácter)"
+        other: "En '%{model}' el valor de '%{attribute}' no tiene la longitud corecta (exactamente %{count} caracteres)"
+      other_than: debe ser distinto de %{count}
+      other_than: "En '%{model}' el valor de '%{attribute}' debe ser distinto de %{count}"
   will_paginate:
     previous_label: "&#8592; Anterior"
     next_label: "&#8594; Siguiente"
