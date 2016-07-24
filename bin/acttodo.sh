@@ -41,19 +41,27 @@ if (test "$SALTASIVEL" != "1") then {
 	actuno sivel2; 
 	actuno sivel2_anzorc; 
 	actuno sivel2_marcha; 
-	actuno sivel2_sjr spec/dummy;  
 } fi;
 if (test "$SALTASIVELSJR" != "1") then {
 	echo "sivelsjr"
-	actuno sivel2_sjr spec/dummy; actuno sivel2_mujeresindigenas;
+	actuno sivel2_sjr spec/dummy; 
+	actuno sivel2_mujeresindigenas;
 } fi;
 if (test "$SALTACOR1440" != "1") then {
 	echo "cor1440"
-	actuno cor1440_gen spec/dummy; actuno cor1440; actuno cor1440_cinep; actuno cor1440_sjrlac; actuno sivel2_sjrven; actuno sivel2_sjrecu
+	actuno cor1440_gen spec/dummy; 
+	actuno cor1440; 
+	actuno cor1440_cinep; 
+	actuno cor1440_sjrlac; 
+	actuno sivel2_sjrven; 
+	actuno sivel2_sjrecu
 } fi;
 if (test "$SALTASAL7711" != "1") then {
 	echo "sal7711"
-	actuno sal7711_gen spec/dummy; actuno sal7711; actuno sal7711_onbase; actuno sivel2_sjrcol
+	actuno sal7711_gen spec/dummy; 
+	actuno sal7711; 
+	actuno sal7711_onbase; 
+	actuno sivel2_sjrcol
 } fi;
 
 
