@@ -37,8 +37,8 @@ if (test "$SALTASIP" != "1") then {
 } fi;
 if (test "$SALTASIVEL" != "1") then {
 	echo "sivel"
-	#actuno sivel2_gen spec/dummy; 
-	#actuno sivel2; 
+	actuno sivel2_gen spec/dummy; 
+	actuno sivel2; 
 	actuno sivel2_anzorc; 
 	actuno sivel2_marcha; 
 	actuno sivel2_sjr spec/dummy;  
