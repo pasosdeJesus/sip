@@ -19,14 +19,29 @@ function actuno {
 	cd $a
 	echo "=== actuno: $a $b"
 	git pull
+	if (test "$?" != 0) then {
+		exit 1;
+	} fi;
 	bundle update
+	if (test "$?" != 0) then {
+		exit 1;
+	} fi;
 	bundle install
+	if (test "$?" != 0) then {
+		exit 1;
+	} fi;
 	if (test "$b" != "") then {
 		(cd $b; rake db:migrate)
 	} else {
 		rake db:migrate
 	} fi;
+	if (test "$?" != 0) then {
+		exit 1;
+	} fi;
 	SINAC=1 SININS=1 MENSCONS="Actualiza" bin/gc.sh
+	if (test "$?" != 0) then {
+		exit 1;
+	} fi;
 	cd $acdir
 }
 
