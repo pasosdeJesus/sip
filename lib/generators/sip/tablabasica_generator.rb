@@ -51,16 +51,19 @@ module Sip
         end
         if File.exist?(ab) && 
           File.readlines(ab).grep(/#{nom_arch}/).size == 0
-          gsub_file(ab, /(BASICAS_PROPIAS = \[.*)/, 
-                   "\1\n    ['', '#{nom_arch}'],")
+          gsub_file(
+            ab, 
+            /(BASICAS_PROPIAS = \[.*)/, 
+            "\\1\n    ['', '#{nom_arch}'],"
+          )
         end
         puts "Aregue manualmente null:false en :nombre, :fechacreacion, :created_at y :update_at en migración"
         puts "Aregue manualmente infleccion no regular en config/initializers/inflections.rb al estilo:"
         puts "  inflect.irregular '#{tablabasica}', '#{tablabasicaplural}' "
         puts "Aregue nombre en español en config/locales/es.yml al estilo:"
-        puts "  \"#{tablabasica}\":"
-        puts "    #{tablabasica.capitalize}: Descripción singular"
-        puts "    #{tablabasicaplural.capitalize}: Descripción plural"
+        puts "    \"#{tablabasica}\":"
+        puts "      #{tablabasica}: Descripción singular"
+        puts "      #{tablabasicaplural}: Descripción plural"
       end
 
       def genera_controlador
@@ -80,10 +83,31 @@ module Sip
           "test/factories/#{nom_arch}.rb"
       end
 
-      def genera_asocion
+      def genera_asociacion
+        puts "Para asociarla en #{options.asocia}:"
+        puts "Cree migracion que incluya
+          add_column :#{options.asocia}, :#{nom_arch}_id, :integer
+          add_foreign_key :#{options.asocia}, :#{nom_arch}, column: #{:nom_arch}_id"
         if File.readlines("app/models/#{options.asocia}.rb").grep(/#{nom_arch}/).size == 0
-          puts "Aregue belongs_to"
+          puts "Aregue a 'app/models/#{options.asocia}.rb'
+            belongs_to :#{nom_arch}, class_name: \"#{nom_clase}\", 
+              foreign_key: \"#{nom_arch}_id\", validate: true"
+          puts "Aregue a 'app/models/#{nom_arch}.rb'
+            has_many :#{options.asocia}, 
+              class_name: \"#{options.asocia.capitalize}\", 
+              foreign_key: \"#{nom_arch}_id\", 
+              validate: true"
         end
+        puts "Modifique la vista que edita el modelo agregando
+          <%= f.association :#{nom_arch},
+            collection: ::#{nom_clase}.habilitados,
+            include_blank: false,
+            label_method: :nombre, 
+            value_method: :id 
+          %> "
+        puts "Modifique funcion estilo #{options.asocia}_params en 
+        el controlador de la vista cambiada para agregar #{nom_arch}"
+        puts "Modifique la(s) vista(s) que presentan el modelo"
       end
 
       def nom_arch
