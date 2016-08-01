@@ -75,6 +75,7 @@ if (test "$SALTASAL7711" != "1") then {
 	echo "sal7711"
 	actuno sal7711_gen spec/dummy; 
 	actuno sal7711; 
+	actuno sal7711_web test/dummy; 
 	actuno sal7711_onbase; 
 	actuno sivel2_sjrcol
 } fi;
