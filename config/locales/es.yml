@@ -60,6 +60,7 @@ es:
       "sip/fuenteprensa":
         Fuenteprensa: Fuente de Prensa
         Fuentesprensa: Fuentes de Prensa
+        tfuente: Tipo de fuente
       "sip/municipio":
         Municipio: Municipio
         Municipios: Municipios
