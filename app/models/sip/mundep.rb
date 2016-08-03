@@ -10,7 +10,10 @@ module Sip
     end
 
     def self.refresca()
-      ActiveRecord::Base.connection.execute('REFRESH MATERIALIZED VIEW sip_mundep')
+      if ActiveRecord::Base.connection.data_source_exists? 'sip_mundep'
+        ActiveRecord::Base.connection.execute(
+          'REFRESH MATERIALIZED VIEW sip_mundep')
+      end
     end
 
   end
