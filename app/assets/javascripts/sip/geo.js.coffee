@@ -9,6 +9,9 @@
   idb = idactual.replace(tipoactual + '_id', tipobuscado + '_id')
   if idb != idactual && $('#' + idb).size()>0
     return idb
+  idb = idactual.replace('_' + tipoactual, '_' + tipobuscado)
+  if idb != idactual && $('#' + idb).size()>0
+    return idb
   return ""
 
 #  Completa departamento
