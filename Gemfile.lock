@@ -1,5 +1,5 @@
 GEM
-  remote: http://192.168.10.2/
+  remote: https://rubygems.org/
   specs:
     actioncable (5.0.0)
       actionpack (= 5.0.0)
