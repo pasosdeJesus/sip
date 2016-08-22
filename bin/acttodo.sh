@@ -78,7 +78,7 @@ if (test "$SALTASAL7711" != "1") then {
 	actuno sal7711_web test/dummy; 
 	actuno sal7711_cinep; 
 	actuno sivel2_sjrcol
-	actuno sal7711_onbase; 
+	#actuno sal7711_onbase; 
 } fi;
 
 

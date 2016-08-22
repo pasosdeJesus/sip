@@ -8,6 +8,7 @@ module Sip
 
         include Sip::Basica
         included do
+          Nombresunicos=false  # Por ejemplo hay departamento AMAZONAS en COLOMBIA y en VENEZUELA
           self.table_name = 'sip_clase'
           has_many :persona, foreign_key: "id_clase", validate: true,
             class_name: 'Sip::Persona'

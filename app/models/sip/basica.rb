@@ -13,9 +13,12 @@ module Sip
       validates :observaciones, length: { maximum: 5000 }
       validates :fechacreacion, presence: true, allow_blank: false
 
-      # El siguiente es problemático para deptos/mcpios y centros poblados
-      # Los repetidos de esos deben inclurise en SQL por el momento
-      validates_uniqueness_of :nombre, case_sensitive: false
+      # Las tablas basicas que tengan repetido deben definir la constante
+      # Nombresunicos=false
+      # Ver por ejemplo departamento
+      validates_uniqueness_of :nombre, case_sensitive: false, if: Proc.new {
+        |rb| !(defined? rb.class::Nombresunicos) || rb.class::Nombresunicos
+      }
 
       validate :fechacreacion_posible?
       def fechacreacion_posible?
