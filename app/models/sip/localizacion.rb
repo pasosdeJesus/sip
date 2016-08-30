@@ -8,7 +8,7 @@
 # Declare el formato por usar en config/application.rb
 #   config.x.formato_fecha
 # Con uno de los siguientes valores
-#   dd-M-yyyy, dd/M/yyyy, dd-mm-yyyy y yyyy-mm-ddd
+# dd-M-yyyy, dd/M/yyyy, dd-mm-yyyy, dd/mm/yyyy y yyyy-mm-ddd
 #
 # En la base de datos se esperan campos de fecha en notación estándar
 # de PostgreSQL anio-mes-dia, digamos fechainicio en una tabla.
@@ -18,7 +18,6 @@
 # Y a lo largo de la aplicación utilice los nuevos metodos 
 # fechacreacion_localizada y fechacreacion_localizada=
 # de su modelo que leen y escriben en ue usan el formato de fechas definido en config.x.formato_fecha
-
 module Sip
   module Localizacion
     extend ActiveSupport::Concern

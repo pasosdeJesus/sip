@@ -9,7 +9,7 @@ module Sip
     # Ese formato local es apropiado para la libreria datepicker de 
     # Javascript que infortunadamente es diferente a POSIX
     # Por el momento soporta bien:
-    # dd-M-yyyy, dd/M/yyyy, dd-mm-yyyy y yyyy-mm-ddd
+    # dd-M-yyyy, dd/M/yyyy, dd-mm-yyyy, dd/mm/yyyy y yyyy-mm-ddd
     # 
     # El formato estándar es el usado por PostgreSQL yyyy-mm-dd
    
@@ -63,8 +63,10 @@ module Sip
               end
           nf = Date.new(pf[2].to_i, m, pf[0].to_i).strftime('%Y-%m-%d')
         end
-      when 'dd/mm/yyyy'
+      when 'dd-mm-yyyy'
         nf = Date.strptime(f, '%d-%m-%Y').strftime('%Y-%m-%d')
+      when 'dd/mm/yyyy'
+        nf = Date.strptime(f, '%d/%m/%Y').strftime('%Y-%m-%d')
       else
         nf = Date.strptime(f, '%Y-%m-%d').strftime('%Y-%m-%d')
       end
@@ -86,6 +88,8 @@ module Sip
                            :format => '%d-%b-%Y')
       when 'dd-mm-yyyy'
         nf = Date.strptime(f, '%Y-%m-%d').strftime('%d-%m-%Y')
+      when 'dd/mm/yyyy'
+        nf = Date.strptime(f, '%Y-%m-%d').strftime('%d/%m/%Y')
       else
         nf = Date.strptime(f, '%Y-%m-%d').strftime('%Y-%m-%d')
       end
