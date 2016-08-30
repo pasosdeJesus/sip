@@ -138,6 +138,7 @@ if (typeof String.prototype.endsWith != 'function')
   root.puntomontaje = '<%= Rails.configuration.relative_url_root %>'
   sip_arregla_puntomontaje(root)
 
+  <% puts  "formato_fecha: ", Rails.configuration.x.formato_fecha %>
   # Formato de campos de fecha con datepicker
   root.formato_fecha = '<%= Rails.configuration.x.formato_fecha && Rails.configuration.x.formato_fecha.to_s != "{}"  ? Rails.configuration.x.formato_fecha.to_s : "yyyy-mm-dd" %>'
   $('[data-behaviour~=datepicker]').datepicker({
