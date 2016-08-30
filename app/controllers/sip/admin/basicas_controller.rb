@@ -153,7 +153,8 @@ module Sip
 
       # Campos de la tabla
       def atributos_index
-        ["id", "nombre", "observaciones", "fechacreacion", "fechadeshabilitacion"]
+        ["id", "nombre", "observaciones", 
+         "fechacreacion_localizada", "fechadeshabilitacion_localizada"]
       end
 
       # Campos que se esperan del formulario
@@ -161,7 +162,8 @@ module Sip
         atributos_index - ["id"]
       end
 
-      helper_method :clase, :atributos_index, :atributos_form, :genclase, :camponombre
+      helper_method :clase, :atributos_index, :atributos_form, 
+        :genclase, :camponombre
     end
   end
 end

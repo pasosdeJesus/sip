@@ -2,6 +2,8 @@ es:
   attributes:
     fechacreacion: Creación
     fechadeshabilitacion: Deshabilitación 
+    fechacreacion_localizada: Creación
+    fechadeshabilitacion_localizada: Deshabilitación 
     formatoregex: Formato (exp. reg)
     municipio: Municipio
     departamento: Departamento/Estado
@@ -93,4 +95,5 @@ es:
         descripcion: Descripción
         encrypted_password: Clave
         created_at: Fecha Registro
+        created_at_localizada: Fecha Registro
 

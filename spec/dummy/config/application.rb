@@ -24,6 +24,11 @@ module Dummy
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :es
 
+    # En el momento soporta 3: yyyy-mm-dd, dd-mm-yyyy y dd/M/yyyy
+    config.x.formato_fecha = 'dd/M/yyyy'
+
+    config.colorize_logging = true
+
     config.active_record.schema_format = :sql
     FactoryGirl.definition_file_paths << Pathname.new("../factories")
     FactoryGirl.definition_file_paths.uniq!

@@ -12,7 +12,7 @@
       <th><%= model_class.human_attribute_name(:rol) %></th>
       <th><%= model_class.human_attribute_name(:idioma) %></th>
       <th><%= model_class.human_attribute_name(:email) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:created_at_localizada) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -26,7 +26,7 @@
         <td><%= Ability::ROLES[usuario.rol - 1][0] if usuario && usuario.rol && Ability::ROLES[usuario.rol-1] %></td>
         <td><%= usuario.idioma %></td>
         <td><%= usuario.email %></td>
-        <td><%= usuario.created_at.strftime('%Y-%m-%d') %></td>
+        <td><%= usuario.created_at_localizada.to_s %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_usuario_path(usuario), :class => 'btn btn-xs' %>

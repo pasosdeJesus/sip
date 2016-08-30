@@ -5,6 +5,7 @@ module Sip
     module Models
       module Usuario
         extend ActiveSupport::Concern
+        include Sip::Localizacion
 
         included do
           self.table_name = 'usuario'
@@ -16,7 +17,12 @@ module Sip
 
           # Otros modulos de devise disponibles:
           # :recoverable :registerable, :confirmable, :timeoutable and :omniauthable
-          devise :database_authenticatable, :rememberable, :trackable, :lockable
+          devise :database_authenticatable, :rememberable, 
+            :trackable, :lockable
+
+          campofecha_localizado :fechacreacion
+          campofecha_localizado :fechadeshabilitacion
+          campofecha_localizado :created_at
 
           #http://stackoverflow.com/questions/1200568/using-rails-how-can-i-set-my-primary-key-to-not-be-an-integer-typed-column
           self.primary_key=:id
@@ -25,7 +31,8 @@ module Sip
             false
           end
           validates_uniqueness_of :nusuario, :case_sensitive => false
-          validates_format_of :nusuario, :with  => /\A[a-zA-Z_0-9]+[-.a-zA-Z_0-9]*\z/
+          validates_format_of :nusuario, 
+            :with  => /\A[a-zA-Z_0-9]+[-.a-zA-Z_0-9]*\z/
           # NO se valida longitud de nusuario para permitir
           # cambiarla en aplicaciones o motores que usen este --pero
           # debe hacerse alli

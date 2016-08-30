@@ -14,13 +14,6 @@ module Sip
         @basica = Fuenteprensa.find(params[:id])
       end
 
-      def atributos_index
-        [
-          "id", "nombre", "observaciones", "fechacreacion", 
-          "fechadeshabilitacion"
-        ]
-      end
-
       def fuenteprensa_params
         params.require(:fuenteprensa).permit(*atributos_form)
       end

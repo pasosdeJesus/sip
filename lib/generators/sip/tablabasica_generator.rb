@@ -87,7 +87,7 @@ module Sip
         puts "Para asociarla en #{options.asocia}:"
         puts "Cree migracion que incluya
           add_column :#{options.asocia}, :#{nom_arch}_id, :integer
-          add_foreign_key :#{options.asocia}, :#{nom_arch}, column: #{:nom_arch}_id"
+          add_foreign_key :#{options.asocia}, :#{nom_arch}, column: #{nom_arch}_id"
         if File.readlines("app/models/#{options.asocia}.rb").grep(/#{nom_arch}/).size == 0
           puts "Aregue a 'app/models/#{options.asocia}.rb'
             belongs_to :#{nom_arch}, class_name: \"#{nom_clase}\", 

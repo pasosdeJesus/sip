@@ -39,7 +39,16 @@
     <% else %>
       <%= f.input atr.to_sym %>
     <% end %>
+  <% elsif @basica.respond_to?(atr) then %>
+    <% if atr[0, 5] == 'fecha' %>
+      <%= f.input atr.to_sym,
+          :input_html => { "data-behaviour" => "datepicker"}, 
+          :as => :string %>
+    <% else %>
+      <%= f.input atr.to_sym %>
+    <% end %>
   <% else %>
+    <% byebug %>
     <%= "Campo #{atr} sin control para editar"  %>
   <% end %>
 <% end %>

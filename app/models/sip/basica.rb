@@ -3,11 +3,15 @@
 module Sip
   module Basica
     extend ActiveSupport::Concern
+    include Sip::Localizacion
 
     included do
       scope :habilitados, -> (campoord = "nombre") {
         where(fechadeshabilitacion: nil).order(campoord.to_sym)
       }
+
+      campofecha_localizado :fechacreacion
+      campofecha_localizado :fechadeshabilitacion
       validates :nombre, presence: true, allow_blank: false, 
         length: { maximum: 500 }
       validates :observaciones, length: { maximum: 5000 }
@@ -22,7 +26,7 @@ module Sip
 
       validate :fechacreacion_posible?
       def fechacreacion_posible?
-        if fechacreacion < Date.new(2000,1,1)
+        if !fechacreacion || fechacreacion < Date.new(2000,1,1)
           errors.add(:fechacreacion, 'Debe ser reciente (posterior a 2000)')
         end
       end
@@ -97,6 +101,8 @@ module Sip
           else
             ""
           end
+        elsif self.respond_to?(atr) && self[atr.to_s].nil?
+          self.send(atr).to_s
         else
           self[atr.to_s].to_s
         end
