@@ -16,19 +16,9 @@
 
 $(document).on('turbolinks:load ready page:load', function() {
 	var root;
-	root = typeof exports !== "undefined" && exports !== null ? exports : window;
-	sip_prepara_eventos_comunes(root, "/");
-
-	formato_fecha = 'yyyy-mm-dd'
-	if ($('meta[name=formato_fecha]').length > 0) {
-		formato_fecha = $('meta[name=formato_fecha]').attr('content')
-	}
-	$('[data-behaviour~=datepicker]').datepicker({
-		format: formato_fecha,
-		autoclose: true,
-		todayHighlight: true,
-		language: 'es'	
-	});
+	root = typeof exports !== "undefined" && exports !== null ? 
+		exports : window;
+	sip_prepara_eventos_comunes(root);
 });
 
 
