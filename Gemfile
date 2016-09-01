@@ -17,6 +17,7 @@ gem "colorize"
 
 # Unifica CSSs
 gem "sass"
+gem "sass-rails"
 
 # API JSON facil. Ver: https://github.com/rails/jbuilder
 gem "jbuilder"
