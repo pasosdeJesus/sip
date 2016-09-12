@@ -212,6 +212,11 @@ if (typeof String.prototype.endsWith != 'function')
     $("html").css "cursor", "auto"
     return
 
+  $(document).on('turbolinks:click', (event) ->
+    if event.target.getAttribute('href').charAt(0) == '#'
+      return event.preventDefault()
+  )
+
   $(document).on "page:fetch", iniciaRotador
 
   $(document).on "page:receive", detieneRotador
