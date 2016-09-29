@@ -31,9 +31,9 @@ function actuno {
 		exit 1;
 	} fi;
 	if (test "$b" != "") then {
-		(cd $b; rake db:migrate)
+		(cd $b; bundle exec rake db:migrate)
 	} else {
-		rake db:migrate
+		bundle exec rake db:migrate
 	} fi;
 	if (test "$?" != 0) then {
 		exit 1;
