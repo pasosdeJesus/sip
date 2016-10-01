@@ -14,8 +14,43 @@
     return idb
   return ""
 
+# Llena coordenada con datos de latitud y longitud genericos de
+# acuerdo al departamento, municipio o clase suministrados en tabla, id
+@pone_coord = (root, tabla, id, nomcampo) ->
+  switch tabla
+    when 'pais' then modelo='paises'
+    when 'departamento' then modelo='departamentos'
+    when 'municipio' then modelo='municipios'
+    when 'clase' then modelo='clases'
+    else return
+
+  idlat = nomcampo.replace('id_' + tabla, 'latitud')
+  lat = $('#' + idlat)
+  idlon = nomcampo.replace('id_' + tabla, 'longitud')
+  lon = $('#' + idlon)
+  if (lat.length > 0 && lon.length > 0) 
+    y = $.getJSON(root.puntomontaje + "admin/" + modelo, {id: id})
+    y.done((data) -> 
+      if (data.length > 0) 
+        d = data.pop()
+        if (+d.latitud != 0)
+          nla = +d.latitud + Math.random()/1000-0.0005
+          lat.val(nla)
+        if (+d.longitud != 0)
+          nlo = +d.longitud + Math.random()/1000-0.0005
+          lon.val(nlo)
+    );
+    y.error((m1, m2, m3) ->
+      if (m1.responseText.indexOf("Acceso no autorizado") >=0) 
+        alert("Se requiere autenticación")
+      else 
+        alert('Problema leyendo ' + tabla + ", id=" + id + ". " + m1 + m2 + m3)
+    )
+
+
+
 #  Completa departamento
-@llena_departamento = ($this, root) -> 
+@llena_departamento = ($this, root, sincoord=false) -> 
   sip_arregla_puntomontaje(root)
   idpais = $this.attr('id')
   iddep = busca_campo_similar(idpais, 'pais', 'departamento')
@@ -42,6 +77,8 @@
               'Problema leyendo Departamentos de ' + pais + ' ' + m1 + ' '
               + m2 + ' ' + m3)
       )
+      if (sincoord != true) 
+        pone_coord(root, 'pais', pais, idpais)
   else
       $("#" + iddep).val("") if iddep
       $("#" + iddep).attr("disabled", true) if iddep
@@ -53,7 +90,7 @@
 
 
 #  Completa municipio.
-@llena_municipio = ($this, root) -> 
+@llena_municipio = ($this, root, sincoord=false) -> 
   sip_arregla_puntomontaje(root)
   iddep = $this.attr('id')
   idpais = busca_campo_similar(iddep, 'departamento', 'pais')
@@ -78,6 +115,8 @@
               'Problema leyendo Municipios de ' + dep + ' ' + m1 + ' '
               + m2 + ' ' + m3)
       )
+      if (sincoord != true) 
+        pone_coord(root, 'departamento', dep, iddep)
   else
       $("#" + idmun).val("") if idmun
       $("#" + idmun).attr("disabled", true) if idmun
@@ -86,7 +125,7 @@
 
 
 # Completa cuadro de selección para clase de acuerdo a depto y mcpio.
-@llena_clase = ($this, root) -> 
+@llena_clase = ($this, root, sincoord=false) -> 
   sip_arregla_puntomontaje = (root)
   idmun = $this.attr('id')
   idpais = busca_campo_similar(idmun, 'municipio', 'pais')
@@ -106,6 +145,8 @@
     x.error( (m1, m2, m3) ->
       alert('Problema leyendo Clase ' + x + m1 + m2 + m3)
     )
+    if (sincoord != true) 
+      pone_coord(root, 'municipio', mun, idmun)
   else
     $("#" + idcla).html("") if idcla
     $("#" + idcla).attr("disabled", true) if idcla
