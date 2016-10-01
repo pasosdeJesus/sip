@@ -148,6 +148,8 @@ if (typeof String.prototype.endsWith != 'function')
     todayHighlight: true,
     language: 'es'	
   })
+
+  $('[data-toggle="tooltip"]').tooltip()
   $(document).on('cocoon:after-insert', (e) ->
     $('[data-behaviour~=datepicker]').datepicker({
       format: root.formato_fecha
@@ -155,12 +157,9 @@ if (typeof String.prototype.endsWith != 'function')
       todayHighlight: true
       language: 'es'
     })
+    $('[data-toggle="tooltip"]').tooltip()
   )
 
-  $('[data-toggle="tooltip"]').tooltip()
-  $('body').tooltip({
-    selector: '[rel=tooltip]'
-  })
 
   jQuery ->
     $("a[rel~=popover], .has-popover").popover()
