@@ -77,7 +77,7 @@
               'Problema leyendo Departamentos de ' + pais + ' ' + m1 + ' '
               + m2 + ' ' + m3)
       )
-      if (sincoord != true) 
+      if (sincoord != true && root.sip_sincoord != true) 
         pone_coord(root, 'pais', pais, idpais)
   else
       $("#" + iddep).val("") if iddep
@@ -115,7 +115,7 @@
               'Problema leyendo Municipios de ' + dep + ' ' + m1 + ' '
               + m2 + ' ' + m3)
       )
-      if (sincoord != true) 
+      if (sincoord != true && root.sip_sincoord != true) 
         pone_coord(root, 'departamento', dep, iddep)
   else
       $("#" + idmun).val("") if idmun
@@ -145,7 +145,7 @@
     x.error( (m1, m2, m3) ->
       alert('Problema leyendo Clase ' + x + m1 + m2 + m3)
     )
-    if (sincoord != true) 
+    if (sincoord != true && root.sip_sincoord != true) 
       pone_coord(root, 'municipio', mun, idmun)
   else
     $("#" + idcla).html("") if idcla

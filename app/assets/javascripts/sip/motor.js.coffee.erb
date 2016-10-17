@@ -134,9 +134,12 @@ if (typeof String.prototype.endsWith != 'function')
 
 # Prepara eventos comunes al usar sip
 # @param root espacio para poner variables globales
-@sip_prepara_eventos_comunes = (root) ->
+@sip_prepara_eventos_comunes = (root, sincoord = false) ->
+  # Arreglar punto de montaje de la aplicacion
   root.puntomontaje = '<%= ENV['RAILS_RELATIVE_URL_ROOT'] ? ENV['RAILS_RELATIVE_URL_ROOT'] : Rails.configuration.relative_url_root %>'
   sip_arregla_puntomontaje(root)
+  # Formularios con departamento/municipio sin llenar autom. coordenadas
+  root.sip_sincoord = false;
 
   <% puts  "formato_fecha: ", Rails.configuration.x.formato_fecha %>
   <% puts  "relative_url_root: ", Rails.configuration.relative_url_root %>
@@ -167,26 +170,26 @@ if (typeof String.prototype.endsWith != 'function')
 
   # Al cambiar país se recalcula lista de departamentos
   $(document).on('change', 'select[id$=_id_pais]', (e) ->
-    llena_departamento($(this), root)
+    llena_departamento($(this), root, sincoord)
   )
   $(document).on('change', 'select[id$=_pais_id]', (e) ->
-    llena_departamento($(this), root)
+    llena_departamento($(this), root, sincoord)
   )
 
   # Al cambiar departamento se recalcula lista de municipios
   $(document).on('change', 'select[id$=_id_departamento]', (e) ->
-    llena_municipio($(this), root)
+    llena_municipio($(this), root, sincoord)
   )
   $(document).on('change', 'select[id$=_departamento_id]', (e) ->
-    llena_municipio($(this), root)
+    llena_municipio($(this), root, sincoord)
   )
 
   # Al cambiar municipio se recalcula lista de centros poblados
   $(document).on('change', 'select[id$=_id_municipio]', (e) ->
-    llena_clase($(this), root)
+    llena_clase($(this), root, sincoord)
   )
   $(document).on('change', 'select[id$=_municipio_id]', (e) ->
-    llena_clase($(this), root)
+    llena_clase($(this), root, sincoord)
   )
 
   $('#mundep').on('focusin', (e) ->
