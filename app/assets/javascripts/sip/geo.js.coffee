@@ -29,16 +29,16 @@
   idlon = nomcampo.replace('id_' + tabla, 'longitud')
   lon = $('#' + idlon)
   if (lat.length > 0 && lon.length > 0) 
-    y = $.getJSON(root.puntomontaje + "admin/" + modelo, {id: id})
+    y = $.getJSON(root.puntomontaje + "admin/" + modelo + "/" + id + ".json", {id: id})
     y.done((data) -> 
       if (data.length > 0) 
-        d = data.pop()
-        if (+d.latitud != 0)
-          nla = +d.latitud + Math.random()/1000-0.0005
-          lat.val(nla)
-        if (+d.longitud != 0)
-          nlo = +d.longitud + Math.random()/1000-0.0005
-          lon.val(nlo)
+        data = data.pop()
+      if (+data.latitud != 0)
+        nla = +data.latitud + Math.random()/1000-0.0005
+        lat.val(nla)
+      if (+data.longitud != 0)
+        nlo = +data.longitud + Math.random()/1000-0.0005
+        lon.val(nlo)
     );
     y.error((m1, m2, m3) ->
       if (m1.responseText.indexOf("Acceso no autorizado") >=0) 
