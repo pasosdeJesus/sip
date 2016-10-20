@@ -192,6 +192,15 @@ if (typeof String.prototype.endsWith != 'function')
     llena_clase($(this), root, sincoord)
   )
 
+  # Al cambiar centro poblado se deja tipo de ubicación en Urbano
+  $(document).on('change', 'select[id$=_id_clase]', (e) ->
+    pone_tipourbano($(this))
+  )
+  $(document).on('change', 'select[id$=_clase_id]', (e) ->
+    pone_tipourbano($(this))
+  )
+
+
   $('#mundep').on('focusin', (e) ->
     sip_arregla_puntomontaje(root)
     busca_gen($(this), null, root.puntomontaje + "/mundep.json")

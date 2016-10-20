@@ -151,3 +151,11 @@
     $("#" + idcla).html("") if idcla
     $("#" + idcla).attr("disabled", true) if idcla
 
+# Completa cuadro de selección para clase de acuerdo a depto y mcpio.
+@pone_tipourbano = ($this) -> 
+  idcla = $this.attr('id')
+  idts = busca_campo_similar(idcla, 'clase', 'tsitio')
+  cla = $this.val()
+  if (+cla > 0 && idcla != '') 
+    $("#" + idts + " option[value='2']").prop('selected', true)
+
