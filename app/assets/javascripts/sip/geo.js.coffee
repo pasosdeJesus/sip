@@ -28,7 +28,7 @@
   lat = $('#' + idlat)
   idlon = nomcampo.replace('id_' + tabla, 'longitud')
   lon = $('#' + idlon)
-  if (lat.length > 0 && lon.length > 0) 
+  if idlat != nomcampo && idlon != nomcampo && lat.length > 0 && lon.length > 0
     y = $.getJSON(root.puntomontaje + "admin/" + modelo + "/" + id + ".json", {id: id})
     y.done((data) -> 
       if (data.length > 0) 
@@ -65,11 +65,14 @@
               op += '<option value="' + 
                 item.id + '">' + item.nombre + '</option>'
           )
-          $('#' + iddep).html(op) 
+	  # No se puede $('#' + iddep).empty().append()
           $('#' + iddep).attr('disabled', false) 
-          $('#' + idmun).html('') if idmun
+          ndep = $('#' + iddep).clone()
+          ndep.empty().append(op)
+          $('#' + iddep).replaceWith(ndep)
+          $("#" + idmun + " option[value='']").attr('selected', true) if idmun
           $('#' + idmun).attr('disabled', true) if idmun 
-          $('#' + idcla).html('') if idcla
+          $("#" + idcla + " option[value='']").attr('selected', true) if idcla
           $('#' + idcla).attr('disabled', true) if idcla
       )
       x.error((m1, m2, m3) -> 
@@ -105,9 +108,15 @@
               op += '<option value="' + 
                 item.id + '">' + item.nombre + '</option>'
           )
-          $("#" + idmun ).html(op) if idmun
+	  # Estrellados con dificultad de chrome para hacer empty y append
+	  # a un cuadro de selección: 
+	  # http://stackoverflow.com/questions/5275420/chrome-is-really-slow-to-empty-my-listbox-via-jquery
+          if idmun
+            nmun = $('#' + idmun).clone()
+            nmun.empty().append(op)
+            $('#' + idmun).replaceWith(nmun)
           $("#" + idmun).attr("disabled", false) if idmun
-          $("#" + idcla).html('') if idcla
+          $("#" + idcla + " option[value='']").attr('selected', true) if idcla
           $("#" + idcla).attr("disabled", true) if idcla
       )
       x.error((m1, m2, m3) -> 
@@ -139,7 +148,12 @@
       $.each( data, ( i, item ) ->
         op += '<option value="' + item.id + '">' + item.nombre + '</option>';
       )
-      $("#" + idcla).html(op) if idcla
+      # Chrome se estrella con $("#" + idcla).empty().append(op) if idcla
+      # Toco otra forma como dice http://stackoverflow.com/questions/5275420/chrome-is-really-slow-to-empty-my-listbox-via-jquery
+      if idcla
+        ncla = $('#' + idcla).clone()
+        ncla.empty().append(op)
+        $('#' + idcla).replaceWith(ncla)
       $("#" + idcla).attr("disabled", false) if idcla
     )
     x.error( (m1, m2, m3) ->
@@ -148,7 +162,7 @@
     if (sincoord != true && root.sip_sincoord != true) 
       pone_coord(root, 'municipio', mun, idmun)
   else
-    $("#" + idcla).html("") if idcla
+    $("#" + idcla + " option[value='']").attr('selected', true) if idcla
     $("#" + idcla).attr("disabled", true) if idcla
 
 # Completa cuadro de selección para clase de acuerdo a depto y mcpio.
