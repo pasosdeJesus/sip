@@ -136,13 +136,13 @@ if (typeof String.prototype.endsWith != 'function')
 # @param root espacio para poner variables globales
 @sip_prepara_eventos_comunes = (root, sincoord = false) ->
   # Arreglar punto de montaje de la aplicacion
-  root.puntomontaje = '<%= ENV['RAILS_RELATIVE_URL_ROOT'] ? ENV['RAILS_RELATIVE_URL_ROOT'] : Rails.configuration.relative_url_root %>'
+  root.puntomontaje = "<%= ENV['RAILS_RELATIVE_URL_ROOT'] ? ENV['RAILS_RELATIVE_URL_ROOT'] : Rails.configuration.relative_url_root %>"
   sip_arregla_puntomontaje(root)
   # Formularios con departamento/municipio sin llenar autom. coordenadas
   root.sip_sincoord = false;
 
-  <% puts  "formato_fecha: ", Rails.configuration.x.formato_fecha %>
-  <% puts  "relative_url_root: ", Rails.configuration.relative_url_root %>
+  #<% puts  "formato_fecha: ", Rails.configuration.x.formato_fecha %>
+  #<% puts  "relative_url_root: ", Rails.configuration.relative_url_root %>
   # Formato de campos de fecha con datepicker
   root.formato_fecha = '<%= Rails.configuration.x.formato_fecha && Rails.configuration.x.formato_fecha.to_s != "{}"  ? Rails.configuration.x.formato_fecha.to_s : "yyyy-mm-dd" %>'
   $('[data-behaviour~=datepicker]').datepicker({
