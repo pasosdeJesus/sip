@@ -5,7 +5,6 @@ Sip::Engine.routes.draw do
     as: 'descarga_anexo'
   get "/hogar" => 'hogar#index'
   get "/personas" => 'personas#index'
-  get "/personas/remplazar" => 'personas#remplazar'
   get "/tablasbasicas" => 'hogar#tablasbasicas'
   get '/ubicaciones/nuevo' => 'ubicaciones#nuevo'
   get 'mundep' => 'admin/municipios#mundep'
