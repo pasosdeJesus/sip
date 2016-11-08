@@ -15177,11 +15177,11 @@ INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechades
 INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (5, 'LA PATRIA', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
 INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (50, 'LA REPÚBLICA', NULL, '2015-05-11', NULL, '2015-05-11 00:00:00', NULL);
 INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (51, 'LA UNION', NULL, '2015-05-11', NULL, '2015-05-11 00:00:00', NULL);
-INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (52, 'NUEVO SIGLO', NULL, '2015-05-11', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (52, 'EL NUEVO SIGLO', NULL, '2015-05-11', NULL, '2015-05-11 00:00:00', NULL);
 INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (53, 'VOZ PROLETARIA', NULL, '2015-05-11', NULL, '2015-05-11 00:00:00', NULL);
 INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (54, 'LA LIBERTAD', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
 INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (6, 'LA TARDE', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
-INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (7, 'EL PAIS', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
+INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (7, 'EL PAÍS', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
 INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (8, 'EL HERALDO', NULL, '2001-01-01', NULL, '2015-05-11 00:00:00', NULL);
 INSERT INTO sip_fuenteprensa (id, nombre, observaciones, fechacreacion, fechadeshabilitacion, created_at, updated_at) VALUES (9, 'EL ESPACIO', NULL, '2015-05-11', NULL, '2015-05-11 00:00:00', NULL);
 

@@ -72,6 +72,7 @@ module Sip
       end
       return nf
     end
+    module_function :fecha_local_estandar
 
 
     # Convierte una fecha de formato estándar a formato local
@@ -95,6 +96,7 @@ module Sip
       end
       return nf
     end
+    module_function :fecha_estandar_local
 
 
   end
