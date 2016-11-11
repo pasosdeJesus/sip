@@ -144,6 +144,7 @@ if (typeof String.prototype.endsWith != 'function')
   #<% puts  "relative_url_root: ", Rails.configuration.relative_url_root %>
   # Formato de campos de fecha con datepicker
   root.formato_fecha = '<%= Rails.configuration.x.formato_fecha && Rails.configuration.x.formato_fecha.to_s != "{}"  ? Rails.configuration.x.formato_fecha.to_s : "yyyy-mm-dd" %>'
+
   $('[data-behaviour~=datepicker]').datepicker({
     format: root.formato_fecha,
     autoclose: true,
