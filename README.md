@@ -28,7 +28,8 @@ Este motor incluye
 - Facilidades de configuración en ```lib/sip/engine.rb```, como inclusión 
   automática de sus migraciones en las aplicaciones que usen el motor y 
   variables típicas de configuración.
-- Localización con ```twitter_cldr```
+- Localización con ```twitter_cldr``` y para fecha con config.x.formato_fecha y
+  ayudas para definir campos de fecha localizados en ese formato.
 - Tareas ```rake``` para actualizar indices, sacar copia de respaldo de base 
   de datos
 - Generador de nuevas tablas básicas
