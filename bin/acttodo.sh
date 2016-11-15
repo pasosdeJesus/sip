@@ -53,6 +53,7 @@ if (test "$SALTASIP" != "1") then {
 if (test "$SALTAHEB412" != "1") then {
 	echo "**** heb412"
 	actuno heb412_gen test/dummy; 
+	actuno heb412
 } fi;
 if (test "$SALTASIVEL" != "1") then {
 	echo "**** sivel"
