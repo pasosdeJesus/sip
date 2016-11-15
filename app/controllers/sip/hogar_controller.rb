@@ -5,7 +5,8 @@ module Sip
     def tablasbasicas
       #authorize! :manage, :tablasbasicas
       @ntablas = {}
-      ::Ability::tablasbasicas.each { |t|
+      ab = ::Ability.new
+      ab.tablasbasicas.each { |t|
 	      puts t[1]
 	      k = Ability::tb_clase(t)
 	      if can? :manage, k

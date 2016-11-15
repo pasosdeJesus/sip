@@ -33,10 +33,15 @@ module Sip
       ['Sip', 'tsitio']
     ]
 
-    @@tablasbasicas = BASICAS_PROPIAS
+    #@@tablasbasicas = BASICAS_PROPIAS 
 
-    def self.tablasbasicas
-      @@tablasbasicas
+    # Retorna arreglo de tablas básicas
+    # No conviene usar variables de clas @@tablasbasicas
+    # Cuando varios motores heredan e inicializan, pues al
+    # cargar en modo eager puede evaluarse de último una clase
+    # que no se espera.
+    def tablasbasicas
+      BASICAS_PROPIAS
     end
 
     BASICAS_ID_NOAUTO = [ 
@@ -45,10 +50,8 @@ module Sip
     ]
 
     # Tablas básicas cuyo id no es autoincremental
-    @@basicas_id_noauto =  BASICAS_ID_NOAUTO
-
-    def self.basicas_id_noauto
-      @@basicas_id_noauto
+    def basicas_id_noauto
+      BASICAS_ID_NOAUTO
     end
 
     NOBASICAS_INDSEQID = [
@@ -58,16 +61,14 @@ module Sip
       ['', 'usuario']
     ]
 
-    # Tablas no básicas pero que tienen índice *_seq_id
-    @@nobasicas_indice_seq_con_id = NOBASICAS_INDSEQID
+     
 
-    def self.nobasicas_indice_seq_con_id
-      @@nobasicas_indice_seq_con_id
+    # Tablas no básicas pero que tienen índice *_seq_id
+    def nobasicas_indice_seq_con_id
+      NOBASICAS_INDSEQID
     end
 
     
-    # Tablas básicas que deben volcarse primero --por ser requeridas 
-    # por otras básicas
     BASICAS_PRIO = [
       ['Sip', 'tclase'], 
       ['Sip', 'pais'], 
@@ -77,10 +78,10 @@ module Sip
       ['Sip', 'oficina'], 
     ];
 
-    @@tablasbasicas_prio = BASICAS_PRIO
-
-    def self.tablasbasicas_prio
-      @@tablasbasicas_prio
+    # Tablas básicas que deben volcarse primero --por ser requeridas 
+    # por otras básicas
+    def tablasbasicas_prio
+      BASICAS_PRIO
     end
 
     # Recibe una tabla básica como pareja [Modulo, clase] y retorna
@@ -104,55 +105,7 @@ module Sip
       end
     end
 
-    # Se definen habilidades con cancancan
-    # @usuario Usuario que hace petición
-    def initialize(usuario)
-      # El primer argumento para can es la acción a la que se da permiso, 
-      # el segundo es el recurso sobre el que puede realizar la acción, 
-      # el tercero opcional es un diccionario de condiciones para filtrar 
-      # más (e.g :publicado => true).
-      #
-      # El primer argumento puede ser :manage para indicar toda acción, 
-      # o grupos de acciones como :read (incluye :show e :index), 
-      # :create, :update y :destroy.
-      #
-      # Si como segundo argumento usa :all se aplica a todo recurso, 
-      # o puede ser una clase.
-      # 
-      # Detalles en el wiki de cancan: 
-      #   https://github.com/ryanb/cancan/wiki/Defining-Abilities
-   
-      # Sin autenticación puede consultarse información geográfica 
-      can :read, [Sip::Pais, Sip::Departamento, Sip::Municipio, Sip::Clase]
-      if !usuario || usuario.fechadeshabilitacion
-        return
-      end
-      can :contar, Sip::Ubicacion
-      can :buscar, Sip::Ubicacion
-      can :lista, Sip::Ubicacion
-      can :descarga_anexo, Sip::Anexo
-      can :nuevo, Sip::Ubicacion
-      #can :nuevo, Sip::Victima
-      if usuario && usuario.rol then
-        case usuario.rol 
-        when Ability::ROLANALI
-          can :read, Sip::Ubicacion
-          can :new, Sip::Ubicacion
-          can [:update, :create, :destroy], Sip::Ubicacion
-          #can :read, Sip::Actividad
-          #can :new, Sip::Actividad
-          #can [:update, :create, :destroy], Sip::Actividad
-        when Ability::ROLADMIN
-          can :manage, Sip::Ubicacion
-          #can :manage, Sip::Actividad
-          can :manage, Usuario
-          can :manage, :tablasbasicas
-          @@tablasbasicas.each do |t|
-            c = Ability.tb_clase(t)
-            can :manage, c
-          end
-        end
-      end
-    end
+    # En motores y aplicaciones derivadas models/ability.rb debe
+    # tener un initializer que establezca habilidades de CanCanCan
   end
 end

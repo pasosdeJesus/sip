@@ -11,7 +11,8 @@ namespace :sip do
     puts "sip - indices"
 		# Primero tablas basicas creadas en Rails
     #byebug
-    tbn = Ability::tablasbasicas - Ability::basicas_id_noauto
+    ab = ::Ability.new
+    tbn = ab.tablasbasicas - ab.basicas_id_noauto
     tbn.each do |t|
       #puts "OJO tbn, t=#{t}"
 			nomt = Ability::tb_modelo t
@@ -28,7 +29,7 @@ namespace :sip do
     	connection.execute(q)
 		end
     # Finalmente otras tablas no basicas pero con índices
-    tb = Ability::nobasicas_indice_seq_con_id
+    tb = ab.nobasicas_indice_seq_con_id
     tb.each do |t|
       #puts "OJO no basica con indice, t=#{t}"
       connection.execute("
@@ -47,9 +48,10 @@ namespace :sip do
     set_psql_env(abcs[Rails.env])
     search_path = abcs[Rails.env]['schema_search_path']
     connection = ActiveRecord::Base.connection()
+    ab = ::Ability.new
 		# Asegurasmo que primero se vuelcan superbasicas y otras en orden correcto
-    tb = ::Ability::tablasbasicas_prio + 
-      (::Ability::tablasbasicas - ::Ability::tablasbasicas_prio);
+    tb = ab.tablasbasicas_prio + 
+      (ab.tablasbasicas - ab.tablasbasicas_prio);
     unless search_path.blank?
       search_path = search_path.split(",").map{|search_path_part| 
         "--schema=#{Shellwords.escape(search_path_part.strip)}" 
