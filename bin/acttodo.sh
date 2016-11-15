@@ -72,7 +72,6 @@ if (test "$SALTACOR1440" != "1") then {
 	actuno cor1440_gen spec/dummy; 
 	actuno cor1440; 
 	actuno cor1440_cinep; 
-	actuno cor1440_sjrlac; 
 } fi;
 if (test "$SALTASAL7711" != "1") then {
 	echo "**** sal7711"
@@ -80,10 +79,12 @@ if (test "$SALTASAL7711" != "1") then {
 	actuno sal7711; 
 	actuno sal7711_web test/dummy; 
 	actuno sal7711_cinep; 
-	actuno sivel2_sjrven; 
-	actuno sivel2_sjrecu
-	actuno sivel2_sjrcol
 	#actuno sal7711_onbase; 
 } fi;
 
+# Usan varios motores (fuera de sip y heb412)
+actuno cor1440_sjrlac; 
+actuno sivel2_sjrven; 
+actuno sivel2_sjrecu
+actuno sivel2_sjrcol
 
