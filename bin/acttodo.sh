@@ -50,23 +50,14 @@ if (test "$SALTASIP" != "1") then {
 	echo "**** sip"
 	actuno sip spec/dummy
 } fi;
+
+# Usan solo sip
 if (test "$SALTAHEB412" != "1") then {
 	echo "**** heb412"
 	actuno heb412_gen test/dummy; 
 	actuno heb412
 } fi;
-if (test "$SALTASIVEL" != "1") then {
-	echo "**** sivel"
-	actuno sivel2_gen spec/dummy; 
-	actuno sivel2; 
-	actuno sivel2_anzorc; 
-	actuno sivel2_marcha; 
-} fi;
-if (test "$SALTASIVELSJR" != "1") then {
-	echo "**** sivelsjr"
-	actuno sivel2_sjr spec/dummy; 
-	actuno sivel2_mujeresindigenas;
-} fi;
+
 if (test "$SALTACOR1440" != "1") then {
 	echo "**** cor1440"
 	actuno cor1440_gen spec/dummy; 
@@ -79,10 +70,26 @@ if (test "$SALTASAL7711" != "1") then {
 	actuno sal7711; 
 	actuno sal7711_web test/dummy; 
 	actuno sal7711_cinep; 
-	#actuno sal7711_onbase; 
 } fi;
 
-# Usan varios motores (fuera de sip y heb412)
+
+# Usan 2 motores
+if (test "$SALTASIVEL" != "1") then {
+	echo "**** sivel"
+	actuno sivel2_gen spec/dummy; 
+	actuno sivel2; 
+	actuno sivel2_anzorc; 
+	actuno sivel2_marcha; 
+} fi;
+
+# Usan 3 motores
+if (test "$SALTASIVELSJR" != "1") then {
+	echo "**** sivelsjr"
+	actuno sivel2_sjr spec/dummy; 
+	actuno sivel2_mujeresindigenas;
+} fi;
+
+# Usan 4 motores
 actuno cor1440_sjrlac; 
 actuno sivel2_sjrven; 
 actuno sivel2_sjrecu
