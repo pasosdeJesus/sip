@@ -9,7 +9,7 @@ module Sip
         included do
           self.table_name = 'sip_anexo'
           has_attached_file :adjunto, 
-            :path => Sip.ruta_anexos + "/:id_:filename"
+            :path => Sip.ruta_anexos.to_s + "/:id_:filename"
           validates_attachment_content_type :adjunto, 
             :content_type => ['text/plain', /.*/]
           validates_attachment_presence :adjunto
