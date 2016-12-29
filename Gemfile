@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'puma', '~> 3.0'
 
+gem 'nokogiri', '1.6.8.1' #path: '../nokogiri/gems'
+
 # Rails (internacionalización)
 gem "rails", '~> 5.0.0'
 gem "rails-i18n"
@@ -21,6 +23,9 @@ gem "sass-rails"
 
 # API JSON facil. Ver: https://github.com/rails/jbuilder
 gem "jbuilder"
+
+# Incluida para asegurar operacion con ruby 2.4
+#gem 'json', '~>2.0.0'
 
 # Uglifier comprime recursos Javascript
 gem "uglifier"#, '>= 1.3.0'
@@ -64,7 +69,7 @@ gem "tzinfo-data"
 
 group :doc do
   # Genera documentación en doc/api con bundle exec rake doc:rails
-  gem "sdoc", require: false
+  #gem "sdoc", require: false
 end
 
 # Los siguientes son para desarrollo o para pruebas con generadores
