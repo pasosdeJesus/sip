@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 gem 'puma', '~> 3.0'
 
-gem 'nokogiri', '1.6.8.1' 
-
 # Rails (internacionalización)
 gem "rails", '~> 5.0.0'
 gem "rails-i18n"
