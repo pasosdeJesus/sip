@@ -44,6 +44,7 @@ class Ability  < Sip::Ability
         #can [:update, :create, :destroy], Sip::Actividad
       when Ability::ROLADMIN
         can :manage, Sip::Ubicacion
+        can :manage, Sip::Respaldo7z
         #can :manage, Sip::Actividad
         can :manage, Usuario
         can :manage, :tablasbasicas

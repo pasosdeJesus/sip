@@ -74,6 +74,9 @@ es:
         anionac: Año nacimiento
         mesnac: Mes nacimiento
         dianac: Día nacimiento
+      "sip/respaldo7z":
+        clave7z: Clave de cifrado
+        clave7z_confirmation: Confirmación de clave de cifrado
       "sip/tclase":
         Tclase: Tipo de Centro Poblado
         Tclases: Tipos de Centros Poblados

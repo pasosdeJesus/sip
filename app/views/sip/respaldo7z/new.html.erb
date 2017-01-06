@@ -1,0 +1,23 @@
+<article>
+  <h1>Respaldo cifrado</h1>
+  <%= simple_form_for @respaldo7z, 
+    url: respaldo7z_url,
+    defaults: { input_html: { class: 'span10' } } do |f| %>
+
+    <%= render partial: 'sip/hogar/errores', locals: { f: f } %> 
+
+    <%= f.input :clave7z, 
+      label: I18n.t('activerecord.attributes.sip/respaldo7z.clave7z'),
+      as: :password %>
+    <%= f.input :clave7z_confirmation, 
+      label: I18n.t('activerecord.attributes.sip/respaldo7z.clave7z_confirmation'),
+      as: :password %>
+
+    <div class="form-actions">
+      <%= f.button :submit, 'Crear respaldo y descargar', 
+        class: 'btn-primary' %>
+      <%= link_to t('.cancel', :default => 'Inicio'),
+        main_app.root_path, :class => 'btn' %>
+    </div>
+  <% end %>
+</article>
