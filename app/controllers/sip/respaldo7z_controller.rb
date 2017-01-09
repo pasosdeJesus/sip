@@ -29,8 +29,8 @@ module Sip
           #dest = File.join( Rails.root, 'public', desturl)
           dest = "#{archcopia}.7z"
           FileUtils.rm_f dest
-          cmd = Shellwords.join(['7z', 'a', "-p#{@respaldo7z.clave7z}", 
-                                dest, archcopia])
+          cmd = Shellwords.join(['7z', 'a', "-r", "-p#{@respaldo7z.clave7z}", 
+                                dest, archcopia, Sip.ruta_anexos])
           r = `#{cmd}`
           if $?.exitstatus == 0
             format.html { 
