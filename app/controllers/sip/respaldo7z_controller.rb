@@ -27,7 +27,8 @@ module Sip
           archcopia = Sip::TareasrakeHelper::nombre_volcado(Sip.ruta_volcados)
           #desturl = File.join( Sip.dir_respaldo7z, "#{archcopia}.7z")
           #dest = File.join( Rails.root, 'public', desturl)
-          dest = "#{archcopia}.7z"
+          # Quitamos el .sql final de archcopia
+          dest = "#{archcopia[0..-5]}.7z"
           FileUtils.rm_f dest
           cmd = Shellwords.join(['7z', 'a', "-r", "-p#{@respaldo7z.clave7z}", 
                                 dest, archcopia, Sip.ruta_anexos])
