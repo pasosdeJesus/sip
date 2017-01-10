@@ -35,7 +35,7 @@ module Sip
           r = `#{cmd}`
           if $?.exitstatus == 0
             format.html { 
-              send_file("#{archcopia}.7z",  
+              send_file(dest,
                         type: "application/x-7z-compressed", 
                         disposition: "inline" )
             }
