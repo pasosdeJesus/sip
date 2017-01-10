@@ -37,10 +37,9 @@ module Sip
   class << self
     mattr_accessor :ruta_anexos
     mattr_accessor :ruta_volcados
-    mattr_accessor :dir_respaldo7z
     mattr_accessor :titulo
-    self.ruta_anexos = "/var/www/resbase/sip/anexos"
-    self.ruta_volcados = "/var/www/resbase/sip/bd"
+    self.ruta_anexos = "#{Rails.root}/archivos/anexos"
+    self.ruta_volcados = "#{Rails.root}/archivos/bd"
     self.titulo = "Motor para Sistemas de Información estilo Pasos de Jesús" 
   end
 
