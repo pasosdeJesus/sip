@@ -7,8 +7,8 @@ module Sip
     attr_accessor :clave7z
 
     validates :clave7z, presence: true, confirmation: true, format: { 
-      with: /\A[-A-Za-z0-9{}*.,:;+@^~<>#_!$%&()=?]\z/, 
-      message: 'sólo letras, dígitos y algunos caracteres especiales'
+      with: /\A[-A-Za-z0-9{}*.,:;+@^~<>#_!$%&()=?]*\z/, 
+      message: 'sólo letras, dígitos y los siguientes caracteres especiales -{}*.,:;+@^~<>#_!$%&()=?'
     }
     validates :clave7z_confirmation, presence: true
 
