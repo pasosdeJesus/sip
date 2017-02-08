@@ -19,6 +19,17 @@ module Sip
       ["", 0] #6
     ]
 
+    ROLES_CA = [
+      "Crear copias de respaldo cifradas. " +
+        "Administrar usuarios. " +
+        "Administrar tablas básicas. ",
+      "", #2
+      "", #3
+      "", #4
+      "", #5
+      "" #6
+    ]
+
     BASICAS_PROPIAS = [
       ['Sip', 'clase'], 
       ['Sip', 'departamento'], 

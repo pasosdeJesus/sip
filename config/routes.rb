@@ -3,6 +3,8 @@ Sip::Engine.routes.draw do
   get '/acercade' => 'hogar#acercade', as: 'acercade'
   get '/anexos/descarga_anexo/:id', to: 'anexos#descarga_anexo', 
     as: 'descarga_anexo'
+  get '/controldeacceso' => 'hogar#ayuda_controldeacceso', 
+    as: 'ayuda_controldeacceso'
   get "/hogar" => 'hogar#index'
   get "/personas" => 'personas#index'
   get "/respaldo7z" => 'respaldo7z#new', as: 'respaldo7z'

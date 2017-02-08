@@ -1,0 +1,19 @@
+<article>
+  <h1>Ayuda sobre Control de Acceso</h1>
+  <table border='1' width='100%'>
+    <tr>
+      <th>Rol</th><th>Puede</th>
+    </tr>
+    <% Ability::ROLES.each do |r| %>
+      <tr>
+        <td><%= r[0] %></td>
+        <td>
+          <% t = Ability::ROLES_CA[r[1] - 1].split(". ") %>
+          <% t.each do |i| %>
+            <%= i %><br>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</article>

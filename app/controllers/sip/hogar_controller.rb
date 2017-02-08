@@ -45,5 +45,11 @@ module Sip
       render layout: 'application'
     end
 
+    def ayuda_controldeacceso
+      verificarutas
+      render layout: 'application'
+    end
+
+
   end
 end
