@@ -41,6 +41,7 @@ gem "turbolinks"#, "2.5.3"
 
 # Ambiente de CSS
 gem "twitter-bootstrap-rails"#, '~> 3.2.0'
+gem "font-awesome-rails"
 gem "bootstrap-datepicker-rails"
 
 # Formularios simples 

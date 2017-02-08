@@ -1,4 +1,5 @@
 require 'devise'
+require 'font-awesome-rails'
 
 module Sip
   class Engine < ::Rails::Engine
