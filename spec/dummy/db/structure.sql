@@ -1063,7 +1063,7 @@ ALTER TABLE ONLY sip_ubicacion
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES
+INSERT INTO "schema_migrations" (version) VALUES
 ('20150413160156'),
 ('20150413160157'),
 ('20150413160158'),
