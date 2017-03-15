@@ -21,14 +21,18 @@ config/database.yml
 *swp
 *.core
 pkg/
-spec/dummy/config/database.yml
-spec/dummy/tmp/
-spec/dummy/db/*.sqlite3
-spec/dummy/db/*.sqlite3-journal
-spec/dummy/log/*.log
-spec/dummy/tmp/
-spec/dummy/.sass-cache
+test/dummy/config/database.yml
+test/dummy/tmp/
+test/dummy/db/*.sqlite3
+test/dummy/db/*.sqlite3-journal
+test/dummy/log/*.log
+test/dummy/tmp/
+test/dummy/.sass-cache
 tmp/
 herram/
 
-spec/dummy/.byebug_history
+.byebug_history
+test/dummy/archivos/
+
+*_test.rb.copia
+.byebug_history

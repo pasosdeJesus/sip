@@ -6,9 +6,6 @@ gem 'puma', '~> 3.0'
 gem "rails", '~> 5.0.0'
 gem "rails-i18n"
 
-# Problemas con arel 6.0.0 al ejecutar rspec
-#gem "arel", '6.0.0.beta2'
-
 # Postgresql
 gem "pg"
 
@@ -89,15 +86,14 @@ group :test do
   # Envia resultados de pruebas desde travis a codeclimate
   #gem "codeclimate-test-reporter", require: nil
 
+  gem "connection_pool"
+  gem "minitest-reporters"
+
   gem 'rails-controller-testing'
 
   # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
   gem "spring"
   
-  # Pruebas con rspec
-  gem 'spring-commands-rspec'
-  gem 'rspec-rails'
-
   # Un proceso para cada prueba -- acelera
   gem 'spork'#, '~> 1.0rc'
 
@@ -108,7 +104,6 @@ group :test do
   # Lanza programas para examinar resultados
   gem "launchy"
  
-  # Para examinar errores, usar "rescue rspec" en lugar de "rspec"
   gem 'pry-rescue'
   #gem 'pry-byebug'
   gem 'pry-stack_explorer'

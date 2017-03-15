@@ -60,7 +60,7 @@ if (test "$SALTAHEB412" != "1") then {
 
 if (test "$SALTACOR1440" != "1") then {
 	echo "**** cor1440"
-	actuno cor1440_gen spec/dummy; 
+	actuno cor1440_gen test/dummy; 
 	actuno cor1440; 
 	actuno cor1440_cinep; 
 } fi;
@@ -85,7 +85,7 @@ if (test "$SALTASIVEL" != "1") then {
 # Usan 3 motores
 if (test "$SALTASIVELSJR" != "1") then {
 	echo "**** sivelsjr"
-	actuno sivel2_sjr spec/dummy; 
+	actuno sivel2_sjr test/dummy; 
 	actuno sivel2_mujeresindigenas;
 } fi;
 
