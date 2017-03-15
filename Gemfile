@@ -89,6 +89,8 @@ group :test do
   gem "connection_pool"
   gem "minitest-reporters"
 
+  gem 'byebug'
+
   gem 'rails-controller-testing'
 
   # Acelera ejecutando en fondo. https://github.com/jonleighton/spring

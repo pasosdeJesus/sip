@@ -48,6 +48,7 @@ GEM
     bootstrap-datepicker-rails (1.6.4.1)
       railties (>= 3.0)
     builder (3.2.3)
+    byebug (9.0.6)
     camertron-eprun (1.1.1)
     cancancan (1.16.0)
     cldr-plurals-runtime-rb (1.0.1)
@@ -242,6 +243,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
+  byebug
   cancancan
   coffee-rails
   colorize
