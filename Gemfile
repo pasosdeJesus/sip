@@ -89,7 +89,7 @@ group :test do
   gem "connection_pool"
   gem "minitest-reporters"
 
-  gem 'byebug'
+  #gem 'byebug'
 
   gem 'rails-controller-testing'
 
