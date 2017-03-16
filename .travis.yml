@@ -3,7 +3,9 @@ rvm:
         - 2.4.0
 notifications:
         email: false
-script: CODECLIMATE_REPO_TOKEN=e83ead47cfc0912ab49acb6658bf8a22bd4257d73c5ddcd8eebfb450efd51640 bundle exec rails test
+script: bundle exec rails test
+after_success:
+        - CODECLIMATE_REPO_TOKEN=e83ead47cfc0912ab49acb6658bf8a22bd4257d73c5ddcd8eebfb450efd51640 bundle exec codeclimate-test-reporter
 env:
         global:
                 - NOKOGIRI_USE_SYSTEM_LIBRARIES=true

@@ -83,8 +83,9 @@ end
 
 # Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo
 group :test do
+  gem 'simplecov'
   # Envia resultados de pruebas desde travis a codeclimate
-  #gem "codeclimate-test-reporter", require: nil
+  gem "codeclimate-test-reporter"
 
   gem "connection_pool"
   gem "minitest-reporters"

@@ -36,3 +36,4 @@ test/dummy/archivos/
 
 *_test.rb.copia
 .byebug_history
+coverage/
