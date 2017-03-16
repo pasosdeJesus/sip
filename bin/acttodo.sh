@@ -48,7 +48,7 @@ function actuno {
 
 if (test "$SALTASIP" != "1") then {
 	echo "**** sip"
-	actuno sip spec/dummy
+	actuno sip test/dummy
 } fi;
 
 # Usan solo sip
@@ -66,7 +66,7 @@ if (test "$SALTACOR1440" != "1") then {
 } fi;
 if (test "$SALTASAL7711" != "1") then {
 	echo "**** sal7711"
-	actuno sal7711_gen spec/dummy; 
+	actuno sal7711_gen test/dummy; 
 	actuno sal7711; 
 	actuno sal7711_web test/dummy; 
 	actuno sal7711_cinep; 
@@ -76,7 +76,7 @@ if (test "$SALTASAL7711" != "1") then {
 # Usan 2 motores
 if (test "$SALTASIVEL" != "1") then {
 	echo "**** sivel"
-	actuno sivel2_gen spec/dummy; 
+	actuno sivel2_gen test/dummy; 
 	actuno sivel2; 
 	actuno sivel2_anzorc; 
 	actuno sivel2_marcha; 
