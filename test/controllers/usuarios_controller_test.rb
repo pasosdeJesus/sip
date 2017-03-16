@@ -40,12 +40,15 @@ module Sip
         usuario = ::Usuario.create! ATRIBUTOS_VALIDOS
       end
       get usuarios_url
+      assert_response :success
+      assert_select 'th', text: 'Rol'
     end
 
     test "get show: asigna el usuario requerido como @usuario" do
       usuario = Usuario.create! ATRIBUTOS_VALIDOS
       get usuario_url(usuario)
       assert_response :success
+      assert_select 'dd', text: 'nusuario'
     end
 
     test "new: asigna un nuevo usuario como @usuario" do
@@ -57,27 +60,39 @@ module Sip
       usuario = Usuario.create! ATRIBUTOS_VALIDOS
       get edit_usuario_url(usuario)
       assert_response :success
+      assert_template "edit"
+      assert_select "form[action=?][method=?]", usuario_path(usuario), 
+        "post" do
+        verifica_formulario
+      end
     end
 
     test "post create: crea una Usuario" do
-      skip
       assert_difference('::Usuario.count') do
-        a = ATRIBUTOS_VALIDOS.clone
-        a[:fechacreacion_localizada] = a[:fechacreacion]
+        a = { 
+          nombre: "n",
+          nusuario: 'nusuario',
+          email: 'x@x.org',
+          fechacreacion_localizada: '1/Ene/2014',
+          password: 'x',
+          idioma: 'es_CO',
+          rol: 1,
+          created_at: "2014-11-11" 
+        }
         post usuarios_url, params: { usuario: a }
-        puts @response.body
+        #puts @response.body
       end
       assert_redirected_to usuario_url(Usuario.last)
     end
 
     test "asigna el usuario recien creado como @usuario" do
-      skip
       au = { 
         nombre: "n",
         nusuario: 'nusuario',
         email: 'x@x.org',
-        fechacreacion_localizada: '2014-1-1',
+        fechacreacion_localizada: '1/Ene/2014',
         password: 'x',
+        idioma: 'es_CO',
         rol: 1,
         created_at: "2014-11-11" 
       }
@@ -86,23 +101,36 @@ module Sip
     end
 
     test "redirige al usuario creado" do
-      skip
-      post :create, {usuario: ATRIBUTOS_VALIDOS}, valid_session
-      #assert_equal response.status, 200
-      expect(response).to redirect_to(Usuario.last)
-      usuario = Usuario.where(nusuario: 'nusuario').take
+      au = { 
+        nombre: "n",
+        nusuario: 'nusuario',
+        email: 'x@x.org',
+        fechacreacion_localizada: '1/Ene/2014',
+        password: 'x',
+        idioma: 'es_CO',
+        rol: 1,
+        created_at: "2014-11-11" 
+      }
+      post usuarios_url, params: { usuario: au }
+      assert_redirected_to Usuario.last
+    end
+
+    def verifica_formulario
+      assert_select "#usuario_email[name=?]", "usuario[email]"
     end
 
     test "vuelve a presentar la plantilla 'nueva'" do
       post usuarios_url, params: { usuario:  ATRIBUTOS_INVALIDOS}
       assert_template "new"
+      assert_select "form[action=?][method=?]", usuarios_path, "post" do
+        verifica_formulario
+      end
     end
 
     test "actualiza el usuario requerido" do
       usuario = Usuario.create! ATRIBUTOS_VALIDOS
       patch usuario_url(usuario), params: { 
         usuario:  {
-          minutos: "90", 
           nombre: "nombreact2",
         }
       }
