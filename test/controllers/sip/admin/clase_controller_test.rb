@@ -49,7 +49,6 @@ module Sip
       assert_difference('Sip::Clase.count') do
         post admin_clases_url, params: {clase: ClaseTest::PRUEBA_CLASE}
         #puts response.body
-        #byebug
       end
     end
 
@@ -59,7 +58,7 @@ module Sip
     end
 
     test "vuelve a plantilla nueva" do
-      atc = ClaseTest::PRUEBA_CLASE
+      atc = ClaseTest::PRUEBA_CLASE.clone
       atc[:nombre] = ''
       post admin_clases_url, params: { clase: atc }
       assert_template "new"

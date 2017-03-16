@@ -90,7 +90,7 @@ class Sip::UsuariosController < ApplicationController
 
   # Lista blanca de paramétros
   def usuario_params
-    params.require(:usuario).permit(
+    p = params.require(:usuario).permit(
       :id, :nusuario, :password, 
       :nombre, :descripcion, :oficina_id,
       :rol, :idioma, :email, :encrypted_password, 
@@ -101,5 +101,6 @@ class Sip::UsuariosController < ApplicationController
       :failed_attempts, :unlock_token, :locked_at,
       :last_sign_in_ip, :etiqueta_ids => []
     )
+    return p
   end
 end

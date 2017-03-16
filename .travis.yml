@@ -1,21 +1,20 @@
 language: ruby
 rvm:
-        - 2.2
+        - 2.4.0
 notifications:
         email: false
-script: CODECLIMATE_REPO_TOKEN=e83ead47cfc0912ab49acb6658bf8a22bd4257d73c5ddcd8eebfb450efd51640 xvfb-run rspec
+script: CODECLIMATE_REPO_TOKEN=e83ead47cfc0912ab49acb6658bf8a22bd4257d73c5ddcd8eebfb450efd51640 bundle exec rails test
 env:
         global:
                 - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-                - JRUBY_OPTS=-Xcext.enabled=true
 before_install: 
         - sudo apt-add-repository -y ppa:ubuntu-sdk-team/ppa
         - sudo apt-get update
-        - sudo apt-get install libqt5webkit5-dev qtdeclarative5-dev qtlocation5-dev qtsensors5-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev qt4-default language-pack-es
+        - sudo apt-get install libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev language-pack-es
         - sudo locale-gen --no-archive es_CO.UTF-8
         - sudo /etc/init.d/postgresql stop
         - sudo /etc/init.d/postgresql start 9.3
-        - cd spec/dummy
+        - cd test/dummy
         - psql -c 'CREATE DATABASE sip_pru;' -U postgres
         - bundle install
         - cp db/structure.sql db/structure.sql.conlock
