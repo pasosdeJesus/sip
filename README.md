@@ -1,21 +1,21 @@
 # Motor para Sistemas de Información estilo Pasos de Jesús
 [![Estado Construcción](https://api.travis-ci.org/pasosdeJesus/sip.svg?branch=master)](https://travis-ci.org/pasosdeJesus/sip) [![Clima del Código](https://codeclimate.com/github/pasosdeJesus/sip/badges/gpa.svg)](https://codeclimate.com/github/pasosdeJesus/sip) [![Cobertura de Pruebas](https://codeclimate.com/github/pasosdeJesus/sip/badges/coverage.svg)](https://codeclimate.com/github/pasosdeJesus/sip) [![security](https://hakiri.io/github/pasosdeJesus/sip/master.svg)](https://hakiri.io/github/pasosdeJesus/sip/master) [![Dependencias](https://gemnasium.com/pasosdeJesus/sip.svg)](https://gemnasium.com/pasosdeJesus/sip) 
 
-![Logo de sip](https://raw.githubusercontent.com/pasosdeJesus/sip/master/spec/dummy/public/images/logo.jpg)
+![Logo de sip](https://raw.githubusercontent.com/pasosdeJesus/sip/master/test/dummy/public/images/logo.jpg)
 
-Este es un motor para sistemas de información sobre Ruby on Rails 4.2 y
+Este es un motor para sistemas de información sobre Ruby on Rails 5.0 y
 PostgreSQL (con base de dato preferiblemente cifradas como en adJ).
 
 Este motor incluye 
 - Autenticación con ```devise``` y ```bcrypt```,  
 - Roles con ```cancancan```, inicialmente Administrador y Usuario
-- Pruebas con ```rspec``` y ```factory girl```,
+- Pruebas con ```minitest```
 - Propuesta para manejar automaticamente tablas básicas 
   (parámetros de la aplicación) y ejemplos de estas para: 
   paises, departamentos/estados, municipios, 
   centros poblados, tipos de centros poblados, tipos de sitios, ubicaciones, 
   tipos de relaciones entre personas, tipos de documentos de identificación, 
-  oficinas.  Faciles de modificar en aplicaciones que usen el motor 
+  oficinas.  Son faciles de modificar en aplicaciones que usen el motor 
   vía ```ActiveSupport::Concern```
 - En tablas basicas los campos ```has_many``` seran validados automaticamente 
   cuando se borra un registro para reportar si existen registros dependientes
@@ -28,12 +28,12 @@ Este motor incluye
 - Facilidades de configuración en ```lib/sip/engine.rb```, como inclusión 
   automática de sus migraciones en las aplicaciones que usen el motor y 
   variables típicas de configuración.
-- Localización con ```twitter_cldr``` y para fecha con config.x.formato_fecha y
+- Localización con ```twitter_cldr```, para fecha con config.x.formato_fecha y
   ayudas para definir campos de fecha localizados en ese formato.
 - Tareas ```rake``` para actualizar indices, sacar copia de respaldo de base 
   de datos
 - Generador de nuevas tablas básicas
-- Aplicación de prueba completa en directorio ```spec/dummy``` con diseño 
+- Aplicación de prueba completa en directorio ```test/dummy``` con diseño 
   web adaptable (responsive) usando ```bootstrap```, ```simple_form``` 
   y ```jquery```, que brinda autenticación, manejo de clave y de usuarios 
   y modificación las tablas básicas paginando con ```will_paginate```
@@ -63,7 +63,7 @@ cd minsip
   en ```config/database.yml```.  Recuerda que en adJ debes incluir para
   la conexión por omisión:
 ```
-host: /var/www/tmp
+host: /var/www/var/run/postgresql
 ```
 - Incluye ```sip``` y otras gemas necesarias:
 ```
@@ -74,12 +74,9 @@ echo "gem 'cancancan'" >> Gemfile
 echo "gem 'devise'" >> Gemfile
 echo "gem 'devise-i18n'" >> Gemfile
 echo "gem 'rails-i18n'" >> Gemfile
-echo "gem 'cancancan'" >> Gemfile
-echo "gem 'paperclip'" >> Gemfile
 echo "gem 'will_paginate'" >> Gemfile
 echo "gem 'twitter-bootstrap-rails'" >> Gemfile
 echo "gem 'jquery-ui-rails'" >> Gemfile
-echo "gem 'jquery-ui-bootstrap-rails', git: 'https://github.com/kristianmandrup/jquery-ui-bootstrap-rails'" >> Gemfile
 echo "gem 'bootstrap-datepicker-rails'" >> Gemfile
 echo "gem 'twitter_cldr' " >> Gemfile
 bundle install
@@ -218,7 +215,7 @@ config.active_record.schema_format = :sql
 ```
 - Copia la estructura de la base de datos y creala
 ```
-cp ruta_sip/spec/dummy/db/structure.sql db/
+cp ruta_sip/test/dummy/db/structure.sql db/
 ```
 - Prepara y carga como semillas para la base de datos las incluidas en
   sip y un usuario sip con clave sip123, modificando db/seeds.rb:
@@ -252,4 +249,7 @@ recuerda que el usuario inicial es sip con clave sip123
 
 ## Resto de la documentación 
 
-Después de tener su primer ejemplo puede generar tablas básicas para su aplicación, personalizar los modelos, vistas y controladores que sip ofrece. Consulte: https://github.com/pasosdeJesus/sip/wiki
+Después de tener su primer ejemplo puedes generar tablas básicas para 
+tu aplicación, personalizar los modelos, vistas y controladores que sip 
+ofrece. Consulta: https://github.com/pasosdeJesus/sip/wiki
+
