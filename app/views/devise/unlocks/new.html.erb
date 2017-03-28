@@ -1,6 +1,8 @@
-<h2>Resend unlock instructions</h2>
+<h2>Volver a enviar instruccioens de desbloqueo</h2>
 
-<%= simple_form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
+<%= simple_form_for(resource, :as => resource_name, 
+                    :url => unlock_path(resource_name), 
+                    :html => { :method => :post }) do |f| %>
   <%= f.error_notification %>
   <%= f.full_error :unlock_token %>
 
@@ -9,7 +11,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Resend unlock instructions" %>
+    <%= f.button :submit, "Volver a enviar instrucciones de desbloqueo" %>
   </div>
 <% end %>
 

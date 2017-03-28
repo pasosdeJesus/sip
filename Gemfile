@@ -72,13 +72,15 @@ end
 group :development do
   # Requerido por rake
   gem "thor"
-
-  # Depurar
-  #gem 'byebug'
   
   # Consola irb en páginas con excepciones o usando <%= console %> en vistasA
   gem 'web-console'
 
+end
+
+group :development, :test do
+  # Depurar
+  #gem 'byebug'
 end
 
 # Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo
@@ -89,8 +91,6 @@ group :test do
 
   gem "connection_pool"
   gem "minitest-reporters"
-
-  #gem 'byebug'
 
   gem 'rails-controller-testing'
 
@@ -108,7 +108,6 @@ group :test do
   gem "launchy"
  
   gem 'pry-rescue'
-  #gem 'pry-byebug'
   gem 'pry-stack_explorer'
 
 

@@ -22,6 +22,7 @@ class Ability  < Sip::Ability
     # Detalles en el wiki de cancan: 
     #   https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
+
     # Sin autenticación puede consultarse información geográfica 
     can :read, [Sip::Pais, Sip::Departamento, Sip::Municipio, Sip::Clase]
     if !usuario || usuario.fechadeshabilitacion
@@ -32,21 +33,16 @@ class Ability  < Sip::Ability
     can :lista, Sip::Ubicacion
     can :descarga_anexo, Sip::Anexo
     can :nuevo, Sip::Ubicacion
-    #can :nuevo, Sip::Victima
     if usuario && usuario.rol then
       case usuario.rol 
       when Ability::ROLANALI
         can :read, Sip::Ubicacion
         can :new, Sip::Ubicacion
         can [:update, :create, :destroy], Sip::Ubicacion
-        #can :read, Sip::Actividad
-        #can :new, Sip::Actividad
-        #can [:update, :create, :destroy], Sip::Actividad
       when Ability::ROLADMIN
         can :manage, Sip::Ubicacion
         can :manage, Sip::Respaldo7z
-        #can :manage, Sip::Actividad
-        can :manage, Usuario
+        can :manage, ::Usuario
         can :manage, :tablasbasicas
         self.tablasbasicas.each do |t|
           c = Ability.tb_clase(t)

@@ -41,7 +41,7 @@ module Sip
           validates_presence_of :nusuario
           validates_length_of :nusuario, maximum: Sip.longitud_nusuario
  
-          validates_length_of :nombre, maximum: 50
+          #validates_length_of :nombre, maximum: 50, unless: 'nombre.nil?'
           validates_length_of :password, maximum: 64
           validates_length_of :descripcion, maximum: 50
 
@@ -91,9 +91,6 @@ module Sip
         end
 
         class_methods do
-          def longitud_nusuario
-            15
-          end
 
         end
       end
