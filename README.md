@@ -88,13 +88,25 @@ bundle install
 class Ability  < Sip::Ability
 end
 ```
-- Crea el archivo ```app/models/usuario.rb``` inicialmente con:
+- Crea el archivo ```app/models/usuario.rb```. Si no planeas hacer cambios
+  al modelo de SIP utiliza:
 ```
 # encoding: UTF-8
 
 class Usuario < Sip::Usuario
 end
 ```
+Si planeas hacer cambios utiliza:
+```
+# encoding: UTF-8
+
+require 'sip/concerns/models/usuario'
+
+class Usuario < ActiveRecord::Base
+  include Sip::Concerns::Models::Usuario
+end
+```
+
 - Para establecer ruta de anexos crea un directorio (ej.
   ```mkdir -p /var/www/resbase/minsip```) y configura tu aplicación
   con un título y esa ruta para enviar anexos y volcados, lo haces en
