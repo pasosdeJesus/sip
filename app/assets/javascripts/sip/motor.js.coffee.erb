@@ -10,6 +10,29 @@
 #//= require turbolinks
 #//= require sip/geo
 
+# AJAX
+
+# Envía con ajax a la ruta especificada junto con los datos, espera
+# respuesta html de la cual extrae una parte con selector selresp y
+# lo usa para volver a pintar el elemento con selector selelem
+@sip_envia_ajax_datos_ruta_y_pinta= (ruta, datos, selresp, selelem) ->
+  root =  window
+  t = Date.now()
+  d = -1
+  if (root.sip_envia_ajax_t)
+    d = (t - root.sip_envia_ajax_t)/1000
+  if (d == -1 || d > 2)
+    sip_arregla_puntomontaje(root)
+    rutac = root.puntomontaje + ruta + ".js"
+    root.sip_envia_ajax_t = t
+    $.ajax(url: rutac, data: datos, dataType: 'html').fail( (jqXHR, texto) ->
+      alert("Error con ajax a " + rutac + ": " + texto)
+    ).done( (e, r) ->
+      t=$(e).find(selresp)[0]
+      $(selelem).html(t)
+      return
+    )
+  return
 
 # AUTOCOMPLETACIÓN
 
