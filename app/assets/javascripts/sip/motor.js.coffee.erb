@@ -140,10 +140,10 @@ if (typeof String.prototype.endsWith != 'function')
   # En ocasiones lanza 2 veces seguidas el mismo evento. 
   # Evitamos enviar lo mismo.
   if (!root.dant || root.dant != d)
+    root.dant = d 
     $.ajax(url: a, data: d, dataType: "script").fail( (jqXHR, texto) ->
       alert("Error con ajax " + texto)
     )
-  root.dant = d 
   return
 
 # Pone / al final de root.puntomontaje (que debe corresponder al
