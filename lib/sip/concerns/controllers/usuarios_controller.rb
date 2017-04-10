@@ -17,7 +17,6 @@ module Sip
           # GET /usuarios
           # GET /usuarios.json
           def index
-            byebug
             authorize! :read, ::Usuario
             @usuarios = ::Usuario.order('LOWER(nusuario)').paginate(
               :page => params[:pagina], per_page: 20)
