@@ -17,32 +17,33 @@ module Sip
           # GET /usuarios
           # GET /usuarios.json
           def index
+            byebug
             authorize! :read, ::Usuario
-            @usuarios = Usuario.order('LOWER(nusuario)').paginate(
+            @usuarios = ::Usuario.order('LOWER(nusuario)').paginate(
               :page => params[:pagina], per_page: 20)
-            render layout: 'application'
+            render layout: '/application'
           end
 
           # GET /usuarios/1
           # GET /usuarios/1.json
           def show
             authorize! :read, ::Usuario
-            render layout: 'application'
+            render layout: '/application'
           end
 
           # GET /usuarios/new
           def new
             authorize! :edit, ::Usuario
-            @usuario = Usuario.new
+            @usuario = ::Usuario.new
             @usuario.current_usuario = current_usuario
             @usuario.fechacreacion = Date.today.to_s
-            render layout: 'application'
+            render layout: '/application'
           end
 
           # GET /usuarios/1/edit
           def edit
             authorize! :edit, ::Usuario
-            render layout: 'application'
+            render layout: '/application'
           end
 
           def create_gen(usuario)
@@ -89,7 +90,7 @@ module Sip
                 format.html { redirect_to @usuario, notice: 'Usuario actualizado con éxito.' }
                 format.json { head :no_content }
               else
-                format.html { render action: 'edit' }
+                format.html { render action: 'edit', layout: '/application' }
                 format.json { render json: @usuario.errors, status: :unprocessable_entity }
               end
             end
@@ -110,7 +111,7 @@ module Sip
          
           #  Configuración común
           def set_usuario
-            @usuario = Usuario.find(params[:id])
+            @usuario = ::Usuario.find(params[:id])
             @usuario.current_usuario = current_usuario
           end
 
