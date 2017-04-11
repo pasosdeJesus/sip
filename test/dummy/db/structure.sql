@@ -1061,7 +1061,7 @@ ALTER TABLE ONLY sip_ubicacion
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO public, pg_catalog;
+SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
 ('20150413160156'),
@@ -1081,6 +1081,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20150809032138'),
 ('20151020203421'),
 ('20160519195544'),
-('20161108102349');
+('20161108102349'),
+('20170405104322');
 
 
