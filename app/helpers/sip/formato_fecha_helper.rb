@@ -35,6 +35,7 @@ module Sip
         if pf.count == 0
           nf = Date.strptime(f, '%d-%M-%Y').strftime('%Y-%m-%d')
         else
+          return if !pf[1]
           m = case pf[1].downcase
               when 'ene' 
                 1
