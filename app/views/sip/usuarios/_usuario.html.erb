@@ -26,6 +26,14 @@
     label: "Rol",
     include_blank: false
   %>
+  <% if can?(:manage, Sip::Grupo) %>
+    <%= f.association :sip_grupo,
+      collection: Sip::Grupo.habilitados,
+      label_method: :nombre,
+      value_method: :id,
+      input_html: { class: 'chosen-select' }
+    %>
+  <% end %>
   <%= f.input :idioma %>
   <%= f.input :email %>
 	<%= f.input :encrypted_password %>

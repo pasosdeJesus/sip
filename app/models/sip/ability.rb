@@ -35,6 +35,7 @@ module Sip
       ['Sip', 'departamento'], 
       ['Sip', 'etiqueta'], 
       ['Sip', 'fuenteprensa'], 
+      ['Sip', 'grupo'], 
       ['Sip', 'municipio'], 
       ['Sip', 'oficina'],
       ['Sip', 'pais'],

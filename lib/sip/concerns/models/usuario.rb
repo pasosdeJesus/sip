@@ -24,6 +24,12 @@ module Sip
           campofecha_localizado :fechadeshabilitacion
           campofecha_localizado :created_at
 
+          has_many :sip_grupo_usuario, class_name: "Sip::GrupoUsuario",
+            foreign_key: "usuario_id", validate: true,
+            dependent: :delete_all
+          has_many :sip_grupo, through: :sip_grupo_usuario,
+            class_name: "Sip::Grupo"
+
           #http://stackoverflow.com/questions/1200568/using-rails-how-can-i-set-my-primary-key-to-not-be-an-integer-typed-column
           self.primary_key=:id
 

@@ -63,6 +63,9 @@ es:
         Fuenteprensa: Fuente de Prensa
         Fuentesprensa: Fuentes de Prensa
         tfuente: Tipo de fuente
+      "sip/grupo":
+        "{:usuario_ids=>[]}": Miembros
+        "usuario": Miembros
       "sip/municipio":
         Municipio: Municipio
         Municipios: Municipios
@@ -94,9 +97,10 @@ es:
       "sip/ubicacion":
         Ubicacion: Ubicación
       "usuario":
-        nusuario: Usuario
-        descripcion: Descripción
-        encrypted_password: Clave
         created_at: Fecha Registro
         created_at_localizada: Fecha Registro
+        descripcion: Descripción
+        encrypted_password: Clave
+        nusuario: Usuario
+        "sip_grupo": Grupos
 
