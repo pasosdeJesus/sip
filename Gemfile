@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+# Servidor web durante desarrollo
 gem 'puma', '~> 3.0'
 
 # Rails (internacionalización)
@@ -12,15 +13,15 @@ gem "pg"
 # Colores en terminal
 gem "colorize"
 
+# Cuadros de selección potenciados
+gem 'chosen-rails'
+
 # Unifica CSSs
 gem "sass"
 gem "sass-rails"
 
 # API JSON facil. Ver: https://github.com/rails/jbuilder
 gem "jbuilder"
-
-# Incluida para asegurar operacion con ruby 2.4
-#gem 'json', '~>2.0.0'
 
 # Uglifier comprime recursos Javascript
 gem "uglifier"#, '>= 1.3.0'

@@ -12,7 +12,8 @@
     <%= f.association n,
       collection: alf.class_name.constantize.habilitados,
       label_method: :presenta_nombre,
-      value_method: :id
+      value_method: :id,
+      input_html: { class: 'chosen-select' }
     %>
   <% elsif @basica.asociacion_combinada(atr) %>
     <% # Tabla Combinada 
@@ -21,7 +22,8 @@
     <%= f.association r.name,
       collection: r.class_name.constantize.habilitados,
       label_method: :nombre,
-      value_method: :id 
+      value_method: :id ,
+      input_html: { class: 'chosen-select' }
     %>
   <% elsif @basica.class && @basica.class.columns_hash[atr] then %>
     <% # Escogemos el control %>
