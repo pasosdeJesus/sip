@@ -3,20 +3,50 @@
 
 ![Logo de sip](https://raw.githubusercontent.com/pasosdeJesus/sip/master/test/dummy/public/images/logo.jpg)
 
-Este es un motor para sistemas de información sobre Ruby on Rails 5.0 y
-PostgreSQL (con base de dato preferiblemente cifradas como en adJ).
+Este es un motor sobre el cual construir sistemas de información seguros o 
+bien otros motores para sistemas de información sobre la versión más
+reciente de Ruby on Rails.
 
-Este motor incluye 
-- Autenticación con ```devise``` y ```bcrypt```,  
+Puede pensarlo como una capa adicional sobre Ruby on Rails que incluye 
+soluciones estándar, seguras y probadas para más elementos de un sistema 
+de información, como:
+
+- Pila actualizada: desarrollado en simultaneo con adJ (distribución de 
+  OpenBSD) y modificado para operar siempre sobre las nuevas versiones
+  de adJ que se actualizan cada 6 meses para incluir:
+  sistema operativo más reciente, motor de base de datos más reciente, 
+  ruby reciente, librerías y gemas más recientes.   Probado de manera 
+  continua en Linux (vía integración continúa con travis.org).  
+  Busca promover gemas recienten que faciliten el desarrollo del resto
+  de la aplicación a nivel de interfaz e internacionalización y proveer
+  ayudas para actualizar --por lo menos documentación en el wiki.
+- Uso de PostgreSQL reciente (preferiblemente con bases cifradas como en 
+  adJ).
+- Propuesta inicial para usuarios (tabla y modelo ::Usuario) y grupos (tabla
+  y modelo Sip::Grupo) suficiente para aplicaciones básicas o que pueden
+  ampliarse o modificarse con herencia o con ActiveSupport::Concern para 
+  aplicaciones más complejas.
+- Autenticación con ```devise``` y cifrado ```bcrypt```,  
 - Roles con ```cancancan```, inicialmente Administrador y Usuario
 - Pruebas con ```minitest```
-- Propuesta para manejar automaticamente tablas básicas 
-  (parámetros de la aplicación) y ejemplos de estas para: 
-  paises, departamentos/estados, municipios, 
+- Localización con mecanismos estándar de rails y además ```twitter_cldr``` y
+  propuesta para localización de campos tipo fecha(s) (que no es bien 
+  soportado por rails) especificando el formato local en 
+  config.x.formato_fecha, así como ayudas para definir campos de fecha 
+  localizados en ese formato.
+- Vistas y formularios generados con las herramientas estándar de rails 
+  y simple_form y chosen-rails para cuadros de selección sencilla y múltiple,
+  y bootstrap-datepicker para campos de fecha. Se pagina con will_paginate.
+- Preparado para construir aplicaciones adaptables (responsive) con bootstrap,
+  coffescript, jquery y jquery-ui
+- Propuesta para manejar tablas básicas (parámetros de la aplicación) con
+  vistas automáticas (no se requiere código), controladores y modelos 
+  semiautomáticos vía un generador.   Propuestas iniciales de tablas
+  básicas estándar para: paises, departamentos/estados, municipios, 
   centros poblados, tipos de centros poblados, tipos de sitios, ubicaciones, 
   tipos de relaciones entre personas, tipos de documentos de identificación, 
-  oficinas.  Son faciles de modificar en aplicaciones que usen el motor 
-  vía ```ActiveSupport::Concern```
+  oficinas.  Las existentes son faciles de modificar en aplicaciones que 
+  usen el motor vía ```ActiveSupport::Concern```.
 - En tablas basicas los campos ```has_many``` seran validados automaticamente 
   cuando se borra un registro para reportar si existen registros dependientes
   en otras tablas (en lugar de fallar)
@@ -28,15 +58,11 @@ Este motor incluye
 - Facilidades de configuración en ```lib/sip/engine.rb```, como inclusión 
   automática de sus migraciones en las aplicaciones que usen el motor y 
   variables típicas de configuración.
-- Localización con ```twitter_cldr```, para fecha con config.x.formato_fecha y
-  ayudas para definir campos de fecha localizados en ese formato.
 - Tareas ```rake``` para actualizar indices, sacar copia de respaldo de base 
   de datos
-- Generador de nuevas tablas básicas
 - Aplicación de prueba completa en directorio ```test/dummy``` con diseño 
-  web adaptable (responsive) usando ```bootstrap```, ```simple_form``` 
-  y ```jquery```, que brinda autenticación, manejo de clave y de usuarios 
-  y modificación las tablas básicas paginando con ```will_paginate```
+  web adaptable que brinda autenticación, manejo de clave, usuarios, 
+  grupos y modificación de tablas básicas 
 
 
 ## Requerimientos

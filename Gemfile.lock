@@ -51,6 +51,10 @@ GEM
     builder (3.2.3)
     camertron-eprun (1.1.1)
     cancancan (1.16.0)
+    chosen-rails (1.5.2)
+      coffee-rails (>= 3.2)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
     cldr-plurals-runtime-rb (1.0.1)
     climate_control (0.1.0)
     cocaine (0.5.8)
@@ -253,6 +257,7 @@ DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
   cancancan
+  chosen-rails
   codeclimate-test-reporter
   coffee-rails
   colorize

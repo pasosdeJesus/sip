@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.license     = "Dominio Público de acuerdo a legislación colombiana"
 
   s.files = Dir["{app,config,db,lib}/**/*", "LICENCIA.md", "Rakefile", "README.md"]
-  s.test_files = Dir["spec/**/*"]
+  s.test_files = Dir["test/**/*"]
 
   s.add_dependency "jquery-rails"
   s.add_dependency "colorize"
@@ -33,9 +33,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "jquery-ui-rails"
   s.add_runtime_dependency "bootstrap-datepicker-rails"
   s.add_runtime_dependency "twitter_cldr"
+  s.add_runtime_dependency "chosen-rails"
 
-  s.add_development_dependency "rspec-rails"
   s.add_development_dependency "capybara"
-  s.add_development_dependency "factory_girl_rails"
 
 end
