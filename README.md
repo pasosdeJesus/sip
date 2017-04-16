@@ -40,7 +40,7 @@ de información, como:
 - Preparado para construir aplicaciones adaptables (responsive) con bootstrap,
   coffescript, jquery y jquery-ui
 - Propuesta para manejar tablas básicas (parámetros de la aplicación) con
-  vistas automáticas (no se requiere código), controladores y modelos 
+  vistas automáticas (no requieren código), controladores y modelos 
   semiautomáticos vía un generador.   Propuestas iniciales de tablas
   básicas estándar para: paises, departamentos/estados, municipios, 
   centros poblados, tipos de centros poblados, tipos de sitios, ubicaciones, 

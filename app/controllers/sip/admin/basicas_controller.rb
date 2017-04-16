@@ -28,17 +28,17 @@ module Sip
         end
         respond_to do |format|
          format.html {  
-           @basica = c.order(camponombre).paginate(
+           @basicas = @basica = c.order(camponombre).paginate(
              :page => params[:pagina], per_page: 20
            );
           render :index, layout: 'application'
          }
          format.json {
-           @basica = c.order(camponombre)
+           @basicas = @basica = c.order(camponombre)
            render :index, json: @basica
          }
          format.js {
-           @basica = c.order(camponombre)
+           @basicas = @basica = c.order(camponombre)
            render :index, json: @basica
          }
         end
@@ -67,9 +67,8 @@ module Sip
         #c2 = clase.underscore().gsub(/\//, '_')
         c2 = clase.demodulize.underscore
         @basica = clase.constantize.new(send(c2 + '_params'))
-        if !@basica.fechacreacion
-          @basica.fechacreacion = DateTime.now.strftime('%Y-%m-%d')
-        end
+        @basica.fechacreacion = DateTime.now.strftime('%Y-%m-%d') unless 
+          @basica.fechacreacion
         creada = genclase == 'M' ? 'creado' : 'creada';
         respond_to do |format|
           if @basica.save
@@ -130,8 +129,10 @@ module Sip
           end
         end
         @basica.destroy
+        eliminada = genclase == 'M' ? 'eliminado' : 'eliminada';
         respond_to do |format|
-          format.html { redirect_to admin_basicas_url(@basica) }
+          format.html { redirect_to admin_basicas_url(@basica),
+            notice: clase + " #{eliminada}." }
           format.json { head :no_content }
         end
       end
