@@ -10,6 +10,9 @@
       <th><%= model_class.human_attribute_name(:nombre) %></th>
       <th><%= model_class.human_attribute_name(:descripcion) %></th>
       <th><%= model_class.human_attribute_name(:rol) %></th>
+      <% if can?(:manage, Sip::Grupo) %>
+        <th><%= model_class.human_attribute_name(:grupo) %></th>
+      <% end %>
       <th><%= model_class.human_attribute_name(:idioma) %></th>
       <th><%= model_class.human_attribute_name(:email) %></th>
       <th><%= model_class.human_attribute_name(:created_at_localizada) %></th>
@@ -23,7 +26,12 @@
         <td><%= usuario.nusuario %></td>
         <td><%= usuario.nombre %></td>
         <td><%= usuario.descripcion %></td>
-        <td><%= Ability::ROLES[usuario.rol - 1][0] if usuario && usuario.rol && Ability::ROLES[usuario.rol-1] %></td>
+        <td><%= Ability::ROLES[usuario.rol - 1][0] if usuario && 
+          usuario.rol && Ability::ROLES[usuario.rol-1] %></td>
+        <% if can?(:manage, Sip::Grupo) %>
+          <td><%= usuario.sip_grupo.inject('') { |m,i| 
+            (m == '' ? '': m + '. ') + i.nombre } %></td>
+        <% end %>
         <td><%= usuario.idioma %></td>
         <td><%= usuario.email %></td>
         <td><%= usuario.created_at_localizada.to_s %></td>
