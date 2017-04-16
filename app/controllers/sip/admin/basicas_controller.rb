@@ -110,8 +110,8 @@ module Sip
       end
 
       # Elimina un registro 
-      def destroy(mens = "")
-        if @basica.class.columns_hash
+      def destroy(mens = "", verifica_tablas_union=true)
+        if verifica_tablas_union && @basica.class.columns_hash
           m = @basica.class.reflect_on_all_associations(:has_many)
           m.each do |r|
             if !r.options[:through]
