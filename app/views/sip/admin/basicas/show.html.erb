@@ -10,7 +10,8 @@
     <% p = @basica.presenta(atr) %>
     <% if p && p.length > 0 %>
       <dt><strong><%= model_class.human_attribute_name(atr) %>:</strong></dt>
-      <dd><% if p.include?("\n") %>
+      <dd>
+      <% if p.include?("\n") %>
         <pre><%= p %></pre>
       <% else %>
         <%= p %>

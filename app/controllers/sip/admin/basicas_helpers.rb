@@ -20,11 +20,13 @@ module Sip
         return r
       end
 
-      # Prepara para rutas de tablas basicas si se requiere
+      # Prepara para rutas de tablas basicas en espacio de nombres
+      # /admin para la ruta si se requiere
       def nombreobj_admin(o, plural = false)
         nsing = nombreobj(o)
         nom = plural ? nsing.pluralize : nsing
-        if !defined?(request) || request.fullpath.include?("/admin/#{nsing}")
+        if !defined?(request) || request.fullpath.include?("/admin/#{nsing}") ||
+          request.fullpath.include?("/admin/#{nsing.pluralize}")
           return 'admin_' + nom
         end
         return nom
