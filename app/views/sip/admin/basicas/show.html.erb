@@ -24,7 +24,8 @@
   <%= link_to t('.back', :default => t("helpers.links.back")),
               admin_basicas_path(@basica), :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_admin_basica_path(@basica), :class => 'btn' %>
+    edit_admin_basica_path(@basica), :class => 'btn' %>
+  <%= render 'show_mas_acciones' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               admin_basica_path(@basica),
               :method => 'delete',
