@@ -20,14 +20,14 @@ module Sip
             authorize! :read, ::Usuario
             @usuarios = ::Usuario.order('LOWER(nusuario)').paginate(
               :page => params[:pagina], per_page: 20)
-            render layout: '/application'
+            render 'sip/usuarios/index', layout: '/application'
           end
 
           # GET /usuarios/1
           # GET /usuarios/1.json
           def show
             authorize! :read, ::Usuario
-            render layout: '/application'
+            render 'sip/usuarios/show', layout: '/application'
           end
 
           # GET /usuarios/new
@@ -36,13 +36,13 @@ module Sip
             @usuario = ::Usuario.new
             @usuario.current_usuario = current_usuario
             @usuario.fechacreacion = Date.today.to_s
-            render layout: '/application'
+            render 'sip/usuarios/new', layout: '/application'
           end
 
           # GET /usuarios/1/edit
           def edit
             authorize! :edit, ::Usuario
-            render layout: '/application'
+            render 'sip/usuarios/edit', layout: '/application'
           end
 
           def create_gen(usuario)
@@ -53,10 +53,10 @@ module Sip
               if usuario.save
                 format.html { redirect_to usuario, 
                               notice: 'Usuario creado con éxito.' }
-                format.json { render action: 'show', status: :created, 
-                              location: usuario }
+                format.json { render 'sip/usuarios/show', 
+                              status: :created, location: usuario }
               else
-                format.html { render action: 'new' }
+                format.html { render 'sip/usuarios/new' }
                 format.json { render json: usuario.errors, 
                               status: :unprocessable_entity }
               end
@@ -89,8 +89,10 @@ module Sip
                 format.html { redirect_to @usuario, notice: 'Usuario actualizado con éxito.' }
                 format.json { head :no_content }
               else
-                format.html { render action: 'edit', layout: '/application' }
-                format.json { render json: @usuario.errors, status: :unprocessable_entity }
+                format.html { render 'sip/usuarios/edit', 
+                              layout: '/application' }
+                format.json { render json: @usuario.errors, 
+                              status: :unprocessable_entity }
               end
             end
           end
