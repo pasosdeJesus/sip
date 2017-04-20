@@ -26,8 +26,8 @@
         <td><%= usuario.nusuario %></td>
         <td><%= usuario.nombre %></td>
         <td><%= usuario.descripcion %></td>
-        <td><%= Ability::ROLES[usuario.rol - 1][0] if usuario && 
-          usuario.rol && Ability::ROLES[usuario.rol-1] %></td>
+        <% rol = Ability::ROLES.select { |r| r[1] == usuario.rol } %>
+        <td><%=  rol[0][0] if rol && rol[0] && rol[0][0] %></td>
         <% if can?(:manage, Sip::Grupo) %>
           <td><%= usuario.sip_grupo.inject('') { |m,i| 
             (m == '' ? '': m + '. ') + i.nombre } %></td>

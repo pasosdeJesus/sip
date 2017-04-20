@@ -10,7 +10,8 @@
     <dd><%= @usuario.descripcion %></dd>
   <% end %>
   <dt><strong><%= model_class.human_attribute_name(:rol) %>:</strong></dt>
-  <dd><%= Ability::ROLES[@usuario.rol-1][0] %></dd>
+  <% rol = Ability::ROLES.select { |r| r[1] == @usuario.rol } %> 
+  <dd><%= rol[0][0] if rol && rol[0] && rol[0][0] %></dd>
   <dt><strong><%= model_class.human_attribute_name(:idioma) %>:</strong></dt>
   <dd><%= @usuario.idioma %></dd>
   <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
