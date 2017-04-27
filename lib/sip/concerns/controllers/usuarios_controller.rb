@@ -56,7 +56,8 @@ module Sip
                 format.json { render 'sip/usuarios/show', 
                               status: :created, location: usuario }
               else
-                format.html { render 'sip/usuarios/new' }
+                format.html { 
+                  render 'sip/usuarios/new' }
                 format.json { render json: usuario.errors, 
                               status: :unprocessable_entity }
               end

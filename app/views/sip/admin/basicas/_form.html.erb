@@ -24,7 +24,8 @@
       %>
       <%= f.association r.name,
         collection: r.class_name.constantize.habilitados,
-        label_method: lambda {|t| t.presenta_nombre},
+        #label_method: lambda {|t| t.presenta_nombre},
+        label_method: lambda {|r| r.presenta_nombre }, #:nombre,
         value_method: :id ,
         input_html: { class: 'chosen-select' }
       %>
