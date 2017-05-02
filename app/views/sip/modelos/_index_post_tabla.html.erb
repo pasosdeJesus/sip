@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-sm-4">
+    <%= will_paginate @registros, { param_name: :pagina }  %>
+  </div>
+  <div class="col-sm-2">
+    <% ng = (!genclase.nil? && genclase == 'F') ? 'Nueva' : 'Nuevo' %>
+    <%= link_to t('.new', default: [ng, t("helpers.links.new")]),
+      new_modelo_path(@registros), 
+      class: 'btn btn-primary' 
+    %>
+  </div>
+</div>
+

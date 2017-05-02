@@ -27,19 +27,19 @@ de información, como:
   ampliarse o modificarse con herencia o con ActiveSupport::Concern para 
   aplicaciones más complejas.
 - Autenticación con ```devise``` y cifrado ```bcrypt```,  
-- Roles con ```cancancan```, inicialmente Administrador y Usuario
+- Roles con ```cancancan```, inicialmente Administrador y Operador
 - Pruebas con ```minitest```
-- Localización con mecanismos estándar de rails y además ```twitter_cldr``` y
-  propuesta para localización de campos tipo fecha(s) (que no es bien 
+- Localización con mecanismos estándar de rails y de ```twitter_cldr```.
+  Propuesta para localización de campos tipo fecha(s) (que no es bien 
   soportado por rails) especificando el formato local en 
   config.x.formato_fecha, así como ayudas para definir campos de fecha 
   localizados en ese formato.
 - Vistas y formularios generados con las herramientas estándar de rails 
   y simple_form y chosen-rails para cuadros de selección sencilla y múltiple,
   y bootstrap-datepicker para campos de fecha. Se pagina con will_paginate.
-- Preparado para construir aplicaciones adaptables (responsive) con bootstrap,
-  coffescript, jquery y jquery-ui
-- Propuesta para manejar tablas básicas (parámetros de la aplicación) con
+- Preparado para construir aplicaciones adaptables (responsive) con 
+  bootstrap, coffescript, jquery y jquery-ui
+- Propuesta para administrar tablas básicas (parámetros de la aplicación) con
   vistas automáticas (no requieren código), controladores y modelos 
   semiautomáticos vía un generador.   Propuestas iniciales de tablas
   básicas estándar para: paises, departamentos/estados, municipios, 
@@ -47,12 +47,19 @@ de información, como:
   tipos de relaciones entre personas, tipos de documentos de identificación, 
   oficinas.  Las existentes son faciles de modificar en aplicaciones que 
   usen el motor vía ```ActiveSupport::Concern```.
-- En tablas basicas los campos ```has_many``` seran validados automaticamente 
-  cuando se borra un registro para reportar si existen registros dependientes
-  en otras tablas (en lugar de fallar)
+- Inicio de propuesta para administrar tablas con vistas automáticas y 
+  controladores semiautomáticos.  Similar a 
+  (ActiveAdmin)[https://activeadmin.info/],
+  (Administrate)[https://github.com/thoughtbot/administrate] y
+  (Rails Admin)[https://github.com/sferik/rails_admin]
+  Usa Sip::Modelo, Sip::ModelosController y vistas de 
+  ```app/views/sip/modelos/```.
+- En tablas basicas los campos ```has_many``` seran validados 
+  automaticamente cuando se borra un registro para reportar si existen 
+  registros dependientes en otras tablas (en lugar de fallar)
 - Datos geográficos completos para Colombia y Venezuela.
-- Propuesta de estructura para otros modelos típicos: persona, anexo. También 
-  modificables en una aplicación que use el motor 
+- Propuesta de estructura para otros modelos típicos: persona, anexo. 
+  También modificables en una aplicación que use el motor 
   via ```ActiveSupport::Concern```.
 - Manejo de anexos con ```paperclip``` 
 - Facilidades de configuración en ```lib/sip/engine.rb```, como inclusión 
