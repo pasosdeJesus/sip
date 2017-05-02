@@ -1,6 +1,10 @@
 <article>
   <br>
-  <center><%= image_tag "logo.jpg",  class: "img-responsive" %></center>
+  <center>
+    <%= image_tag File.join(
+      Rails.configuration.relative_url_root, 'images', "logo.jpg"),  
+      class: "img-responsive" %>
+    </center>
 
   <%= render "local" %>
 </article>
