@@ -34,6 +34,7 @@ de información, como:
   soportado por rails) especificando el formato local en 
   config.x.formato_fecha, así como ayudas para definir campos de fecha 
   localizados en ese formato.
+- Propuesta de respaldo cifrado por parte de usuario final (del rol que se configure).
 - Vistas y formularios generados con las herramientas estándar de rails 
   y simple_form y chosen-rails para cuadros de selección sencilla y múltiple,
   y bootstrap-datepicker para campos de fecha. Se pagina con will_paginate.
