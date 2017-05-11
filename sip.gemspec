@@ -35,6 +35,9 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "twitter_cldr"
   s.add_runtime_dependency "chosen-rails"
 
+  # Por cambiar al pasar a rails 5.1
+  s.add_runtime_dependency "minitest", '5.10.1'
+
   s.add_development_dependency "capybara"
 
 end
