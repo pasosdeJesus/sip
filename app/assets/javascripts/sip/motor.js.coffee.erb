@@ -135,16 +135,24 @@ if (typeof String.prototype.endsWith != 'function')
 # @param root Raiz del documento, para guardar allí variable global.
 # @param f    Formulario jquery-sado
 @enviarautomatico_formulario = (root, f) ->
-  a = f.attr('action')
-  d = f.serialize()
-  d += '&commit=Enviar'
-  # En ocasiones lanza 2 veces seguidas el mismo evento. 
-  # Evitamos enviar lo mismo.
-  if (!root.dant || root.dant != d)
-    root.dant = d 
-    $.ajax(url: a, data: d, dataType: "script").fail( (jqXHR, texto) ->
-      alert("Error con ajax " + texto)
-    )
+  root =  window
+  t = Date.now()
+  d = -1
+  if (root.sip_enviarautomatico_t)
+    d = (t - root.sip_enviarautomatico_t)/1000
+  # NO se permite mas de un envio en 2 segundos 
+  if (d == -1 || d > 2)
+    root.sip_enviarautomatico = t
+    a = f.attr('action')
+    d = f.serialize()
+    d += '&commit=Enviar'
+    # En ocasiones lanza 2 veces seguidas el mismo evento. 
+    # Evitamos enviar lo mismo.
+    if (!root.dant || root.dant != d)
+      root.dant = d 
+      $.ajax(url: a, data: d, dataType: "script").fail( (jqXHR, texto) ->
+        alert("Error con ajax " + texto)
+      )
   return
 
 # Pone / al final de root.puntomontaje (que debe corresponder al
