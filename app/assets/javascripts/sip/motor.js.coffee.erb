@@ -142,7 +142,7 @@ if (typeof String.prototype.endsWith != 'function')
     d = (t - root.sip_enviarautomatico_t)/1000
   # NO se permite mas de un envio en 2 segundos 
   if (d == -1 || d > 2)
-    root.sip_enviarautomatico = t
+    root.sip_enviarautomatico_t = t
     a = f.attr('action')
     d = f.serialize()
     d += '&commit=Enviar'
