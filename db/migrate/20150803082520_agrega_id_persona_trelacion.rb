@@ -28,6 +28,10 @@ class AgregaIdPersonaTrelacion < ActiveRecord::Migration
         UNIQUE DEFAULT(nextval('sip_persona_trelacion_id_seq'));
     SQL
     execute <<-SQL
+      ALTER TABLE sip_persona_trelacion 
+        DROP CONSTRAINT IF EXISTS relacion_personas_pkey;
+    SQL
+    execute <<-SQL
       ALTER TABLE sip_persona_trelacion ADD CONSTRAINT 
         sip_persona_trelacion_pkey PRIMARY KEY (id);
     SQL
