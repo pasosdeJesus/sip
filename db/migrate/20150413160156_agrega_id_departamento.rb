@@ -162,6 +162,7 @@ class AgregaIdDepartamento < ActiveRecord::Migration
       DROP VIEW IF EXISTS conscaso1;
       DROP VIEW IF EXISTS cons2;
       DROP VIEW IF EXISTS cben2;
+      DROP VIEW IF EXISTS vestcomb;
     SQL
     execute <<-SQL
       ALTER TABLE sip_ubicacion DROP COLUMN id_deplocal;
