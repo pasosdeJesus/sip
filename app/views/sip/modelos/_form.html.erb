@@ -22,13 +22,31 @@
       <% # Tabla Combinada 
         r = @registro.asociacion_combinada(atr)
       %>
-      <%= f.association r.name,
-        collection: r.class_name.constantize.habilitados,
-        label_method: lambda {|r| r.presenta_nombre }, #:nombre,
-        value_method: :id ,
-        input_html: { class: 'chosen-select' }
-      %>
-    <% elsif @registro.class && @registro.class.columns_hash[atr] then %>
+      <% if r.class.to_s == 
+           'ActiveRecord::Reflection::ThroughReflection' %>
+        <% # Tabla combinada %>
+        <%= f.association r.name,
+          collection: r.class_name.constantize.habilitados,
+          label_method: lambda {|r| r.presenta_nombre }, #:nombre,
+          value_method: :id ,
+          input_html: { class: 'chosen-select' } %>
+      <% else %>
+        <% # Suponemos que tiene un accepts_nested_attributes_for %>
+        <div class="panel panel-default">
+          <div class="panel-heading"><%= r.name.to_s %></div>
+          <div class="panel-body">
+            <%= f.simple_fields_for r.name.to_sym do |cfo| %>
+              <%= render (r.name.to_s + '_campos'), :f => cfo %>
+            <% end %>
+            <div class="links">
+              <%= link_to_add_association "Añadir #{r.name}", f, 
+                r.name.to_sym, partial: (r.name.to_s + '_campos'),
+                :class => 'btn-primary' %>
+            </div>
+          </div> <!-- .panel-body -->
+        </div> <!-- .panel -->
+      <% end %>
+    <% elsif @registro.class && @registro.class.columns_hash[atr] %>
       <% # Escogemos el control %>
       <% col = @registro.class.columns_hash[atr] %>
       <% if col && col.type == :date then %>
