@@ -47,7 +47,8 @@ de información, como:
   centros poblados, tipos de centros poblados, tipos de sitios, ubicaciones, 
   tipos de relaciones entre personas, tipos de documentos de identificación, 
   oficinas.  Las existentes son faciles de modificar en aplicaciones que 
-  usen el motor vía ```ActiveSupport::Concern```.
+  usen el motor vía ```ActiveSupport::Concern```.  Poner código del
+  pais por omision en ```Sip.paisomision```
 - Inicio de propuesta para administrar tablas con vistas automáticas y 
   controladores semiautomáticos.  Similar a 
   (ActiveAdmin)[https://activeadmin.info/],

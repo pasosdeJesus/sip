@@ -40,11 +40,13 @@ module Sip
     mattr_accessor :ruta_volcados
     mattr_accessor :titulo
     mattr_accessor :longitud_nusuario
+    mattr_accessor :paisomision
 
     self.ruta_anexos = "#{Rails.root}/archivos/anexos"
     self.ruta_volcados = "#{Rails.root}/archivos/bd"
     self.titulo = "Motor para Sistemas de Información estilo Pasos de Jesús" 
     self.longitud_nusuario = 15
+    self.paisomision = 170
   end
 
   def self.setup(&block)
