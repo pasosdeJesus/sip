@@ -32,14 +32,15 @@
           input_html: { class: 'chosen-select' } %>
       <% else %>
         <% # Suponemos que tiene un accepts_nested_attributes_for %>
+        <% nd = r.class_name.constantize.human_attribute_name(r.name.to_s) %>
         <div class="panel panel-default">
-          <div class="panel-heading"><%= r.name.to_s %></div>
+          <div class="panel-heading"><%= nd %></div>
           <div class="panel-body">
             <%= f.simple_fields_for r.name.to_sym do |cfo| %>
               <%= render (r.name.to_s + '_campos'), :f => cfo %>
             <% end %>
             <div class="links">
-              <%= link_to_add_association "Añadir #{r.name}", f, 
+              <%= link_to_add_association "Añadir #{nd}", f, 
                 r.name.to_sym, partial: (r.name.to_s + '_campos'),
                 :class => 'btn-primary' %>
             </div>
