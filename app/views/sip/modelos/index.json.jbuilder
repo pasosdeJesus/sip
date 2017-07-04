@@ -2,12 +2,12 @@ l = []
 atributos_index.each do |atr|  
   l << atr.to_sym
 end 
-json.array!(@basica) do |basica|
+json.array!(@registros) do |registro|
   if params[:labelvalue] && params[:labelvalue] == "1"
-    json.label basica.busca_etiqueta
-    json.value basica.busca_valor
+    json.label registro.busca_etiqueta
+    json.value registro.busca_valor
   else
-    json.extract! basica, *l
-    json.url admin_basica_url(basica, format: :json)
+    json.extract! registro, *l
+    json.url admin_basica_url(registro, format: :json)
   end
 end
