@@ -72,7 +72,12 @@ de información, como:
 - Aplicación de prueba completa en directorio ```test/dummy``` con diseño 
   web adaptable que brinda autenticación, manejo de clave, usuarios, 
   grupos y modificación de tablas básicas 
-
+- Librería para operaciones comunes con javascript, por ejemplo para 
+  facilitar actualización automática mediante AJAX (ver 
+  ```sip_enviarautomatico_formulario``` en 
+  ```app/asset/javascript/sip/motor.js.coffee.erb``` que enviará
+  automáticamente formularios cuando cambien campos con clase
+  ```enviarautomatico``` o se presionen enlaces a anclas con esa clase)
 
 ## Requerimientos
 

@@ -306,6 +306,11 @@ if (typeof String.prototype.endsWith != 'function')
     busca_gen($(this), null, root.puntomontaje + "/mundep.json")
   )
 
+  $(document).on('click', 'a.enviarautomatico[href^="#"]', (e) ->
+    sip_enviarautomatico_formulario($('form'), 'POST', 'json', false)
+    return
+  )
+
   $(document).on('change', 'select[data-enviarautomatico]', 
     (e) -> 
       sip_enviarautomatico_formulario($(e.target.form))
