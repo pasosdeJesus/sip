@@ -103,10 +103,15 @@ if (typeof String.prototype.endsWith != 'function')
     )
   return
   
-  # Envia con AJAX datos del formulario, junto con el botón submit.
-# @param root Raiz del documento, para guardar allí variable global.
-# @param f    Formulario jquery-sado
-@enviarautomatico_formulario = (root, f) ->
+# Envia con AJAX datos del formulario, junto con el botón submit,
+# evitando duplicaciones.
+# @param f      Formulario jquery-sado
+# @param metodo GET, POST, PUT
+# @param tipo   json, script, xml o html (html puede ser interceptado
+#   por redirect_to con turbolinks y presentado automáticamente en navegador)
+# @param alertaerror Presentar alerta en caso de error (true/false)
+@sip_enviarautomatico_formulario = (f, metodo='GET', tipo='script', 
+  alertaerror=true) ->
   root =  window
   t = Date.now()
   d = -1
@@ -122,8 +127,14 @@ if (typeof String.prototype.endsWith != 'function')
     # Evitamos enviar lo mismo.
     if (!root.dant || root.dant != d)
       root.dant = d 
-      $.ajax(url: a, data: d, dataType: "script").fail( (jqXHR, texto) ->
-        alert("Error con ajax " + texto)
+      $.ajax({
+        url: a, 
+        data: d, 
+        method: metodo, 
+        dataType: tipo
+      }).fail( (jqXHR, texto) ->
+        if alertaerror
+          alert("Error con AJAX: " + texto)
       )
   return
 
@@ -297,14 +308,14 @@ if (typeof String.prototype.endsWith != 'function')
 
   $(document).on('change', 'select[data-enviarautomatico]', 
     (e) -> 
-      enviarautomatico_formulario(root, $(e.target.form))
+      sip_enviarautomatico_formulario($(e.target.form))
   )
   $(document).on('change', 'input[data-enviarautomatico]', 
     (e) -> 
       #debugger
       # No procesa selección de fecha, pero si cuando se teclea
       #if typeof $(e.target).attr('data-behaviour') == 'undefined' || e.bubbles
-      enviarautomatico_formulario(root, $(e.target.form))
+      sip_enviarautomatico_formulario($(e.target.form))
   )
 
   # Rotador: http://blog.emaillenin.com/2014/06/showing-a-spinnerloading-cursor-icon-for-rails-4-turbolink.html
