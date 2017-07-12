@@ -59,8 +59,6 @@ GEM
     climate_control (0.2.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
-    codeclimate-test-reporter (1.0.8)
-      simplecov (<= 0.13)
     coderay (1.1.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -124,7 +122,7 @@ GEM
     mime-types-data (3.2016.0521)
     mimemagic (0.3.2)
     mini_portile2 (2.2.0)
-    minitest (5.10.1)
+    minitest (5.10.2)
     minitest-reporters (1.1.14)
       ansi
       builder
@@ -202,7 +200,7 @@ GEM
     simple_form (3.5.0)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
-    simplecov (0.13.0)
+    simplecov (0.14.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
@@ -259,7 +257,6 @@ DEPENDENCIES
   bootstrap-datepicker-rails
   cancancan
   chosen-rails
-  codeclimate-test-reporter
   coffee-rails
   colorize
   connection_pool
@@ -271,7 +268,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   launchy
-  minitest (= 5.10.1)
+  minitest
   minitest-reporters
   paperclip
   pg
