@@ -110,8 +110,10 @@ if (typeof String.prototype.endsWith != 'function')
 # @param tipo   json, script, xml o html (html puede ser interceptado
 #   por redirect_to con turbolinks y presentado automáticamente en navegador)
 # @param alertaerror Presentar alerta en caso de error (true/false)
+# @param vcommit Valor para commit
+#
 @sip_enviarautomatico_formulario = (f, metodo='GET', tipo='script', 
-  alertaerror=true) ->
+  alertaerror=true, vcommit='Enviar') ->
   root =  window
   t = Date.now()
   d = -1
@@ -121,8 +123,9 @@ if (typeof String.prototype.endsWith != 'function')
   if (d == -1 || d > 2)
     root.sip_enviarautomatico_t = t
     a = f.attr('action')
-    d = f.serialize()
-    d += '&commit=Enviar'
+    vd = f.serializeArray()
+    vd.push({name: 'commit', value: vcommit})
+    d = $.param(vd)
     # En ocasiones lanza 2 veces seguidas el mismo evento. 
     # Evitamos enviar lo mismo.
     if (!root.dant || root.dant != d)
