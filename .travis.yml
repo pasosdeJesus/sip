@@ -18,8 +18,8 @@ before_install:
         - bundle install
         - cp db/structure.sql db/structure.sql.conlock
         - cp ../../db/datos-basicas.sql db/datos-basicas.sql.conlock
-        - sed -e "s/SET lock_timeout = 0;//g" db/structure.sql.conlock >db/structure.sql
-        - sed -e "s/SET lock_timeout = 0;//g" db/datos-basicas.sql.conlock > ../../db/datos-basicas.sql
+        - sed -e "s/SET lock_timeout = 0;//g;s/SET idle_in_transaction_session_timeout = 0;//g" db/structure.sql.conlock >db/structure.sql
+        - sed -e "s/SET lock_timeout = 0;//g;s/SET idle_in_transaction_session_timeout = 0;//g" db/datos-basicas.sql.conlock > ../../db/datos-basicas.sql
         - cp config/database.travis.yml config/database.yml
         - rake db:setup
         - rake sip:indices
