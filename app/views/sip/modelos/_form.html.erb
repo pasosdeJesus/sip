@@ -6,9 +6,10 @@
   
   <% atributos_form.each do |atr|  %>
     <% alf = @registro.asociacion_llave_foranea(atr) %>
-    <% if lookup_context.find_all("sip/admin/basicas/#{atr}", [], true).any? %>
+    <% vatr = atr.to_s.gsub(/[^a-z_A-Z0-9]/, '') %>
+    <% if lookup_context.find_all("sip/modelos/#{vatr}", [], true).any? %>
       <% # Hay un parcial para presentar el campo %>
-      <%= render partial: "sip/admin/basicas/#{atr}", locals: {f: f} %>
+      <%= render partial: "sip/modelos/#{vatr}", locals: {f: f} %>
     <% elsif alf  %>
       <% # Es llave Foranea 
         n = alf.name %>

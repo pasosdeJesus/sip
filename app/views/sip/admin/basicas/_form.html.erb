@@ -6,9 +6,10 @@
   
   <% atributos_form.each do |atr|  %>
     <% alf = @basica.asociacion_llave_foranea(atr) %>
-    <% if lookup_context.find_all("sip/admin/basicas/#{atr}", [], true).any? %>
+    <% vatr = atr.to_s.gsub(/[^a-z_A-Z0-9]/, '') %>
+    <% if lookup_context.find_all("sip/admin/basicas/#{vatr}", [], true).any? %>
       <% # Hay un parcial para presentar el campo %>
-      <%= render partial: "sip/admin/basicas/#{atr}", locals: {f: f} %>
+      <%= render partial: "sip/admin/basicas/#{vatr}", locals: {f: f} %>
     <% elsif alf  %>
       <% # Llave Foranea 
         n = alf.name %>
@@ -24,8 +25,7 @@
       %>
       <%= f.association r.name,
         collection: r.class_name.constantize.habilitados,
-        #label_method: lambda {|t| t.presenta_nombre},
-        label_method: lambda {|r| r.presenta_nombre }, #:nombre,
+        label_method: lambda {|r| r.presenta_nombre },
         value_method: :id ,
         input_html: { class: 'chosen-select' }
       %>
