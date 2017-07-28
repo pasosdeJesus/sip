@@ -116,15 +116,15 @@ module Sip
           m.each do |r|
             if !r.options[:through]
               rel = @basica.send(r.name)
-              if (rel.count > 0) 
+              if (rel.count > 0 && !r.options.include?(:dependent)) 
                 nom = @basica.class.human_attribute_name(r.name)
                 mens += " Hay #{rel.count} elementos relacionados en " +
-                  " la tabla #{nom}, no puede eliminarse aún. "
+                  " la tabla #{nom}, no puede eliminarse aún."
               end
             end
           end
           if mens != ''
-            redirect_to(:back, {:flash => { :error => mens }})
+            redirect_to(main_app.root_path, {:flash => { :error => mens }})
             return
           end
         end
