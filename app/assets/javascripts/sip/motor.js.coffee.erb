@@ -84,7 +84,7 @@ if (typeof String.prototype.endsWith != 'function')
 # Envía con ajax a la ruta especificada junto con los datos, espera
 # respuesta html de la cual extrae una parte con selector selresp y
 # lo usa para volver a pintar el elemento con selector selelem
-@sip_envia_ajax_datos_ruta_y_pinta= (ruta, datos, selresp, selelem) ->
+@sip_envia_ajax_datos_ruta_y_pinta= (ruta, datos, selresp, selelem, metodo='GET', tipo='html' ) ->
   root =  window
   t = Date.now()
   d = -1
@@ -94,11 +94,17 @@ if (typeof String.prototype.endsWith != 'function')
     sip_arregla_puntomontaje(root)
     rutac = root.puntomontaje + ruta + ".js"
     root.sip_envia_ajax_t = t
-    $.ajax(url: rutac, data: datos, dataType: 'html').fail( (jqXHR, texto) ->
+    $.ajax({
+      url: rutac, 
+      data: datos, 
+      dataType: tipo,
+      method: metodo
+    }).fail( (jqXHR, texto) ->
       alert("Error con ajax a " + rutac + ": " + texto)
     ).done( (e, r) ->
-      t=$(e).find(selresp)[0]
-      $(selelem).html(t)
+      if selresp != '' && selelem != ''
+        t=$(e).find(selresp)[0]
+        $(selelem).html(t)
       return
     )
   return
