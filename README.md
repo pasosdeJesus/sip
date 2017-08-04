@@ -55,7 +55,9 @@ de información, como:
   (Administrate)[https://github.com/thoughtbot/administrate] y
   (Rails Admin)[https://github.com/sferik/rails_admin]
   Usa Sip::Modelo, Sip::ModelosController y vistas de 
-  ```app/views/sip/modelos/```.
+  ```app/views/sip/modelos/```. La vista index incluye
+  un filtro definible con scope en el modelo.  La vista 
+  _form genera automaticamente un formulario con elementos tipicos.
 - En tablas basicas los campos ```has_many``` seran validados 
   automaticamente cuando se borra un registro para reportar si existen 
   registros dependientes en otras tablas (en lugar de fallar)

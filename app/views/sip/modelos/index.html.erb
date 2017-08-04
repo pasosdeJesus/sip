@@ -42,7 +42,7 @@
         <% # Hay un parcial %>
         <%= render partial: rutaf, locals: {f: f} %>
       <% else %>
-        <%= render 'index_filtro' %>
+        <%= render partial: 'index_filtro', locals: {f: f} %>
       <% end %>
 
     </thead>

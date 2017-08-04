@@ -12,17 +12,17 @@ module Sip
       # Si atr corresponde a tabla combinada o a tabla
       # con accepts_nested_attributes_for la retorna.
       # En otro caso retorna nil
-      def asociacion_combinada(atr)
+      def self.asociacion_combinada(atr)
         if atr.is_a?(Hash) && 
           (atr.first[0].to_s.ends_with?("_ids") || 
            atr.first[0].to_s.ends_with?("_attributes"))
           na = atr.first[0].to_s.chomp("_ids")
           na = na.chomp("_attributes")
-          a = self.class.reflect_on_all_associations
+          a = self.reflect_on_all_associations
           r = a.select { |ua| ua.name.to_s == na }[0] 
           if r.nil?
             msg="Aunque #{atr} es como nombre de asociación combinada, " +
-              "no se encontro #{na} entre las de #{self.class}"
+              "no se encontro #{na} entre las de #{self.to_s}"
             puts msg
             self.errors.add(:base, msg)
             raise msg
@@ -34,8 +34,8 @@ module Sip
 
       # Si atr es llave foranea retorna asociación a este modelo
       # en otro caso retorna nil
-      def asociacion_llave_foranea(atr)
-        aso = self.class.reflect_on_all_associations
+      def self.asociacion_llave_foranea(atr)
+        aso = self.reflect_on_all_associations
         bel = aso.select { |a| a.macro == :belongs_to } 
         fk = bel.map(&:foreign_key)
         if fk.include? atr
@@ -47,8 +47,8 @@ module Sip
 
       # Si atr es atributo que es llave foranea retorna su clase
       # si no retorna nil
-      def clase_llave_foranea(atr)
-        r = asociacion_llave_foranea(atr)
+      def self.clase_llave_foranea(atr)
+        r = self.asociacion_llave_foranea(atr)
         if r
           return r.class_name.constantize
         end
@@ -66,12 +66,12 @@ module Sip
 
       # Presentar campo atr del registro en index y show genérico (no sobrec)
       def presenta_gen(atr)
-        clf = clase_llave_foranea(atr)
+        clf = self.class.clase_llave_foranea(atr)
         if self.class.columns_hash && self.class.columns_hash[atr] && 
           self.class.columns_hash[atr].type == :boolean 
           self[atr] ? "Si" : "No" 
-        elsif asociacion_combinada(atr)
-          ac = asociacion_combinada(atr).name.to_s
+        elsif self.class.asociacion_combinada(atr)
+          ac = self.class.asociacion_combinada(atr).name.to_s
           e = self.send(ac)
           e.inject("") { |memo, i| 
             (memo == "" ? "" : memo + "; ") + i.presenta_nombre 
@@ -93,6 +93,11 @@ module Sip
       def presenta(atr)
         presenta_gen(atr)
       end
+
+      # Por omisión es posible filtrar por id
+      scope :filtro_id, lambda {|id|
+        where(id: id)
+      }
 
     end # included
 

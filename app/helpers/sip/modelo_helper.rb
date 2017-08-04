@@ -55,5 +55,14 @@ module Sip
       n = "edit_" + self.nombreobj(o) + "_path"
       send(n.to_sym, o)
     end
+
+    def self.poromision(params, s)
+      params.nil? ? '' : (params[:filtro].nil? ? '' : params[:filtro][s])
+    end 
+
+    # Convierte un atributo a nombre de filtro (dejando solo letras numeros y _)
+    def self.nom_filtro(atr)
+      return atr.to_s.gsub(/[^a-z_A-Z0-9]/, '')
+    end
   end
 end

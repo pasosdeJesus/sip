@@ -1,0 +1,101 @@
+
+<tr>
+  <% atributos_index.each do |atr| %>
+    <td>
+      <% cregistro = @registro.class.to_s.chomp("ActiveRecord_Relation").constantize %>
+      <% alf = cregistro.asociacion_llave_foranea(atr) %>
+      <% atrf = Sip::ModeloHelper.nom_filtro(atr) %>
+      <% atrsl= atrf.chomp('_localizada') %>
+      <% n = "bus#{atrf}" %>
+      <% respfiltro = cregistro.respond_to?("filtro_#{atrf}") || 
+        cregistro.respond_to?("filtro_#{atrf}ini") || 
+        cregistro.respond_to?("filtro_#{atrf}fin") %>
+    <% if lookup_context.find_all("#{atrf}", [], true).any? %>
+      <% # Hay un parcial para presentar el campo %>
+      <%= render partial: "#{atrf}", locals: {f: f} %>
+    <% elsif alf && respfiltro %>
+      <% # Es llave Foranea %>
+      <%= f.input n,
+        collection: alf.class_name.constantize.habilitados,
+        label: false,
+        include_blank: true,
+        label_method: :presenta_nombre,
+        value_method: :id,
+        selected: Sip::ModeloHelper.poromision(params,n),
+        input_html: { 
+          class: 'chosen-select',
+          "data-enviarautomatico" => "" } %>
+    <% elsif cregistro.asociacion_combinada(atr) && respfiltro %>
+      <% # Tabla Combinada 
+        r = cregistro.asociacion_combinada(atr)
+      %>
+      <% if r.class.to_s == 
+           'ActiveRecord::Reflection::ThroughReflection' %>
+        <% # Tabla combinada %>
+        <%= f.input n,
+          collection: r.class_name.constantize.habilitados,
+          label: false,
+          include_blank: true,
+          label_method: lambda {|r| r.presenta_nombre },
+          value_method: :id ,
+          selected: Sip::ModeloHelper.poromision(params, n),
+          input_html: { class: 'chosen-select',
+                        "data-enviarautomatico" => "" } %>
+      <% end %>
+    <% elsif cregistro.columns_hash[atrsl] && respfiltro %>
+      <% # Escogemos el control %>
+      <% col = cregistro.columns_hash[atrsl] %>
+      <% if col && col.type == :date then %>
+        <% # fecha %>
+        <%= f.input "#{n}ini",
+            label: false,
+            :input_html => { 
+              "data-behaviour" => "datepicker",
+              "data-enviarautomatico" => "",
+              value: Sip::ModeloHelper.poromision(params, "#{n}ini"),
+            }, 
+            :as => :string 
+        %> - 
+        <%= f.input "#{n}fin",
+            label: false,
+            :input_html => { 
+              "data-behaviour" => "datepicker",
+              "data-enviarautomatico" => "",
+              value: Sip::ModeloHelper.poromision(params, "#{n}fin")
+            }, 
+            :as => :string 
+        %> 
+      <% elsif col && col.type == :integer %>
+        <%= f.input n,
+          label: false,
+          :input_html => { 
+            value: Sip::ModeloHelper.poromision(params, "#{n}"),
+            "data-enviarautomatico" => "",
+            size: 5
+          }, 
+          as: :integer %>
+      <% elsif col.limit && col.limit > 1000 %>
+        <%= f.input n,
+          label: false,
+          as: :text, 
+          :input_html => { 
+            "data-enviarautomatico" => "",
+            value: Sip::ModeloHelper.poromision(params, "#{n}")
+          } %>
+      <% else %>
+        <%= f.input n, 
+          label: false,
+          :input_html => { 
+            "data-enviarautomatico" => "",
+            value: Sip::ModeloHelper.poromision(params, "#{n}")
+          } %>
+      <% end %>
+    <% end %>
+    </td>
+  <% end %>
+  
+  <td>
+    <%= render partial: 'index_filtro_controles', locals: {f: f} %>
+  </td>
+
+</tr>

@@ -5,7 +5,7 @@
   <%= render partial: 'sip/hogar/errores', locals: { f: f } %> 
   
   <% atributos_form.each do |atr|  %>
-    <% alf = @registro.asociacion_llave_foranea(atr) %>
+    <% alf = @registro.class.asociacion_llave_foranea(atr) %>
     <% vatr = atr.to_s.gsub(/[^a-z_A-Z0-9]/, '') %>
     <% if lookup_context.find_all("sip/modelos/#{vatr}", [], true).any? %>
       <% # Hay un parcial para presentar el campo %>
@@ -19,9 +19,9 @@
         value_method: :id,
         input_html: { class: 'chosen-select' }
       %>
-    <% elsif @registro.asociacion_combinada(atr) %>
+    <% elsif @registro.class.asociacion_combinada(atr) %>
       <% # Tabla Combinada 
-        r = @registro.asociacion_combinada(atr)
+        r = @registro.class.asociacion_combinada(atr)
       %>
       <% if r.class.to_s == 
            'ActiveRecord::Reflection::ThroughReflection' %>

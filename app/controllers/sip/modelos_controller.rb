@@ -5,11 +5,48 @@ module Sip
     helper ModeloHelper
     #load_and_authorize_resource debe hacerse en heredadas
 
+    def filtrar(reg, params_filtro)
+      for ai in atributos_index do
+        i = Sip::ModeloHelper.nom_filtro(ai)
+        if params_filtro["bus#{i}"] && 
+          params_filtro["bus#{i}"] != '' &&
+          reg.respond_to?("filtro_#{i.to_s}")
+          reg = reg.send("filtro_#{i.to_s}", params_filtro["bus#{i}"])
+        else 
+          if params_filtro["bus#{i}ini"] && 
+            params_filtro["bus#{i}ini"] != '' &&
+            reg.respond_to?("filtro_#{i.to_s}ini")
+            reg = reg.send("filtro_#{i.to_s}ini", 
+                           params_filtro["bus#{i}ini"])
+          end
+          if params_filtro["bus#{i}fin"] && 
+            params_filtro["bus#{i}fin"] != '' &&
+            reg.respond_to?("filtro_#{i.to_s}fin")
+            reg = reg.send("filtro_#{i.to_s}fin", 
+                           params_filtro["bus#{i}fin"])
+          end
+        end
+      end
+      return reg
+    end
+
+    def index_otros_formatos(format, params)
+      return
+    end
+
+    def index_reordenar(c)
+      c.reorder([:nombre])
+    end
+
     # Despliega listado de registros
     def index(c = nil)
       if (c == nil) 
         c = clase.constantize
       end
+      if params && params[:filtro]
+        c = filtrar(c, params[:filtro])
+      end
+      c = index_reordenar(c)
       respond_to do |format|
        format.html {  
          @registros = @registro = c.paginate(
@@ -25,6 +62,7 @@ module Sip
          @registros = @registro = c.all
          render :index, json: @registro
        }
+       index_otros_formatos(format, params)
       end
     end
 
