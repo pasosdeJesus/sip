@@ -6,7 +6,7 @@
 </div>
 
 <dl class="dl-horizontal">
-  <% atributos_index.each do |atr|  %>
+  <% atributos_show.each do |atr|  %>
     <% p = @registro.presenta(atr) %>
     <% if p && p.length > 0 %>
       <dt><strong><%= model_class.human_attribute_name(atr) %>:</strong></dt>

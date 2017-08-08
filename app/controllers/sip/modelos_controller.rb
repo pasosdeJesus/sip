@@ -168,18 +168,23 @@ module Sip
       return 'F';
     end
 
-    # Campos de la tabla
+    # Campos de la tabla por presentar en listado 
     def atributos_index
       ["id", "nombre", "observaciones", 
        "fechacreacion_localizada", "fechadeshabilitacion_localizada"]
     end
 
-    # Campos que se presentan en index, show y formulario
+    # Campos que se presentar en formulario
     def atributos_form
       atributos_index - ["id"]
     end
 
-    helper_method :clase, :atributos_index, :atributos_form, 
+    # Campos por mostrar en presentación de un registro
+    def atributos_show
+      atributos_index
+    end
+
+    helper_method :clase, :atributos_index, :atributos_form, :atributos_show,
       :genclase
   end
 end
