@@ -64,5 +64,32 @@ module Sip
     def self.nom_filtro(atr)
       return atr.to_s.gsub(/[^a-z_A-Z0-9]/, '')
     end
+
+    # Nombre y apellido de una persona
+    def self.nomap_persona(p)
+      if p
+        r = p.nombres + ' ' + p.apellidos
+        return r.strip
+      end
+      return ""
+    end
+
+    # Retorna etiqueta que corresponde a una identificación
+    # en una colección al estilo 
+    # [['EN EJECUCIÓN', :J], 
+    #  ['EN TRAMITE', :E], 
+    #  ['RECHAZADO', :R], 
+    #  ['TERMINADO', :T]]
+    def self.etiqueta_coleccion(a, l)
+      return '' if l == ''
+      res = a.select do |r|
+        r[1].to_s == l.to_s
+      end
+      if res.length == 0
+        return "ERROR-CON-#{a}-Y-#{l}-FAVOR-REPORTAR"
+      end
+      return res[0][0]
+    end
+
   end
 end

@@ -52,15 +52,17 @@ module Sip
          @registros = @registro = c.paginate(
            :page => params[:pagina], per_page: 20
          );
-        render :index, layout: 'application'
+        render :index, layout: 'layouts/application'
+        return
        }
+       @registros = @registro = c.all
        format.json {
-         @registros = @registro = c.all
          render :index, json: @registro
+         return
        }
        format.js {
-         @registros = @registro = c.all
          render :index, json: @registro
+         return
        }
        index_otros_formatos(format, params)
       end
