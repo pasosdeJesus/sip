@@ -147,6 +147,26 @@ if (typeof String.prototype.endsWith != 'function')
       )
   return
 
+# Cambio un campo select con base en valor de otro campo
+# $elem Elemento jquery del otro campo (opciones de select dependen)
+# idsel Id. del select por modificar
+# rutajson Ruta del API que respondera JSON (sin punto de montaje)
+# nomparam Parametro para el API JSON que irá con el valor de $elem
+# descerr  Descripcion por presentar en caso de que el JSON no responda
+# root     Donde se almacenan objetos globales
+@sip_llena_select_con_AJAX = ($elem, idsel, rutajson, nomparam, descerr, root = window) ->
+  sip_arregla_puntomontaje(root)
+  val = $elem.val()
+  param = {}
+  param[nomparam] = val
+  x = $.getJSON(root.puntomontaje + rutajson, param)
+  x.done((data) ->
+    remplaza_opciones_select(idsel, data, true)
+  )
+  x.error((m1, m2, m3) -> 
+    alert(
+      'Problema ' + descerr + '. ' + pf + ' ' + m1 + ' ' + m2 + ' ' + m3)
+    )
 
 # AUTOCOMPLETACIÓN
 
