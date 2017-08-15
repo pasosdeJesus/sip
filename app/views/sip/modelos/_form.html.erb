@@ -7,9 +7,13 @@
   <% atributos_form.each do |atr|  %>
     <% alf = @registro.class.asociacion_llave_foranea(atr) %>
     <% vatr = atr.to_s.gsub(/[^a-z_A-Z0-9]/, '') %>
+    <% rutavatr = clase.pluralize.underscore + "/campos_#{vatr}" %>
     <% if lookup_context.find_all("sip/modelos/#{vatr}", [], true).any? %>
       <% # Hay un parcial para presentar el campo %>
       <%= render partial: "sip/modelos/#{vatr}", locals: {f: f} %>
+    <% elsif lookup_context.find_all(rutavatr, [], true).any? %>
+      <% # Hay un parcial %>
+      <%= render partial: rutavatr, locals: {f: f} %>
     <% elsif alf  %>
       <% # Es llave Foranea 
         n = alf.name %>
