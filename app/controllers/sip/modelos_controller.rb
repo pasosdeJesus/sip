@@ -56,12 +56,20 @@ module Sip
         return
        }
        @registros = @registro = c.all
+       if params[:filtro] && params[:filtro][:presenta_nombre] &&
+         params[:filtro][:presenta_nombre] == "1"
+         regjson = @registros.map {|r| 
+           {id: r.id, presenta_nombre: r.presenta_nombre()}
+         }
+       else
+        regjson = @registros
+       end
        format.json {
-         render :index, json: @registro
+         render :index, json: regjson
          return
        }
        format.js {
-         render :index, json: @registro
+         render :index, json: regjson
          return
        }
        index_otros_formatos(format, params)
