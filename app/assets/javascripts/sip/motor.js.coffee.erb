@@ -20,7 +20,7 @@
 # @usachosne Es verdadero si y solo si el cuadro de selección usa chosen
 # @cid campo id en cada elemento de @nuevasop
 # @cnombre campo nombre en cada elemento de @nuevasop
-@remplaza_opciones_select = (idsel, nuevasop, usachosen = false, cid = 'id',
+@sip_remplaza_opciones_select = (idsel, nuevasop, usachosen = false, cid = 'id',
   cnombre = 'nombre') ->
   porelim = [] 
   yaesta = []
@@ -90,10 +90,10 @@ if (typeof String.prototype.endsWith != 'function')
   d = -1
   if (root.sip_envia_ajax_t)
     d = (t - root.sip_envia_ajax_t)/1000
+  root.sip_envia_ajax_t = t
   if (d == -1 || d > 2)
     sip_arregla_puntomontaje(root)
     rutac = root.puntomontaje + ruta + ".js"
-    root.sip_envia_ajax_t = t
     $.ajax({
       url: rutac, 
       data: datos, 
@@ -125,9 +125,9 @@ if (typeof String.prototype.endsWith != 'function')
   d = -1
   if (root.sip_enviarautomatico_t)
     d = (t - root.sip_enviarautomatico_t)/1000
+  root.sip_enviarautomatico_t = t
   # NO se permite mas de un envio en 2 segundos 
   if (d == -1 || d > 2)
-    root.sip_enviarautomatico_t = t
     a = f.attr('action')
     vd = f.serializeArray()
     vd.push({name: 'commit', value: vcommit})
@@ -154,14 +154,30 @@ if (typeof String.prototype.endsWith != 'function')
 # nomparam Parametro para el API JSON que irá con el valor de $elem
 # descerr  Descripcion por presentar en caso de que el JSON no responda
 # root     Donde se almacenan objetos globales
-@sip_llena_select_con_AJAX = ($elem, idsel, rutajson, nomparam, descerr, root = window) ->
+# paramfiltro   Enviar parámetro de la forma { filtro: { nomparam: val} } 
+# @cid     campo en el JSON resultantes de la consulta AJAX que corresponderá al id de cada elemento del campo de seleccion
+# @cnombre campo en el JSON resultante de la consula AJAX que corresponderá al nombre de cada elemento del campo de seleccion (si es presenta_nombre además pasará parametro presenta_nombre al hacer la consulta para que el controlador responda con presenta_nombre de Sip::Modelo)
+@sip_llena_select_con_AJAX = ($elem, idsel, rutajson, nomparam, descerr, root = window, paramfiltro = false, cid = 'id', cnombre = 'nombre') ->
   sip_arregla_puntomontaje(root)
+  t = Date.now()
+  d = -1
+  if (root.sip_llena_select_con_AJAX_t)
+    d = (t - root.sip_llena_select_con_AJAX_t)/1000
+  root.sip_llena_select_con_AJAX_t = t
+  # NO se permite mas de un envio en 2 segundos 
+  if (d > 0 && d <= 2)
+    return
+
   val = $elem.val()
   param = {}
   param[nomparam] = val
+  if cnombre == 'presenta_nombre'
+    param['presenta_nombre'] = 1
+  if paramfiltro
+    param = {filtro: param}
   x = $.getJSON(root.puntomontaje + rutajson, param)
   x.done((data) ->
-    remplaza_opciones_select(idsel, data, true)
+    sip_remplaza_opciones_select(idsel, data, true, cid, cnombre)
   )
   x.error((m1, m2, m3) -> 
     alert(
