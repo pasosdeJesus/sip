@@ -155,9 +155,10 @@ if (typeof String.prototype.endsWith != 'function')
 # descerr  Descripcion por presentar en caso de que el JSON no responda
 # root     Donde se almacenan objetos globales
 # paramfiltro   Enviar parámetro de la forma { filtro: { nomparam: val} } 
-# @cid     campo en el JSON resultantes de la consulta AJAX que corresponderá al id de cada elemento del campo de seleccion
-# @cnombre campo en el JSON resultante de la consula AJAX que corresponderá al nombre de cada elemento del campo de seleccion (si es presenta_nombre además pasará parametro presenta_nombre al hacer la consulta para que el controlador responda con presenta_nombre de Sip::Modelo)
-@sip_llena_select_con_AJAX = ($elem, idsel, rutajson, nomparam, descerr, root = window, paramfiltro = false, cid = 'id', cnombre = 'nombre') ->
+# cid     campo en el JSON resultantes de la consulta AJAX que corresponderá al id de cada elemento del campo de seleccion
+# cnombre campo en el JSON resultante de la consula AJAX que corresponderá al nombre de cada elemento del campo de seleccion (si es presenta_nombre además pasará parametro presenta_nombre al hacer la consulta para que el controlador responda con presenta_nombre de Sip::Modelo)
+# f Funcion por llamar despues de cambiar el cuadro de seleccion
+@sip_llena_select_con_AJAX = ($elem, idsel, rutajson, nomparam, descerr, root = window, paramfiltro = false, cid = 'id', cnombre = 'nombre', f = null) ->
   sip_arregla_puntomontaje(root)
   t = Date.now()
   d = -1
@@ -178,10 +179,12 @@ if (typeof String.prototype.endsWith != 'function')
   x = $.getJSON(root.puntomontaje + rutajson, param)
   x.done((data) ->
     sip_remplaza_opciones_select(idsel, data, true, cid, cnombre)
+    if f != null
+      f(root)
   )
   x.error((m1, m2, m3) -> 
     alert(
-      'Problema ' + descerr + '. ' + pf + ' ' + m1 + ' ' + m2 + ' ' + m3)
+      'Problema ' + descerr + '. ' + param + ' ' + m1 + ' ' + m2 + ' ' + m3)
     )
 
 # AUTOCOMPLETACIÓN
