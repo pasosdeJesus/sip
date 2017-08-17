@@ -58,6 +58,8 @@ de información, como:
   ```app/views/sip/modelos/```. La vista index incluye
   un filtro definible con scope en el modelo.  La vista 
   _form genera automaticamente un formulario con elementos tipicos.
+  Consultar https://github.com/pasosdeJesus/sip/wiki/Vistas-autom%C3%A1ticas-con-Sip::Modelo-y-Sip::ModelosController
+  Hay un generador que facilita la creación del modelo y la vista.
 - En tablas basicas los campos ```has_many``` seran validados 
   automaticamente cuando se borra un registro para reportar si existen 
   registros dependientes en otras tablas (en lugar de fallar)
