@@ -1,0 +1,10 @@
+# encoding: UTF-8
+
+class <%= nom_clase %> < ActiveRecord::Base
+	include Sip::Modelo
+  include Sip::Localizacion
+
+  def presenta_nombre
+    "#{id}"
+  end
+end
