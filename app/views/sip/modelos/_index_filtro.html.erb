@@ -10,8 +10,15 @@
       <% respfiltro = cregistro.respond_to?("filtro_#{atrf}") || 
         cregistro.respond_to?("filtro_#{atrf}ini") || 
         cregistro.respond_to?("filtro_#{atrf}fin") %>
-    <% if lookup_context.find_all("#{atrf}", [], true).any? %>
-      <% # Hay un parcial para presentar el campo %>
+      <% if lookup_context.find_all("filtro_#{atrf}", 
+                                    [cregistro.name.pluralize.underscore], true).any? %>
+        <% # Hay un parcial para presentar el campo, 
+           #e.g cor1440_gen/proyectosfinancieros/_filtro_estado.html.erb %>
+        <%= render partial: "filtro_#{atrf}", locals: {f: f} %>
+
+    <% elsif lookup_context.find_all("#{atrf}", [cregistro.name.pluralize.underscore], true).any? %>
+      <% # Hay un parcial para presentar el campo, 
+         # e.g cor1440_gen/proyectosfinancieros/_estado.html.erb %>
       <%= render partial: "#{atrf}", locals: {f: f} %>
     <% elsif alf && respfiltro %>
       <% # Es llave Foranea %>
