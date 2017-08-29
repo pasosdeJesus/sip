@@ -312,6 +312,16 @@ if (typeof String.prototype.endsWith != 'function')
     placeholder_text_multiple: 'Selecciones algunas opciones',
     width: '100%'
 
+  # Tooltips con chosen  
+  $('select[data-toggle="tooltip"]').each( (v, e) ->
+    ej = $(e)
+    t = ej.attr('data-original-title')
+    id = ej.attr('id')  
+    ns = '#' + id+'_chosen .chosen-choices'
+    $(ns).attr('title', t)
+    $(ns).attr('data-toggle', 'tooltip')
+  )
+
   jQuery ->
     $("a[rel~=popover], .has-popover").popover()
     $("a[rel~=tooltip], .has-tooltip").tooltip()
