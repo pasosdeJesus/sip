@@ -94,14 +94,13 @@ group :test do
 
   gem 'rails-controller-testing'
 
+  gem 'capybara'
+  gem 'selenium-webdriver'
   # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
   gem "spring"
   
   # Un proceso para cada prueba -- acelera
   gem 'spork'#, '~> 1.0rc'
-
-  # Maneja datos de prueba
-  gem "factory_girl_rails", group: [:development, :test]#, "~> 4.0"
 
   # https://www.relishapp.com/womply/rails-style-guide/docs/developing-rails-applications/bundler
   # Lanza programas para examinar resultados

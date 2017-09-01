@@ -30,9 +30,6 @@ module Dummy
     config.colorize_logging = true
 
     config.active_record.schema_format = :sql
-    FactoryGirl.definition_file_paths << Pathname.new("../factories")
-    FactoryGirl.definition_file_paths.uniq!
-    FactoryGirl.find_definitions
 
   end
 end
