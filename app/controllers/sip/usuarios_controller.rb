@@ -3,7 +3,7 @@
 require 'sip/concerns/controllers/usuarios_controller'
 
 module Sip
-  class UsuariosController < ApplicationController
+  class UsuariosController < Sip::ModelosController
 
     include Sip::Concerns::Controllers::UsuariosController
 

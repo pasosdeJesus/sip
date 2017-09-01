@@ -5,6 +5,7 @@ module Sip
     module Models
       module Usuario
         extend ActiveSupport::Concern
+        include Sip::Modelo
         include Sip::Localizacion
 
         included do
@@ -94,6 +95,53 @@ module Sip
             end
             r 
           end
+
+          def presenta(atr)
+            if (atr == 'rol')
+              a = Ability::ROLES.select { |v| v[1] = rol }
+              a.first[0]
+            else
+              presenta_gen(atr)
+            end
+          end
+
+          scope :filtro_nusuario, lambda { |u|
+              where(nusuario: u)
+          }
+
+          scope :filtro_nombre, lambda { |n|
+              where("unaccent(nombre) ILIKE '%' || unaccent(?) || '%'", 
+                    n)
+          }
+
+          scope :filtro_descripcion, lambda { |d|
+              where("unaccent(descripcion) ILIKE '%' || 
+                    unaccent(?) || '%'", d)
+          }
+
+          scope :filtro_rol, lambda { |r|
+              where(rol: r)
+          }
+
+          scope :filtro_idioma, lambda { |i|
+              where(idioma: i)
+          }
+
+          scope :filtro_email, lambda { |e|
+              where("unaccent(email) ILIKE '%' || 
+                    unaccent(?) || '%'", e)
+          }
+
+          scope :filtro_created_at_localizadaini, lambda { |f|
+              where("created_at >= ?'", 
+                    Sip::FormatoFechaHelper.fecha_local_estandar(f))
+          }
+          
+          scope :filtro_created_at_localizadafin, lambda { |f|
+              where("created_at <= ?'", 
+                    Sip::FormatoFechaHelper.fecha_local_estandar(f))
+          }
+
         end
 
         class_methods do

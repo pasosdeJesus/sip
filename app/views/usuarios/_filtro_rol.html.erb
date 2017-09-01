@@ -1,0 +1,5 @@
+<%= f.input :busrol,
+  collection: Ability::ROLES.select { |v| v.last != 0 },
+  label: false,
+  include_blank: true
+%>

@@ -100,7 +100,10 @@ es:
         created_at: Fecha Registro
         created_at_localizada: Fecha Registro
         descripcion: Descripción
+        email: Correo
         encrypted_password: Clave
+        failed_attempts: Intentos fallidos
+        locked_at: Hora de bloqueo
         nusuario: Usuario
         "sip_grupo": Grupos
-
+        unlock_token: Testigo para desbloquear
