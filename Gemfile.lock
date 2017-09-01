@@ -49,7 +49,6 @@ GEM
     bootstrap-datepicker-rails (1.7.1.1)
       railties (>= 3.0)
     builder (3.2.3)
-    byebug (9.1.0)
     camertron-eprun (1.1.1)
     cancancan (2.0.0)
     chosen-rails (1.5.2)
@@ -264,7 +263,6 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootstrap-datepicker-rails
-  byebug
   cancancan
   chosen-rails
   coffee-rails

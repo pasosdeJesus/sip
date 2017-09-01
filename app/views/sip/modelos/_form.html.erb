@@ -5,7 +5,7 @@
   <%= render partial: 'sip/hogar/errores', locals: { f: f } %> 
   
   <% atributos_form.each do |atr|  %>
-    <% byebug %>
+    <!--% byebug %-->
     <% alf = @registro.class.asociacion_llave_foranea(atr) %>
     <% vatr = atr.to_s.gsub(/[^a-z_A-Z0-9]/, '') %>
     <% rutavatr = clase.pluralize.underscore + "/campo_#{vatr}" %>
