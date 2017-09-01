@@ -1,11 +1,11 @@
 language: ruby
 rvm:
         - 2.4.0
+addons:
+        postgresql: "9.6"
 notifications:
         email: false
 script: bundle exec rails test
-after_success:
-        - CODECLIMATE_REPO_TOKEN=e83ead47cfc0912ab49acb6658bf8a22bd4257d73c5ddcd8eebfb450efd51640 bundle exec codeclimate-test-reporter
 env:
         global:
                 - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
@@ -18,8 +18,8 @@ before_install:
         - bundle install
         - cp db/structure.sql db/structure.sql.conlock
         - cp ../../db/datos-basicas.sql db/datos-basicas.sql.conlock
-        - sed -e "s/SET lock_timeout = 0;//g;s/SET idle_in_transaction_session_timeout = 0;//g" db/structure.sql.conlock >db/structure.sql
-        - sed -e "s/SET lock_timeout = 0;//g;s/SET idle_in_transaction_session_timeout = 0;//g" db/datos-basicas.sql.conlock > ../../db/datos-basicas.sql
+        - sed -e "s/^SET lock_timeout.*//g;s/^SET idle_in_transaction_session_timeout.*//g;s/^SET row_security.*//g" db/structure.sql.conlock >db/structure.sql
+        - sed -e "s/^SET lock_timeout.*//g;s/^SET idle_in_transaction_session_timeout.*//g;s/^SET row_security.*//g" db/datos-basicas.sql.conlock > ../../db/datos-basicas.sql
         - cp config/database.travis.yml config/database.yml
         - rake db:setup
         - rake sip:indices
