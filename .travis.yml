@@ -11,8 +11,7 @@ env:
                 - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 before_install: 
         - sudo locale-gen --no-archive es_CO.UTF-8
-        - sudo /etc/init.d/postgresql stop
-        - sudo /etc/init.d/postgresql start 9.6
+        - sudo /etc/init.d/postgresql restart
         - cd test/dummy
         - psql -c 'CREATE DATABASE sip_pru;' -U postgres
         - bundle install
