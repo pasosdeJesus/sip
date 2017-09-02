@@ -1,4 +1,4 @@
-class AgregaIdPersonaTrelacion < ActiveRecord::Migration
+class AgregaIdPersonaTrelacion < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE SEQUENCE sip_persona_trelacion_id_seq;      

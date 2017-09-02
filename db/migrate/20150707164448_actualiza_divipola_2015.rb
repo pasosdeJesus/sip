@@ -1,4 +1,4 @@
-class ActualizaDivipola2015 < ActiveRecord::Migration
+class ActualizaDivipola2015 < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       UPDATE sip_municipio SET nombre = 'BOGOTÁ, D.C.' WHERE id = '24';

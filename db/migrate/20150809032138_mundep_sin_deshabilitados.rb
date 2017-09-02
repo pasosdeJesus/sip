@@ -1,4 +1,4 @@
-class MundepSinDeshabilitados < ActiveRecord::Migration
+class MundepSinDeshabilitados < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       DROP INDEX sip_busca_mundep;

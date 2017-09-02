@@ -1,4 +1,4 @@
-class VistaMundep < ActiveRecord::Migration
+class VistaMundep < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       CREATE VIEW sip_mundep_sinorden AS (

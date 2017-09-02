@@ -1,4 +1,4 @@
-class AgregaIdClase < ActiveRecord::Migration
+class AgregaIdClase < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
      ALTER TABLE sip_clase 

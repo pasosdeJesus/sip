@@ -1,4 +1,4 @@
-class AgregaIdClase2 < ActiveRecord::Migration
+class AgregaIdClase2 < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       SELECT * FROM sip_clase WHERE
