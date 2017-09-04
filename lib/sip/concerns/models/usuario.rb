@@ -98,7 +98,7 @@ module Sip
 
           def presenta(atr)
             if (atr == 'rol')
-              a = Ability::ROLES.select { |v| v[1] = rol }
+              a = Ability::ROLES.select { |v| v[1] == rol }
               a.first[0]
             else
               presenta_gen(atr)
@@ -130,16 +130,6 @@ module Sip
           scope :filtro_email, lambda { |e|
               where("unaccent(email) ILIKE '%' || 
                     unaccent(?) || '%'", e)
-          }
-
-          scope :filtro_created_at_localizadaini, lambda { |f|
-              where("created_at >= ?'", 
-                    Sip::FormatoFechaHelper.fecha_local_estandar(f))
-          }
-          
-          scope :filtro_created_at_localizadafin, lambda { |f|
-              where("created_at <= ?'", 
-                    Sip::FormatoFechaHelper.fecha_local_estandar(f))
           }
 
         end

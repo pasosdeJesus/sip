@@ -52,8 +52,8 @@ module Sip
          @registros = @registro = c.paginate(
            :page => params[:pagina], per_page: 20
          );
-        render :index, layout: 'layouts/application'
-        return
+         render :index, layout: 'layouts/application'
+         return
        }
        @registros = @registro = c.all
        if params[:filtro] && params[:filtro][:presenta_nombre] &&

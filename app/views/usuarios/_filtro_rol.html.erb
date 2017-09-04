@@ -1,5 +1,12 @@
+<% cnus = Ability::ROLES.clone.select { |v| 
+  v.last != 0 } %>
 <%= f.input :busrol,
-  collection: Ability::ROLES.select { |v| v.last != 0 },
+  collection: cnus,
   label: false,
+  selected: Sip::ModeloHelper.poromision(params, :busrol),
+  input_html: {
+    class: 'chosen-select',
+    'data-enviarautomatico' => ''
+  },
   include_blank: true
 %>
