@@ -1,4 +1,4 @@
-class AgregaPorDefectoTclase < ActiveRecord::Migration
+class AgregaPorDefectoTclase < ActiveRecord::Migration[4.2]
   def up
 		execute <<-SQL
 			ALTER TABLE sip_clase ALTER COLUMN id_tclase SET DEFAULT 'CP';

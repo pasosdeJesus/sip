@@ -1,4 +1,4 @@
-class AgregaCoordenadasMunicipiosVenezuelaRandolf < ActiveRecord::Migration
+class AgregaCoordenadasMunicipiosVenezuelaRandolf < ActiveRecord::Migration[4.2]
   def up
     # Agradecimiento a Randolf Laverde (incidencia@sjrlac.org) por la información
     execute <<-SQL

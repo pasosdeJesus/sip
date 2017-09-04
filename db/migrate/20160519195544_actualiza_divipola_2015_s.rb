@@ -1,4 +1,4 @@
-class ActualizaDivipola2015S < ActiveRecord::Migration
+class ActualizaDivipola2015S < ActiveRecord::Migration[4.2]
 
   def up
     execute <<-SQL

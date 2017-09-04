@@ -1,4 +1,4 @@
-class AgregaCoordenadasDepartamentosVenezuelaRandolf < ActiveRecord::Migration
+class AgregaCoordenadasDepartamentosVenezuelaRandolf < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
       UPDATE sip_departamento SET latitud='10.468619', longitud='-66.805812' WHERE id='1';

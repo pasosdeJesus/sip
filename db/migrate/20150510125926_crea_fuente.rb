@@ -1,4 +1,4 @@
-class CreaFuente < ActiveRecord::Migration
+class CreaFuente < ActiveRecord::Migration[4.2]
   def up
     create_table :sip_fuenteprensa do |t|
       t.string :nombre, limit: 500

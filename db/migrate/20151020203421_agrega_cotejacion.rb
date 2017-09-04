@@ -1,6 +1,6 @@
 include Sip::MigracionHelper
 
-class AgregaCotejacion < ActiveRecord::Migration
+class AgregaCotejacion < ActiveRecord::Migration[4.2]
 
   @@tobs = [
     'sip_clase', 'sip_departamento', 'sip_etiqueta',

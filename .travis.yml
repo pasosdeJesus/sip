@@ -1,25 +1,21 @@
 language: ruby
 rvm:
         - 2.4.0
+addons:
+        postgresql: '9.6'
 notifications:
         email: false
-script: bundle exec rails test
-after_success:
-        - CODECLIMATE_REPO_TOKEN=e83ead47cfc0912ab49acb6658bf8a22bd4257d73c5ddcd8eebfb450efd51640 bundle exec codeclimate-test-reporter
+script: bundle exec rails test -b
 env:
         global:
                 - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 before_install: 
         - sudo locale-gen --no-archive es_CO.UTF-8
         - sudo /etc/init.d/postgresql stop
-        - sudo /etc/init.d/postgresql start 9.3
+        - sudo /etc/init.d/postgresql start 9.6
         - cd test/dummy
         - psql -c 'CREATE DATABASE sip_pru;' -U postgres
         - bundle install
-        - cp db/structure.sql db/structure.sql.conlock
-        - cp ../../db/datos-basicas.sql db/datos-basicas.sql.conlock
-        - sed -e "s/SET lock_timeout = 0;//g;s/SET idle_in_transaction_session_timeout = 0;//g" db/structure.sql.conlock >db/structure.sql
-        - sed -e "s/SET lock_timeout = 0;//g;s/SET idle_in_transaction_session_timeout = 0;//g" db/datos-basicas.sql.conlock > ../../db/datos-basicas.sql
         - cp config/database.travis.yml config/database.yml
         - rake db:setup
         - rake sip:indices

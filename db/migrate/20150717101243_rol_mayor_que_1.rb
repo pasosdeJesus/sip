@@ -1,4 +1,4 @@
-class RolMayorQue1 < ActiveRecord::Migration
+class RolMayorQue1 < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
          ALTER TABLE usuario DROP CONSTRAINT usuario_rol_check;
