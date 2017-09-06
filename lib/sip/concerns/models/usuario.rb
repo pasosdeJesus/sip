@@ -99,7 +99,11 @@ module Sip
           def presenta(atr)
             if (atr == 'rol')
               a = Ability::ROLES.select { |v| v[1] == rol }
-              a.first[0]
+              if a == []
+                "Rol #{rol} desconocido"
+              else
+                a.first[0]
+              end
             else
               presenta_gen(atr)
             end

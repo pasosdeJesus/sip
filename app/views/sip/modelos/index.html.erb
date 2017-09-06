@@ -72,7 +72,7 @@
             <% rutama = clase.pluralize.underscore + '/index_mas_acciones' %>
             <% if lookup_context.find_all(rutama, [], true).any? %>
               <% # Hay un parcial %>
-              <%= render partial: rutama, locals: {f: f} %>
+              <%= render partial: rutama, locals: {f: f, registro: registro} %>
             <% else %>
               <%= render 'index_mas_acciones' %>
             <% end %>
