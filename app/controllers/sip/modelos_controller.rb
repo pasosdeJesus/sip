@@ -69,7 +69,14 @@ module Sip
          return
        }
        format.js {
-         render :index, json: regjson
+         if params[:_sip_enviarautomatico] 
+           @registros = @registro = c.paginate(
+             :page => params[:pagina], per_page: 20
+           );
+           render :index, layout: 'layouts/application'
+         else
+          render :index, json: regjson
+         end
          return
        }
        index_otros_formatos(format, params)

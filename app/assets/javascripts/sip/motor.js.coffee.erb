@@ -131,6 +131,7 @@ if (typeof String.prototype.endsWith != 'function')
     a = f.attr('action')
     vd = f.serializeArray()
     vd.push({name: 'commit', value: vcommit})
+    vd.push({name: '_sip_enviarautomatico', value: 1})
     d = $.param(vd)
     # En ocasiones lanza 2 veces seguidas el mismo evento. 
     # Evitamos enviar lo mismo.

@@ -1,0 +1,12 @@
+$(".master-container").html("<%= escape_javascript(render template: 'sip/modelos/index.html.erb') %>");
+
+root=window
+
+$('[data-behaviour~=datepicker]').datepicker({
+  format: root.formato_fecha,
+  autoclose: true,
+  todayHighlight: true,
+  language: 'es'	
+})
+
+
