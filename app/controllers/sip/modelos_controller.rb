@@ -102,9 +102,13 @@ module Sip
     end
 
     # Crea un registro a partir de información de formulario
-    def create
+    def create_gen(registro = nil)
       c2 = clase.demodulize.underscore
-      @registro = clase.constantize.new(send(c2 + '_params'))
+      if registro
+        @registro = registro
+      else
+        @registro = clase.constantize.new(send(c2 + '_params'))
+      end
       creada = genclase == 'M' ? 'creado' : 'creada';
       respond_to do |format|
         if @registro.save
@@ -125,9 +129,19 @@ module Sip
       end
     end
 
+
+    def create
+      create_gen
+    end
+
+   
     # Actualiza un registro con información recibida de formulario
-    def update
-      @registro = clase.constantize.find(params[:id])
+    def update_gen(registro = nil)
+      if registro
+        @registro = registro
+      else
+        @registro = clase.constantize.find(params[:id])
+      end
       actualizada = genclase == 'M' ? 'actualizado' : 'actualizada';
       respond_to do |format|
         c2 = clase.demodulize.underscore
@@ -144,6 +158,11 @@ module Sip
           }
         end
       end
+
+    end
+
+    def update
+      update_gen
     end
 
     # Elimina un registro 

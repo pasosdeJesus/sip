@@ -63,8 +63,27 @@ module Sip
             'M'
           end
 
-          private
-         
+          def create
+            authorize! :edit, ::Usuario
+            params[:usuario][:encrypted_password] = BCrypt::Password.create(
+              params[:usuario][:encrypted_password],
+              {:cost => Rails.application.config.devise.stretches})
+            super
+          end
+        
+         def update
+           authorize! :edit, ::Usuario
+           if (!params[:usuario][:encrypted_password].nil? &&
+               params[:usuario][:encrypted_password] != "")
+             params[:usuario][:encrypted_password] = BCrypt::Password.create(
+               params[:usuario][:encrypted_password],
+               {:cost => Rails.application.config.devise.stretches})
+           else
+             params[:usuario].delete(:encrypted_password)
+           end
+           super
+         end 
+
           #  Configuración común
           def set_usuario
             @usuario = ::Usuario.find(params[:id])
