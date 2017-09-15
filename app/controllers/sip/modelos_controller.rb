@@ -43,6 +43,7 @@ module Sip
       if (c == nil) 
         c = clase.constantize
       end
+      authorize! :read, c
       if params && params[:filtro]
         c = filtrar(c, params[:filtro])
       end
@@ -85,18 +86,21 @@ module Sip
 
     # Despliega detalle de un registro
     def show
+      authorize! :read, clase.constantize
       @registro = clase.constantize.find(params[:id])
       render layout: 'application'
     end
 
     # Presenta formulario para crear nuevo registro
     def new
+      authorize! :edit, clase.constantize
       @registro = clase.constantize.new
       render layout: 'application'
     end
 
     # Despliega formulario para editar un regisro
     def edit
+      authorize! :edit, clase.constantize
       @registro = clase.constantize.find(params[:id])
       render layout: 'application'
     end
@@ -131,6 +135,7 @@ module Sip
 
 
     def create
+      authorize! :edit, clase.constantize
       create_gen
     end
 
@@ -162,11 +167,13 @@ module Sip
     end
 
     def update
+      authorize! :edit, clase.constantize
       update_gen
     end
 
     # Elimina un registro 
     def destroy(mens = "", verifica_tablas_union=true)
+      authorize! :edit, clase.constantize
       @registro = clase.constantize.find(params[:id])
       if verifica_tablas_union && @registro.class.columns_hash
         m = @registro.class.reflect_on_all_associations(:has_many)
