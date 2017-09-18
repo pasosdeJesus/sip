@@ -200,7 +200,7 @@ module Sip
           end
         end
         if mens != ''
-          redirect_to(:back, {:flash => { :error => mens }})
+          redirect_back fallback_location: root_path, flash: {error: mens}
           return
         end
       end
