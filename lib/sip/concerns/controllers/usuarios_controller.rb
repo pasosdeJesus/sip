@@ -63,11 +63,15 @@ module Sip
             'M'
           end
 
-          def create
+          def sip_pre_create
             authorize! :edit, ::Usuario
-            params[:usuario][:encrypted_password] = BCrypt::Password.create(
-              params[:usuario][:encrypted_password],
-              {:cost => Rails.application.config.devise.stretches})
+            params[:usuario][:encrypted_password] = BCrypt::Password.
+              create(params[:usuario][:encrypted_password],
+                     {:cost => Rails.application.config.devise.stretches})
+          end
+          
+          def create
+            sip_pre_create
             super
           end
         
