@@ -84,7 +84,6 @@ if (test "$SALTASIVEL" != "1") then {
 	actuno sivel2_gen test/dummy; 
 	actuno sivel2; 
 	actuno sivel2_anzorc; 
-	actuno sivel2_marcha; 
 } fi;
 
 # Usan 3 motores
