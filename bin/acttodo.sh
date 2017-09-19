@@ -53,7 +53,7 @@ if (test "$SALTASIP" != "1") then {
 
 # Usan solo sip
 if (test "$SALTAJN316" != "1") then {
-	echo "**** heb412"
+	echo "**** jn316"
 	actuno jn316_gen test/dummy; 
 } fi;
 
