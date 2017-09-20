@@ -33,8 +33,19 @@ module Sip
     end
 
     # Ruta para examinar un registro 
+    # En caso de registros no existentes retorna ruta para crearlo con POST
     def modelo_path(o)
-      n = self.nombreobj(o, !o.id) + "_path"
+      if o.id
+        n = self.nombreobj(o, false) + "_path"
+      else 
+        n = 'crea_' + self.nombreobj(o, true) + "_path"
+        if !respond_to?(n)
+          n = 'crea_' + self.nombreobj(o, false) + "_path"
+          if !respond_to?(n)
+            n = self.nombreobj(o, true) + "_path"
+          end
+        end
+      end
       return send(n.to_sym, o)
     end
 
