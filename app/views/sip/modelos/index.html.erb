@@ -65,27 +65,28 @@
             </td>
           <% end %>
           <td>
-            <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_modelo_path(registro), :class => 'btn btn-xs' 
-            %>
-
-            <% rutama = clase.pluralize.underscore + '/index_mas_acciones' %>
-            <% if lookup_context.find_all(rutama, [], true).any? %>
+            <% rutama = clase.pluralize.underscore + '/index_acciones' %>
+            <% if lookup_context.
+                 find_all( rutama, [], true).any? %>
               <% # Hay un parcial %>
               <%= render partial: rutama, locals: {f: f, registro: registro} %>
             <% else %>
-              <%= render 'index_mas_acciones' %>
+              <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_modelo_path(registro), :class => 'btn btn-xs' %>
+              <%= render partial: 'index_mas_acciones' %>
+              <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                modelo_path(registro),
+                :method => :delete,
+                :data => { 
+                  :confirm => 
+                  t('.confirm', :default => 
+                    t("helpers.links.confirm", 
+                      :default => 'Are you sure?'
+                     )
+                   ) 
+                },
+                :class => 'btn btn-xs btn-danger' %>
             <% end %>
-
-            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              modelo_path(registro),
-              :method => :delete,
-              :data => { :confirm => 
-                t('.confirm', :default => 
-                  t("helpers.links.confirm", 
-                    :default => 'Are you sure?')) },
-                    :class => 'btn btn-xs btn-danger' 
-            %>
           </td>
         </tr>
       <% end %>

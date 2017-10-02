@@ -200,7 +200,8 @@ module Sip
           end
         end
         if mens != ''
-          redirect_back fallback_location: root_path, flash: {error: mens}
+          redirect_back fallback_location: main_app.root_path, 
+            flash: {error: mens}
           return
         end
       end
