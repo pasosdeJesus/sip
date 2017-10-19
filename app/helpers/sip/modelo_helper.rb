@@ -22,7 +22,9 @@ module Sip
 
     # Ruta para administrar modelo
     def modelos_path(o)
-      if o.klass.respond_to?(:modelos_path)
+      if o.respond_to?(:modelos_path) 
+        n = o.modelos_path
+      elsif o.respond_to?(:klass) && o.klass.respond_to?(:modelos_path)
         n = o.klass.modelos_path
       else
         n = self.nombreobj(o, true) + "_path"
