@@ -4,10 +4,11 @@
   </div>
   <div class="col-sm-2">
     <% ng = (!genclase.nil? && genclase == 'F') ? 'Nueva' : 'Nuevo' %>
-    <%= link_to t('.new', default: [ng, t("helpers.links.new")]),
-      new_modelo_path(@registros), 
-      class: 'btn btn-primary' 
-    %>
+    <% if can?(:create, clase.constantize) %>
+      <%= link_to t('.new', default: [ng, t("helpers.links.new")]),
+        new_modelo_path(@registros), 
+        class: 'btn btn-primary' %>
+    <% end %>
   </div>
 </div>
 

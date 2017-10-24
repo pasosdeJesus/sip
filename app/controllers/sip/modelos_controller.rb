@@ -5,6 +5,10 @@ module Sip
     helper ModeloHelper
     #load_and_authorize_resource debe hacerse en heredadas
 
+    # Permite modificar params
+    def prefiltrar()
+    end
+
     def filtrar(reg, params_filtro)
       for ai in atributos_index do
         i = Sip::ModeloHelper.nom_filtro(ai)
@@ -56,6 +60,7 @@ module Sip
       end
       authorize! :read, clase.constantize
 
+      prefiltrar()
       if params && params[:filtro]
         c = filtrar(c, params[:filtro])
       end

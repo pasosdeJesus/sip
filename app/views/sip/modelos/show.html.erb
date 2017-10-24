@@ -30,16 +30,24 @@
    <% else %>
      <%= link_to t('.back', :default => t("helpers.links.back")),
        modelos_path(@registro), :class => 'btn'  %>
-     <%= link_to t('.edit', :default => t("helpers.links.edit")),
-       edit_modelo_path(@registro), :class => 'btn' %>
+     <% if can?(:edit, clase.constantize) %>
+       <%= link_to t('.edit', :default => t("helpers.links.edit")),
+         edit_modelo_path(@registro), :class => 'btn' %>
+     <% end %>
      <%= render 'show_mas_acciones' %>
-     <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-       modelo_path(@registro),
-       :method => 'delete',
-       :data => { :confirm => 
-                  t('.confirm', :default => 
-                    t("helpers.links.confirm", 
-                      :default => 'Are you sure?')) },
-                      :class => 'btn btn-danger' %>
+     <% if can?(:destroy, clase.constantize) %>
+       <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+         modelo_path(@registro),
+         :method => 'delete',
+         :data => { 
+           :confirm => 
+           t('.confirm', :default => 
+             t("helpers.links.confirm", 
+               :default => 'Are you sure?'
+              )
+            )
+         },
+         :class => 'btn btn-danger' %>
+     <% end %>
    <% end %>
 </div>
