@@ -146,6 +146,13 @@
             value: Sip::ModeloHelper.poromision(params, "#{n}")
           } %>
       <% end %>
+    <% elsif respfiltro %>
+      <%= f.input n, 
+        label: false,
+        :input_html => { 
+          "data-enviarautomatico" => "",
+          value: Sip::ModeloHelper.poromision(params, "#{n}")
+        } %>
     <% end %>
     </td>
   <% end %>
