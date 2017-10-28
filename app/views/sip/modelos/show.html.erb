@@ -7,15 +7,22 @@
 
 <dl class="dl-horizontal">
   <% atributos_show.each do |atr|  %>
-    <% p = @registro.presenta(atr) %>
-    <% if p && p.length > 0 %>
-      <dt><strong><%= model_class.human_attribute_name(atr) %>:</strong></dt>
-      <dd>
-      <% if p.include?("\n") %>
-        <pre><%= p %></pre>
-      <% else %>
-        <%= p %>
-      <% end %></dd>
+    <% #byebug %>
+    <% rutap = "#{clase.pluralize.underscore}/show_#{atr}" %>
+    <% if lookup_context.find_all(rutap, [], true).any? %>
+        <dt><strong><%= model_class.human_attribute_name(atr) %>:</strong></dt>
+        <dd> <%= render partial: rutap %> </dd>
+    <% else %>
+      <% p = @registro.presenta(atr) %>
+      <% if p && p.length > 0 %>
+        <dt><strong><%= model_class.human_attribute_name(atr) %>:</strong></dt>
+        <dd>
+        <% if p.include?("\n") %>
+          <pre><%= p %></pre>
+        <% else %>
+          <%= p %>
+        <% end %></dd>
+      <% end %>
     <% end %>
   <% end %>
 </dl>

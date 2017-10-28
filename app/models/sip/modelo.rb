@@ -82,6 +82,9 @@ module Sip
           else
             ""
           end
+        elsif self.respond_to?(atr) && 
+          self.send(atr.to_sym).respond_to?(:presenta_nombre)
+          self.send(atr.to_sym).presenta_nombre
         elsif self.respond_to?(atr) && self[atr.to_s].nil?
           self.send(atr).to_s
         else
