@@ -4,6 +4,7 @@ module Sip
   module Basica
     extend ActiveSupport::Concern
     include Sip::Localizacion
+    include Sip::Modelo
 
     included do
       scope :habilitados, -> (campoord = "nombre") {

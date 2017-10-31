@@ -1,7 +1,7 @@
 # encoding: UTF-8
 module Sip
   module Admin
-    class BasicasController < ApplicationController
+    class BasicasController < Sip::ModelosController
       include BasicasHelpers
       helper BasicasHelpers
       #load_and_authorize_resource debe hacerse en heredadas
