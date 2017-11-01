@@ -25,7 +25,7 @@ module Sip
 
     test "presenta plantilla admin/basicas/index" do
       get admin_clases_url
-      assert_template "admin/basicas/index"
+      assert_template "sip/modelos/index"
     end
 
     test "show: muestra clase" do
