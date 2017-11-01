@@ -3,23 +3,8 @@ module Sip
   module Admin
     module BasicasHelpers
       include ActionView::Helpers::TextHelper
+      include Sip::ModeloHelper     
   
-      # Retorna nombre de tabla de un objeto tipo Basica
-      def nombreobj(o)
-        r = ""
-        if defined? o.name
-          #r = o.name.downcase
-          r = o.name.demodulize.underscore
-        else
-          #r = o.class.name.underscore.gsub(/\//, '_')
-          r = o.class.name.demodulize.underscore
-        end
-        if r == "relation"
-          r = o.name.demodulize.underscore
-        end
-        return r
-      end
-
       # Prepara para rutas de tablas basicas en espacio de nombres
       # /admin para la ruta si se requiere
       def nombreobj_admin(o, plural = false)

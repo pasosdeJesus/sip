@@ -42,7 +42,7 @@ module Sip
       c.reorder([:nombre])
     end
 
-    # Despliega listado de registros
+    # Listado de registros
     def index(c = nil)
       if (c != nil)
         if c.class.to_s.end_with?('ActiveRecord_Relation')
@@ -58,13 +58,33 @@ module Sip
       else
         c = clase.constantize
       end
+
       authorize! :read, clase.constantize
 
+      # Filtro
       prefiltrar()
+      # Autocompletar
+      if params && params[:term] && params[:term] != ''
+        term = params[:term]
+        consNom = term.downcase.strip #sin_tildes
+        consNom.gsub!(/ +/, ":* & ")
+        if consNom.length > 0
+          consNom += ":*"
+        end
+        #  El caso de uso tipico es autocompletación
+        #  por lo que no usamos diccionario en español para evitar
+        #  problemas con algoritmo de raices.
+        where = " to_tsvector('simple', unaccent(" +
+          c.busca_etiqueta_campos.join(" || ' ' || ") +
+          ")) @@ to_tsquery('simple', ?)";
+        c = c.where(where, consNom)
+      end
       if params && params[:filtro]
         c = filtrar(c, params[:filtro])
       end
+
       c = index_reordenar(c)
+
       respond_to do |format|
        format.html {  
          @registros = @registro = c.paginate(
@@ -112,6 +132,9 @@ module Sip
     def new
       authorize! :edit, clase.constantize
       @registro = clase.constantize.new
+      if @registro.respond_to?(:fechacreacion)
+        @registro.fechacreacion = DateTime.now.strftime('%Y-%m-%d')
+      end
       render layout: 'application'
     end
 
@@ -129,6 +152,9 @@ module Sip
         @registro = registro
       else
         @registro = clase.constantize.new(send(c2 + '_params'))
+      end
+      if @registro.respond_to?(:fechacreacion)
+        @registro.fechacreacion = DateTime.now.strftime('%Y-%m-%d')
       end
       creada = genclase == 'M' ? 'creado' : 'creada';
       respond_to do |format|

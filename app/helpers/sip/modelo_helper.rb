@@ -20,8 +20,7 @@ module Sip
       return r
     end
 
-    # Ruta para administrar modelo
-    def modelos_path(o)
+    def modelos_prefijo_ruta(o)
       if o.respond_to?(:modelos_path) 
         n = o.modelos_path
       elsif o.respond_to?(:klass) && o.klass.respond_to?(:modelos_path)
@@ -29,18 +28,29 @@ module Sip
       else
         n = self.nombreobj(o, true) + "_path"
       end
+      if !respond_to?(n.to_sym)
+        n = "admin_#{n}"
+      end
+      return n
+    end
+
+    # Ruta para administrar modelo
+    def modelos_path(o)
+      n = self.modelos_prefijo_ruta(o) 
+      if !n
+        byebug
+      end
       send(n.to_sym)
     end
 
     # Url para administrar modelo
     def modelos_url(o)
-      n = self.nombreobj(o, true) + "_url"
+      n = self.modelos_prefijo_ruta(o) 
+      n.chomp('_path') + '_url'
       send(n.to_sym)
     end
 
-    # Ruta para examinar un registro 
-    # En caso de registros no existentes retorna ruta para crearlo con POST
-    def modelo_path(o)
+    def modelo_prefijo_ruta(o)
       if o.id
         n = self.nombreobj(o, false) + "_path"
       else 
@@ -52,24 +62,43 @@ module Sip
           end
         end
       end
-      return send(n.to_sym, o)
+      if !respond_to?(n.to_sym, o)
+        n = "admin_#{n}"
+      end
+      return n
+    end
+
+
+    # Ruta para examinar un registro 
+    # En caso de registros no existentes retorna ruta para crearlo con POST
+    def modelo_path(o)
+      n = self.modelo_prefijo_ruta(o) 
+      send(n.to_sym, o)
     end
 
     # URL para examinar un registro
     def modelo_url(o, format)
-      n = self.nombreobj(o, !o.id) + "_url"
+      n = self.modelo_prefijo_ruta(o) 
+      n.chomp!('_path') + '_url'
       send(n.to_sym, o, format)
     end
 
     # Ruta para crear un registro
     def new_modelo_path(o)
       n = "new_" + self.nombreobj(o) + "_path"
+      if !respond_to?(n.to_sym, o)
+        n = "new_admin_#{self.nombreobj(o)}_path"
+      end
       send(n.to_sym)
     end
 
     # Ruta para editar un registro de la tabla básica o
     def edit_modelo_path(o)
-      n = "edit_" + self.nombreobj(o) + "_path"
+      n = "edit_#{self.nombreobj(o)}_path"
+      if !respond_to?(n.to_sym, o)
+        n = "edit_admin_#{self.nombreobj(o)}_path"
+      end
+
       send(n.to_sym, o)
     end
 
