@@ -132,8 +132,15 @@ module Sip
         self['id']
       end
 
-    end
+      scope :filtro_nombre, lambda { |n|
+        where("nombre ILIKE '%' || unaccent(?) || '%'", n)
+      }
 
+      scope :filtro_observaciones, lambda { |o|
+        where("observaciones ILIKE '%' || unaccent(?) || '%'", o)
+      }
+
+    end
 
   end
 end
