@@ -16,42 +16,113 @@
 
 # Remplaza las opciones de un cuadro de seleccion por unas nuevas
 # @idsel es identificación del select
-# @nuevasop Son las nuevas opciones
-# @usachosne Es verdadero si y solo si el cuadro de selección usa chosen
-# @cid campo id en cada elemento de @nuevasop
-# @cnombre campo nombre en cada elemento de @nuevasop
+# @nuevasop Arreglo de hashes con uevas opciones, cada una tiene propiedades
+#   para la id (por omision id) y la etiqueta (por omisión nombre).
+# @usachosen Es verdadero si y solo si el cuadro de selección usa chosen
+# @cid campo con id en cada elemento de @nuevasop por omision id
+# @cetiqueta campo con etiqueta en cada elemento de @nuevasop por omision nombre
 @sip_remplaza_opciones_select = (idsel, nuevasop, usachosen = false, cid = 'id',
-  cnombre = 'nombre') ->
-  porelim = [] 
-  yaesta = []
-  $('#' + idsel).children().each( (i, e) ->
-    esta = false
-    vac = $(e).val()
-    $.each( nuevasop, ( j, nelem ) -> 
-      if nelem[cid] == vac 
-        esta = true
-    )
-    if !esta
-      porelim.push(i)
-    else
-      yaesta.push(vac)
+  cetiqueta = 'nombre') ->
+  s = $("#" + idsel)
+  if (s.length != 1)
+    alert('sip_remplaza_opciones_select: no se encontró ' + idsel)
+    return
+  sel = s.val()
+  nh = ''
+  nuevasop.forEach( (v) ->
+    id = v[cid]
+    nh = nh + "<option value='" + id + "'"
+    if id == sel 
+      nh = nh + ' selected'
+    tx = v[cetiqueta]
+    nh = nh + ">" + tx + "</option>" 
   )
-  $.each(porelim, (i,p) -> 
-    $('#'+idsel).children(i).remove()
-  )
-  $.each(nuevasop, (j, nelem) ->
-    esta = false
-    $.each(yaesta, (i, v) ->
-      if v == nelem[cid]
-        esta = true
-    )
-    if !esta
-      $('#'+idsel).append(
-        '<option value="' + nelem[cid] + '">' + nelem[cnombre] + '</option>')
-  )
+  s.html(nh)
   if usachosen
     $('#' + idsel).trigger("chosen:updated");
+  return
 
+
+# Actualiza opciones de cuadros de selección que dependen de datos de un 
+# formulario anidado
+#
+# @params idfuente id en html del formulario anidado
+# @params posfijo_id_fuente posfijo para identificaciones de campos con 
+#  valores para opciones
+# @params posfijo_etiqueta_fuente posfijo para identificaciones de campos 
+#  con etiquetas para opciones
+# @params seldestino lista de selectores que identifica cuadros de selección
+#   dependientes de la fuente y que serán modificados
+@sip_actualiza_cuadros_seleccion_dependientes =  (idfuente, posfijo_id_fuente, posfijo_etiqueta_fuente, seldestino) ->
+  nuevasop = []
+  lobj = $('#' + idfuente + ' .nested-fields[style!="display: none;"]')
+  lobj.each((k, v) ->
+    id = $(v).find('input[id$=' + posfijo_id_fuente + ']').val()
+    etiqueta = $(v).find('input[id$=' + posfijo_etiqueta_fuente + ']').val()
+    nuevasop.push({id: id, etiqueta: etiqueta})
+   )
+  seldestino.forEach( (sel) ->
+    $(sel).each((i,r) ->
+      conch = $(r).hasOwnProperty('chosen')
+      sip_remplaza_opciones_select($(r).attr('id'), nuevasop, conch, 'id', 'etiqueta') 
+    )
+  )
+  return
+
+
+# Intenta eliminar una fila añadida con coocon
+# @fila fila por eliminar de una tabla dinámica manejada por cocoon
+# @prefijo_url Preijo del URL al cual enviar requerimientos AJAX para eliminar
+#   se le concatenará la identificación i.e prefijo_url/id/ (se espera json)
+# @seldep Lista de selectores a los cuadros de selección que dependen 
+#   de la fila por eliminar (si existen esta función no eliminará la fila 
+#   sino alertará).
+@sip_intenta_eliminar_fila = (fila, prefijo_url, seldep) ->
+  # Evitar ejecutr 2 veces en menos de 2 segundos (suele pasar con
+  # rails+turbolinks+jquery)
+  t = Date.now()
+  d = -1
+  if (window.ajax_t) 
+    d = (t - window.ajax_t) / 1000
+  window.ajax_t = t
+  if (d == -1 || d > 2) 
+    # encontrar id de registro por eliminar
+    bid = fila.find('input[id$=_id]')
+    if (bid.length != 1) 
+      return false
+    ide = +$(bid[0]).val()
+    if (seldep != null) 
+      num = 0
+      seldep.forEach( (sel) -> 
+        $(sel + ' option:selected').each(()  ->
+          if (+$(this).val() == ide) 
+            num+=1
+        )
+      )
+      if (num>0) 
+        alert('Hay elementos que depende de este (' + num + '). ' +
+          ' Eliminelos antes.')
+        return false
+    $.ajax({
+      url: prefijo_url + ide,
+      type: 'DELETE',
+      dataType: 'json',
+      beforeSend: ((xhr) ->
+        # Ensure CSRF-Token is sent
+        xhr.setRequestHeader('X-CSRF-Token', 
+          $('meta[name="csrf-token"]').attr('content'))
+      ),
+      success: ((response) ->
+        $(fila).remove()
+      ),
+      error: ((response) ->
+        alert('Error: el servicio respondio con with: ' + 
+        response.status + '\n' + response.responseText)
+      )
+    })
+  return true
+  
+  
 # JAVASCRIPT
 
 # Añade endsWith a la clase String
@@ -132,20 +203,27 @@ if (typeof String.prototype.endsWith != 'function')
     vd = f.serializeArray()
     vd.push({name: 'commit', value: vcommit})
     vd.push({name: '_sip_enviarautomatico', value: 1})
-    d = $.param(vd)
+    dat = $.param(vd)
     # En ocasiones lanza 2 veces seguidas el mismo evento. 
     # Evitamos enviar lo mismo.
     if (!root.dant || root.dant != d)
       root.dant = d 
       $.ajax({
         url: a, 
-        data: d, 
-        method: metodo, 
+        data: dat,
+        method: metodo
         dataType: tipo
-      }).fail( (jqXHR, texto) ->
-        if alertaerror
-          alert("Error con AJAX: " + texto)
-      )
+        beforeSend: ((xhr) -> 
+          # Asegurar envio de Token CSRF
+          xhr.setRequestHeader('X-CSRF-Token', 
+            $('meta[name="csrf-token"]').attr('content'))
+        ),
+        error: ((resp) ->
+          if alertaerror 
+            alert('Error: el servicio respondió: ' + 
+              response.status + '\n' + response.responseText) 
+        )
+      })
   return
 
 # Cambio un campo select con base en valor de otro campo
