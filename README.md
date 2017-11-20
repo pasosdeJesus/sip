@@ -83,9 +83,9 @@ de información, como:
   automáticamente formularios cuando cambien campos con clase
   ```enviarautomatico``` o se presionen enlaces a anclas con esa clase)
 
-## Requerimientos
+## Requisitos
 
-Ver <https://github.com/pasosdeJesus/sip/wiki/Requerimientos>
+Ver <https://github.com/pasosdeJesus/sip/wiki/Requisitos>
 
 ## Aplicación mínima incluida en sip
 
