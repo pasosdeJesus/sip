@@ -39,7 +39,7 @@ module Sip
     end
 
     def index_reordenar(c)
-      c.reorder([:nombre])
+      c.reorder([:id])
     end
 
     # Listado de registros
@@ -257,7 +257,7 @@ module Sip
 
     # Campos de la tabla por presentar en listado 
     def atributos_index
-      ["id", "nombre", "observaciones", 
+      ["id", 
        "fechacreacion_localizada", "fechadeshabilitacion_localizada"]
     end
 
