@@ -218,7 +218,7 @@ if (typeof String.prototype.endsWith != 'function')
           xhr.setRequestHeader('X-CSRF-Token', 
             $('meta[name="csrf-token"]').attr('content'))
         ),
-        error: ((resp) ->
+        error: ((response) ->
           if alertaerror 
             alert('Error: el servicio respondió: ' + 
               response.status + '\n' + response.responseText) 
