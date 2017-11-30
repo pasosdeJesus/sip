@@ -23,16 +23,23 @@
       <%= render partial: "#{atrf}", locals: {f: f} %>
     <% elsif alf && respfiltro %>
       <% # Es llave Foranea %>
+      <% #byebug 
+        col = alf.class_name.constantize.all
+        if col.respond_to?(:habilitados)
+          col = col.habilitados
+        end 
+      %>
       <%= f.input n,
-        collection: alf.class_name.constantize.habilitados,
-        label: false,
-        include_blank: true,
-        label_method: :presenta_nombre,
-        value_method: :id,
-        selected: Sip::ModeloHelper.poromision(params,n),
-        input_html: { 
-          class: 'chosen-select',
-          "data-enviarautomatico" => "" } %>
+      collection: col,
+      label: false,
+      include_blank: true,
+      label_method: :presenta_nombre,
+      value_method: :id,
+      #selected: Sip::ModeloHelper.poromision(params,n),
+      input_html: { 
+        class: 'chosen-select',
+        "data-enviarautomatico" => "" } 
+      %>
     <% elsif cregistro.asociacion_combinada(atr) && respfiltro %>
       <% # Tabla Combinada 
         r = cregistro.asociacion_combinada(atr)
@@ -62,6 +69,7 @@
              :input_html => { 
                "data-behaviour" => "datepicker",
                "data-enviarautomatico" => "",
+               placeholder: 'Inicial',
                value: Sip::ModeloHelper.poromision(params, "#{n}ini"),
              }, 
              :as => :string %> - 
@@ -70,6 +78,7 @@
              :input_html => { 
                "data-behaviour" => "datepicker",
                "data-enviarautomatico" => "",
+               placeholder: 'Final',
                value: Sip::ModeloHelper.poromision(params, "#{n}fin")
              }, 
              :as => :string %> 

@@ -17,9 +17,14 @@
       <%= render partial: rutavatr, locals: {f: f} %>
     <% elsif alf  %>
       <% # Es llave Foranea 
-        n = alf.name %>
+        n = alf.name
+        col = alf.class_name.constantize.all
+        if col.respond_to?(:habilitados)
+          col = col.habilitados
+        end 
+      %>
       <%= f.association n,
-        collection: alf.class_name.constantize.habilitados,
+        collection: col,
         label_method: :presenta_nombre,
         value_method: :id,
         input_html: { class: 'chosen-select' }
