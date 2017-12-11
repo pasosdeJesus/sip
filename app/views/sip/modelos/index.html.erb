@@ -52,6 +52,7 @@
         <tr>
           <% atributos_index.each do |atr| %>
             <td>
+              <% #byebug %>
             <% if atr == "id" then %>
               <%= link_to registro[atr], modelo_path(registro) %>
             <% else %>
