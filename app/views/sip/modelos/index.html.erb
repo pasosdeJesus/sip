@@ -53,16 +53,21 @@
           <% atributos_index.each do |atr| %>
             <td>
               <% #byebug %>
-            <% if atr == "id" then %>
-              <%= link_to registro[atr], modelo_path(registro) %>
-            <% else %>
-              <% s = registro.presenta(atr) %>
-              <% if s.include?("\n") %>
-                <pre><%= s %></pre>
+              <% vatr = atr.to_s.gsub(/[^a-z_A-Z0-9]/, '') %>
+              <% rutavatr = clase.pluralize.underscore + 
+                "/index_campo_#{vatr}" %>
+              <% if lookup_context.find_all(rutavatr, [], true).any? %>
+                <%= render partial: rutavatr, locals: {registro: registro} %>
+              <% elsif atr == "id" then %>
+                <%= link_to registro[atr], modelo_path(registro) %>
               <% else %>
-                <%= s %>
+                <% s = registro.presenta(atr) %>
+                <% if s.include?("\n") %>
+                  <pre><%= s %></pre>
+                <% else %>
+                  <%= s %>
+                <% end %>
               <% end %>
-            <% end %>
             </td>
           <% end %>
           <td>
