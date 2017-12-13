@@ -26,6 +26,11 @@ module Sip
         atributos_index - ["id"]
       end
 
+      def index_reordenar(c)
+        c.reorder([:nombre])
+      end
+
+
       helper_method :clase, :atributos_index, :atributos_form, 
         :genclase, :camponombre
     end
