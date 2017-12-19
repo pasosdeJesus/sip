@@ -78,22 +78,26 @@ module Sip
 
     # Convierte una fecha de formato estándar a formato local
     def fecha_estandar_local f
-      if !f || f == ''
+      if !f || (f.class != String && f.class != Date) || 
+        (f.class == String && f == '')
         return nil
+      end
+      if f.class == String
+        fr = Date.strptime(f, '%Y-%m-%d')
+      elsif f.class == Date
+        fr = f
       end
       case Rails.application.config.x.formato_fecha 
       when 'dd/M/yyyy'
-        nf = I18n.localize(Date.strptime(f, '%Y-%m-%d'), 
-                           :format => '%d/%b/%Y')
+        nf = I18n.localize(fr, :format => '%d/%b/%Y')
       when 'dd-M-yyyy'
-        nf = I18n.localize(Date.strptime(f, '%Y-%m-%d'), 
-                           :format => '%d-%b-%Y')
+        nf = I18n.localize(fr, :format => '%d-%b-%Y')
       when 'dd-mm-yyyy'
-        nf = Date.strptime(f, '%Y-%m-%d').strftime('%d-%m-%Y')
+        nf = fr.strftime('%d-%m-%Y')
       when 'dd/mm/yyyy'
-        nf = Date.strptime(f, '%Y-%m-%d').strftime('%d/%m/%Y')
+        nf = fr.strftime('%d/%m/%Y')
       else
-        nf = Date.strptime(f, '%Y-%m-%d').strftime('%Y-%m-%d')
+        nf = fr.strftime('%Y-%m-%d')
       end
       return nf
     end
