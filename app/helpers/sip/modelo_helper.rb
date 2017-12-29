@@ -3,6 +3,27 @@ module Sip
   module ModeloHelper
     include ActionView::Helpers::TextHelper
 
+    MESES= [
+      ["ENERO", 1], 
+      ["FEBRERO", 2], 
+      ["MARZO", 3], 
+      ["ABRIL", 4], 
+      ["MAYO", 5], 
+      ["JUNIO", 6], 
+      ["JULIO", 7], 
+      ["AGOSTO", 8], 
+      ["SEPTIEMBRE", 9], 
+      ["OCTUBRE", 10], 
+      ["NOVIEMBRE", 11], 
+      ["DICIEMBRE", 12]
+    ] 
+
+    NOSI = [
+      [:NO, :N],
+      [:SI, :S], 
+      ["SIN INFORMACIÓN", :I]
+    ]
+
     # Retorna nombre de tabla a partir de objeto
     def nombreobj(o, plural=false)
       r = ""
@@ -46,7 +67,7 @@ module Sip
     # Url para administrar modelo
     def modelos_url(o)
       n = self.modelos_prefijo_ruta(o) 
-      n.chomp('_path') + '_url'
+      n = n.chomp('_path') + '_url'
       send(n.to_sym)
     end
 
@@ -79,7 +100,7 @@ module Sip
     # URL para examinar un registro
     def modelo_url(o, format)
       n = self.modelo_prefijo_ruta(o) 
-      n.chomp!('_path') + '_url'
+      n = n.chomp('_path') + '_url'
       send(n.to_sym, o, format)
     end
 
@@ -127,7 +148,7 @@ module Sip
     #  ['RECHAZADO', :R], 
     #  ['TERMINADO', :T]]
     def self.etiqueta_coleccion(a, l)
-      return '' if l == ''
+      return '' if l.nil? or l == ''
       res = a.select do |r|
         r[1].to_s == l.to_s
       end

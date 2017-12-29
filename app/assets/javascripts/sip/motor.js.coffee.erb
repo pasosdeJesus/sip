@@ -116,7 +116,7 @@
         $(fila).remove()
       ),
       error: ((response) ->
-        alert('Error: el servicio respondio con with: ' + 
+        alert('Error: el servicio respondio con: ' + 
         response.status + '\n' + response.responseText)
       )
     })
@@ -151,6 +151,43 @@ if (typeof String.prototype.endsWith != 'function')
 
 
 # AJAX
+
+# Llamada a API
+# @root
+# @ruta ruta (sin punto de montaje)
+# @datos Datos por enviar
+# @funproc Funcion para procesar respuesta
+@sip_ajax_recibe_json = (root, ruta, datos, funproc) ->
+  sip_arregla_puntomontaje(root)
+  # Evitar ejecutr 2 veces en menos de 2 segundos (suele pasar con
+  # rails+turbolinks+jquery)
+  t = Date.now()
+  d = -1
+  if (root.sip_ajax_recibe_json_t) 
+    d = (t - root.sip_ajax_recibe_json_t) / 1000
+  root.sip_ajax_recibe_json_t = t
+  if (d == -1 || d > 2) 
+    rutac = root.puntomontaje + ruta + ".json"
+    $.ajax({
+      url: rutac, 
+      data: datos, 
+      method: 'GET',
+      dataType: 'json',
+      beforeSend: ((xhr) ->
+        # Asegura enviar CSRF-Token
+        xhr.setRequestHeader('X-CSRF-Token', 
+          $('meta[name="csrf-token"]').attr('content'))
+      ),
+      success: ((response) ->
+        funproc(response)
+      ),
+      error: ((response) ->
+        alert('Error - la ruta ' + ruta + ' respondio con: ' + 
+        response.status + '\n' + response.responseText)
+      )
+    })
+  return true
+  
 
 # Envía con ajax a la ruta especificada junto con los datos, espera
 # respuesta html de la cual extrae una parte con selector selresp y

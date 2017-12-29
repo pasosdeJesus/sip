@@ -74,7 +74,7 @@ if (test "$SALTASAL7711" != "1") then {
 	actuno sal7711; 
 	actuno sal7711_web test/dummy; 
 	actuno sal7711_cinep; 
-	actuno sal7711_ld; 
+	actuno sal7711_ld test/dummy; 
 } fi;
 
 
