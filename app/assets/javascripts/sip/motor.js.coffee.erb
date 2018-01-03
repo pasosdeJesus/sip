@@ -152,7 +152,10 @@ if (typeof String.prototype.endsWith != 'function')
 
 # AJAX
 
-# Llamada a API
+# Llamada a API 
+# (recordar en rails responder con render json: objeto, status:ok, 
+#  donde objeto es un objeto --no una cadena o entero)
+#
 # @root
 # @ruta ruta (sin punto de montaje)
 # @datos Datos por enviar
@@ -171,21 +174,14 @@ if (typeof String.prototype.endsWith != 'function')
     $.ajax({
       url: rutac, 
       data: datos, 
-      method: 'GET',
       dataType: 'json',
-      beforeSend: ((xhr) ->
-        # Asegura enviar CSRF-Token
-        xhr.setRequestHeader('X-CSRF-Token', 
-          $('meta[name="csrf-token"]').attr('content'))
-      ),
-      success: ((response) ->
-        funproc(response)
-      ),
-      error: ((response) ->
-        alert('Error - la ruta ' + ruta + ' respondio con: ' + 
-        response.status + '\n' + response.responseText)
-      )
-    })
+      method: 'GET'
+    }).fail( (jqXHR, texto) ->
+      alert('Error - ' + texto )
+    ).done( (e, r) ->
+      funproc(e)
+    )
+
   return true
   
 
