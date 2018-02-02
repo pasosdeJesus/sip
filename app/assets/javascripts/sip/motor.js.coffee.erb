@@ -208,7 +208,10 @@ if (typeof String.prototype.endsWith != 'function')
     ).done( (e, r) ->
       if selresp != '' && selelem != ''
         t=$(e).find(selresp)[0]
-        $(selelem).html(t)
+        if (selresp == selelem)
+          $(selelem).replaceWith(t)
+        else
+          $(selelem).html(t)
       return
     )
   return
