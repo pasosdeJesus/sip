@@ -67,6 +67,7 @@ if (test "$SALTACOR1440" != "1") then {
 	echo "**** cor1440"
 	actuno cor1440_gen test/dummy; 
 	actuno cor1440; 
+	actuno cor1440_pdJ; 
 } fi;
 if (test "$SALTASAL7711" != "1") then {
 	echo "**** sal7711"

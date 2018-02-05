@@ -60,7 +60,7 @@ GEM
       xpath (>= 2.0, < 4.0)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
-    chosen-rails (1.8.2)
+    chosen-rails (1.8.3)
       coffee-rails (>= 3.2)
       railties (>= 3.0)
       sass-rails (>= 3.2)
@@ -246,11 +246,11 @@ GEM
       execjs (~> 2.7)
       less-rails (~> 2.8, >= 2.8.0)
       railties (~> 5.0, >= 5.0.1)
-    twitter_cldr (4.4.2)
+    twitter_cldr (4.4.3)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
-    tzinfo (1.2.4)
+    tzinfo (1.2.5)
       thread_safe (~> 0.1)
     tzinfo-data (1.2018.3)
       tzinfo (>= 1.0.0)
