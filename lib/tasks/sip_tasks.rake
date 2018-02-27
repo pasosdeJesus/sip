@@ -59,7 +59,7 @@ namespace :sip do
         "--schema=#{Shellwords.escape(search_path_part.strip)}" 
       }.join(" ")
     end
-    archt = Dir::Tmpname.make_tmpname(["/tmp/vb", ".sql"], nil)
+    archt = Tempfile.create(["vb", ".sql"], nil)
 		filename = "db/datos-basicas.sql"
     modobj = '';
     if Rails.application.class.parent_name == 'Dummy'
@@ -71,7 +71,7 @@ namespace :sip do
       tb.each do |t|
         printf "%s:%s - ", t[0], t[1]
         if t[0] == modobj
-          command = "pg_dump --inserts --data-only --no-privileges --no-owner --column-inserts --table=#{Ability::tb_modelo t}  #{search_path} #{Shellwords.escape(abcs[Rails.env]['database'])} | sed -e \"s/SET lock_timeout = 0;//g\" > #{archt}"
+          command = "pg_dump --inserts --data-only --no-privileges --no-owner --column-inserts --table=#{Ability::tb_modelo t}  #{search_path} #{Shellwords.escape(abcs[Rails.env]['database'])} | sed -e \"s/SET lock_timeout = 0;//g\" > #{archt.to_path}"
           puts command.green
           raise "Error al volcar tabla #{Ability::tb_modelo t}" unless Kernel.system(command)
           inserto = false
@@ -80,7 +80,7 @@ namespace :sip do
           # Agrega volcado pero ordenando los INSERTS
           # (pues pg_dump reordena arbitrariamente haciendo que entre
           # un volcado y otro se vean diferencias con diff cuando no hay)
-          File.open(archt, "r") { |ent| 
+          File.open(archt.to_path, "r") { |ent| 
             ent.each_line { |line| 
               if line[0,6] == "INSERT"
                 inserto=true
