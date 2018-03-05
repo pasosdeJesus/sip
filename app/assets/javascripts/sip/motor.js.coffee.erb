@@ -32,7 +32,7 @@
   nuevasop.forEach( (v) ->
     id = v[cid]
     nh = nh + "<option value='" + id + "'"
-    if id == sel 
+    if (''+ id) == ('' + sel)  || sel.indexOf('' + id) >= 0
       nh = nh + ' selected'
     tx = v[cetiqueta]
     nh = nh + ">" + tx + "</option>" 
@@ -262,17 +262,21 @@ if (typeof String.prototype.endsWith != 'function')
       })
   return
 
-# Cambio un campo select con base en valor de otro campo
-# $elem Elemento jquery del otro campo (opciones de select dependen)
-# idsel Id. del select por modificar
+# Cambia un campo select con base en valor de otro campo
+# $elem    Elemento jquery del otro campo (opciones de select dependen)
+# idsel    Id. del select por modificar
 # rutajson Ruta del API que respondera JSON (sin punto de montaje)
 # nomparam Parametro para el API JSON que irá con el valor de $elem
 # descerr  Descripcion por presentar en caso de que el JSON no responda
 # root     Donde se almacenan objetos globales
-# paramfiltro   Enviar parámetro de la forma { filtro: { nomparam: val} } 
-# cid     campo en el JSON resultantes de la consulta AJAX que corresponderá al id de cada elemento del campo de seleccion
-# cnombre campo en el JSON resultante de la consula AJAX que corresponderá al nombre de cada elemento del campo de seleccion (si es presenta_nombre además pasará parametro presenta_nombre al hacer la consulta para que el controlador responda con presenta_nombre de Sip::Modelo)
-# f Funcion por llamar despues de cambiar el cuadro de seleccion
+# paramfiltro Enviar parámetro de la forma { filtro: { nomparam: val} } 
+# cid      Campo en el JSON resultantes de la consulta AJAX que corresponderá 
+#          al id de cada elemento del campo de seleccion
+# cnombre  Campo en el JSON resultante de la consula AJAX que corresponderá al 
+#          nombre de cada elemento del campo de seleccion (si es presenta_nombre 
+#          además pasará parametro presenta_nombre al hacer la consulta para 
+#          que el controlador responda con presenta_nombre de Sip::Modelo)
+# f        Función por llamar despues de cambiar el cuadro de seleccion
 @sip_llena_select_con_AJAX = ($elem, idsel, rutajson, nomparam, descerr, root = window, paramfiltro = false, cid = 'id', cnombre = 'nombre', f = null) ->
   sip_arregla_puntomontaje(root)
   t = Date.now()
