@@ -18,7 +18,7 @@ before_install:
         - bundle install
         - cp config/database.travis.yml config/database.yml
         - cp db/structure.sql db/structure.sql.copia # Return SQL from 10 to 9.6
-        - sed -e "s/provider = libc,//g" test/dummy/db/structure.sql.copia > test/dummy/db/structure.sql 
+        - sed -e 's/provider = libc,//g' db/structure.sql.copia > db/structure.sql 
         - rake db:setup
         - rake sip:indices
         - cd ../..
