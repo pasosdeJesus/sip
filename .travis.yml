@@ -12,11 +12,13 @@ env:
 before_install: 
         - sudo locale-gen --no-archive es_CO.UTF-8
         - sudo /etc/init.d/postgresql stop
-        - sudo /etc/init.d/postgresql start 10.0
+        - sudo /etc/init.d/postgresql start 9.6
         - cd test/dummy
         - psql -c 'CREATE DATABASE sip_pru;' -U postgres
         - bundle install
         - cp config/database.travis.yml config/database.yml
+        - cp test/dummy/db/structure.sql test/dummy/db/structure.sql.copia # Return SQL from 10 to 9.6
+        - sed -e "s/provider = libc,//g" test/dummy/db/structure.sql.copia > test/dummy/db/structure.sql 
         - rake db:setup
         - rake sip:indices
         - cd ../..
