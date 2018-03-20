@@ -28,7 +28,7 @@ module Sip
           end
 
           def set_grupo
-            @basica = Sip::Grupo.find(params[:id])
+            @registro = @basica = Sip::Grupo.find(params[:id])
           end
 
           def grupo_params
