@@ -179,7 +179,7 @@ if (typeof String.prototype.endsWith != 'function')
     }).fail( (jqXHR, texto) ->
       alert('Error - ' + texto )
     ).done( (e, r) ->
-      funproc(e)
+      funproc(root, e)
     )
 
   return true
