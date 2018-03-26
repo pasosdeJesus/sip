@@ -41,7 +41,7 @@
    <% else %>
      <%= link_to t('.back', :default => t("helpers.links.back")),
        modelos_path(@registro), :class => 'btn'  %>
-     <% if can?(:edit, clase.constantize) %>
+     <% if can?(:edit, @registro) %>
        <%= link_to t('.edit', :default => t("helpers.links.edit")),
          edit_modelo_path(@registro), :class => 'btn' %>
      <% end %>
@@ -53,7 +53,7 @@
      <% else %>
         <%= render 'show_mas_acciones' %>
      <% end %>
-     <% if can?(:destroy, clase.constantize) %>
+     <% if can?(:destroy, @registro) %>
        <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
          modelo_path(@registro),
          :method => 'delete',

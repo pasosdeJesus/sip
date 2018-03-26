@@ -11,7 +11,7 @@
 <div class="row">
   <div class="col-sm-4">
       <% ng = (!genclase.nil? && genclase == 'F') ? 'Nueva' : 'Nuevo' %>
-      <% if @registros.size > 5 && can?(:create, clase.constantize)%>
+      <% if @registros.size > 5 && can?(:new, clase.constantize)%>
         <%= link_to t('.new', default: [ng, t("helpers.links.new")]),
           new_modelo_path(@registros), class: 'btn btn-primary' 
         %>
@@ -60,7 +60,11 @@
               <% if lookup_context.find_all(rutavatr, [], true).any? %>
                 <%= render partial: rutavatr, locals: {registro: registro} %>
               <% elsif atr == "id" then %>
-                <%= link_to registro[atr], modelo_path(registro) %>
+                <% if can?( :show, registro) %>
+                  <%= link_to registro[atr], modelo_path(registro) %>
+                <% else %>
+                  <%= registro[atr].to_i %>
+                <% end %>
               <% else %>
                 <% s = registro.presenta(atr) %>
                 <% if s.include?("\n") %>
@@ -78,12 +82,12 @@
               <% # Hay un parcial %>
               <%= render partial: rutama, locals: {f: f, registro: registro} %>
             <% else %>
-              <% if can?(:edit, clase.constantize) %>
+              <% if can?(:edit, registro) %>
                 <%= link_to t('.edit', :default => t("helpers.links.edit")),
                   edit_modelo_path(registro), :class => 'btn btn-xs' %>
               <% end %>
               <%= render partial: 'index_mas_acciones' %>
-              <% if can?(:destroy, clase.constantize) %>
+              <% if can?(:destroy, registro) %>
                 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                   modelo_path(registro),
                   :method => :delete,

@@ -59,7 +59,11 @@ module Sip
         c = clase.constantize
       end
 
-      authorize! :read, clase.constantize
+      c = c.accessible_by(current_ability)
+      if c.count == 0 && cannot?(:index, c)
+        # Supone alias por omision de https://github.com/CanCanCommunity/cancancan/blob/develop/lib/cancan/ability/actions.rb
+        authorize! :read, c
+      end
 
       # Filtro
       prefiltrar()
@@ -123,14 +127,20 @@ module Sip
 
     # Despliega detalle de un registro
     def show
-      authorize! :read, clase.constantize
       @registro = clase.constantize.find(params[:id])
+      if cannot? :show, @registro
+        # Supone alias por omision de https://github.com/CanCanCommunity/cancancan/blob/develop/lib/cancan/ability/actions.rb
+        authorize! :read, @registro
+      end
       render layout: 'application'
     end
 
     # Presenta formulario para crear nuevo registro
     def new
-      authorize! :edit, clase.constantize
+      if cannot? :new, clase.constantize
+        # Supone alias por omision de https://github.com/CanCanCommunity/cancancan/blob/develop/lib/cancan/ability/actions.rb
+        authorize! :create, clase.constantize
+      end
       @registro = clase.constantize.new
       if @registro.respond_to?(:fechacreacion)
         @registro.fechacreacion = DateTime.now.strftime('%Y-%m-%d')
@@ -140,8 +150,11 @@ module Sip
 
     # Despliega formulario para editar un regisro
     def edit
-      authorize! :edit, clase.constantize
       @registro = clase.constantize.find(params[:id])
+      if cannot? :edit, clase.constantize
+        # Supone alias por omision de https://github.com/CanCanCommunity/cancancan/blob/develop/lib/cancan/ability/actions.rb
+        authorize! :update, @registro
+      end
       render layout: 'application'
     end
 
@@ -156,6 +169,7 @@ module Sip
       if @registro.respond_to?(:fechacreacion)
         @registro.fechacreacion = DateTime.now.strftime('%Y-%m-%d')
       end
+      authorize! :create, @registro
       creada = genclase == 'M' ? 'creado' : 'creada';
       respond_to do |format|
         if @registro.save
@@ -178,7 +192,7 @@ module Sip
 
 
     def create
-      authorize! :edit, clase.constantize
+      authorize! :new, clase.constantize
       create_gen
     end
 
@@ -190,6 +204,7 @@ module Sip
       else
         @registro = clase.constantize.find(params[:id])
       end
+      authorize! :update, @registro
       actualizada = genclase == 'M' ? 'actualizado' : 'actualizada';
       respond_to do |format|
         c2 = clase.demodulize.underscore
@@ -210,14 +225,13 @@ module Sip
     end
 
     def update
-      authorize! :edit, clase.constantize
       update_gen
     end
 
     # Elimina un registro 
     def destroy(mens = "", verifica_tablas_union=true)
-      authorize! :edit, clase.constantize
       @registro = clase.constantize.find(params[:id])
+      authorize! :destroy, @registro
       if verifica_tablas_union && @registro.class.columns_hash
         m = @registro.class.reflect_on_all_associations(:has_many)
         m.each do |r|

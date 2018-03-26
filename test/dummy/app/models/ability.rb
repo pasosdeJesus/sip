@@ -39,6 +39,8 @@ class Ability  < Sip::Ability
         can :read, Sip::Ubicacion
         can :new, Sip::Ubicacion
         can [:update, :create, :destroy], Sip::Ubicacion
+        can [:new,:index,:create,:show], ::Usuario, rol: 5
+        can [:show,:destroy], ::Usuario, nusuario: usuario.nusuario
       when Ability::ROLADMIN
         can :manage, Sip::Ubicacion
         can :manage, Sip::Respaldo7z
