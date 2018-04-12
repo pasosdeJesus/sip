@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'puma', '~> 3.0'
 
 # Rails (internacionalización)
-gem "rails", '~> 5.1.0'
+gem "rails", '~> 5.2.0'
 gem "rails-i18n"
 
 # Postgresql
