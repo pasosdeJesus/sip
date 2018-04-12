@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Servidor web durante desarrollo
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.11'
 
 # Rails (internacionalización)
 gem "rails", '~> 5.2.0'
@@ -22,6 +22,9 @@ gem "sass-rails"
 
 # API JSON facil. Ver: https://github.com/rails/jbuilder
 gem "jbuilder"
+
+# Arranque rapido
+gem 'bootsnap', '>=1.1.0', require: false
 
 # Uglifier comprime recursos Javascript
 gem "uglifier"#, '>= 1.3.0'
@@ -62,7 +65,7 @@ gem "paperclip"#, "~> 4.1"
 
 # Zonas horarias
 gem "tzinfo"
-gem "tzinfo-data"
+gem "tzinfo-data", platforms:  [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :doc do
   # Genera documentación en doc/api con bundle exec rake doc:rails
@@ -96,6 +99,7 @@ group :test do
 
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
   # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
   gem "spring"
   
