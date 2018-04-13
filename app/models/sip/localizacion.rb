@@ -48,6 +48,54 @@ module Sip
         end  # fields.each
       end # def
 
+
+      def campofecha_mesanio(*fields)
+        fields.each do |f|
+
+          define_method("#{f}_anio") do
+            val = read_attribute(f)
+            return val.year
+          end # define_method
+
+
+          define_method("#{f}_anio=") do |a|
+            val = read_attribute(f)
+            if val
+              return write_attribute(f, Date.new(a.to_i, 
+                                         val.month, 15))
+            else
+              return write_attribute(f, Date.new(a.to_i, 
+                                         6, 15))
+            end
+          end # define_method
+
+
+          define_method("#{f}_mes") do
+            val = read_attribute(f)
+            return val.month
+          end # define_method
+
+
+          define_method("#{f}_mes=") do |m|
+            val = read_attribute(f)
+            if val
+              return write_attribute(f, Date.new(val.year, 
+                                         m.to_i, 15))
+            else
+              return write_attribute(f, Date.new(Date.today.year, 
+                                         m.to_i, 15))
+            end
+          end # define_method
+
+          
+          define_method("#{f}_mesaniolocalizado") do
+            val = read_attribute(f)
+            return val.year.to_s + "-" + val.month.to_s
+          end # define_method
+
+        end
+      end
+
     end # class_methdos
 
   end # module Localizacion
