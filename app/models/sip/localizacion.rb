@@ -54,7 +54,7 @@ module Sip
 
           define_method("#{f}_anio") do
             val = read_attribute(f)
-            return val.year
+            return val ? val.year : nil
           end # define_method
 
 
@@ -72,7 +72,7 @@ module Sip
 
           define_method("#{f}_mes") do
             val = read_attribute(f)
-            return val.month
+            return val ? val.month : nil
           end # define_method
 
 
