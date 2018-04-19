@@ -32,7 +32,7 @@
   nuevasop.forEach( (v) ->
     id = v[cid]
     nh = nh + "<option value='" + id + "'"
-    if sel != null && ((''+ id) == ('' + sel)  || sel.indexOf('' + id) >= 0)
+    if id != '' && sel != null && ((''+ id) == ('' + sel)  || sel.indexOf('' + id) >= 0)
       nh = nh + ' selected'
     tx = v[cetiqueta]
     nh = nh + ">" + tx + "</option>" 
