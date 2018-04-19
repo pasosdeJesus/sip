@@ -67,7 +67,7 @@
            <%= f.input "#{n}ini",
              label: false,
              :input_html => { 
-               "data-behaviour" => "datepicker",
+               type: "date",
                "data-enviarautomatico" => "",
                placeholder: 'Inicial',
                value: Sip::ModeloHelper.poromision(params, "#{n}ini"),
@@ -76,7 +76,7 @@
            <%= f.input "#{n}fin",
              label: false,
              :input_html => { 
-               "data-behaviour" => "datepicker",
+               "type" => "date",
                "data-enviarautomatico" => "",
                placeholder: 'Final',
                value: Sip::ModeloHelper.poromision(params, "#{n}fin")
@@ -86,7 +86,7 @@
            <%= f.input "#{n}",
              label: false,
              :input_html => { 
-               "data-behaviour" => "datepicker",
+               "type" => "date",
                "data-enviarautomatico" => "",
                value: Sip::ModeloHelper.poromision(params, "#{n}")
              }, 
