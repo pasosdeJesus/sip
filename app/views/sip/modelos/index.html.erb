@@ -86,7 +86,7 @@
                 <%= link_to t('.edit', :default => t("helpers.links.edit")),
                   edit_modelo_path(registro), :class => 'btn btn-xs' %>
               <% end %>
-              <%= render partial: 'index_mas_acciones' %>
+              <%= render partial: 'index_mas_acciones', locals: {f: f, registro: registro} %>
               <% if can?(:destroy, registro) %>
                 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                   modelo_path(registro),
