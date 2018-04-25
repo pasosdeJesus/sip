@@ -9,7 +9,7 @@ module Sip
       ab.tablasbasicas.each { |t|
 	      puts t[1]
 	      k = Ability::tb_clase(t)
-	      if can? :create, k
+	      if can? :read, k
 		      n = k.human_attribute_name(t[1].pluralize.capitalize) 
 		      r = "admin/#{t[1].pluralize}"
 		      @ntablas[n] = r
