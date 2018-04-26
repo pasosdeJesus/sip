@@ -54,13 +54,13 @@ module Sip
 
           define_method("#{f}_anio") do
             val = read_attribute(f)
-            return val ? val.year : nil
+            return val && val.year ? val.year : nil
           end # define_method
 
 
           define_method("#{f}_anio=") do |a|
             val = read_attribute(f)
-            if val
+            if val && val.month
               return write_attribute(f, Date.new(a.to_i, 
                                          val.month, 15))
             else
@@ -72,13 +72,13 @@ module Sip
 
           define_method("#{f}_mes") do
             val = read_attribute(f)
-            return val ? val.month : nil
+            return val && val.month ? val.month : nil
           end # define_method
 
 
           define_method("#{f}_mes=") do |m|
             val = read_attribute(f)
-            if val
+            if val && val.year
               return write_attribute(f, Date.new(val.year, 
                                          m.to_i, 15))
             else
@@ -90,7 +90,11 @@ module Sip
           
           define_method("#{f}_mesaniolocalizado") do
             val = read_attribute(f)
-            return val.year.to_s + "-" + val.month.to_s
+            if val && val.year && val.month
+              return val.year.to_s + "-" + val.month.to_s
+            else
+              return ""
+            end
           end # define_method
 
         end
