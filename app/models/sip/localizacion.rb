@@ -59,7 +59,6 @@ module Sip
 
 
           define_method("#{f}_anio=") do |a|
-            byebug
             val = read_attribute(f)
             mes = val && val.month && val.month.to_i > 0 && val.month.to_i <= 12 ? val.month.to_i : 6
             anio = a && a.to_i > 0 ? a.to_i : Date.today.year
