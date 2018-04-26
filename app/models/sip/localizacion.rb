@@ -59,6 +59,7 @@ module Sip
 
 
           define_method("#{f}_anio=") do |a|
+            byebug
             val = read_attribute(f)
             if val && val.month
               return write_attribute(f, Date.new(a.to_i, 
