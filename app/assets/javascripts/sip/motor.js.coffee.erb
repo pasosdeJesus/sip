@@ -262,6 +262,38 @@ if (typeof String.prototype.endsWith != 'function')
       })
   return
 
+# Cambia cuadro de texto con cadena que recibe mediante AJAX
+# rutajson Ruta del API que respondera JSON (sin punto de montaje), se
+#           supone que respondera un objeto json de la forma {res: cadena}
+# params   Parametros por pasar a consulta AJAX
+# iddest   Id del campo de texto destino
+# descerr  Descripcion por presentar en caso de que el JSON no responda
+# f        Función por llamar despues de llenar campo 
+# root     Donde se almacenan objetos globales
+@sip_cambia_cuadrotexto_AJAX = (rutajson, params, iddest, descerr, f = null, root = window) ->
+  sip_arregla_puntomontaje(root)
+  t = Date.now()
+  d = -1
+  if (root.sip_cambia_cuadrotexto_AJAX_t)
+    d = (t - root.sip_cambia_cuadrotexto_AJAX_t)/1000
+  root.sip_cambia_cuadrotexto_AJAX_t = t
+  # NO se permite mas de un envio en 2 segundos 
+  if (d > 0 && d <= 2)
+    return
+
+  x = $.getJSON(root.puntomontaje + rutajson + ".json", params)
+  x.done((data) ->
+    $('#' + iddest).val(data['res'])
+    if f != null
+      f(root)
+  )
+  x.error((m1, m2, m3) -> 
+    alert(
+      'Problema ' + descerr + '. ' + params + ' ' + m1 + ' ' + m2 + ' ' + m3)
+    )
+
+
+
 # Elige una opción de un campo select con base en un dato solicitado con AJAX
 # $elem    Elemento jquery del campo origen
 # rutajson Ruta del API que respondera JSON (sin punto de montaje)
