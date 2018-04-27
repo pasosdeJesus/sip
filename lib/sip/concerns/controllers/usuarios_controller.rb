@@ -108,7 +108,8 @@ module Sip
               :reset_password_sent_at, :remember_created_at, :sign_in_count, 
               :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, 
               :failed_attempts, :unlock_token, :locked_at,
-              :last_sign_in_ip, :etiqueta_ids => []
+              :last_sign_in_ip, :etiqueta_ids => [],
+              :sip_grupo_ids => []
             )
             return p
           end
