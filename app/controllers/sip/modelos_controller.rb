@@ -285,7 +285,13 @@ module Sip
       atributos_index
     end
 
+    # Campos por retornar como API JSON
+    def atributos_show_json
+      atributos_show
+    end
+
+
     helper_method :clase, :atributos_index, :atributos_form, :atributos_show,
-      :genclase
+      :atributos_show_json, :genclase
   end
 end
