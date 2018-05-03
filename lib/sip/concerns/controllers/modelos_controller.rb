@@ -69,9 +69,9 @@ module Sip
             end
 
             c = c.accessible_by(current_ability)
-            if c.count == 0 && cannot?(:index, c)
+            if c.count == 0 && cannot?(:index, clase.constantize)
               # Supone alias por omision de https://github.com/CanCanCommunity/cancancan/blob/develop/lib/cancan/ability/actions.rb
-              authorize! :read, c
+              authorize! :read, clase.constantize
             end
 
             # Filtro
