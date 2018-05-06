@@ -59,7 +59,7 @@
                 "/index_campo_#{vatr}" %>
               <% if lookup_context.find_all(rutavatr, [], true).any? %>
                 <%= render partial: rutavatr, locals: {registro: registro} %>
-              <% elsif atr == "id" then %>
+              <% elsif atr.to_s == "id" then %>
                 <% if can?( :show, registro) %>
                   <%= link_to registro[atr], modelo_path(registro) %>
                 <% else %>
