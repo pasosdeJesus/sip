@@ -86,7 +86,15 @@ module Sip
           self.send(atr.to_sym).respond_to?(:presenta_nombre)
           self.send(atr.to_sym).presenta_nombre
         elsif self.respond_to?(atr) && self[atr.to_s].nil?
-          self.send(atr).to_s
+          if self.send(atr).to_s.include?("ActiveRecord_Associations_CollectionProxy")
+            e = self.send(atr)
+            e.inject("") { |memo, i| 
+              (memo == "" ? "" : memo + "; ") + 
+                (i.respond_to?('presenta_nombre') ? i.presenta_nombre : i.to_s)
+            }
+          else
+            self.send(atr).to_s
+          end
         else
           self[atr.to_s].to_s
         end
