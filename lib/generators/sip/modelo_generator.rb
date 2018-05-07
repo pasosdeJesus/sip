@@ -44,7 +44,7 @@ module Sip
         end
         puts "Modifique la tabla en la migración"
         puts "Ponga autorizaciones en #{ab}"
-        puts "Aregue manualmente infleccion no regular en config/initializers/inflections.rb al estilo:"
+        puts "Aregue manualmente inflección no regular en config/initializers/inflections.rb al estilo:"
         puts "  inflect.irregular '#{modelo}', '#{modeloplural}' "
         puts "Aregue nombre en español en config/locales/es.yml al estilo:"
         puts "    \"#{modelo}\":"
