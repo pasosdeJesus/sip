@@ -135,6 +135,10 @@ module Sip
             end
           end
 
+          def show_plantillas
+          end
+
+
           # Despliega detalle de un registro
           def show
             @registro = clase.constantize.find(params[:id])
@@ -142,6 +146,7 @@ module Sip
               # Supone alias por omision de https://github.com/CanCanCommunity/cancancan/blob/develop/lib/cancan/ability/actions.rb
               authorize! :read, @registro
             end
+            show_plantillas
             render layout: 'application'
           end
 
