@@ -3,10 +3,11 @@
 module Sip
   module Basica
     extend ActiveSupport::Concern
-    include Sip::Localizacion
-    include Sip::Modelo
 
     included do
+      include Sip::Localizacion
+      include Sip::Modelo
+
       scope :habilitados, -> (campoord = "nombre") {
         where(fechadeshabilitacion: nil).order(campoord.to_sym)
       }
@@ -85,34 +86,34 @@ module Sip
       end
 
       # Presentar campo atr del registro en index y show genérico (no sobrec)
-      def presenta_gen(atr)
-        clf = clase_llave_foranea(atr)
-        if self.class.columns_hash && self.class.columns_hash[atr] && 
-          self.class.columns_hash[atr].type == :boolean 
-          self[atr] ? "Si" : "No" 
-        elsif asociacion_combinada(atr)
-          ac = asociacion_combinada(atr).name.to_s
-          e = self.send(ac)
-          e.inject("") { |memo, i| 
-            (memo == "" ? "" : memo + "; ") + i.presenta_nombre 
-          }
-        elsif clf
-          if (self[atr.to_s])
-            clf.find(self[atr.to_s]).presenta_nombre
-          else
-            ""
-          end
-        elsif self.respond_to?(atr) && self[atr.to_s].nil?
-          self.send(atr).to_s
-        else
-          self[atr.to_s].to_s
-        end
-      end
-
-      # Presentar campo atr del registro en index y show para sobrecargar
-      def presenta(atr)
-        presenta_gen(atr)
-      end
+#      def presenta_gen(atr)
+#        clf = clase_llave_foranea(atr)
+#        if self.class.columns_hash && self.class.columns_hash[atr] && 
+#          self.class.columns_hash[atr].type == :boolean 
+#          self[atr] ? "Si" : "No" 
+#        elsif asociacion_combinada(atr)
+#          ac = asociacion_combinada(atr).name.to_s
+#          e = self.send(ac)
+#          e.inject("") { |memo, i| 
+#            (memo == "" ? "" : memo + "; ") + i.presenta_nombre 
+#          }
+#        elsif clf
+#          if (self[atr.to_s])
+#            clf.find(self[atr.to_s]).presenta_nombre
+#          else
+#            ""
+#          end
+#        elsif self.respond_to?(atr) && self[atr.to_s].nil?
+#          self.send(atr).to_s
+#        else
+#          self[atr.to_s].to_s
+#        end
+#      end
+#
+#      # Presentar campo atr del registro en index y show para sobrecargar
+#      def presenta(atr)
+#        presenta_gen(atr)
+#      end
 
       # Para búsquedas tipo autocompletacion en base de datos campos a observar
       def self.busca_etiqueta_campos

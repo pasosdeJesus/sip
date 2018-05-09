@@ -66,6 +66,7 @@
                   <%= registro[atr].to_i %>
                 <% end %>
               <% else %>
+                <% #byebug %>
                 <% s = registro.presenta(atr) %>
                 <% if s.include?("\n") %>
                   <pre><%= s %></pre>
