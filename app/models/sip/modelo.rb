@@ -90,7 +90,7 @@ module Sip
             e = self.send(atr)
             e.inject("") { |memo, i| 
               (memo == "" ? "" : memo + "; ") + 
-                (i.respond_to?('presenta_nombre') ? i.presenta_nombre : i.to_s)
+                (i.respond_to?('presenta_nombre') ? i.presenta_nombre.to_s : i.to_s)
             }
           else
             self.send(atr).to_s
