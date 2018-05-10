@@ -29,10 +29,10 @@ module Sip
         # datepicker produce meses cortos comenzando en mayúsculas.
         # rails-i18n I18n.localize con %b produce mes en minuscula 
         pf = f.split('/')
-        if pf.count == 0 
+        if pf.count < 3 
           pf = f.split('-')
         end
-        if pf.count == 0
+        if pf.count < 3
           nf = Date.strptime(f, '%d-%M-%Y').strftime('%Y-%m-%d')
         else
           return if !pf[1]
