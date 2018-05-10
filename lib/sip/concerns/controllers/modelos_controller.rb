@@ -15,9 +15,13 @@ module Sip
           def prefiltrar()
           end
 
+          def nom_filtro(ai)
+            Sip::ModeloHelper.nom_filtro(ai)
+          end
+
           def filtrar(reg, params_filtro)
             for ai in atributos_index do
-              i = Sip::ModeloHelper.nom_filtro(ai)
+              i = nom_filtro(ai)
               if params_filtro["bus#{i}"] && 
                 params_filtro["bus#{i}"] != '' &&
                 reg.respond_to?("filtro_#{i.to_s}")
