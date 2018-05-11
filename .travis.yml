@@ -14,12 +14,10 @@ env:
                 - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
                 - CC_TEST_REPORTER_ID=e83ead47cfc0912ab49acb6658bf8a22bd4257d73c5ddcd8eebfb450efd51640
 
-before_script:
+before_install: 
         - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         - chmod +x ./cc-test-reporter
         - ./cc-test-reporter before-build
-
-before_install: 
         - sudo locale-gen --no-archive es_CO.UTF-8
         - sudo /etc/init.d/postgresql stop
         - sudo /etc/init.d/postgresql start 9.6
