@@ -48,8 +48,8 @@ module Sip
         puts "  inflect.irregular '#{modelo}', '#{modeloplural}' "
         puts "Aregue nombre en español en config/locales/es.yml al estilo:"
         puts "    \"#{modelo}\":"
-        puts "      #{modelo}: Descripción singular"
-        puts "      #{modeloplural}: Descripción plural"
+        puts "      #{modelo.capitalize}: Descripción singular"
+        puts "      #{modeloplural.capitalize}: Descripción plural"
       end
 
       def genera_controlador

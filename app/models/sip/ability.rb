@@ -7,7 +7,7 @@ module Sip
     #ROLINV    = 2
     #ROLDIR    = 3
     #ROLCOOR   = 4
-    ROLANALI  = 5
+    ROLOPERADOR = ROLANALI  = 5
     #ROLSIST   = 6
 
     ROLES = [
@@ -15,7 +15,7 @@ module Sip
       ["", 0], # 2
       ["", 0], # 3
       ["", 0], # 4
-      ["Analista", ROLANALI], # 5
+      ["Operador", ROLOPERADOR], # 5
       ["", 0] #6
     ]
 
