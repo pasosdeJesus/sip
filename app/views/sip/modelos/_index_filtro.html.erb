@@ -10,7 +10,11 @@
       <% n = "bus#{atrf}" %>
       <% respfiltro = cregistro.respond_to?("filtro_#{atrf}") || 
         cregistro.respond_to?("filtro_#{atrf}ini") || 
-        cregistro.respond_to?("filtro_#{atrf}fin") %>
+        cregistro.respond_to?("filtro_#{atrf}fin") ||
+        cregistro.respond_to?("filtro_#{atrsl}") || 
+        cregistro.respond_to?("filtro_#{atrsl}ini") || 
+        cregistro.respond_to?("filtro_#{atrsl}fin")
+      %>
       <% if lookup_context.find_all("filtro_#{atrf}", 
                                     [cregistro.name.pluralize.underscore], true).any? %>
         <% # Hay un parcial para presentar el campo, 
@@ -61,7 +65,14 @@
       <% # Escogemos el control %>
       <% col = cregistro.columns_hash[atrsl] %>
       <% if col && col.type == :date then %>
+        <% # byebug %>
         <% # fecha %>
+        <% # el control estandar de fechas HTML siempre responde con %>
+        <% # fecha en formato yyyy-mm-dd %>
+        <% if atrf.ends_with?('_localizada') %>
+          <% atrf = atrf.slice(0, atrf.length-11) %>
+          <% n = "bus#{atrf}" %>
+        <% end %>
         <% if cregistro.respond_to?("filtro_#{atrf}ini") &&
              cregistro.respond_to?("filtro_#{atrf}fin") %>
            <%= f.input "#{n}ini",

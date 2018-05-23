@@ -20,7 +20,13 @@ module Sip
           end
 
           def filtrar(reg, params_filtro)
-            for ai in atributos_index do
+            # Control para fecha podría no estar localizado aunque
+            # campos por presentar si
+            latr = atributos_index.map {|a|
+              a.to_s.end_with?('_localizada') ? 
+                [a, a.to_s.chomp('_localizada')] : [a]
+            }.flatten
+            for ai in latr do
               i = nom_filtro(ai)
               if params_filtro["bus#{i}"] && 
                 params_filtro["bus#{i}"] != '' &&
