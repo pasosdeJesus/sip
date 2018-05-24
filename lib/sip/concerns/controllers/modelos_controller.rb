@@ -239,7 +239,10 @@ module Sip
                 }
                 format.json { head :no_content }
               else
-                format.html { render action: 'edit', layout: 'application' }
+                format.html { 
+                  flash[:error] = @registro.errors
+                  render action: 'edit', layout: 'application' 
+                }
                 format.json { 
                   render json: @registro.errors, status: :unprocessable_entity 
                 }
