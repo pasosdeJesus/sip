@@ -84,7 +84,7 @@ GEM
     builder (3.2.3)
     camertron-eprun (1.1.1)
     cancancan (2.2.0)
-    capybara (3.1.0)
+    capybara (3.1.1)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -113,7 +113,7 @@ GEM
     colorize (0.8.1)
     commonjs (0.2.7)
     concurrent-ruby (1.0.5)
-    connection_pool (2.2.1)
+    connection_pool (2.2.2)
     crass (1.0.4)
     debug_inspector (0.0.3)
     devise (4.4.3)
@@ -124,7 +124,7 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.6.2)
       devise (>= 4.4)
-    docile (1.3.0)
+    docile (1.3.1)
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.23)
@@ -287,7 +287,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
     will_paginate (3.1.6)
-    xpath (3.0.0)
+    xpath (3.1.0)
       nokogiri (~> 1.8)
 
 PLATFORMS
