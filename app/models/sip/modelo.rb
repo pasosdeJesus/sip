@@ -24,7 +24,6 @@ module Sip
             msg="Aunque #{atr} es como nombre de asociación combinada, " +
               "no se encontro #{na} entre las de #{self.to_s}"
             puts msg
-            self.errors.add(:base, msg)
             raise msg
           end
           return r
