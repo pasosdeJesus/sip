@@ -50,7 +50,7 @@ module Sip
             return reg
           end
 
-          def index_otros_formatos(format, params)
+          def Index_otros_formatos(format, params)
             return
           end
 
@@ -234,10 +234,17 @@ module Sip
               c2 = clase.demodulize.underscore
               if @registro.update(send(c2 + "_params"))
                 format.html { 
-                  redirect_to modelo_path(@registro), 
-                  notice: clase + " #{actualizada}." 
+                  if params[:_sip_enviarautomatico_y_repinta]
+                    redirect_to edit_modelo_path(@registro), 
+                      turbolinks: false
+                  else
+                    redirect_to modelo_path(@registro), 
+                      notice: clase + " #{actualizada}." 
+                  end
                 }
-                format.json { head :no_content }
+                format.json { 
+                  head :no_content 
+                }
               else
                 format.html { 
                   flash[:error] = @registro.errors
