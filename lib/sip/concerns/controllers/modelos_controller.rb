@@ -50,7 +50,7 @@ module Sip
             return reg
           end
 
-          def Index_otros_formatos(format, params)
+          def index_otros_formatos(format, params)
             return
           end
 
@@ -60,6 +60,7 @@ module Sip
 
           def index_plantillas
           end
+
 
           # Listado de registros
           def index(c = nil)
