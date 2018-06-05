@@ -103,6 +103,24 @@ module Sip
     end
     module_function :fecha_estandar_local
 
+    def inicio_semestre(f)
+      if f.month <= 6
+        Date.new(f.year, 1, 1)
+      else
+        Date.new(f.year, 7, 1)
+      end 
+    end
+    module_function :inicio_semestre
+
+    def fin_semestre(f)
+      if f.month <= 6
+        Date.new(f.year, 6, 30)
+      else
+        Date.new(f.year, 12, 31)
+      end 
+    end
+    module_function :fin_semestre
+
 
   end
 end
