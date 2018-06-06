@@ -260,7 +260,7 @@ if (typeof String.prototype.endsWith != 'function')
             $('meta[name="csrf-token"]').attr('content'))
         ),
         error: ((response) ->
-          if alertaerror 
+          if alertaerror && response.status != 0 && response.responseText != 0
             alert('Error: el servicio respondió: ' + 
               response.status + '\n' + response.responseText) 
         ),
