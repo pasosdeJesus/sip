@@ -1,0 +1,16 @@
+<p><table border="1">
+  <tr>
+    <th>Descripción</th>
+    <th>Archivo</th>
+  </tr>
+  <% @registro.sip_anexo.each do |ap| %>
+    <tr>
+      <td><%= ap.descripcion %></td>
+      <td>
+        <%= link_to(ap.adjunto_file_name, 
+                    sip.descarga_anexo_path(ap.id),
+                    {"data-turbolinks" => false }) %>
+      </td>
+    </tr>
+  <% end %>
+</table></p>
