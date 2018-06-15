@@ -36,9 +36,11 @@ module Sip
       def self.asociacion_llave_foranea(atr)
         aso = self.reflect_on_all_associations
         bel = aso.select { |a| a.macro == :belongs_to } 
-        fk = bel.map(&:foreign_key)
-        if fk.include? atr
-          r = aso.select { |a| a.foreign_key == atr }[0] 
+        fk = bel.map do |e|
+          e.foreign_key.to_s
+        end
+        if fk.include? atr.to_s
+          r = aso.select { |a| a.foreign_key.to_s == atr.to_s }[0] 
           return r
         end
         return nil
