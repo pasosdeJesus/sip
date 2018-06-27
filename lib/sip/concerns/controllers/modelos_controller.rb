@@ -264,7 +264,7 @@ module Sip
           end
 
           # Elimina un registro 
-          def destroy(mens = "", verifica_tablas_union=true)
+          def destroy_gen(mens = "", verifica_tablas_union=true)
             @registro = clase.constantize.find(params[:id])
             authorize! :destroy, @registro
             if verifica_tablas_union && @registro.class.columns_hash
@@ -292,6 +292,12 @@ module Sip
                             notice: clase + " #{eliminada}." }
               format.json { head :no_content }
             end
+          end
+
+         
+          # Elimina 
+          def destroy(mens = "", verifica_tablas_union=true)
+            destroy_gen(mens, verifica_tablas_union)
           end
 
           # Nombre del modelo 
