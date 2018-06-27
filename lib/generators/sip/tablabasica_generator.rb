@@ -15,8 +15,6 @@ module Sip
         :desc => "Genera controlador"  
       class_option :test, :type => :boolean, :default => true, 
         :desc => "Genera prueba minitest para el modelo"  
-      class_option :factory, :type => :boolean, :default => true, 
-        :desc => "Genera ejemplo de datos para factory_girl"  
       class_option :asocia, :type => :string, :default => '',
         :desc => 'Crea un belongs_to en un tabla'
 
@@ -33,7 +31,6 @@ module Sip
         genera_modelo if options.modelo
         genera_controlador if options.controlador
         genera_test if options.test
-        genera_factory if options.factory
         genera_asociacion if options.asocia != ''
       end
 
@@ -62,8 +59,8 @@ module Sip
         puts "  inflect.irregular '#{tablabasica}', '#{tablabasicaplural}' "
         puts "Aregue nombre en español en config/locales/es.yml al estilo:"
         puts "    \"#{tablabasica}\":"
-        puts "      #{tablabasica}: Descripción singular"
-        puts "      #{tablabasicaplural}: Descripción plural"
+        puts "      #{tablabasica.capitalize}: Descripción singular"
+        puts "      #{tablabasicaplural.capitalize}: Descripción plural"
       end
 
       def genera_controlador
@@ -76,11 +73,6 @@ module Sip
           "test/models/#{nom_arch}_test.rb"
         template "tablasbasicas_controller_test.rb.erb", 
           "test/controllers/#{nom_arch_plural}_controller_test.rb"
-      end
-
-      def genera_factory
-        template "factory_tablabasica.rb.erb", 
-          "test/factories/#{nom_arch}.rb"
       end
 
       def genera_asociacion
