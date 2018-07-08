@@ -47,7 +47,6 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body>
-
     <%= nav_bar :fixed => :top, 
       :brand => content_for?(:titulo) ? yield(:titulo) : Sip.titulo,
       brand_link: sip.root_url, 
