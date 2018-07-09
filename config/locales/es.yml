@@ -9,9 +9,9 @@ es:
     departamento: Departamento/Estado
     pais: País
     supracategoria: Supracategoria
-    tviolencia: Tipo de Violencia
-    limiteinferior: Límite Inferior
-    limitesuperior: Límite Superior
+    tviolencia: Tipo de violencia
+    limiteinferior: Límite inferior
+    limitesuperior: Límite superior
   errors:
     format: "%{message}"
     messages:
@@ -47,21 +47,21 @@ es:
       other_than: debe ser distinto de %{count}
       other_than: "En '%{model}' el valor de '%{attribute}' debe ser distinto de %{count}"
   will_paginate:
-    previous_label: "&#8592; Anterior"
-    next_label: "&#8594; Siguiente"
+    previous_label: "&#8592; anterior"
+    next_label: "&#8594; siguiente"
     page_gap: "&hellip;"
   activerecord:
     attributes:
       "sip/clase":
-        Clase: Centro Poblado
-        Clases: Centros Poblados
+        Clase: Centro poblado
+        Clases: Centros poblados
       "sip/departamento":
         Departamento: Departamento/Estado
         Departamentos: Departamentos/Estados
         id_deplocal: Código dentro del país
       "sip/fuenteprensa":
-        Fuenteprensa: Fuente de Prensa
-        Fuentesprensa: Fuentes de Prensa
+        Fuenteprensa: Fuente de prensa
+        Fuentesprensa: Fuentes de prensa
         tfuente: Tipo de fuente
       "sip/grupo":
         "{:usuario_ids=>[]}": Miembros
@@ -69,7 +69,7 @@ es:
       "sip/municipio":
         Municipio: Municipio
         Municipios: Municipios
-        id_munlocal: Código dentro del Departamento/Estado
+        id_munlocal: Código dentro del departamento/estado
       "sip/pais":
         Pais: Pais
         Paises: Paises
@@ -81,24 +81,24 @@ es:
         clave7z: Clave de cifrado
         clave7z_confirmation: Confirmación de clave de cifrado
       "sip/tclase":
-        Tclase: Tipo de Centro Poblado
-        Tclases: Tipos de Centros Poblados
-        id_tclase: Tipo de Centro Poblado
-        id_clalocal: Código dentro del Municipio
+        Tclase: Tipo de centro poblado
+        Tclases: Tipos de centros poblados
+        id_tclase: Tipo de centro poblado
+        id_clalocal: Código dentro del municipio
       "sip/tdocumento":
-        Tdocumento: Tipo de Documento
-        Tdocumentos: Tipos de Documentos
+        Tdocumento: Tipo de documento
+        Tdocumentos: Tipos de documentos
       "sip/trelacion": 
-        Trelacion: Tipo de Relación Familiar
-        Trelaciones: Tipos de Relaciones Familiares
+        Trelacion: Tipo de relación familiar
+        Trelaciones: Tipos de relaciones familiares
       "sip/tsitio": 
-        Tsitio: Tipo de Sitios
-        Tsitios: Tipos de Sitios
+        Tsitio: Tipo de sitios
+        Tsitios: Tipos de sitios
       "sip/ubicacion":
         Ubicacion: Ubicación
       "usuario":
-        created_at: Fecha Registro
-        created_at_localizada: Fecha Registro
+        created_at: Fecha registro
+        created_at_localizada: Fecha registro
         descripcion: Descripción
         email: Correo
         encrypted_password: Clave
