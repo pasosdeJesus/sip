@@ -3,6 +3,8 @@ class AgregaIdDepartamento < ActiveRecord::Migration[4.2]
     execute <<-SQL
       ALTER TABLE sip_departamento 
       DROP CONSTRAINT IF EXISTS departamento_pkey CASCADE;
+      ALTER TABLE sip_departamento 
+      DROP CONSTRAINT IF EXISTS sivel2_gen_departamento_pkey CASCADE;
     SQL
     execute <<-SQL
       ALTER TABLE sip_departamento RENAME COLUMN id TO id_deplocal;
