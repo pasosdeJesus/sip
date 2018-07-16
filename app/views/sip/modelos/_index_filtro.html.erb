@@ -39,7 +39,7 @@
       include_blank: true,
       label_method: :presenta_nombre,
       value_method: :id,
-      #selected: Sip::ModeloHelper.poromision(params,n),
+      selected: Sip::ModeloHelper.poromision(params,n),
       input_html: { 
         class: 'chosen-select',
         "data-enviarautomatico" => "" } 
@@ -55,7 +55,7 @@
           collection: r.class_name.constantize.habilitados,
           label: false,
           include_blank: true,
-          label_method: lambda {|r| r.presenta_nombre },
+          label_method: :presenta_nombre,
           value_method: :id ,
           selected: Sip::ModeloHelper.poromision(params, n),
           input_html: { class: 'chosen-select',
