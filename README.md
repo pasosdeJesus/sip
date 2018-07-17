@@ -33,7 +33,6 @@ de información, como:
   un filtro definible con scope en el modelo.  La vista 
   _form genera automaticamente un formulario con elementos tipicos.
   Consultar https://github.com/pasosdeJesus/sip/wiki/Vistas-autom%C3%A1ticas-con-Sip::Modelo-y-Sip::ModelosController
-  Hay un generador que facilita la creación del modelo y la vista.
 - Concepto y propuesta de tablas básicas (parámetros de la aplicación) con
   vistas automáticas y controladores y modelos semiautomáticos vía un generador. Validación automática de campos ```has_many``` cuando se borra un registro para reportar si existen  registros dependientes en otras tablas (en lugar de fallar)
 - Propuesta inicial para control de acceso con:
