@@ -3,11 +3,10 @@
 
 ![Logo de sip](https://raw.githubusercontent.com/pasosdeJesus/sip/master/test/dummy/public/images/logo.jpg)
 
-Este es un motor sobre el cual construir sistemas de información seguros o 
-bien otros motores para sistemas de información sobre la versión más
-reciente de Ruby on Rails.
+Este es un motor diseñado para ser base actualizada de sistemas de información seguros o 
+de otros motores para sistemas de información.
 
-Puede pensarlo como una capa adicional sobre Ruby on Rails que incluye 
+Puedes pensarlo como una capa adicional sobre Ruby on Rails que incluye 
 soluciones estándar, seguras y probadas para más elementos de un sistema 
 de información, como:
 
@@ -22,35 +21,10 @@ de información, como:
   ayudas para actualizar --por lo menos documentación en el wiki.
 - Uso de PostgreSQL reciente (preferiblemente con bases cifradas como en 
   adJ).
-- Propuesta inicial para usuarios (tabla y modelo ::Usuario) y grupos (tabla
-  y modelo Sip::Grupo) suficiente para aplicaciones básicas o que pueden
-  ampliarse o modificarse con herencia o con ActiveSupport::Concern para 
-  aplicaciones más complejas.
-- Autenticación con ```devise``` y cifrado ```bcrypt```,  
-- Roles con ```cancancan```, inicialmente Administrador y Operador
 - Pruebas con ```minitest```
-- Localización con mecanismos estándar de rails y de ```twitter_cldr```.
-  Propuesta para localización de campos tipo fecha(s) (que no es bien 
-  soportado por rails) especificando el formato local en 
-  config.x.formato_fecha, así como ayudas para definir campos de fecha 
-  localizados en ese formato.
-- Propuesta de respaldo cifrado por parte de usuario final (del rol que se configure).
-- Vistas y formularios generados con las herramientas estándar de rails 
-  y simple_form y chosen-rails para cuadros de selección sencilla y múltiple,
-  y bootstrap-datepicker para campos de fecha. Se pagina con will_paginate.
-- Preparado para construir aplicaciones adaptables (responsive) con 
-  bootstrap, coffescript, jquery y jquery-ui
-- Propuesta para administrar tablas básicas (parámetros de la aplicación) con
-  vistas automáticas (no requieren código), controladores y modelos 
-  semiautomáticos vía un generador.   Propuestas iniciales de tablas
-  básicas estándar para: paises, departamentos/estados, municipios, 
-  centros poblados, tipos de centros poblados, tipos de sitios, ubicaciones, 
-  tipos de relaciones entre personas, tipos de documentos de identificación, 
-  oficinas.  Las existentes son faciles de modificar en aplicaciones que 
-  usen el motor vía ```ActiveSupport::Concern```.  Poner código del
-  pais por omision en ```Sip.paisomision```
-- Inicio de propuesta para administrar tablas con vistas automáticas y 
-  controladores semiautomáticos.  Similar a 
+- Modelos y controladores básicos con diversos propósitos y facilmente ampliamples o modficables con herencia o con ActiveSupport::Concern para aplicaciones más complejas.
+- Propuesta para administrar modelos con vistas automáticas (no requieren código) y 
+  controladores semiautomáticos vía un generador.  Similar a 
   (ActiveAdmin)[https://activeadmin.info/],
   (Administrate)[https://github.com/thoughtbot/administrate] y
   (Rails Admin)[https://github.com/sferik/rails_admin]
@@ -60,14 +34,32 @@ de información, como:
   _form genera automaticamente un formulario con elementos tipicos.
   Consultar https://github.com/pasosdeJesus/sip/wiki/Vistas-autom%C3%A1ticas-con-Sip::Modelo-y-Sip::ModelosController
   Hay un generador que facilita la creación del modelo y la vista.
-- En tablas basicas los campos ```has_many``` seran validados 
-  automaticamente cuando se borra un registro para reportar si existen 
-  registros dependientes en otras tablas (en lugar de fallar)
-- Datos geográficos completos para Colombia y Venezuela.
-- Propuesta de estructura para otros modelos típicos: persona, anexo. 
-  También modificables en una aplicación que use el motor 
-  via ```ActiveSupport::Concern```.
-- Manejo de anexos con ```paperclip``` 
+- Concepto y propuesta de tablas básicas (parámetros de la aplicación) con
+  vistas automáticas y controladores y modelos semiautomáticos vía un generador. Validación automática de campos ```has_many``` cuando se borra un registro para reportar si existen  registros dependientes en otras tablas (en lugar de fallar)
+- Propuesta inicial para control de acceso con:
+  - Autenticación con tabla ```usuario``` (modelo ::Usuario), gema ```devise``` y cifrado ```bcrypt```
+  - Autorización con tablas ```sip_grupo``` (modelo Sip::Grupo), sip_grupo_usuario, gema ```cancancan``` y roles iniciales Administrador y Operador.
+- Tablas estándar iniciales para ubicaciones geográficas ```sip_pais```, ```sip_departamento```, ```sip_municipio```, ```sip_clase``` (para centros poblados), ```sip_tclase``` (tipos de centros poblados), ```sip_tsitio``` (tipo de sitio) y ```sip_ubicacion```. Con datos de todos los paises, aunque estados y municipios completos para Colombia y Venezuela y ciudades completas para Colombia de acuerdo a DIVIPOLA 2015 con actualización periódica (vía migraciones de rails) de acuerdo a esa fuente oficial.
+- Tablas estándar iniciales para personas y relaciones entre personas ```sip_persona```, ```sip_trelacion``` (tipo de relación entre personas),  ```tdocumento``` (tipo de documento de identificación personal), ```sip_persona_trelacion``` (relación entre 2 personas).
+- Propuesta inicial para anexos con tabla ```sip_anexo``` y vistas incrustables y gema ```paperclip```
+- Facilidades de configuración de aplicaciones que usen este motor mediante archivo ```config/initializers/sip.rb``` que define por ejemplo: pais por omision en ```Sip.paisomision```
+- Propuesta de respaldo cifrado y comprimido con 7z por parte de usuario final (del rol que se configure) desde menús de la aplicación.
+- Localización con mecanismos estándar de rails y de ```twitter_cldr```.
+  Propuesta para localización de campos tipo fecha(s) (que en español no es bien 
+  soportado por rails) especificando el formato local en 
+  config.x.formato_fecha, así como ayudas para definir campos de fecha 
+  localizados en ese formato.
+- Vistas y formularios generados con las herramientas estándar de rails 
+  y simple_form y chosen-rails para cuadros de selección sencilla y múltiple,
+  y bootstrap-datepicker para campos de fecha. Se pagina con will_paginate.
+- Incluye biblioteca para operaciones comunes con javascript, por ejemplo para 
+  facilitar actualización automática mediante AJAX (ver 
+  ```sip_enviarautomatico_formulario``` en 
+  ```app/asset/javascript/sip/motor.js.coffee.erb``` que enviará
+  automáticamente formularios cuando cambien campos con clase
+  ```enviarautomatico``` o se presionen enlaces a anclas con esa clase)
+- Preparado para construir aplicaciones adaptables (responsive) con 
+  ```bootstrap```, ```coffescript```, ```jquery``` y ```jquery-ui```
 - Facilidades de configuración en ```lib/sip/engine.rb```, como inclusión 
   automática de sus migraciones en las aplicaciones que usen el motor y 
   variables típicas de configuración.
@@ -76,12 +68,6 @@ de información, como:
 - Aplicación de prueba completa en directorio ```test/dummy``` con diseño 
   web adaptable que brinda autenticación, manejo de clave, usuarios, 
   grupos y modificación de tablas básicas 
-- Librería para operaciones comunes con javascript, por ejemplo para 
-  facilitar actualización automática mediante AJAX (ver 
-  ```sip_enviarautomatico_formulario``` en 
-  ```app/asset/javascript/sip/motor.js.coffee.erb``` que enviará
-  automáticamente formularios cuando cambien campos con clase
-  ```enviarautomatico``` o se presionen enlaces a anclas con esa clase)
 
 ## Requisitos
 
