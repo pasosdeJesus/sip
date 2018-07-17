@@ -68,6 +68,7 @@ module Sip
 
     NOBASICAS_INDSEQID = [
       ['Sip', 'anexo'], 
+      ['Sip', 'grupoper'], 
       ['Sip', 'persona'], 
       ['Sip', 'ubicacion'], 
       ['', 'usuario']

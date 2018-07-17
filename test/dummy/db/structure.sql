@@ -380,6 +380,43 @@ CREATE TABLE sip_grupo_usuario (
 
 
 --
+-- Name: sip_grupoper; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE sip_grupoper (
+    id bigint NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    anotaciones character varying(1000)
+);
+
+
+--
+-- Name: TABLE sip_grupoper; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON TABLE sip_grupoper IS 'Creado por sip en sipdes_des';
+
+
+--
+-- Name: sip_grupoper_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sip_grupoper_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_grupoper_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE sip_grupoper_id_seq OWNED BY sip_grupoper.id;
+
+
+--
 -- Name: sip_municipio_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -762,6 +799,13 @@ ALTER TABLE ONLY sip_grupo ALTER COLUMN id SET DEFAULT nextval('sip_grupo_id_seq
 
 
 --
+-- Name: sip_grupoper id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sip_grupoper ALTER COLUMN id SET DEFAULT nextval('sip_grupoper_id_seq'::regclass);
+
+
+--
 -- Name: sip_tdocumento id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -870,6 +914,14 @@ ALTER TABLE ONLY sip_fuenteprensa
 
 ALTER TABLE ONLY sip_grupo
     ADD CONSTRAINT sip_grupo_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sip_grupoper sip_grupoper_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sip_grupoper
+    ADD CONSTRAINT sip_grupoper_pkey PRIMARY KEY (id);
 
 
 --
@@ -1154,6 +1206,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170413185012'),
 ('20170414035328'),
 ('20180320230847'),
-('20180710175418');
+('20180710175418'),
+('20180717135811');
 
 
