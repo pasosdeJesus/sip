@@ -41,7 +41,7 @@ de información, como:
 - Tablas estándar iniciales para ubicaciones geográficas ```sip_pais```, ```sip_departamento```, ```sip_municipio```, ```sip_clase``` (para centros poblados), ```sip_tclase``` (tipos de centros poblados), ```sip_tsitio``` (tipo de sitio) y ```sip_ubicacion```. Con datos de todos los paises, aunque estados y municipios completos para Colombia y Venezuela y ciudades completas para Colombia de acuerdo a DIVIPOLA 2015 con actualización periódica (vía migraciones de rails) de acuerdo a esa fuente oficial.
 - Tablas estándar iniciales para personas y relaciones entre personas ```sip_persona```, ```sip_trelacion``` (tipo de relación entre personas),  ```tdocumento``` (tipo de documento de identificación personal), ```sip_persona_trelacion``` (relación entre 2 personas).
 - Propuesta inicial para anexos con tabla ```sip_anexo``` y vistas incrustables y gema ```paperclip```
-- Facilidades de configuración de aplicaciones que usen este motor mediante archivo ```config/initializers/sip.rb``` que define por ejemplo: pais por omision en ```Sip.paisomision```
+- Facilidades de configuración de aplicaciones que usen este motor mediante archivo ```config/initializers/sip.rb``` que define por ejemplo: pais por omision en ```Sip.paisomision```.  Así mismo la inicialización de este motor (```lib/sip/engine.rb```) incluye automáticamente migraciones de motores en la aplicación final.
 - Propuesta de respaldo cifrado y comprimido con 7z por parte de usuario final (del rol que se configure) desde menús de la aplicación.
 - Localización con mecanismos estándar de rails y de ```twitter_cldr```.
   Propuesta para localización de campos tipo fecha(s) (que en español no es bien 
@@ -59,9 +59,6 @@ de información, como:
   ```enviarautomatico``` o se presionen enlaces a anclas con esa clase)
 - Preparado para construir aplicaciones adaptables (responsive) con 
   ```bootstrap```, ```coffescript```, ```jquery``` y ```jquery-ui```
-- Facilidades de configuración en ```lib/sip/engine.rb```, como inclusión 
-  automática de sus migraciones en las aplicaciones que usen el motor y 
-  variables típicas de configuración.
 - Tareas ```rake``` para actualizar indices, sacar copia de respaldo de base 
   de datos
 - Aplicación de prueba completa en directorio ```test/dummy``` con diseño 
