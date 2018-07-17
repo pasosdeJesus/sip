@@ -22,7 +22,7 @@ de información, como:
 - Uso de PostgreSQL reciente (preferiblemente con bases cifradas como en 
   adJ).
 - Pruebas con ```minitest```
-- Modelos y controladores básicos con diversos propósitos y facilmente ampliamples o modficables con herencia o con ActiveSupport::Concern para aplicaciones más complejas.
+- Modelos y controladores básicos con diversos propósitos y facilmente ampliables o modficables con herencia o con ActiveSupport::Concern para aplicaciones más complejas.
 - Propuesta para administrar modelos con vistas automáticas (no requieren código) y 
   controladores semiautomáticos vía un generador.  Similar a 
   (ActiveAdmin)[https://activeadmin.info/],
