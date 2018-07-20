@@ -27,7 +27,8 @@ ActiveSupport::Inflector.inflections do |inflect|
 	inflect.irregular 'clase', 'clases'
 	inflect.irregular 'etiqueta', 'etiquetas'
 	inflect.irregular 'error', 'errores'
-	inflect.irregular 'ubicacion', 'ubicaciones'
 	inflect.irregular 'fuenteprensa', 'fuentesprensa'
 	inflect.irregular 'grupoper', 'gruposper'
+	inflect.irregular 'sectoractor', 'sectoresactores'
+	inflect.irregular 'ubicacion', 'ubicaciones'
 end

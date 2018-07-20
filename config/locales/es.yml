@@ -80,6 +80,9 @@ es:
       "sip/respaldo7z":
         clave7z: Clave de cifrado
         clave7z_confirmation: Confirmación de clave de cifrado
+      "sip/sectoractor":
+        Sectoractor: Sector de actor social
+        Sectoresactores: Sectores de actores sociales
       "sip/tclase":
         Tclase: Tipo de centro poblado
         Tclases: Tipos de centros poblados

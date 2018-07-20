@@ -39,6 +39,7 @@ module Sip
       ['Sip', 'municipio'], 
       ['Sip', 'oficina'],
       ['Sip', 'pais'],
+      ['Sip', 'sectoractor'],
       ['Sip', 'tclase'], 
       ['Sip', 'tdocumento'], 
       ['Sip', 'trelacion'], 

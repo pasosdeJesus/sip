@@ -609,6 +609,40 @@ CREATE TABLE sip_persona_trelacion (
 
 
 --
+-- Name: sip_sectoractor; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE sip_sectoractor (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL,
+    observaciones character varying(5000),
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: sip_sectoractor_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sip_sectoractor_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_sectoractor_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE sip_sectoractor_id_seq OWNED BY sip_sectoractor.id;
+
+
+--
 -- Name: sip_tclase; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -806,6 +840,13 @@ ALTER TABLE ONLY sip_grupoper ALTER COLUMN id SET DEFAULT nextval('sip_grupoper_
 
 
 --
+-- Name: sip_sectoractor id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sip_sectoractor ALTER COLUMN id SET DEFAULT nextval('sip_sectoractor_id_seq'::regclass);
+
+
+--
 -- Name: sip_tdocumento id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -954,6 +995,14 @@ ALTER TABLE ONLY sip_persona_trelacion
 
 ALTER TABLE ONLY sip_persona_trelacion
     ADD CONSTRAINT sip_persona_trelacion_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sip_sectoractor sip_sectoractor_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sip_sectoractor
+    ADD CONSTRAINT sip_sectoractor_pkey PRIMARY KEY (id);
 
 
 --
@@ -1207,6 +1256,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170414035328'),
 ('20180320230847'),
 ('20180710175418'),
-('20180717135811');
+('20180717135811'),
+('20180720140443');
 
 
