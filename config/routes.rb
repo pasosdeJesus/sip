@@ -5,8 +5,11 @@ Sip::Engine.routes.draw do
     as: 'descarga_anexo'
   get '/controldeacceso' => 'hogar#ayuda_controldeacceso', 
     as: 'ayuda_controldeacceso'
+  get "/gruposper" => 'gruposper#index'
+  get "/gruposper/remplazar" => 'gruposper#remplazar'
   get "/hogar" => 'hogar#index'
   get "/personas" => 'personas#index'
+  get "/personas/remplazar" => 'personas#remplazar'
   get "/respaldo7z" => 'respaldo7z#new', as: 'respaldo7z'
   post "/respaldo7z" => 'respaldo7z#create'
   get "/tablasbasicas" => 'hogar#tablasbasicas'
