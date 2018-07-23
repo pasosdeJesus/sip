@@ -12,6 +12,12 @@ module Sip
           validates :nombre, presence: true, allow_blank: false, 
             length: { maximum: 500 }
           validates :anotaciones, length: { maximum: 500 }
+
+
+          def presenta_nombre
+            self.nombre
+          end
+
         end
 
       end

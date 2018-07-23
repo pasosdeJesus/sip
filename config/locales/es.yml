@@ -52,6 +52,14 @@ es:
     page_gap: "&hellip;"
   activerecord:
     attributes:
+      "sip/actorsocial":
+        Actorsocial: Actor social
+        Actoressociales: Actores sociales
+        direccion: Dirección
+        grupoper: Nombre
+        grupoper_id: Nombre
+        pais_id: País
+        telefono: Teléfono
       "sip/clase":
         Clase: Centro poblado
         Clases: Centros poblados

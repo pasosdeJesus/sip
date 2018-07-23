@@ -29,6 +29,8 @@ module Sip
             case atr.to_s
             when "pais_id" 
               self[atr] ? Sip::Pais.find(self[atr]).nombre : ""
+            when "grupoper"
+              self['grupoper_id'] ? self.grupoper.nombre : ""
             else
               presenta_gen(atr)
             end
