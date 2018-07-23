@@ -24,6 +24,7 @@ ActiveSupport::Inflector.inflections do |inflect|
 	inflect.singular(/^(.*l)es$/i, '\1')
 	inflect.plural(/^(.*n)$/i, '\1es')
 	inflect.singular(/^(.*n)es$/i, '\1')
+	inflect.irregular 'actorsocial', 'actoressociales'
 	inflect.irregular 'clase', 'clases'
 	inflect.irregular 'etiqueta', 'etiquetas'
 	inflect.irregular 'error', 'errores'

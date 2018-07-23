@@ -36,15 +36,17 @@ class Ability  < Sip::Ability
     if usuario && usuario.rol then
       case usuario.rol 
       when Ability::ROLANALI
+        can :read, Sip::Actorsocial
         can :read, Sip::Ubicacion
         can :new, Sip::Ubicacion
         can [:update, :create, :destroy], Sip::Ubicacion
         can [:new,:index,:create,:show], ::Usuario, rol: 5
         can [:show,:destroy], ::Usuario, nusuario: usuario.nusuario
       when Ability::ROLADMIN
-        can :manage, Sip::Ubicacion
-        can :manage, Sip::Respaldo7z
         can :manage, ::Usuario
+        can :manage, Sip::Actorsocial
+        can :manage, Sip::Respaldo7z
+        can :manage, Sip::Ubicacion
         can :manage, :tablasbasicas
         self.tablasbasicas.each do |t|
           c = Ability.tb_clase(t)
