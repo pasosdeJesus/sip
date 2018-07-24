@@ -11,7 +11,6 @@ module Sip
       telefono: '123',
       fax: '456',
       direccion: 'dir',
-      pais_id: 170,
       web: 'web',
       observaciones: "x",
     }

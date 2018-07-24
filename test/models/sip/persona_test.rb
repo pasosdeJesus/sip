@@ -12,8 +12,15 @@ module Sip
       mesnac: 1,
       dianac: 1,
       sexo: "F",
-      tdocumento_id: 1,
       numerodocumento: "10000000",
+    }
+
+    PRUEBA_TDOCUMENTO= {
+      id: 1000 ,
+      nombre: "Tdocumento",
+      formatoregex: "[0-9]*",
+      fechacreacion: "2014-09-22",
+      created_at: "2014-09-22"
     }
 
     test "valido" do
@@ -30,11 +37,15 @@ module Sip
     end
 
     test "no valido por documento errado" do
+      tdocumento = Sip::Tdocumento.create PRUEBA_TDOCUMENTO
+      assert tdocumento.valid?
+      tdocumento.save!
       persona = Persona.new PRUEBA_PERSONA
-      persona.tdocumento_id = 1
+      persona.tdocumento_id = tdocumento.id
       persona.numerodocumento = 'a'
       assert_not persona.valid?
       persona.destroy
+      tdocumento.destroy
     end
 
     test "no valido por año errado" do

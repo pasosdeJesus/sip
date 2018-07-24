@@ -34,11 +34,11 @@ module Sip
     }
 
     test "index: asigna todos los usuarios como @usuarios" do
-      if ::Usuario.where(nusuario: 'nusuario').count > 0 
-        usuario = ::Usuario.where(nusuario: 'nusuario').take
-      else
-        usuario = ::Usuario.create! ATRIBUTOS_VALIDOS
-      end
+#      if ::Usuario.where(nusuario: 'nusuario').count > 0 
+#        usuario = ::Usuario.where(nusuario: 'nusuario').take
+#      else
+#        usuario = ::Usuario.create! ATRIBUTOS_VALIDOS
+#      end
       get usuarios_url
       assert_response :success
       assert_select 'th', text: 'Rol'
@@ -98,6 +98,7 @@ module Sip
       }
       post usuarios_url, params: { usuario: au }
       usuario = Usuario.where(nusuario: 'nusuario').take
+      assert usuario
     end
 
     test "redirige al usuario creado" do
