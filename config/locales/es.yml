@@ -81,6 +81,9 @@ es:
       "sip/pais":
         Pais: Pais
         Paises: Paises
+      "sip/perfilactorsocial":
+        Perfilactorsocial: Perfil en actor social
+        Perfilesactorsocial: Perfiles en actor social
       "sip/persona":
         anionac: Año nacimiento
         mesnac: Mes nacimiento
