@@ -3,8 +3,8 @@
 class CreaActorsocialPersona < ActiveRecord::Migration[5.2]
   def change
     create_table :sip_actorsocial_persona do |t|
-      t.integer :actorsocial_id, null: false
       t.integer :persona_id, null: false
+      t.integer :actorsocial_id
       t.integer :perfilactorsocial_id
       t.timestamp :created_at, null: false
       t.timestamp :updated_at, null: false

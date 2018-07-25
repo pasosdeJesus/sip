@@ -19,7 +19,6 @@ module Sip
           belongs_to :perfilactorsocial, class_name: 'Sip::Perfilactorsocial',
             foreign_key: 'perfilactorsocial_id', validate: true
 
-          validates :actorsocial, presence: true
           validates :persona, presence: true
 
         end # included

@@ -84,6 +84,9 @@ es:
       "sip/perfilactorsocial":
         Perfilactorsocial: Perfil en actor social
         Perfilesactorsocial: Perfiles en actor social
+      "sip/actorsocial_persona":
+        perfilactorsocial: Perfil en actor social
+        actorsocial: Actor social al que pertenece
       "sip/persona":
         anionac: Año nacimiento
         mesnac: Mes nacimiento
