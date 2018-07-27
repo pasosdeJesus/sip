@@ -19,6 +19,9 @@ module Sip
           belongs_to :pais, class_name: 'Sip::Pais',
             foreign_key: "pais_id", validate: true
 
+          has_many :actorsocial_persona, class_name: 'Sip::ActorsocialPersona',
+            foreign_key: "actorsocial_id", validate: true
+
           validates :telefono, length: { maximum: 500 }
           validates :fax, length: { maximum: 500 }
           validates :direccion, length: { maximum: 500 }

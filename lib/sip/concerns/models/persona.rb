@@ -8,6 +8,9 @@ module Sip
 
         included do
           self.table_name = 'sip_persona'
+
+          has_many :actorsocial_persona, foreign_key: "persona_id", 
+            validate: true, class_name: "Sip::ActorsocialPersona"
           has_many :persona_trelacion1, foreign_key: "persona1", validate: true,
             class_name: "Sip::PersonaTrelacion"
           has_many :persona_trelacion2, foreign_key: "persona2", validate: true,
