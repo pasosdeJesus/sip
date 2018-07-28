@@ -9,8 +9,12 @@ module Sip
         included do
           self.table_name = 'sip_persona'
 
-          has_many :actorsocial_persona, foreign_key: "persona_id", 
-            validate: true, class_name: "Sip::ActorsocialPersona"
+          # Si agrego el siguiente al agregar una victima individual
+          # y ponerle organización falla con
+          # undefined method `find_all' for #<Sip::ActorsocialPersona:0x0000158dc0553d00>
+          # Bien sea o no con inverse_of aqui y/o en actorsocial_persona
+          #has_many :actorsocial_persona, foreign_key: "persona_id", 
+          #  class_name: "Sip::ActorsocialPersona", #inverse_of: :persona
           has_many :persona_trelacion1, foreign_key: "persona1", validate: true,
             class_name: "Sip::PersonaTrelacion"
           has_many :persona_trelacion2, foreign_key: "persona2", validate: true,
@@ -18,8 +22,8 @@ module Sip
           belongs_to :clase, foreign_key: "id_clase", validate: true
           belongs_to :nacional, class_name: "Sip::Pais", 
             foreign_key: "nacionalde", validate: true
-          belongs_to :departamento, foreign_key: "id_departamento", validate: true, 
-            class_name: "Sip::Departamento"
+          belongs_to :departamento, foreign_key: "id_departamento", 
+            validate: true, class_name: "Sip::Departamento"
           belongs_to :municipio, foreign_key: "id_municipio", validate: true,
             class_name: "Sip::Municipio"
           belongs_to :pais, class_name: "Sip::Pais", foreign_key: "id_pais", 

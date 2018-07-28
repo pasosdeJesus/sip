@@ -20,7 +20,7 @@ module Sip
             foreign_key: "pais_id", validate: true
 
           has_many :actorsocial_persona, class_name: 'Sip::ActorsocialPersona',
-            foreign_key: "actorsocial_id", validate: true
+            foreign_key: "actorsocial_id"
 
           validates :telefono, length: { maximum: 500 }
           validates :fax, length: { maximum: 500 }
