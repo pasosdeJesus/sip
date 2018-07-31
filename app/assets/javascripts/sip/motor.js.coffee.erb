@@ -21,14 +21,17 @@
 # @usachosen Es verdadero si y solo si el cuadro de selección usa chosen
 # @cid campo con id en cada elemento de @nuevasop por omision id
 # @cetiqueta campo con etiqueta en cada elemento de @nuevasop por omision nombre
+# @opvacia Incluye opción vacia entre las posibles
 @sip_remplaza_opciones_select = (idsel, nuevasop, usachosen = false, cid = 'id',
-  cetiqueta = 'nombre') ->
+  cetiqueta = 'nombre', opvacia = false) ->
   s = $("#" + idsel)
   if (s.length != 1)
     alert('sip_remplaza_opciones_select: no se encontró ' + idsel)
     return
   sel = s.val()
   nh = ''
+  if opvacia
+    nh = "<option value=''></option>"
   nuevasop.forEach( (v) ->
     id = v[cid]
     nh = nh + "<option value='" + id + "'"
@@ -53,7 +56,7 @@
 #  con etiquetas para opciones
 # @params seldestino lista de selectores que identifica cuadros de selección
 #   dependientes de la fuente y que serán modificados
-@sip_actualiza_cuadros_seleccion_dependientes =  (idfuente, posfijo_id_fuente, posfijo_etiqueta_fuente, seldestino) ->
+@sip_actualiza_cuadros_seleccion_dependientes =  (idfuente, posfijo_id_fuente, posfijo_etiqueta_fuente, seldestino, opvacia = false) ->
   nuevasop = []
   lobj = $('#' + idfuente + ' .nested-fields[style!="display: none;"]')
   lobj.each((k, v) ->
@@ -64,7 +67,7 @@
   seldestino.forEach( (sel) ->
     $(sel).each((i,r) ->
       conch = $(r).hasOwnProperty('chosen')
-      sip_remplaza_opciones_select($(r).attr('id'), nuevasop, conch, 'id', 'etiqueta') 
+      sip_remplaza_opciones_select($(r).attr('id'), nuevasop, conch, 'id', 'etiqueta', opvacia) 
     )
   )
   return
@@ -78,7 +81,7 @@
 #   de la fila por eliminar (si existen esta función no eliminará la fila 
 #   sino alertará).
 @sip_intenta_eliminar_fila = (fila, prefijo_url, seldep) ->
-  # Evitar ejecutr 2 veces en menos de 2 segundos (suele pasar con
+  # Evitar ejecutar 2 veces en menos de 2 segundos (suele pasar con
   # rails+turbolinks+jquery)
   t = Date.now()
   d = -1
