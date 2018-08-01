@@ -341,7 +341,6 @@ DEPENDENCIES
   twitter-bootstrap-rails
   twitter_cldr
   tzinfo
-  tzinfo-data
   uglifier
   web-console
   will_paginate

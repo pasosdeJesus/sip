@@ -66,7 +66,6 @@ gem "paperclip"#, "~> 4.1"
 
 # Zonas horarias
 gem "tzinfo"
-gem "tzinfo-data", platforms:  [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :doc do
   # Genera documentación en doc/api con bundle exec rake doc:rails
