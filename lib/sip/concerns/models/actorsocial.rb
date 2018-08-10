@@ -39,6 +39,10 @@ module Sip
             end
           end
 
+          scope :filtro_grupoper_id, lambda { |g|
+            where("grupoper_id=?", g)
+          }
+
         end # included
 
       end
