@@ -22,6 +22,13 @@ module Sip
           has_many :actorsocial_persona, class_name: 'Sip::ActorsocialPersona',
             foreign_key: "actorsocial_id"
 
+          has_many :actorsocial_sectoractor, 
+            class_name: 'Sip::ActorsocialSectoractor',
+            foreign_key: "actorsocial_id", validate: true, 
+            dependent: :delete_all
+          has_many :sectoractor, class_name: 'Sip::Sectoractor',
+            through: :actorsocial_sectoractor
+
           validates :telefono, length: { maximum: 500 }
           validates :fax, length: { maximum: 500 }
           validates :direccion, length: { maximum: 500 }
@@ -41,6 +48,11 @@ module Sip
 
           scope :filtro_grupoper_id, lambda { |g|
             where("grupoper_id=?", g)
+          }
+
+          scope :filtro_sectoractor_ids, lambda { |s|
+            joins(:actorsocial_sectoractor).where(
+              'actorsocial_sectoractor.sectoractor_id=?', s)
           }
 
         end # included

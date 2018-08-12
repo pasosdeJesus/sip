@@ -13,6 +13,12 @@ module Sip
 
           self.table_name = 'sip_sectoractor'
 
+          has_many :actorsocial_sectoractor, dependent: :delete_all,
+            class_name: 'Sip::ActorsocialSectoractor', 
+            foreign_key: 'sectoractor_id'
+          has_many :actorsocial, through: :actorsocial_sectoractor,
+            class_name: 'Sip::Actorsocial'
+
         end
 
       end

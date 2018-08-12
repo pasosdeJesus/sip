@@ -23,6 +23,7 @@ module Sip
           def atributos_index
             [ :id, 
               :grupoper_id,
+              { :sectoractor_ids => [] },
               :web,
               :telefono, 
               :fax,
@@ -40,6 +41,13 @@ module Sip
             a = atributos_show - [:id]
             a[a.index(:grupoper_id)] = :grupoper
             return a
+          end
+
+          def index(c = nil)
+            if c == nil
+              c = Sip::Actorsocial.all
+            end
+            super(c)
           end
 
           def set_actorsocial

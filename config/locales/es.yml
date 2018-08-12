@@ -59,7 +59,9 @@ es:
         grupoper: Nombre
         grupoper_id: Nombre
         pais_id: País
+        sectoractor: Sector(es)
         telefono: Teléfono
+        "{:sectoractor_ids=>[]}": Sector(es)
       "sip/clase":
         Clase: Centro poblado
         Clases: Centros poblados
