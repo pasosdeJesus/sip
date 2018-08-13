@@ -46,6 +46,10 @@ module Sip
             end
           end
 
+          def presenta_nombre
+            self['grupoper_id'] ?  self.grupoper.nombre : ''
+          end
+
           scope :filtro_grupoper_id, lambda { |g|
             where("grupoper_id=?", g)
           }
