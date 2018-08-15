@@ -47,6 +47,15 @@ module Sip
                 end
               end
             end
+            # También puede filtrarse por una o más identificaciones
+            # por ejemplo con un URL con parámetro filtro[ids]=3,4
+            if params_filtro['ids']
+              lids1 = params_filtro['ids'].split(',')
+              lids = lids1.map { |id| id.to_i }
+              if lids.length > 0 && lids[0] > 0
+                reg = reg.where("id IN (?)", lids)
+              end
+            end
             return reg
           end
 
