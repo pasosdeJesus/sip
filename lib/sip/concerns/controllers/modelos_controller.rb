@@ -329,7 +329,7 @@ module Sip
 
           # Campos que se presentar en formulario
           def atributos_form
-            atributos_index - ["id"]
+            atributos_index - ["id"] - [:id]
           end
 
           # Campos por mostrar en presentación de un registro
