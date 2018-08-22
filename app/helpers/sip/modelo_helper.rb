@@ -158,5 +158,26 @@ module Sip
       return res[0][0]
     end
 
+
+    # De requerirse aumenta la colección de habilitadoas con la última
+    # elegida (que ya podría estar deshabilitada pero debe mantenerse
+    # con propósitos históricos).
+    def self.coleccion_basica(basica, ultimos_ids = nil)
+      h = basica.habilitados
+      if !ultimos_ids.nil?
+        idsh = h.map(&:id)
+        lu = ultimos_ids
+        if ultimos_ids.is_a? Integer
+          lu = [ultimos_ids]
+        end
+        lu.each do |uid|
+          if !idsh.include?(uid)
+            idsh << uid
+          end
+        end
+        h = basica.where(id: idsh)
+      end
+      return h
+    end
   end
 end
