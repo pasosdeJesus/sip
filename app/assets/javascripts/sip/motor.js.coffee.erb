@@ -119,8 +119,9 @@
         $(fila).remove()
       ),
       error: ((response) ->
-        alert('Error: el servicio respondio con: ' + 
-        response.status + '\n' + response.responseText)
+        if response.status != 0 && response.responseText != ''
+          alert('Error: el servicio respondio con: ' + 
+            response.status + '\n' + response.responseText)
       )
     })
   return true
@@ -263,7 +264,7 @@ if (typeof String.prototype.endsWith != 'function')
             $('meta[name="csrf-token"]').attr('content'))
         ),
         error: ((response) ->
-          if alertaerror && response.status != 0 && response.responseText != 0
+          if alertaerror && response.status != 0 && response.responseText != ''
             alert('Error: el servicio respondió: ' + 
               response.status + '\n' + response.responseText) 
         ),
@@ -320,7 +321,7 @@ if (typeof String.prototype.endsWith != 'function')
             $('meta[name="csrf-token"]').attr('content'))
         ),
         error: ((response) ->
-          if alertaerror 
+          if alertaerror && response.status != 0 && response.responseText != ''
             alert('Error: el servicio respondió: ' + 
               response.status + '\n' + response.responseText) 
         )
