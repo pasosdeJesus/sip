@@ -128,7 +128,8 @@
              :input_html => { 
                value: Sip::ModeloHelper.poromision(params, "#{n}"),
                "data-enviarautomatico" => "",
-               size: 5
+               type: :text,
+               style: 'width: 4em'
              }, 
              as: :integer %>
          <% end %>
