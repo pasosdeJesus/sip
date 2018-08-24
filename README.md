@@ -40,6 +40,7 @@ de información, como:
   - Autorización con tablas ```sip_grupo``` (modelo Sip::Grupo), sip_grupo_usuario, gema ```cancancan``` y roles iniciales Administrador y Operador.
 - Tablas estándar iniciales para ubicaciones geográficas ```sip_pais```, ```sip_departamento```, ```sip_municipio```, ```sip_clase``` (para centros poblados), ```sip_tclase``` (tipos de centros poblados), ```sip_tsitio``` (tipo de sitio) y ```sip_ubicacion```. Con datos de todos los paises, aunque estados y municipios completos para Colombia y Venezuela y ciudades completas para Colombia de acuerdo a DIVIPOLA 2015 con actualización periódica (vía migraciones de rails) de acuerdo a esa fuente oficial.
 - Tablas estándar iniciales para personas y relaciones entre personas ```sip_persona```, ```sip_trelacion``` (tipo de relación entre personas),  ```tdocumento``` (tipo de documento de identificación personal), ```sip_persona_trelacion``` (relación entre 2 personas).
+- Tablas estándar iniciales para grupos de personas `sip_grupoper`, actores sociales `sip_actorsocial`, sus sectores `sip_sectoractor` y la relación entre una persona y un actor social con su perfil `sip_actorsocial_persona` y `sip_perfilactorsocial`
 - Propuesta inicial para anexos con tabla ```sip_anexo``` y vistas incrustables y gema ```paperclip```
 - Facilidades de configuración de aplicaciones que usen este motor mediante archivo ```config/initializers/sip.rb``` que define por ejemplo: pais por omision en ```Sip.paisomision```.  Así mismo la inicialización de este motor (```lib/sip/engine.rb```) incluye automáticamente migraciones de motores en la aplicación final.
 - Propuesta de respaldo cifrado y comprimido con 7z por parte de usuario final (del rol que se configure) desde menús de la aplicación.
@@ -49,21 +50,18 @@ de información, como:
   config.x.formato_fecha, así como ayudas para definir campos de fecha 
   localizados en ese formato.
 - Vistas y formularios generados con las herramientas estándar de rails 
-  y simple_form y chosen-rails para cuadros de selección sencilla y múltiple,
-  y bootstrap-datepicker para campos de fecha. Se pagina con will_paginate.
+  y `simple_form` y `chosen-rails` para cuadros de selección sencilla y múltiple,
+  y `bootstrap-datepicker` para campos de fecha. Listados paginados con `will_paginate`.
 - Incluye biblioteca para operaciones comunes con javascript, por ejemplo para 
   facilitar actualización automática mediante AJAX (ver 
-  ```sip_enviarautomatico_formulario``` en 
-  ```app/asset/javascript/sip/motor.js.coffee.erb``` que enviará
+  `sip_enviarautomatico_formulario` en 
+  `app/asset/javascript/sip/motor.js.coffee.erb` que enviará
   automáticamente formularios cuando cambien campos con clase
   ```enviarautomatico``` o se presionen enlaces a anclas con esa clase)
 - Preparado para construir aplicaciones adaptables (responsive) con 
-  ```bootstrap```, ```coffescript```, ```jquery``` y ```jquery-ui```
-- Tareas ```rake``` para actualizar indices, sacar copia de respaldo de base 
+  `bootstrap`, `coffescript`, `jquery` y `jquery-ui`
+- Tareas `rake` para actualizar indices y sacar copia de respaldo de base 
   de datos
-- Aplicación de prueba completa en directorio ```test/dummy``` con diseño 
-  web adaptable que brinda autenticación, manejo de clave, usuarios, 
-  grupos y modificación de tablas básicas 
 
 ## Requisitos
 
@@ -71,9 +69,11 @@ Ver <https://github.com/pasosdeJesus/sip/wiki/Requisitos>
 
 ## Aplicación mínima incluida en sip
 
-**sip** ya viene con una aplicación mínima que es la usada para hacer
-pruebas de regresión, antes de iniciar una aplicación aparte, puedes
-intentar ejecutar esa aplicación, siguiendo las instrucciones de:
+**sip** ya viene con una aplicación mínima (en directorio ```test/dummy``` ) que es la usada para hacer
+pruebas de regresión.  Es una aplicación completa con diseño 
+web adaptable, autenticación, manejo de clave con condensado bcrypt, usuarios, 
+grupos y modificación de tablas básicas. Incluso antes de intentar iniciar una aplicación aparte, puede
+intentar ejecutar esa aplicación mínima, siguiendo las instrucciones de:
 <https://github.com/pasosdeJesus/sip/wiki/Aplicaci%C3%B3n-de-prueba>
 
 ## Iniciar un sistema de información usando sip
