@@ -18,10 +18,10 @@
         <dd> <%= render partial: rutap2 %> </dd>
     <% else %>
       <% p = @registro.presenta(atr) %>
-      <% if p && p.length > 0 %>
+      <% if p && p.to_s.length > 0 %>
         <dt><strong><%= model_class.human_attribute_name(atr) %>:</strong></dt>
         <dd>
-        <% if p.include?("\n") %>
+        <% if p.to_s.include?("\n") %>
           <pre><%= p %></pre>
         <% else %>
           <%= p %>

@@ -55,7 +55,7 @@
               <% else %>
                 <% #byebug %>
                 <% s = registro.presenta(atr) %>
-                <% if s.include?("\n") %>
+                <% if s.to_s.include?("\n") %>
                   <pre><%= s %></pre>
                 <% else %>
                   <%= s %>
