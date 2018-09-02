@@ -1,10 +1,3 @@
-GIT
-  remote: https://github.com/rubyzip/rubyzip
-  revision: d07b13a6cf0a413e010c48879aebd9576bfb5f68
-  branch: master
-  specs:
-    rubyzip (1.2.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -230,6 +223,7 @@ GEM
       railties (>= 4.2.0, < 5.3)
     ruby-graphviz (1.2.3)
     ruby-progressbar (1.10.0)
+    rubyzip (1.2.2)
     sass (3.5.7)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -329,7 +323,7 @@ DEPENDENCIES
   rails-controller-testing
   rails-erd
   rails-i18n
-  rubyzip!
+  rubyzip (~> 1.2.2)
   sass
   sass-rails
   selenium-webdriver
