@@ -33,6 +33,9 @@ gem "uglifier"#, '>= 1.3.0'
 # CoffeeScript para recuersos .js.coffee y vistas
 gem "coffee-rails"
 
+# Usa rubyzip con soluciones a falla
+gem "rubyzip", git: "https://github.com/rubyzip/rubyzip", branch: :master
+
 # jquery como librería JavaScript
 gem "jquery-rails"
 gem "jquery-ui-rails"
