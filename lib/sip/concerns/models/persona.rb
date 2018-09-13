@@ -75,6 +75,10 @@ module Sip
           end
         end
 
+        def presenta_nombre
+          r = nombres + " " + apellidos
+          r.strip
+        end
       end
     end
   end
