@@ -109,7 +109,7 @@ module Sip
             when 'rol'
               a = ::Ability::ROLES.select { |v| v[1] == registro.rol }
               if a == []
-                "Rol #{rol} desconocido"
+                "Rol #{registro.rol} desconocido"
               else
                 a.first[0]
               end
