@@ -97,7 +97,16 @@ module Sip
           end
 
           def presenta(atr)
-            if (atr == 'rol')
+            case atr.to_s
+            when 'actualizacion'
+              updated_at
+            when 'condensado_de_clave'
+              encrypted_password
+            when 'creacion'
+              created_at
+            when 'correo'
+              email
+            when 'rol'
               a = ::Ability::ROLES.select { |v| v[1] == rol }
               if a == []
                 "Rol #{rol} desconocido"
