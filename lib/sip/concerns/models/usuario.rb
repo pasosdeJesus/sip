@@ -96,26 +96,30 @@ module Sip
             r 
           end
 
-          def presenta(atr)
+          def self.presenta_base(registro, atr)
             case atr.to_s
             when 'actualizacion'
-              updated_at
+              registro.updated_at
             when 'condensado_de_clave'
-              encrypted_password
+              registro.encrypted_password
             when 'creacion'
-              created_at
+              registro.created_at
             when 'correo'
-              email
+              registro.email
             when 'rol'
-              a = ::Ability::ROLES.select { |v| v[1] == rol }
+              a = ::Ability::ROLES.select { |v| v[1] == registro.rol }
               if a == []
                 "Rol #{rol} desconocido"
               else
                 a.first[0]
               end
             else
-              presenta_gen(atr)
+              registro.presenta_gen(atr)
             end
+          end
+
+          def presenta(atr)
+            Sip::Usuario.presenta_base(self, atr)
           end
 
           scope :filtro_nusuario, lambda { |u|
