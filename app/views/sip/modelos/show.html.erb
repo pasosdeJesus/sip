@@ -31,6 +31,15 @@
   <% end %>
 </dl>
 
+<div class="resumen_epilogo">
+    <% rutap3 = "#{clase.pluralize.underscore}/resumen_epilogo" %>
+    <% if lookup_context.find_all(rutap3, [], true).any? %>
+        <%= render partial: rutap3 %> 
+    <% else %> 
+      <%= render partial: 'resumen_epilogo' %>
+    <% end %>
+</div>
+
 <div class="form-actions">
   <% rutama = clase.pluralize.underscore + '/show_acciones' %>
   <% if lookup_context.find_all( rutama, [], true).any? %>
