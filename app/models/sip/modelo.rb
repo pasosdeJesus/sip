@@ -40,7 +40,9 @@ module Sip
           e.foreign_key.to_s
         end
         if fk.include? atr.to_s
-          r = aso.select { |a| a.foreign_key.to_s == atr.to_s }[0] 
+          r = aso.select { |a| a.is_a?(
+            ActiveRecord::Reflection::HasManyReflection) && 
+            a.foreign_key.to_s == atr.to_s }[0] 
           return r
         end
         return nil

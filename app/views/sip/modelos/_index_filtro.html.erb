@@ -2,7 +2,6 @@
 <tr>
   <% atributos_index.each do |atr| %>
     <td>
-      <% #byebug %>
       <% cregistro = @registro.class.to_s.chomp("ActiveRecord_Relation").constantize %>
       <% alf = cregistro.asociacion_llave_foranea(atr) %>
       <% atrf = Sip::ModeloHelper.nom_filtro(atr) %>
