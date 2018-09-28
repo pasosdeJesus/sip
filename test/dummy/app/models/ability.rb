@@ -34,6 +34,8 @@ class Ability  < Sip::Ability
     can :descarga_anexo, Sip::Anexo
     can :nuevo, Sip::Ubicacion
     if usuario && usuario.rol then
+    
+      can :read, [Sip::Persona]
       case usuario.rol 
       when Ability::ROLANALI
         can :read, Sip::Actorsocial
@@ -45,6 +47,7 @@ class Ability  < Sip::Ability
       when Ability::ROLADMIN
         can :manage, ::Usuario
         can :manage, Sip::Actorsocial
+        can :manage, Sip::Persona
         can :manage, Sip::Respaldo7z
         can :manage, Sip::Ubicacion
         can :manage, :tablasbasicas

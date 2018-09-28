@@ -89,7 +89,7 @@ end
 
 group :development, :test do
   # Depurar
-  # gem 'byebug'
+  gem 'byebug'
 end
 
 # Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo

@@ -10,14 +10,49 @@ module Sip
         included do
           include ActionView::Helpers::AssetUrlHelper
 
-          # Busca y lista persona(s) para autocompletación
-          def index
-            if !params[:term]
-              respond_to do |format|
-                format.html { render inline: 'Falta variable term' }
-                format.json { render inline: 'Falta variable term' }
-              end
-            else
+          before_action :set_persona, only: [:show, :edit, :update, :destroy]
+          load_and_authorize_resource class: Sip::Persona
+
+          def clase
+            "Sip::Persona"
+          end
+
+          def genclase
+            return 'F'
+          end
+
+          def atributos_index
+            atributos_show
+          end
+
+          def atributos_form
+            a = atributos_show - [:id]
+            return a
+          end
+
+          def atributos_show
+            [ :id, 
+              :nombres,
+              :apellidos,
+              :anionac,
+              :mesnac,
+              :dianac,
+              :sexo,
+              :id_pais,
+              :id_departamento,
+              :id_municipio,
+              :id_clase,
+              :nacionalde,
+              :tdocumento_id,
+              :numerodocumento
+            ]
+          end
+
+          def index(c = nil)
+            if c == nil
+              c = Sip::Persona.all
+            end
+            if params[:term]
               term = Sip::Ubicacion.connection.quote_string(params[:term])
               consNomvic = term.downcase.strip #sin_tildes
               consNomvic.gsub!(/ +/, ":* & ")
@@ -50,7 +85,10 @@ module Sip
               r = ActiveRecord::Base.connection.select_all qstring
               respond_to do |format|
                 format.json { render :json, inline: r.to_json }
+                format.html { render inline: 'No responde con parametro term' }
               end
+            else
+              super(c)
             end
           end
 
@@ -58,6 +96,26 @@ module Sip
           def remplazar
           end
 
+
+          def set_persona
+            @persona = Sip::Persona.find(params[:id])
+            @registro = @persona
+          end
+
+          def listaparams
+            atributos_form
+            # - [:grupoper] + [:grupoper_attributes => [
+            #  :id,
+            #  :nombre,
+            #  :anotaciones ]
+            #]) 
+          end
+
+          def persona_params
+            params.require(:persona).permit(listaparams)
+          end
+
+          
         end # include
 
       end

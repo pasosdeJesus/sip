@@ -7,6 +7,9 @@ module Sip
         extend ActiveSupport::Concern
 
         included do
+          include Sip::Modelo 
+          include Sip::Localizacion
+
           self.table_name = 'sip_persona'
 
           # Si agrego el siguiente al agregar una victima individual
@@ -19,7 +22,8 @@ module Sip
             class_name: "Sip::PersonaTrelacion"
           has_many :persona_trelacion2, foreign_key: "persona2", validate: true,
             class_name: "Sip::PersonaTrelacion"
-          belongs_to :clase, foreign_key: "id_clase", validate: true
+          belongs_to :clase, class_name: 'Sip::Clase',
+            foreign_key: "id_clase", validate: true
           belongs_to :nacional, class_name: "Sip::Pais", 
             foreign_key: "nacionalde", validate: true
           belongs_to :departamento, foreign_key: "id_departamento", 
