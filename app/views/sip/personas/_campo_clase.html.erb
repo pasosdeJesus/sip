@@ -1,0 +1,6 @@
+<%= f.association :clase,
+  collection: (Sip::Clase.habilitados.where(
+  id_municipio: f.object.id_municipio)),
+  label_method: :nombre,
+  value_method: :id 
+%>

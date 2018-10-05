@@ -38,12 +38,12 @@ module Sip
               :mesnac,
               :dianac,
               :sexo,
-              :id_pais,
-              :id_departamento,
-              :id_municipio,
-              :id_clase,
+              :pais,
+              :departamento,
+              :municipio,
+              :clase,
               :nacionalde,
-              :tdocumento_id,
+              :tdocumento,
               :numerodocumento
             ]
           end
@@ -103,7 +103,12 @@ module Sip
           end
 
           def listaparams
-            atributos_form
+            atributos_form + [
+              :id_pais,
+              :id_departamento,
+              :id_municipio,
+              :id_clase
+            ]
             # - [:grupoper] + [:grupoper_attributes => [
             #  :id,
             #  :nombre,

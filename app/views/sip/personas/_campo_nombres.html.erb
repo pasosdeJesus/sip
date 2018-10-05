@@ -1,0 +1,13 @@
+<% 
+  ph = 'N'
+  ac = {'data-autocompleta' => 'no' }
+#debugger
+  if (!f.object.nombres || f.object.nombres == 'N' || f.object.nombres == '')
+    ph = 'Buscar'
+    ac = { }
+  end
+%>
+<%= f.input :nombres, placeholder: ph,
+  value_method: lambda {|t| '' if t.nombres == 'N'},
+  :input_html => ac
+%>

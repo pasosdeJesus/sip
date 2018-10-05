@@ -1,0 +1,5 @@
+<%= f.input :tdocumento_id,
+  collection: Sip::Tdocumento.habilitados,
+  label_method: :nombre,
+  value_method: :id 
+%>

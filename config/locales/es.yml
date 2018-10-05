@@ -91,15 +91,21 @@ es:
         actorsocial: Actor social al que pertenece
       "sip/persona":
         anionac: Año nacimiento
+        clase: Centro poblado nacimiento
+        departamento: Departamento nacimiento
         dianac: Día nacimiento
         id_clase: Centro poblado nacimiento
         id_departamento: Departamento nacimiento
         id_municipio: Municipio nacimiento
         id_pais: País nacimiento
         mesnac: Mes nacimiento
+        municipio: Municipio nacimiento
         nacionalde: Nacional de
+        nacional: Nacional de
         numerodocumento: Número de documento
+        pais: País nacimiento
         tdocumento: Tipo de documento
+        tdocumento_id: Tipo de documento
       "sip/respaldo7z":
         clave7z: Clave de cifrado
         clave7z_confirmation: Confirmación de clave de cifrado

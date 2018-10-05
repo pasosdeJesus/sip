@@ -83,6 +83,17 @@ module Sip
           r = nombres + " " + apellidos
           r.strip
         end
+
+        def presenta(atr)
+          # Tocó duplicar en app/models/sip/persona.rb
+          case atr.to_s
+          when 'nacionalde'
+            nacional.nombre
+          else
+            presenta_gen(atr)
+          end
+        end
+
       end
     end
   end
