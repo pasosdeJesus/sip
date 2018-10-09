@@ -107,7 +107,8 @@ module Sip
               :id_pais,
               :id_departamento,
               :id_municipio,
-              :id_clase
+              :id_clase,
+              :tdocumento_id
             ]
             # - [:grupoper] + [:grupoper_attributes => [
             #  :id,

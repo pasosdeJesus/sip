@@ -5,10 +5,10 @@ module Sip
     module Models
       module Persona
         extend ActiveSupport::Concern
+        include Sip::Modelo 
+        include Sip::Localizacion
 
         included do
-          include Sip::Modelo 
-          include Sip::Localizacion
 
           self.table_name = 'sip_persona'
 
@@ -48,54 +48,69 @@ module Sip
           validates :dianac, :numericality => {:allow_blank => true}
           validate :vfechanac
           validate :vformatonumdoc
+
+          def vformatonumdoc
+            if (tdocumento && tdocumento.formatoregex != '' && 
+                !(numerodocumento =~ Regexp.new("^#{tdocumento.formatoregex}$")))
+              errors.add(:numerodocumento, 
+                         "No cumple exp. regular: #{tdocumento.formatoregex}")
+            end
+          end
+
+          def vfechanac
+            if (anionac && anionac<1900)
+              errors.add(:anionac, "Año debe ser mayor o igual a 1900")
+            end
+            if (mesnac && (mesnac < 1 || mesnac > 12))
+              errors.add(:mesnac, "Mes debe estar entre 1 y 12")
+            end
+            if (dianac && dianac < 1)
+              errors.add(:dianac, "Dia debe ser positivo")
+            end
+            if (dianac && mesnac && mesnac == 2 && dianac > 29)
+              errors.add(:dianac, "Dia debe ser menor o igual a 29")
+            elsif (dianac && mesnac && (mesnac == 4 || mesnac == 6 || 
+                                        mesnac == 9 || mesnac == 11) && 
+                                        dianac > 30)
+              errors.add(:dianac, "Dia debe ser menor o igual a 30")
+            elsif (dianac && dianac > 31)
+              errors.add(:dianac, "Dia debe ser menor o igual a 31")
+            end
+          end
+
+          def presenta_fechanac
+            r = ""
+            r += dianac.to_s if dianac
+            r += "/"
+            r += FormatoFechaHelper::ABMESES[mesnac] if mesnac && 
+              mesnac>=1 && mesnac<=12
+            r += "/"
+            r += anionac.to_s if anionac
+            return r
+          end
+
+          def presenta_nombre
+            r = nombres + " " + apellidos
+            r.strip
+          end
+
+          def presenta(atr)
+            case atr.to_s
+            when 'nacionalde'
+              nacional.nombre
+            else
+              presenta_gen(atr)
+            end
+          end
+
+        end # include
+
+        class_methods do
+
         end
 
-        def vformatonumdoc
-          if (tdocumento && tdocumento.formatoregex != '' && 
-              !(numerodocumento =~ Regexp.new("^#{tdocumento.formatoregex}$")))
-            errors.add(:numerodocumento, 
-                       "No cumple exp. regular: #{tdocumento.formatoregex}")
-          end
-        end
-
-        def vfechanac
-          if (anionac && anionac<1900)
-            errors.add(:anionac, "Año debe ser mayor o igual a 1900")
-          end
-          if (mesnac && (mesnac < 1 || mesnac > 12))
-            errors.add(:mesnac, "Mes debe estar entre 1 y 12")
-          end
-          if (dianac && dianac < 1)
-            errors.add(:dianac, "Dia debe ser positivo")
-          end
-          if (dianac && mesnac && mesnac == 2 && dianac > 29)
-            errors.add(:dianac, "Dia debe ser menor o igual a 29")
-          elsif (dianac && mesnac && (mesnac == 4 || mesnac == 6 || 
-                                       mesnac == 9 || mesnac == 11) && 
-                                       dianac > 30)
-            errors.add(:dianac, "Dia debe ser menor o igual a 30")
-          elsif (dianac && dianac > 31)
-            errors.add(:dianac, "Dia debe ser menor o igual a 31")
-          end
-        end
-
-        def presenta_nombre
-          r = nombres + " " + apellidos
-          r.strip
-        end
-
-        def presenta(atr)
-          # Tocó duplicar en app/models/sip/persona.rb
-          case atr.to_s
-          when 'nacionalde'
-            nacional.nombre
-          else
-            presenta_gen(atr)
-          end
-        end
-
-      end
-    end
-  end
-end
+      end # Persona
+    end # Models
+  end # Concerns
+end # Sip
 
