@@ -94,6 +94,7 @@ es:
         clase: Centro poblado nacimiento
         departamento: Departamento nacimiento
         dianac: Día nacimiento
+        fechanac: Fecha de nacimiento
         id_clase: Centro poblado nacimiento
         id_departamento: Departamento nacimiento
         id_municipio: Municipio nacimiento

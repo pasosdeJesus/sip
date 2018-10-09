@@ -97,11 +97,24 @@ module Sip
           def presenta(atr)
             case atr.to_s
             when 'nacionalde'
-              nacional.nombre
+              nacionalde ? nacional.nombre : ''
             else
               presenta_gen(atr)
             end
           end
+
+          scope :filtro_nombres, lambda { |n|
+            where("unaccent(nombres) ILIKE '%' || unaccent(?) || '%'", n)
+          }
+
+          scope :filtro_apellidos, lambda { |a|
+            where("unaccent(apellidos) ILIKE '%' || unaccent(?) || '%'", a)
+          }
+
+          scope :filtro_numerodocumento, lambda { |n|
+            where("unaccent(numerodocuemnto) ILIKE '%' || " +
+                  "unaccent(?) || '%'", n)
+          }
 
         end # include
 
