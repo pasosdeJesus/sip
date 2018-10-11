@@ -11,8 +11,7 @@ module Sip
       telefono: '123',
       fax: '456',
       direccion: 'dir',
-      web: 'web',
-      observaciones: "x",
+      web: 'web'
     }
 
     test "valido" do
