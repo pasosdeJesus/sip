@@ -19,7 +19,8 @@ module Sip
           belongs_to :pais, class_name: 'Sip::Pais',
             foreign_key: "pais_id", validate: true
 
-          has_many :actorsocial_persona, class_name: 'Sip::ActorsocialPersona',
+          has_many :actorsocial_persona, 
+            class_name: 'Sip::ActorsocialPersona',
             foreign_key: "actorsocial_id"
 
           has_many :actorsocial_sectoractor, 
@@ -33,7 +34,6 @@ module Sip
           validates :fax, length: { maximum: 500 }
           validates :direccion, length: { maximum: 500 }
           validates :web, length: { maximum: 500 }
-          validates :observaciones, length: { maximum: 5000 }
 
           def presenta(atr)
             case atr.to_s

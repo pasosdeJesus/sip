@@ -28,8 +28,7 @@ module Sip
               :telefono, 
               :fax,
               :pais_id,
-              :direccion,
-              :observaciones
+              :direccion
             ]
           end
 
