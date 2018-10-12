@@ -37,10 +37,20 @@ module Sip
 
           def presenta(atr)
             case atr.to_s
-            when "pais_id" 
-              self[atr] ? Sip::Pais.find(self[atr]).nombre : ""
+            when "anotaciones"
+              self['grupoper_id'] ? self.grupoper.anotaciones : ""
             when "grupoper"
               self['grupoper_id'] ? self.grupoper.nombre : ""
+            when "nombre"
+              self['grupoper_id'] ? self.grupoper.nombre : ""
+            when "pais" 
+              self.pais_id ? Sip::Pais.find(self.pais_id).nombre : ""
+            when "pais_id" 
+              self[atr] ? Sip::Pais.find(self[atr]).nombre : ""
+            when "sectores" 
+              self.sectoractor ? self.sectoractor.inject("") { |memo, s|
+                (memo == "" ? "" : memo + "; ") + s.nombre
+              } : ""
             else
               presenta_gen(atr)
             end

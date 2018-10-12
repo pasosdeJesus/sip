@@ -27,7 +27,7 @@ module Sip
               :web,
               :telefono, 
               :fax,
-              :pais_id,
+              :pais,
               :direccion
             ]
           end
@@ -57,7 +57,8 @@ module Sip
           def actorsocial_params
             params.require(:actorsocial).permit(
               atributos_form - [:grupoper] +
-              [:grupoper_attributes => [
+              [ :pais_id,
+                :grupoper_attributes => [
                 :id,
                 :nombre,
                 :anotaciones ]

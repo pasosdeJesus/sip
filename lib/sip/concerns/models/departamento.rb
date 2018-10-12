@@ -32,6 +32,10 @@ module Sip
             allow_blank: true
 
           def presenta_nombre
+            self.nombre
+          end
+          
+          def nombre_con_origen
             pais = Sip::Pais.find(self.id_pais)
             self.nombre + " / " + pais.nombre
           end

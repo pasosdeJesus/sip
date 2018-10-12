@@ -89,6 +89,10 @@ module Sip
             return r
           end
 
+          def fechanac_localizada
+            presenta_fechanac
+          end
+
           def presenta_nombre
             r = nombres + " " + apellidos
             r.strip
@@ -98,6 +102,8 @@ module Sip
             case atr.to_s
             when 'nacionalde'
               nacionalde ? nacional.nombre : ''
+            when 'tdoc'
+              self.tdocumento.sigla if self.tdocumento
             else
               presenta_gen(atr)
             end

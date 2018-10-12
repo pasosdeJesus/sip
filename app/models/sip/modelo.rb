@@ -58,6 +58,16 @@ module Sip
         return nil
       end
 
+      attr_accessor :creado_en
+      def creado_en
+        created_at
+      end
+
+      attr_accessor :actualizado_en
+      def actualizado_en
+        updated_at
+      end
+
       # Como presentar un registro por ejemplo en un campo de selección
       def presenta_nombre
         if respond_to?(:nombre)
