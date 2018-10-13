@@ -98,7 +98,7 @@ module Sip
             r.strip
           end
 
-          def presenta(atr)
+          def sip_presenta(atr)
             case atr.to_s
             when 'nacionalde'
               nacionalde ? nacional.nombre : ''
@@ -107,6 +107,10 @@ module Sip
             else
               presenta_gen(atr)
             end
+          end
+
+          def presenta(atr)
+            sip_presenta(atr)
           end
 
           scope :filtro_nombres, lambda { |n|

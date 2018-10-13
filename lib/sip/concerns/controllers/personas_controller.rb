@@ -110,11 +110,6 @@ module Sip
               :id_clase,
               :tdocumento_id
             ]
-            # - [:grupoper] + [:grupoper_attributes => [
-            #  :id,
-            #  :nombre,
-            #  :anotaciones ]
-            #]) 
           end
 
           def persona_params
