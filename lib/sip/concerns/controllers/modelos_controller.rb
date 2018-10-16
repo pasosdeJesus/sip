@@ -77,12 +77,12 @@ module Sip
               if c.class.to_s.end_with?('ActiveRecord_Relation')
                 if clase.constantize.to_s != c.klass.to_s
                   puts "No concuerdan #{clase.constantize.to_s} y " +
-                    "klass #{c.klass.to_sclase}"
-                  return
+                    "klass #{c.klass.to_s}"
+                  #return
                 end
               elsif clase.constantize.to_s != c.class.to_s
                 puts "No concuerdan #{clase.constantize.to_s} y class #{c.class.to_s}"
-                return
+                #return
               end
             else
               c = clase.constantize

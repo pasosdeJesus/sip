@@ -11,16 +11,27 @@
 <%= render partial: 'index_encabezado', locals: {titulo: titulo} %>
 
 <% #byebug %>
+<% if !@url_formulario_sipmodelo.nil? %>
+  <% url_formulario = @url_formulario_sipmodelo %>
+<% else %>
+  <% url_formulario = modelos_path(@registros) %>
+<% end %>
 <%= simple_form_for :filtro,
-  { url: modelos_path(@registros),
+  { url: url_formulario,
     method: "get"} do |f| %>
  
   <table class="table table-striped">
     <thead>
       <tr>
         <!-- http://blog.crowdint.com/2013/08/22/rails-template-inheritance.html -->
-        <% atributos_index.each do |atr| %>
-          <th><%= model_class.human_attribute_name(atr) %></th>
+        <% #byebug %>
+        <% rutaf = clase.pluralize.underscore + '/index_titulos_tabla' %>
+        <% if lookup_context.find_all(rutaf, [], true).any? %>
+          <%= render partial: rutaf, locals: {f: f} %>
+        <% else %>
+          <% atributos_index.each do |atr| %>
+            <th><%= model_class.human_attribute_name(atr) %></th>
+          <% end %>
         <% end %>
         <th><%=t '.actions', :default => t("helpers.actions") %></th>
       </tr>
