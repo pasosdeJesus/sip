@@ -32,8 +32,8 @@
           <% atributos_index.each do |atr| %>
             <th><%= model_class.human_attribute_name(atr) %></th>
           <% end %>
+          <th><%=t '.actions', :default => t("helpers.actions") %></th>
         <% end %>
-        <th><%=t '.actions', :default => t("helpers.actions") %></th>
       </tr>
 
       <% rutaf = clase.pluralize.underscore + '/index_filtro' %>
