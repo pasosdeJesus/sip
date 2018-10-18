@@ -17,6 +17,7 @@ module Sip
             fechadeshabilitacion:nil,
             id_municipio: idmun).all
         end
+        Sip::Municipio.conf_presenta_nombre_con_origen = true
         super(c)
       end  
 

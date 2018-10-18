@@ -31,14 +31,26 @@ module Sip
             message: "debe ser único en el país", 
             allow_blank: true
 
-          def presenta_nombre
-            self.nombre
-          end
-          
-          def nombre_con_origen
+          @@conf_presenta_nombre_con_origen = false
+          mattr_accessor :conf_presenta_nombre_con_origen
+
+          def presenta_nombre_con_origen
             pais = Sip::Pais.find(self.id_pais)
             self.nombre + " / " + pais.nombre
           end
+
+          def presenta_nombre
+            if @@conf_presenta_nombre_con_origen
+              presenta_nombre_con_origen
+            else
+              self.nombre
+            end
+          end
+
+        end
+
+        class_methods do
+          #mattr_accessor :conf_presenta_nombre_con_origen
         end
 
       end

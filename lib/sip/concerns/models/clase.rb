@@ -33,6 +33,25 @@ module Sip
             case_sensitive: false, 
             message: "debe ser único en el municpio"
 
+          @@conf_presenta_nombre_con_origen = false
+          mattr_accessor :conf_presenta_nombre_con_origen
+
+          def presenta_nombre_con_origen
+            mun = Sip::Municipio.find(self.id_municipio)
+            dep= Sip::Departamento.find(mun.id_departamento)
+            pais = Sip::Pais.find(dep.id_pais)
+            self.nombre + " / " + mun.nombre + "/" + dep.nombre + 
+              " / " + pais.nombre
+          end
+
+          def presenta_nombre
+            if @@conf_presenta_nombre_con_origen
+              presenta_nombre_con_origen
+            else
+              self.nombre
+            end
+          end
+
         end
 
       end

@@ -17,6 +17,7 @@ module Sip
             fechadeshabilitacion:nil,
             id_departamento: iddep).all
         end
+        Sip::Departamento.conf_presenta_nombre_con_origen = true
         super(c)
       end  
 
