@@ -17,13 +17,23 @@ module Sip
 
       # Campos de la tabla
       def atributos_index
-        ["id", "nombre", "observaciones", 
-         "fechacreacion_localizada", "fechadeshabilitacion_localizada"]
+        ["id", 
+         "nombre", 
+         "observaciones", 
+         "fechacreacion_localizada", 
+         "habilitado"
+        ]
       end
 
-      # Campos que se esperan del formulario
+      # Campos por mostrar en presentación de un registro
+      def atributos_show
+        atributos_index - ['habilitado', :habilitado] + 
+          ["fechadeshabilitacion_localizada"]
+      end
+
+      # Campos que se presentar en formulario
       def atributos_form
-        atributos_index - ["id"]
+        atributos_show - ["id", :id]
       end
 
       def index_reordenar(c)

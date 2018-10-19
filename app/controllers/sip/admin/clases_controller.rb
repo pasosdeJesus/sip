@@ -29,7 +29,7 @@ module Sip
         [ 
           "id", "nombre", "id_municipio", "id_clalocal",
           "id_tclase", "latitud", "longitud", "observaciones",
-          "fechacreacion_localizada", "fechadeshabilitacion_localizada"
+          "fechacreacion_localizada", "habilitado"
         ]
       end
   

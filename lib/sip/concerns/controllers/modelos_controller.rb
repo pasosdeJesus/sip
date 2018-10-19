@@ -311,7 +311,7 @@ module Sip
 
           # Nombre del modelo 
           def clase 
-            "Sip::BasicaCambiar"
+            "Sip::ModelosCambiar"
           end
 
           # Genero del modelo (F - Femenino, M - Masculino)
@@ -322,19 +322,20 @@ module Sip
           # Campos de la tabla por presentar en listado 
           def atributos_index
             ["id", 
-             "fechacreacion_localizada", 
-             "fechadeshabilitacion_localizada"
+             "created_at",
+             "updated_at"
             ]
-          end
-
-          # Campos que se presentar en formulario
-          def atributos_form
-            atributos_index - ["id"] - [:id]
           end
 
           # Campos por mostrar en presentación de un registro
           def atributos_show
-            atributos_index
+            atributos_index 
+          end
+
+          # Campos que se presentar en formulario
+          def atributos_form
+            atributos_show - 
+              ["id", :id, 'created_at', :created_at, 'updated_at', :updated_at]
           end
 
           # Campos por retornar como API JSON

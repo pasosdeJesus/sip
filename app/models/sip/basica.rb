@@ -133,6 +133,20 @@ module Sip
         self['id']
       end
 
+      attr_accessor :habilitado
+
+      def habilitado
+        fechadeshabilitacion.nil? ? 'Si' : 'No'
+      end
+
+      scope :filtro_habilitado, lambda {|o|
+        if o.upcase.strip == 'SI'
+          where(fechadeshabilitacion: nil)
+        elsif o.upcase.strip == 'NO'
+          where.not(fechadeshabilitacion: nil)
+        end 
+      }
+
       scope :filtro_nombre, lambda { |n|
         where("nombre ILIKE '%' || unaccent(?) || '%'", n)
       }

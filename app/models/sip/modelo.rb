@@ -84,7 +84,7 @@ module Sip
         clf = self.class.clase_llave_foranea(atr)
         if self.class.columns_hash && self.class.columns_hash[atr] && 
           self.class.columns_hash[atr].type == :boolean 
-          self[atr] ? "Si" : "No" 
+          self[atr] ? "Si" : (self[atr].nil? ? "" : "No")
         elsif self.class.asociacion_combinada(atr)
           ac = self.class.asociacion_combinada(atr).name.to_s
           e = self.send(ac)

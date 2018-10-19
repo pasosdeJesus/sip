@@ -13,10 +13,6 @@ module Sip
         @basica = Tclase.find(params[:id])
       end
   
-      def atributos_form
-        atributos_index
-      end
-
       def genclase
         return 'M';
       end

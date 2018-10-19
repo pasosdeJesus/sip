@@ -19,11 +19,11 @@ module Sip
 
       def atributos_index
         ["id", "nombre", "formatoregex", "observaciones",
-         "fechacreacion_localizada", "fechadeshabilitacion_localizada"]
+         "fechacreacion_localizada", "habilitado"]
       end
   
       def tdocumento_params
-        params.require(:tdocumento).permit( *(atributos_index - ["id"]))
+        params.require(:tdocumento).permit( *(atributos_form))
       end
   
     end
