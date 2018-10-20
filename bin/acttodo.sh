@@ -101,7 +101,7 @@ if (test "$SALTASIVELSJR" != "1") then {
 } fi;
 
 # Usan 4 motores
-actuno cor1440_sjrlac; 
+actuno si_jrslac; 
 actuno sivel2_sjrven; 
 actuno sivel2_sjrcol
 
