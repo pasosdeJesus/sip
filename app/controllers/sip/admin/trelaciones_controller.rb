@@ -21,6 +21,10 @@ module Sip
         ["id", "nombre", "inverso", "observaciones", 
          "fechacreacion_localizada", "habilitado"]
       end
+
+      def atributos_form
+        atributos_index
+      end
  
       def trelacion_params
         params.require(:trelacion).permit(*atributos_form)
