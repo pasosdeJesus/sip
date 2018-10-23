@@ -93,7 +93,12 @@ module Sip
           }
         elsif clf
           if (self[atr.to_s])
-            clf.find(self[atr.to_s]).presenta_nombre
+            r = clf.find(self[atr.to_s])
+            if r.respond_to?(:presenta_nombre)
+              r.presenta_nombre
+            else
+              r.id
+            end
           else
             ""
           end
