@@ -27,8 +27,11 @@ module Sip
 
       # Campos por mostrar en presentación de un registro
       def atributos_show
-        atributos_index - ['habilitado', :habilitado] + 
-          ["fechadeshabilitacion_localizada"]
+        r = atributos_index - ['habilitado', :habilitado]
+        if !r.include?("fechadeshabilitacion_localizada")
+          r << "fechadeshabilitacion_localizada"
+        end
+        r
       end
 
       # Campos que se presentar en formulario
