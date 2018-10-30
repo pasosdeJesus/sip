@@ -32,6 +32,10 @@ module Sip
           "fechacreacion_localizada", "habilitado"
         ]
       end
+
+      def atributos_form
+        atributos_show - ['id', :id]
+      end
   
       def genclase
         return 'M'; # Centro poblado

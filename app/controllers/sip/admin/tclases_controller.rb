@@ -13,6 +13,20 @@ module Sip
         @basica = Tclase.find(params[:id])
       end
   
+      def atributos_index
+        [ 
+          "id", 
+          "nombre", 
+          "observaciones",
+          "fechacreacion_localizada", 
+          "habilitado"
+        ]
+      end
+
+      def atributos_form
+        atributos_show 
+      end
+  
       def genclase
         return 'M';
       end
