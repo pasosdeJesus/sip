@@ -149,6 +149,20 @@ module Sip
                     unaccent(?) || '%'", e)
           }
 
+          attr_accessor :habilitado
+
+          def habilitado
+            fechadeshabilitacion.nil? ? 'Si' : 'No'
+          end
+
+          scope :filtro_habilitado, lambda {|o|
+            if o.upcase.strip == 'SI'
+              where(fechadeshabilitacion: nil)
+            elsif o.upcase.strip == 'NO'
+              where.not(fechadeshabilitacion: nil)
+            end 
+          }
+
         end
 
         class_methods do

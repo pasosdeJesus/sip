@@ -25,7 +25,8 @@ module Sip
               "descripcion",
               "rol",
               "email",
-              "created_at_localizada"
+              "created_at_localizada",
+              "habilitado"
             ]
           end
 
