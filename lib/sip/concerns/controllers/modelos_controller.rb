@@ -128,8 +128,11 @@ module Sip
                 return
               }
               @registros = @registro = c.all
-              if params[:filtro] && params[:filtro][:presenta_nombre] &&
-                params[:filtro][:presenta_nombre] == "1"
+              if params &&
+                  ((params[:presenta_nombre] && 
+                    params[:presenta_nombre] == "1") ||
+                   (params[:filtro] && params[:filtro][:presenta_nombre] &&
+                    params[:filtro][:presenta_nombre] == "1"))
                 regjson = @registros.map {|r| 
                   {id: r.id, presenta_nombre: r.presenta_nombre()}
                 }
