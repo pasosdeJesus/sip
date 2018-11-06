@@ -82,9 +82,9 @@ module Sip
       # Presentar campo atr del registro en index y show genérico (no sobrec)
       def presenta_gen(atr)
         clf = self.class.clase_llave_foranea(atr)
-        if self.class.columns_hash && self.class.columns_hash[atr] && 
-          self.class.columns_hash[atr].type == :boolean 
-          self[atr] ? "Si" : (self[atr].nil? ? "" : "No")
+        if self.class.columns_hash && self.class.columns_hash[atr.to_s] && 
+            self.class.columns_hash[atr.to_s].type == :boolean 
+          self[atr.to_s] ? "Si" : (self[atr.to_s].nil? ? "" : "No")
         elsif self.class.asociacion_combinada(atr)
           ac = self.class.asociacion_combinada(atr).name.to_s
           e = self.send(ac)
