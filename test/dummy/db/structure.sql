@@ -44,6 +44,15 @@ COMMENT ON EXTENSION unaccent IS 'text search dictionary that removes accents';
 
 
 --
+-- Name: rand(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.rand() RETURNS double precision
+    LANGUAGE sql
+    AS $$SELECT random();$$;
+
+
+--
 -- Name: soundexesp(text); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -150,6 +159,15 @@ BEGIN
 	RETURN soundex;	
 END;	
 $$;
+
+
+--
+-- Name: substring_index(text, text, integer); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.substring_index(text, text, integer) RETURNS text
+    LANGUAGE sql
+    AS $_$SELECT array_to_string((string_to_array($1, $2)) [1:$3], $2);$_$;
 
 
 SET default_tablespace = '';
@@ -433,6 +451,7 @@ CREATE TABLE public.sip_grupo (
 --
 
 CREATE SEQUENCE public.sip_grupo_id_seq
+    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -902,6 +921,7 @@ CREATE SEQUENCE public.usuario_id_seq
 CREATE TABLE public.usuario (
     nusuario character varying(15) NOT NULL,
     password character varying(64) DEFAULT ''::character varying NOT NULL,
+    nombre character varying(50) COLLATE public.es_co_utf_8,
     descripcion character varying(50),
     rol integer DEFAULT 4,
     idioma character varying(6) DEFAULT 'es_CO'::character varying NOT NULL,
@@ -924,7 +944,6 @@ CREATE TABLE public.usuario (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     regionsjr_id integer,
-    nombre character varying(50) COLLATE public.es_co_utf_8,
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
