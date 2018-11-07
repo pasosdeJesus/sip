@@ -36,14 +36,26 @@ module Sip
           @@conf_presenta_nombre_con_origen = false
           mattr_accessor :conf_presenta_nombre_con_origen
 
+          @@conf_presenta_nombre_con_departamento = false
+          mattr_accessor :conf_presenta_nombre_con_departamento
+
+
+          def presenta_nombre_con_departamento
+            dep= Sip::Departamento.find(self.id_departamento)
+            self.nombre + " / " + dep.nombre 
+          end
+
           def presenta_nombre_con_origen
             dep= Sip::Departamento.find(self.id_departamento)
             pais = Sip::Pais.find(dep.id_pais)
             self.nombre + " / " + dep.nombre + " / " + pais.nombre
           end
 
+
           def presenta_nombre
-            if @@conf_presenta_nombre_con_origen
+            if @@conf_presenta_nombre_con_departamento
+              presenta_nombre_con_departamento
+            elsif @@conf_presenta_nombre_con_origen
               presenta_nombre_con_origen
             else
               self.nombre

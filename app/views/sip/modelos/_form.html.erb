@@ -36,14 +36,19 @@
       <% if r.class.to_s == 
            'ActiveRecord::Reflection::ThroughReflection' %>
          <% # Tabla combinada %>
-         <% col = r.class_name.constantize.respond_to?(
-         :habilitados) ? r.class_name.constantize.habilitados :
-         r.class_name.constantize.all %>
-        <%= f.association r.name,
-          collection: col,
-          label_method: lambda {|r| r.presenta_nombre }, #:nombre,
-          value_method: :id ,
-          input_html: { class: 'chosen-select' } %>
+         
+         <% 
+           col = r.class_name.constantize.respond_to?(
+             :habilitados) ?  r.class_name.constantize.habilitados : 
+            r.class_name.constantize.all 
+         # En la clase que se presenta, puede modificarse
+         # la funcion presenta_nombre (e.g Sip::Municipio)
+          %>
+          <%= f.association r.name,
+            collection: col,
+            label_method: lambda {|r| r.presenta_nombre }, #:nombre,
+            value_method: :id ,
+            input_html: { class: 'chosen-select' } %>
       <% else %>
         <% # Suponemos que tiene un accepts_nested_attributes_for %>
         <% nd = r.class_name.constantize.human_attribute_name(r.name.to_s) %>
