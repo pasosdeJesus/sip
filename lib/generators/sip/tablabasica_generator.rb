@@ -90,16 +90,13 @@ module Sip
               foreign_key: \"#{nom_arch}_id\", 
               validate: true"
         end
-        puts "Modifique la vista que edita el modelo agregando
-          <%= f.association :#{nom_arch},
-            collection: ::#{nom_clase}.habilitados,
-            include_blank: false,
-            label_method: :nombre, 
-            value_method: :id 
-          %> "
-        puts "Modifique funcion estilo #{options.asocia}_params en 
-        el controlador de la vista cambiada para agregar #{nom_arch}"
-        puts "Modifique la(s) vista(s) que presentan el modelo"
+        puts "Modifique el controlador que edita el modelo y cambie atributos_index y/o atributos_show y/o atributos_form para incluir el campo, por ejemplo:
+        def atributos_index
+          [ :id,
+            :nombre,
+            :#{nom_arch}_id,
+          ]
+        end"
       end
 
       def nom_arch

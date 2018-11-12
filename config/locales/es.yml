@@ -83,6 +83,20 @@ es:
       "sip/pais":
         Pais: Pais
         Paises: Paises
+        nombre: Nombre
+        nombreiso: Nombre ISO
+        alfa2: Código ISO de 2 letras
+        alfa3: Código ISO de 3 letras
+        codiso: Código ISO numérico
+        div1: Primera división política (e.g Departamento o Estado)
+        div2: Segunda división política (e.g Municipio o Condado)
+        div3: Tercer división política (e.g Centro poblado)
+        latitud: Latitud
+        longitud: Longitud
+        fechacreacion: Fecha cuando se agregó a fuentes
+        fechadeshabilitacion: Fecha de deshabilitacion
+        created_at: Fecha en la que se creó en base de datos
+        updated_at: Fecha en la que se actualizó en base de datos
       "sip/perfilactorsocial":
         Perfilactorsocial: Perfil en actor social
         Perfilesactorsocial: Perfiles en actor social

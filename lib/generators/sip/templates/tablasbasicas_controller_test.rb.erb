@@ -52,6 +52,6 @@ class <%= nom_clase_plural %>ControllerTest < ActionController::TestCase
       delete :destroy, id: @<%= nom_arch %>
     end
 
-    assert_redirected_to <%= nom_arch %>es_path
+    assert_redirected_to <%= nom_arch_plural %>_path
   end
 end

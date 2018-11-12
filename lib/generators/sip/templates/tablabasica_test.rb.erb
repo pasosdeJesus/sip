@@ -3,7 +3,32 @@
 require 'test_helper'
 
 class <%= nom_clase %>Test < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  PRUEBA_<%= nom_clase.upcase %> = {
+    nombre: "<%= nom_clase.capitalize %>",
+    fechacreacion: "<%= Date.today.to_s %>",
+    created_at: "<%= Date.today.to_s %>"
+  }
+
+  test "valido" do
+    <%= nom_clase %> = ::<%= nom_clase.capitalize %>.create(
+      PRUEBA_<%= nom_clase.upcase %>)
+    assert(<%= nom_clase %>.valid?)
+    <%= nom_clase %>.destroy
+  end
+
+  test "no valido" do
+    <%= nom_clase %> = ::<%= nom_clase.capitalize %>.new(
+      PRUEBA_<%= nom_clase.upcase %>)
+    <%= nom_clase %>.nombre = ''
+    assert_not(<%= nom_clase %>.valid?)
+    <%= nom_clase %>.destroy
+  end
+
+  test "existente" do
+    skip
+    <%= nom_clase %> = ::<%= nom_clase.capitalize %>.where(id: 0).take
+    assert_equal(<%= nom_clase %>.nombre, "SIN INFORMACIÓN")
+  end
+
 end
