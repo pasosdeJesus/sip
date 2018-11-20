@@ -68,6 +68,7 @@ es:
         id_municipio: Municipio
         id_clalocal: Código dentro del país
         id_tclase: Tipo de centro poblado
+        tclase: Tipo de centro poblado
       "sip/departamento":
         Departamento: Departamento/Estado
         Departamentos: Departamentos/Estados
