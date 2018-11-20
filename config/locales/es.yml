@@ -65,6 +65,9 @@ es:
       "sip/clase":
         Clase: Centro poblado
         Clases: Centros poblados
+        id_municipio: Municipio
+        id_clalocal: Código dentro del país
+        id_tclase: Tipo de centro poblado
       "sip/departamento":
         Departamento: Departamento/Estado
         Departamentos: Departamentos/Estados
@@ -80,6 +83,8 @@ es:
         Municipio: Municipio
         Municipios: Municipios
         id_munlocal: Código dentro del departamento/estado
+        id_pais: País
+        id_departamento: Departamento
       "sip/pais":
         Pais: Pais
         Paises: Paises

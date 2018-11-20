@@ -15,6 +15,8 @@
         cregistro.respond_to?("filtro_#{atrsl}ini") || 
         cregistro.respond_to?("filtro_#{atrsl}fin")
       %>
+      <% (ri, rm, rd)=cregistro.name.pluralize.underscore.rpartition("/") %>
+      <% pr = ri + "/admin/" + rd %>
       <% if lookup_context.find_all("filtro_#{atrf}", 
                                     [cregistro.name.pluralize.underscore], true).any? %>
         <% # Hay un parcial para presentar el campo, 
@@ -25,7 +27,10 @@
                            cregistro.name.pluralize.underscore], true).any? %>
         <%  #e.g cor1440_gen/admin/actor/_filtro_lineabase20182020.html.erb %>
         <%= render partial: "admin/#{cregistro.name.pluralize.underscore}/" +
-          "filtro_#{atrf}", locals: {f: f} %>
+        "filtro_#{atrf}", locals: {f: f} %>
+      <% elsif lookup_context.find_all("filtro_#{atrf}", [pr], true).any? %>
+        <%  #e.g sip/admin/municipios/_filtro_pais.html.erb %>
+        <%= render partial: "#{pr}/filtro_#{atrf}", locals: {f: f} %>
       <% elsif lookup_context.find_all(
         "#{atrf}", [cregistro.name.pluralize.underscore], true).any? %>
         <% # Hay un parcial para presentar el campo, 

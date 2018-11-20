@@ -20,6 +20,8 @@ module Sip
 
           belongs_to :departamento, foreign_key: "id_departamento", 
             validate: true, class_name: 'Sip::Departamento'
+          has_one :pais, through: :departamento,
+            class_name: 'Sip::Pais', source: :pais
 
           validates :id_departamento, presence: true
 
@@ -32,6 +34,10 @@ module Sip
             case_sensitive: false, 
             message: "debe ser único en el departamento/estado",
             allow_blank: true
+
+          scope :filtro_pais, lambda {|p|
+            joins(:departamento).where('sip_departamento.id_pais=?', p)
+          }
 
           @@conf_presenta_nombre_con_origen = false
           mattr_accessor :conf_presenta_nombre_con_origen

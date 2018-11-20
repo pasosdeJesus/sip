@@ -17,7 +17,7 @@ module Sip
             fechadeshabilitacion:nil,
             id_departamento: iddep).all
         end
-        Sip::Departamento.conf_presenta_nombre_con_origen = true
+        Sip::Departamento.conf_presenta_nombre_con_origen = false
         super(c)
       end  
 
@@ -26,11 +26,30 @@ module Sip
       end
   
       def atributos_index
-        ["id",  "nombre", "id_departamento", "id_munlocal", 
-          "latitud", "longitud", "observaciones",
-          "fechacreacion_localizada", "habilitado"
+        [
+          :id,  
+          :nombre, 
+          :pais, 
+          :id_departamento, 
+          :id_munlocal, 
+          :latitud, 
+          :longitud, 
+          :observaciones,
+          :fechacreacion_localizada, 
+          :habilitado
         ]
       end
+
+      def atributos_show
+        atributos_index
+      end
+      
+      def atributos_form
+        Sip::Departamento.conf_presenta_nombre_con_origen = true
+        atributos_show - [:id, 'id', :pais, :habilitado, 'habilitado'] + 
+          [:fechadeshabilitacion_localizada]
+      end
+        
       
       def genclase
         return 'M';
