@@ -30,6 +30,7 @@ ActiveSupport::Inflector.inflections do |inflect|
 	inflect.irregular 'error', 'errores'
 	inflect.irregular 'fuenteprensa', 'fuentesprensa'
 	inflect.irregular 'grupoper', 'gruposper'
+	inflect.irregular 'pais', 'paises'
 	inflect.irregular 'perfilactorsocial', 'perfilesactorsocial'
 	inflect.irregular 'sectoractor', 'sectoresactores'
 	inflect.irregular 'ubicacion', 'ubicaciones'
