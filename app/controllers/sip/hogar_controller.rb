@@ -34,7 +34,7 @@ module Sip
 
     def index
       if current_usuario
-        authorize! :contar, Sip::Ubicacion
+        authorize! :read, Sip::Pais
       end
       verificarutas
       render layout: 'application'
