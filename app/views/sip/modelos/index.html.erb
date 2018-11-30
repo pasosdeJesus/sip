@@ -30,7 +30,9 @@
           <%= render partial: rutaf, locals: {f: f} %>
         <% else %>
           <% atributos_index.each do |atr| %>
-            <th><%= model_class.human_attribute_name(atr) %></th>
+            <% #byebug %>
+            <% m = model_class.human_attribute_name(atr) %>
+            <th><%= m %></th>
           <% end %>
           <th><%=t '.actions', :default => t("helpers.actions") %></th>
         <% end %>
