@@ -1,17 +1,18 @@
 es:
   attributes:
+    departamento: Departamento/Estado
+    descripcion: Descripción
     fechacreacion: Creación
     fechadeshabilitacion: Deshabilitación 
     fechacreacion_localizada: Creación
     fechadeshabilitacion_localizada: Deshabilitación 
     formatoregex: Formato (exp. reg)
+    limiteinferior: Límite inferior
+    limitesuperior: Límite superior
     municipio: Municipio
-    departamento: Departamento/Estado
     pais: País
     supracategoria: Supracategoria
     tviolencia: Tipo de violencia
-    limiteinferior: Límite inferior
-    limitesuperior: Límite superior
   errors:
     format: "%{message}"
     messages:
