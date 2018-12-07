@@ -9,6 +9,7 @@ module Sip
     #ROLCOOR   = 4
     ROLOPERADOR = ROLANALI  = 5
     #ROLSIST   = 6
+    ROLDESARROLLADOR = ROLDES = 7
 
     ROLES = [
       ["Administrador", ROLADMIN],  # 1
@@ -16,7 +17,8 @@ module Sip
       ["", 0], # 3
       ["", 0], # 4
       ["Operador", ROLOPERADOR], # 5
-      ["", 0] #6
+      ["", 0], #6
+      ["Desarrollador", 7] #6
     ]
 
     ROLES_CA = [
@@ -27,7 +29,8 @@ module Sip
       "", #3
       "", #4
       "", #5
-      "" #6
+      "", #6
+      "" #7
     ]
 
     BASICAS_PROPIAS = [
