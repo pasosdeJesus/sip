@@ -77,6 +77,7 @@
 # @fila fila por eliminar de una tabla dinámica manejada por cocoon
 # @prefijo_url Preijo del URL al cual enviar requerimientos AJAX para eliminar
 #   se le concatenará la identificación i.e prefijo_url/id/ (se espera json)
+#   y se le agregaría antes el punto de montaje
 # @seldep Lista de selectores a los cuadros de selección que dependen 
 #   de la fila por eliminar (si existen esta función no eliminará la fila 
 #   sino alertará).
@@ -106,8 +107,12 @@
         alert('Hay elementos que depende de este (' + num + '). ' +
           ' Eliminelos antes.')
         return false
+    root = window 
+    purl = prefijo_url
+    if prefijo_url.substr(0, root.puntomontaje.length) != root.puntomontaje
+      purl = root.puntomontaje + prefijo_url
     $.ajax({
-      url: prefijo_url + ide,
+      url: purl + ide,
       type: 'DELETE',
       dataType: 'json',
       beforeSend: ((xhr) ->
