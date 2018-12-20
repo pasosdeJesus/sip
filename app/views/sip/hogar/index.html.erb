@@ -1,10 +1,15 @@
 <article>
   <br>
   <center>
-    <%= image_tag File.join(
-      Rails.configuration.relative_url_root, 'images', "logo.jpg"),  
-      class: "img-responsive" %>
-    </center>
+    <% rutalogo = File.join(
+      Rails.configuration.relative_url_root, 'images', 'logo.jpg') %>
+    <% rutarlogo = Rails.configuration.root.join('public', rutalogo[1..-1]) %>
+    <% if !File.exists?(rutarlogo) %>
+      <% rutalogo = File.join(
+        Rails.configuration.assets.prefix, 'logo.jpg') %>
+    <% end %>
+    <%= image_tag rutalogo, class: "img-responsive" %>
+  </center>
 
   <%= render "local" %>
 </article>
