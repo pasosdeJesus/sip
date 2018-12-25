@@ -53,7 +53,7 @@ module Sip
           end
 
           def index_reordenar(registros)
-            registros.reorder('LOWER(nusuario)')
+            registros.reorder(Arel.sql('LOWER(nusuario)'))
           end
 
           def new_modelo_path
