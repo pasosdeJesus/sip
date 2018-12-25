@@ -49,6 +49,7 @@ GEM
       io-like (~> 0.3.0)
     arel (9.0.0)
     bcrypt (3.1.12)
+    bigdecimal (1.4.1)
     bindex (0.5.0)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
@@ -298,6 +299,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt
+  bigdecimal
   bootsnap (>= 1.1.0)
   bootstrap-datepicker-rails
   cancancan
@@ -343,4 +345,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.17.1
+   1.17.2

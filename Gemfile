@@ -8,6 +8,8 @@ gem 'puma', '~> 3.11'
 gem "rails", '~> 5.2.1'#, git: 'https://github.com/rails/rails.git', ref: '4887f97bd8a8859294ad02ccea20d83a94ec0812'
 gem "rails-i18n"
 
+gem 'bigdecimal'
+
 # Postgresql
 gem "pg"#, '~> 0.21'
 
