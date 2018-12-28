@@ -146,7 +146,12 @@ module Sip
 
       # Por omisión es posible filtrar por id
       scope :filtro_id, lambda {|id|
-        where(id: id)
+        # Puede ser una lista de ids separadas por ,
+        if id.include?(',')
+          where(id: id.split(','))
+        else
+          where(id: id)
+        end
       }
 
     end # included
