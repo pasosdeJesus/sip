@@ -7,6 +7,8 @@ gem 'puma', '~> 3.11'
 gem "rails", '~> 5.2.1'
 gem "rails-i18n"
 
+gem 'bigdecimal'
+
 # Postgresql
 gem "pg"#, '~> 0.21'
 

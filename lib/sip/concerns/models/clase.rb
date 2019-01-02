@@ -17,6 +17,11 @@ module Sip
 
           belongs_to :municipio, foreign_key: "id_municipio", 
             validate: true, class_name: 'Sip::Municipio'
+          has_one :departamento, through: :municipio,
+            class_name: 'Sip::Departamento', source: :departamento
+          has_one :pais, through: :departamento,
+            class_name: 'Sip::Pais', source: :pais
+
           belongs_to :tclase, foreign_key: "id_tclase", validate: true,
             class_name: 'Sip::Tclase'
 
@@ -32,6 +37,11 @@ module Sip
             scope: :id_municipio,
             case_sensitive: false, 
             message: "debe ser único en el municpio"
+
+          scope :filtro_pais, lambda {|p|
+            joins(:municipio).joins(:departamento).
+              where('sip_departamento.id_pais=?', p)
+          }
 
           @@conf_presenta_nombre_con_origen = false
           mattr_accessor :conf_presenta_nombre_con_origen

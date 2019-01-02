@@ -19,6 +19,6 @@ conexion.execute("INSERT INTO usuario
 	(nusuario, email, encrypted_password, password, 
   fechacreacion, created_at, updated_at, rol) 
 	VALUES ('sip', 'sip@localhost', 
-	'$2a$10$uPICXBx8K/csSb5q3uNsPOwuU1h.9O5Kj9dyQbaCy8gF.5rrPJgG.',
+  '$2a$10$DjawRiYaz.1zY43Mi3vyPumgvgyiRtXcXdqJ5redFjb0YyB2ofVVm',
 	'', '2014-08-14', '2014-08-14', '2014-08-14', 1);")
 

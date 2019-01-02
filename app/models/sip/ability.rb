@@ -16,7 +16,7 @@ module Sip
       ["", 0], # 3
       ["", 0], # 4
       ["Operador", ROLOPERADOR], # 5
-      ["", 0] #6
+      ["", 0], #6
     ]
 
     ROLES_CA = [
@@ -27,7 +27,8 @@ module Sip
       "", #3
       "", #4
       "", #5
-      "" #6
+      "", #6
+      "" #7
     ]
 
     BASICAS_PROPIAS = [

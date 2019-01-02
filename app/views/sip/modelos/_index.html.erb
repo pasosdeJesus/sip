@@ -45,6 +45,7 @@
         <%= render partial: 'index_filtro', locals: {f: f} %>
       <% end %>
 
+              <% byebug %>
     </thead>
 
     <tbody>
@@ -52,12 +53,17 @@
         <tr>
           <% atributos_index.each do |atr| %>
             <td>
-              <% #byebug %>
+              <% byebug %>
               <% vatr = atr.to_s.gsub(/[^a-z_A-Z0-9]/, '') %>
               <% rutavatr = clase.pluralize.underscore + 
                 "/index_campo_#{vatr}" %>
+              <% rutashow = clase.pluralize.underscore + 
+                "/show_campo_#{vatr}" %>
               <% if lookup_context.find_all(rutavatr, [], true).any? %>
                 <%= render partial: rutavatr, locals: {registro: registro} %>
+              <% elsif lookup_context.find_all(rutashow, [], true).any? %>
+                <% @registro = registro %>
+                <%= render partial: rutashow, locals: {registro: registro} %>
               <% elsif atr == "id" then %>
                 <%= link_to registro[atr], modelo_path(registro) %>
               <% else %>

@@ -77,6 +77,7 @@
 # @fila fila por eliminar de una tabla dinámica manejada por cocoon
 # @prefijo_url Preijo del URL al cual enviar requerimientos AJAX para eliminar
 #   se le concatenará la identificación i.e prefijo_url/id/ (se espera json)
+#   y se le agregaría antes el punto de montaje
 # @seldep Lista de selectores a los cuadros de selección que dependen 
 #   de la fila por eliminar (si existen esta función no eliminará la fila 
 #   sino alertará).
@@ -106,8 +107,12 @@
         alert('Hay elementos que depende de este (' + num + '). ' +
           ' Eliminelos antes.')
         return false
+    root = window 
+    purl = prefijo_url
+    if prefijo_url.substr(0, root.puntomontaje.length) != root.puntomontaje
+      purl = root.puntomontaje + prefijo_url
     $.ajax({
-      url: prefijo_url + ide,
+      url: purl + ide,
       type: 'DELETE',
       dataType: 'json',
       beforeSend: ((xhr) ->
@@ -135,6 +140,25 @@ if (typeof String.prototype.endsWith != 'function')
   String.prototype.endsWith = (suffix) ->
     return this.indexOf(suffix, this.length - suffix.length) != -1
 
+
+@sip_meses = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dec']
+
+# Retornas partes de una fecha en un formato dado
+@sip_partes_fecha_localizada = (fecha, formato_fecha) ->
+  if (formato_fecha == 'dd/M/yyyy')
+    anio = +fecha.slice(7,11)
+    dia = +fecha.slice(0,2)
+    nmes = fecha.slice(3,6)
+    if @sip_meses.includes(nmes.toLowerCase())
+      mes = @sip_meses.indexOf(nmes.toLowerCase()) + 1
+    else
+      mes = 6
+  else
+    anio = +fecha.slice(0,4) 
+    mes = +fecha.slice(5,7) 
+    dia = +fecha.slice(8,10) 
+  return [anio, mes, dia]
+  
 # Verifica que una fecha sea válida
 # De: http://stackoverflow.com/questions/8098202/javascript-detecting-valid-dates
 @fecha_valida = (text) ->
@@ -570,9 +594,11 @@ if (typeof String.prototype.endsWith != 'function')
 
 # Prepara eventos comunes al usar sip
 # @param root espacio para poner variables globales
-@sip_prepara_eventos_comunes = (root, sincoord = false) ->
+@sip_prepara_eventos_comunes = (root, sincoord = false, conenv = true) ->
   # Arreglar punto de montaje de la aplicacion
-  root.puntomontaje = "<%= ENV['RAILS_RELATIVE_URL_ROOT'] ? ENV['RAILS_RELATIVE_URL_ROOT'] : Rails.configuration.relative_url_root %>"
+  root.puntomontaje = "<%= Rails.configuration.relative_url_root %>"
+  if conenv
+    root.puntomontaje = "<%= ENV['RAILS_RELATIVE_URL_ROOT'] ? ENV['RAILS_RELATIVE_URL_ROOT'] : Rails.configuration.relative_url_root %>"
   sip_arregla_puntomontaje(root)
   # Formularios con departamento/municipio sin llenar autom. coordenadas
   root.sip_sincoord = false;

@@ -17,7 +17,7 @@ module Sip
             fechadeshabilitacion:nil,
             id_municipio: idmun).all
         end
-        Sip::Municipio.conf_presenta_nombre_con_origen = true
+        Sip::Municipio.conf_presenta_nombre_con_departamento = true
         super(c)
       end  
 
@@ -26,17 +26,31 @@ module Sip
       end
   
       def atributos_index
-        [ 
-          "id", "nombre", "id_municipio", "id_clalocal",
-          "id_tclase", "latitud", "longitud", "observaciones",
-          "fechacreacion_localizada", "habilitado"
+        [
+          :id,  
+          :nombre, 
+          :pais, 
+          :id_municipio, 
+          :id_clalocal, 
+          :id_tclase, 
+          :latitud, 
+          :longitud, 
+          :observaciones,
+          :fechacreacion_localizada, 
+          :habilitado
         ]
       end
 
-      def atributos_form
-        atributos_show - ['id', :id]
+      def atributos_show
+        atributos_index
       end
-  
+      
+      def atributos_form
+        Sip::Municipio.conf_presenta_nombre_con_origen = true
+        atributos_show - [:id, 'id', :pais, :habilitado, 'habilitado'] + 
+          [:fechadeshabilitacion_localizada]
+      end
+        
       def genclase
         return 'M'; # Centro poblado
       end

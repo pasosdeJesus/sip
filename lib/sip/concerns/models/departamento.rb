@@ -31,6 +31,10 @@ module Sip
             message: "debe ser único en el país", 
             allow_blank: true
 
+          scope :filtro_id_pais, lambda {|p|
+            where(id_pais: p)
+          }
+
           @@conf_presenta_nombre_con_origen = false
           mattr_accessor :conf_presenta_nombre_con_origen
 

@@ -19,6 +19,11 @@ module Sip
             Sip::ModeloHelper.nom_filtro(ai)
           end
 
+          # Filtra por control de acceso
+          def filtrar_ca(reg)
+            return reg
+          end
+
           def filtrar(reg, params_filtro)
             # Control para fecha podría no estar localizado aunque
             # campos por presentar si
@@ -91,11 +96,17 @@ module Sip
             c = c.accessible_by(current_ability)
             if c.count == 0 && cannot?(:index, clase.constantize)
               # Supone alias por omision de https://github.com/CanCanCommunity/cancancan/blob/develop/lib/cancan/ability/actions.rb
-              authorize! :read, clase.constantize
+              if cannot?(:read, clase.constantize)
+                redirect_to main_app.root_path
+                return
+              end
+              #authorize! :read, clase.constantize
             end
 
-            # Filtro
+            # Cambiar params
             prefiltrar()
+            # Prefiltrar de acuerdo a control de acceso
+            c = filtrar_ca(c)
             # Autocompletar
             if params && params[:term] && params[:term] != ''
               term = params[:term]

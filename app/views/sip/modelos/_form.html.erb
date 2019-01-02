@@ -9,19 +9,31 @@
     <% alf = @registro.class.asociacion_llave_foranea(atr) %>
     <% vatr = atr.to_s.gsub(/[^a-z_A-Z0-9]/, '') %>
     <% rutavatr = clase.pluralize.underscore + "/campo_#{vatr}" %>
+    <% (ri, rm, rd)=clase.pluralize.underscore.rpartition("/") %>
+    <% radmin = "#{ri}/admin/#{rd}/campo_#{vatr}" %>
     <% if lookup_context.find_all("sip/modelos/#{vatr}", [], true).any? %>
       <% # Hay un parcial para presentar el campo %>
       <%= render partial: "sip/modelos/#{vatr}", locals: {f: f} %>
     <% elsif lookup_context.find_all(rutavatr, [], true).any? %>
       <% # Hay un parcial %>
       <%= render partial: rutavatr, locals: {f: f} %>
+    <% elsif lookup_context.find_all(radmin, [], true).any? %>
+      <%= render partial: radmin, locals: {f: f} %>
     <% elsif alf  %>
       <% # Es llave Foranea 
         n = alf.name
-        col = alf.class_name.constantize.all
-        if col.respond_to?(:habilitados)
-          col = col.habilitados
+        # La coleccion consta de habilitados de la clase más
+        # deshabilitado que ya estuviera referenciado
+        col1 = alf.class_name.constantize.all
+        if col1.respond_to?(:habilitados)
+          col1 = col1.habilitados
         end 
+        ids1 = col1.pluck(:id)
+        ids2 = []
+        if f.object.respond_to?(n) && !f.object.send(n).nil?
+          ids2 = [f.object.send(n).id]
+        end
+        col = alf.class_name.constantize.where(id: ids1 | ids2)
       %>
       <%= f.association n,
         collection: col,
@@ -33,23 +45,7 @@
       <% # Tabla Combinada 
         r = @registro.class.asociacion_combinada(atr)
       %>
-      <% if r.class.to_s == 
-           'ActiveRecord::Reflection::ThroughReflection' %>
-         <% # Tabla combinada %>
-         
-         <% 
-           col = r.class_name.constantize.respond_to?(
-             :habilitados) ?  r.class_name.constantize.habilitados : 
-            r.class_name.constantize.all 
-         # En la clase que se presenta, puede modificarse
-         # la funcion presenta_nombre (e.g Sip::Municipio)
-          %>
-          <%= f.association r.name,
-            collection: col,
-            label_method: lambda {|r| r.presenta_nombre }, #:nombre,
-            value_method: :id ,
-            input_html: { class: 'chosen-select' } %>
-      <% else %>
+      <% if lookup_context.find_all(r.name.to_s + '_campos', [], true).any? %>
         <% # Suponemos que tiene un accepts_nested_attributes_for %>
         <% nd = r.class_name.constantize.human_attribute_name(r.name.to_s) %>
         <div class="panel panel-default">
@@ -65,6 +61,29 @@
             </div>
           </div> <!-- .panel-body -->
         </div> <!-- .panel -->
+      <% else %>
+        <% # r.class.to_s == 
+          #'ActiveRecord::Reflection::ThroughReflection' # Tabla combinada %>
+         <% 
+           col1 = r.class_name.constantize.respond_to?(
+             :habilitados) ?  r.class_name.constantize.habilitados : 
+              r.class_name.constantize.all 
+           ids1 = col1.pluck(:id)
+           ids2 = []
+           if f.object.respond_to?(r.name) && 
+               f.object.send(r.name).respond_to?(:pluck)
+             ids2 = f.object.send(r.name).pluck(:id)
+           end
+           col = r.class_name.constantize.where(id: ids1 | ids2)
+
+         # En la clase que se presenta, puede modificarse
+         # la funcion presenta_nombre (e.g Sip::Municipio)
+          %>
+          <%= f.association r.name,
+            collection: col,
+            label_method: lambda {|r| r.presenta_nombre }, #:nombre,
+            value_method: :id ,
+            input_html: { class: 'chosen-select' } %>
       <% end %>
     <% elsif @registro.class && @registro.class.columns_hash[atr] %>
       <% # Escogemos el control %>

@@ -1,7 +1,7 @@
 # Motor para Sistemas de Información estilo Pasos de Jesús
 [![Build Status](https://semaphoreci.com/api/v1/vtamara/sip/branches/master/badge.svg)](https://semaphoreci.com/vtamara/sip) [![Clima del Código](https://codeclimate.com/github/pasosdeJesus/sip/badges/gpa.svg)](https://codeclimate.com/github/pasosdeJesus/sip) [![Cobertura de Pruebas](https://codeclimate.com/github/pasosdeJesus/sip/badges/coverage.svg)](https://codeclimate.com/github/pasosdeJesus/sip) [![security](https://hakiri.io/github/pasosdeJesus/sip/master.svg)](https://hakiri.io/github/pasosdeJesus/sip/master) [![Dependencias](https://gemnasium.com/pasosdeJesus/sip.svg)](https://gemnasium.com/pasosdeJesus/sip) 
 
-![Logo de sip](https://raw.githubusercontent.com/pasosdeJesus/sip/master/test/dummy/public/images/logo.jpg)
+![Logo de sip](https://raw.githubusercontent.com/pasosdeJesus/sip/master/test/dummy/app/assets/images/logo.jpg)
 
 Este es un motor diseñado para ser base actualizada de sistemas de información seguros o 
 de otros motores para sistemas de información.
