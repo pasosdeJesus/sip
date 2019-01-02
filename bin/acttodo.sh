@@ -46,7 +46,6 @@ function actuno {
 	cd $acdir
 }
 
-
 if (test "$SALTASIP" != "1") then {
 	echo "**** sip"
 	actuno sip test/dummy
@@ -63,6 +62,17 @@ if (test "$SALTAHEB412" != "1") then {
 	actuno heb412_gen test/dummy; 
 	actuno heb412
 } fi;
+
+if (test "$SALTAMR519" != "1") then {
+	echo "**** mr519"
+	actuno mr519_gen test/dummy; 
+} fi;
+
+if (test "$SALTASIPD" != "1") then {
+	echo "**** sipd"
+	actuno sipd test/dummy; 
+} fi;
+
 
 if (test "$SALTACOR1440" != "1") then {
 	echo "**** cor1440"
