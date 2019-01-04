@@ -9,15 +9,15 @@ module Sip
     
     included do
 
-      # Si atr corresponde a tabla combinada o a tabla
-      # con accepts_nested_attributes_for la retorna.
+      # Si atr corresponde a tabla combinada (con relación has_many) o a 
+      # tabla con accepts_nested_attributes_for la retorna.
       # En otro caso retorna nil
       def self.asociacion_combinada(atr)
         r = nil
         if atr.is_a?(Hash) && 
-          (atr.first[0].to_s.ends_with?("_ids") || 
-           atr.first[0].to_s.ends_with?("_attributes"))
-          na = atr.first[0].to_s.chomp("_ids")
+          (atr.first[0].to_s.ends_with?('_ids') || 
+           atr.first[0].to_s.ends_with?('_attributes'))
+          na = atr.first[0].to_s.chomp('_ids')
           na = na.chomp("_attributes")
           a = self.reflect_on_all_associations
           r = a.select { |ua| ua.name.to_s == na }[0] 
@@ -31,7 +31,9 @@ module Sip
           na = atr.to_s.chomp('_ids')
           na = na.chomp('_attributes')
           a = self.reflect_on_all_associations
-          p = a.select { |ua| ua.name.to_s == na }
+          p = a.select { |ua| ua.name.to_s == na && 
+                         (ua.macro == :has_many || 
+                          ua.macro == :has_and_belongs_to_many) }
           if p.count>0
             r=p[0]
           end
