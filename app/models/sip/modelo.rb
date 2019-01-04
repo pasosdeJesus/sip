@@ -13,6 +13,7 @@ module Sip
       # con accepts_nested_attributes_for la retorna.
       # En otro caso retorna nil
       def self.asociacion_combinada(atr)
+        r = nil
         if atr.is_a?(Hash) && 
           (atr.first[0].to_s.ends_with?("_ids") || 
            atr.first[0].to_s.ends_with?("_attributes"))
@@ -26,9 +27,16 @@ module Sip
             puts msg
             raise msg
           end
-          return r
+        else
+          na = atr.to_s.chomp('_ids')
+          na = na.chomp('_attributes')
+          a = self.reflect_on_all_associations
+          p = a.select { |ua| ua.name.to_s == na }
+          if p.count>0
+            r=p[0]
+          end
         end
-        return nil
+        return r
       end
 
       # Si atr es llave foranea retorna asociación a este modelo

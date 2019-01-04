@@ -23,12 +23,12 @@ module Sip
             class_name: 'Sip::ActorsocialPersona',
             foreign_key: "actorsocial_id"
 
-          has_many :actorsocial_sectoractor, 
-            class_name: 'Sip::ActorsocialSectoractor',
-            foreign_key: "actorsocial_id", validate: true, 
-            dependent: :delete_all
-          has_many :sectoractor, class_name: 'Sip::Sectoractor',
-            through: :actorsocial_sectoractor
+          has_and_belongs_to_many :sectoractor, 
+            class_name: 'Sip::Sectoractor',
+            foreign_key: "actorsocial_id", 
+            validate: true, 
+            association_foreign_key: "sectoractor_id",
+            join_table: 'sip_actorsocial_sectoractor'
 
           validates :telefono, length: { maximum: 500 }
           validates :fax, length: { maximum: 500 }

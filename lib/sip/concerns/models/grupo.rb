@@ -16,12 +16,12 @@ module Sip
             self[:nombre] = val.squish if val
           end
 
-          has_many :sip_grupo_usuario,
-            class_name: "Sip::GrupoUsuario", 
-            foreign_key: "sip_grupo_id", validate: true,
-            dependent: :delete_all
-          has_many :usuario, through: :sip_grupo_usuario,
-            class_name: "::Usuario"
+          has_and_belongs_to_many :usuario,
+            class_name: "::Usuario", 
+            foreign_key: "sip_grupo_id", 
+            association_foreign_key: "usuario_id",
+            join_table: 'sip_grupo_usuario',
+            validate: true
         end
 
       end

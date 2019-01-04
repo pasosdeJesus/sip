@@ -42,6 +42,7 @@
         input_html: { class: 'chosen-select' }
       %>
     <% elsif @registro.class.asociacion_combinada(atr) %>
+      <% #byebug %>
       <% # Tabla Combinada 
         r = @registro.class.asociacion_combinada(atr)
       %>
