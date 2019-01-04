@@ -19,15 +19,19 @@ module Sip
           end
 
           def atributos_index
-            [ "id",
+            r = [ "id",
               "nusuario",
               "nombre",
               "descripcion",
               "rol",
-              "email",
-              "created_at_localizada",
+              "email"]
+            if can?(:manage, Sip::Grupo)
+              r += ["sip_grupo"]
+            end
+            r += [ "created_at_localizada",
               "habilitado"
             ]
+            r
           end
 
           def atributos_form

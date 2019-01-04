@@ -31,5 +31,6 @@ module Dummy
 
     config.active_record.schema_format = :sql
 
+    #config.web_console.whitelisted_ips = ['x.y.z.a']
   end
 end
