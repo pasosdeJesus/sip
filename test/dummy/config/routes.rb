@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  scope '/sip' do
+  scope 'sip' do
     # The priority is based upon order of creation: first created -> highest priority.
     # See how all your routes lay out with "rake routes".
     devise_scope :usuario do

@@ -16,7 +16,7 @@ gem "pg"#, '~> 0.21'
 gem "colorize"
 
 # Cuadros de selección potenciados
-gem 'chosen-rails'
+gem 'chosen-rails', git: "https://github.com/vtamara/chosen-rails.git", branch: 'app-assets'
 
 # Unifica CSSs
 gem "sass"
