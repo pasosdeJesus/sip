@@ -74,12 +74,6 @@ if (test "$SALTAMR519" != "1") then {
 	actuno mr519_gen test/dummy; 
 } fi;
 
-if (test "$SALTASIPD" != "1") then {
-	echo "**** sipd"
-	actuno sipd test/dummy; 
-} fi;
-
-
 if (test "$SALTACOR1440" != "1") then {
 	echo "**** cor1440"
 	actuno cor1440_gen test/dummy; 
