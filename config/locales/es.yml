@@ -57,6 +57,8 @@ es:
         Actorsocial: Actor social
         Actoressociales: Actores sociales
         direccion: Dirección
+        fechadeshabilitacion: Fecha de deshabilitación
+        fechadeshabilitacion_localizada: Fecha de deshabilitación
         grupoper: Nombre
         grupoper_id: Nombre
         pais_id: País
