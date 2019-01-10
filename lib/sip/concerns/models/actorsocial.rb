@@ -30,10 +30,22 @@ module Sip
             association_foreign_key: "sectoractor_id",
             join_table: 'sip_actorsocial_sectoractor'
 
+          campofecha_localizado :fechadeshabilitacion
+
           validates :telefono, length: { maximum: 500 }
           validates :fax, length: { maximum: 500 }
           validates :direccion, length: { maximum: 500 }
           validates :web, length: { maximum: 500 }
+
+          scope :habilitados, -> () {
+            where(fechadeshabilitacion: nil)
+          }
+
+          attr_accessor :habilitado
+
+          def habilitado
+            fechadeshabilitacion.nil? ? 'Si' : 'No'
+          end
 
           def presenta(atr)
             case atr.to_s
@@ -62,6 +74,14 @@ module Sip
 
           scope :filtro_grupoper_id, lambda { |g|
             where("grupoper_id=?", g)
+          }
+
+          scope :filtro_habilitado, lambda {|o|
+            if o.upcase.strip == 'SI'
+              where(fechadeshabilitacion: nil)
+            elsif o.upcase.strip == 'NO'
+              where.not(fechadeshabilitacion: nil)
+            end 
           }
 
           scope :filtro_sectoractor_ids, lambda { |s|

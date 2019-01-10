@@ -28,12 +28,14 @@ module Sip
               :telefono, 
               :fax,
               :pais,
-              :direccion
+              :direccion,
+              :habilitado
             ]
           end
 
           def atributos_show
-            atributos_index
+            atributos_index - [:habilitado] + 
+              [:fechadeshabilitacion_localizada]
           end
 
           def atributos_form
