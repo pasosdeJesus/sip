@@ -10,6 +10,7 @@ Sip::Engine.routes.draw do
   get "/hogar" => 'hogar#index'
   get '/mundep' => 'admin/municipios#mundep'
   get "/personas" => 'personas#index'
+  get "/personas/datos" => 'personas#datos'
   get "/personas/remplazar" => 'personas#remplazar'
   get "/respaldo7z" => 'respaldo7z#new', as: 'respaldo7z'
   post "/respaldo7z" => 'respaldo7z#create'
