@@ -64,10 +64,16 @@
         r = cregistro.asociacion_combinada(atr)
       %>
       <% if r.class.to_s == 
-           'ActiveRecord::Reflection::ThroughReflection' %>
-        <% # Tabla combinada %>
+          'ActiveRecord::Reflection::ThroughReflection' ||
+          r.class.to_s == 
+          'ActiveRecord::Reflection::HasAndBelongsToManyReflection'
+        %>
+      <% # Tabla combinada %>
+        <% col = r.class_name.constantize.respond_to?(:habilitados) ?
+              r.class_name.constantize.habilitados :
+              r.class_name.constantize.all %>
         <%= f.input n,
-          collection: r.class_name.constantize.habilitados,
+          collection: col,
           label: false,
           include_blank: true,
           label_method: :presenta_nombre,
