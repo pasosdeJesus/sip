@@ -1,0 +1,10 @@
+<%= f.input :bussexo, 
+  collection: ::Sip::Persona::OPCIONES_SEXO,
+  label: false,
+  include_blank: true,
+  selected: Sip::ModeloHelper.poromision(params, :bussexo),
+  input_html: { 
+    class: 'chosen-select',
+    "data-enviarautomatico" => "" 
+  } 
+%>

@@ -12,6 +12,12 @@ module Sip
 
           self.table_name = 'sip_persona'
 
+          OPCIONES_SEXO = [
+            ["SIN INFORMACIÓN", :S], 
+            ["FEMENINO", :F], 
+            ["MASCULINO", :M]
+          ]
+            
           # Si agrego el siguiente al agregar una victima individual
           # y ponerle organización falla con
           # undefined method `find_all' for #<Sip::ActorsocialPersona:0x0000158dc0553d00>
@@ -125,6 +131,11 @@ module Sip
             where("unaccent(numerodocuemnto) ILIKE '%' || " +
                   "unaccent(?) || '%'", n)
           }
+
+          scope :filtro_sexo, lambda { |s|
+            where(sexo: s)
+          }
+
 
         end # include
 

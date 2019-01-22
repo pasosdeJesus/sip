@@ -1,4 +1,4 @@
-  <%= f.input :sexo, collection: [["SIN INFORMACIÓN", :S], 
-    ["FEMENINO", :F], ["MASCULINO", :M]], 
-    include_blank: false 
-  %>
+<%= f.input :sexo, 
+  collection: ::Sip::Persona::OPCIONES_SEXO,
+  include_blank: false 
+%>
