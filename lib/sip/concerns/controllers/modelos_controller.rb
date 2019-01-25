@@ -184,6 +184,13 @@ module Sip
             render layout: 'application'
           end
 
+
+          # Filtro al contenido de params
+          # Para modificar parametros antes de que sean procesados en create y update.
+          # Puede servir para sanear información (si no quieren usarse validaciones).
+          def filtra_contenido_params
+          end
+
           # Presenta formulario para crear nuevo registro
           def new
             if cannot? :new, clase.constantize
@@ -213,7 +220,9 @@ module Sip
             if registro
               @registro = registro
             else
-              @registro = clase.constantize.new(send(c2 + '_params'))
+              filtra_contenido_params
+              pf = send(c2 + '_params')
+              @registro = clase.constantize.new(pf)
             end
             if @registro.respond_to?(:fechacreacion)
               @registro.fechacreacion = DateTime.now.strftime('%Y-%m-%d')
@@ -256,7 +265,9 @@ module Sip
             actualizada = genclase == 'M' ? 'actualizado' : 'actualizada';
             respond_to do |format|
               c2 = clase.demodulize.underscore
-              if @registro.update(send(c2 + "_params"))
+              filtra_contenido_params
+              pf = send(c2 + '_params')
+              if @registro.update(pf)
                 format.html { 
                   if params[:_sip_enviarautomatico_y_repinta]
                     redirect_to edit_modelo_path(@registro), 
@@ -282,8 +293,8 @@ module Sip
 
           end
 
-          def update
-            update_gen
+          def update(registro = nil)
+            update_gen(registro)
           end
 
           # Elimina un registro 

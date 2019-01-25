@@ -12,8 +12,9 @@
     <% (ri, rm, rd)=clase.pluralize.underscore.rpartition("/") %>
     <% radmin = "#{ri}/admin/#{rd}/campo_#{vatr}" %>
     <% if lookup_context.find_all("sip/modelos/#{vatr}", [], true).any? %>
-      <% # Hay un parcial para presentar el campo %>
       <%= render partial: "sip/modelos/#{vatr}", locals: {f: f} %>
+    <% elsif lookup_context.find_all("sip/modelos/campo_#{vatr}", [], true).any? %>
+      <%= render partial: "sip/modelos/campo_#{vatr}", locals: {f: f} %>
     <% elsif lookup_context.find_all(rutavatr, [], true).any? %>
       <% # Hay un parcial %>
       <%= render partial: rutavatr, locals: {f: f} %>
