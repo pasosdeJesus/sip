@@ -220,8 +220,8 @@ ALTER SEQUENCE public.sip_actorsocial_id_seq OWNED BY public.sip_actorsocial.id;
 
 CREATE TABLE public.sip_actorsocial_persona (
     id bigint NOT NULL,
+    actorsocial_id integer NOT NULL,
     persona_id integer NOT NULL,
-    actorsocial_id integer,
     perfilactorsocial_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -1499,6 +1499,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170413185012'),
 ('20170414035328'),
 ('20180320230847'),
+('20180710175418'),
 ('20180717135811'),
 ('20180720140443'),
 ('20180720171842'),
