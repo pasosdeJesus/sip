@@ -214,6 +214,14 @@ module Sip
             render layout: 'application'
           end
 
+          # Validaciones adicionales a las del modelo que 
+          # requieren current_usuario y current_ability y que
+          # bien no se desean que generen una excepción o bien
+          # que no se pudieron realizar con cancancan
+          def validaciones(registro)
+            return true
+          end
+
           # Crea un registro a partir de información de formulario
           def create_gen(registro = nil)
             c2 = clase.demodulize.underscore
@@ -226,6 +234,10 @@ module Sip
             end
             if @registro.respond_to?(:fechacreacion)
               @registro.fechacreacion = DateTime.now.strftime('%Y-%m-%d')
+            end
+            if !validaciones(@registro) || !@registro.valid?
+              render action: 'new', layout: 'application' 
+              return
             end
             authorize! :create, @registro
             creada = genclase == 'M' ? 'creado' : 'creada';
@@ -261,12 +273,23 @@ module Sip
             else
               @registro = clase.constantize.find(params[:id])
             end
-            authorize! :update, @registro
             actualizada = genclase == 'M' ? 'actualizado' : 'actualizada';
+            c2 = clase.demodulize.underscore
+            filtra_contenido_params
+            pf = send(c2 + '_params')
+            @registro.assign_attributes( pf )
+            if !validaciones(@registro) || !@registro.valid?
+              #flash[:error] = @registro.errors
+              render action: 'edit', layout: 'application' 
+              return
+            end
+            if registro
+              @registro = registro
+            else
+              @registro = clase.constantize.find(params[:id])
+            end
+            authorize! :update, @registro
             respond_to do |format|
-              c2 = clase.demodulize.underscore
-              filtra_contenido_params
-              pf = send(c2 + '_params')
               if @registro.update(pf)
                 format.html { 
                   if params[:_sip_enviarautomatico_y_repinta]
