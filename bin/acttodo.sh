@@ -104,6 +104,8 @@ if (test "$SALTASIVEL" != "1") then {
 } fi;
 
 # Usan 3 motores
+actuno si_anzorc; 
+
 if (test "$SALTASIVELSJR" != "1") then {
 	echo "**** sivelsjr"
 	actuno sivel2_sjr test/dummy; 
@@ -111,7 +113,6 @@ if (test "$SALTASIVELSJR" != "1") then {
 } fi;
 
 # Usan 4 motores
-actuno si_anzorc; 
 actuno si_jrslac; 
 actuno sivel2_sjrven; 
 actuno sivel2_sjrcol
