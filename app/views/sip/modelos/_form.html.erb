@@ -11,15 +11,18 @@
     <% rutavatr = clase.pluralize.underscore + "/campo_#{vatr}" %>
     <% (ri, rm, rd)=clase.pluralize.underscore.rpartition("/") %>
     <% radmin = "#{ri}/admin/#{rd}/campo_#{vatr}" %>
-    <% if lookup_context.find_all("sip/modelos/#{vatr}", [], true).any? %>
-      <%= render partial: "sip/modelos/#{vatr}", locals: {f: f} %>
-    <% elsif lookup_context.find_all("sip/modelos/campo_#{vatr}", [], true).any? %>
-      <%= render partial: "sip/modelos/campo_#{vatr}", locals: {f: f} %>
-    <% elsif lookup_context.find_all(rutavatr, [], true).any? %>
-      <% # Hay un parcial %>
+    <% if lookup_context.find_all(rutavatr, [], true).any? %>
+      <% # Hay un parcial especifico %>
       <%= render partial: rutavatr, locals: {f: f} %>
     <% elsif lookup_context.find_all(radmin, [], true).any? %>
+      <% # Hay un parcial especifico %>
       <%= render partial: radmin, locals: {f: f} %>
+    <% elsif lookup_context.find_all("sip/modelos/#{vatr}", [], true).any? %>
+      <% # Hay un parcial generico %>
+      <%= render partial: "sip/modelos/#{vatr}", locals: {f: f} %>
+    <% elsif lookup_context.find_all("sip/modelos/campo_#{vatr}", [], true).any? %>
+      <% # Hay un parcial generico %>
+      <%= render partial: "sip/modelos/campo_#{vatr}", locals: {f: f} %>
     <% elsif alf  %>
       <% # Es llave Foranea 
         n = alf.name
