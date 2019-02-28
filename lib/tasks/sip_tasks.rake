@@ -34,9 +34,11 @@ namespace :sip do
     tb = ab.nobasicas_indice_seq_con_id
     tb.each do |t|
       #puts "OJO no basica con indice, t=#{t}"
+      #byebug
       connection.execute("
-      SELECT setval('#{Ability::tb_modelo t}_id_seq', MAX(id)) 
-                         FROM #{Ability::tb_modelo t}");
+      SELECT setval('#{Ability::tb_modelo t}_id_seq', MAX(id)) FROM
+          (SELECT 100 as id UNION 
+            SELECT MAX(id) FROM #{Ability::tb_modelo t}) AS s;")
     end
 
   end
