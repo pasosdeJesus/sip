@@ -85,7 +85,7 @@
     <% elsif cregistro.columns_hash[atrsl] && respfiltro %>
       <% # Escogemos el control %>
       <% col = cregistro.columns_hash[atrsl] %>
-      <% if col && col.type == :date then %>
+      <% if col && (col.type == :date || col.type == :datetime) then %>
         <% # byebug %>
         <% # fecha %>
         <% # el control estandar de fechas HTML siempre responde con %>
