@@ -8,7 +8,7 @@ de otros motores para sistemas de información.
 
 Puedes pensarlo como una capa adicional sobre Ruby on Rails que incluye 
 soluciones estándar, seguras y probadas para más elementos de un sistema 
-de información, como:
+de información como:
 
 - Pila actualizada: desarrollado en simultaneo con adJ (distribución de 
   OpenBSD) y modificado para operar siempre sobre las nuevas versiones
