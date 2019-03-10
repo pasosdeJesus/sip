@@ -597,8 +597,8 @@ if (typeof String.prototype.endsWith != 'function')
 @sip_prepara_eventos_comunes = (root, sincoord = false, conenv = true) ->
   # Arreglar punto de montaje de la aplicacion
   root.puntomontaje = "<%= Rails.configuration.relative_url_root %>"
-  if conenv
-    root.puntomontaje = "<%= ENV['RAILS_RELATIVE_URL_ROOT'] ? ENV['RAILS_RELATIVE_URL_ROOT'] : Rails.configuration.relative_url_root %>"
+  if conenv && <%= !ENV['RAILS_RELATIVE_URL_ROOT'] || ENV['RAILS_RELATIVE_URL_ROOT'] == "" ? "false" : "true" %>
+    root.puntomontaje = "<%= ENV['RAILS_RELATIVE_URL_ROOT'] %>"
   sip_arregla_puntomontaje(root)
   # Formularios con departamento/municipio sin llenar autom. coordenadas
   root.sip_sincoord = false;
