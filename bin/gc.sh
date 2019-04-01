@@ -25,13 +25,14 @@ if (test "$SININS" != "1") then {
 	} fi;
 } fi;
 if (test "$SINMIG" != "1") then {
-	(cd test/dummy; bundle exec rake db:migrate sip:indices db:structure:dump)
+	(cd test/dummy; bin/rails db:migrate; bin/rails sip:indices db:structure:dump)
 	if (test "$?" != "0") then {
 		exit 1;
 	} fi;
 } fi;
+echo "paso sinimg"
 
-(cd test/dummy; RAILS_ENV=test bundle exec rake db:drop db:setup db:migrate sip:indices)
+(cd test/dummy; RAILS_ENV=test bundle exec rake db:drop db:setup;RAILS_ENV=test bundle exec rake db:migrate sip:indices)
 if (test "$?" != "0") then {
 	echo "No puede preparse base de prueba";
 	exit 1;
