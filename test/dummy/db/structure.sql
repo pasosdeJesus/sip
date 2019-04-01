@@ -206,8 +206,8 @@ ALTER SEQUENCE public.sip_actorsocial_id_seq OWNED BY public.sip_actorsocial.id;
 
 CREATE TABLE public.sip_actorsocial_persona (
     id bigint NOT NULL,
+    actorsocial_id integer NOT NULL,
     persona_id integer NOT NULL,
-    actorsocial_id integer,
     perfilactorsocial_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -889,7 +889,6 @@ CREATE SEQUENCE public.usuario_id_seq
 CREATE TABLE public.usuario (
     nusuario character varying(15) NOT NULL,
     password character varying(64) DEFAULT ''::character varying NOT NULL,
-    nombre character varying(50) COLLATE public.es_co_utf_8,
     descripcion character varying(50),
     rol integer DEFAULT 4,
     idioma character varying(6) DEFAULT 'es_CO'::character varying NOT NULL,
@@ -912,6 +911,7 @@ CREATE TABLE public.usuario (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     regionsjr_id integer,
+    nombre character varying(50) COLLATE public.es_co_utf_8,
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
@@ -1123,6 +1123,14 @@ ALTER TABLE ONLY public.sip_persona_trelacion
 
 ALTER TABLE ONLY public.sip_persona_trelacion
     ADD CONSTRAINT sip_persona_trelacion_persona1_persona2_id_trelacion_key UNIQUE (persona1, persona2, id_trelacion);
+
+
+--
+-- Name: sip_persona_trelacion sip_persona_trelacion_persona1_persona2_id_trelacion_key1; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_persona_trelacion
+    ADD CONSTRAINT sip_persona_trelacion_persona1_persona2_id_trelacion_key1 UNIQUE (persona1, persona2, id_trelacion);
 
 
 --
@@ -1477,6 +1485,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170413185012'),
 ('20170414035328'),
 ('20180320230847'),
+('20180710175418'),
 ('20180717135811'),
 ('20180720140443'),
 ('20180720171842'),
