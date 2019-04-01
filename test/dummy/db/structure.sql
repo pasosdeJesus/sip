@@ -161,7 +161,7 @@ CREATE TABLE public.ar_internal_metadata (
 CREATE TABLE public.divipola_oficial_2018_corregido (
     coddep character varying(2),
     codmun character varying(5),
-    codcen character varying(8),
+    codcp character varying(8),
     departamento character varying(512) COLLATE public.es_co_utf_8,
     municipio character varying(512) COLLATE public.es_co_utf_8,
     centropoblado character varying(512) COLLATE public.es_co_utf_8,
@@ -275,7 +275,7 @@ CREATE VIEW public.divipola_sip AS
     sip_departamento.nombre AS departamento,
     ("substring"(to_char(sip_departamento.id_deplocal, '00'::text), 2) || "substring"(to_char(sip_municipio.id_munlocal, '000'::text), 2)) AS codmun,
     sip_municipio.nombre AS municipio,
-    (("substring"(to_char(sip_departamento.id_deplocal, '00'::text), 2) || "substring"(to_char(sip_municipio.id_munlocal, '000'::text), 2)) || "substring"(to_char(sip_clase.id_clalocal, '000'::text), 2)) AS codcen,
+    (("substring"(to_char(sip_departamento.id_deplocal, '00'::text), 2) || "substring"(to_char(sip_municipio.id_munlocal, '000'::text), 2)) || "substring"(to_char(sip_clase.id_clalocal, '000'::text), 2)) AS codcp,
     sip_clase.nombre AS centropoblado,
     sip_clase.id_tclase AS tipocp,
     sip_clase.id AS sip_idcp
