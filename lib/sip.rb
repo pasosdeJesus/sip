@@ -46,8 +46,8 @@ module Sip
   # http://stackoverflow.com/questions/11905868/Check-if-sequence-exists-in-Postgres-plpgsql/11919600#11919600
   def self.existe_secuencia?(conexion, nombre)
     cs = conexion.select_all "SELECT c.relkind
-      FROM   pg_namespace n
-      JOIN   pg_class c ON c.relnamespace = n.oid
+      FROM   pg_catalog.pg_namespace n
+      JOIN   pg_catalog.pg_class c ON c.relnamespace = n.oid
       WHERE  n.nspname = current_schema
       AND c.relname = '#{nombre}' 
       AND c.relkind = 'S'"

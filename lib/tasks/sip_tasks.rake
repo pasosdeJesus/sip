@@ -24,9 +24,9 @@ namespace :sip do
 			else	
 				maxv = 100
 			end
-			q = "SELECT setval('#{nomt}_id_seq', MAX(id)) FROM 
+			q = "SELECT setval('public.#{nomt}_id_seq', MAX(id)) FROM 
           (SELECT #{maxv} as id UNION 
-            SELECT MAX(id) FROM #{Ability::tb_modelo t}) AS s;"
+            SELECT MAX(id) FROM public.#{Ability::tb_modelo t}) AS s;"
 		  #puts q
     	connection.execute(q)
 		end
@@ -36,9 +36,9 @@ namespace :sip do
       #puts "OJO no basica con indice, t=#{t}"
       #byebug
       connection.execute("
-      SELECT setval('#{Ability::tb_modelo t}_id_seq', MAX(id)) FROM
+      SELECT setval('public.#{Ability::tb_modelo t}_id_seq', MAX(id)) FROM
           (SELECT 100 as id UNION 
-            SELECT MAX(id) FROM #{Ability::tb_modelo t}) AS s;")
+            SELECT MAX(id) FROM public.#{Ability::tb_modelo t}) AS s;")
     end
 
   end

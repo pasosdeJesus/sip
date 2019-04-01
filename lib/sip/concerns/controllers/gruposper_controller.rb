@@ -40,7 +40,7 @@ module Sip
                 seps = " || ' ' || ";
               end
               qstring = "SELECT TRIM(nombre) AS value, grupoper.id AS id 
-                FROM sip_grupoper AS grupoper
+                FROM public.sip_grupoper AS grupoper
                 WHERE #{where} ORDER BY 1";
                 r = ActiveRecord::Base.connection.select_all qstring
                 respond_to do |format|
