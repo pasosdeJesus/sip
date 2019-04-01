@@ -53,7 +53,7 @@ namespace :sip do
     search_path = abcs[Rails.env]['schema_search_path']
     connection = ActiveRecord::Base.connection()
     ab = ::Ability.new
-		# Asegurasmo que primero se vuelcan superbasicas y otras en orden correcto
+		# Volcar primero superbasicas y otras en orden correcto
     tb = ab.tablasbasicas_prio + 
       (ab.tablasbasicas - ab.tablasbasicas_prio);
     unless search_path.blank?
@@ -73,7 +73,7 @@ namespace :sip do
       tb.each do |t|
         printf "%s:%s - ", t[0], t[1]
         if t[0] == modobj
-          command = "pg_dump --inserts --data-only --no-privileges --no-owner --column-inserts --table=#{Ability::tb_modelo t}  #{search_path} #{Shellwords.escape(abcs[Rails.env]['database'])} | sed -e \"s/SET lock_timeout = 0;//g\" >> #{archt.to_path}"
+          command = "pg_dump --inserts --data-only --no-privileges --no-owner --column-inserts --table=#{Ability::tb_modelo t}  #{search_path} #{Shellwords.escape(abcs[Rails.env]['database'])} | sed -e \"s/SET lock_timeout = 0;//g\" > #{archt.to_path}"
           puts command.green
           raise "Error al volcar tabla #{Ability::tb_modelo t}" unless Kernel.system(command)
           inserto = false
@@ -82,6 +82,7 @@ namespace :sip do
           # Agrega volcado pero ordenando los INSERTS
           # (pues pg_dump reordena arbitrariamente haciendo que entre
           # un volcado y otro se vean diferencias con diff cuando no hay)
+          #byebug
           File.open(archt.to_path, "r") { |ent| 
             ent.each_line { |line| 
               if line[0,6] == "INSERT"
