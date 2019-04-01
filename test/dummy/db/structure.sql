@@ -155,121 +155,17 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
+-- Name: divipola_oficial_2018_corregido; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.schema_migrations (
-    version character varying NOT NULL
-);
-
-
---
--- Name: sip_actorsocial; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sip_actorsocial (
-    id bigint NOT NULL,
-    grupoper_id integer NOT NULL,
-    telefono character varying(500),
-    fax character varying(500),
-    direccion character varying(500),
-    pais_id integer,
-    web character varying(500),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    fechadeshabilitacion date
-);
-
-
---
--- Name: sip_actorsocial_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sip_actorsocial_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sip_actorsocial_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.sip_actorsocial_id_seq OWNED BY public.sip_actorsocial.id;
-
-
---
--- Name: sip_actorsocial_persona; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sip_actorsocial_persona (
-    id bigint NOT NULL,
-    persona_id integer NOT NULL,
-    actorsocial_id integer,
-    perfilactorsocial_id integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: sip_actorsocial_persona_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sip_actorsocial_persona_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sip_actorsocial_persona_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.sip_actorsocial_persona_id_seq OWNED BY public.sip_actorsocial_persona.id;
-
-
---
--- Name: sip_actorsocial_sectoractor; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sip_actorsocial_sectoractor (
-    actorsocial_id integer,
-    sectoractor_id integer
-);
-
-
---
--- Name: sip_anexo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sip_anexo_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sip_anexo; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sip_anexo (
-    id integer DEFAULT nextval('public.sip_anexo_id_seq'::regclass) NOT NULL,
-    fecha date NOT NULL,
-    descripcion character varying(1500) COLLATE public.es_co_utf_8 NOT NULL,
-    archivo character varying(255),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    adjunto_file_name character varying(255),
-    adjunto_content_type character varying(255),
-    adjunto_file_size integer,
-    adjunto_updated_at timestamp without time zone
+CREATE TABLE public.divipola_oficial_2018_corregido (
+    coddep character varying(2),
+    codmun character varying(5),
+    codcen character varying(8),
+    departamento character varying(512) COLLATE public.es_co_utf_8,
+    municipio character varying(512) COLLATE public.es_co_utf_8,
+    centropoblado character varying(512) COLLATE public.es_co_utf_8,
+    tipocp character varying(6)
 );
 
 
@@ -335,6 +231,177 @@ CREATE TABLE public.sip_departamento (
     updated_at timestamp without time zone,
     observaciones character varying(5000) COLLATE public.es_co_utf_8,
     CONSTRAINT departamento_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
+-- Name: sip_municipio_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sip_municipio_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_municipio; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_municipio (
+    id integer DEFAULT nextval('public.sip_municipio_id_seq'::regclass) NOT NULL,
+    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
+    id_departamento integer NOT NULL,
+    id_munlocal integer,
+    latitud double precision,
+    longitud double precision,
+    fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    observaciones character varying(5000) COLLATE public.es_co_utf_8,
+    CONSTRAINT municipio_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
+);
+
+
+--
+-- Name: divipola_sip; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW public.divipola_sip AS
+ SELECT "substring"(to_char(sip_departamento.id_deplocal, '00'::text), 2) AS coddep,
+    sip_departamento.nombre AS departamento,
+    ("substring"(to_char(sip_departamento.id_deplocal, '00'::text), 2) || "substring"(to_char(sip_municipio.id_munlocal, '000'::text), 2)) AS codmun,
+    sip_municipio.nombre AS municipio,
+    (("substring"(to_char(sip_departamento.id_deplocal, '00'::text), 2) || "substring"(to_char(sip_municipio.id_munlocal, '000'::text), 2)) || "substring"(to_char(sip_clase.id_clalocal, '000'::text), 2)) AS codcen,
+    sip_clase.nombre AS centropoblado,
+    sip_clase.id_tclase AS tipocp,
+    sip_clase.id AS sip_idcp
+   FROM ((public.sip_departamento
+     JOIN public.sip_municipio ON ((sip_municipio.id_departamento = sip_departamento.id)))
+     JOIN public.sip_clase ON ((sip_clase.id_municipio = sip_municipio.id)))
+  WHERE ((sip_departamento.id_pais = 170) AND (sip_clase.fechadeshabilitacion IS NULL))
+  ORDER BY sip_departamento.nombre, sip_municipio.nombre, sip_clase.nombre;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.schema_migrations (
+    version character varying NOT NULL
+);
+
+
+--
+-- Name: sip_actorsocial; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_actorsocial (
+    id bigint NOT NULL,
+    grupoper_id integer NOT NULL,
+    telefono character varying(500),
+    fax character varying(500),
+    direccion character varying(500),
+    pais_id integer,
+    web character varying(500),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    fechadeshabilitacion date
+);
+
+
+--
+-- Name: sip_actorsocial_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sip_actorsocial_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_actorsocial_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.sip_actorsocial_id_seq OWNED BY public.sip_actorsocial.id;
+
+
+--
+-- Name: sip_actorsocial_persona; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_actorsocial_persona (
+    id bigint NOT NULL,
+    actorsocial_id integer NOT NULL,
+    persona_id integer NOT NULL,
+    perfilactorsocial_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: sip_actorsocial_persona_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sip_actorsocial_persona_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_actorsocial_persona_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.sip_actorsocial_persona_id_seq OWNED BY public.sip_actorsocial_persona.id;
+
+
+--
+-- Name: sip_actorsocial_sectoractor; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_actorsocial_sectoractor (
+    actorsocial_id integer,
+    sectoractor_id integer
+);
+
+
+--
+-- Name: sip_anexo_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sip_anexo_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_anexo; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_anexo (
+    id integer DEFAULT nextval('public.sip_anexo_id_seq'::regclass) NOT NULL,
+    fecha date NOT NULL,
+    descripcion character varying(1500) COLLATE public.es_co_utf_8 NOT NULL,
+    archivo character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    adjunto_file_name character varying(255),
+    adjunto_content_type character varying(255),
+    adjunto_file_size integer,
+    adjunto_updated_at timestamp without time zone
 );
 
 
@@ -479,38 +546,6 @@ CREATE SEQUENCE public.sip_grupoper_id_seq
 --
 
 ALTER SEQUENCE public.sip_grupoper_id_seq OWNED BY public.sip_grupoper.id;
-
-
---
--- Name: sip_municipio_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sip_municipio_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sip_municipio; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sip_municipio (
-    id integer DEFAULT nextval('public.sip_municipio_id_seq'::regclass) NOT NULL,
-    nombre character varying(500) COLLATE public.es_co_utf_8 NOT NULL,
-    id_departamento integer NOT NULL,
-    id_munlocal integer,
-    latitud double precision,
-    longitud double precision,
-    fechacreacion date DEFAULT ('now'::text)::date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    observaciones character varying(5000) COLLATE public.es_co_utf_8,
-    CONSTRAINT municipio_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
-);
 
 
 --
@@ -889,7 +924,6 @@ CREATE SEQUENCE public.usuario_id_seq
 CREATE TABLE public.usuario (
     nusuario character varying(15) NOT NULL,
     password character varying(64) DEFAULT ''::character varying NOT NULL,
-    nombre character varying(50) COLLATE public.es_co_utf_8,
     descripcion character varying(50),
     rol integer DEFAULT 4,
     idioma character varying(6) DEFAULT 'es_CO'::character varying NOT NULL,
@@ -912,6 +946,7 @@ CREATE TABLE public.usuario (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     regionsjr_id integer,
+    nombre character varying(50) COLLATE public.es_co_utf_8,
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
@@ -1123,6 +1158,14 @@ ALTER TABLE ONLY public.sip_persona_trelacion
 
 ALTER TABLE ONLY public.sip_persona_trelacion
     ADD CONSTRAINT sip_persona_trelacion_persona1_persona2_id_trelacion_key UNIQUE (persona1, persona2, id_trelacion);
+
+
+--
+-- Name: sip_persona_trelacion sip_persona_trelacion_persona1_persona2_id_trelacion_key1; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_persona_trelacion
+    ADD CONSTRAINT sip_persona_trelacion_persona1_persona2_id_trelacion_key1 UNIQUE (persona1, persona2, id_trelacion);
 
 
 --
@@ -1477,6 +1520,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170413185012'),
 ('20170414035328'),
 ('20180320230847'),
+('20180710175418'),
 ('20180717135811'),
 ('20180720140443'),
 ('20180720171842'),
@@ -1486,6 +1530,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180921120954'),
 ('20181011104537'),
 ('20190109125417'),
-('20190110191802');
+('20190110191802'),
+('20190331111015');
 
 
