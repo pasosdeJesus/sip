@@ -111,7 +111,7 @@ module Sip
           ac = self.class.asociacion_combinada(atr).name.to_s
           e = self.send(ac)
           e.inject("") { |memo, i| 
-            (memo == "" ? "" : memo + "; ") + i.presenta_nombre 
+            (memo == "" ? "" : memo + "; ") + i.presenta_nombre.to_s
           }
         elsif clf
           if (self[atr.to_s])
@@ -119,7 +119,7 @@ module Sip
             if r.respond_to?(:presenta_nombre)
               r.presenta_nombre
             else
-              r.id
+              r.id.to_s
             end
           elsif self.respond_to?(atr)
             r = self.send(atr)
