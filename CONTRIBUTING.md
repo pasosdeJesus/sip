@@ -8,8 +8,9 @@
 ```sh
 	bin/rails test
 ```
-El archivo README.md incluye varias banderas que queremos dejar en buen estado:
+* El archivo README.md incluye varias banderas que queremos dejar en buen estado:
 1. Que pase pruebas en plataforma de integración continúa.  Agradecemos servicio a Semaphore y Travis
 2. Buen porcentaje de mantenibilidad y de cobertura. Agradecemos servicio a codeclimate.
 3. No deben haber fallas de seguridad y los falsos positivos deben marcarse como tales en Hakiri (a quien agradecemos por el servicio de auditoria).
+
 
