@@ -1,6 +1,6 @@
 
 
-## Para contribuir al desarrollo del Motor para Sistemas de Información estilo Pasos de Jesus##
+## Para contribuir al desarrollo del Motor para Sistemas de Información estilo Pasos de Jesus ##
 
 Para realizar contribuciones de desarrollo al motor Sip, desarrollado en versión Adj de openbsd, escrito en lenguaje Ruby on Rails, bifurque las fuentes del Motor Sip en su cuenta de Github en el repositorio (https://github.com/pasosdeJesus/sip).
 
