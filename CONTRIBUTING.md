@@ -69,7 +69,11 @@ Después los desarrolladores de sip revisaran su cambio y si se requiere escribi
 
 Para realizar cambios si no pasa pruebas de integración continua o tras una revisíon, ubiquese en las fuentes de su computador de desarrollo en la rama rama donde hizo el cambio, edite y modifique los archivos necesarios, haga contriubcion (commit), fusione y vuelva a empujar a la rama, pero con la opción `-f` para forzar cambio en la historia de una rama:
 ```
+git checkout master
+git pull --rebase upstream master
+git push -f origin master
 git checkout mejora-documentacion
+git pull origin master
 vi README.md
 ....
 git commit -m "Aplicando sugerencias de revisor" -a
