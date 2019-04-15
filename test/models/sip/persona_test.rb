@@ -6,13 +6,13 @@ module Sip
   class PersonaTest < ActiveSupport::TestCase
 
     PRUEBA_PERSONA= {
-      nombres: "Nombres",
-      apellidos: "Apellidos",
-      anionac: 1974,
-      mesnac: 1,
-      dianac: 1,
-      sexo: "F",
-      numerodocumento: "10000000",
+      nombres: "Nombrenuevo",
+      apellidos: "Apellidosnuevo",
+      anionac: 1980,
+      mesnac: 2,
+      dianac: 2,
+      sexo: "M",
+      numerodocumento: "1061000000",
     }
 
     PRUEBA_TDOCUMENTO= {
