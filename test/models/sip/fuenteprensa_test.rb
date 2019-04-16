@@ -7,9 +7,9 @@ module Sip
 
     PRUEBA_FUENTEPRENSA= {
       id: 1000 ,
-      nombre: "Fuenteprensa",
-      fechacreacion: "2015-05-11",
-      created_at: "2015-05-11"
+      nombre: "Fuentesprensanueva",
+      fechacreacion: "2001-01-01",
+      created_at: "2001-01-01"
     }
 
     test "valido" do
