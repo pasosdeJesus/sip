@@ -119,6 +119,9 @@ group :test do
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
 
+  # Gema para usar Postgis
+
+  gem 'activerecord-postgis-adapter' 
 
 end
 
