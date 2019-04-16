@@ -5,6 +5,7 @@ require_relative './grupoper_test'
 require_relative './actorsocial_test'
 require_relative './persona_test'
 require_relative './perfilactorsocial_test'
+require_relative './ubicacion_test'
 
 module Sip
   class ActorsocialPersonaTest < ActiveSupport::TestCase
@@ -26,6 +27,10 @@ module Sip
       assert perfilactorsocial.valid?
       perfilactorsocial.save!
 
+      ubicacion = Sip::UbicacionTest::PRUEBA_UBICACION
+      assert ubicacion.valid?
+      ubicacion.saved!
+
       actorsocial_persona= Sip::ActorsocialPersona.new
       actorsocial_persona.actorsocial = actorsocial
       actorsocial_persona.persona = persona
@@ -38,6 +43,7 @@ module Sip
       persona.destroy
       actorsocial.destroy
       grupoper.destroy
+      ubicacion.destroy
     end
 
     test "no valido" do
