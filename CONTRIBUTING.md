@@ -50,10 +50,10 @@ Por ejemplo puede fusionar los 2 últimos commits con:
   ```
   git rebase -i HEAD~2
   ```
-Esto abrira un archivo con los mensajes de las 2 ultimas contribuciones y frente a cada uno la plabra pick que podria cambiar por squash en la segunda 
-contribucion para fusionarla con la primera.  Despues de guardar y salir volver a un editor para editar el mensaje que tendra la contribucion fusionada
+Esto abrira un archivo con los mensajes de las 2 ultimas contribuciones y frente a cada uno la plabra `pick` que podria cambiar por `squash` en la segunda 
+contribucion para fusionarla con la primera.  Despues de guardar y salir volvera a un editor para modificar el mensaje que tendra la contribucion fusionada
 
-Tras esto si ve la historia de contribuciones notara la fusion:
+Tras esto si ve la historia de contribuciones notara la fusión:
   ```
   git log
   ```
@@ -67,7 +67,21 @@ Y desde la interfaz de github examinando su repositorio bifurcado o el original 
 Cuando haga un pull request se iniciaran sobre el mismo las tareas de integración continua que hemos configurado en github y que en general su cambio debe pasar.
 Después los desarrolladores de sip revisaran su cambio y si se requiere escribiran sugerencias de cambio, que debe hacer o justificar por que no conviene antes de que su contribución sea aceptada.  Es decir habrá un diálogo en la parte de comentarios de su solicitud de cambio que debe continuar.
 
-Para realizar cambios si no pasa pruebas de integración continua o tras una revisíon, ubiquese en las fuentes de su computador de desarrollo en la rama rama donde hizo el cambio, edite y modifique los archivos necesarios, haga contriubcion (commit), fusione y vuelva a empujar a la rama, pero con la opción `-f` para forzar cambio en la historia de una rama:
+Debe realizar los cambios en la misma rama donde hizo la propuesta inicial, pero antes debe actualizarla por si otros desarrolladores han hecho cambios
+recientes.  Para eso primero actualice su rama master:
+```
+git checkout master
+git pull --rebase upstream master
+git push -f origin master
+```
+Y después tome en su rama donde hace la propuesta los cambios que pudiera haber:
+```
+git checkout mejora-documentacion
+git pull origin master
+```
+Esta última operación podría revelar colisiones entre cambios ya acpetados en el repositorio principal y los que usted había propuesto (por eso es bueno tratar
+de hacer rápido el diálogo con desarrolladores y las propuestas de cambio).  En caso de colisiones debe arreglarlas (en algunos casos editando archivos que tienen marcados los cambios con <<<< y >>>>, en otros añadiendo o eliminando archivos).
+Después aplique las sugerencias y/o arregle su código de forma que pase tareas de integración continúa y preferiblemente vuelva a fusionar contribuciones
 ```
 git checkout mejora-documentacion
 vi README.md
@@ -76,10 +90,10 @@ git commit -m "Aplicando sugerencias de revisor" -a
 git rebase -i HEAD~2
 git push -f origin mejora-documentacion
 ```
-github notará el cambio y actualizará la solicitud de cambio ya hecha, volviendo a lanzar las tareas de integración continua y los desarrolladores
-volverán a auditar su contribución y continuarán el diálogo en la sección de comentarios.
+Después de empujar sus cambios (push), github notará el cambio y actualizará la solicitud de cambio ya hecha, volviendo a lanzar las tareas de integración 
+continua y los desarrolladores volverán a auditar su contribución y continuarán el diálogo en la sección de comentarios.
 
-Este proceso debe iterarse hasta que su cambio es aceptado (o rechazado), por lo que debe visitar con frecuencia su solicitud de cambio 
+Este proceso debe iterarse hasta que su cambio sea aceptado (o rechazado), por lo que debe visitar con frecuencia su solicitud de cambio 
 y ver nuevos comnetarios que puedan haber (los comentarios más recientes quedan al final de la pestaña de comentarios).
   
 
