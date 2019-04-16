@@ -3,25 +3,45 @@
 module Sip
   module UbicacionHelper
 
-    def formato_ubicacion u, con_clase = true
+    def formato_ubicacion_partes(pais_id, departamento_id, municipio_id, 
+      clase_id, con_clase, con_pais)
       r = "";
-      if u
-        r = Sip::Pais.find(u.id_pais).nombre
-        if u.id_departamento
-          r += " / " + Sip::Departamento.where(
-						id: u.id_departamento).take.nombre
-          if u.id_municipio
-            r += " / " + Sip::Municipio.where(
-							id: u.id_municipio).take.nombre
-            if u.id_clase && con_clase
-              r += " / " + Sip::Clase.where(
-								id: u.id_clase).take.nombre
-            end
-          end
-        end
+      if pais_id.nil? || Sip::Pais.where(id: pais_id).count != 1
+        return r
       end
-      return r
+      if con_pais 
+        r = Sip::Pais.find(pais_id).nombre 
+      end
+      if departamento_id.nil? || 
+        Sip::Departamento.where(id_pais: pais_id, 
+                                id: departamento_id).count != 1
+        return r
+      end
+      if con_pais
+        r += " / "
+      end
+      r += Sip::Departamento.where(id: departamento_id).take.nombre
+      if municipio_id.nil? || 
+        Sip::Municipio.where(id_departamento: departamento_id,
+                             id: municipio_id).count != 1
+        return r
+      end
+      r += " / " + Sip::Municipio.where(id: municipio_id).take.nombre
+      if !con_clase || clase_id.nil? || 
+        Sip::Clase.where(id_municipio: municipio_id,
+                                id: clase_id).count != 1
+        return r
+      end
+      r += " / " + Sip::Clase.where(id: clase_id).take.nombre
+      r
     end
+    module_function :formato_ubicacion_partes
+
+    def formato_ubicacion u, con_clase = true, con_pais = true
+      formato_ubicacion_partes(u.id_pais, u.id_departamento, u.id_municipio,
+                               u.id_clase, con_clase, con_pais)
+    end
+    module_function :formato_ubicacion
 
   end
 end
