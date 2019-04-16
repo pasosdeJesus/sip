@@ -6,9 +6,9 @@ module Sip
   class SectoractorTest < ActiveSupport::TestCase
 
     PRUEBA_SECTORACTOR = {
-      nombre: "Nombre sector",
-      observaciones: "x",
-      fechacreacion: '2018-07-20'
+      nombre: "Nombre sector social actor",
+      observaciones: "xyz",
+      fechacreacion: '2019-04-16'
     }
 
     test "valido" do
