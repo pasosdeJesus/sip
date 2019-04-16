@@ -64,7 +64,11 @@ module Sip
           end
 
           def vfechanac
-            if (anionac && anionac<1900)
+            anioactual= Time.now.strftime("%Y").to_i	  
+	    if (anionac && anionac>anioactual)
+	      errors.add(:anionac, "Año debe ser menor al actual")	    
+            end
+	    if (anionac && anionac<1900)
               errors.add(:anionac, "Año debe ser mayor o igual a 1900")
             end
             if (mesnac && (mesnac < 1 || mesnac > 12))

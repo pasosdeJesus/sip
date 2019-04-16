@@ -6,13 +6,13 @@ module Sip
   class PersonaTest < ActiveSupport::TestCase
 
     PRUEBA_PERSONA= {
-      nombres: "Nombres",
-      apellidos: "Apellidos",
-      anionac: 1974,
-      mesnac: 1,
-      dianac: 1,
-      sexo: "F",
-      numerodocumento: "10000000",
+      nombres: "Nombresnew",
+      apellidos: "Apellidosnew",
+      anionac: 1980,
+      mesnac: 2,
+      dianac: 2,
+      sexo: "M",
+      numerodocumento: "1061000000",
     }
 
     PRUEBA_TDOCUMENTO= {
@@ -53,6 +53,13 @@ module Sip
       persona.anionac = 1
       assert_not persona.valid?
       persona.destroy
+    end
+    
+    test "No valido por año errado 2" do
+      persona= Persona.new PRUEBA_PERSONA
+      persona.anionac = 2020
+      assert_not persona.valid?
+      persona.destroy	    
     end
 
     test "no valido por mes errado" do
