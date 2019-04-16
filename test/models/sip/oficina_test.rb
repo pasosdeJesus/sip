@@ -25,6 +25,13 @@ module Sip
       oficina.destroy
     end
 
+    test "No valido por cantidad de caracteres en observaciones" do 
+      oficina= Oficina.new PRUEBA_OFICINA
+      oficina.observaciones= 'X'*600
+      assert_not oficina.valid?
+      oficina .destroy
+    end
+
     test "existente" do
       oficina = Sip::Oficina.find(1)
       assert_equal oficina.nombre, "SIN INFORMACIÓN"

@@ -9,7 +9,11 @@ module Sip
         include Sip::Basica
         included do
           self.table_name = 'sip_oficina'
-        end
+	
+	  validates :observaciones, length: { maximum:599  }
+	
+	end
+
       end
     end
   end
