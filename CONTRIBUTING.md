@@ -83,7 +83,11 @@ Esta última operación podría revelar colisiones entre cambios ya acpetados en
 de hacer rápido el diálogo con desarrolladores y las propuestas de cambio).  En caso de colisiones debe arreglarlas (en algunos casos editando archivos que tienen marcados los cambios con <<<< y >>>>, en otros añadiendo o eliminando archivos).
 Después aplique las sugerencias y/o arregle su código de forma que pase tareas de integración continúa y preferiblemente vuelva a fusionar contribuciones
 ```
+git checkout master
+git pull --rebase upstream master
+git push -f origin master
 git checkout mejora-documentacion
+git pull origin master
 vi README.md
 ....
 git commit -m "Aplicando sugerencias de revisor" -a
