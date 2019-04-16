@@ -11,7 +11,7 @@ Requisitos
 Ver https://github.com/pasosdeJesus/sip/wiki/Requisitos
 
 
-Se recomienda que después de hacer cambios ejecute en la plataforma ejecute las pruebas de regresión para asegurar que pasan.
+Se recomienda que después de hacer cambios ejecute en la plataforma las pruebas de regresión para asegurar que pasan.
 
 Suele bastar desde el directorio de la aplicación (o si es un motor
 	desde test/dummy):
