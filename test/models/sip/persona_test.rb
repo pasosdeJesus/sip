@@ -8,6 +8,7 @@ module Sip
     PRUEBA_PERSONA= {
       nombres: "Nombresnew",
       apellidos: "Apellidosnew",
+
       anionac: 1980,
       mesnac: 2,
       dianac: 2,
