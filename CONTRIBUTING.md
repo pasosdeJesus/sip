@@ -28,14 +28,14 @@ Consideramos que su contribución a sip (y a otros proyectos de fuentes abiertas
   git remote add upstream https://github.com/pasosdeJesus/sip.git
   ```
 
-Procure mantener la rama master de su bifurcación "sincronizada" con la rama master del repositorio upstream (por lo mismo no debe hacer cambios a la rama master de su bifuración).  Lo puede hacer ejecutando con regularidad:
+Procure mantener la rama `master` de su bifurcación "sincronizada" con la rama `master` del repositorio upstream (por lo mismo no debe hacer cambios a la rama `master` de su bifuración).  Lo puede hacer ejecutando con regularidad:
   ```
   git checkout master
   git pull --rebase upstream master
   git push -f origin master
   ```
 
-Cuando desee hacer una contribución, comience por crear una nueva rama donde propondrá el cambio y ponga un titulo que le ayude a limitar el alcance del cmabio (si desea hacer cambios diferentes es mejor que haga ramas diferentes), por ejemplo:
+Cuando desee hacer una contribución, comience por sincronizar su rama master y desde esta crear una nueva rama donde propondrá el cambio y ponga un titulo que le ayude a limitar el alcance del cambio (si desea hacer cambios diferentes es mejor que haga ramas diferentes a partir de la rama master sincronizada), por ejemplo:
   ```
   git checkout -b mejora-documentacion
   ```
@@ -44,8 +44,8 @@ En la nueva rama agregue, modifique y elimine archivos. Una vez complete o avanc
   git commit -m "Mejorando documentación para quienes contribuyen" -a
   ```
 Puede continuar trabajando y hacer otras contribuciones en la misma rama, pero nos parece más ordenado cuando su solicitud de cambio (pull request) 
-tiene una sola contribución (commit) y no muchas que sobreescriben otras, por si tiene varias conribuciones para un mismo para un mismo pull-request más bien 
-fusionelos (del inglés squash) en uno sólo.  
+tiene una sola contribución (commit) y no muchas que sobreescriben otras.  Si tiene varias conribuciones para un mismo pull-request más bien 
+fusionelas (del inglés squash) en una sólo.  
 Por ejemplo puede fusionar los 2 últimos commits con:
   ```
   git rebase -i HEAD~2
@@ -58,23 +58,22 @@ Tras esto si ve la historia de contribuciones notara la fusión:
   git log
   ```
 
-Una vez tenga bien su contribucion, empuje el cambio a la rama que creó en su bifuracion:
+Una vez tenga bien su contribucion en orden, empuje el cambio a la rama que creó en su bifuracion:
   ```
-  git push origin mejora-documentacion
+  git push -f origin mejora-documentacion
   ```
-Y desde la interfaz de github examinando su repositorio bifurcado o el original de Pasos de Jesús vera un botón para crear la solicitud de cambio (pull-request).  Uselo, revise lo que enviará,  ponga un comentario que justifica el cambio y envielo.
+Y desde la interfaz de github examinando su repositorio bifurcado o el original de Pasos de Jesús vera un botón para crear la solicitud de cambio (pull-request).  Uselo, revise lo que enviará,  ponga un comentario que justifica el cambio y enviélo.
 
 Cuando haga un pull request se iniciaran sobre el mismo las tareas de integración continua que hemos configurado en github y que en general su cambio debe pasar.
 Después los desarrolladores de sip revisaran su cambio y si se requiere escribiran sugerencias de cambio, que debe hacer o justificar por que no conviene antes de que su contribución sea aceptada.  Es decir habrá un diálogo en la parte de comentarios de su solicitud de cambio que debe continuar.
 
-Debe realizar los cambios en la misma rama donde hizo la propuesta inicial, pero antes debe actualizarla por si otros desarrolladores han hecho cambios
-recientes.  Para eso primero actualice su rama master:
+Debe realizar los cambios en la misma rama donde hizo la propuesta inicial, pero antes debe sincronizarla con la rama `master` del repositorio de Pasos de Jesús por si otros desarrolladores han hecho cambios  recientes.  Para eso primero sincronice su rama master:
 ```
 git checkout master
 git pull --rebase upstream master
 git push -f origin master
 ```
-Y después tome en su rama donde hace la propuesta los cambios que pudiera haber:
+Y de inmediato tome en su rama donde hace la propuesta los cambios que pudiera haber en la rama `master` ya sincronizada:
 ```
 git checkout mejora-documentacion
 git pull origin master
@@ -83,22 +82,15 @@ Esta última operación podría revelar colisiones entre cambios ya acpetados en
 de hacer rápido el diálogo con desarrolladores y las propuestas de cambio).  En caso de colisiones debe arreglarlas (en algunos casos editando archivos que tienen marcados los cambios con <<<< y >>>>, en otros añadiendo o eliminando archivos).
 Después aplique las sugerencias y/o arregle su código de forma que pase tareas de integración continúa y preferiblemente vuelva a fusionar contribuciones
 ```
-git checkout master
-git pull --rebase upstream master
-git push -f origin master
-git checkout mejora-documentacion
-git pull origin master
 vi README.md
 ....
 git commit -m "Aplicando sugerencias de revisor" -a
 git rebase -i HEAD~2
 git push -f origin mejora-documentacion
 ```
-Después de empujar sus cambios (push), github notará el cambio y actualizará la solicitud de cambio ya hecha, volviendo a lanzar las tareas de integración 
-continua y los desarrolladores volverán a auditar su contribución y continuarán el diálogo en la sección de comentarios.
+Después de empujar sus cambios (push) en la misma rama, github notará el cambio y actualizará la solicitud de cambio ya hecha, volviendo a lanzar las tareas de integración continua y los desarrolladores volverán a auditar su contribución y continuarán el diálogo en la sección de comentarios.
 
-Este proceso debe iterarse hasta que su cambio sea aceptado (o rechazado), por lo que debe visitar con frecuencia su solicitud de cambio 
-y ver nuevos comnetarios que puedan haber (los comentarios más recientes quedan al final de la pestaña de comentarios).
+Este proceso debe iterarse hasta que su cambio sea aceptado (o rechazado), por lo que debe visitar con frecuencia su solicitud de cambio y ver nuevos comnetarios que puedan haber (los comentarios más recientes quedan al final de la pestaña de comentarios).
   
 
 ## Otros aspectos a tener en cuenta
