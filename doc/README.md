@@ -1,3 +1,5 @@
+# Documentación de sip
+
 Motor sobre Ruby on Rails para facilitar desarrollo y actualización de Sistemas de Información al estilo Pasos de Jesús
 
 Es posible desarrollar rápidamente aplicaciones sobre Ruby on Rails, entre otras, por  el principio de convención sobre configuración.
@@ -7,22 +9,22 @@ Con sip se ha buscado aplicar más este principio al proceso de desarrollo, supo
 Entre las diversas elecciones, un poco contracorriente, se ha preferido el idioma español tanto para los sistemas que se desarrollan como para las fuentes  (por ejemplo para autenticación se emplea `Devise` con modelo `usuario`).
 
 
-# Contenido
+## Contenido
 
 * Implementación
-  * [Requisitos](https://github.com/pasosdeJesus/sip/wiki/Requisitos)
-  * [Iniciar un sistema de información usando Sip](https://github.com/pasosdeJesus/sip/wiki/Iniciar-un-sistema-de-informaci%C3%B3n-usando-Sip)
-  * [Ejemplo de creación de tabla, modelo y controlador con vistas automáticas](https://github.com/pasosdeJesus/sip/wiki/Ejemplo-de-creaci%C3%B3n-de-tabla,-modelo-y-controlador-con-vistas-autom%C3%A1ticas)
+  * [Requisitos](https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md)
+  * [Iniciar un sistema de información usando Sip](https://github.com/pasosdeJesus/sip/blob/master/doc/iniciar-si-usando-sip.md)
+  * [Ejemplo de creación de tabla, modelo y controlador con vistas automáticas](https://github.com/pasosdeJesus/sip/blob/master/doc/ejemplo-con-vistas-automaticas.md)
   * Modelos
-    * [Tablas incluidas y modelo entidad-asociación](https://github.com/pasosdeJesus/sip/wiki/Tablas-incluidas-y-modelo-entidad-asociaci%C3%B3n)
-    * [Personalización de modelos](https://github.com/pasosdeJesus/sip/wiki/Personalizaci%C3%B3n-de-modelos)
-    * [Vistas automáticas con Sip::Modelo y Sip::ModelosController](https://github.com/pasosdeJesus/sip/wiki/Vistas-autom%C3%A1ticas-con-Sip::Modelo-y-Sip::ModelosController)
-    * [Tablas Básicas](https://github.com/pasosdeJesus/sip/wiki/Tablas-B%C3%A1sicas)
-    * [Uso y personalización del modelo usuario](https://github.com/pasosdeJesus/sip/wiki/Uso-y-personalizaci%C3%B3n-del-modelo-usuario)
-  * [Personalización de rutas, controladores y vistas](https://github.com/pasosdeJesus/sip/wiki/Personalizaci%C3%B3n-de-rutas,-controladores-y-vistas)
-    * [Personalización del punto de montaje](https://github.com/pasosdeJesus/sip/wiki/Personalizaci%C3%B3n-del-punto-de-montaje)
-    * [Personalización de recursos javascript y css](https://github.com/pasosdeJesus/sip/wiki/Personalizaci%C3%B3n-de-recursos-javascript-y-css)
-    * [Personalización de diseño, logo y favicon](https://github.com/pasosdeJesus/sip/wiki/Personalizaci%C3%B3n-de-dise%C3%B1o,-logo-y-favicon)
+    * [Tablas incluidas y modelo entidad-asociación](https://github.com/pasosdeJesus/sip/blob/master/doc/modelo-entidad-asociacion.md)
+    * [Personalización de modelos](https://github.com/pasosdeJesus/sip/blob/master/doc/personalizacion-de-modelos.md)
+    * [Vistas automáticas con Sip::Modelo y Sip::ModelosController](https://github.com/pasosdeJesus/sip/blob/master/doc/vistas-automaticas.md)
+    * [Tablas Básicas](https://github.com/pasosdeJesus/sip/blob/master/doc/tablas-basicas.md)
+    * [Uso y personalización del modelo usuario](https://github.com/pasosdeJesus/sip/blob/master/doc/modelo-usuario.md)
+  * [Personalización de rutas, controladores y vistas](https://github.com/pasosdeJesus/sip/blob/master/doc/rutas-controladores-vistas.md)
+    * [Personalización del punto de montaje](https://github.com/pasosdeJesus/sip/blob/master/doc/punto-de-montaje.md)
+    * [Personalización de recursos javascript y css](https://github.com/pasosdeJesus/sip/blob/master/doc/recursos-javascript-y-css.md)
+    * [Personalización de diseño visual, logo y favicon](https://github.com/pasosdeJesus/sip/blob/master/doc/diseño-visual-logo-y-favicon.md)
     * [Internacionalización y personalización de nombres de campos y tablas](https://github.com/pasosdeJesus/sip/wiki/Internacionalizaci%C3%B3n-y-personalizaci%C3%B3n-de-nombres-de-campos-y-tablas)
     * [Localización de cantidades numéricas y fechas](https://github.com/pasosdeJesus/sip/wiki/Localizaci%C3%B3n-de-cantidades-num%C3%A9ricas-y-fechas)
 * Pruebas
