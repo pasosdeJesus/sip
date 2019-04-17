@@ -57,4 +57,3 @@ Los colores pueden personalizarse creando por ejemplo un archivo  ```app/assets/
         color: #872b00;
 }
 ```
-* 
