@@ -20,7 +20,7 @@ dejan en singular.
 En nuevos sistemas de información emplear motores tanto como sea posible.   Se recomienda que sean descendientes de sip, que da unidad en manejo de tablas básicas, usuarios y autenticación.
 
 Por ejemplo algunas de las aplicaciones en el repositorio de Pasos de Jesús en github dependen de sip así:
-![Dependencias](https://github.com/pasosdeJesus/sip/raw/master/doc/inclusiones.png)
+![Dependencias](https://github.com/pasosdeJesus/sip/raw/master/doc/dependencias.png)
 
 ## Fuentes
 
