@@ -24,16 +24,26 @@ Por ejemplo algunas de las aplicaciones en el repositorio de Pasos de Jesús en 
               sip
                |
   ------------------------------------------------------------
-  |                     |                                    | 
-sal7711_gen        cor1440_gen                          sivel2_gen
   |                     |                                    |
- -------------------- ----------------------             --------- 
- |                  | |          |         |             |       |
-sal7711_onbase  cor1440_sjrlac cor1440 cor1440_cinep  sivel2 sivel2_sjr
-                                                                 |     
-                             -------------------------------------------
-                             |            |             |             |
-                     sivel2_sjrcol sivel2_sjrven sivel2_sjrpan sivel2_sjrecu
+  |                 heb412_gen-------------------------------|
+  |                     |                                    |
+  |                 mr519_gen                                |
+  |                     |                                    | 
+sal7711_gen        cor1440_gen-------------------------  sivel2_gen
+  |      |              |                             |       |
+  |      |           ---------------
+  |      |           |             |
+  |  sal7711_web    cor1440   cor1440_cinep           |             jn316_gen       |       |
+  |      |              |                  |          |       |
+  |   sal7711_ld        |                  |          |       |
+  |                     |                  |          |       |
+  |        |  ----------- 
+  |                  | |          |         |          |  |         |
+sal7711_cinep         sivel2_sjr   sivel2
+                                                         |             
+                                         ----------------------------
+                                         |            |             |
+                                  sivel2_sjrcol  sivel2_sjrven   si_jrslac
 </pre>
 
 ## Fuentes

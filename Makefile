@@ -20,6 +20,6 @@ erd:
 	mv test/dummy/erd.pdf doc/
 	convert doc/erd.pdf doc/erd.png
 
-doc/inclusiones.png: doc/inclusiones.dot
-	dot -Tpng doc/inclusiones.dot  > doc/inclusiones.png
+doc/dependencias.png: doc/dependencias.dot
+	dot -Tpng doc/dependencias.dot  > doc/dependencias.png
 
