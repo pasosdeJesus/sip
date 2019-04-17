@@ -19,32 +19,8 @@ dejan en singular.
 
 En nuevos sistemas de información emplear motores tanto como sea posible.   Se recomienda que sean descendientes de sip, que da unidad en manejo de tablas básicas, usuarios y autenticación.
 
-Por ejemplo algunas de las aplicaciones en el repositorio de Pasos de Jesús en github descienden de sip así:
-<pre>
-              sip
-               |
-  ------------------------------------------------------------
-  |                     |                                    |
-  |                 heb412_gen-------------------------------|
-  |                     |                                    |
-  |                 mr519_gen                                |
-  |                     |                                    | 
-sal7711_gen        cor1440_gen-------------------------  sivel2_gen
-  |      |              |                             |       |
-  |      |           ---------------
-  |      |           |             |
-  |  sal7711_web    cor1440   cor1440_cinep           |             jn316_gen       |       |
-  |      |              |                  |          |       |
-  |   sal7711_ld        |                  |          |       |
-  |                     |                  |          |       |
-  |        |  ----------- 
-  |                  | |          |         |          |  |         |
-sal7711_cinep         sivel2_sjr   sivel2
-                                                         |             
-                                         ----------------------------
-                                         |            |             |
-                                  sivel2_sjrcol  sivel2_sjrven   si_jrslac
-</pre>
+Por ejemplo algunas de las aplicaciones en el repositorio de Pasos de Jesús en github dependen de sip así:
+![Dependencias](https://github.com/pasosdeJesus/sip/raw/master/doc/inclusiones.png)
 
 ## Fuentes
 
