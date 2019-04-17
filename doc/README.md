@@ -1,12 +1,22 @@
 # Documentación de sip
 
-Motor sobre Ruby on Rails para facilitar desarrollo y actualización de Sistemas de Información al estilo Pasos de Jesús
+Motor sobre Ruby on Rails para facilitar desarrollo y actualización de 
+Sistemas de Información al estilo Pasos de Jesús
 
-Es posible desarrollar rápidamente aplicaciones sobre Ruby on Rails, entre otras, por  el principio de convención sobre configuración.
+Es posible desarrollar rápidamente aplicaciones sobre Ruby on Rails, entre 
+otras, por  el principio de convención sobre configuración.
 
-Con sip se ha buscado aplicar más este principio al proceso de desarrollo, suponiendo que se seguirá una metodología ágil para poner en marcha el sistema y después seguir un ciclo regular de actualizaciones que mantenga sobre tecnologías recientes lo desarrollado durante bastantes años (e.g. cada 6 meses versiones mayores de sistema operativo, lenguaje y motor de base de datos y máximo cada 2 meses actualización a gemas y paquetes).
+Con sip se ha buscado aplicar más este principio al proceso de desarrollo, 
+suponiendo que se seguirá una metodología ágil para poner en marcha el sistema 
+y después seguir un ciclo regular de actualizaciones que mantenga sobre 
+tecnologías recientes lo desarrollado durante bastantes años (e.g. cada 
+6 meses versiones mayores de sistema operativo, lenguaje y motor de base 
+de datos y máximo cada 2 meses actualización a gemas y paquetes).
 
-Entre las diversas elecciones, un poco contracorriente, se ha preferido el idioma español tanto para los sistemas que se desarrollan como para las fuentes  (por ejemplo para autenticación se emplea `Devise` con modelo `usuario`).
+Entre las diversas elecciones, un poco contracorriente, se ha preferido el 
+idioma español tanto para los sistemas que se desarrollan como para las 
+fuentes  (por ejemplo para autenticación se emplea `Devise` con modelo 
+`usuario`).
 
 
 ## Contenido
