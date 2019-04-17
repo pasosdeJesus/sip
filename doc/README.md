@@ -25,19 +25,16 @@ Entre las diversas elecciones, un poco contracorriente, se ha preferido el idiom
     * [Personalización del punto de montaje](https://github.com/pasosdeJesus/sip/blob/master/doc/punto-de-montaje.md)
     * [Personalización de recursos javascript y css](https://github.com/pasosdeJesus/sip/blob/master/doc/recursos-javascript-y-css.md)
     * [Personalización de diseño visual, logo y favicon](https://github.com/pasosdeJesus/sip/blob/master/doc/diseño-visual-logo-y-favicon.md)
-    * [Internacionalización y personalización de nombres de campos y tablas](https://github.com/pasosdeJesus/sip/wiki/Internacionalizaci%C3%B3n-y-personalizaci%C3%B3n-de-nombres-de-campos-y-tablas)
-    * [Localización de cantidades numéricas y fechas](https://github.com/pasosdeJesus/sip/wiki/Localizaci%C3%B3n-de-cantidades-num%C3%A9ricas-y-fechas)
+    * [Internacionalización y personalización de nombres de campos y tablas](https://github.com/pasosdeJesus/sip/blob/master/doc/internacionalizacion-nombres-campos-y-tablas.md)
+    * [Localización de cantidades numéricas y fechas](https://github.com/pasosdeJesus/sip/blob/master/doc/localizacion-numeros-y-fechas.md)
 * Pruebas
-  * [Aplicación de prueba](https://github.com/pasosdeJesus/sip/wiki/Aplicaci%C3%B3n-de-prueba)
-  * [Pruebas de Regresión](https://github.com/pasosdeJesus/sip/wiki/Pruebas-de-Regresi%C3%B3n)
-  * [Pruebas del sistema con sideex](https://github.com/pasosdeJesus/sip/wiki/Pruebas-del-sistema-con-sideex)
-* Mantenimiento y actualización
-  * [Configurar copia de respaldo cifrada](https://github.com/pasosdeJesus/sip/wiki/Configurar-copia-de-respaldo-cifrada)
-  * [Actualizando a Rails 5](https://github.com/pasosdeJesus/sip/wiki/Actualizando-a-rails-5)
-  * [Actualización de Rails 5.1 a Rails 5.2](https://github.com/pasosdeJesus/sip/wiki/Actualizaci%C3%B3n-de-rails-5.1-a-rails-5.2)
-  * [Actualización a PostgreSQL posterior a 10.2](https://github.com/pasosdeJesus/sip/wiki/Actualizaci%C3%B3n-a-PostgreSQL-posterior-a-10.2)
-  * [Actualización a DIVIPOLA 2018](https://github.com/pasosdeJesus/sip/wiki/Actualizaci%C3%B3n-a-Divipola-2018)
+  * [Aplicación de prueba](https://github.com/pasosdeJesus/sip/blob/master/doc/aplicacion-de-prueba.md)
+  * [Pruebas con minitest](https://github.com/pasosdeJesus/sip/blob/master/doc/pruebas-con-minitest.md)
+  * [Pruebas del sistema con sideex](https://github.com/pasosdeJesus/sip/blob/master/doc/pruebas-al-sistema-con-sideex.md)
+* Mantenimiento 
+  * [Configurar copia de respaldo cifrada](https://github.com/pasosdeJesus/sip/blob/master/doc/respaldo-cifrado.md)
+  * Vea ayudas para actualizaciones en el wiki de sip: [https://github.com/pasosdeJesus/sip/wiki]
 * Convenciones, modularidad
-  * [Convenciones respecto al código fuente](https://github.com/pasosdeJesus/sip/wiki/Convenciones-respecto-al-c%C3%B3digo-fuente)
-  * [Iniciar un motor que use sip](https://github.com/pasosdeJesus/sip/wiki/Iniciar-un-motor-que-use-sip)
+  * [Convenciones respecto al código fuente](https://github.com/pasosdeJesus/sip/blob/master/doc/convenciones.md)
+  * [Iniciar un motor que use sip](https://github.com/pasosdeJesus/sip/blob/master/doc/iniciar-motor-con-sip.md)
 
