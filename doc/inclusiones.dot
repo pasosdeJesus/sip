@@ -1,0 +1,14 @@
+digraph I {
+
+  sip -> {sipd,jn316_gen,heb412_gen,sal7711_gen}
+  heb412_gen -> {mr519_gen, sivel2_gen}
+  sivel2_gen -> {sivel2, sivel2_sjr}
+  mr519_gen -> cor1440_gen -> {cor1440, cor1440_pdJ, cor1440_cinep}
+  jn316_gen -> cor1440_cinep
+  sal7711_gen -> {sal7711, sal7711_cinep, sal7711_web, sal7711_ld}
+  {sal7711_web,sivel2_gen,cor1440_gen} -> sivel2_sjr
+  sivel2_gen -> {sivel2_somosdefensores, sivel2_anzorc}
+  cor1440_gen -> sivel2_anzorc
+  sivel2_sjr -> {sivel2_mujeresindigenas, sivel2_sjrcol, sivel2_sjrven, si_sjrlac}
+
+}

@@ -19,3 +19,7 @@ erd:
 	bundle exec erd)
 	mv test/dummy/erd.pdf doc/
 	convert doc/erd.pdf doc/erd.png
+
+doc/inclusiones.png: doc/inclusiones.dot
+	dot -Tpng doc/inclusiones.dot  > doc/inclusiones.png
+
