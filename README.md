@@ -93,7 +93,7 @@ de información como:
 
 ## Requisitos
 
-Ver <https://github.com/pasosdeJesus/sip/wiki/Requisitos>
+Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
 
 ## Aplicación mínima incluida en sip
 
@@ -103,15 +103,15 @@ con diseño web adaptable, autenticación, manejo de clave con condensado bcrypt
 usuarios, grupos y modificación de tablas básicas. Incluso antes de intentar 
 iniciar una aplicación aparte, puede intentar ejecutar esa aplicación mínima, 
 siguiendo las instrucciones de:
-<https://github.com/pasosdeJesus/sip/wiki/Aplicaci%C3%B3n-de-prueba>
+<https://github.com/pasosdeJesus/sip/blob/master/doc/aplicacion-de-prueba.md>
 
 ## Iniciar un sistema de información usando sip
 
-Ver https://github.com/pasosdeJesus/sip/wiki/Iniciar-un-sistema-de-informaci%C3%B3n-usando-Sip
+Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/iniciar-si-usando-sip.md>
 
 ## Resto de la documentación 
 
-Después de tener su primer ejemplo puedes generar tablas básicas para 
+Después de tener tu primer ejemplo puedes generar tablas básicas para 
 tu aplicación, personalizar los modelos, vistas y controladores que sip 
-ofrece. Consulta: https://github.com/pasosdeJesus/sip/wiki
+ofrece. Consulta: <https://github.com/pasosdeJesus/sip/blob/master/doc/README.md>
 
