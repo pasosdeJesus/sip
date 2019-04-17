@@ -27,7 +27,7 @@ module Sip
 
     test "No valido por cantidad de caracteres en observaciones" do 
       oficina= Oficina.new PRUEBA_OFICINA
-      oficina.observaciones= 'X'*600
+      oficina.observaciones= 'X'*5001
       assert_not oficina.valid?
       oficina .destroy
     end

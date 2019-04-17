@@ -6,8 +6,8 @@ module Sip
   class PersonaTest < ActiveSupport::TestCase
 
     PRUEBA_PERSONA= {
-      nombres: "Nombresnew",
-      apellidos: "Apellidosnew",
+      nombres: "Nombres",
+      apellidos: "Apellidos",
 
       anionac: 1980,
       mesnac: 2,
@@ -56,9 +56,9 @@ module Sip
       persona.destroy
     end
     
-    test "No valido por año errado 2" do
+    test "no valido por año errado 2" do
       persona= Persona.new PRUEBA_PERSONA
-      persona.anionac = 2020
+      persona.anionac = 1 + Time.now.strftime("%Y").to_i
       assert_not persona.valid?
       persona.destroy	    
     end
