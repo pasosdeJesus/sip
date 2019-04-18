@@ -1,5 +1,17 @@
 digraph I {
-
+  
+  cor1440_gen  [shape=box]
+  jn316_gen [shape=box]
+  heb412_gen [shape=box]
+  mr519_gen [shape=box]
+  sivel2_gen [shape=box]
+  sivel2_sjr [shape=box]
+  sal7711_gen [shape=box]
+  sal7711_ld [shape=box]
+  sal7711_web [shape=box]
+  sip [shape=box]
+  sipd [shape=box]
+ 
   sip -> {sipd,jn316_gen,heb412_gen,sal7711_gen}
   heb412_gen -> {mr519_gen, sivel2_gen}
   sivel2_gen -> {sivel2, sivel2_sjr}
