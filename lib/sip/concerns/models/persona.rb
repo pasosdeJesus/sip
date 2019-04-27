@@ -112,6 +112,8 @@ module Sip
             case atr.to_s
             when 'nacionalde'
               nacionalde ? nacional.nombre : ''
+            when 'centro_poblado'
+              self.clase ? self.clase.nombre : ''
             when 'tdoc'
               self.tdocumento.sigla if self.tdocumento
             else
@@ -121,6 +123,71 @@ module Sip
 
           def presenta(atr)
             sip_presenta(atr)
+          end
+
+          def importa(datosent, menserror, opciones = {})
+            if datosent[:fechanac_localizada]
+              r = datosent[:fechanac_localizada]
+              # suponemos dd/M/yyy
+              d = Sip::ImportaHelper.fecha_local_colombia_a_date(r, menserror)
+              if d
+                self.dianac = d.day
+                self.mesnac = d.month
+                self.anionac = d.year
+              end
+              datosent.delete :fechanac_localizada
+            end
+            if datosent[:tdocumento]
+              d = Sip::ImportaHelper.nombre_en_tabla_basica(
+                Sip::Tdocumento, datosent[:tdocumento], menserror)
+              if !d.nil?
+                self.tdocumento_id = d.id
+              end
+              datosent.delete :tdocumento
+            end
+            if datosent[:pais]
+              self.id_pais = Sip::ImportaHelper.nombre_en_tabla_basica(
+                Sip::Pais, datosent[:pais].upcase, menserror)
+              datosent.delete :pais
+            end
+            if datosent[:departamento]
+              if self.id_pais.nil?
+              self.id_pais = Sip::Pais.where(nombre: 'COLOMBIA').take.id
+              end
+              d = Sip::Departamento.where(
+                id_pais: self.id_pais, 
+                nombre: datosent[:departamento].upcase
+              )
+              if d.count == 0
+                menserror << "No se encontró departamento #{datosent[:departamento]} en el pais #{Sip::Pais.find(self.id_pais).nombre}"
+              else 
+                self.id_departamento = d.take.id
+              end
+              datosent.delete :departamento
+            end
+
+            if datosent[:municipio] 
+              if self.id_departamento.nil?
+                menserror << "No se puede ubicar municipio #{datosent[:municipio]} sin departamento"
+              else
+                self.id_municipio =
+                  Sip::ImportaHelper.nombre_en_tabla_basica(
+                    Sip::Municipio, datosent[:departamento], menserror)
+              end
+              datosent.delete :municipio
+            end
+            if datosent[:centro_poblado] 
+              if self.id_municipio.nil?
+                menserror << "No puede ubicarse centro_poblado #{datosent[:centro_poblado]} sin municipio"
+              else
+                self.id_clase =
+                  Sip::ImportaHelper.nombre_en_tabla_basica(
+                    Sip::Clase, datosent[:departamento], menserror)
+              end
+              datosent.delete :centro_poblado
+            end
+
+            importa_gen(datosent, menserror, opciones)
           end
 
           scope :filtro_nombres, lambda { |n|

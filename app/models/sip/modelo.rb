@@ -154,6 +154,43 @@ module Sip
         presenta_gen(atr)
       end
 
+
+      def importa_gen(datosent, menserror, opciones = {})
+        datosent.keys.each do |ll|
+          case ll.to_sym
+          when :actualizado_en
+            self.updated_at = datosent[ll.to_sym]
+          when :creado_en
+            self.created_at = datosent[ll.to_sym]
+          else
+            asig = ll.to_s + '='
+            if self.respond_to?(asig)
+              begin
+                self.send(asig, datosent[ll.to_sym])
+              rescue 
+                menserror << "No se pudo asignar a #{ll.to_s} el valor #{datosent[ll.to_sym]}. "
+              end
+            else
+              menserror << "No se conoce como importar atributo #{ll.to_sym} " +
+                " con valor #{datosent[ll.to_sym]} en controlador #{self.class}"
+              return nil
+            end
+          end
+        end
+        return self
+      end
+
+
+      # En el modelo actual crea/busca registro y lo actualiza con la
+      # información de datosent.
+      # localizadas en el diccionario datosent
+      # Si lo logra retorna self si no lo logra retorna nil agrega razones
+      # del error en el colchon menserror.
+      def importa(datosent, menserror, opciones = {})
+        importa_gen(datosent, menserror, opciones)
+      end
+
+
       # Por omisión es posible filtrar por id
       scope :filtro_id, lambda {|id|
         # Puede ser una lista de ids separadas por ,

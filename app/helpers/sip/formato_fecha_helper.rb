@@ -40,7 +40,57 @@ module Sip
     # dd-M-yyyy, dd/M/yyyy, dd-mm-yyyy, dd/mm/yyyy y yyyy-mm-ddd
     # 
     # El formato estándar es el usado por PostgreSQL yyyy-mm-dd
-   
+  
+    def fecha_local_colombia_estandar f
+        # Date.strptime(f, '%d-%M-%Y') no ha funcionado, 
+        # %b debe ser en ingles
+        # datepicker produce meses cortos comenzando en mayúsculas.
+        # rails-i18n I18n.localize con %b produce mes en minuscula 
+      if !f 
+        return nil
+      end
+      if f == ''
+        return ''
+      end
+
+      pf = f.split('/')
+      if pf.count < 3 
+        pf = f.split('-')
+      end
+      if pf.count < 3
+        nf = Date.strptime(f, '%d-%M-%Y').strftime('%Y-%m-%d')
+      else
+        return nil if !pf[1]
+        m = case pf[1].downcase
+            when 'ene' 
+              1
+            when 'feb' 
+              2
+            when 'mar' 
+              3
+            when 'abr' 
+              4
+            when 'may' 
+              5
+            when 'jun' 
+              6
+            when 'jul' 
+              7
+            when 'ago' 
+              8
+            when 'sep' 
+              9
+            when 'oct' 
+              10
+            when 'nov' 
+              11
+            else 
+              12
+            end
+        nf = Date.new(pf[2].to_i, m, pf[0].to_i).strftime('%Y-%m-%d')
+      end
+    end 
+    module_function :fecha_local_colombia_estandar
 
     # Convierte una fecha de formato local a formato estándar
     def fecha_local_estandar f
@@ -52,46 +102,7 @@ module Sip
       end
       case Rails.application.config.x.formato_fecha
       when 'dd/M/yyyy', 'dd-M-yyyy'
-        # Date.strptime(f, '%d-%M-%Y') no ha funcionado, 
-        # %b debe ser en ingles
-        # datepicker produce meses cortos comenzando en mayúsculas.
-        # rails-i18n I18n.localize con %b produce mes en minuscula 
-        pf = f.split('/')
-        if pf.count < 3 
-          pf = f.split('-')
-        end
-        if pf.count < 3
-          nf = Date.strptime(f, '%d-%M-%Y').strftime('%Y-%m-%d')
-        else
-          return if !pf[1]
-          m = case pf[1].downcase
-              when 'ene' 
-                1
-              when 'feb' 
-                2
-              when 'mar' 
-                3
-              when 'abr' 
-                4
-              when 'may' 
-                5
-              when 'jun' 
-                6
-              when 'jul' 
-                7
-              when 'ago' 
-                8
-              when 'sep' 
-                9
-              when 'oct' 
-                10
-              when 'nov' 
-                11
-              else 
-                12
-              end
-          nf = Date.new(pf[2].to_i, m, pf[0].to_i).strftime('%Y-%m-%d')
-        end
+        nf = fecha_local_colombia_estandar f
       when 'dd-mm-yyyy'
         nf = Date.strptime(f, '%d-%m-%Y').strftime('%Y-%m-%d')
       when 'dd/mm/yyyy'
