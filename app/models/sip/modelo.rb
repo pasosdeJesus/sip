@@ -23,7 +23,7 @@ module Sip
           r = a.select { |ua| ua.name.to_s == na }[0] 
           if r.nil?
             msg="Aunque #{atr} es como nombre de asociación combinada, " +
-              "no se encontro #{na} entre las de #{self.to_s}"
+              "no se encontró #{na} entre las de #{self.to_s}"
             puts msg
             raise msg
           end
@@ -155,7 +155,7 @@ module Sip
       end
 
 
-      def importa_gen(datosent, menserror, opciones = {})
+      def importa_gen(datosent, datossal, menserror, opciones = {})
         datosent.keys.each do |ll|
           case ll.to_sym
           when :actualizado_en
@@ -168,11 +168,11 @@ module Sip
               begin
                 self.send(asig, datosent[ll.to_sym])
               rescue 
-                menserror << "No se pudo asignar a #{ll.to_s} el valor #{datosent[ll.to_sym]}. "
+                menserror <<  " No se pudo asignar a #{ll.to_s} el valor #{datosent[ll.to_sym]}."
               end
             else
-              menserror << "No se conoce como importar atributo #{ll.to_sym} " +
-                " con valor #{datosent[ll.to_sym]} en controlador #{self.class}"
+              menserror << " No se conoce como importar atributo #{ll.to_sym} " +
+                " con valor #{datosent[ll.to_sym]} en controlador #{self.class}."
               return nil
             end
           end
@@ -183,13 +183,27 @@ module Sip
 
       # En el modelo actual crea/busca registro y lo actualiza con la
       # información de datosent.
-      # localizadas en el diccionario datosent
-      # Si lo logra retorna self si no lo logra retorna nil agrega razones
-      # del error en el colchon menserror.
-      def importa(datosent, menserror, opciones = {})
-        importa_gen(datosent, menserror, opciones)
+      # @param datosent diccionario con datos de entrada (modificables)
+      # @param datossal Diccionario con otros datos de salida
+      # @param menserror Colchon cadena con mensajes de error
+      # @param opciones Opciones para la importación
+      # @return Si lo logra retorna self si no lo logra retorna nil 
+      #   y agrega razones del error en el colchon menserror.
+      def importa(datosent, datossal, menserror, opciones = {})
+        importa_gen(datosent, datossal, menserror, opciones)
       end
 
+
+      # Complementa importación una vez el modelo actual ha sido salvado
+      # @param datossal Otros datos de salida de la importación que esta
+      #   función debe salvar
+      # @param menserror colchon cadena con mensajes de error
+      # @param opciones Para importación
+      # @return Verdadero si logra salvar todo datossal, de lo contrario
+      #   salva lo que más puede y retorna falso
+      def complementa_importa(datossal, menserror, opciones)
+        return true
+      end
 
       # Por omisión es posible filtrar por id
       scope :filtro_id, lambda {|id|

@@ -142,6 +142,27 @@ module Sip
     end
     module_function :fecha_estandar_local
 
+    # Adivina locale de fecha y retorna Date
+    def reconoce_adivinando_locale f
+      if !f || (f.class != String && f.class != Date) || 
+        (f.class == String && f == '')
+        return nil
+      end
+      if f.class == Date
+        return f
+      end
+      if f.include?('/')
+        #'dd/M/yyyy'
+        nf =fecha_local_colombia_estandar f
+      else
+        nf = f
+      end
+      r = Date.strptime(nf, '%Y-%m-%d')
+      return nf
+    end
+    module_function :reconoce_adivinando_locale
+
+
     def inicio_semestre(f)
       if f.month <= 6
         Date.new(f.year, 1, 1)

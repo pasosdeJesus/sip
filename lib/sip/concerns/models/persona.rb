@@ -125,7 +125,10 @@ module Sip
             sip_presenta(atr)
           end
 
-          def importa(datosent, menserror, opciones = {})
+          def importa_sip(datosent, datossal, menserror, opciones = {})
+            if !datosent.key?(:sexo)
+              self.sexo = 'S'
+            end
             if datosent[:fechanac_localizada]
               r = datosent[:fechanac_localizada]
               # suponemos dd/M/yyy
@@ -152,14 +155,14 @@ module Sip
             end
             if datosent[:departamento]
               if self.id_pais.nil?
-              self.id_pais = Sip::Pais.where(nombre: 'COLOMBIA').take.id
+                self.id_pais = Sip::Pais.where(nombre: 'COLOMBIA').take.id
               end
-              d = Sip::Departamento.where(
-                id_pais: self.id_pais, 
-                nombre: datosent[:departamento].upcase
+              d = Sip::Departamento.where( id_pais: self.id_pais).where(
+                'unaccent(nombre) = unaccent(?)', 
+                datosent[:departamento].upcase
               )
               if d.count == 0
-                menserror << "No se encontró departamento #{datosent[:departamento]} en el pais #{Sip::Pais.find(self.id_pais).nombre}"
+                menserror << "  No se encontró departamento #{datosent[:departamento]} en el pais #{Sip::Pais.find(self.id_pais).nombre}."
               else 
                 self.id_departamento = d.take.id
               end
@@ -168,27 +171,54 @@ module Sip
 
             if datosent[:municipio] 
               if self.id_departamento.nil?
-                menserror << "No se puede ubicar municipio #{datosent[:municipio]} sin departamento"
+                menserror << "  No se puede ubicar municipio #{datosent[:municipio]} sin departamento."
               else
-                self.id_municipio =
-                  Sip::ImportaHelper.nombre_en_tabla_basica(
-                    Sip::Municipio, datosent[:departamento], menserror)
+                m = Sip::Municipio.where(
+                  id_departamento: self.id_departamento).where(
+                  'unaccent(nombre) = unaccent(?)', 
+                  datosent[:municipio].upcase
+                )
+                if m.count == 0
+                  menserror << "  No se encontró municipio #{datosent[:municipio]} en el departamento #{Sip::Departamento.find(self.id_departamento).nombre}."
+                else 
+                  self.id_municipio = m.take.id
+                end
               end
               datosent.delete :municipio
             end
+
             if datosent[:centro_poblado] 
               if self.id_municipio.nil?
-                menserror << "No puede ubicarse centro_poblado #{datosent[:centro_poblado]} sin municipio"
+                menserror << "  No puede ubicarse centro_poblado #{datosent[:centro_poblado]} sin municipio."
               else
-                self.id_clase =
-                  Sip::ImportaHelper.nombre_en_tabla_basica(
-                    Sip::Clase, datosent[:departamento], menserror)
+                cp = Sip::Clase.where(
+                  id_municipio: self.id_municipio).where(
+                  'unaccent(nombre)=unaccent(?)', 
+                  datosent[:centro_poblado].upcase
+                )
+                if cp.count == 0
+                  menserror << "  No se encontró centro poblado #{datosent[:centro_poblado]} en el municipio #{Sip::Municipio.find(self.id_municipio).nombre}."
+                else 
+                  self.id_clase= cp.take.id
+                end
               end
               datosent.delete :centro_poblado
             end
 
-            importa_gen(datosent, menserror, opciones)
+            if datosent[:nacionalde] 
+              self.nacionalde = Sip::ImportaHelper.nombre_en_tabla_basica(
+                Sip::Pais, datosent[:nacionalde].upcase, menserror)
+              datosent.delete :nacionalde
+            end
+
+            importa_gen(datosent, datossal, menserror, opciones)
           end
+
+
+          def importa(datosent, datossal, menserror, opciones = {})
+            importa_sip(datosent, datossal, menserror, opciones)
+          end
+
 
           scope :filtro_nombres, lambda { |n|
             where("unaccent(nombres) ILIKE '%' || unaccent(?) || '%'", n)
