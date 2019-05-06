@@ -1,8 +1,8 @@
 # Personalización de diseño visual, logo y favicon
 
-Un diseño (layout) por omisión para todas las páginas se ubica en ```app/views/layouts/sip/application.html.erb```, incluye soporte para:
+Un diseño (layout) por omisión para todas las páginas se ubica en ```app/views/layouts/sip/application.html.erb``` y una página portada por omisión en `app/views/sip/hogar/index.html.erb` , incluyen soporte para:
 * Encabezado fijo, pie de página y espacio para el contenido
-* Una imagen de portada que debe ubicar en ```public/images/logo.jpg```
+* Una imagen de portada que debe ubicar en `app/assets/logo.jpg`
 * favicons de diversos tamaños. Podrá generalos desde http://faviconit.com/ a partir de una imagen al menos de 310x310.  Ubiquelos en el directorio ```app/assets/images``` con los nombres dados por esa página.
 * Un titulo que se recomienda especificar en config/initializers/sip.rb y aparecerá como título de la página y al lado izquierdo de la barra de navegación
 * Diseño adaptable (responsive) basado en bootstrap, que reubica menus como desplegables en dispositivos móbiles y escala imagen de portada
