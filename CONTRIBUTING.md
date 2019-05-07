@@ -76,10 +76,10 @@ git push -f origin master
 Y de inmediato tome en su rama donde hace la propuesta los cambios que pudiera haber en la rama `master` ya sincronizada:
 ```
 git checkout mejora-documentacion
-git pull origin master
+git pull --rebase origin master
 ```
 Esta última operación podría revelar colisiones entre cambios ya acpetados en el repositorio principal y los que usted había propuesto (por eso es bueno tratar
-de hacer rápido el diálogo con desarrolladores y las propuestas de cambio).  En caso de colisiones debe arreglarlas (en algunos casos editando archivos que tienen marcados los cambios con <<<< y >>>>, en otros añadiendo o eliminando archivos).
+de hacer rápido el diálogo con desarrolladores y las propuestas de cambio).  En caso de colisiones debe arreglarlas (en algunos casos editando archivos que tienen marcados los cambios con `<<<<` y `>>>>`, en otros añadiendo o eliminando archivos).
 Después aplique las sugerencias y/o arregle su código de forma que pase tareas de integración continúa y preferiblemente vuelva a fusionar contribuciones
 ```
 vi README.md
@@ -98,7 +98,7 @@ Este proceso debe iterarse hasta que su cambio sea aceptado (o rechazado), por l
 * Durante el desarrollo de su contribución actualice constantemente las dependencias para usar siempre las versiones más recientes de librerías y motores.
 
 * La plataforma principal de desarrollo y de producción es adJ (Distribución de OpenBSD) ver descripción en: 
-	https://github.com/pasosdeJesus/sip/wiki/Requisitos
+	https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md
   Por eso después de hacer cambios sugerimos que en esa platafoma
   ejecute las pruebas de regresión para asegurar que pasan.
 
