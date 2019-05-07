@@ -15,7 +15,7 @@ El archivo `README.md` incluye varias banderas que queremos dejar en buen estado
 
 ## Uso recomendado de git
 
-Consideramos que su contribución a sip (y a otros proyectos de fuentes abiertas) será más ordenada si sigue los lineamientos de uso de FreeCodeCamp (ver https://github.com/freeCodeCamp/freeCodeCamp/blob/master/docs/how-to-setup-freecodecamp-locally.md), que procuramos resumir aquí:
+Consideramos que su contribución a `sip` (y a otros proyectos de fuentes abiertas) será más ordenada si sigue los lineamientos de uso de FreeCodeCamp (ver https://github.com/freeCodeCamp/freeCodeCamp/blob/master/docs/how-to-setup-freecodecamp-locally.md), que procuramos resumir aquí:
 
 1. Bifurque (del inglés fork) el repositorio (https://github.com/pasosdeJesus/sip) a su cuenta personal
 2. En el computador de desarrollo clone su bifurcación:
