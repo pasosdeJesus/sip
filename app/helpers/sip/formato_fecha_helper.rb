@@ -58,6 +58,8 @@ module Sip
         pf = f.split('-')
       end
       if pf.count < 3
+        puts "Formato de fecha en locale de colombia desconocido: #{f}"
+        return nil;
         nf = Date.strptime(f, '%d-%M-%Y').strftime('%Y-%m-%d')
       else
         return nil if !pf[1]

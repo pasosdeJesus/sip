@@ -195,13 +195,14 @@ module Sip
 
 
       # Complementa importación una vez el modelo actual ha sido salvado
+      # @param ulteditor_id id del usuario que importa
       # @param datossal Otros datos de salida de la importación que esta
       #   función debe salvar
       # @param menserror colchon cadena con mensajes de error
       # @param opciones Para importación
       # @return Verdadero si logra salvar todo datossal, de lo contrario
       #   salva lo que más puede y retorna falso
-      def complementa_importa(datossal, menserror, opciones)
+      def complementa_importa(ulteditor_id, datossal, menserror, opciones)
         return true
       end
 
