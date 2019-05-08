@@ -1,9 +1,13 @@
 class AgregaIdClase2 < ActiveRecord::Migration[4.2]
   def up
-    execute <<-SQL
+    r=execute <<-SQL
       SELECT * FROM sip_clase WHERE
         id IS NULL;
     SQL
+    r.each do |c| 
+      puts 'Centro poblado desconocido: ' + c['id_clalocal'].to_s + ' ' + c['nombre'].to_s + '.  ' + c['id_municipio'].to_s
+      byebug
+    end
     execute <<-SQL
       ALTER TABLE sip_clase ALTER COLUMN id
         SET NOT NULL;

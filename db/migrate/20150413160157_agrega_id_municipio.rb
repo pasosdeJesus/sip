@@ -1483,8 +1483,12 @@ class AgregaIdMunicipio < ActiveRecord::Migration[4.2]
 			UPDATE sip_municipio SET id='1463' WHERE id_munlocal='99' AND id_departamento='39';
 			UPDATE sip_municipio SET id='1464' WHERE id_munlocal='99' AND id_departamento='27';
 			UPDATE sip_municipio SET id='1465' WHERE id_munlocal='99' AND id_departamento='29';
-		SQL
-
+      -- Provenientes de Banco de Datos del CINEP en compración de 2019
+			UPDATE sip_municipio SET id='1466' WHERE id_munlocal='981' AND id_departamento='29' ; --  https://es.wikipedia.org/wiki/Bel%C3%A9n_de_Bajir%C3%A1  en conflicto limitrofe entre Antioquia (donde era corregimiento Mutatá y Chocó donde sería Municipio Belén de Bajirá).  En 2017 por concepto técnico del Agustin Codazzi es de Chocó, pero no aparece en DIVIPOLA 2018
+      UPDATE sip_municipio SET id='1467', id_departamento='3' WHERE id_munlocal='985' AND nombre='ESPAÑA' ; 
+    SQL
+     
+		
 		execute <<-SQL
 		  ALTER TABLE sip_municipio ALTER COLUMN id
 		  	SET NOT NULL;
