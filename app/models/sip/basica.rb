@@ -141,18 +141,19 @@ module Sip
 
       scope :filtro_habilitado, lambda {|o|
         if o.upcase.strip == 'SI'
-          where(fechadeshabilitacion: nil)
+          where("#{table_name}.fechadeshabilitacion IS NULL")
         elsif o.upcase.strip == 'NO'
-          where.not(fechadeshabilitacion: nil)
+          where.not("#{table_name}.fechadeshabilitacion IS NULL")
+          #where.not(fechadeshabilitacion: nil)
         end 
       }
 
       scope :filtro_nombre, lambda { |n|
-        where("unaccent(nombre) ILIKE '%' || unaccent(?) || '%'", n)
+        where("unaccent(#{table_name}.nombre) ILIKE '%' || unaccent(?) || '%'", n)
       }
 
       scope :filtro_observaciones, lambda { |o|
-        where("unaccent(observaciones) ILIKE '%' || unaccent(?) || '%'", o)
+        where("unaccent(#{table_name}.observaciones) ILIKE '%' || unaccent(?) || '%'", o)
       }
 
     end
