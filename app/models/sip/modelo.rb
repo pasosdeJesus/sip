@@ -171,8 +171,9 @@ module Sip
                 menserror <<  " No se pudo asignar a #{ll.to_s} el valor #{datosent[ll.to_sym]}."
               end
             else
-              menserror << " No se conoce como importar atributo #{ll.to_sym} " +
-                " con valor #{datosent[ll.to_sym]} en controlador #{self.class}."
+              menserror << " No se conoce como importar atributo " +
+                "'#{ll.to_s}' con valor '#{datosent[ll.to_sym]}' " +
+                "en controlador '#{self.class}'."
               return nil
             end
           end

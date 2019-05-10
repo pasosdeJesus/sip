@@ -174,57 +174,64 @@ module Sip
               datosent.delete :tdocumento
             end
             if datosent[:pais]
-              self.id_pais = Sip::ImportaHelper.nombre_en_tabla_basica(
+              pais = Sip::ImportaHelper.nombre_en_tabla_basica(
                 Sip::Pais, datosent[:pais].upcase, menserror)
+              self.id_pais = pais ? pais.id : nil
               datosent.delete :pais
             end
             if datosent[:departamento]
-              if self.id_pais.nil?
-                self.id_pais = Sip::Pais.where(nombre: 'COLOMBIA').take.id
-              end
-              d = Sip::Departamento.where( id_pais: self.id_pais).where(
-                'unaccent(nombre) = unaccent(?)', 
-                datosent[:departamento].upcase
-              )
-              if d.count == 0
-                menserror << "  No se encontró departamento #{datosent[:departamento]} en el pais #{Sip::Pais.find(self.id_pais).nombre}."
-              else 
-                self.id_departamento = d.take.id
+              if datosent[:departamento] != ''
+                if self.id_pais.nil?
+                  self.id_pais = Sip::Pais.where(nombre: 'COLOMBIA').take.id
+                end
+                d = Sip::Departamento.where( id_pais: self.id_pais).where(
+                  'upper(unaccent(nombre)) = upper(unaccent(?))', 
+                  datosent[:departamento].upcase
+                )
+                if d.count == 0
+                  menserror << "  No se encontró departamento '#{datosent[:departamento]}' en el pais '#{Sip::Pais.find(self.id_pais).nombre}'."
+                else 
+                  self.id_departamento = d.take.id
+                end
               end
               datosent.delete :departamento
             end
 
             if datosent[:municipio] 
-              if self.id_departamento.nil?
-                menserror << "  No se puede ubicar municipio #{datosent[:municipio]} sin departamento."
-              else
-                m = Sip::Municipio.where(
-                  id_departamento: self.id_departamento).where(
-                  'unaccent(nombre) = unaccent(?)', 
-                  datosent[:municipio].upcase
-                )
-                if m.count == 0
-                  menserror << "  No se encontró municipio #{datosent[:municipio]} en el departamento #{Sip::Departamento.find(self.id_departamento).nombre}."
-                else 
-                  self.id_municipio = m.take.id
+              if datosent[:municipio] != ''
+                if self.id_departamento.nil?
+                  menserror << "  No se puede ubicar municipio #{datosent[:municipio]} sin departamento."
+                else
+                  m = Sip::Municipio.where(
+                    id_departamento: self.id_departamento).where(
+                    'upper(unaccent(nombre)) = upper(unaccent(?))', 
+                    datosent[:municipio].upcase
+                  )
+                  if m.count == 0
+                    menserror << "  No se encontró municipio #{datosent[:municipio]} en el departamento #{Sip::Departamento.find(self.id_departamento).nombre}."
+                  else 
+                    self.id_municipio = m.take.id
+                  end
                 end
               end
               datosent.delete :municipio
             end
 
-            if datosent[:centro_poblado] 
-              if self.id_municipio.nil?
-                menserror << "  No puede ubicarse centro_poblado #{datosent[:centro_poblado]} sin municipio."
-              else
-                cp = Sip::Clase.where(
-                  id_municipio: self.id_municipio).where(
-                  'unaccent(nombre)=unaccent(?)', 
-                  datosent[:centro_poblado].upcase
-                )
-                if cp.count == 0
-                  menserror << "  No se encontró centro poblado #{datosent[:centro_poblado]} en el municipio #{Sip::Municipio.find(self.id_municipio).nombre}."
-                else 
-                  self.id_clase= cp.take.id
+            if datosent.keys.include?(:centro_poblado)
+              if datosent[:centro_poblado] && datosent[:centro_poblado] != ''
+                if self.id_municipio.nil?
+                  menserror << "  No puede ubicarse centro_poblado #{datosent[:centro_poblado]} sin municipio."
+                else
+                  cp = Sip::Clase.where(
+                    id_municipio: self.id_municipio).where(
+                    'upper(unaccent(nombre))=upper(unaccent(?))', 
+                    datosent[:centro_poblado].upcase
+                  )
+                  if cp.count == 0
+                    menserror << "  No se encontró centro poblado #{datosent[:centro_poblado]} en el municipio #{Sip::Municipio.find(self.id_municipio).nombre}."
+                  else 
+                    self.id_clase= cp.take.id
+                  end
                 end
               end
               datosent.delete :centro_poblado

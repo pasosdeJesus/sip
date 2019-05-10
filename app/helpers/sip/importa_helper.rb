@@ -6,9 +6,13 @@ module Sip
 
     def nombre_en_tabla_basica(tbasica, nombre, menserror, 
                                camponombre = 'nombre')
-      d = tbasica.where(camponombre => nombre)
+      if !nombre  || nombre == ''
+        return nil
+      end
+      d = tbasica.where("upper(unaccent(#{camponombre})) = upper(unaccent(?))",
+                        nombre)
       if d.count == 0
-        menserror << "  No se encontró '#{nombre}' en tabla básica #{tbasica.class} al buscar en el campo #{camponombre}."
+        menserror << "  No se encontró '#{nombre}' en tabla básica #{tbasica.to_s} al buscar en el campo #{camponombre}."
         return nil
       elsif d.count > 1
         menserror << "  En la tabla básica #{tbasica.class} hay #{d.count} registros cuyo campo #{camponombre} es #{nombre}."
