@@ -24,7 +24,7 @@ module Sip
     # @return objeto Date con fecha de f si no hay error
     # Si hay error reotrna nil y agrega en menserror el error
     def fecha_local_colombia_a_date(f, menserror)
-      d = Sip::FormatoFechaHelper.fecha_local_colombia_estandar(f)
+      d = Sip::FormatoFechaHelper.fecha_local_colombia_estandar(f, menserror)
       if !d
         menserror << "  No pudo reconocer fecha #{f}."
         return nil

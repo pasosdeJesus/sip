@@ -88,6 +88,18 @@ module Sip
             end
           end
 
+          def fechanac
+            r = ""
+            r += anionac.to_s if anionac
+            r += "-"
+            r += FormatoFechaHelper::ABMESES[mesnac] if mesnac && 
+              mesnac>=1 && mesnac<=12
+            r += "-"
+            r += dianac.to_s if dianac
+            return r
+
+          end
+
           def presenta_fechanac
             r = ""
             r += dianac.to_s if dianac
@@ -129,6 +141,19 @@ module Sip
             if !datosent.key?(:sexo)
               self.sexo = 'S'
             end
+
+            if datosent[:fechanac]
+              r = datosent[:fechanac]
+              # suponemos yyyy-mm-dd
+              d = Sip::FormatoFechaHelper.reconoce_adivinando_locale(r, menserror)
+              if d
+                self.dianac = d.day
+                self.mesnac = d.month
+                self.anionac = d.year
+              end
+              datosent.delete :fechanac
+            end
+
             if datosent[:fechanac_localizada]
               r = datosent[:fechanac_localizada]
               # suponemos dd/M/yyy

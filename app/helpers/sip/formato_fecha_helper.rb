@@ -41,7 +41,7 @@ module Sip
     # 
     # El formato estándar es el usado por PostgreSQL yyyy-mm-dd
   
-    def fecha_local_colombia_estandar f
+    def fecha_local_colombia_estandar(f, menserror=nil)
         # Date.strptime(f, '%d-%M-%Y') no ha funcionado, 
         # %b debe ser en ingles
         # datepicker produce meses cortos comenzando en mayúsculas.
@@ -53,12 +53,17 @@ module Sip
         return ''
       end
 
+      nf = nil
       pf = f.split('/')
       if pf.count < 3 
         pf = f.split('-')
       end
       if pf.count < 3
-        puts "Formato de fecha en locale de colombia desconocido: #{f}"
+        if menserror
+          menserror << "  Formato de fecha en locale de colombia desconocido: #{f}"
+        else
+          puts "Formato de fecha en locale de colombia desconocido: #{f}"
+        end
         return nil;
         nf = Date.strptime(f, '%d-%M-%Y').strftime('%Y-%m-%d')
       else
@@ -89,8 +94,17 @@ module Sip
             else 
               12
             end
-        nf = Date.new(pf[2].to_i, m, pf[0].to_i).strftime('%Y-%m-%d')
+        begin
+            nf = Date.new(pf[2].to_i, m, pf[0].to_i).strftime('%Y-%m-%d')
+        rescue
+          if menserror
+            menserror << "  Formato de fecha en locale de colombia desconocido: #{f}"
+          else
+            puts "Formato de fecha en locale de colombia desconocido: #{f}"
+          end
+        end
       end
+      return nf
     end 
     module_function :fecha_local_colombia_estandar
 
@@ -145,7 +159,7 @@ module Sip
     module_function :fecha_estandar_local
 
     # Adivina locale de fecha y retorna Date
-    def reconoce_adivinando_locale f
+    def reconoce_adivinando_locale(f, menserror = nil)
       if !f || (f.class != String && f.class != Date) || 
         (f.class == String && f == '')
         return nil
@@ -155,12 +169,22 @@ module Sip
       end
       if f.include?('/')
         #'dd/M/yyyy'
-        nf =fecha_local_colombia_estandar f
+        nf =fecha_local_colombia_estandar(f, menserror)
       else
         nf = f
       end
-      r = Date.strptime(nf, '%Y-%m-%d')
-      return nf
+      begin
+        r = Date.strptime(nf, '%Y-%m-%d')
+      rescue
+        r = nil
+        if menserror
+          menserror << "  Formato de fecha desconocido: #{f}"
+        else
+          puts "Formato de fecha desconocido: #{f}"
+        end
+      end
+
+      return r
     end
     module_function :reconoce_adivinando_locale
 
