@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'puma', '~> 3.11'
 
 # Rails (internacionalización)
-gem "rails", '~> 5.2.3'
+gem "rails", '~> 6.0.0.rc1'
 gem "rails-i18n"
 
 gem 'bigdecimal'
