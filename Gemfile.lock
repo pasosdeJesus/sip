@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/vtamara/chosen-rails.git
-  revision: e922ac19f89362c5d8c5a195d5fca8c4f6d88331
-  branch: app-assets
+  revision: 48c457fc9ef1c4c573b4dcdb9dc07034b46ed6b4
+  branch: several-fixes
   specs:
     chosen-rails (1.8.7)
       coffee-rails (>= 3.2)
@@ -328,7 +328,7 @@ DEPENDENCIES
   pry-rescue
   pry-stack_explorer
   puma (~> 3.11)
-  rails (~> 5.2.1)
+  rails (~> 5.2.3)
   rails-controller-testing
   rails-erd
   rails-i18n

@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'puma', '~> 3.11'
 
 # Rails (internacionalización)
-gem "rails", '~> 5.2.1'
+gem "rails", '~> 5.2.3'
 gem "rails-i18n"
 
 gem 'bigdecimal'
@@ -16,7 +16,7 @@ gem "pg"#, '~> 0.21'
 gem "colorize"
 
 # Cuadros de selección potenciados
-gem 'chosen-rails', git: "https://github.com/vtamara/chosen-rails.git", branch: 'app-assets'
+gem 'chosen-rails', git: "https://github.com/vtamara/chosen-rails.git", branch: 'several-fixes'
 
 # Unifica CSSs
 gem "sass"
