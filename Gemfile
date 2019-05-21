@@ -1,16 +1,15 @@
 source 'https://rubygems.org'
 
-# Servidor web durante desarrollo
-gem 'puma', '~> 3.11'
 
 # Rails (internacionalización)
 gem "rails", '~> 6.0.0.rc1'
 gem "rails-i18n"
 
-gem 'bigdecimal'
-
 # Postgresql
 gem "pg"#, '~> 0.21'
+
+# Servidor web durante desarrollo
+gem 'puma', '~> 3.11'
 
 # Colores en terminal
 gem "colorize"
@@ -21,6 +20,9 @@ gem 'chosen-rails', git: "https://github.com/vtamara/chosen-rails.git", branch: 
 # Unifica CSSs
 gem "sass"
 gem "sass-rails"
+
+# posibilidad de manejar módulos en Javascript https://github.com/rails/webpacker
+gem 'webpacker'
 
 # API JSON facil. Ver: https://github.com/rails/jbuilder
 gem "jbuilder"
