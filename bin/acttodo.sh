@@ -20,7 +20,8 @@ function actuno {
 	acdir=`pwd`
 	cd $a
 	echo "=== actuno: $a $b"
-	git pull
+	branch=`git branch | grep "^*" | sed -e  "s/^* //g"` 
+	git pull origin $branch
 	if (test "$?" != 0) then {
 		exit 1;
 	} fi;
