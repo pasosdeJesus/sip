@@ -2,7 +2,7 @@
 
 Para iniciar una aplicación que usará **sip** sugerimos:
 
-- Crea una aplicación rails que use la base de datos PostgreSQL. Además cree y configure la carpeta .bundle así:
+- Crea una aplicación rails que use la base de datos PostgreSQL. Además crea y configura la carpeta .bundle así:
 ```sh
 $ rails new minsip --database=postgresql
 $ cd minsip
@@ -99,7 +99,7 @@ gem "turbolinks"
 EOF
 $ bundle install
 ```
-- Crea el modelo usuario ```app/models/usuario.rb``` (Lo puede crear con ``rails g model Usuario``). Puedes ver como personalizar el modelo y controlador de usuario en <https://github.com/pasosdeJesus/sip/wiki/Uso-y-personalizaci%C3%B3n-del-modelo-usuario> pero inicialmente basta:
+- Crea el modelo usuario ```app/models/usuario.rb``` (Lo puedes crear con ``rails g model Usuario``). Puedes ver como personalizar el modelo y controlador de usuario en <https://github.com/pasosdeJesus/sip/wiki/Uso-y-personalizaci%C3%B3n-del-modelo-usuario> pero inicialmente basta:
 ```rb
 # encoding: UTF-8
 require 'sip/concerns/models/usuario'
@@ -108,7 +108,7 @@ class Usuario < ActiveRecord::Base
   include Sip::Concerns::Models::Usuario
 end
 ```
-- Crea un controlador (Lo puede crear con ``rails g controller usuarios`` ) y configúralo en `app/controllers/usuarios_controller.rb` inicialmente con:
+- Crea un controlador (Lo puedes crear con ``rails g controller usuarios`` ) y configúralo en `app/controllers/usuarios_controller.rb` inicialmente con:
 ```rb
 # encoding: UTF-8
 require 'sip/concerns/controllers/usuarios_controller'
@@ -257,7 +257,7 @@ end
 
 <% content_for :piedepagina do %>
   <p><span class='derechos'><a href="http://www.pasosdejesus.org/dominio_publico_colombia.html">Dominio Público de acuerdo a Legislación Colombiana</a><br/>
-    Desarrollado por <a href="http://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>. 2018.
+    Desarrollado por <a href="http://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>. 2019.
   </span></p>
 <% end %>
 
@@ -312,7 +312,7 @@ conexion.execute("INSERT INTO usuario
     '$2a$04$uLWQzmlDYEaegYs4brFVYeLN9FeIE6vAPQqp9HgbQDGLKOV9dXTK6',
     '', '2014-08-14', '2014-08-14', '2014-08-14', 1);")
 ```
-Ahora carga las semillas de tu aplicación con ``rails db:seed``
+Ahora carga las semillas de tu aplicación con ``bin/rails db:seed``
 - Inicializa base de datos con:
 ```sh
 $ bin/rails db:setup sip:indices
