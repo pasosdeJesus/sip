@@ -149,7 +149,7 @@ if (typeof String.prototype.endsWith != 'function')
     anio = +fecha.slice(7,11)
     dia = +fecha.slice(0,2)
     nmes = fecha.slice(3,6)
-    if typeof nmes !== 'undefined' && @sip_meses.includes(nmes.toLowerCase())
+    if typeof nmes != 'undefined' && @sip_meses.includes(nmes.toLowerCase())
       mes = @sip_meses.indexOf(nmes.toLowerCase()) + 1
     else
       mes = 6
