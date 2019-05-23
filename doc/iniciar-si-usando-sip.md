@@ -317,7 +317,7 @@ conexion.execute("INSERT INTO usuario
 $ bin/rails db:setup sip:indices
 ```
 - Pon el logo que deseas ver en la página inicial de la aplicación 
-  en  `public/images/logo.jpg`
+  en  `app/assets/images/logo.jpg`
 - Lanza tu aplicación
 ```sh
 $ bin/rails s 
