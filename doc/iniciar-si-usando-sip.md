@@ -232,7 +232,7 @@ end
     <% end %>
   <% end %>
   <%= menu_group :pull => :right do %>
-    <%= menu_item "Documentacion", "https://github.com/pasosdeJesus/sip/wiki" %>
+    <%= menu_item "Documentacion", "https://github.com/pasosdeJesus/sip/blob/master/doc/README.md" %>
     <% if current_usuario %>
       <%= drop_down "Administrar" do %>
         <%= menu_item "Clave", main_app.editar_registro_usuario_path %>
