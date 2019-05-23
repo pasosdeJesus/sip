@@ -109,7 +109,7 @@ end
 En `app/controllers/actividades_controller.rb` complete:
 1. Los campos por mostrar en las vistas `index` (listado de actividades), `show` (resumen de una actividad) y `form` (formulario) en las funciones `atributos_index`, `atributos_show` y `atributos_form` respectivamente --como en este caso serán iguales (excepto que id no es editable en el formulario)-- basta especificar `atributos_index`
 2. El criterio de ordenamiento para el listado de actividades (por omisión es :id pero para este caso queremos por nombre)
-3. El genero de la palabra actividad (para que el botón "Nuevo" en el listado de actividades sea más bien "Nueva")
+3. El género de la palabra actividad (para que el botón "Nuevo" en el listado de actividades sea más bien "Nueva")
 
 Quedará:
 ```rb
