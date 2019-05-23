@@ -1,7 +1,7 @@
 # Ejemplo de creación de tabla, modelo y controlador con vistas automáticas
 
 Supongamos que se requiere una aplicación para manejar actividades.  
-Usará sip con sus 2 roles por omisión (administradores y operadores), y ambos roles podrán administrar las actividades, es decir puedan ver, crear, editar y eliminar actividades.  Una actividad constará de un nombre, un valor y una fecha.  
+Usará sip con sus 2 roles por omisión (administradores y operadores), y ambos roles podrán administrar las actividades, es decir podrán ver, crear, editar y eliminar actividades.  Una actividad constará de un nombre, un valor y una fecha.  
 
 Si aún no tiene una aplicación que use Sip, vea primero [Iniciar un sistema de información usando Sip](https://github.com/pasosdeJesus/sip/wiki/Iniciar-un-sistema-de-informaci%C3%B3n-usando-Sip).
 
@@ -9,17 +9,17 @@ Como la aplicación se dirige a usuarios de Colombia todo debe verse en español
 
 # 1. Genere parcialmente migración, modelo y controlador
 
-En una aplicación que ya use sip (ver [Iniciar un sistema de información usando Sip](https://github.com/pasosdeJesus/sip/wiki/Iniciar-un-sistema-de-informaci%C3%B3n-usando-Sip)), puede generar una migración parcial (para crear la tabla), el modelo y controlador con:
+En una aplicación que ya use sip (ver [Iniciar un sistema de información usando Sip](https://github.com/pasosdeJesus/sip/wiki/Iniciar-un-sistema-de-informaci%C3%B3n-usando-Sip)), puede generar una migración parcial (para crear la tabla), el modelo (app/models/actividad.rb) y controlador (app/controllers/actividades_controller.rb) con:
 ```sh
 $ DISABLE_SPRING=1 bin/rails g sip:modelo actividad actividades
 ```
-Note que se requiere la forma singular del modelo (i.e actividad) y la plural (i.e actividades), pues la tabla y el modelo usaran la forma singular, mientras que el controlador y las vistas usarán la forma plural.
+Note que se requiere la forma singular del modelo (i.e actividad) y la plural (i.e actividades), pues la tabla y el modelo usarán la forma singular, mientras que el controlador y las vistas usarán la forma plural.
 
 Tras generar archivos, complete la aplicación siguiendo las instrucciones que el generador da y que detallamos a continuación.
 
 # 2. Modifique la migración generada
 
-Por ejemplo para que quede:
+Por ejemplo, como una actividad consta de un nombre, valor y fecha, la migración quedaría así:
 ```rb
 class CreateActividad < ActiveRecord::Migration[5.2]
   def change
@@ -34,15 +34,15 @@ class CreateActividad < ActiveRecord::Migration[5.2]
 end
 ```
 
-Y ejecutela con 
+Y ejecútela con
 ```sh
 $ rails db:migrate
 ```
 
 # 3. Establezca el control de acceso
 
-Modifique `app/models/ability.rb` agregando el control de acceso y su descripción.  Suponiendo que le quisiera dar acceso para administrar las actividades a los roles ROLADMIN y ROLOPERADOR tendría que:
-1. Agregar `can :manage, ::Actividad` en los casos de Ability::ROLADMIN y Ability::ROLOPERADOR de la función initialize.
+Modifique `app/models/ability.rb` agregando el control de acceso y su descripción (agregar `include CanCan::Ability`).  Suponiendo que le quisiera dar acceso para administrar las actividades a los roles ROLADMIN y ROLOPERADOR tendría que:
+1. Agregar `can :manage, ::Actividad` en los casos de Ability::ROLADMIN y Ability::ROLOPERADOR (o ROLANALI) de la función initialize.
 2. Modificar ROLES_CA para agregar la descripción de este acceso para los roles indicados (si no ha cambiado los ROLES por omisión de SIP, serán 1 para ROLADMIN y 5 para ROLOPERADOR), por ejemplo:
 ```rb
 ROLES_CA = [
@@ -62,12 +62,14 @@ ROLES_CA = [
 
 Agregue manualmente la inflección no regular (para el inglés) en `config/initializers/inflections.rb` al estilo:
 ```rb
+ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.irregular 'actividad', 'actividades'
+end
 ```
 
 # 5. Suministre nombres en español para los campos
 
-Agregue el nombre del modelo y sus campos en español en `config/locales/es.yml`, por ejemplo si no tenía otras cadena en este archivo quedaría:
+Agregue el nombre del modelo y sus campos en español en `config/locales/es.yml`, por ejemplo si no tenía otras cadenas en este archivo quedaría:
 ```yml
 es:
   activerecord:
@@ -104,7 +106,7 @@ end
 
 # 7. Edite el controlador generado
 
-En `app/controllers/actividades_controller.rb` complete: 
+En `app/controllers/actividades_controller.rb` complete:
 1. Los campos por mostrar en las vistas `index` (listado de actividades), `show` (resumen de una actividad) y `form` (formulario) en las funciones `atributos_index`, `atributos_show` y `atributos_form` respectivamente --como en este caso serán iguales (excepto que id no es editable en el formulario)-- basta especificar `atributos_index`
 2. El criterio de ordenamiento para el listado de actividades (por omisión es :id pero para este caso queremos por nombre)
 3. El genero de la palabra actividad (para que el botón "Nuevo" en el listado de actividades sea más bien "Nueva")
@@ -166,11 +168,11 @@ end
 Editando `config/routes.rb`  agregue antes de la declaración de la ruta raiz `root`:
 ```rb
 resources :actividades, path_names: { new: 'nueva', edit: 'edita' }
-``` 
- 
+```
+
 # 9. Agregue una entrada en el menú de la aplicación
 
-Editando `app/views/layout/application.html.erb`:
+Editando `app/views/layouts/application.html.erb` dentro de la sección de `menu_group`:
 ```erb
     <% if can? :read, ::Actividad %>
       <%= menu_item "Actividades", main_app.actividades_path %>
@@ -179,7 +181,7 @@ Editando `app/views/layout/application.html.erb`:
 
 # 9. Lance la aplicación
 
-Ejecute 
+Ejecute
 ```sh
 $ bin/rails s
 ```
