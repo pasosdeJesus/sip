@@ -102,6 +102,7 @@ if (test "$SALTASIVEL" != "1") then {
 	actuno sivel2_gen test/dummy; 
 	actuno sivel2; 
 	actuno sivel2_somosdefensores
+	actuno sivel2_anzorc
 } fi;
 
 # Usan 3 motores
