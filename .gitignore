@@ -38,4 +38,5 @@ test/dummy/archivos/
 .byebug_history
 coverage/
 test/dummy/public/
+test/dummy/node_modules/
 

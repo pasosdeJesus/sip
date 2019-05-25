@@ -235,6 +235,9 @@ module Sip
             if @registro.respond_to?(:fechacreacion)
               @registro.fechacreacion = DateTime.now.strftime('%Y-%m-%d')
             end
+            # render requiere el siguiente segun se confirmó
+            # y comentó en update_gen
+            eval "@#{c2} = @registro" 
             if !validaciones(@registro) || !@registro.valid?
               render action: 'new', layout: 'application' 
               return
@@ -273,29 +276,24 @@ module Sip
             else
               @registro = clase.constantize.find(params[:id])
             end
-            actualizada = genclase == 'M' ? 'actualizado' : 'actualizada';
-            c2 = clase.demodulize.underscore
+            authorize! :update, @registro
             filtra_contenido_params
+            c2 = clase.demodulize.underscore
             pf = send(c2 + '_params')
             @registro.assign_attributes( pf )
-            if !validaciones(@registro) || !@registro.valid?
-              #flash[:error] = @registro.errors
-              render action: 'edit', layout: 'application' 
-              return
-            end
-            if registro
-              @registro = registro
-            else
-              @registro = clase.constantize.find(params[:id])
-            end
-            authorize! :update, @registro
+            # El siguiente se necesita porque por lo visto render 
+            # cuando viene de actividades_controller emplea @actividad
+            eval "@#{c2} = @registro" 
             respond_to do |format|
-              if @registro.update(pf)
+              if validaciones(@registro) && @registro.valid? && 
+                @registro.save
                 format.html { 
                   if params[:_sip_enviarautomatico_y_repinta]
                     redirect_to edit_modelo_path(@registro), 
                       turbolinks: false
                   else
+                    actualizada = genclase == 'M' ? 'actualizado' : 
+                      'actualizada';
                     redirect_to modelo_path(@registro), 
                       notice: clase + " #{actualizada}." 
                   end
@@ -305,11 +303,11 @@ module Sip
                 }
               else
                 format.html { 
-                  flash[:error] = @registro.errors
                   render action: 'edit', layout: 'application' 
                 }
                 format.json { 
-                  render json: @registro.errors, status: :unprocessable_entity 
+                  render json: @registro.errors, 
+                    status: :unprocessable_entity 
                 }
               end
             end
