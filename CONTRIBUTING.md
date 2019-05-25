@@ -45,7 +45,7 @@ En la nueva rama agrega, edita y/o elimina archivos. Para saber si se ha modific
   ```
 agrega tus cambios a git con:
   ```
-  git add .
+  git add _archivo_
   ```
 Ahora, realiza un commit para escribir un comentario a la contribución, por ejemplo:
   ```
@@ -58,25 +58,25 @@ Por ejemplo puedes fusionar los 2 últimos commits con:
   ```
 Esto abrirá un archivo con los mensajes de las 2 últimas contribuciones y frente a cada uno la plabra `pick` que podrías cambiar por `squash` en la segunda contribución para fusionarla con la primera.  Después de guardar y salir volverás a un editor para modificar el mensaje que tendrá la contribución fusionada
 
-Tras esto si ve la historia de contribuciones notará la fusión:
+Tras esto si ve la historia de contribuciones notarás la fusión:
   ```
   git log
   ```
-Una vez tenga bien su contribución en orden, empuje el cambio a la rama que creó en su bifurcación:
+Una vez tengas bien tu contribución en orden, empuja el cambio a la rama que creaste en tu bifurcación:
   ```
   git push -f origin mejora-documentacion
   ```
 Y desde la interfaz de github examinando su repositorio bifurcado o el original de Pasos de Jesús verás un botón para crear la solicitud de cambio (pull-request).  Úsalo, revisa lo que enviarás, pon un comentario que justifique el cambio y envíalo.
 
-Cuando hagas un pull request se iniciarán sobre el mismo las tareas de integración continua que hemos configurado en github y que en general su cambio debe pasar. Después los desarrolladores de sip revisarán tu cambio y si se requiere escribirán sugerencias de cambio, que debes hacer o justificar por que no conviene antes de que tu contribución sea aceptada. Es decir habrá un diálogo en la parte de comentarios de tu solicitud de cambio que debe continuar.
+Cuando hagas un pull request se iniciarán sobre el mismo las tareas de integración continua que hemos configurado en github y que en general tu cambio debe pasar. Después los desarrolladores de sip revisarán tu cambio y si se requiere escribirán sugerencias de cambio, que debes hacer o justificar por que no conviene antes de que tu contribución sea aceptada. Es decir habrá un diálogo en la parte de comentarios de tu solicitud de cambio que debe continuar.
 
-Debes realizar los cambios en la misma rama donde hizo la propuesta inicial, pero antes debes sincronizarla con la rama `master` del repositorio de Pasos de Jesús por si otros desarrolladores han hecho cambios recientes. Para eso primero sincroniza tu rama master:
+Debes realizar los cambios en la misma rama donde hiciste la propuesta inicial, pero antes debes sincronizarla con la rama `master` del repositorio de Pasos de Jesús por si otros desarrolladores han hecho cambios recientes. Para eso primero sincroniza tu rama master:
 ```
 git checkout master
 git pull --rebase upstream master
 git push -f origin master
 ```
-Y de inmediato toma en tu rama donde hace la propuesta los cambios que pudiera haber en la rama `master` ya sincronizada:
+Y de inmediato toma en tu rama donde hiciste la propuesta, los cambios que pudiera haber en la rama `master` ya sincronizada:
 ```
 git checkout mejora-documentacion
 git pull --rebase origin master
@@ -90,18 +90,18 @@ git commit -m "Aplicando sugerencias de revisor" -a
 git rebase -i HEAD~2
 git push -f origin mejora-documentacion
 ```
-Después de empujar tus cambios (push) en la misma rama, github notará el cambio y actualizará la solicitud de cambio ya hecha, volviendo a lanzar las tareas de integración continua y los desarrolladores volverán a auditar su contribución y continuarán el diálogo en la sección de comentarios.
+Después de empujar tus cambios (push) en la misma rama, github notarás el cambio y actualizará la solicitud de cambio ya hecha, volviendo a lanzar las tareas de integración continua y los desarrolladores volverán a auditar tu contribución y continuarán el diálogo en la sección de comentarios.
 
-Este proceso debe iterarse hasta que tu cambio sea aceptado (o rechazado), por lo que debes visitar con frecuencia su solicitud de cambio y ver nuevos comentarios que puedan haber (los comentarios más recientes quedan al final de la pestaña de comentarios).
+Este proceso debe iterarse hasta que tu cambio sea aceptado (o rechazado), por lo que debes visitar con frecuencia tu solicitud de cambio y ver nuevos comentarios que puedan haber (los comentarios más recientes quedan al final de la pestaña de comentarios).
 
 
 ## Otros aspectos a tener en cuenta
 
-* Durante el desarrollo de tu contribución actualice constantemente las dependencias para usar siempre las versiones más recientes de librerías y motores.
+* Durante el desarrollo de tu contribución actualiza constantemente las dependencias para usar siempre las versiones más recientes de librerías y motores.
 
 * La plataforma principal de desarrollo y de producción es adJ (Distribución de OpenBSD) ver descripción en:
 	https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md
-  Por eso después de hacer cambios sugerimos que en esa platafoma ejecutes las pruebas de regresión para asegurar que pasan. Suele bastar desde el directorio raíz de las fuentes o desde `test/dummy` si es un motor:
+  Por eso después de hacer cambios sugerimos que en esa plataforma pruebes las novedades que introduces y que ejecutes las pruebas de regresión para asegurar que pasan. Suele bastar desde el directorio raíz de las fuentes o desde `test/dummy` si es un motor:
   ```sh
   RAILS_ENV=test  bin/rails db:drop db:setup db:migrate sip:indices
   ```
