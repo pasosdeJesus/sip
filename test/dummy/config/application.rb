@@ -31,6 +31,8 @@ module Dummy
 
     config.active_record.schema_format = :sql
 
+    config.hosts << ENV['CONFIG_HOSTS'] || '127.0.0.1'
+
     #config.web_console.whitelisted_ips = ['x.y.z.a']
    
 
