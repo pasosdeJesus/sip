@@ -29,17 +29,17 @@ module Sip
           has_many :persona_trelacion2, foreign_key: "persona2", validate: true,
             class_name: "Sip::PersonaTrelacion"
           belongs_to :clase, class_name: 'Sip::Clase',
-            foreign_key: "id_clase", validate: true
-          belongs_to :nacional, class_name: "Sip::Pais", 
-            foreign_key: "nacionalde", validate: true
+            foreign_key: "id_clase", validate: true, optional: true
+          belongs_to :nacional, class_name: "Sip::Pais",
+            foreign_key: "nacionalde", validate: true, optional: true
           belongs_to :departamento, foreign_key: "id_departamento", 
-            validate: true, class_name: "Sip::Departamento"
+            validate: true, class_name: "Sip::Departamento", optional: true
           belongs_to :municipio, foreign_key: "id_municipio", validate: true,
-            class_name: "Sip::Municipio"
+            class_name: "Sip::Municipio", optional: true
           belongs_to :pais, class_name: "Sip::Pais", foreign_key: "id_pais", 
-            validate: true
+            validate: true, optional: true
           belongs_to :tdocumento, class_name: "Sip::Tdocumento", 
-            foreign_key: "tdocumento_id", validate: true
+            foreign_key: "tdocumento_id", validate: true, optional: true
 
           # identificación autogenerada en este y demás modelos (excepto los de
           # información geográfica).

@@ -10,14 +10,14 @@ module Sip
           self.table_name = 'sip_ubicacion'
           belongs_to :pais, foreign_key: "id_pais", validate: true, 
             class_name: "Sip::Pais"
-          belongs_to :departamento, foreign_key: "id_departamento", validate: true, 
-            class_name: "Sip::Departamento" 
+          belongs_to :departamento, foreign_key: "id_departamento", 
+            validate: true, class_name: "Sip::Departamento", optional: true
           belongs_to :municipio, foreign_key: "id_municipio", validate: true, 
-            class_name: "Sip::Municipio"
+            class_name: "Sip::Municipio", optional: true
           belongs_to :clase, foreign_key: "id_clase", validate: true, 
-            class_name: "Sip::Clase" 
+            class_name: "Sip::Clase" , optional: true
           belongs_to :tsitio, foreign_key: "id_tsitio", validate: true, 
-            class_name: "Sip::Tsitio" 
+            class_name: "Sip::Tsitio", optional: true 
             
           validates_presence_of :pais
           validates_presence_of :id_tsitio

@@ -17,7 +17,7 @@ module Sip
           accepts_nested_attributes_for :grupoper, reject_if: :all_blank
 
           belongs_to :pais, class_name: 'Sip::Pais',
-            foreign_key: "pais_id", validate: true
+            foreign_key: "pais_id", validate: true, optional: true
 
           has_many :actorsocial_persona, 
             class_name: 'Sip::ActorsocialPersona',
