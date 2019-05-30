@@ -1,12 +1,12 @@
 # Información dedicada a contribuidores #
 
-## Términos de uso
+## 1. Términos de reproducción
 
-Al hacer una contribución estás aceptando los términos que estamos 
-usando para este motor, que encuentras en:
+Al hacer una contribución estás aceptando los términos de reproducción
+que estamos usando para este motor, que encuentras en:
 <https://www.pasosdejesus.org/dominio_publico_colombia.html>
 
-## Tareas de integración continua
+## 2. Tareas de integración continua
 
 El archivo `README.md` incluye varias banderas que queremos dejar en 
 buen estado:
@@ -18,9 +18,9 @@ buen estado:
      como tales en _Hakiri_ (al cual agradecemos por el servicio de auditoría).
 
 
-## Uso recomendado de git
+## 3. Uso recomendado de git
 
-### Configuración inicial
+### 3.1 Configuración inicial
 
 Consideramos que tu contribución a `sip` (y a otros proyectos de fuentes 
 abiertas) será más ordenada si sigues los lineamientos de uso de FreeCodeCamp 
@@ -34,7 +34,7 @@ que procuramos resumir aquí:
   git clone git@github.com/miusuario/sip.git
   ```
 3. En la nueva copia en el computador de desarrollo asegurate de tener 
-   2 repositorios remotos: (1) `origin` que apunte a su bifurcación y (2) 
+   2 repositorios remotos: (1) `origin` que apunte a tu bifurcación y (2) 
    por ejemplo `upstream` que apunte a las fuentes originales.  
    Puedes ver tus repositorios actuales con `git remote -v` y agrega las 
    fuentes de Pasos de Jesús de sip como `upstream` con:  
@@ -53,7 +53,7 @@ regularidad:
   git push -f origin master
   ```
 
-### Iniciar una contribución
+### 3.2 Iniciar una contribución
 
 Cuando desees hacer una contribución, comienza por sincronizar tu rama 
 `master` y desde esta crear una nueva rama donde propondrás el cambio 
@@ -61,10 +61,13 @@ y pon un título que le ayude a limitar el alcance del cambio (si deseas
 hacer cambios diferentes es mejor que hagas ramas diferentes a partir 
 de la rama `master` sincronizada), por ejemplo:
   ```
+  git checkout master
+  git pull --rebase upstream master
+  git push -f origin master
   git checkout -b mejora-documentacion
   ```
-En la nueva rama agrega, edita y/o elimina archivos. Para saber si se ha 
-modificado algún archivo puedes averiguarlo con:
+En la nueva rama agrega, edita y/o elimina archivos. Puedes averiguar
+modificaciones a archivos con:
   ```
   git status -s
   ```
@@ -115,7 +118,7 @@ Es decir habrá un diálogo en la parte de comentarios de tu solicitud de
 cambio que debe continuar.
 
 
-### Mejorar una contribución
+### 3.3 Mejorar una contribución
 
 Con la retroalimentación de las tareas de integración continúa y de
 desarrolladores debes realizar los cambios en la misma rama donde 
@@ -160,7 +163,7 @@ nuevos comentarios que puedan haber (los comentarios más recientes
 quedan al final de la pestaña de comentarios).
 
 
-## Otros aspectos a tener en cuenta
+## 4. Otros aspectos a tener en cuenta
 
 * Durante el desarrollo de tu contribución actualiza constantemente 
   las dependencias para usar siempre las versiones más recientes de librerías 
