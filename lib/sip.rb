@@ -22,7 +22,7 @@ module Sip
     end
     if motor 
       if Gem.loaded_specs[motor.to_s]
-        motor = Gem.loaded_specs[motor.to_s].full_gem_path + '/' 
+        motor = Gem.loaded_specs[motor.to_s].full_gem_path + '/'
       else  # Ruta
         motor = motor.to_s + '/'
       end
