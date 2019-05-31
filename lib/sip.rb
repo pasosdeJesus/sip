@@ -1,5 +1,5 @@
 # encoding: UTF-8
-require "devise"
+require 'devise'
 require "sip/engine"
 
 module Sip
@@ -17,7 +17,7 @@ module Sip
   # @return void Si el archivo existe lo ejecuta
   def self.carga_semillas_sql(conexion, motor, tipoarchivo, patexcluye = nil)
     if (tipoarchivo.to_s != 'datos' && tipoarchivo.to_s != 'cambios')
-      raise 'Las semillas solo pueden ser cambios o datos'
+      raise "Las semillas solo pueden ser cambios o datos"
     end
     if motor 
       if Gem.loaded_specs[motor.to_s]
