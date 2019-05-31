@@ -30,8 +30,8 @@ de información como:
   (Rails Admin)[https://github.com/sferik/rails_admin]
   Usa Sip::Modelo, Sip::ModelosController y vistas de 
   ```app/views/sip/modelos/```. La vista index incluye
-  un filtro definible con scope en el modelo.  La vista 
-  _form genera automaticamente un formulario con elementos tipicos.
+  un filtro definible con scope en el modelo.  La vista parcial
+  `_form` genera automaticamente un formulario con elementos tipicos.
   Consultar https://github.com/pasosdeJesus/sip/wiki/Vistas-autom%C3%A1ticas-con-Sip::Modelo-y-Sip::ModelosController
 - Concepto y propuesta de tablas básicas (parámetros de la aplicación) con
   vistas automáticas y controladores y modelos semiautomáticos vía un 
