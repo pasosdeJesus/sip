@@ -155,7 +155,7 @@ El método `index_reordenar` reordena los registros que se presentarán en la vi
 
 El método `new_modelo_path` retorna la ruta para crear un nuevo registro de la tabla `tasacambio`.  
 
-El método `genclase` retorna el genero en español del modelo, por ejemplo como decimos "la tasa de cambio" (femenino) se retorna 'F',  (si fueses "el proyecto" sería 'M').
+El método `genclase` retorna el genero en español del modelo, por ejemplo como decimos "la tasa de cambio" (femenino) se retorna 'F',  (si fuese "el proyecto" sería 'M').
 
 Notará que las vistas automáticas usan bootstrap para el diseño y chosen para los campos de texto
 
