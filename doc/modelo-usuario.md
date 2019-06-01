@@ -9,7 +9,7 @@ Recomendamos emplear `usuario` como nombre de tabla y modelo, para aprovechar la
 
 ## 1.1 Modelo
 
-El modelo usuario ubicado en `app/models/usuario.rb` debe incluir Sip::Concerns::Models::Usuario (u otro modulo de un motor que a su vez lo incluya).  Por ejemplo:
+El modelo usuario ubicado en `app/models/usuario.rb` debe incluir Sip::Concerns::Models::Usuario (u otro módulo de un motor que a su vez lo incluya).  Por ejemplo:
 ```
 # encoding: UTF-8
 
@@ -32,7 +32,7 @@ class UsuariosController < Sip::ModelosController
 end
 ```
 
-Tal como en modelo en lugar de incluir el modulo de sip puede incluirse el de otro motor que a su vez incluya el de SIP.
+Tal como en modelo en lugar de incluir el módulo de Sip puede incluirse el de otro motor que a su vez incluya el de Sip.
 
 ## 1.3 Vistas
 
@@ -54,7 +54,7 @@ module Sivel2Gen
     module Models
       module Usuario
         extend ActiveSupport::Concern
-        
+
         included do
           include Sip::Concerns::Models::Usuario
 
@@ -148,5 +148,3 @@ end
 ## 2.3 Vistas
 
 Si por ejemplo se necesita personalizar el campo presentado en un filtro poner el control por usar en `app/views/mimotor/usuario/_filtro_campo.html.erb`
-
-
