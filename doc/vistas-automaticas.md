@@ -72,7 +72,7 @@ En este caso como la forma plural de tasa de cambio es tasas de cambio en `confi
   inflect.irregular 'tasacambio', 'tasascambio'
 ```
 
-Y el contenido de `app/controllers/tasascabio_controller` es:
+Y el contenido de `app/controllers/tasascambio_controller` es:
 ```ruby
 class TasascambioController < Sip::ModelosController
   helper ::ApplicationHelper
@@ -132,7 +132,7 @@ resources :tasascambio,
       path_names: { new: 'nueva', edit: 'edita' }
 ```
 
-## 2.1 Lo clásico de un controlador 
+## 2.1 Lo clásico de un controlador
 
 Notará que tiene varios métodos típicos de un controlador de rails: `tasacambio_params`, `set_tasacambio` y al comienzo las declaraciones:
 ```ruby
@@ -141,21 +141,21 @@ Notará que tiene varios métodos típicos de un controlador de rails: `tasacamb
   load_and_authorize_resource class: ::Tasacambio
 ```
 
-La primera para establecer la variable `@tasacambio` antes de llamar métodos `show`, `edit`, `update` y `destroy` con la función `set_tasacambio`.  Notará que esa función establece `@ŧasacambio` como es típico en rails, pero también `@registros` que es requerida por las vistas automáticas.
+La primera para establecer la variable `@tasacambio` antes de llamar métodos `show`, `edit`, `update` y `destroy` con la función `set_tasacambio`.  Notará que esa función establece `@tasacambio` como es típico en rails, pero también `@registros` que es requerida por las vistas automáticas.
 
-Por su parte `load_and_authorize...`  asegura que se cumplan las reglas de autorización que se definan sobre `::TasaCambio`.  Sin embargo el controladore y las vistas automáticas lo obligan como se explica en [Autorización por omisión con Sip::ModelosController](https://github.com/pasosdeJesus/sip/wiki/Autorizaci%C3%B3n-por-omisi%C3%B3n-con-Sip::ModelosController)
+Por su parte `load_and_authorize...`  asegura que se cumplan las reglas de autorización que se definan sobre `::TasaCambio`.  Sin embargo el controlador y las vistas automáticas lo obligan como se explica en [Autorización por omisión con Sip::ModelosController](https://github.com/pasosdeJesus/sip/wiki/Autorizaci%C3%B3n-por-omisi%C3%B3n-con-Sip::ModelosController)
 
 ## 2.2 Lo nuevo en un controlador
 
-El método `clase` retorna una cadena con el módelo de la clase que principalmente modificaran las vistas automáticas.
+El método `clase` retorna una cadena con el modelo de la clase que principalmente modificaran las vistas automáticas.
 
-El método `atributos_index` retorna un vector con los campos que deben presentarse en la vista `index` (también sería posible especificar atributos por presentar en el formulario y en la vista show, pero si no se especifican mediante los métodos `atributos_form` y `atributos_show` por omisión serán los mismos de `atributos_index`.)
+El método `atributos_index` retorna un vector con los campos que deben presentarse en la vista `index` (también sería posible especificar atributos por presentar en el formulario y en la vista show, pero si no se especifican mediante los métodos `atributos_form` y `atributos_show` por omisión serán los mismos de `atributos_index`).
 
 El método `index_reordenar` reordena los registros que se presentarán en la vista `index`.
 
 El método `new_modelo_path` retorna la ruta para crear un nuevo registro de la tabla `tasacambio`.  
 
-El método `genclase` retorna el genero en español del módelo, por ejemplo como decimos "la tasa de cambio" (femenino) se retorna 'F',  (si fueses "el proyecto" sería 'M').
+El método `genclase` retorna el genero en español del modelo, por ejemplo como decimos "la tasa de cambio" (femenino) se retorna 'F',  (si fuese "el proyecto" sería 'M').
 
 Notará que las vistas automáticas usan bootstrap para el diseño y chosen para los campos de texto
 
@@ -176,7 +176,7 @@ Con el botón Nueva ingresará al formulario de edición, la cual tendrá como c
 
 
 
-# 4. Personalización de las vistas 
+# 4. Personalización de las vistas
 
 Puede usar sus propias vistas creando los archivos `app/views/tiposcambio/index.html.erb`, `app/views/tiposcambio/show.html.erb`, `app/views/tiposcambio/edit.html.erb` y `app/views/tiposcambio/new.html.erb`.
 
@@ -186,7 +186,7 @@ Como haría en una aplicación rails típica, sin embargo la infraestructura de 
 
 ### 4.1.1 Título y nombres de campos
 El título se presenta en la parte superior del listado y los nombres de campos son los títulos de las
-columnas (así como los nombres de campo en el formulario) se modifican en `config/locale/es.yml`  allí dentro de `es.attributes.activerecord.attributes` cree una sección como: 
+columnas (así como los nombres de campo en el formulario) se modifican en `config/locale/es.yml`  allí dentro de `es.attributes.activerecord.attributes` cree una sección como:
 ```yaml
       tasacambio:
         Tasacambio: Tasa de cambio
@@ -194,13 +194,13 @@ columnas (así como los nombres de campo en el formulario) se modifican en `conf
         tipomoneda: Tipo de moneda
 ```
 
-### 4.1.2 Filtro en listado 
+### 4.1.2 Filtro en listado
 
 Usted puede modificar por completo el filtro estándar que se presenta definiendo en el directorio de la vista el archivo `_index_filtro.html.erb` que recibe el formulario en la variable `f`.  
 
 Si prefiere también puede personalizar el filtro por omisión de una vista index, el cual  inicialmente sólo tiene la identificación (para buscar por esta).  Para agregar otros criterios basta agregar `scopes` en el modelo cuyo nombre sea de la forma `:filtro_campo` donde campo es alguno de los campos de `atributos_index`.
 
-Por ejemplo para filtrar  por tipo de moneda, 
+Por ejemplo para filtrar  por tipo de moneda,
 ```ruby
 scope :filtro_tipomoneda_id, lambda { |t|
   where(tipomoneda_id: t)
@@ -223,7 +223,7 @@ Para campos tipo cadena recomendamos algo como:
 ```ruby
 scope :filtro_observaciones, lambda {|o|
     where("unaccent(observaciones) ILIKE '%' || unaccent(?) || '%'", o)
-} 
+}
 ```
 Que permite encontrar parte de la cadena, sin tener en cuenta capitalización, ni acentos.
 
@@ -236,7 +236,7 @@ Al igual que en formulario se generará un control para el filtro con base en el
 
 ```erb
 <%= f.input :bustipomonedad_id,
-  collection: ::Tipomoneda.where("nombre!='PESO'"), 
+  collection: ::Tipomoneda.where("nombre!='PESO'"),
   include_blank: true,
   label_method: :presenta_nombre,
   value_method: :id,
@@ -273,7 +273,7 @@ Un ejemplo puede verse en `cor1440_cinep`, donde los anexos de un efecto se pres
 <% end %>
 ```
 
-#### 4.1.3.2 Usando función `presenta` del modelo 
+#### 4.1.3.2 Usando función `presenta` del modelo
 Un ejemplo está en las fuentes de `sip`en el modelo `usuario` que tiene un campo entero `rol`, cuya representación en cadena no está en tabla alguna sino en la aplicación (se trata de un vector `Ability::ROLES`):
 
 ```ruby
@@ -288,11 +288,11 @@ def presenta(atr)
 end             
 ```
 
-### 4.1.4 Epilogo de la tabla
-Después de la tabla es posible configurar un epilogo definiendo en el directorio de la vista el archivo
+### 4.1.4 Epílogo de la tabla
+Después de la tabla es posible configurar un epílogo definiendo en el directorio de la vista el archivo
 `_index_post_tabla` que recibe el formulario en la variable `f`.
 
-Si no define uno diferente el epilogo por omisión permite paginar y presenta un botón "Nuevo" que permite añadir registros.
+Si no define uno diferente el epílogo por omisión permite paginar y presenta un botón "Nuevo" que permite añadir registros.
 
 
 ## 4.2 Formulario (vista `_form`)
@@ -314,8 +314,6 @@ Suponiendo que en tasacambio quisiera emplear un campo diferente para el tipo de
 
 ## 4.3 Resumen (vista `show`)
 
-El contenido de un campo puede presentarse de forma personalizada bien con la función `presenta` del modelo  o bien con una vista parcial de nombre `_show_campo_nombrecampo`.  Ambas situaciones son análogas en la vista `index` por lo que lo referenciamos a ver la sección 4.1.
+El contenido de un campo puede presentarse de forma personalizada bien con la función `presenta` del modelo o bien con una vista parcial de nombre `_show_campo_nombrecampo`. Ambas situaciones son análogas en la vista `index` por lo que lo referenciamos a ver la sección 4.1.
 
 Los botones de esta vista puede configurarse por completo para un modelo con una vista parcial `_show_acciones` o pueden agregarse botones antes del botón Eliminar en `_show_mas_acciones`. Estos parciales deben ubicarse en una ruta de la forma `app/views/modelo/_show_acciones`
-
-
