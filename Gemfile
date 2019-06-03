@@ -118,8 +118,8 @@ group :test do
   # Lanza programas para examinar resultados
   gem "launchy"
  
-  gem 'pry-rescue'
-  gem 'pry-stack_explorer'
+  #gem 'pry-rescue'
+  #gem 'pry-stack_explorer'
 
 
 end
