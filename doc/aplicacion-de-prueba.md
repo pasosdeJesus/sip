@@ -1,8 +1,8 @@
 # Aplicación de prueba
 
-Asegurate de contar con los [Requisitos](https://github.com/pasosdeJesus/sip/wiki/Requisitos)
+Asegúrate de contar con los [Requisitos](https://github.com/pasosdeJesus/sip/wiki/Requisitos)
 
-Crea un usuario para la base de datos (remplaza ```nuevaclave``` por la clave que le pondás)
+Crea un usuario para la base de datos (remplaza ```nuevaclave``` por la clave que le pondrás):
 ```
 $ doas su - _postgresql
 $ createuser -Upostgres -h /var/www/var/run/postgresql/ -s sipdes
@@ -17,19 +17,19 @@ Para facilitar interacción con las bases de datos del usuario ```sipdes``` (o e
 ```
 echo "*:*:*:sipdes:nuevaclave" >> ~/.pgpass
 ```
-Copia la plantilla de configuración de la base de datos y modificala con la nueva clave que asignaste (y el usuario si lo cambiaste y si lo deseas puees cambiar nombres de base de datos, o ubicación del socket de PostgreSQL):
+Copia la plantilla de configuración de la base de datos y modiícala con la nueva clave que asignaste (y el usuario si lo cambiaste y si lo deseas puedes cambiar nombres de base de datos, o ubicación del socket de PostgreSQL):
 ```
 $ cd test/dummy
 $ cp config/database.yml.plantilla config/database.yml
 $ vi config/database.yml
 ```
-En el editor remplaza la clave de ejemplo (```miclave```) por la que hayas asignado al usuario ```sipdes```.
+En el editor remplaza la clave de ejemplo (```aquilaclave```) por la que hayas asignado al usuario ```sipdes```.
 
 A continuación  crea la base de datos (sugerimos hacerlo con PostgreSQL pues en ocasiones esta operación no logra ser completada por rails):
 ```sh
 createdb -h /var/www/var/run/postgresql -U sipdes sipdes_des
 ```
-Y desde el mismo directorio ```test/dummy``` preparala para operar:
+Y desde el mismo directorio ```test/dummy``` prepárala para operar:
 ```sh
 bin/rails db:setup
 bin/rails sip:indices
