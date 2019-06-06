@@ -17,7 +17,7 @@ Para facilitar interacción con las bases de datos del usuario ```sipdes``` (o e
 ```
 echo "*:*:*:sipdes:nuevaclave" >> ~/.pgpass
 ```
-Copia la plantilla de configuración de la base de datos y modiícala con la nueva clave que asignaste (y el usuario si lo cambiaste y si lo deseas puedes cambiar nombres de base de datos, o ubicación del socket de PostgreSQL):
+Copia la plantilla de configuración de la base de datos y modifícala con la nueva clave que asignaste (y el usuario si lo cambiaste y si lo deseas puedes cambiar nombres de base de datos, o ubicación del socket de PostgreSQL):
 ```
 $ cd test/dummy
 $ cp config/database.yml.plantilla config/database.yml
@@ -41,5 +41,3 @@ bin/rails s -b 192.168.1.3
 ```
 
 Usa la aplicación con un navegador en la URL http://192.168.1.3:3000/sip/, puedes ingresar con el usuario ```sip``` y la clave ```sip```
-
-
