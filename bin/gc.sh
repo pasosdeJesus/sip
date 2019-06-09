@@ -33,12 +33,14 @@ if (test "$SINAC" != "1") then {
 		exit 1;
 	} fi;
 } fi;
+
 if (test "$SININS" != "1") then {
 	NOKOGIRI_USE_SYSTEM_LIBRARIES=1 MAKE=gmake make=gmake QMAKE=qmake4 bundle install
 	if (test "$?" != "0") then {
 		exit 1;
 	} fi;
 } fi;
+
 if (test "$SINMIG" != "1") then {
 	(cd test/dummy; bin/rails db:migrate sip:indices db:structure:dump)
 	if (test "$?" != "0") then {
