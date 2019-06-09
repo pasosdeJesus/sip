@@ -28,7 +28,7 @@ if (test "$SINAC" != "1") then {
 	if (test "$?" != "0") then {
 		exit 1;
 	} fi;
-	CXX=c++ yarn upgrade
+	(cd test/dummy; CXX=c++ yarn upgrade)
 	if (test "$?" != "0") then {
 		exit 1;
 	} fi;
