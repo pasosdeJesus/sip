@@ -5,19 +5,18 @@ Respecto a licenciamiento y uso de github por favor ver https://github.com/pasos
 En general adoptamos las de thoughtbot:
 https://github.com/thoughtbot/guides/tree/master/style
 
-A continuación enfatisamos o cambiamos algunas:
+A continuación enfatizamos o cambiamos algunas:
 
 # SQL
 
 * Tablas combinadas (Join tables), el nombre debe tener lo principal de las tablas que une, ordenadas alfabéticamente.
-* Los nombres de tablas en la base --a diferencia de la convención rails-- se
-dejan en singular.
+* Los nombres de tablas en la base --a diferencia de la convención rails-- se dejan en singular.
 
 # Ruby
 
 ## Diseño
 
-En nuevos sistemas de información emplear motores tanto como sea posible.   Se recomienda que sean descendientes de sip, que da unidad en manejo de tablas básicas, usuarios y autenticación.
+En nuevos sistemas de información emplear motores tanto como sea posible. Se recomienda que sean descendientes de sip, que da unidad en manejo de tablas básicas, usuarios y autenticación.
 
 Por ejemplo algunas de las aplicaciones en el repositorio de Pasos de Jesús en github dependen de sip así:
 ![Dependencias](https://github.com/pasosdeJesus/sip/raw/master/doc/dependencias.png)
@@ -41,8 +40,7 @@ https://hakiri.io/blog/ruby-security-tools-and-resources
 
 # Javascript/Coffeescript
 
-Si tiene instalado coffeescript, podrá verificar sintaxis de archivos del
-directorio app/assets/javascript/ con:
+Si tiene instalado coffeescript, podrá verificar sintaxis de archivos del directorio app/assets/javascript/ con:
 ```sh
   make
 ```
@@ -54,4 +52,3 @@ En adJ para instalar coffeescript basta:
 
 
 # HTML/CSS
-
