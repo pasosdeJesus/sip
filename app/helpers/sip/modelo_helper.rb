@@ -50,7 +50,11 @@ module Sip
         n = self.nombreobj(o, true) + "_path"
       end
       if !respond_to?(n.to_sym)
-        n = "admin_#{n}"
+        if main_app.respond_to?(n.to_sym)
+          n="main_app.#{n}"
+        else
+          n = "admin_#{n}"
+        end
       end
       return n
     end
@@ -61,14 +65,22 @@ module Sip
       if !n
         byebug
       end
-      send(n.to_sym)
+      if n.starts_with?('main_app.') 
+        main_app.send(n[9..-1].to_sym)
+      else
+        send(n.to_sym)
+      end
     end
 
     # Url para administrar modelo
     def modelos_url(o)
       n = self.modelos_prefijo_ruta(o) 
       n = n.chomp('_path') + '_url'
-      send(n.to_sym)
+      if n.starts_with?('main_app.') 
+        main_app.send(n[9..-1].to_sym)
+      else
+        send(n.to_sym)
+      end
     end
 
     def modelo_prefijo_ruta(o)
@@ -84,7 +96,11 @@ module Sip
         end
       end
       if !respond_to?(n.to_sym, o)
-        n = "admin_#{n}"
+        if main_app.respond_to?(n.to_sym, o)
+          n = "main_app.#{n}"
+        else
+          n = "admin_#{n}"
+        end
       end
       return n
     end
@@ -94,22 +110,39 @@ module Sip
     # En caso de registros no existentes retorna ruta para crearlo con POST
     def modelo_path(o)
       n = self.modelo_prefijo_ruta(o) 
-      send(n.to_sym, o)
+      if n.starts_with?('main_app.') 
+        main_app.send(n[9..-1].to_sym, o)
+      else
+        send(n.to_sym, o)
+      end
     end
 
     # URL para examinar un registro
     def modelo_url(o, format)
       n = self.modelo_prefijo_ruta(o) 
       n = n.chomp('_path') + '_url'
-      send(n.to_sym, o, format)
+      if n.starts_with?('main_app.') 
+        main_app.send(n[9..-1].to_sym, o, format)
+      else
+        send(n.to_sym, o, format)
+      end
     end
 
     # Ruta para crear un registro
     def new_modelo_path(o)
       n = "new_" + self.nombreobj(o) + "_path"
       if !respond_to?(n.to_sym, o)
+        if main_app.respond_to?(n.to_sym, o)
+          return main_app.send(n.to_sym)
+        end
         n = "new_admin_#{self.nombreobj(o)}_path"
+        if !respond_to?(n.to_sym, o)
+          if main_app.respond_to?(n.to_sym, o)
+            return main_app.send(n.to_sym)
+          end
+        end
       end
+
       send(n.to_sym)
     end
 
@@ -117,10 +150,14 @@ module Sip
     def edit_modelo_path(o)
       n = "edit_#{self.nombreobj(o)}_path"
       if !respond_to?(n.to_sym, o)
-        n = "edit_admin_#{self.nombreobj(o)}_path"
+        if  main_app.respond_to?(n.to_sym, o)
+          return main_app.send(n.to_sym, o)
+        else
+          n = "edit_admin_#{self.nombreobj(o)}_path"
+        end
       end
 
-      send(n.to_sym, o)
+      return send(n.to_sym, o)
     end
 
     def self.poromision(params, s)
