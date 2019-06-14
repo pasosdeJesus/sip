@@ -84,9 +84,17 @@ module Sip
             end 
           }
 
+          scope :filtro_created_atini, lambda { |f|
+            where('date(created_at) >= ?', f)
+          }
+
+          scope :filtro_created_atfin, lambda { |f|
+            where('date(created_at) <= ?', f)
+          }
+
           scope :filtro_sectoractor_ids, lambda { |s|
             joins(:actorsocial_sectoractor).where(
-              'actorsocial_sectoractor.sectoractor_id=?', s)
+              'sip_actorsocial_sectoractor.sectoractor_id=?', s)
           }
 
         end # included
