@@ -176,6 +176,9 @@ module Sip
           # Despliega detalle de un registro
           def show
             @registro = clase.constantize.find(params[:id])
+            if @registro.respond_to?('current_usuario=')
+              @registro.current_usuario = current_usuario
+            end
             if cannot? :show, @registro
               # Supone alias por omision de https://github.com/CanCanCommunity/cancancan/blob/develop/lib/cancan/ability/actions.rb
               authorize! :read, @registro
@@ -198,15 +201,22 @@ module Sip
               authorize! :create, clase.constantize
             end
             @registro = clase.constantize.new
+            if @registro.respond_to?('current_usuario=')
+              @registro.current_usuario = current_usuario
+            end
             if @registro.respond_to?(:fechacreacion)
               @registro.fechacreacion = DateTime.now.strftime('%Y-%m-%d')
             end
+
             render layout: 'application'
           end
 
           # Despliega formulario para editar un regisro
           def edit
             @registro = clase.constantize.find(params[:id])
+            if @registro.respond_to?('current_usuario=')
+              @registro.current_usuario = current_usuario
+            end
             if cannot? :edit, clase.constantize
               # Supone alias por omision de https://github.com/CanCanCommunity/cancancan/blob/develop/lib/cancan/ability/actions.rb
               authorize! :update, @registro
@@ -234,6 +244,9 @@ module Sip
             end
             if @registro.respond_to?(:fechacreacion)
               @registro.fechacreacion = DateTime.now.strftime('%Y-%m-%d')
+            end
+            if @registro.respond_to?('current_usuario=')
+              @registro.current_usuario = current_usuario
             end
             # render requiere el siguiente segun se confirmó
             # y comentó en update_gen
@@ -275,6 +288,9 @@ module Sip
               @registro = registro
             else
               @registro = clase.constantize.find(params[:id])
+            end
+            if @registro.respond_to?('current_usuario=')
+              @registro.current_usuario = current_usuario
             end
             authorize! :update, @registro
             filtra_contenido_params
@@ -321,6 +337,10 @@ module Sip
           # Elimina un registro 
           def destroy_gen(mens = "", verifica_tablas_union=true)
             @registro = clase.constantize.find(params[:id])
+            if @registro.respond_to?('current_usuario=')
+              @registro.current_usuario = current_usuario
+            end
+
             authorize! :destroy, @registro
             if verifica_tablas_union && @registro.class.columns_hash
               m = @registro.class.reflect_on_all_associations(:has_many)
