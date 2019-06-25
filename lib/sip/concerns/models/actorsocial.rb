@@ -22,6 +22,9 @@ module Sip
           has_many :actorsocial_persona, 
             class_name: 'Sip::ActorsocialPersona',
             foreign_key: "actorsocial_id"
+          has_many :persona, through: :actorsocial_persona, 
+            class_name: 'Sip::Persona'
+
 
           has_and_belongs_to_many :sectoractor, 
             class_name: 'Sip::Sectoractor',
