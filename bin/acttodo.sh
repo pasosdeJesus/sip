@@ -65,15 +65,15 @@ if (test "$SALTAJN316" != "1") then {
 	actuno jn316_gen test/dummy; 
 } fi;
 
+if (test "$SALTAMR519" != "1") then {
+	echo "**** mr519"
+	actuno mr519_gen test/dummy; 
+} fi;
+
 if (test "$SALTAHEB412" != "1") then {
 	echo "**** heb412"
 	actuno heb412_gen test/dummy; 
 	actuno heb412
-} fi;
-
-if (test "$SALTAMR519" != "1") then {
-	echo "**** mr519"
-	actuno mr519_gen test/dummy; 
 } fi;
 
 if (test "$SALTACOR1440" != "1") then {
