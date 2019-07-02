@@ -131,6 +131,7 @@ En este caso supondremos que las rutas serán las típicas de rails (tasascambio
 resources :tasascambio,
       path_names: { new: 'nueva', edit: 'edita' }
 ```
+En caso que prefiera usar singular tanto para el modelo como para el controlador, especifique la misma cadena singular y plural en `config/initializers/inflections.rb` y cree una ruta `post` para el modelo en singular con alias `crea_modelo_path` y que diriga al método `create` del controlador.  Ver por ejemplo como se hace con `plantillahcr` en https://github.com/pasosdeJesus/heb412_gen/blob/master/config/initializers/inflections.rb y https://github.com/pasosdeJesus/heb412_gen/blob/master/config/routes.rb.
 
 ## 2.1 Lo clásico de un controlador 
 
