@@ -102,7 +102,7 @@ module Sip
       end
 
       # Presentar campo atr del registro en index y show genérico (no sobrec)
-      def presenta_gen(atr)
+      def presenta_gen_sip(atr)
         clf = self.class.clase_llave_foranea(atr)
         if self.class.columns_hash && self.class.columns_hash[atr.to_s] && 
             self.class.columns_hash[atr.to_s].type == :boolean 
@@ -149,11 +149,14 @@ module Sip
         end
       end
 
+      def presenta_gen(atr)
+        presenta_gen_sip(atr)
+      end
+
       # Presentar campo atr del registro en index y show para sobrecargar
       def presenta(atr)
         presenta_gen(atr)
       end
-
 
       def importa_gen(datosent, datossal, menserror, opciones = {})
         datosent.keys.each do |ll|
