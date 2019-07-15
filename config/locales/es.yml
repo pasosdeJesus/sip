@@ -144,6 +144,11 @@ es:
       "sip/tdocumento":
         Tdocumento: Tipo de documento
         Tdocumentos: Tipos de documentos
+      "sip/tema":
+        nav_ini: Color inicial de barra de navegación
+        nav_fin: Color final de barra de navegación
+        nav_fuente: Color de fuente de barra de navegación
+        fondo_lista: Color de fondo para listas
       "sip/trelacion": 
         Trelacion: Tipo de relación familiar
         Trelaciones: Tipos de relaciones familiares

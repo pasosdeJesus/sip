@@ -9,6 +9,8 @@
 #//= require twitter/bootstrap
 #//= require turbolinks
 #//= require chosen-jquery
+#//= require tinycolor-min
+#//= require pick-a-color.min
 #//= require sip/geo
 
 
@@ -643,6 +645,9 @@ if (typeof String.prototype.endsWith != 'function')
     $(ns).attr('title', t)
     $(ns).attr('data-toggle', 'tooltip')
   )
+
+  #Permite desplegar paleta de colores para estilos
+  $(".pick-a-color").pickAColor();
 
   jQuery ->
     $("a[rel~=popover], .has-popover").popover()

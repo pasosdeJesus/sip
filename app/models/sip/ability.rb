@@ -43,6 +43,7 @@ module Sip
       ['Sip', 'perfilactorsocial'],
       ['Sip', 'sectoractor'],
       ['Sip', 'tclase'], 
+      ['Sip', 'tema'], 
       ['Sip', 'tdocumento'], 
       ['Sip', 'trelacion'], 
       ['Sip', 'tsitio']

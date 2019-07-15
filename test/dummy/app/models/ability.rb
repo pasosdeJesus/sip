@@ -49,6 +49,7 @@ class Ability  < Sip::Ability
         can :manage, Sip::Actorsocial
         can :manage, Sip::Persona
         can :manage, Sip::Respaldo7z
+        can :manage, Sip::Tema
         can :manage, Sip::Ubicacion
         can :manage, :tablasbasicas
         self.tablasbasicas.each do |t|
