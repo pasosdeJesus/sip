@@ -19,40 +19,44 @@ module Sip
           end
 
           def atributos_index
-            r = [ "id",
-              "nusuario",
-              "nombre",
-              "descripcion",
-              "rol",
-              "email"]
+            r = [ 
+              :id,
+              :nusuario,
+              :nombre,
+              :descripcion,
+              :rol,
+              :email,
+              :tema
+            ]
             if can?(:manage, Sip::Grupo)
-              r += ["sip_grupo"]
+              r += [:sip_grupo]
             end
-            r += [ "created_at_localizada",
-              "habilitado"
+            r += [ :created_at_localizada,
+              :habilitado
             ]
             r
           end
 
           def atributos_form
             r = [ 
-              "nusuario",
-              "nombre",
-              "descripcion",
-              "rol",
-              "email",
+              :nusuario,
+              :nombre,
+              :descripcion,
+              :rol,
+              :email,
+              :tema
             ]
             if can?(:manage, Sip::Grupo)
-              r += ["sip_grupo"]
+              r += [:sip_grupo]
             end
             r += [
-              "idioma",
-              "encrypted_password",
-              "fechacreacion_localizada",
-              "fechadeshabilitacion_localizada",
-              "failed_attempts",
-              "unlock_token",
-              "locked_at"
+              :idioma,
+              :encrypted_password,
+              :fechacreacion_localizada,
+              :fechadeshabilitacion_localizada,
+              :failed_attempts,
+              :unlock_token,
+              :locked_at
             ]
           end
 
@@ -107,7 +111,7 @@ module Sip
             p = params.require(:usuario).permit(
               :id, :nusuario, :password, 
               :nombre, :descripcion, :oficina_id,
-              :rol, :idioma, :email, :encrypted_password, 
+              :rol, :idioma, :email, :tema_id, :encrypted_password, 
               :fechacreacion_localizada, :fechadeshabilitacion_localizada, 
               :reset_password_token, 
               :reset_password_sent_at, :remember_created_at, :sign_in_count, 

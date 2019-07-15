@@ -18,6 +18,13 @@
       :required => false, :autofocus => true 
     %>
 
+    <%= f.association :tema, 
+      collection: Sip::Tema.habilitados,
+      label_method: :nombre,
+      :required => false
+    %>
+
+
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <p>Aún esperando confirmación para: 
       <%= resource.unconfirmed_email %>

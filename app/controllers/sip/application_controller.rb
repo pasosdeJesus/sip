@@ -25,11 +25,11 @@ module Sip
       if (Gem.loaded_specs['devise'].version <=> Gem::Version.new('4.0.0')) < 0
         devise_parameter_sanitizer.for(:sign_up) << :nusuario
         devise_parameter_sanitizer.for(:account_update) << 
-          [:nombre, :email, :descripcion]
+          [:nombre, :email, :descripcion, :tema_id]
       else
         devise_parameter_sanitizer.permit(:sign_up, keys: [:nusuario])
         devise_parameter_sanitizer.permit(:account_update, keys: 
-                                        [:nombre, :email, :descripcion])
+                                        [:nombre, :email, :descripcion, :tema_id])
       end
     end
 

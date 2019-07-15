@@ -594,6 +594,13 @@ if (typeof String.prototype.endsWith != 'function')
   root.puntomontaje = '/' if typeof root.puntomontaje == 'undefined'
   root.puntomontaje += '/' if root.puntomontaje[root.puntomontaje.length-1] != '/'
 
+@sip_pone_tema = (root, tema) ->
+  $('.table-striped>tbody>tr:nth-child(odd)').css('background-color', tema.fondo_lista)
+  $(".navbar").css("background-image", "linear-gradient(" + tema.nav_ini + ", " + tema.nav_fin + ")")
+  $(".navbar-default .navbar-nav>li>a").css("color", tema.nav_fuente)
+  $(".navbar-default .navbar-brand").css("color", tema.nav_fuente)
+
+
 # Prepara eventos comunes al usar sip
 # @param root espacio para poner variables globales
 @sip_prepara_eventos_comunes = (root, sincoord = false, conenv = true) ->
@@ -648,6 +655,9 @@ if (typeof String.prototype.endsWith != 'function')
 
   #Permite desplegar paleta de colores para estilos
   $(".pick-a-color").pickAColor();
+
+  # Pone colores de acuerdo al tema
+  sip_ajax_recibe_json(root, 'temausuario', {}, sip_pone_tema)
 
   jQuery ->
     $("a[rel~=popover], .has-popover").popover()

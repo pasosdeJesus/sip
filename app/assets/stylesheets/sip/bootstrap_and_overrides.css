@@ -5,6 +5,8 @@
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require font-awesome
   */
+
+<% tema = ::Sip::TemasHelper.tema_usuario(defined?(current_usuario) ? current_usuario : nil) %>
 .form-horizontal .control-label {
 	padding-right: 20px;
 }
@@ -34,11 +36,23 @@
 	height: auto;
 }
 
+.navbar-default .navbar-nav > li > a { 
+	color: #<%= tema.nav_fuente %>; 
+}
+
+.navbar-default .navbar-brand { 
+	color: #<%= tema.nav_fuente %>; 
+}
+
 .navbar {
 	min-height: 30px;
-	background-image: linear-gradient(rgb(255, 255, 255), rgb(242, 242, 242));
+	background-image: linear-gradient(#<%= tema.nav_ini %>, #<%= tema.nav_fin %>);
 	background-repeat: repeat-x;
 	margin-bottom: 5px;
+}
+
+.table-striped > tbody > tr:nth-child(odd) {
+	background-color: #<%= tema.fondo_lista %>;
 }
 
 .master-container {

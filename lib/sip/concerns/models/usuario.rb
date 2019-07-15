@@ -25,6 +25,8 @@ module Sip
           campofecha_localizado :fechadeshabilitacion
           campofecha_localizado :created_at
 
+          belongs_to :tema, class_name: 'Sip::Tema',
+            foreign_key: 'tema_id', validate: true
           has_and_belongs_to_many :sip_grupo, 
             class_name: "Sip::Grupo",
             foreign_key: "usuario_id",

@@ -15,6 +15,7 @@ Sip::Engine.routes.draw do
   get "/respaldo7z" => 'respaldo7z#new', as: 'respaldo7z'
   post "/respaldo7z" => 'respaldo7z#create'
   get "/tablasbasicas" => 'hogar#tablasbasicas'
+  get "/temausuario" => 'admin/temas#temausuario'
   get '/ubicaciones/nuevo' => 'ubicaciones#nuevo'
 
 
