@@ -8,7 +8,7 @@ module Sip
         t = Sip::Tema.new(nav_ini: '266DD3',
           nav_fin: '266DD3',
           nav_fuente: 'FFFFFF',
-          fondo_lista: '266DD3')
+          fondo_lista: '95C4FF')
       else
         t = current_usuario.tema
       end
