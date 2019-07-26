@@ -34,9 +34,9 @@ function actuno {
 		exit 1;
 	} fi;
 	if (test "$b" != "") then {
-		(cd $b; bundle exec rake db:migrate)
+		(cd $b; CXX=c++ yarn install; bundle exec rake db:migrate)
 	} else {
-		bundle exec rake db:migrate
+		CXX=c++ yarn install; bundle exec rake db:migrate
 	} fi;
 	if (test "$?" != 0) then {
 		exit 1;
