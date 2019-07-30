@@ -105,7 +105,9 @@ if (test "$SALTASIVEL" != "1") then {
 } fi;
 
 # Usan 3 motores
-actuno si_anzorc; 
+if (test "$SALTASIANZORC" != "1") then {
+        actuno si_anzorc; 
+} fi;
 
 if (test "$SALTASIVELSJR" != "1") then {
 	echo "**** sivelsjr"
