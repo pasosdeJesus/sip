@@ -50,7 +50,7 @@ module Sip
             fechadeshabilitacion.nil? ? 'Si' : 'No'
           end
 
-          def presenta(atr)
+          def presenta_sip(atr)
             case atr.to_s
             when "anotaciones"
               self['grupoper_id'] ? self.grupoper.anotaciones : ""
@@ -69,6 +69,10 @@ module Sip
             else
               presenta_gen(atr)
             end
+          end
+
+          def presenta(atr)
+            presenta_sip(atr)
           end
 
           def presenta_nombre
