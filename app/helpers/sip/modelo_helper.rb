@@ -249,8 +249,10 @@ module Sip
           ids2 = []
         elsif r.respond_to?(:id)
           ids2 = [ r.id ]
-        else
+        elsif r.respond_to?(:to_i)
           ids2 = [ r.to_i]
+        else
+          ids2 = []
         end
       end
       return clase.where(id: ids1 | ids2)
