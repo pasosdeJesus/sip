@@ -3,19 +3,10 @@ module Sip
   class HogarController < ApplicationController
 
     def tablasbasicas
-      #authorize! :manage, :tablasbasicas
       @ntablas = {}
-      ab = ::Ability.new
-      ab.tablasbasicas.each { |t|
-	      puts t[1]
-	      k = Ability::tb_clase(t)
-	      if can? :new, k
-		      n = k.human_attribute_name(t[1].pluralize.capitalize) 
-		      r = "admin/#{t[1].pluralize}"
-		      @ntablas[n] = r
-	      end
-      } 
-      @ntablasor = @ntablas.keys.localize(:es).sort.to_a
+      @ntablasor = Sip::ModeloHelper.lista_tablas_basicas(
+        current_ability, @ntablas
+      )
       render layout: 'application'
     end
 

@@ -216,5 +216,47 @@ module Sip
       end
       return h
     end
+
+    def lista_tablas_basicas(current_ability, ntablas = {})
+      ab = current_ability
+      ab.tablasbasicas.each do |t|
+        k = Ability::tb_clase(t)
+        if current_ability.can? :new, k
+          n = k.human_attribute_name(t[1].pluralize.capitalize) 
+          r = "admin/#{t[1].pluralize}"
+		      ntablas[n] = r
+	      end
+      end
+      ntablasor = ntablas.keys.localize(:es).sort.to_a
+      return ntablasor
+    end
+    module_function :lista_tablas_basicas
+
+    # Retorna opciones habilitadas de una talba básica
+    # mas la ya elegidas en un campo de un formulario
+    def opciones_tabla_basica(clase, f, campo)
+      col1 = clase.all 
+      if col1.respond_to?(:habilitados)
+        col1 = col1.habilitados
+      end 
+      ids1 = col1.pluck(:id)
+      ids2 = []
+      if f.object.respond_to?(campo) && !f.object.send(campo).nil?
+        r = f.object.send(campo)
+        if r.kind_of?(Array)
+          ids2 = f.object.send(campo).select { |v| v != "" }.map(&:to_i)
+        elsif r.nil? || r == ''
+          ids2 = []
+        elsif r.respond_to?(:id)
+          ids2 = [ r.id ]
+        else
+          ids2 = [ r.to_i]
+        end
+      end
+      return clase.where(id: ids1 | ids2)
+    end
+    module_function :opciones_tabla_basica
+
+
   end
 end

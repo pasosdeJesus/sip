@@ -26,18 +26,8 @@
     <% elsif alf  %>
       <% # Es llave Foranea 
         n = alf.name
-        # La coleccion consta de habilitados de la clase más
-        # deshabilitado que ya estuviera referenciado
-        col1 = alf.class_name.constantize.all
-        if col1.respond_to?(:habilitados)
-          col1 = col1.habilitados
-        end 
-        ids1 = col1.pluck(:id)
-        ids2 = []
-        if f.object.respond_to?(n) && !f.object.send(n).nil?
-          ids2 = [f.object.send(n).id]
-        end
-        col = alf.class_name.constantize.where(id: ids1 | ids2)
+        nclase = alf.class_name.constantize
+        col = Sip::ModeloHelper.opciones_tabla_basica(nclase, f, n)
       %>
       <%= f.association n,
         collection: col,
@@ -70,23 +60,15 @@
         <% # r.class.to_s == 
           #'ActiveRecord::Reflection::ThroughReflection' # Tabla combinada %>
          <% 
-           col1 = r.class_name.constantize.respond_to?(
-             :habilitados) ?  r.class_name.constantize.habilitados : 
-              r.class_name.constantize.all 
-           ids1 = col1.pluck(:id)
-           ids2 = []
-           if f.object.respond_to?(r.name) && 
-               f.object.send(r.name).respond_to?(:pluck)
-             ids2 = f.object.send(r.name).pluck(:id)
-           end
-           col = r.class_name.constantize.where(id: ids1 | ids2)
-
-         # En la clase que se presenta, puede modificarse
-         # la funcion presenta_nombre (e.g Sip::Municipio)
+           n = r.name
+           nclase = r.class_name.constantize
+           col = Sip::ModeloHelper.opciones_tabla_basica(nclase, f, n)
+           # En la clase que se presenta, puede modificarse
+           # la funcion presenta_nombre (e.g Sip::Municipio)
           %>
-          <%= f.association r.name,
+          <%= f.association n,
             collection: col,
-            label_method: lambda {|r| r.presenta_nombre }, #:nombre,
+            label_method: lambda {|e| e.presenta_nombre }, #:nombre,
             value_method: :id ,
             input_html: { class: 'chosen-select' } %>
       <% end %>
