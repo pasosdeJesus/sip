@@ -100,7 +100,7 @@ module Sip
           }
 
           scope :filtro_sectoractor_ids, lambda { |s|
-            joins(:actorsocial_sectoractor).where(
+            joins('JOIN sip_actorsocial_sectoractor ON sip_actorsocial_sectoractor.actorsocial_id=sip_actorsocial.id').where(
               'sip_actorsocial_sectoractor.sectoractor_id=?', s)
           }
 
