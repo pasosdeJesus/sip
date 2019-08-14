@@ -39,7 +39,7 @@ gem "coffee-rails"
 gem "rubyzip",'~> 1.2.2'
 
 # jquery como librería JavaScript
-gem "jquery-rails"
+gem "jquery-rails", ">= 4.3.5"
 gem "jquery-ui-rails"
 #gem "jquery-ui-bootstrap-rails", git: "https://github.com/kristianmandrup/jquery-ui-bootstrap-rails"
 
@@ -52,7 +52,7 @@ gem "font-awesome-rails"
 gem "bootstrap-datepicker-rails"
 
 
-gem 'pick-a-color-rails'
+gem 'pick-a-color-rails', '>= 0.0.1'
 
 gem 'tiny-color-rails'
 
@@ -110,9 +110,9 @@ group :test do
 
   gem 'rails-controller-testing'
 
-  gem 'capybara'
+  gem 'capybara', '>= 3.28.0'
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'chromedriver-helper', '>= 2.1.1'
   # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
   gem "spring"
   
