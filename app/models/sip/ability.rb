@@ -46,6 +46,7 @@ module Sip
       ['Sip', 'tema'], 
       ['Sip', 'tdocumento'], 
       ['Sip', 'trelacion'], 
+      ['Sip', 'trivalente'], 
       ['Sip', 'tsitio']
     ]
 

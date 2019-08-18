@@ -157,6 +157,9 @@ es:
         Tsitios: Tipos de sitios
       "sip/ubicacion":
         Ubicacion: Ubicación
+      "trivalente":
+        Trivalente: Trivalente
+        Trivalentes: Trivalentes
       "usuario":
         created_at: Fecha registro
         created_at_localizada: Fecha registro

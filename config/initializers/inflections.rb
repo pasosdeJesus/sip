@@ -33,5 +33,6 @@ ActiveSupport::Inflector.inflections do |inflect|
 	inflect.irregular 'pais', 'paises'
 	inflect.irregular 'perfilactorsocial', 'perfilesactorsocial'
 	inflect.irregular 'sectoractor', 'sectoresactores'
+	inflect.irregular 'trivalente', 'trivalentes'
 	inflect.irregular 'ubicacion', 'ubicaciones'
 end
