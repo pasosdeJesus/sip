@@ -60,8 +60,8 @@ gem 'tiny-color-rails'
 gem "simple_form"
 
 # Autenticación y roles
-#gem "devise"
-gem 'devise', git: 'https://github.com/plataformatec/devise'
+gem "devise"
+#gem 'devise', git: 'https://github.com/plataformatec/devise'
 gem "devise-i18n"
 gem "cancancan"
 gem "bcrypt"
