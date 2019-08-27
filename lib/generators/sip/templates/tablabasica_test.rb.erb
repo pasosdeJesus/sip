@@ -11,24 +11,24 @@ class <%= nom_clase %>Test < ActiveSupport::TestCase
   }
 
   test "valido" do
-    <%= nom_clase %> = ::<%= nom_clase.capitalize %>.create(
+    <%= nom_clase.downcase %> = ::<%= nom_clase.capitalize %>.create(
       PRUEBA_<%= nom_clase.upcase %>)
-    assert(<%= nom_clase %>.valid?)
-    <%= nom_clase %>.destroy
+    assert(<%= nom_clase.downcase %>.valid?)
+    <%= nom_clase.downcase %>.destroy
   end
 
   test "no valido" do
-    <%= nom_clase %> = ::<%= nom_clase.capitalize %>.new(
+    <%= nom_clase.downcase %> = ::<%= nom_clase.capitalize %>.new(
       PRUEBA_<%= nom_clase.upcase %>)
-    <%= nom_clase %>.nombre = ''
-    assert_not(<%= nom_clase %>.valid?)
-    <%= nom_clase %>.destroy
+    <%= nom_clase.downcase %>.nombre = ''
+    assert_not(<%= nom_clase.downcase %>.valid?)
+    <%= nom_clase.downcase %>.destroy
   end
 
   test "existente" do
     skip
-    <%= nom_clase %> = ::<%= nom_clase.capitalize %>.where(id: 0).take
-    assert_equal(<%= nom_clase %>.nombre, "SIN INFORMACIÓN")
+    <%= nom_clase.downcase %> = ::<%= nom_clase.capitalize %>.where(id: 0).take
+    assert_equal(<%= nom_clase.downcase %>.nombre, "SIN INFORMACIÓN")
   end
 
 end
