@@ -5,6 +5,8 @@ Respecto a licenciamiento y uso de github por favor ver https://github.com/pasos
 En general adoptamos las de thoughtbot:
 https://github.com/thoughtbot/guides/tree/master/style
 
+Los identificadores y comentarios que se introduzcan en español.
+
 A continuación enfatizamos o cambiamos algunas:
 
 # SQL
