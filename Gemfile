@@ -64,6 +64,18 @@ gem 'webpacker' # módulos en Javascript https://github.com/rails/webpacker
 gem 'will_paginate' # Pagina listados
 
 
+# Formularios simples 
+gem "simple_form"
+
+# Desarrollo y despliegue
+########################
+
+# Colores en terminal
+gem "colorize"
+
+# Servidor web durante desarrollo
+gem 'puma'
+
 group :doc do
   
   #gem 'sdoc', require: false # Genera doc/api con bundle exec rake doc:rails
@@ -89,6 +101,7 @@ end
 
 
 group :test do
+<<<<<<< HEAD
 
   #gem 'capybara'
 
@@ -107,7 +120,7 @@ group :test do
   gem 'simplecov'
 
   gem 'spork' # Un proceso para cada prueba -- acelera
-
+  
   gem 'spring' # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
   
 end  
