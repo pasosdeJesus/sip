@@ -9,7 +9,7 @@ gem "rails-i18n"
 gem "pg"#, '~> 0.21'
 
 # Servidor web durante desarrollo
-gem 'puma', '~> 3.11'
+gem 'puma'
 
 # Colores en terminal
 gem "colorize"
