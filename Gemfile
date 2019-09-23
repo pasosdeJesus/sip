@@ -1,63 +1,26 @@
 source 'https://rubygems.org'
 
+# Librería fundamental
+########################
 
 # Rails (internacionalización)
 gem "rails", '~> 6.0.0.rc1'
 gem "rails-i18n"
 
+# Arranque rapido
+gem 'bootsnap', '>=1.1.0', require: false
+
+
+# Al lado del servidor
+########################
+
 # Postgresql
 gem "pg"#, '~> 0.21'
-
-# Servidor web durante desarrollo
-gem 'puma', '~> 3.11'
-
-# Colores en terminal
-gem "colorize"
-
-# Cuadros de selección potenciados
-gem 'chosen-rails', git: "https://github.com/vtamara/chosen-rails.git", branch: 'several-fixes'
-
-# Unifica CSSs
-gem "sass"
-gem "sass-rails"
-
-# posibilidad de manejar módulos en Javascript https://github.com/rails/webpacker
-gem 'webpacker'
 
 # API JSON facil. Ver: https://github.com/rails/jbuilder
 gem "jbuilder"
 
-# Arranque rapido
-gem 'bootsnap', '>=1.1.0', require: false
-
-# Uglifier comprime recursos Javascript
-gem "uglifier"#, '>= 1.3.0'
-
-# CoffeeScript para recuersos .js.coffee y vistas
-gem "coffee-rails"
-
-gem "rubyzip",'~> 1.2.2'
-
-# jquery como librería JavaScript
-gem "jquery-rails"
-gem "jquery-ui-rails"
-#gem "jquery-ui-bootstrap-rails", git: "https://github.com/kristianmandrup/jquery-ui-bootstrap-rails"
-
-# Seguir enlaces más rápido. Ver: https://github.com/rails/turbolinks
-gem "turbolinks"#, "2.5.3"
-
-# Ambiente de CSS
-gem "twitter-bootstrap-rails"#, '~> 3.2.0'
-gem "font-awesome-rails"
-gem "bootstrap-datepicker-rails"
-
-
-gem 'pick-a-color-rails'
-
-gem 'tiny-color-rails'
-
-# Formularios simples 
-gem "simple_form"
+gem "rubyzip", '~> 1.2.2'
 
 # Autenticación y roles
 gem "devise"
@@ -77,6 +40,18 @@ gem "paperclip"#, "~> 4.1"
 # Zonas horarias
 gem "tzinfo"
 
+# Formularios simples 
+gem "simple_form"
+
+# Desarrollo y despliegue
+########################
+
+# Colores en terminal
+gem "colorize"
+
+# Servidor web durante desarrollo
+gem 'puma'
+
 group :doc do
   # Genera documentación en doc/api con bundle exec rake doc:rails
   #gem "sdoc", require: false
@@ -92,7 +67,6 @@ group :development do
 
   # Consola irb en páginas con excepciones o usando <%= console %> en vistasA
   gem 'web-console'
-
 end
 
 group :development, :test do
@@ -103,29 +77,59 @@ end
 # Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo
 group :test do
   gem "minitest"
-  gem 'simplecov'
-
   gem "connection_pool"
   gem "minitest-reporters"
-
   gem 'rails-controller-testing'
 
+  # Cobertura de pruebas
+  gem 'simplecov'
+
+  # Pruebas al sistema
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+
   # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
   gem "spring"
   
   # Un proceso para cada prueba -- acelera
   gem 'spork'#, '~> 1.0rc'
-
-  # https://www.relishapp.com/womply/rails-style-guide/docs/developing-rails-applications/bundler
-  # Lanza programas para examinar resultados
-  gem "launchy"
- 
-  #gem 'pry-rescue'
-  #gem 'pry-stack_explorer'
-
-
 end
+
+
+# Al lado del cliente
+########################
+
+# Módulos en Javascript  https://github.com/rails/webpacker
+gem 'webpacker'
+
+# Seguir enlaces más rápido. Ver: https://github.com/rails/turbolinks
+gem "turbolinks"#, "2.5.3"
+
+# CoffeeScript para recursos .js.coffee y vistas
+gem "coffee-rails"
+
+gem "jquery-rails"
+
+gem "jquery-ui-rails"
+
+# Uglifier comprime recursos Javascript
+gem "uglifier"#, '>= 1.3.0'
+
+# Unifica CSSs
+gem "sassc"
+gem "sassc-rails"
+
+# bootstrap ahora por webpack
+
+# Ambiente de CSS
+gem "font-awesome-rails"
+
+# Cuadros de selección potenciados
+gem 'chosen-rails', git: "https://github.com/vtamara/chosen-rails.git", branch: 'several-fixes'
+
+gem 'pick-a-color-rails'
+
+gem 'tiny-color-rails'
+
 

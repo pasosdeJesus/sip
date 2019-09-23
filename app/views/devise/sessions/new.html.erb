@@ -1,14 +1,22 @@
 <h2>Inicio de Sesión</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= simple_form_for(resource, 
+                    as: resource_name, 
+                    url: session_path(resource_name),
+                    wrapper: :inline_form,
+                    html: { class: "form-inline" },
+                    wrapper_mappings: {
+                      boolean: :inline_boolean
+                    }
+                   ) do |f| %>
   <div class="form-inputs">
     <%= f.input :nusuario, required:  false, autofocus: true, 
-      label: "Usuario" 
-    %>
+      label: "Usuario" %>
     <%= f.input :password, required: false, label: "Clave" %>
-    <%= f.input :remember_me, as: :boolean, boolean_style: :nested,
-      inline_label: "Recordarme" if devise_mapping.rememberable? 
-    %>
+    <%= if devise_mapping.rememberable? %>
+      <%= f.label :remember_me, 'Recordarme', :class => 'control-label' %>
+      <%= f.check_box :remember_me %> 
+    <% end %>
   </div>
 
   <div class="form-actions">

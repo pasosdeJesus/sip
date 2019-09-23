@@ -10,7 +10,6 @@
  *
  *= require_self
  *= require jquery-ui
- *= require bootstrap-datepicker
  *= require chosen
  *= require pick-a-color.min
  *= require_tree .
