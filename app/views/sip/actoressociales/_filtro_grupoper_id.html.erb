@@ -1,4 +1,4 @@
-<%= f.input :grupoper_id,
+<%= f.input :busgrupoper_id,
   collection: Sip::Grupoper.where('id IN (SELECT grupoper_id FROM sip_actorsocial)'),
   label: false,
   include_blank: true,
