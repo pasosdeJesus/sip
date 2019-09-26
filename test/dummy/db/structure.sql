@@ -1316,6 +1316,34 @@ CREATE INDEX index_sip_actorsocial_on_pais_id ON public.sip_actorsocial USING bt
 
 
 --
+-- Name: index_sip_ubicacion_on_id_clase; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sip_ubicacion_on_id_clase ON public.sip_ubicacion USING btree (id_clase);
+
+
+--
+-- Name: index_sip_ubicacion_on_id_departamento; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sip_ubicacion_on_id_departamento ON public.sip_ubicacion USING btree (id_departamento);
+
+
+--
+-- Name: index_sip_ubicacion_on_id_municipio; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sip_ubicacion_on_id_municipio ON public.sip_ubicacion USING btree (id_municipio);
+
+
+--
+-- Name: index_sip_ubicacion_on_id_pais; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sip_ubicacion_on_id_pais ON public.sip_ubicacion USING btree (id_pais);
+
+
+--
 -- Name: index_usuario_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1614,6 +1642,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190618135559'),
 ('20190715083916'),
 ('20190715182611'),
-('20190818013251');
+('20190818013251'),
+('20190926104116');
 
 
