@@ -135,6 +135,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
 
 
+### 3.3 Sideex 2
 #### 3.3.1 Descarga e instalación de sideex 2
 
 Sideex se ejecuta como una extensión para Chrome o para Firefox. 
