@@ -70,10 +70,12 @@ a. Clonar o actualizar el repositorio que se va a probar.
    Esto en particular actualizará el directorio `test/sideex` donde deben 
    estar casos de pruebas para las diversas funcionalidades del sistema
    con títulos que sugieran lo que se prueba en una suit de pruebas 
-  ** (`pruebas-suit-1.sideex`) que agrupa todos los  casos de prueba.  **
-   **Cuando tenga unas 50 pruebas, iniciar `pruebas-suit-2.sideex` y así**
+con el sistema, rol del usuario, numeración con dos digitos y tema de prueba  
+  ** (`lac-01-admin-tablas-basicas.sideex`) que agrupa todos los  casos de prueba.  **
+   **Cuando tenga completas tablas, iniciar `lac-02-admin-casos.sideex` y así**
    **sucesivamente.**
-    **LAC-⁠administrador-⁠2-⁠tablas-básicas**
+    **lac-02-⁠admin-⁠tablas-básicas**
+
 
    Las pruebas como un usuarios de roles diferentes al administrador
    se nombran con el rol que prueba por ejemplo `pruebas-suit-analista-1.sideex`.
@@ -131,6 +133,47 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 4. Si la prueba pasa agregar la prueba a la suit de pruebas con un nombre
    acorde a la prueba, agrega el archivo al repositorio y actualizar en github.
 
+
+
+#### 3.3.1 Descarga e instalación de sideex 2
+
+Sideex se ejecuta como una extensión para Chrome o para Firefox. 
+Está disponible para descargar uso gratuito en  http://sideex.org/
+Después de descargar Sideex 2 se vera en la barra de 
+  herramientas el icono de Sideex.
+* Al abrir se vera el panel
+
+  ![img1]() 
+
+* Para empezar a hacer pruebas con sideex
+    . Inicie firefox/ Chrome
+    
+    . Abra la página en que se va a hacer las pruebas.
+    
+    . Haga clic sobre el icono de sideex  en la barra de herramientas del navegador  
+    
+     ![img2]() 
+     
+     Haga clic sobre el icono de sideex  en la barra de herramientas del navegador  
+ 
+#### 3.3.2 Empezar pruebas
+
+ . Haga clic en el + del cuadro de test suits a la izquierda y dele nombre a la 
+       suit y aceptar.
+    
+   . Haga clic en  el lado derecho del nombre de la suit creada sobre el mas y de el 
+       nombre del primer caso de la suit
+   
+   . Haga clic en el botón Record(grabar) para iniciar las operaciones de grabación 
+
+* Haga clic con el botón derecho en el nombre de la suit de pruebas y 
+  le da varias opciones guardar, abrir, cerrar, renombrar, añadir un nuevo caso 
+  a la suit de casos de pruebas.
+
+ ![img3]() 
+
+#### 3.3.3 Ayudas para crear cada caso de prueba
+#### 3.3.3 Ayudas para crear cada caso de prueba
 
 ### 3.3 Ayudas para crear cada caso de prueba
 
