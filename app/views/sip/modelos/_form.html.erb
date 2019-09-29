@@ -89,7 +89,7 @@
         <%= f.input atr.to_sym %>
       <% end %>
     <% else %>
-      <% if atr.class === 'String' && atr[0, 5] == 'fecha' %>
+      <% if (atr.class == String || atr.class == Symbol) && atr.to_s[0, 5] == 'fecha' %>
         <%= f.input atr.to_sym,
             :input_html => { "data-behaviour" => "datepicker"}, 
             :as => :string %>
