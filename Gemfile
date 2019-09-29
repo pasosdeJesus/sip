@@ -36,7 +36,7 @@ gem "uglifier"#, '>= 1.3.0'
 # CoffeeScript para recuersos .js.coffee y vistas
 gem "coffee-rails"
 
-gem "rubyzip",'~> 1.2.2'
+gem "rubyzip", "~> 1.3.0"
 
 # jquery como librería JavaScript
 gem "jquery-rails"
@@ -111,7 +111,7 @@ group :test do
   gem 'rails-controller-testing'
 
   gem 'capybara'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '>= 3.142.4'
   gem 'chromedriver-helper'
   # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
   gem "spring"
