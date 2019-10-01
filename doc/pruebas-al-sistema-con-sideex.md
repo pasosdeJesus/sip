@@ -135,82 +135,21 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
 
 
-### 3.3 Sideex 2
+### 3.3 Ayudas para crear cada caso de prueba con Sideex 2
 #### 3.3.1 Descarga e instalación de sideex 2
 
 Sideex se ejecuta como una extensión para Chrome o para Firefox. 
 Está disponible para descargar uso gratuito en  http://sideex.org/
 Después de descargar Sideex 2 se vera en la barra de 
-  herramientas el icono de Sideex.
+  herramientas el icono de Sideex 2.
+  
+  ![img1]()  
+  
 * Al abrir se vera el panel
 
-  ![img1]() 
-
-* Para empezar a hacer pruebas con sideex
-    . Inicie firefox/ Chrome
-    
-    . Abra la página en que se va a hacer las pruebas.
-    
-    . Haga clic sobre el icono de sideex  en la barra de herramientas del navegador  
-    
-     ![img2]() 
-     
-     Haga clic sobre el icono de sideex  en la barra de herramientas del navegador  
- 
-#### 3.3.2 Empezar pruebas
-
- . Haga clic en el + del cuadro de test suits a la izquierda y dele nombre a la 
-       suit y aceptar.
-    
-   . Haga clic en  el lado derecho del nombre de la suit creada sobre el mas y de el 
-       nombre del primer caso de la suit
-   
-   . Haga clic en el botón Record(grabar) para iniciar las operaciones de grabación 
-
-* Haga clic con el botón derecho en el nombre de la suit de pruebas y 
-  le da varias opciones guardar, abrir, cerrar, renombrar, añadir un nuevo caso 
-  a la suit de casos de pruebas.
-
- ![img3]() 
-
-#### 3.3.3 Ayudas para crear cada caso de prueba
-#### 3.3.3 Ayudas para crear cada caso de prueba
-
-### 3.3 Ayudas para crear cada caso de prueba
-
-Un caso de pruebas en sideex consta de una serie de ordenes, 
-cada orden puede tener cero, uno o dos argumentos.  El primer 
-argumento cuando existe típicamente es un selector del elemento al que se aplica 
-la orden y el segundo cuando existe es un valor.  Por ejemplo la orden ```clickAt``` 
-utiliza un selector para identificar el elemento sobre el cual realizar una 
-pulsación del ratón pero no requiere valor.  La orden ```type``` requiere los 
-dos argumentos, el selector que indica el elemento donde se escribirá y el 
-valor que escribirá.
-
-Al guardar un caso de prueba, se almacenan las ordenes en un formato de tabla 
-HTML, donde cada fila es una orden y con 3 columnas: la primera para el nombre
-del comando, la segunda para el selector y la tercera para el valor.
-
-Las ayudas que se presentan a continuación son mínimas, se recomienda consultar
-la ayuda de sideex (botón Help o disponible en 
-<http://www.sideex.org/>), así como la especificación de 
-cada orden disponible en la pestaña Reference de la interfaz de
-Sideex cuando se enfoca la orden en un caso de prueba.
-
-* En general suponer que ya se ha iniciado sesión en la aplicación con la cuenta
-  administrativa de prueba y que está en la pantalla inicial de la aplicación. 
-* De requerirse crear nuevos elementos pero con nombres que no puedan interferir
-  con una aplicación de producción (en caso de ejecutarse sobre una).   Por 
-  ejemplo nombres AAAA.
-* En general cada caso de prueba debe eliminar los elementos que cree (excepción 
-  si la suit de pruebas completa elimina con casos de prueba finales lo que 
-  crearon los iniciales --digamos un usuario)
-* Es bueno utilizar ordenes assert (el más típico debe ser 
-  ```assertText```) que verifiquen que en un momento dado de la prueba 
-  el estado de la aplicación sea el esperado sin lugar a dudas.
-* Aunque sideex se inspiró en Selenium-IDE, en general no requiere ordenes que 
-  esperen la presencia de un element como ```waitForElementPresent```
-* Sideex admite la ejecución de dos o más pruebas de Sideex en diferentes 
+  ![img2]() 
+  
+  * Sideex admite la ejecución de dos o más pruebas de Sideex en diferentes 
   ventanas de explorador al mismo tiempo en un escritorio para procesar suits de 
   prueba de manera más eficiente. Por ejemplo, inicie tres ventanas de navegador 
   (NO pestañas) y abra Sideex en la barra de herramientas de cada ventana del 
@@ -224,40 +163,44 @@ Sideex cuando se enfoca la orden en un caso de prueba.
 * Sideex espera automáticamente para completar la carga de la página.
 * Sideex se ejecuta como una extensión para Chrome o para Firefox. 
   Está disponible para descargar uso gratuito en  http://sideex.org/
- 
-  ![1descarga]()
+  * Las nuevas versiones de Sideex no se actualizarán 
+  automáticamente. 
+  Debe volver al sitio oficial y buscar nuevas versiones.  
+  
+  
+  #### 3.3.2 Empezar pruebas con Sideex 2
 
-* Después de descargar Sideex se vera en la barra de 
-  herramientas el icono de Sideex.
-* Al abrir se vera el panel
-
-  ![2sideex]() 
-
-* Para empezar a hacer pruebas con sideex
+* Para empezar a hacer pruebas con sideex 2
     . Inicie firefox/ Chrome
     
     . Abra la página en que se va a hacer las pruebas.
     
-    . Haga clic sobre el icono de sideex  en la barra de herramientas del navegador   
+    . Haga clic sobre el icono de sideex 2 en la barra de herramientas del navegador  
     
-    . Haga clic en el mas del cuadro de test suits a la izquierda y dele nombre a la 
+     ![img3]() 
+     
+ . Haga clic en el signo mas (+) del cuadro de test suits a la izquierda y dele nombre a la 
        suit y aceptar.
+       
+      ![img4]() 
     
-   . Haga clic en  el lado derecho del nombre de la suit creada sobre el mas y de el 
+   . Haga clic en  el lado derecho del nombre de la suit creada sobre el signo mas (+) y de el 
        nombre del primer caso de la suit
+       
+       ![img5]() 
    
    . Haga clic en el botón Record(grabar) para iniciar las operaciones de grabación 
 
 * Haga clic con el botón derecho en el nombre de la suit de pruebas y 
   le da varias opciones guardar, abrir, cerrar, renombrar, añadir un nuevo caso 
   a la suit de casos de pruebas.
-                          
-  ![3opciones]()
 
+ ![img6]() 
+ 
 * Al pasar el mouse al lado izquierdo del nombre aparece una flecha hacia abajo 
   y haga clic para guardar la suit de pruebas.
 
-  ![4flecha]()
+  ![img7]()
 
 * Todos los casos de una suit de pruebas se guardarán como un único archivo 
   de suit de pruebas. 
@@ -327,18 +270,60 @@ Sideex cuando se enfoca la orden en un caso de prueba.
   Y también tiene la opción find
   Value: 
   Otro cuadro en la parte inferior 
+  . Log :
+  . Reference :
+  
+#### 3.3.3 Como se construye casos de prueba
 
-  ![11inferior]()
+Un caso de pruebas en sideex consta de una serie de ordenes, 
+cada orden puede tener cero, uno o dos argumentos.  El primer 
+argumento cuando existe típicamente es un selector del elemento al que se aplica 
+la orden y el segundo cuando existe es un valor.  Por ejemplo la orden ```clickAt``` 
+utiliza un selector para identificar el elemento sobre el cual realizar una 
+pulsación del ratón pero no requiere valor.  La orden ```type``` requiere los 
+dos argumentos, el selector que indica el elemento donde se escribirá y el 
+valor que escribirá.
 
+Al guardar un caso de prueba, se almacenan las ordenes en un formato de tabla 
+HTML, donde cada fila es una orden y con 3 columnas: la primera para el nombre
+del comando, la segunda para el selector y la tercera para el valor.
+
+#### 3.3.4 Pautas para crear cada caso de prueba
+
+Las ayudas que se presentan a continuación son mínimas, se recomienda consultar
+la ayuda de sideex (botón Help o disponible en 
+<http://www.sideex.org/>), así como la especificación de 
+cada orden disponible en la pestaña Reference de la interfaz de
+Sideex cuando se enfoca la orden en un caso de prueba.
+
+* En general suponer que ya se ha iniciado sesión en la aplicación con la cuenta
+  administrativa de prueba y que está en la pantalla inicial de la aplicación. 
+* De requerirse crear nuevos elementos pero con nombres que no puedan interferir
+  con una aplicación de producción (en caso de ejecutarse sobre una).   Por 
+  ejemplo nombres AAAA.
+* En general cada caso de prueba debe eliminar los elementos que cree (excepción 
+  si la suit de pruebas completa elimina con casos de prueba finales lo que 
+  crearon los iniciales --digamos un usuario)
+  
+  ### 3.3.5 Comandos de especial interes para crear cada caso de prueba
+  
+* Es bueno utilizar ordenes assert (el más típico debe ser 
+  ```assertText```) que verifiquen que en un momento dado de la prueba 
+  el estado de la aplicación sea el esperado sin lugar a dudas.
+* Aunque sideex 2 se inspiró en Selenium-IDE, en general no requiere ordenes que 
+  esperen la presencia de un element como ```waitForElementPresent```
 * ```ChooseOkOnNextConfirmation``` es un comando que se utiliza antes de 
   eliminar y evita tener que ayudarle manualmente en confirmar si 
   quiere eliminar 
+  
+   ### 3.3.5 Pequeños trucos para crear cada caso de prueba
+    
   para ubicación del país me da la opción con una fecha que hay en 
   target al final y se puede escoger con otro selector
   ejemplo yo tenia //select[@id='caso_ubicacion_attributes_9_id_pais']
   y para que funcione cambiamos por //div[@id='ubicacion']/div/div/div/select
 
-  ### Teclas de acceso rápido
+  ### 3.3.6 Teclas de acceso rápido
   
   . *Ctrl + S*:          Guardar una suite de prueba
   
@@ -360,6 +345,4 @@ Sideex cuando se enfoca la orden en un caso de prueba.
   
   . *Ctrl + B*:          Alternar un punto de interrupción
 
-* Las nuevas versiones de Sideex no se actualizarán 
-  automáticamente. 
-  Debe volver al sitio oficial y buscar nuevas versiones.  
+
