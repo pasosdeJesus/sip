@@ -1,4 +1,4 @@
-# Pruebas del sistema con sideex
+# Pruebas del sistema con sideex 2
 
 Como parte del proceso de desarrollo ágil de una aplicación web
 es importante entre otras:  (1) mantener requerimientos en forma
@@ -14,7 +14,7 @@ negra y por tanto no deben requerir conocer el diseño del código fuente
 o su lógica." (<https://en.wikipedia.org/wiki/System_testing>)
 
 A continuación describimos como realizamos pruebas del sistema en
-Pasos de Jesús usando sideex (http://sideex.org/), suponiendo que las fuentes de la 
+Pasos de Jesús usando sideex 2 (http://sideex.org/), suponiendo que las fuentes de la 
 aplicación (y de las pruebas) se almacenan en un repositorio de github (https://github.com)
 y que el seguimiento al desarrollo se realiza en un tablero Trello (https://trello.com).
 
@@ -59,7 +59,7 @@ Cada vez que el equipo de desarrollo anuncia cambios, el equipo de pruebas:
   o si el tipo de contrato lo requiere hasta un día después).
 - Amplia y actualiza pruebas del sistema en directorio ```test/sideex``` --el
   equipo de pruebas tiene a su cargo mantener al día este directorio
-  con pruebas para sideex que puedan reproducirse y funcionar
+  con pruebas para sideex 2 que puedan reproducirse y funcionar
   (con excepciones que se mantienen en Trello)
 
 ## 3. Pruebas del sistema
@@ -78,7 +78,7 @@ con el sistema, rol del usuario, numeración con dos digitos y tema de prueba
 
 
    Las pruebas como un usuarios de roles diferentes al administrador
-   se nombran con el rol que prueba por ejemplo `pruebas-suit-analista-1.sideex`.
+   se nombran con el rol que prueba por ejemplo `lac-02-⁠analista-casos.sideex`.
 
 b.  Empleando Chrome con sideex instalado, ingresar a la aplicación en
     el sitio de desarrollo (o de ensayo) con un usuario y contraseña acorde 
@@ -96,19 +96,19 @@ c.2 Si era una falla ya resuelta buscar la tarjeta donde se había reportado
 c.3 Si es una falla nueva, crear una nueva tarjeta Trello en la columna
     "Haciendo".  Iniciar el título con un código ```F-n``` donde n es un número
     consecutivo respecto a las demás tarjetas.  Adjuntar a esta tarjeta
-    la prueba de Sideex que falló, un pantallazo y si es el caso
+    la prueba de Sideex 2 que falló, un pantallazo y si es el caso
     detalles adicionales de como reproducir en comentarios.
 
 c.4. Si se detienen las pruebas pero no por fallas en la aplicación sino en la 
-   prueba para sideex o por cambios en funcionalidad de la aplicación
-   pero sin errores, se mejora la prueba de sideex para que pase 
+   prueba para sideex 2 o por cambios en funcionalidad de la aplicación
+   pero sin errores, se mejora la prueba de sideex 2 para que pase 
    y se guarda y actualizan pruebas en github.
 
 c.5. En la tarjeta P-1 del tablero Trello agregar un comentario  del estilo
    "Ejecutada suit de pruebas. 2 errores"
    
 c.6 Si hay dificultades que no logran superarse para describir un caso de prueba
-    con sideex guardar el caso de prueba en un solo archivo en la carpeta
+    con sideex 2 guardar el caso de prueba en un solo archivo en la carpeta
     test/sideex/con_error
   
 
@@ -116,7 +116,7 @@ c.6 Si hay dificultades que no logran superarse para describir un caso de prueba
 
 Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
-1. Abrir sideex y la suit de pruebas e iniciar un nuevo caso de prueba, 
+1. Abrir sideex 2 y la suit de pruebas e iniciar un nuevo caso de prueba, 
    guardar lo que se prueba.  Poner nombre o renombrar para que el nombre 
    corresponda a la funcionalidad que se prueba.   
 
@@ -127,8 +127,8 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 3. Si una falla supuestamente resuelta sigue fallando, examinar posibles
    comentarios del equipo de desarrollo en la tarjeta y si es el caso devolver 
    la tarjeta de la columna Hecho a Haciendo, agregar comentario, pantallazo y archivo
-   para sideex para reproducirlo (los casos de pruebas que fallan por 
-   dificultades con sideex almacenar en `test/sideex/con_error`.
+   para sideex 2 para reproducirlo (los casos de pruebas que fallan por 
+   dificultades con sideex 2 almacenar en `test/sideex/con_error`.
 
 4. Si la prueba pasa agregar la prueba a la suit de pruebas con un nombre
    acorde a la prueba, agrega el archivo al repositorio y actualizar en github.
