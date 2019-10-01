@@ -1,131 +1,116 @@
 source 'https://rubygems.org'
 
 
-# Rails (internacionalización)
-gem "rails", '~> 6.0.0.rc1'
-gem "rails-i18n"
+gem "bcrypt" # Condensando de claves
 
-# Postgresql
-gem "pg"#, '~> 0.21'
+gem 'bootsnap', '>=1.1.0', require: false # Arranque rapido
 
-# Servidor web durante desarrollo
-gem 'puma'
-
-# Colores en terminal
-gem "colorize"
-
-# Cuadros de selección potenciados
-gem 'chosen-rails', git: "https://github.com/vtamara/chosen-rails.git", branch: 'several-fixes'
-
-# Unifica CSSs
-gem "sass"
-gem "sass-rails"
-
-# posibilidad de manejar módulos en Javascript https://github.com/rails/webpacker
-gem 'webpacker'
-
-# API JSON facil. Ver: https://github.com/rails/jbuilder
-gem "jbuilder"
-
-# Arranque rapido
-gem 'bootsnap', '>=1.1.0', require: false
-
-# Uglifier comprime recursos Javascript
-gem "uglifier"#, '>= 1.3.0'
-
-# CoffeeScript para recuersos .js.coffee y vistas
-gem "coffee-rails"
-
-gem "rubyzip",'~> 1.2.2'
-
-# jquery como librería JavaScript
-gem "jquery-rails"
-gem "jquery-ui-rails"
-#gem "jquery-ui-bootstrap-rails", git: "https://github.com/kristianmandrup/jquery-ui-bootstrap-rails"
-
-# Seguir enlaces más rápido. Ver: https://github.com/rails/turbolinks
-gem "turbolinks"#, "2.5.3"
-
-# Ambiente de CSS
-gem "twitter-bootstrap-rails"#, '~> 3.2.0'
-gem "font-awesome-rails"
 gem "bootstrap-datepicker-rails"
 
+gem "cancancan" # roles
+
+gem 'chosen-rails', git: "https://github.com/vtamara/chosen-rails.git", 
+  branch: 'several-fixes' # Cuadros de selección potenciados
+
+gem "coffee-rails" # CoffeeScript para recuersos .js.coffee y vistas
+
+gem "colorize" # Colores en terminal
+
+gem "devise" # Autenticación 
+
+gem "devise-i18n"
+
+gem "font-awesome-rails" # Ambiente de CSS
+
+gem "jbuilder" # API JSON facil. Ver: https://github.com/rails/jbuilder
+
+gem "jquery-rails" # jquery como librería JavaScript
+
+gem "jquery-ui-rails"
+
+gem "paperclip" # Maneja adjuntos
+
+gem "pg"#, '~> 0.21' # Postgresql
 
 gem 'pick-a-color-rails'
 
+gem 'puma'  # Servidor web durante desarrollo
+
+gem "rails", '~> 6.0.0.rc1'
+
+gem "rails-i18n"
+
+gem "rubyzip",'>= 2.0.0'
+
+gem "sass" # Unifica CSSs
+
+gem "sass-rails"
+
+gem "simple_form" # Formularios simples 
+
 gem 'tiny-color-rails'
 
-# Formularios simples 
-gem "simple_form"
+gem "turbolinks" # Seguir enlaces rápido. https://github.com/rails/turbolinks
 
-# Autenticación y roles
-gem "devise"
-gem "devise-i18n"
-gem "cancancan"
-gem "bcrypt"
+gem "twitter-bootstrap-rails"#, '~> 3.2.0'
 
-# Pagina listados
-gem "will_paginate"
+gem 'twitter_cldr' # ICU con CLDR
 
-# ICU con CLDR
-gem 'twitter_cldr'
- 
-# Maneja adjuntos
-gem "paperclip"#, "~> 4.1"
+gem "tzinfo" # Zonas horarias
 
-# Zonas horarias
-gem "tzinfo"
+gem "uglifier"#, '>= 1.3.0' # Uglifier comprime recursos Javascript
+
+gem 'webpacker' # módulos en Javascript https://github.com/rails/webpacker
+
+gem "will_paginate" # Pagina listados
+
 
 group :doc do
   # Genera documentación en doc/api con bundle exec rake doc:rails
   #gem "sdoc", require: false
 end
 
-# Los siguientes son para desarrollo o para pruebas con generadores
+
 group :development do
-  # Requerido por rake
-  gem "thor"
+  
+  gem 'rails-erd' # Para generar modelo entidad asociación 
 
-  # Para generar modelo entidad asociación 
-  gem 'rails-erd'
+  gem "thor" # Requerido por rake
 
-  # Consola irb en páginas con excepciones o usando <%= console %> en vistasA
-  gem 'web-console'
+  gem 'web-console' # Consola anten excepciones o <%= console %> en vistas
 
 end
+
 
 group :development, :test do
+
   # Depurar
   #gem 'byebug'
+  #
 end
 
-# Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo
+
 group :test do
-  gem "minitest"
-  gem 'simplecov'
+
+  gem 'capybara'
+
+  gem 'chromedriver-helper'
 
   gem "connection_pool"
+
+  gem "minitest"
+
   gem "minitest-reporters"
 
   gem 'rails-controller-testing'
 
-  gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
-  # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
-  gem "spring"
+
+  gem 'simplecov'
+
+  gem 'spork' # Un proceso para cada prueba -- acelera
+
+  gem "spring" # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
   
-  # Un proceso para cada prueba -- acelera
-  gem 'spork'#, '~> 1.0rc'
-
-  # https://www.relishapp.com/womply/rails-style-guide/docs/developing-rails-applications/bundler
-  # Lanza programas para examinar resultados
-  gem "launchy"
- 
-  #gem 'pry-rescue'
-  #gem 'pry-stack_explorer'
-
-
 end
 
