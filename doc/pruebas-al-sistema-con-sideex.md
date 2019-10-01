@@ -145,7 +145,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   Después de descargar Sideex 2 se vera en la barra de 
   herramientas el icono de Sideex 2.
   
-  ![img1]()  
+  ![img1](https://raw.githubusercontent.com/BlancaInesAcosta/sip/master/doc/img/img1.png)  
   
 * Al abrir se vera el panel
 
@@ -178,7 +178,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     
      ![img3]() 
      
-    . Haga clic en el signo mas (+) del cuadro de test suits a la izquierda y dele nombre a la 
+    . Haga clic en el signo mas (+) del cuadro de TEST SUITES a la izquierda y dele nombre a la 
        suit y aceptar.
        
       ![img4]() 
@@ -239,32 +239,30 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
   ![7archivo ]()
 
-  . Al lado derecho aparece un mas que al hacer clic se puede dar 
+  . Al lado derecho aparece un signo mas (+) que al hacer clic se puede dar 
     nombre a la suit.
 
     ![8mas]()
 
   . Al lado derecho hay otro cuadro que contiene en su parte superior 
-    Command: Comando. Cuando graba un caso se verán debajo todos los 
+    COMMAND: Comando. Cuando graba un caso se verán debajo todos los 
     comandos utilizados en cada prueba.
 
   ![9comando]()
-
-  . Command 
   
-  .  Target: 
+  .  TARGET: 
   
-  .  Value: Valor. Son valores que nosotros escribimos  
+  .  VALUE: Valor. Son valores que nosotros escribimos  
      y en la parte inferior al hacer clic sobre una linea aparecen 
      todos los Command, Target y Value de esa linea. Y se pueden modificar.
-     Command
-     En Target  se ve una flecha, si hace clic sobre la flecha le muestra 
+     
+  .  En Target  se ve una flecha, si hace clic sobre la flecha le muestra 
      una lista de selectores  que se pueden utilizar de ser necesario.
 
   ![10flecha2]()
 
-  Tiene la opción select (seleccionar) que la puede utilizar para 
-  insertar una linea nueva en medio de un prueba. Haga clic sobre 
+  .  Tiene un boton con la opción SELECT (seleccionar) que la puede utilizar para 
+     insertar una linea nueva en medio de un prueba. Haga clic sobre 
   la linea, haga clic en Record, haga clic en select, haga clic en 
   Y también tiene la opción find
   Value: 
