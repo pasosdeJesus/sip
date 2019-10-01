@@ -141,6 +141,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
 * Sideex 2 se ejecuta como una extensión para Chrome o para Firefox. 
   Está disponible para descargar uso gratuito en  http://sideex.org/
+  
   Después de descargar Sideex 2 se vera en la barra de 
   herramientas el icono de Sideex 2.
   
@@ -162,8 +163,6 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   suits de prueba en un solo panel. Las suits de prueba se pueden activar y 
   procesar automáticamente de forma secuencial. 
 * Sideex 2 espera automáticamente para completar la carga de la página.
-* Sideex 2 se ejecuta como una extensión para Chrome o para Firefox. 
-  Está disponible para descargar uso gratuito en  http://sideex.org/
 * Las nuevas versiones de Sideex 2 no se actualizarán 
   automáticamente. 
   Debe volver al sitio oficial y buscar nuevas versiones.  
