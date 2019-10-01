@@ -51,7 +51,7 @@ con periodicidad semanal (o según el tipo de contrato).
 
 Cada vez que el equipo de desarrollo anuncia cambios, el equipo de pruebas:
 
-- Ejecuta las pruebas de regresión para verificar que siga funcionando lo que ya operaba, trascribir resultados a una hoja de cálculo donde se reportan las pruebas que fallan y como comentario el mensaje de error producido por sideex. 
+- Ejecuta las pruebas de regresión para verificar que siga funcionando lo que ya operaba, trascribir resultados a una hoja de cálculo donde se reportan las pruebas que fallan y como comentario el mensaje de error producido por sideex 2. 
 - De las pruebas que fallan identifica si se trata de un problema en la prueba, un cambio en la aplicación que requiere un cambio en la prueba o una falla o cambio en la aplicación que debe reportarse al equipo de desarrollo.
 - Prueba las novedades buscando hacer fallar la aplicación.  Esto implica entender bien los cambios implementados (o pedir retroalimentacion al equipo de desarrollo hasta entender y poder realizar las pruebas).
 - Reporta en Trello las fallas que encuentre (a más tardar  5 días después del anuncio
@@ -74,21 +74,21 @@ con el sistema, rol del usuario, numeración con dos digitos y tema de prueba
   ** (`lac-01-admin-tablas-basicas.sideex`) que agrupa todos los  casos de prueba.  **
    **Cuando tenga completas tablas, iniciar `lac-02-admin-casos.sideex` y así**
    **sucesivamente.**
-    **lac-02-⁠admin-⁠tablas-básicas**
+    **lac-03-⁠admin-usuarios**
 
 
    Las pruebas como un usuarios de roles diferentes al administrador
    se nombran con el rol que prueba por ejemplo `lac-02-⁠analista-casos.sideex`.
 
-b.  Empleando Chrome con sideex instalado, ingresar a la aplicación en
+b.  Empleando Chrome con sideex 2 instalado, ingresar a la aplicación en
     el sitio de desarrollo (o de ensayo) con un usuario y contraseña acorde 
-    al rol que se prueba,  iniciar sideex, cargar la suit de pruebas y ejecutarla completa.
+    al rol que se prueba,  iniciar sideex 2, cargar la suit de pruebas y ejecutarla completa.
 
 
 c. Por cada falla que se encuentre:
 
 c.1 Reproducirla manualmente y asegurar que es una falla del sistema 
-    (y no de las pruebas o de sideex)
+    (y no de las pruebas o de sideex 2)
 
 c.2 Si era una falla ya resuelta buscar la tarjeta donde se había reportado
     y pasarla de la columna "Hecho" del tablero Trello a "Haciendo"
@@ -139,9 +139,9 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
 #### 3.3.1 Descarga e instalación de sideex 2
 
-Sideex se ejecuta como una extensión para Chrome o para Firefox. 
-Está disponible para descargar uso gratuito en  http://sideex.org/
-Después de descargar Sideex 2 se vera en la barra de 
+* Sideex 2 se ejecuta como una extensión para Chrome o para Firefox. 
+  Está disponible para descargar uso gratuito en  http://sideex.org/
+  Después de descargar Sideex 2 se vera en la barra de 
   herramientas el icono de Sideex 2.
   
   ![img1]()  
@@ -150,21 +150,21 @@ Después de descargar Sideex 2 se vera en la barra de
 
   ![img2]() 
   
-* Sideex admite la ejecución de dos o más pruebas de Sideex en diferentes 
+* Sideex 2 admite la ejecución de dos o más pruebas de Sideex 2 en diferentes 
   ventanas de explorador al mismo tiempo en un escritorio para procesar suits de 
   prueba de manera más eficiente. Por ejemplo, inicie tres ventanas de navegador 
-  (NO pestañas) y abra Sideex en la barra de herramientas de cada ventana del 
-  navegador, luego cargue y reproduzca las suits de prueba por cada Sideex 
+  (NO pestañas) y abra Sideex 2 en la barra de herramientas de cada ventana del 
+  navegador, luego cargue y reproduzca las suits de prueba por cada Sideex 2
   con su ventana de navegador correspondiente.
 * Cuando haga pruebas solo abra la pestaña de la prueba porque si abre otra 
   pestaña al mismo tiempo la prueba correrá en esa pestaña también.
-* Sideex admite la apertura, edición y ejecución de múltiples 
+* Sideex 2 admite la apertura, edición y ejecución de múltiples 
   suits de prueba en un solo panel. Las suits de prueba se pueden activar y 
   procesar automáticamente de forma secuencial. 
-* Sideex espera automáticamente para completar la carga de la página.
-* Sideex se ejecuta como una extensión para Chrome o para Firefox. 
+* Sideex 2 espera automáticamente para completar la carga de la página.
+* Sideex 2 se ejecuta como una extensión para Chrome o para Firefox. 
   Está disponible para descargar uso gratuito en  http://sideex.org/
-* Las nuevas versiones de Sideex no se actualizarán 
+* Las nuevas versiones de Sideex 2 no se actualizarán 
   automáticamente. 
   Debe volver al sitio oficial y buscar nuevas versiones.  
   
@@ -275,7 +275,7 @@ Después de descargar Sideex 2 se vera en la barra de
   
 #### 3.3.3 Como se construye casos de prueba
 
-Un caso de pruebas en sideex consta de una serie de ordenes, 
+Un caso de pruebas en sideex 2 consta de una serie de ordenes, 
 cada orden puede tener cero, uno o dos argumentos.  El primer 
 argumento cuando existe típicamente es un selector del elemento al que se aplica 
 la orden y el segundo cuando existe es un valor.  Por ejemplo la orden ```clickAt``` 
