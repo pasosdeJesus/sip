@@ -136,6 +136,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
 
 ### 3.3 Ayudas para crear cada caso de prueba con Sideex 2
+
 #### 3.3.1 Descarga e instalación de sideex 2
 
 Sideex se ejecuta como una extensión para Chrome o para Firefox. 
@@ -149,7 +150,7 @@ Después de descargar Sideex 2 se vera en la barra de
 
   ![img2]() 
   
-  * Sideex admite la ejecución de dos o más pruebas de Sideex en diferentes 
+* Sideex admite la ejecución de dos o más pruebas de Sideex en diferentes 
   ventanas de explorador al mismo tiempo en un escritorio para procesar suits de 
   prueba de manera más eficiente. Por ejemplo, inicie tres ventanas de navegador 
   (NO pestañas) y abra Sideex en la barra de herramientas de cada ventana del 
@@ -163,10 +164,9 @@ Después de descargar Sideex 2 se vera en la barra de
 * Sideex espera automáticamente para completar la carga de la página.
 * Sideex se ejecuta como una extensión para Chrome o para Firefox. 
   Está disponible para descargar uso gratuito en  http://sideex.org/
-  * Las nuevas versiones de Sideex no se actualizarán 
+* Las nuevas versiones de Sideex no se actualizarán 
   automáticamente. 
   Debe volver al sitio oficial y buscar nuevas versiones.  
-  
   
   #### 3.3.2 Empezar pruebas con Sideex 2
 
@@ -179,7 +179,7 @@ Después de descargar Sideex 2 se vera en la barra de
     
      ![img3]() 
      
- . Haga clic en el signo mas (+) del cuadro de test suits a la izquierda y dele nombre a la 
+    . Haga clic en el signo mas (+) del cuadro de test suits a la izquierda y dele nombre a la 
        suit y aceptar.
        
       ![img4]() 
@@ -191,9 +191,9 @@ Después de descargar Sideex 2 se vera en la barra de
    
    . Haga clic en el botón Record(grabar) para iniciar las operaciones de grabación 
 
-* Haga clic con el botón derecho en el nombre de la suit de pruebas y 
-  le da varias opciones guardar, abrir, cerrar, renombrar, añadir un nuevo caso 
-  a la suit de casos de pruebas.
+   * Haga clic con el botón derecho en el nombre de la suit de pruebas y 
+     le da varias opciones guardar, abrir, cerrar, renombrar, añadir un nuevo caso 
+     a la suit de casos de pruebas.
 
  ![img6]() 
  
