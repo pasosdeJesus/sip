@@ -149,7 +149,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   
 * Al abrir se vera el panel
 
-  ![img2]() 
+  ![img2](https://github.com/BlancaInesAcosta/sip/blob/master/doc/img/img2.png) 
   
 * Sideex 2 admite la ejecución de dos o más pruebas de Sideex 2 en diferentes 
   ventanas de explorador al mismo tiempo en un escritorio para procesar suits de 
@@ -176,17 +176,17 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     
     . Haga clic sobre el icono de sideex 2 en la barra de herramientas del navegador  
     
-     ![img3]() 
+     ![img3](https://github.com/BlancaInesAcosta/sip/blob/master/doc/img/img3.png) 
      
     . Haga clic en el signo mas (+) del cuadro de TEST SUITES a la izquierda y dele nombre a la 
        suit y aceptar.
        
-      ![img4]() 
+      ![img4](https://github.com/BlancaInesAcosta/sip/blob/master/doc/img/img4.png) 
     
    . Haga clic en  el lado derecho del nombre de la suit creada sobre el signo mas (+) y de el 
        nombre del primer caso de la suit
        
-       ![img5]() 
+       ![img5](https://github.com/BlancaInesAcosta/sip/blob/master/doc/img/img5.png) 
    
    . Haga clic en el botón Record(grabar) para iniciar las operaciones de grabación 
 
@@ -194,12 +194,12 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
      le da varias opciones guardar, abrir, cerrar, renombrar, añadir un nuevo caso 
      a la suit de casos de pruebas.
 
- ![img6]() 
+ ![img6](https://github.com/BlancaInesAcosta/sip/blob/master/doc/img/img6.png) 
  
 * Al pasar el mouse al lado izquierdo del nombre aparece una flecha hacia abajo 
   y haga clic para guardar la suit de pruebas.
 
-  ![img7]()
+  ![img7](https://github.com/BlancaInesAcosta/sip/blob/master/doc/img/img7.png)
 
 * Todos los casos de una suit de pruebas se guardarán como un único archivo 
   de suit de pruebas. 
