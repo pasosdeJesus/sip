@@ -149,7 +149,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   
 * Al abrir se vera el panel
 
-  ![img2](https://github.com/BlancaInesAcosta/sip/blob/master/doc/img/img2.png) 
+  ![img2](https://raw.githubusercontent.com/BlancaInesAcosta/sip/master/doc/img/img2.png) 
   
 * Sideex 2 admite la ejecución de dos o más pruebas de Sideex 2 en diferentes 
   ventanas de explorador al mismo tiempo en un escritorio para procesar suits de 
