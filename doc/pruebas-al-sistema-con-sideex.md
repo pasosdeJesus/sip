@@ -176,17 +176,17 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     
     . Haga clic sobre el icono de sideex 2 en la barra de herramientas del navegador  
     
-     ![img3](https://github.com/BlancaInesAcosta/sip/blob/master/doc/img/img3.png) 
+     ![img3](https://raw.githubusercontent.com/BlancaInesAcosta/sip/master/doc/img/img3.png) 
      
     . Haga clic en el signo mas (+) del cuadro de TEST SUITES a la izquierda y dele nombre a la 
        suit y aceptar.
        
-      ![img4](https://github.com/BlancaInesAcosta/sip/blob/master/doc/img/img4.png) 
+      ![img4](https://raw.githubusercontent.com/BlancaInesAcosta/sip/master/doc/img/img4.png) 
     
    . Haga clic en  el lado derecho del nombre de la suit creada sobre el signo mas (+) y de el 
        nombre del primer caso de la suit
        
-       ![img5](https://github.com/BlancaInesAcosta/sip/blob/master/doc/img/img5.png) 
+       ![img5](https://raw.githubusercontent.com/BlancaInesAcosta/sip/master/doc/img/img5.png) 
    
    . Haga clic en el botón Record(grabar) para iniciar las operaciones de grabación 
 
@@ -194,7 +194,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
      le da varias opciones guardar, abrir, cerrar, renombrar, añadir un nuevo caso 
      a la suit de casos de pruebas.
 
- ![img6](https://github.com/BlancaInesAcosta/sip/blob/master/doc/img/img6.png) 
+ ![img6](https://raw.githubusercontent.com/BlancaInesAcosta/sip/master/doc/img/img6.png) 
  
 * Al pasar el mouse al lado izquierdo del nombre aparece una flecha hacia abajo 
   y haga clic para guardar la suit de pruebas.
