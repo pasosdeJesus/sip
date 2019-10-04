@@ -140,19 +140,19 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 #### 3.3.1 Descarga e instalación de sideex 2
 
 * Sideex 2 se ejecuta como una extensión para Chrome o para Firefox. 
-  Está disponible para descargar uso gratuito en  http://sideex.org/
+  Está disponible para descargar de uso gratuito en  http://sideex.org/
   
   Después de descargar Sideex 2 se vera en la barra de 
   herramientas el icono de Sideex 2.
   
   ![img1](https://raw.githubusercontent.com/BlancaInesAcosta/sip/master/doc/img/img1.png)  
   
-* Al abrir se vera el panel
+* Al pulsar sobre el icono de sideex 2 se vera el panel
 
   ![img2](https://raw.githubusercontent.com/BlancaInesAcosta/sip/master/doc/img/img2.png) 
   
 * Sideex 2 admite la ejecución de dos o más pruebas de Sideex 2 en diferentes 
-  ventanas de explorador al mismo tiempo en un escritorio para procesar suits de 
+  ventanas del explorador al mismo tiempo en un escritorio para procesar suits de 
   prueba de manera más eficiente. Por ejemplo, inicie tres ventanas de navegador 
   (NO pestañas) y abra Sideex 2 en la barra de herramientas de cada ventana del 
   navegador, luego cargue y reproduzca las suits de prueba por cada Sideex 2
@@ -174,23 +174,23 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     
     . Abra la página en que se va a hacer las pruebas.
     
-    . Haga clic sobre el icono de sideex 2 en la barra de herramientas del navegador  
+    . Pulse sobre el icono de sideex 2 en la barra de herramientas del navegador  
     
      ![img3](https://raw.githubusercontent.com/BlancaInesAcosta/sip/master/doc/img/img3.png) 
      
-    . Haga clic en el signo mas (+) del cuadro de TEST SUITES a la izquierda y dele nombre a la 
-       suit y aceptar.
+    . Pulse en el signo mas (+) del cuadro de TEST SUITES a la izquierda del panel y dele 
+    nombre a la suit y aceptar.
        
       ![img4](https://raw.githubusercontent.com/BlancaInesAcosta/sip/master/doc/img/img4.png) 
     
-   . Haga clic en  el lado derecho del nombre de la suit creada sobre el signo mas (+) y de el 
+   . Pulse en  el lado derecho del nombre de la suit creada sobre el signo mas (+) y de el 
        nombre del primer caso de la suit
        
        ![img5](https://raw.githubusercontent.com/BlancaInesAcosta/sip/master/doc/img/img5.png) 
    
-   . Haga clic en el botón Record(grabar) para iniciar las operaciones de grabación 
+   . Pulse en el botón Record(grabar) para iniciar las operaciones de grabación 
 
-   * Haga clic con el botón derecho en el nombre de la suit de pruebas y 
+   * Pulse con el botón derecho en el nombre de la suit de pruebas y 
      le da varias opciones guardar, abrir, cerrar, renombrar, añadir un nuevo caso 
      a la suit de casos de pruebas.
 
@@ -213,21 +213,21 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
   ![5opciones]()
 
-  . Record: Grabar. Haga clic empezar grabar la secuencia de comandos de 
-    una prueba 
+  . Record: Grabar. Pulse Record para empezar a grabar la secuencia de 
+    comandos de una prueba 
   
   . PlayThisCase: Correr este caso. Se puede correr un solo caso de 
-    una suit. Haga clic sobre el caso que quiere correr, se hará visible 
-    y luego haga clic en PlayThisCase
+    una suit. Pulse sobre el caso que quiere correr, se hará visible 
+    y luego Pulse en PlayThisCase
   
-  . PlayThisSuite: Correr esta suit. Haga clic sobre PlayThisSuite 
+  . PlayThisSuite: Correr esta suit. Pulse sobre PlayThisSuite 
     para correr toda la suit con que esta trabajando.
   
-  . PlayAllSuites: Correr todas las suits. Haga clic y podrá correr 
-    todas las suit que halla abierto en el panel.
+  . PlayAllSuites: Correr todas las suits. Pulse sobre PlayAllSuites y 
+    podrá correr todas las suit que halla abierto en el panel.
   
   . Pause: Pausa. Sirve para detener una prueba en determinado momento, 
-    luego clic de nuevo y se puede continuar. 
+    luego Pulse de nuevo y se puede continuar. 
     Luego vera dos cuadros grandes:
     A la izquierda se ve :
 
@@ -235,11 +235,11 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
   . TEST SUITES
     Al lado de las palabras TEST SUITES se ve un icono de archivo y que 
-    al hacer clic abre los archivos para guardar las pruebas
+    al pulsar abre las pruebas que hemos guardado anteriormente. 
 
   ![7archivo ]()
 
-  . Al lado derecho aparece un signo mas (+) que al hacer clic se puede dar 
+  . Al lado derecho aparece un signo mas (+) que al las pulsar se puede dar 
     nombre a la suit.
 
     ![8mas]()
