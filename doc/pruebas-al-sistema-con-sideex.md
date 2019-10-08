@@ -158,8 +158,8 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   (NO pestañas) y abra Sideex 2 en la barra de herramientas de cada ventana del 
   navegador, luego cargue y reproduzca las suits de prueba por cada Sideex 2
   con su ventana de navegador correspondiente.
-* Cuando haga pruebas solo abra la pestaña de la prueba porque si abre otra 
-  pestaña al mismo tiempo la prueba correrá en esa pestaña también.
+* Cuando haga pruebas solo abra la pestaña en la que esta realizando la prueba porque 
+  si abre otra pestaña al mismo tiempo la prueba correrá en esa otra pestaña también.
 * Sideex 2 admite la apertura, edición y ejecución de múltiples 
   suits de prueba en un solo panel. Las suits de prueba se pueden activar y 
   procesar automáticamente de forma secuencial. 
