@@ -2,10 +2,10 @@
 
 * Ruby version >= 2.6
 * Ruby on Rails >= 6.0.0 
-* PostgreSQL >= 11.5 con extensión ```unaccent``` disponible
-* ```node.js``` y ```coffescript``` instalado globalmente (i.e  ```npm install -g coffee-script```)
-* Recomendado sobre adJ 6.5 (que incluye todos los componentes mencionados y donde sassc compila bien)
-  usando ```bundler``` con ```doas```, ver
+* PostgreSQL >= 11.5 con extensión `unaccent` disponible
+* `node.js` y `coffescript` instalado globalmente (i.e  `npm install -g coffee-script`)
+* Recomendado sobre adJ 6.5 (que incluye todos los componentes mencionados y donde `sassc` compila bien)
+  usando `bundler` con `doas`, ver
   <http://pasosdejesus.github.io/usuario_adJ/conf-programas.html#ruby>.
 * El usuario que utilice la aplicación debe tener permiso de usar al menos
   1024M en RAM y para abrir al menos 2048 archivos.  En adJ asegurate de poner
