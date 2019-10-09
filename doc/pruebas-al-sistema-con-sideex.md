@@ -57,7 +57,9 @@ Cada vez que el equipo de desarrollo anuncia cambios, el equipo de pruebas:
 - Reporta en Trello las fallas que encuentre (a más tardar  5 días después del anuncio
   del equipo de desarrollo, si los anuncios de desarrollo son semanales
   o si el tipo de contrato lo requiere hasta un día después).  
-- Cuando el equipo de desarrollo mueve una tarjetas de haciendo a hecho puede haber algunas tarjetas sin tiempo con un comentario y con fallas que no se han podido reproducir que el equipo de pruebas debe leer y revisar el comentario para ver si quedó alguna falla.
+- Cuando el equipo de desarrollo mueve una tarjetas de la columna haciendo a la columna hecho puede haber 
+  algunas tarjetas sin tiempo con un comentario y con fallas que no se han podido reproducir que el equipo de 
+  pruebas debe leer y revisar el comentario para ver si quedó alguna falla.
 - Amplia y actualiza pruebas del sistema en directorio ```test/sideex``` --el
   equipo de pruebas tiene a su cargo mantener al día este directorio
   con pruebas para sideex 2 que puedan reproducirse y funcionar
