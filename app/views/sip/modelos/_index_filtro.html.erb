@@ -4,7 +4,7 @@
     <% #byebug %>
     <td>
       <% cregistro = @registro.class.to_s.chomp("ActiveRecord_Relation").constantize %>
-      <% alf = cregistro.asociacion_llave_foranea(atr) %>
+      <% alf = cregistro == NilClass ? nil : cregistro.asociacion_llave_foranea(atr) %>
       <% atrf = Sip::ModeloHelper.nom_filtro(atr) %>
       <% atrsl= atrf.chomp('_localizada').chomp('_localizado') %>
       <% n = "bus#{atrf}" %>
@@ -59,7 +59,8 @@
           class: 'chosen-select',
           "data-enviarautomatico" => "" } 
         %>
-    <% elsif cregistro.asociacion_combinada(atr) && respfiltro %>
+    <% elsif defined?(cregistro.asociacion_combinada) && 
+      cregistro.asociacion_combinada(atr) && respfiltro %>
       <% # Tabla Combinada 
         r = cregistro.asociacion_combinada(atr)
       %>
@@ -82,7 +83,7 @@
           input_html: { class: 'chosen-select',
                         "data-enviarautomatico" => "" } %>
       <% end %>
-    <% elsif cregistro.columns_hash[atrsl] && respfiltro %>
+    <% elsif defined?(cregistro.columns_hash[atrsl]) && respfiltro %>
       <% # Escogemos el control %>
       <% col = cregistro.columns_hash[atrsl] %>
       <% if col && (col.type == :date || col.type == :datetime) then %>

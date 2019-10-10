@@ -127,23 +127,23 @@ module Sip
               c = filtrar(c, params[:filtro])
             end
 
-            c = index_reordenar(c)
+            c = index_reordenar(c) if c
             index_plantillas
 
             respond_to do |format|
               format.html {  
-                @registros = @registro = c.paginate(
+                @registros = @registro = c ? c.paginate(
                   :page => params[:pagina], per_page: 20
-                );
+                ) : nil;
                 render :index, layout: 'layouts/application'
                 return
               }
-              @registros = @registro = c.all
+              @registros = @registro = c ? c.all : nil
               if params &&
                   ((params[:presenta_nombre] && 
                     params[:presenta_nombre] == "1") ||
                    (params[:filtro] && params[:filtro][:presenta_nombre] &&
-                    params[:filtro][:presenta_nombre] == "1"))
+                    params[:filtro][:presenta_nombre] == "1")) && @registros
                 regjson = @registros.map {|r| 
                   {id: r.id, presenta_nombre: r.presenta_nombre()}
                 }
@@ -156,9 +156,9 @@ module Sip
               }
               format.js {
                 if params[:_sip_enviarautomatico] 
-                  @registros = @registro = c.paginate(
+                  @registros = @registro = c ? c.paginate(
                     :page => params[:pagina], per_page: 20
-                  );
+                  ) : nil;
                   render :index, layout: 'layouts/application'
                 else
                   render :index, json: regjson

@@ -61,6 +61,9 @@ module Sip
 
     # Ruta para administrar modelo
     def modelos_path(o)
+      if o.nil?
+        return '#'
+      end
       n = self.modelos_prefijo_ruta(o) 
       if !n
         byebug
