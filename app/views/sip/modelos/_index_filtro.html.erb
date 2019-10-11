@@ -174,7 +174,7 @@
              :as => :string %> 
          <% else %>
          <% end %>
-      <% elsif col.limit && col.limit > 1000 %>
+      <% elsif defined?(col.limit) && col.limit > 1000 %>
         <%= f.input n,
           label: false,
           as: :text, 
