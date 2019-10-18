@@ -26,7 +26,7 @@ Los elementos específicos por ubicar pueden incluir:
 * Capítulo o títulos de secciones, o encabezados o subencabezados
 * Títulos de imagenes
 * Cajas o notas al margen, que presenten información al lado del flujo del texto principal.
-* Encabezados y pies de página, cuyo contenido es usualmente uniforme a lo largo de diversas páginas del sistema de información.
+* Encabezados y pies de página, cuyo contenido es usualmente uniforme a lo largo de diversas páginas del sitio web.
 
 Flexbox y CSS Grid son ayudas importantes para lograr maquetaciones adaptables, pero para comenzar a maquetar, especialmente cuando no se tiene mucha experiencia, recomendamos emplear Bootstrap (ver https://getbootstrap.com/).  
 Incluso puede emplearse una herramienta que genera Bootrap como  https://www.layoutit.com/build e inspirarse en ideas de maquetaciones (y diseños visuales web completos)  en galerias como por ejemplo https://colorlib.com/wp/free-bootstrap-gallery-templates/
