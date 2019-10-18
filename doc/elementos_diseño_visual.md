@@ -12,7 +12,7 @@ Se refiere a la organización de los elementos visuales en una página.
 
 Como se explica en [Layout] "a alto nivel, incluye decidir la ubicación de textos e imagenes ... requiere inteligencia, sentimiento y creatividad, y se informa de la cultura, de la psicologia y de lo que los autores del contenido y los editores deseam comunicar y enfatizar."
 
-Nos parecen preferibles maquetaciones dinámicas (o adaptables, del inglés responsive), pues optimizan esfuerzo y recursos de diseñar maquetaciones estáticas para cada posible dispositivo donde se consultará el sistema de información.
+Nos parecen preferibles maquetaciones dinámicas (o adaptables, del inglés responsive), pues optimizan esfuerzo y recursos de diseñar maquetaciones estáticas para cada posible dispositivo donde se consultará la página web.
 
 Las decisiones suelen incluir (traducido de [Layout]):
 
