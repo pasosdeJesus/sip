@@ -88,8 +88,8 @@ Los elementos específicos por ubicar pueden incluir:
 * Cajas o notas al margen, que presenten información al lado del flujo del texto principal.
 * Encabezados y pies de página, cuyo contenido es usualmente uniforme a lo largo de diversas páginas del sistema de información.
 
-Flexbox y CSS Grid son ayudas importantes para lograr maquetaciones adaptables, pero para comenzar un diseño, cuando no hay mucha exp
-Sin embargo por la cantidad y omplejidad del tema, recomendamos emplear Bootrap iniciando una maqueta por ejemplo con https://www.layoutit.com/build e inspirandose en ideas de maquetaciones como pueden verse en galerias como por ejemplo https://colorlib.com/wp/free-bootstrap-gallery-templates/
+Flexbox y CSS Grid son ayudas importantes para lograr maquetaciones adaptables, pero para comenzar a maquetar, especialmente cuando no se tiene mucha experiencia, recomendamos emplear Bootstrap (ver https://getbootstrap.com/).  
+Incluso puede emplearse una herramienta que genera Bootrap como  https://www.layoutit.com/build e inspirarse en ideas de maquetaciones (y diseños visuales web completos)  en galerias como por ejemplo https://colorlib.com/wp/free-bootstrap-gallery-templates/
 
 
 ## Tipografía
