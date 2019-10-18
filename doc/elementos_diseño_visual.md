@@ -5,7 +5,7 @@
 
 Los lenguajes CSS y HTML son los nativos de las páginas web y deben aprenderse, para lo cual recomendamos http://freecodecamp.org.
 
-Sin embargo el diseño visual (o diseño gráfico) de una página web relaciona la identidad institucional de quien la produce, los objetivos de negocio o de influencia de la página y su público.  Como se describe en [Grdes]  "es importante para un diseñador gráfico entender las necesidades de su cliente, así como las necesidades de la gente que interacturará con el diseño.   El trabajo del diseñador es combinar los objetivos del negocio con objetivos creativos para elevar el diseño más alla de los medios puramente estéticos"
+Sin embargo el diseño visual (o diseño gráfico) de una página web relaciona la identidad institucional del dueño, los objetivos de negocio o de influencia de la página y su público.  Como se describe en [Grdes]  "es importante para un diseñador gráfico entender las necesidades de su cliente, así como las necesidades de la gente que interacturará con el diseño.   El trabajo del diseñador es combinar los objetivos del negocio con objetivos creativos para elevar el diseño más alla de los medios puramente estéticos"
 
 
 ## Maquetación 
@@ -42,7 +42,7 @@ Es recomendable usar dos tipos de letra, uno serif (o con adornos como el tipo R
 
 ## Colores
 
-Es importante elegir una paleta de colores, tipicamente de 5 colores. La paleta puede partir de un color base (por ejemplo tomado del logo de la institución o de un tema del negocio)  y después emplear un esquema de colores (ver https://es.wikipedia.org/wiki/Esquema_del_color)  para completar la paleta.   Una herramienta en línea que facilita proponer un color base y usar alguno de los esquemas de colores (o regla de armonia de colores) es https://color.adobe.com/create  
+Es importante elegir una paleta de colores, tipicamente de 5 colores. La paleta puede partir de un color base (por ejemplo tomado del logo de la institución o de un tema del negocio)  y después emplear un esquema de colores (ver [EsqColor])  para completar la paleta.   Una herramienta en línea que facilita proponer un color base y usar alguno de los esquemas de colores (o regla de armonia de colores) es https://color.adobe.com/create  
  
 
 ## Iconos
@@ -54,3 +54,4 @@ Pueden ayudar a simplificar y a la vez aclarar la interfaz, se recomienda FontAw
 
 * [Grdes] https://en.wikipedia.org/wiki/Graphic_design. Consultado Oct.2019
 * [Layout] https://en.wikipedia.org/wiki/Page_layout. Consultado Oct.2019
+* [EsqColor] https://es.wikipedia.org/wiki/Esquema_del_color. Consultado Oct.2019
