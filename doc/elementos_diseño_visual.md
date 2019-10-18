@@ -3,18 +3,18 @@
 
 ## Estrategía
 
-El diseño visual del sistema de información le ayuda a dar identidad y por eso suele relacionarse con la identidad institucional del cliente o del negocio.  Como se describe en https://en.wikipedia.org/wiki/Graphic_design  "es importante para un diseñador gráfico entender las necesidades de su cliente, así como las necesidades de la gente que interacturará con el diseño.   El trabajo del diseñador es combinar los objetivos del negocio con objetivos creativos para elevar el diseño más alla de los medios puramente estéticos"
+El diseño visual del sistema de información le ayuda a dar identidad y por eso suele relacionarse con la identidad institucional del cliente o del negocio.  Como se describe en [Grdes]  "es importante para un diseñador gráfico entender las necesidades de su cliente, así como las necesidades de la gente que interacturará con el diseño.   El trabajo del diseñador es combinar los objetivos del negocio con objetivos creativos para elevar el diseño más alla de los medios puramente estéticos"
 
 
 ## Maquetación 
 
 Se refiere a la organización de los elementos visuales en una página.  
 
-Como se explica en https://en.wikipedia.org/wiki/Page_layout "a alto nivel, incluye decidir la ubicación de textos e imagenes ... requiere inteligencia, sentimiento y creatividad, y se informa de la cultura, de la psicologia y de lo que los autores del contenido y los editores deseam comunicar y enfatizar."
+Como se explica en [Layout] "a alto nivel, incluye decidir la ubicación de textos e imagenes ... requiere inteligencia, sentimiento y creatividad, y se informa de la cultura, de la psicologia y de lo que los autores del contenido y los editores deseam comunicar y enfatizar."
 
 Nos parecen preferibles maquetaciones dinámicas (o adaptables, del inglés responsive), pues optimizan esfuerzo y recursos de diseñar maquetaciones estáticas para cada posible dispositivo donde se consultará el sistema de información.
 
-Las decisiones suelen incluir (traducido de https://en.wikipedia.org/wiki/Page_layout#Grids_versus_templates):
+Las decisiones suelen incluir (traducido de [Layout]):
 
 * Tamaño de las margenes
 * Tamaño y posición de imagenes y figuras
@@ -48,3 +48,8 @@ Estos esquemas de colores suelen operar sobre el espacio de colore HSV (por ser 
 
 Pueden ayudar a simplificar y a la vez aclarar la interfaz.  Se recomienda elegir de FontAwesome: https://fontawesome.com/
 
+
+# Referencias
+
+*  [Grdes] https://en.wikipedia.org/wiki/Graphic_design. Consultado Oct.2019
+* [Layout] https://en.wikipedia.org/wiki/Page_layout. Consultado Oct.2019
