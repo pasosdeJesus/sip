@@ -3,7 +3,9 @@
 
 ## Estrategía
 
-El diseño visual del sistema de información le ayuda a dar identidad y por eso suele relacionarse con la identidad institucional del cliente o del negocio.  Como se describe en [Grdes]  "es importante para un diseñador gráfico entender las necesidades de su cliente, así como las necesidades de la gente que interacturará con el diseño.   El trabajo del diseñador es combinar los objetivos del negocio con objetivos creativos para elevar el diseño más alla de los medios puramente estéticos"
+Los lenguajes CSS y HTML son los nativos de las páginas web y deben aprenderse, para lo cual recomendamos http://freecodecamp.org.
+
+Sin embargo el diseño visual (o diseño gráfico) de una página web relaciona la identidad institucional de quien la produce, los objetivos de negocio o de influencia de la página y su público.  Como se describe en [Grdes]  "es importante para un diseñador gráfico entender las necesidades de su cliente, así como las necesidades de la gente que interacturará con el diseño.   El trabajo del diseñador es combinar los objetivos del negocio con objetivos creativos para elevar el diseño más alla de los medios puramente estéticos"
 
 
 ## Maquetación 
@@ -29,27 +31,26 @@ Los elementos específicos por ubicar pueden incluir:
 * Encabezados y pies de página, cuyo contenido es usualmente uniforme a lo largo de diversas páginas del sitio web.
 
 Flexbox y CSS Grid son ayudas importantes para lograr maquetaciones adaptables, pero para comenzar a maquetar, especialmente cuando no se tiene mucha experiencia, recomendamos emplear Bootstrap (ver https://getbootstrap.com/).  
-Incluso puede emplearse una herramienta que genera Bootrap como  https://www.layoutit.com/build e inspirarse en ideas de maquetaciones (y diseños visuales web completos)  en galerias como por ejemplo https://colorlib.com/wp/free-bootstrap-gallery-templates/
+
+O aún más comenzar con una herramienta que genera HTML y CSS con Bootrap como  https://www.layoutit.com/build e inspirarse en ideas de maquetaciones (y diseños visuales web completos)  en galerias como por ejemplo https://colorlib.com/wp/free-bootstrap-gallery-templates/
 
 
 ## Tipografía
 
-Es recomendable usar dos tipos de letra, uno serif (o con adornos como el tipo Roman) para títulos y uno sans-serif (sin adornos como el tipo Arial) para el texto.  Puede buscarse tipografía acorde a la identidad institucional o del negocio.  Recomendamos emplear https://fonts.google.com/ pues consta de tipografías de libre uso, información de cada tipografía y muestra de como se ve una tipografía en combinación con una segunda.
+Es recomendable usar dos tipos de letra, uno serif (o con adornos como el tipo Roman) para títulos y uno sans-serif (sin adornos como el tipo Arial) para el texto.   Recomendamos emplear https://fonts.google.com/ pues consta de tipografías de libre uso, información de cada tipografía y muestra de como se ve una tipografía en combinación con una segunda.
 
 
 ## Colores
 
-Es importante elegir una paleta de colores, tipicamente de 5 colores. La paleta puede partir de un color base (por ejemplo tomado del logo de la institución o de un tema del negocio)  y después emplear un esquema de colores (ver https://es.wikipedia.org/wiki/Esquema_del_color)  para completar la paleta.   Una herramienta en línea que facilita usar un esquema de colores (o regla de armonia de colores) para proponer una paleta es https://color.adobe.com/create  
+Es importante elegir una paleta de colores, tipicamente de 5 colores. La paleta puede partir de un color base (por ejemplo tomado del logo de la institución o de un tema del negocio)  y después emplear un esquema de colores (ver https://es.wikipedia.org/wiki/Esquema_del_color)  para completar la paleta.   Una herramienta en línea que facilita proponer un color base y usar alguno de los esquemas de colores (o regla de armonia de colores) es https://color.adobe.com/create  
  
-Estos esquemas de colores suelen operar sobre el espacio de colore HSV (por ser más entendible para nuestra percepción humana) aún cuando a la hora de implementar para el web es mejor convertir al espacio RGB que es más usado en páginas web.
-
 
 ## Iconos
 
-Pueden ayudar a simplificar y a la vez aclarar la interfaz.  Se recomienda elegir de FontAwesome: https://fontawesome.com/
+Pueden ayudar a simplificar y a la vez aclarar la interfaz, se recomienda FontAwesome: https://fontawesome.com/
 
 
 # Referencias
 
-*  [Grdes] https://en.wikipedia.org/wiki/Graphic_design. Consultado Oct.2019
+* [Grdes] https://en.wikipedia.org/wiki/Graphic_design. Consultado Oct.2019
 * [Layout] https://en.wikipedia.org/wiki/Page_layout. Consultado Oct.2019
