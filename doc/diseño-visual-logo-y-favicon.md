@@ -48,7 +48,7 @@ Desde su aplicación lo usa en ```app/views/layouts/application.html.erb``` que 
 ```
 
 
-Los colores pueden personalizarse creando por ejemplo un archivo  ```app/assets/stylesheets/personaliza.css``` con un contenido como el siguiente:
+Los colores pueden personalizarse con los temas o creando por ejemplo un archivo  ```app/assets/stylesheets/personaliza.css``` con un contenido como el siguiente:
 
 * Personalización del color de la barra de navegación, degrade de blanco a acre, aunque color acre en navegadores que no lo soportan:
 ```css
@@ -57,3 +57,13 @@ Los colores pueden personalizarse creando por ejemplo un archivo  ```app/assets/
         color: #872b00;
 }
 ```
+
+# Elementos de estilo visual
+## Maquetado u organización en bloques de cada página
+Bloques que sigan o resalten estructua del contenido
+## Tipografía
+Es recomendable usar dos tipos de letra, uno serif para títulos y uno sans-serif para el texto.
+## Colores
+Elegir una paleta, por ejemplo con ayuda de https://color.adobe.com/create
+
+
