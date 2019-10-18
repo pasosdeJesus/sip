@@ -1,4 +1,4 @@
-# Elementos del diseño visual para sistemas de información web
+# Elementos del diseño visual para páginas web
 
 
 ## Estrategía
