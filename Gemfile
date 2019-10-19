@@ -10,6 +10,11 @@ gem 'bootsnap', '>=1.1.0', require: false # Arranque rapido
 
 gem 'bootstrap-datepicker-rails'
 
+
+gem 'bcrypt' # Condensando de claves
+
+gem 'bootsnap', '>=1.1.0', require: false # Arranque rapido
+
 gem 'cancancan' # roles
 
 gem 'chosen-rails', git: 'https://github.com/vtamara/chosen-rails.git', 
