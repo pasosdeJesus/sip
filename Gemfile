@@ -1,135 +1,116 @@
 source 'https://rubygems.org'
 
-# Librería fundamental
-########################
+git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 
-# Rails (internacionalización)
-gem "rails", '~> 6.0.0.rc1'
-gem "rails-i18n"
-
-# Arranque rapido
-gem 'bootsnap', '>=1.1.0', require: false
+gemspec
 
 
-# Al lado del servidor
-########################
+gem 'bcrypt' # Condensando de claves
 
-# Postgresql
-gem "pg"#, '~> 0.21'
+gem 'bootsnap', '>=1.1.0', require: false # Arranque rapido
 
-# API JSON facil. Ver: https://github.com/rails/jbuilder
-gem "jbuilder"
+gem 'cancancan' # roles
 
-gem "rubyzip", '~> 1.2.2'
+gem 'chosen-rails', git: 'https://github.com/vtamara/chosen-rails.git', 
+  branch: 'several-fixes' # Cuadros de selección potenciados
 
-# Autenticación y roles
-gem "devise"
-gem "devise-i18n"
-gem "cancancan"
-gem "bcrypt"
+gem 'coffee-rails' # CoffeeScript para recuersos .js.coffee y vistas
 
-# Pagina listados
-gem "will_paginate"
+gem 'colorize' # Colores en terminal
 
-# ICU con CLDR
-gem 'twitter_cldr'
- 
-# Maneja adjuntos
-gem "paperclip"#, "~> 4.1"
+gem 'devise' # Autenticación 
 
-# Zonas horarias
-gem "tzinfo"
+gem 'devise-i18n'
 
-# Formularios simples 
-gem "simple_form"
+gem 'font-awesome-rails' # Ambiente de CSS
 
-# Desarrollo y despliegue
-########################
+gem 'jbuilder' # API JSON facil. Ver: https://github.com/rails/jbuilder
 
-# Colores en terminal
-gem "colorize"
+gem 'jquery-rails' # jquery como librería JavaScript
 
-# Servidor web durante desarrollo
-gem 'puma'
+gem 'jquery-ui-rails'
 
-group :doc do
-  # Genera documentación en doc/api con bundle exec rake doc:rails
-  #gem "sdoc", require: false
-end
+gem 'paperclip' # Maneja adjuntos
 
-# Los siguientes son para desarrollo o para pruebas con generadores
-group :development do
-  # Requerido por rake
-  gem "thor"
-
-  # Para generar modelo entidad asociación 
-  gem 'rails-erd'
-
-  # Consola irb en páginas con excepciones o usando <%= console %> en vistasA
-  gem 'web-console'
-end
-
-group :development, :test do
-  # Depurar
-  #gem 'byebug'
-end
-
-# Los siguientes son para pruebas y no tiene generadores requeridos en desarrollo
-group :test do
-  gem "minitest"
-  gem "connection_pool"
-  gem "minitest-reporters"
-  gem 'rails-controller-testing'
-
-  # Cobertura de pruebas
-  gem 'simplecov'
-
-  # Pruebas al sistema
-  gem 'capybara'
-  gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
-
-  # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
-  gem "spring"
-  
-  # Un proceso para cada prueba -- acelera
-  gem 'spork'#, '~> 1.0rc'
-end
-
-
-# Al lado del cliente
-########################
-
-# Módulos en Javascript  https://github.com/rails/webpacker
-gem 'webpacker'
-
-# Seguir enlaces más rápido. Ver: https://github.com/rails/turbolinks
-gem "turbolinks"#, "2.5.3"
-
-# CoffeeScript para recursos .js.coffee y vistas
-gem "coffee-rails"
-
-gem "jquery-rails"
-
-gem "jquery-ui-rails"
-
-# Uglifier comprime recursos Javascript
-gem "uglifier"#, '>= 1.3.0'
-
-# Unifica CSSs
-gem "sassc"
-gem "sassc-rails"
-
-# bootstrap ahora por webpack
-
-# Ambiente de CSS
-gem "font-awesome-rails"
-
-# Cuadros de selección potenciados
-gem 'chosen-rails', git: "https://github.com/vtamara/chosen-rails.git", branch: 'several-fixes'
+gem 'pg'#, '~> 0.21' # Postgresql
 
 gem 'pick-a-color-rails'
 
+gem 'puma'  # Servidor web durante desarrollo
+
+gem 'rails', '~> 6.0.0.rc1'
+
+gem 'rails-i18n'
+
+gem 'rubyzip','>= 2.0.0'
+
+gem 'sass' # Unifica CSSs
+
+gem 'sass-rails'
+
+gem 'simple_form' # Formularios simples 
+
 gem 'tiny-color-rails'
 
+gem 'turbolinks' # Seguir enlaces rápido. https://github.com/rails/turbolinks
+
+gem 'twitter_cldr' # ICU con CLDR
+
+gem 'tzinfo' # Zonas horarias
+
+gem 'uglifier'#, '>= 1.3.0' # Uglifier comprime recursos Javascript
+
+gem 'webpacker' # módulos en Javascript https://github.com/rails/webpacker
+
+gem 'will_paginate' # Pagina listados
+
+
+group :doc do
+  # Genera documentación en doc/api con bundle exec rake doc:rails
+  #gem 'sdoc', require: false
+end
+
+
+group :development do
+  
+  gem 'rails-erd' # Para generar modelo entidad asociación 
+
+  gem 'thor' # Requerido por rake
+
+  gem 'web-console' # Consola anten excepciones o <%= console %> en vistas
+
+end
+
+
+group :development, :test do
+
+  # Depurar
+  #gem 'byebug'
+  #
+end
+
+
+group :test do
+
+  gem 'capybara'
+
+  gem 'chromedriver-helper'
+
+  gem 'connection_pool'
+
+  gem 'minitest'
+
+  gem 'minitest-reporters'
+
+  gem 'rails-controller-testing'
+
+  gem 'selenium-webdriver'
+
+  gem 'simplecov'
+
+  gem 'spork' # Un proceso para cada prueba -- acelera
+
+  gem 'spring' # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
+  
+end
 
