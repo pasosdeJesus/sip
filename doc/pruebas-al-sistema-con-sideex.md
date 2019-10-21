@@ -148,11 +148,11 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   Después de descargar Sideex 2 se vera en la barra de 
   herramientas el icono de Sideex 2.
   
-  ![img1](https://raw.githubusercontent.com/BlancaInesAcosta/sip/master/doc/img/img1.png)  
+  ![img1](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img1.png)  
   
 * Al pulsar sobre el icono de sideex 2 se vera el panel
 
-  ![img2](https://raw.githubusercontent.com/BlancaInesAcosta/sip/master/doc/img/img2.png) 
+  ![img2](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img2.png) 
   
 * Sideex 2 admite la ejecución de dos o más pruebas de Sideex 2 en diferentes 
   ventanas del explorador al mismo tiempo en un escritorio para procesar suits de 
