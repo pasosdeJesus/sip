@@ -8,13 +8,6 @@ gem 'bcrypt' # Condensando de claves
 
 gem 'bootsnap', '>=1.1.0', require: false # Arranque rapido
 
-gem 'bootstrap-datepicker-rails'
-
-
-gem 'bcrypt' # Condensando de claves
-
-gem 'bootsnap', '>=1.1.0', require: false # Arranque rapido
-
 gem 'cancancan' # roles
 
 gem 'chosen-rails', git: 'https://github.com/vtamara/chosen-rails.git', 
@@ -60,8 +53,6 @@ gem 'tiny-color-rails'
 
 gem 'turbolinks' # Seguir enlaces rápido. https://github.com/rails/turbolinks
 
-gem 'twitter-bootstrap-rails'#, '~> 3.2.0'
-
 gem 'twitter_cldr' # ICU con CLDR
 
 gem 'tzinfo' # Zonas horarias
@@ -99,7 +90,7 @@ end
 
 group :test do
 
-  gem 'capybara'
+  #gem 'capybara'
 
   gem 'chromedriver-helper'
 

@@ -94,8 +94,6 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
-    bootstrap-datepicker-rails (1.8.0.1)
-      railties (>= 3.0)
     builder (3.2.3)
     camertron-eprun (1.1.1)
     cancancan (3.0.1)
@@ -122,7 +120,6 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     colorize (0.8.1)
-    commonjs (0.2.7)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
     crass (1.0.5)
@@ -154,12 +151,6 @@ GEM
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
     json (2.2.0)
-    less (2.6.0)
-      commonjs (~> 0.2.7)
-    less-rails (4.0.0)
-      actionpack (>= 4)
-      less (~> 2.6.0)
-      sprockets (>= 2)
     loofah (2.3.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -290,11 +281,6 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    twitter-bootstrap-rails (3.2.2)
-      actionpack (>= 3.1)
-      execjs (>= 2.2.2, >= 2.2)
-      less-rails (>= 2.5.0)
-      railties (>= 3.1)
     twitter_cldr (5.0.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
@@ -328,7 +314,6 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   bootsnap (>= 1.1.0)
-  bootstrap-datepicker-rails
   cancancan
   capybara
   chosen-rails!
@@ -364,7 +349,6 @@ DEPENDENCIES
   thor
   tiny-color-rails
   turbolinks
-  twitter-bootstrap-rails
   twitter_cldr
   tzinfo
   uglifier
