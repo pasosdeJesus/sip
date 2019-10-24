@@ -179,7 +179,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     
     . Pulse sobre el icono de sideex 2 en la barra de herramientas del navegador  
     
-     ![img3](https://raw.githubusercontent.com/BlancaInesAcosta/sip/master/doc/img/img3.png) 
+     ![img3](https://raw.githubusercontent.com/pasosdeJesus/sip/master/doc/sideex.img/img3.png) 
      
     . Pulse en el signo mas (+) del cuadro de TEST SUITES a la izquierda del panel y dele 
     nombre a la suit y aceptar.
