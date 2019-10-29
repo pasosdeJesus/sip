@@ -44,8 +44,6 @@
       <% else %>
         <%= render partial: 'index_filtro', locals: {f: f} %>
       <% end %>
-
-              <% byebug %>
     </thead>
 
     <tbody>
@@ -53,7 +51,7 @@
         <tr>
           <% atributos_index.each do |atr| %>
             <td>
-              <% byebug %>
+              <% #byebug %>
               <% vatr = atr.to_s.gsub(/[^a-z_A-Z0-9]/, '') %>
               <% rutavatr = clase.pluralize.underscore + 
                 "/index_campo_#{vatr}" %>
