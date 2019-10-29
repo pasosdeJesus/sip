@@ -33,7 +33,7 @@ module Dummy
 
     config.hosts << ENV['CONFIG_HOSTS'] || '127.0.0.1'
 
-    #config.web_console.whitelisted_ips = ['x.y.z.a']
+    #config.web_console.whitelisted_ips = ['186.154.35.237']
    
 
   end
