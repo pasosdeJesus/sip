@@ -12,6 +12,7 @@
  *= require jquery-ui
  *= require chosen
  *= require pick-a-color.min
+ *= require bootstrap/dist/css/bootstrap.css
  *= require_tree .
  */
 
