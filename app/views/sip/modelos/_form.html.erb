@@ -78,7 +78,7 @@
       <% if col && col.type == :date then %>
         <% # fecha %>
         <%= f.input atr.to_sym,
-            :input_html => { "data-behaviour" => "datepicker"}, 
+            :input_html => { type: 'date'}, 
             :as => :string 
         %>
       <% elsif col && col.type == :integer %>
