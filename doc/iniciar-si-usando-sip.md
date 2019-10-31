@@ -54,7 +54,7 @@ y ejecuta
 ```sh
 $ bundle install
 ```
-- Crea el modelo usuario ```app/models/usuario.rb``` (Lo puedes crear con ``rails g model Usuario``). Puedes ver como personalizar el modelo y controlador de usuario en <https://github.com/pasosdeJesus/sip/wiki/Uso-y-personalizaci%C3%B3n-del-modelo-usuario> pero inicialmente basta:
+- Crea el modelo `usuario` en ```app/models/usuario.rb``` inicialmente basta:
 ```rb
 # encoding: UTF-8
 require 'sip/concerns/models/usuario'
@@ -63,6 +63,7 @@ class Usuario < ActiveRecord::Base
   include Sip::Concerns::Models::Usuario
 end
 ```
+Y pueedes ver como personalizar el modelo y controlador de usuario en <https://github.com/pasosdeJesus/sip/wiki/Uso-y-personalizaci%C3%B3n-del-modelo-usuario>.
 - Crea un controlador (Lo puedes crear con ``rails g controller usuarios`` ) y configúralo en `app/controllers/usuarios_controller.rb` inicialmente con:
 ```rb
 # encoding: UTF-8
