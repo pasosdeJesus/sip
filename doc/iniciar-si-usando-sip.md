@@ -83,6 +83,9 @@ gem 'will_paginate'              # Pagina listados
 gem 'sip', # SI estilo Pasos de Jesús
   git: "https://github.com/pasosdeJesus/sip.git"
 EOF
+```
+Y después verifica la instalación de las gemas con:
+```
 $ bundle install
 ```
 - Crea el modelo `usuario` en ```app/models/usuario.rb``` inicialmente basta:
@@ -94,16 +97,7 @@ class Usuario < ActiveRecord::Base
   include Sip::Concerns::Models::Usuario
 end
 ```
-Posteriormente puedes ver como personalizar el modelo y controlador de usuario en <https://github.com/pasosdeJesus/sip/wiki/Uso-y-personalizaci%C3%B3n-del-modelo-usuario>.
-- Crea un controlador (Lo puedes crear con ``rails g controller usuarios`` ) y configúralo en `app/controllers/usuarios_controller.rb` inicialmente con:
-```rb
-# encoding: UTF-8
-require 'sip/concerns/controllers/usuarios_controller'
-
-class UsuariosController < Sip::ModelosController
-  include Sip::Concerns::Controllers::UsuariosController
-end
-```
+Posteriormente puedes ver como personalizar el modelo y el controlador del usuario en <https://github.com/pasosdeJesus/sip/wiki/Uso-y-personalizaci%C3%B3n-del-modelo-usuario>.
 - Crea el control de acceso en el archivo ```app/models/ability.rb``` inicialmente con:
 ```rb
 # encoding: UTF-8
@@ -166,10 +160,74 @@ class Ability  < Sip::Ability
 
 end
 ```
-- Prueba lo que llevas iniciando base de datos y dando algunas ordenes en una consola interactiva:
+- Modifica la configuración de `config/application.rb` asegurando
+  emplear volcados SQL, estableciendo zona horaria y localización por ejemplo:
+```rb
+config.time_zone = 'America/Bogota'
+config.i18n.default_locale = :es
+config.x.formato_fecha = 'dd/M/yyyy'
+config.active_record.schema_format = :sql
+config.railties_order = [:main_app, Sip::Engine, :all]
+```
+- Copia la estructura de la base de datos y créala
+```sh
+$ ftp -o db/structure.sql https://raw.githubusercontent.com/pasosdeJesus/sip/master/test/dummy/db/structure.sql
+```
+- Prepara y carga como semillas para la base de datos las semillas incluidas en
+  sip y un usuario sip con clave sip, modificando `db/seeds.rb`:
+
+```rb
+# encoding: UTF-8
+
+conexion = ActiveRecord::Base.connection();
+
+Sip::carga_semillas_sql(conexion, 'sip', :datos)
+
+conexion.execute("INSERT INTO usuario
+  (nusuario, email, encrypted_password, password,
+    fechacreacion, created_at, updated_at, rol)
+  VALUES ('sip', 'sip@localhost',
+    '$2a$04$uLWQzmlDYEaegYs4brFVYeLN9FeIE6vAPQqp9HgbQDGLKOV9dXTK6',
+    '', '2014-08-14', '2014-08-14', '2014-08-14', 1);")
+```
+- Ahora inicializa la base, carga semillas y prepara índices con:
+```sh
+$ bin/rails db:setup sip:indices
+```
+- Prueba lo que llevas en la base de datos iniciando consola interactiva de PostgreSQL y realizando una consulta:
 ```$
-bin/rails db:setup
-bin/rails console
+$ bin/rails dbconsole
+Password for user minsipdes: 
+psql (11.5)
+Type "help" for help.
+
+minsipdes_des=# select count(*) from sip_clase;
+ count 
+-------
+ 14390
+(1 row)
+
+minsipdes_des=# \q
+```
+- Prueba lo que llevas en una consola irb, por ejemplo:
+```sh
+$ bin/rails console
+irb(main):002:0> Usuario.connection
+...
+irb(main):002:0> Usuario.all.count
+   (0.7ms)  SELECT COUNT(*) FROM "usuario"
+=> 1
+irb(main):003:0> exit
+
+```
+- Crea un controlador (Lo puedes crear con ``rails g controller usuarios`` ) y configúralo en `app/controllers/usuarios_controller.rb` inicialmente con:
+```rb
+# encoding: UTF-8
+require 'sip/concerns/controllers/usuarios_controller'
+
+class UsuariosController < Sip::ModelosController
+  include Sip::Concerns::Controllers::UsuariosController
+end
 ```
 
 - Para establecer ruta de anexos crea un directorio (ej.
@@ -274,41 +332,6 @@ Rails.application.routes.draw do
   root 'sip/hogar#index'
   mount Sip::Engine, at: "/"
 end
-```
-- Modifica la configuración de `config/application.rb` asegurando
-  emplear volcados SQL, estableciendo zona horaria y localización por ejemplo:
-```rb
-config.time_zone = 'America/Bogota'
-config.i18n.default_locale = :es
-config.x.formato_fecha = 'dd/M/yyyy'
-config.active_record.schema_format = :sql
-config.railties_order = [:main_app, Sip::Engine, :all]
-```
-- Copia la estructura de la base de datos y créala
-```sh
-$ ftp -o db/structure.sql https://raw.githubusercontent.com/pasosdeJesus/sip/master/test/dummy/db/structure.sql
-```
-- Prepara y carga como semillas para la base de datos las semillas incluidas en
-  sip y un usuario sip con clave sip, modificando `db/seeds.rb`:
-
-```rb
-# encoding: UTF-8
-
-conexion = ActiveRecord::Base.connection();
-
-Sip::carga_semillas_sql(conexion, 'sip', :datos)
-
-conexion.execute("INSERT INTO usuario
-  (nusuario, email, encrypted_password, password,
-    fechacreacion, created_at, updated_at, rol)
-  VALUES ('sip', 'sip@localhost',
-    '$2a$04$uLWQzmlDYEaegYs4brFVYeLN9FeIE6vAPQqp9HgbQDGLKOV9dXTK6',
-    '', '2014-08-14', '2014-08-14', '2014-08-14', 1);")
-```
-Ahora carga las semillas de tu aplicación con ``bin/rails db:seed``
-- Inicializa base de datos con:
-```sh
-$ bin/rails db:setup sip:indices
 ```
 - Pon el logo que deseas ver en la página inicial de la aplicación
   en  `app/assets/images/logo.jpg`
