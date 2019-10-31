@@ -46,12 +46,44 @@ production:
 ```
 - Incluye ```sip``` y otras gemas necesarias en el Gemfile después de las gemas generales y antes de las particulares para desarrollo o pruebas:
 
-```Gemfile
-# Motores que sobrecargan vistas o basados en SIP en orden de apilamento
-gem 'sip', git: "https://github.com/pasosdeJesus/sip.git"
-```
-y ejecuta
 ```sh
+$ cat >> Gemfile <<EOF
+
+gem 'bootstrap-datepicker-rails'# Control para elegir fechas 
+
+gem 'cancancan'                  # Control de acceso
+
+gem 'chosen-rails'              # Campos de selección más funcionales 
+
+gem 'devise'   # Autenticación
+
+gem 'devise-i18n'                # Localización e Internacionalización                  
+
+gem 'font-awesome-rails' # Iconos de FontAwesome
+
+gem 'jquery-ui-rails'           # Usamos jquery 
+
+gem 'jquery-rails'                # Usamos jquery
+
+gem 'paperclip'                   # Anexos
+
+gem 'rails-i18n'                # Localización e Internacionalización 
+
+gem 'simple_form'  # Formularios
+
+gem "turbolinks" # Seguir enlaces más rápido. 
+
+gem 'twitter-bootstrap-rails'   # Entorno CSS Bootstrap 
+
+gem 'twitter_cldr'              # Localiación e internacionalización 
+
+gem 'will_paginate'              # Pagina listados
+
+# Motores que sobrecargan vistas o basados en SIP en orden de apilamento
+
+gem 'sip', # SI estilo Pasos de Jesús
+  git: "https://github.com/pasosdeJesus/sip.git"
+EOF
 $ bundle install
 ```
 - Crea el modelo `usuario` en ```app/models/usuario.rb``` inicialmente basta:
@@ -63,7 +95,10 @@ class Usuario < ActiveRecord::Base
   include Sip::Concerns::Models::Usuario
 end
 ```
-Y pueedes ver como personalizar el modelo y controlador de usuario en <https://github.com/pasosdeJesus/sip/wiki/Uso-y-personalizaci%C3%B3n-del-modelo-usuario>.
+Puedes probar su operación ejecutando:
+```$
+bin/rails console
+Y puedes ver como personalizar el modelo y controlador de usuario en <https://github.com/pasosdeJesus/sip/wiki/Uso-y-personalizaci%C3%B3n-del-modelo-usuario>.
 - Crea un controlador (Lo puedes crear con ``rails g controller usuarios`` ) y configúralo en `app/controllers/usuarios_controller.rb` inicialmente con:
 ```rb
 # encoding: UTF-8
