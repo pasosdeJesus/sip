@@ -71,8 +71,6 @@ gem 'rails-i18n'                # Localización e Internacionalización
 
 gem 'simple_form'  # Formularios
 
-gem "turbolinks" # Seguir enlaces más rápido. 
-
 gem 'twitter-bootstrap-rails'   # Entorno CSS Bootstrap 
 
 gem 'twitter_cldr'              # Localiación e internacionalización 
