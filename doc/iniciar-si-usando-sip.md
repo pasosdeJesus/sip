@@ -94,10 +94,7 @@ class Usuario < ActiveRecord::Base
   include Sip::Concerns::Models::Usuario
 end
 ```
-Puedes probar su operación ejecutando:
-```$
-bin/rails console
-Y puedes ver como personalizar el modelo y controlador de usuario en <https://github.com/pasosdeJesus/sip/wiki/Uso-y-personalizaci%C3%B3n-del-modelo-usuario>.
+Posteriormente puedes ver como personalizar el modelo y controlador de usuario en <https://github.com/pasosdeJesus/sip/wiki/Uso-y-personalizaci%C3%B3n-del-modelo-usuario>.
 - Crea un controlador (Lo puedes crear con ``rails g controller usuarios`` ) y configúralo en `app/controllers/usuarios_controller.rb` inicialmente con:
 ```rb
 # encoding: UTF-8
@@ -107,7 +104,7 @@ class UsuariosController < Sip::ModelosController
   include Sip::Concerns::Controllers::UsuariosController
 end
 ```
-- Crea el control de acceso con ``rails g cancan:ability`` (Debes tener instalada la gema CanCan). Configura el archivo ```app/models/ability.rb``` inicialmente con:
+- Crea el control de acceso en el archivo ```app/models/ability.rb``` inicialmente con:
 ```rb
 # encoding: UTF-8
 
@@ -169,6 +166,12 @@ class Ability  < Sip::Ability
 
 end
 ```
+- Prueba lo que llevas iniciando base de datos y dando algunas ordenes en una consola interactiva:
+```$
+bin/rails db:setup
+bin/rails console
+```
+
 - Para establecer ruta de anexos crea un directorio (ej.
   `mkdir -p archivos/anexos/; mkdir -p archivos/volcados`) y configura tu aplicación
   con un título y esa ruta para enviar anexos y volcados, lo haces en
