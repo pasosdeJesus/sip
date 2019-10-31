@@ -1,18 +1,16 @@
 # Iniciar un sistema de información usando Sip
 
-Para iniciar una aplicación que usará **sip** sugerimos:
+Para iniciar una aplicación que usará **sip** en adJ sugerimos:
 
 - Crea una aplicación rails que use la base de datos PostgreSQL. Además crea y configura la carpeta .bundle así:
 ```sh
-$ rails new minsip --database=postgresql
-$ cd minsip
-$ mkdir .bundle
-$ cat > .bundle/config <<EOF
+$ mkdir -p minsip/.bundle
+$ cat > minsip/.bundle/config <<EOF
 > ---
 > BUNDLE_PATH: "/var/www/bundler"
 > BUNDLE_DISABLE_SHARED_GEMS: "true"
 > EOF
-$ bundle install
+$ rails new minsip --database=postgresql
 ```
 - Crea el usuario de PostgreSQL y la base de datos de desarrollo que emplearás. Por ejemplo en adJ para crear el usuario 'isa5417' con clave 'aquilaclave' y la base de datos 'minsip_development' sería:
 ```sh
@@ -55,9 +53,6 @@ gem 'sip', git: "https://github.com/pasosdeJesus/sip.git"
 # Anexos
 gem 'paperclip'                  
 
-# Formularios
-gem 'simple_form'  
-
 # Control de acceso
 gem 'cancancan'                  
 
@@ -69,6 +64,9 @@ gem 'devise-i18n'
 
 # Localización e Internacionalización
 gem 'rails-i18n'                 
+
+# Formularios
+gem 'simple_form'  
 
 # Pagina listados
 gem 'will_paginate'              
