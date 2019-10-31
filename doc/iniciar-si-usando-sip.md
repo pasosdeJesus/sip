@@ -53,8 +53,9 @@ gem 'bootstrap-datepicker-rails'# Control para elegir fechas
 
 gem 'cancancan'                  # Control de acceso
 
-gem 'chosen-rails'              # Campos de selección más funcionales 
-
+gem 'chosen-rails', git: 'https://github.com/vtamara/chosen-rails.git',
+  branch: 'several-fixes' # Cuadros de selección potenciados  
+  
 gem 'devise'   # Autenticación
 
 gem 'devise-i18n'                # Localización e Internacionalización                  
