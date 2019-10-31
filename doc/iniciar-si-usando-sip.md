@@ -44,46 +44,14 @@ production:
   <<: *default
   database: minsip_production
 ```
-- Incluye ```sip``` y otras gemas necesarias (Asegúrate de no tener repetidas gemas en tu archivo Gemfile):
-```sh
-$ cat >> Gemfile <<EOF
+- Incluye ```sip``` y otras gemas necesarias en el Gemfile después de las gemas generales y antes de las particulares para desarrollo o pruebas:
 
-gem 'bootstrap-datepicker-rails' # Control para elegir fechas
-
-gem 'cancancan' # Control de acceso
-
-gem 'chosen-rails' # Campos de selección más funcionales
-
-gem 'devise'   # Autenticación
-
-gem 'devise-i18n' # Localización e Internacionalización                  
-
-gem 'font-awesome-rails' # Iconos de FontAwesome
-
-gem 'jquery-rails' # Usamos jquery
-
-gem 'jquery-ui-rails' # Usamos jquery
-
-gem 'paperclip' # Anexos
-
-gem 'rails-i18n' # Localización e Internacionalización
-
-gem 'simple_form'  # Formularios
-
-gem "turbolinks"  # Seguir enlaces más rápido. Ver: https://github.com/rails/turbolinks
-
-gem 'twitter-bootstrap-rails' # Entorno CSS Bootstrap
-
-gem 'twitter_cldr' # Localiación e internacionalización
-
-gem 'will_paginate' # Pagina listados
-
-
+```Gemfile
 # Motores que sobrecargan vistas o basados en SIP
 gem 'sip', git: "https://github.com/pasosdeJesus/sip.git"
-
-
-EOF
+```
+y ejecuta
+```sh
 $ bundle install
 ```
 - Crea el modelo usuario ```app/models/usuario.rb``` (Lo puedes crear con ``rails g model Usuario``). Puedes ver como personalizar el modelo y controlador de usuario en <https://github.com/pasosdeJesus/sip/wiki/Uso-y-personalizaci%C3%B3n-del-modelo-usuario> pero inicialmente basta:
