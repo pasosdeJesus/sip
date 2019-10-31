@@ -47,7 +47,7 @@ production:
 - Incluye ```sip``` y otras gemas necesarias en el Gemfile después de las gemas generales y antes de las particulares para desarrollo o pruebas:
 
 ```Gemfile
-# Motores que sobrecargan vistas o basados en SIP
+# Motores que sobrecargan vistas o basados en SIP en orden de apilamento
 gem 'sip', git: "https://github.com/pasosdeJesus/sip.git"
 ```
 y ejecuta
