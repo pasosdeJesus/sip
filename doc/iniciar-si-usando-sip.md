@@ -220,7 +220,7 @@ irb(main):002:0> Usuario.all.count
 irb(main):003:0> exit
 
 ```
-- Crea un controlador (Lo puedes crear con ``rails g controller usuarios`` ) y configúralo en `app/controllers/usuarios_controller.rb` inicialmente con:
+- Crea un controlador para usuarios en `app/controllers/usuarios_controller.rb` inicialmente con:
 ```rb
 # encoding: UTF-8
 require 'sip/concerns/controllers/usuarios_controller'
