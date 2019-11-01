@@ -261,6 +261,11 @@ class ApplicationController < Sip::ApplicationController
   protect_from_forgery with: :exception
 end
 ```
+- En este punto deberías poder arrancar la aplicación en modo desarrollo:
+```sh
+$ bin/rails s
+```
+ y verla operando en un navegador en la dirección http://localhost:3000 presentando la página por omisión de rails.
 - Inicia los paquetes npm mínimos necesarios:
 
 - Edita `app/assets/javascript/application.js` para que sea:
