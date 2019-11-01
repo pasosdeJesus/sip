@@ -356,6 +356,40 @@ y para cargar otros javascript que no se maneje con webpacker en `app/assets/jav
 
 <%= render template: "layouts/sip/application" %>
 ```
+- Mientras se completa la eliminción de jQuery debe configurarla de manera global ejecutando
+```sh
+$ yarn add expose-loader
+$ yarn install
+```
+Y en `config/webpack/environment.js` dejando algo como:
+```js
+const { environment } = require('@rails/webpacker')
+...
+
+const webpack = require('webpack')
+
+environment.plugins.prepend(
+  'Provide',
+  new webpack.ProvidePlugin({
+   $: 'jquery',
+    jQuery: 'jquery',
+    jquery: 'jquery',
+    Popper: ['popper.js', 'default'],
+  })
+)
+
+environment.loaders.append('expose', {
+    test: require.resolve('jquery'),
+    use: [
+          { loader: 'expose-loader', options: '$' },
+          { loader: 'expose-loader', options: 'jQuery' }
+        ]
+})
+      
+...
+module.exports = environment
+```
+
 - Si faltaba, lanza la aplicación en modo desarrollo con:
 ```sh
 $ bin/rails s
