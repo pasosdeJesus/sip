@@ -56,8 +56,6 @@ minsipdes_des=# \q
 ```sh
 $ cat >> Gemfile <<EOF
 
-gem 'bootstrap-datepicker-rails'# Control para elegir fechas 
-
 gem 'cancancan'                  # Control de acceso
 
 gem 'chosen-rails', git: 'https://github.com/vtamara/chosen-rails.git',
@@ -67,12 +65,6 @@ gem 'devise'                     # Autenticación
 
 gem 'devise-i18n'                # Localización e Internacionalización                  
 
-gem 'font-awesome-rails' # Iconos de FontAwesome
-
-gem 'jquery-ui-rails'            # Usamos jquery 
-
-gem 'jquery-rails'               # Usamos jquery
-
 gem 'paperclip'                  # Anexos
 
 gem 'pick-a-color-rails'
@@ -80,8 +72,6 @@ gem 'pick-a-color-rails'
 gem 'rails-i18n'                 # Localización e Internacionalización 
 
 gem 'simple_form'  # Formularios
-
-gem 'twitter-bootstrap-rails'    # Entorno CSS Bootstrap 
 
 gem 'twitter_cldr'               # Localiación e internacionalización 
 
@@ -266,14 +256,36 @@ end
 $ bin/rails s
 ```
  y verla operando en un navegador en la dirección http://localhost:3000 presentando la página por omisión de rails.
-- Inicia los paquetes npm mínimos necesarios:
+- Para ver el pantallazo inicial sin menús, ni una maquetación con bootstrap debes configurar rutas en `config/routes.rb`
+```rb
+Rails.application.routes.draw do
+  devise_scope :usuario do
+    get 'sign_out' => 'devise/sessions#destroy'
+  end
+  devise_for :usuarios, :skip => [:registrations], module: :devise
+  as :usuario do
+    get 'usuarios/edit' => 'devise/registrations#edit',
+      :as => 'editar_registro_usuario'    
+    put 'usuarios/:id' => 'devise/registrations#update',
+      :as => 'registro_usuario'            
+  end
+  resources :usuarios, path_names: { new: 'nuevo', edit: 'edita' }  
 
-- Edita `app/assets/javascript/application.js` para que sea:
-```js
-//= require sip/application
-//= require_tree .
+  root 'sip/hogar#index'
+  mount Sip::Engine, at: "/"
+end
 ```
-- Edita `app/assets/stylesheet/application.css` para que incluya:
+y el logo (logo.jpg) y los favicons en la ruta `app/assets/images`, aunque inicialmente puedes copiar los de la aplicación e prueba de sip <https://github.com/pasosdeJesus/sip/tree/master/test/dummy/app/assets/images> 
+
+- Para ver menus y la maquetación adaptable de bootrap  debes instalar paquetes npm mínimos: 
+```sh
+yarn add jquery 
+yarn add popper.js
+yarn add bootstrap
+yarn add font-awesome
+CXX=c++ yarn install
+```
+utilizar la tubería de recursos (o sprockets) para cargar hojas de estilo dejando en `app/assets/stylesheet/application.css`:
 ```css
 /*
  *= require_tree .
@@ -281,6 +293,16 @@ $ bin/rails s
  *= require_self
  */
 ```
+y en `app/javascript/packs/application.js` carga los paquetes npm configurados:
+
+
+
+- Edita `app/assets/javascript/application.js` para que sea:
+```js
+//= require sip/application
+//= require_tree .
+```
+- Edita `app/assets/stylesheet/application.css` para que incluya:
 - Remplaza `app/views/layouts/application.html.erb` por algo como:
 ```erb
 <% content_for :titulo do %>
@@ -326,26 +348,6 @@ $ bin/rails s
 <%= render template: "layouts/sip/application" %>
 ```
 - Remplaza `config/routes.rb` por
-```rb
-Rails.application.routes.draw do
-  devise_scope :usuario do
-    get 'sign_out' => 'devise/sessions#destroy'
-  end
-  devise_for :usuarios, :skip => [:registrations], module: :devise
-  as :usuario do
-    get 'usuarios/edit' => 'devise/registrations#edit',
-      :as => 'editar_registro_usuario'    
-    put 'usuarios/:id' => 'devise/registrations#update',
-      :as => 'registro_usuario'            
-  end
-  resources :usuarios, path_names: { new: 'nuevo', edit: 'edita' }  
-
-  root 'sip/hogar#index'
-  mount Sip::Engine, at: "/"
-end
-```
-- Pon el logo que deseas ver en la página inicial de la aplicación
-  en  `app/assets/images/logo.jpg`
 - Lanza tu aplicación
 ```sh
 $ bin/rails s
