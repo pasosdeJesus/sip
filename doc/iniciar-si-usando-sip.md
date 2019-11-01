@@ -249,9 +249,10 @@ class ApplicationController < Sip::ApplicationController
   protect_from_forgery with: :exception
 end
 ```
-- Edita `app/assets/javascript/application.js` y antes de `//= require_tree .` agrega:
+- Edita `app/assets/javascript/application.js` para que sea:
 ```js
 //= require sip/application
+//= require_tree .
 ```
 - Edita `app/assets/stylesheet/application.css` para que incluya:
 ```css
