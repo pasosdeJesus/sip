@@ -55,6 +55,7 @@ minsipdes_des=# \q
 - Incluye otras gemas necesarias y ```sip``` en el archivo `Gemfile`:
 ```sh
 $ cat >> Gemfile <<EOF
+gem 'bootstrap-datepicker-rails'# Control para elegir fechas 
 
 gem 'cancancan'                  # Control de acceso
 
