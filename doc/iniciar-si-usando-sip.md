@@ -280,13 +280,18 @@ y el logo (logo.jpg) y los favicons en la ruta `app/assets/images`, aunque inici
 
 - Para preparar maquetacin adaptable de bootsrap y experiencia de usuario con Javascript debes instalar paquetes npm mínimos: 
 ```sh
-yarn add jquery 
+yarn add @rails/ujs 
+yarn add turbolinks
+yarn add @rails/activestorage
+yarn add channels
+yarn add jquery
+yarn add expose-loader
 yarn add popper.js
 yarn add bootstrap
 yarn add font-awesome
 CXX=c++ yarn install
 ```
-y en `app/javascript/packs/application.js` cargarlos e iniciarlos:
+en `app/javascript/packs/application.js` cargarlos e iniciarlos:
 ```js
 require("@rails/ujs").start()
 require("turbolinks").start()
@@ -299,6 +304,36 @@ import "popper.js"
 import "bootstrap"
 import "bootstrap/js/dist/dropdown"
 ```
+y configurar jQuery de manera global (mientras sip deja de depender), editando `config/webpack/environment.js` dejando algo como lo siguiente (sin puntos suspensivos):
+```js
+const { environment } = require('@rails/webpacker')
+...
+
+const webpack = require('webpack')
+
+environment.plugins.prepend(
+  'Provide',
+  new webpack.ProvidePlugin({
+   $: 'jquery',
+    jQuery: 'jquery',
+    jquery: 'jquery',
+    Popper: ['popper.js', 'default'],
+  })
+)
+
+environment.loaders.append('expose', {
+    test: require.resolve('jquery'),
+    use: [
+          { loader: 'expose-loader', options: '$' },
+          { loader: 'expose-loader', options: 'jQuery' }
+        ]
+})
+      
+...
+module.exports = environment
+```
+
+
 - Configurar la tubería de recursos (o sprockets) para cargar hojas de estilo dejando en `app/assets/stylesheet/application.css`:
 ```css
 /*
@@ -356,39 +391,6 @@ y para cargar otros javascript que no se maneje con webpacker en `app/assets/jav
 <% end %>
 
 <%= render template: "layouts/sip/application" %>
-```
-- Mientras se completa la eliminción de jQuery debe configurarla de manera global ejecutando
-```sh
-$ yarn add expose-loader
-$ yarn install
-```
-Y en `config/webpack/environment.js` dejando algo como:
-```js
-const { environment } = require('@rails/webpacker')
-...
-
-const webpack = require('webpack')
-
-environment.plugins.prepend(
-  'Provide',
-  new webpack.ProvidePlugin({
-   $: 'jquery',
-    jQuery: 'jquery',
-    jquery: 'jquery',
-    Popper: ['popper.js', 'default'],
-  })
-)
-
-environment.loaders.append('expose', {
-    test: require.resolve('jquery'),
-    use: [
-          { loader: 'expose-loader', options: '$' },
-          { loader: 'expose-loader', options: 'jQuery' }
-        ]
-})
-      
-...
-module.exports = environment
 ```
 
 - Si faltaba, lanza la aplicación en modo desarrollo con:
