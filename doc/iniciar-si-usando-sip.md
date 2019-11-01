@@ -6,10 +6,10 @@ Para iniciar una aplicación que usará **sip** en adJ sugerimos:
 ```sh
 $ mkdir -p minsip/.bundle
 $ cat > minsip/.bundle/config <<EOF
-> ---
-> BUNDLE_PATH: "/var/www/bundler"
-> BUNDLE_DISABLE_SHARED_GEMS: "true"
-> EOF
+---
+BUNDLE_PATH: "/var/www/bundler"
+BUNDLE_DISABLE_SHARED_GEMS: "true"
+EOF
 $ CXX=c++ rails new minsip --database=postgresql
 ```
 - Crea el usuario de PostgreSQL y la base de datos de desarrollo que emplearás. Por ejemplo en adJ para crear el usuario 'isa5417' con clave 'aquilaclave' y la base de datos 'minsip_des' sería:
