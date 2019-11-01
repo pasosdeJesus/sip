@@ -67,6 +67,8 @@ gem 'jquery-rails'               # Usamos jquery
 
 gem 'paperclip'                  # Anexos
 
+gem 'pick-a-color-rails'
+
 gem 'rails-i18n'                 # Localización e Internacionalización 
 
 gem 'simple_form'  # Formularios
@@ -74,6 +76,8 @@ gem 'simple_form'  # Formularios
 gem 'twitter-bootstrap-rails'    # Entorno CSS Bootstrap 
 
 gem 'twitter_cldr'               # Localiación e internacionalización 
+
+gem 'tiny-color-rails'
 
 gem 'will_paginate'              # Pagina listados
 
