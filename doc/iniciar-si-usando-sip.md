@@ -320,7 +320,8 @@ y para cargar otros javascript que no se maneje con webpacker en `app/assets/jav
 <% content_for :menu do %>
   <%= menu_group do %>
     <% if !current_usuario.nil? %>
-      <%= menu_item "Carne1", "/" %>
+      <%= menu_item "Personas", sip.personas_path %>
+      <%= menu_item "Actores sociales", sip.actoressociales_path %>
     <% end %>
   <% end %>
   <%= menu_group :pull => :right do %>
