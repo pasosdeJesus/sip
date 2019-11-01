@@ -44,6 +44,14 @@ production:
   <<: *default
   database: minsip_pro
 ```
+A continuación prueba que puede ingresar a la interfaz psql de la base de desarrollo con:
+```sh
+$ bin/rails dbconsole   
+psql (11.5)
+Type "help" for help.
+
+minsipdes_des=# \q
+```
 - Incluye otras gemas necesarias y ```sip``` en el archivo `Gemfile`:
 ```sh
 $ cat >> Gemfile <<EOF
