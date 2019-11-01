@@ -195,9 +195,9 @@ conexion.execute("INSERT INTO usuario
     '$2a$10$YQY.luWpKWwNWIlfAQ.dhupblCP23raR35oIfeX1Cnm9mCYzmQvqm',
     '', '2014-08-14', '2014-08-14', '2014-08-14', 1);")
 ```
-- Ahora inicializa la base, carga semillas y prepara índices con:
+- Ahora borra base, inicializala, carga semillas y prepara índices con:
 ```sh
-$ bin/rails db:setup sip:indices
+$ bin/rails db:drop db:setup sip:indices
 ```
 - Prueba lo que llevas en la base de datos iniciando consola interactiva de PostgreSQL y realizando una consulta:
 ```$
