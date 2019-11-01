@@ -22,7 +22,7 @@ postgres=# \q
 $ createdb -h/var/www/var/run/postgresql/ -Upostgres minsip_des  -Oisa5417
 $ exit
 ```
--  Configura el usuario, su clave, así como los nombres que usarás para las bases de datos de pruebas, desarrollo y producción (no es necesario crearlas antes)  en ```config/database.yml```.  Recuerda que en adJ debes incluir para la conexión por omisión `host: /var/www/var/run/postgresql`.  Un ejemplo de este archivo completo es:
+-  Configura el usuario, su clave, así como los nombres que usarás para las bases de datos de pruebas, desarrollo y producción  en ```config/database.yml``` (la de desarrollo debe coincidir con la creada en el punto anterior)   Recuerda que en adJ debes incluir para la conexión por omisión `host: /var/www/var/run/postgresql`.  Un ejemplo de este archivo completo es:
 ```yml
 default: &default
   adapter: postgresql
