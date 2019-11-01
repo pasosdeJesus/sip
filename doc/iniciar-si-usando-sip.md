@@ -223,6 +223,10 @@ require 'sip/concerns/controllers/usuarios_controller'
 
 class UsuariosController < Sip::ModelosController
   include Sip::Concerns::Controllers::UsuariosController
+  
+  def index
+    super
+  end
 end
 ```
 - Para establecer ruta de anexos crea un directorio (ej.
