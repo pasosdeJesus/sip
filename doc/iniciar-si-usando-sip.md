@@ -261,6 +261,8 @@ class ApplicationController < Sip::ApplicationController
   protect_from_forgery with: :exception
 end
 ```
+- Inicia los paquetes npm mínimos necesarios:
+
 - Edita `app/assets/javascript/application.js` para que sea:
 ```js
 //= require sip/application
