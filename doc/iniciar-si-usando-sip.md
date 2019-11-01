@@ -2,7 +2,7 @@
 
 Para iniciar una aplicación que usará **sip** en adJ sugerimos:
 
-- Crea una aplicación rails que use la base de datos PostgreSQL. Además crea y configura la carpeta .bundle así:
+- Crea una aplicación rails que use la base de datos PostgreSQL. Además crea y configura la carpeta  `.bundle` así:
 ```sh
 $ mkdir -p minsip/.bundle
 $ cat > minsip/.bundle/config <<EOF
@@ -12,14 +12,14 @@ $ cat > minsip/.bundle/config <<EOF
 > EOF
 $ CXX=c++ rails new minsip --database=postgresql
 ```
-- Crea el usuario de PostgreSQL y la base de datos de desarrollo que emplearás. Por ejemplo en adJ para crear el usuario 'isa5417' con clave 'aquilaclave' y la base de datos 'minsip_development' sería:
+- Crea el usuario de PostgreSQL y la base de datos de desarrollo que emplearás. Por ejemplo en adJ para crear el usuario 'isa5417' con clave 'aquilaclave' y la base de datos 'minsip_des' sería:
 ```sh
 $ doas su - _postgresql
-$ createuser -h /var/www/var/run/postgresql/ isa5417 -s -Upostgres
+$ createuser -h /var/www/var/run/postgresql/ -s -Upostgres isa5417
 $ psql -h /var/www/var/run/postgresql/ -Upostgres  
 postgres=# ALTER USER isa5417 WITH PASSWORD 'aquilaclave';  
 postgres=# \q
-$ createdb -h/var/www/var/run/postgresql/ -Upostgres -Oisa5417 minsip_development
+$ createdb -h/var/www/var/run/postgresql/ -Upostgres minsip_des  -Oisa5417
 $ exit
 ```
 -  Configura el usuario, su clave, así como los nombres que usarás para las bases de datos de pruebas, desarrollo y producción (no es necesario crearlas antes)  en ```config/database.yml```.  Recuerda que en adJ debes incluir para la conexión por omisión `host: /var/www/var/run/postgresql`.  Un ejemplo de este archivo completo es:
@@ -34,18 +34,17 @@ default: &default
 
 development:
   <<: *default
-  database: minsip_development
+  database: minsip_des
 
 test:
   <<: *default
-  database: minsip_test
+  database: minsip_pru
 
 production:
   <<: *default
-  database: minsip_production
+  database: minsip_pro
 ```
-- Incluye ```sip``` y otras gemas necesarias en el Gemfile después de las gemas generales y antes de las particulares para desarrollo o pruebas:
-
+- Incluye otras gemas necesarias y ```sip``` en el archivo `Gemfile`:
 ```sh
 $ cat >> Gemfile <<EOF
 
@@ -56,31 +55,31 @@ gem 'cancancan'                  # Control de acceso
 gem 'chosen-rails', git: 'https://github.com/vtamara/chosen-rails.git',
   branch: 'several-fixes' # Cuadros de selección potenciados  
   
-gem 'devise'   # Autenticación
+gem 'devise'                     # Autenticación
 
 gem 'devise-i18n'                # Localización e Internacionalización                  
 
 gem 'font-awesome-rails' # Iconos de FontAwesome
 
-gem 'jquery-ui-rails'           # Usamos jquery 
+gem 'jquery-ui-rails'            # Usamos jquery 
 
-gem 'jquery-rails'                # Usamos jquery
+gem 'jquery-rails'               # Usamos jquery
 
-gem 'paperclip'                   # Anexos
+gem 'paperclip'                  # Anexos
 
-gem 'rails-i18n'                # Localización e Internacionalización 
+gem 'rails-i18n'                 # Localización e Internacionalización 
 
 gem 'simple_form'  # Formularios
 
-gem 'twitter-bootstrap-rails'   # Entorno CSS Bootstrap 
+gem 'twitter-bootstrap-rails'    # Entorno CSS Bootstrap 
 
-gem 'twitter_cldr'              # Localiación e internacionalización 
+gem 'twitter_cldr'               # Localiación e internacionalización 
 
 gem 'will_paginate'              # Pagina listados
 
-# Motores que sobrecargan vistas o basados en SIP en orden de apilamento
 
-gem 'sip', # SI estilo Pasos de Jesús
+# Motores que sobrecargan vistas o basados en SIP en orden de apilamento
+gem 'sip',                       # SI estilo Pasos de Jesús
   git: "https://github.com/pasosdeJesus/sip.git"
 EOF
 ```
@@ -90,7 +89,6 @@ $ bundle install
 ```
 - Crea el modelo `usuario` en ```app/models/usuario.rb``` inicialmente basta:
 ```rb
-# encoding: UTF-8
 require 'sip/concerns/models/usuario'
 
 class Usuario < ActiveRecord::Base
@@ -100,8 +98,6 @@ end
 Posteriormente puedes ver como personalizar el modelo y el controlador del usuario en <https://github.com/pasosdeJesus/sip/wiki/Uso-y-personalizaci%C3%B3n-del-modelo-usuario>.
 - Crea el control de acceso en el archivo ```app/models/ability.rb``` inicialmente con:
 ```rb
-# encoding: UTF-8
-
 class Ability  < Sip::Ability
 
 
@@ -169,16 +165,13 @@ config.x.formato_fecha = 'dd/M/yyyy'
 config.active_record.schema_format = :sql
 config.railties_order = [:main_app, Sip::Engine, :all]
 ```
-- Copia la estructura de la base de datos y créala
+- Copia la estructura de la base de datos
 ```sh
 $ ftp -o db/structure.sql https://raw.githubusercontent.com/pasosdeJesus/sip/master/test/dummy/db/structure.sql
 ```
-- Prepara y carga como semillas para la base de datos las semillas incluidas en
-  sip y un usuario sip con clave sip, modificando `db/seeds.rb`:
-
+- Prepara como semillas para la base de datos las semillas incluidas en
+  sip y un usuario `sip` con clave `sip`, modificando `db/seeds.rb`:
 ```rb
-# encoding: UTF-8
-
 conexion = ActiveRecord::Base.connection();
 
 Sip::carga_semillas_sql(conexion, 'sip', :datos)
@@ -222,21 +215,17 @@ irb(main):003:0> exit
 ```
 - Crea un controlador para usuarios en `app/controllers/usuarios_controller.rb` inicialmente con:
 ```rb
-# encoding: UTF-8
 require 'sip/concerns/controllers/usuarios_controller'
 
 class UsuariosController < Sip::ModelosController
   include Sip::Concerns::Controllers::UsuariosController
 end
 ```
-
 - Para establecer ruta de anexos crea un directorio (ej.
   `mkdir -p archivos/anexos/; mkdir -p archivos/volcados`) y configura tu aplicación
   con un título y esa ruta para enviar anexos y volcados, lo haces en
   `config/initializers/sip.rb` con algo como:
 ```rb
-#encoding: UTF-8
-
 Sip.setup do |config|
       config.ruta_anexos = "#{Rails.root}/archivos/anexos/"
       config.ruta_volcados = "#{Rails.root}/archivos/volcados/"
@@ -249,8 +238,6 @@ end
 ```
 - Remplaza `app/controllers/application_controller.rb` por
 ```rb
-# encoding: UTF-8
-
 require 'sip/application_controller'
 class ApplicationController < Sip::ApplicationController
   # Previente ataques CSRF elevando una excepción
