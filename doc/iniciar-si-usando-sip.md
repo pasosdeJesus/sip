@@ -277,7 +277,7 @@ end
 ```
 y el logo (logo.jpg) y los favicons en la ruta `app/assets/images`, aunque inicialmente puedes copiar los de la aplicación e prueba de sip <https://github.com/pasosdeJesus/sip/tree/master/test/dummy/app/assets/images> 
 
-- Para ver menus y la maquetación adaptable de bootrap  debes instalar paquetes npm mínimos: 
+- Para preparar maquetacin adaptable de bootsrap y experiencia de usuario con Javascript debes instalar paquetes npm mínimos: 
 ```sh
 yarn add jquery 
 yarn add popper.js
@@ -285,7 +285,20 @@ yarn add bootstrap
 yarn add font-awesome
 CXX=c++ yarn install
 ```
-utilizar la tubería de recursos (o sprockets) para cargar hojas de estilo dejando en `app/assets/stylesheet/application.css`:
+y en `app/javascript/packs/application.js` cargarlos e iniciarlos:
+```js
+require("@rails/ujs").start()
+require("turbolinks").start()
+require("@rails/activestorage").start()
+require("channels")
+
+import $ from "jquery";
+
+import "popper.js"
+import "bootstrap"
+import "bootstrap/js/dist/dropdown"
+```
+- Configurar la tubería de recursos (o sprockets) para cargar hojas de estilo dejando en `app/assets/stylesheet/application.css`:
 ```css
 /*
  *= require_tree .
@@ -293,17 +306,12 @@ utilizar la tubería de recursos (o sprockets) para cargar hojas de estilo dejan
  *= require_self
  */
 ```
-y en `app/javascript/packs/application.js` carga los paquetes npm configurados:
-
-
-
-- Edita `app/assets/javascript/application.js` para que sea:
+y para cargar otros javascript que no se maneje con webpacker en `app/assets/javascript/application.js`:
 ```js
 //= require sip/application
 //= require_tree .
 ```
-- Edita `app/assets/stylesheet/application.css` para que incluya:
-- Remplaza `app/views/layouts/application.html.erb` por algo como:
+- El menú y los elementos generales del maquetado los pones en `app/views/layouts/application.html.erb` con:
 ```erb
 <% content_for :titulo do %>
     <%= Sip.titulo %>
@@ -347,8 +355,7 @@ y en `app/javascript/packs/application.js` carga los paquetes npm configurados:
 
 <%= render template: "layouts/sip/application" %>
 ```
-- Remplaza `config/routes.rb` por
-- Lanza tu aplicación
+- Si faltaba, lanza la aplicación en modo desarrollo con:
 ```sh
 $ bin/rails s
 ```
