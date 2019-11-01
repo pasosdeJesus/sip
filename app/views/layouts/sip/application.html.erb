@@ -13,6 +13,10 @@
     <%= stylesheet_pack_tag 'application' %>
     <%= stylesheet_link_tag "application", :media => "all", 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Seguimios usando sprockets mientras:
+      1. Pasamos javascript en assets/javascript a modulos
+      2. Publicamos partes de gemas como paquetes npm -->
+    <%= javascript_include_tag "application" %>
 
     <!-- ****** favicons e ideas de enlaces de  faviconit.com ****** -->
     <%= favicon_link_tag 'favicon-16.png', :rel => 'icon', :type => 'image/png', :sizes => '16x16' %>
@@ -40,10 +44,6 @@
     <meta name="msapplication-TileImage" content="/assets/favicon-144.png">
     <meta name="msapplication-config" content="/assets/browserconfig.xml">
 
-
-    <!-- Aplicaciones en transito con sprockets primero y webpacker despues --> 
-    <!--%= javascript_include_tag "application" %-->
-    <!-- %= javascript_pack_tag 'application' % -->
   </head>
   <body>
 
