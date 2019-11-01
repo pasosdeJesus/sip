@@ -70,7 +70,6 @@ group :development, :test do
   
 end
 
-
 group :development do
   
   gem 'rails-erd' # Para generar modelo entidad asociación 
@@ -78,15 +77,13 @@ group :development do
   gem 'thor' # Requerido por rake
 
   gem 'web-console' # Consola anten excepciones o <%= console %> en vistas
-
 end
 
 
 group :development, :test do
 
-  # Depurar
-  #gem 'byebug'
-  #
+  #gem 'byebug' # Depurar
+  
 end
 
 
