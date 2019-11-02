@@ -304,10 +304,6 @@ import "popper.js"
 import "bootstrap"
 import "bootstrap/js/dist/dropdown"
 ```
-asegurar que se pueden cargar con sprocker agregando a `config/initalizers/assets.rb`:
-```ruby
-Rails.application.config.assets.paths << Rails.root.join('node_modules')
-```
 y configurar jQuery de manera global (mientras sip deja de depender), editando `config/webpack/environment.js` dejando algo como lo siguiente (sin puntos suspensivos):
 ```js
 const { environment } = require('@rails/webpacker')
@@ -338,7 +334,11 @@ module.exports = environment
 ```
 
 
-- Configurar la tubería de recursos (o sprockets) para cargar hojas de estilo dejando en `app/assets/stylesheet/application.css`:
+- Configurar la tubería de recursos (o sprockets) para cargar hojas de estilo y operar en paralelo con webpack agregando a `config/initalizers/assets.rb`:
+```ruby
+Rails.application.config.assets.paths << Rails.root.join('node_modules')
+```
+dejando en `app/assets/stylesheet/application.css`:
 ```css
 /*
  *= require_tree .
@@ -350,6 +350,10 @@ y para cargar otros javascript que no se maneje con webpacker en `app/assets/jav
 ```js
 //= require sip/application
 //= require_tree .
+```
+Tras esto deberías poder precompilar recursos con:
+```
+bin/rails assets:precompile --trace
 ```
 - El menú y los elementos generales del maquetado los pones en `app/views/layouts/application.html.erb` con:
 ```erb
