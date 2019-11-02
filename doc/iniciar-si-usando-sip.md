@@ -280,15 +280,7 @@ y el logo (logo.jpg) y los favicons en la ruta `app/assets/images`, aunque inici
 
 - Para preparar experiencia de usuario con ayuda de Bootstrap y Javascript debes instalar paquetes npm mínimos: 
 ```sh
-yarn add @rails/ujs 
-yarn add turbolinks
-yarn add @rails/activestorage
-yarn add channels
-yarn add jquery
-yarn add expose-loader
-yarn add popper.js
-yarn add bootstrap
-yarn add font-awesome
+yarn add @rails/ujs  turbolinks @rails/activestorage channels jquery expose-loader popper.js bootstrap font-awesome
 CXX=c++ yarn install
 ```
 en `app/javascript/packs/application.js` cargarlos e iniciarlos:
