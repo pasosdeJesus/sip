@@ -278,7 +278,7 @@ end
 ```
 y el logo (logo.jpg) y los favicons en la ruta `app/assets/images`, aunque inicialmente puedes copiar los de la aplicación e prueba de sip <https://github.com/pasosdeJesus/sip/tree/master/test/dummy/app/assets/images> 
 
-- Para preparar maquetacin adaptable de bootsrap y experiencia de usuario con Javascript debes instalar paquetes npm mínimos: 
+- Para preparar experiencia de usuario con ayuda de Bootstrap y Javascript debes instalar paquetes npm mínimos: 
 ```sh
 yarn add @rails/ujs 
 yarn add turbolinks
@@ -303,6 +303,10 @@ import $ from "jquery";
 import "popper.js"
 import "bootstrap"
 import "bootstrap/js/dist/dropdown"
+```
+asegurar que se pueden cargar con sprocker agregando a `config/initalizers/assets.rb`:
+```ruby
+Rails.application.config.assets.paths << Rails.root.join('node_modules')
 ```
 y configurar jQuery de manera global (mientras sip deja de depender), editando `config/webpack/environment.js` dejando algo como lo siguiente (sin puntos suspensivos):
 ```js
