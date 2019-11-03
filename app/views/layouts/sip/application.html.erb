@@ -47,19 +47,12 @@
   </head>
   <body>
 
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="<%= main_app.root_url %>">
-        <%= content_for?(:titulo) ? yield(:titulo) : Sip.titulo %>
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navegation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <%= yield :menu %>
-      </div>
-    </nav>
+    <%= nav_bar fixed: :top, 
+      brand: content_for?(:titulo) ? yield(:titulo) : Sip.titulo,
+      brand_link: sip.root_url, 
+      responsive: true do %>
+      <%= yield :menu %>
+    <% end %>
 
     <div class="container master-container">
       <% if content_for?(:breadcrumb) %>
