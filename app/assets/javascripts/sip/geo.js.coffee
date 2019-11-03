@@ -4,13 +4,13 @@
 # id_tipobuscado
 @busca_campo_similar = (idactual, tipoactual, tipobuscado) ->
   idb = idactual.replace('id_' + tipoactual, 'id_' + tipobuscado)
-  if idb != idactual && $('#' + idb).size()>0
+  if idb != idactual && $('#' + idb).length > 0
     return idb
   idb = idactual.replace(tipoactual + '_id', tipobuscado + '_id')
-  if idb != idactual && $('#' + idb).size()>0
+  if idb != idactual && $('#' + idb).length > 0
     return idb
   idb = idactual.replace('_' + tipoactual, '_' + tipobuscado)
-  if idb != idactual && $('#' + idb).size()>0
+  if idb != idactual && $('#' + idb).length > 0
     return idb
   return ""
 
@@ -40,7 +40,7 @@
         nlo = +data.longitud + Math.random()/1000-0.0005
         lon.val(nlo)
     );
-    y.error((m1, m2, m3) ->
+    y.fail((m1, m2, m3) ->
       if (m1.responseText.indexOf("Acceso no autorizado") >=0) 
         alert("Se requiere autenticación")
       else 
@@ -60,22 +60,17 @@
   if (+pais > 0 && iddep) 
       x = $.getJSON(root.puntomontaje + "admin/departamentos", {id_pais: pais})
       x.done((data) -> 
-          op = '<option value=""></option>'
-          $.each( data, ( i, item ) -> 
-              op += '<option value="' + 
-                item.id + '">' + item.nombre + '</option>'
-          )
-	  # No se puede $('#' + iddep).empty().append()
-          $('#' + iddep).attr('disabled', false) 
-          ndep = $('#' + iddep).clone()
-          ndep.empty().append(op)
-          $('#' + iddep).replaceWith(ndep)
-          $("#" + idmun + " option[value='']").attr('selected', true) if idmun
-          $('#' + idmun).attr('disabled', true) if idmun 
-          $("#" + idcla + " option[value='']").attr('selected', true) if idcla
-          $('#' + idcla).attr('disabled', true) if idcla
+        sip_remplaza_opciones_select(iddep, data, true, 'id', 'nombre', true)
+        $('#' + iddep).attr('disabled', false) 
+        $('#' + iddep).trigger('chosen:updated')
+        $("#" + idmun + " option[value='']").attr('selected', true) if idmun
+        $('#' + idmun).attr('disabled', true) if idmun 
+        $('#' + idmun).trigger('chosen:updated')
+        $("#" + idcla + " option[value='']").attr('selected', true) if idcla
+        $('#' + idcla).attr('disabled', true) if idcla
+        $('#' + idcla).trigger('chosen:updated')
       )
-      x.error((m1, m2, m3) -> 
+      x.fail((m1, m2, m3) -> 
           alert(
               'Problema leyendo Departamentos de ' + pais + ' ' + m1 + ' '
               + m2 + ' ' + m3)
@@ -85,10 +80,13 @@
   else
       $("#" + iddep).val("") if iddep
       $("#" + iddep).attr("disabled", true) if iddep
+      $('#' + iddep).trigger('chosen:updated')
       $("#" + idmun).val("") if idmun
       $("#" + idmun).attr("disabled", true) if idmun
+      $('#' + idmun).trigger('chosen:updated')
       $("#" + idcla).val("") if idcla
       $("#" + idcla).attr("disabled", true) if idcla
+      $('#' + idcla).trigger('chosen:updated')
 
 
 
@@ -103,23 +101,14 @@
   if (+dep > 0 && idmun != '') 
       x = $.getJSON(root.puntomontaje + "admin/municipios", {id_departamento: dep})
       x.done((data) -> 
-          op = '<option value=""></option>'
-          $.each( data, ( i, item ) -> 
-              op += '<option value="' + 
-                item.id + '">' + item.nombre + '</option>'
-          )
-	  # Estrellados con dificultad de chrome para hacer empty y append
-	  # a un cuadro de selección: 
-	  # http://stackoverflow.com/questions/5275420/chrome-is-really-slow-to-empty-my-listbox-via-jquery
-          if idmun
-            nmun = $('#' + idmun).clone()
-            nmun.empty().append(op)
-            $('#' + idmun).replaceWith(nmun)
-          $("#" + idmun).attr("disabled", false) if idmun
-          $("#" + idcla + " option[value='']").attr('selected', true) if idcla
-          $("#" + idcla).attr("disabled", true) if idcla
+        sip_remplaza_opciones_select(idmun, data, true, 'id', 'nombre', true)
+        $("#" + idmun).attr("disabled", false) if idmun
+        $('#' + idmun).trigger('chosen:updated')
+        $("#" + idcla + " option[value='']").attr('selected', true) if idcla
+        $("#" + idcla).attr("disabled", true) if idcla
+        $('#' + idcla).trigger('chosen:updated')
       )
-      x.error((m1, m2, m3) -> 
+      x.fail((m1, m2, m3) -> 
           alert(
               'Problema leyendo Municipios de ' + dep + ' ' + m1 + ' '
               + m2 + ' ' + m3)
@@ -129,8 +118,10 @@
   else
       $("#" + idmun).val("") if idmun
       $("#" + idmun).attr("disabled", true) if idmun
+      $('#' + idmun).trigger('chosen:updated')
       $("#" + idcla).val("") if idcla
       $("#" + idcla).attr("disabled", true) if idcla
+      $('#' + idcla).trigger('chosen:updated')
 
 
 # Completa cuadro de selección para clase de acuerdo a depto y mcpio.
@@ -144,19 +135,11 @@
   if (+mun > 0 && idcla != '') 
     x = $.getJSON(root.puntomontaje + "admin/clases", {id_municipio: mun})
     x.done( ( data ) ->
-      op = '<option value=""></option>';
-      $.each( data, ( i, item ) ->
-        op += '<option value="' + item.id + '">' + item.nombre + '</option>';
-      )
-      # Chrome se estrella con $("#" + idcla).empty().append(op) if idcla
-      # Toco otra forma como dice http://stackoverflow.com/questions/5275420/chrome-is-really-slow-to-empty-my-listbox-via-jquery
-      if idcla
-        ncla = $('#' + idcla).clone()
-        ncla.empty().append(op)
-        $('#' + idcla).replaceWith(ncla)
+      sip_remplaza_opciones_select(idcla, data, true, 'id', 'nombre', true)
       $("#" + idcla).attr("disabled", false) if idcla
+      $('#' + idcla).trigger('chosen:updated')
     )
-    x.error( (m1, m2, m3) ->
+    x.fail( (m1, m2, m3) ->
       alert('Problema leyendo Clase ' + x + m1 + m2 + m3)
     )
     if (sincoord != true && root.sip_sincoord != true) 
@@ -164,6 +147,7 @@
   else
     $("#" + idcla + " option[value='']").attr('selected', true) if idcla
     $("#" + idcla).attr("disabled", true) if idcla
+    $('#' + idcla).trigger('chosen:updated')
 
 # Completa cuadro de selección para clase de acuerdo a depto y mcpio.
 @pone_tipourbano = ($this) -> 
