@@ -13,5 +13,6 @@
  *= require_tree .
  *= require sip/application.css
  *= require bootstrap/dist/css/bootstrap.css
+ *= require chosen-js/chosen.css
  *= require_self
  */

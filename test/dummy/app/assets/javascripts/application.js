@@ -11,6 +11,4 @@
 // about supported directives.
 //
 //= require sip/application
-//= require jquery
-//= require turbolinks
 //= require_tree .

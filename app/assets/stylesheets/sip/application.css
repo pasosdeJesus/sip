@@ -10,7 +10,7 @@
  *
  *= require_self
  *= require jquery-ui
- *= require chosen
+ *= require chosen-js/chosen
  *= require pick-a-color.min
  *= require bootstrap/dist/css/bootstrap.css
  *= require font-awesome/css/font-awesome.css
