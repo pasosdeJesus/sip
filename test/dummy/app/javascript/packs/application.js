@@ -1,4 +1,5 @@
 /* eslint no-console:0 */
+
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
@@ -15,20 +16,17 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker')
+console.log('Hola Mundo desde Webpacker')
 
-var $ = require("jquery"); 
-import "popper.js"
-import "bootstrap"
-import "bootstrap/js/dist/dropdown"
+require("@rails/ujs").start()   // Javascript no intrusivo segun rails
+require("turbolinks").start()   // Acelera carga de paginas
+//require("@rails/activestorage").start()         // Activestorage
+//require("channels")           // ActiveChannel
 
 
+var $ = require("jquery");      // Jquery reciente 
+import "popper.js"              // Dialogos emergentes usados por bootstrap
+import "bootstrap"              // Maquetacion y elementos de diseño
+import "chosen-js/chosen.jquery";       // Cuadros de seleccion potenciados
 
-//require("@rails/ujs").start()
-//require("turbolinks").start()
-//require("@rails/activestorage").start()
-//require("channels")
-
-import "bootstrap"
-import "../stylesheets/application"
 

@@ -24,6 +24,8 @@ module Dummy
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :es
 
+    config.railties_order = [:main_app, Sip::Engine, :all]
+
     # En el momento soporta 3: yyyy-mm-dd, dd-mm-yyyy y dd/M/yyyy
     config.x.formato_fecha = 'dd/M/yyyy'
 

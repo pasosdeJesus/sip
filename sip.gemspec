@@ -18,9 +18,6 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "LICENCIA.md", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "jquery-rails"
-  s.add_dependency "colorize"
-
   s.add_runtime_dependency "rails"
   s.add_runtime_dependency "rails-i18n"
   s.add_runtime_dependency "devise"

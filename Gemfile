@@ -1,110 +1,73 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
-gemspec
+ruby '2.6.5'
 
+gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'bcrypt' # Condensando de claves
+gem 'bootstrap-datepicker-rails'# Control para elegir fechas 
 
-gem 'bootsnap', '>=1.1.0', require: false # Arranque rapido
+gem 'cancancan'                 # Control de acceso
 
-gem 'cancancan' # roles
+gem 'coffee-rails'              # CoffeeScript para recursos .js.coffee 
 
-gem 'chosen-rails', git: 'https://github.com/vtamara/chosen-rails.git', 
-  branch: 'several-fixes' # Cuadros de selección potenciados
+gem 'devise'                    # Autenticación
 
-gem 'coffee-rails' # CoffeeScript para recuersos .js.coffee y vistas
+gem 'devise-i18n'               # Localización e Internacionalización                  
+gem 'jbuilder', '>= 2.7'        # Json
 
-gem 'colorize' # Colores en terminal
+gem 'jquery-ui-rails'           # Usamos jquery 
 
-gem 'devise' # Autenticación 
+gem 'paperclip'                 # Anexos
 
-gem 'devise-i18n'
+gem 'pg', '>= 0.18', '< 2.0'    # PostgreSQL
 
-gem 'font-awesome-rails' # Ambiente de CSS
+gem 'pick-a-color-rails'        # Elegir color de tema
 
-gem 'jbuilder' # API JSON facil. Ver: https://github.com/rails/jbuilder
+gem 'puma'                      # Lanza en modo desarrollo
 
-gem 'jquery-rails' # jquery como librería JavaScript
+gem 'rails', '>= 6.0.0'
 
-gem 'jquery-ui-rails'
+gem 'rails-i18n'                # Localización e Internacionalización 
 
-gem 'paperclip' # Maneja adjuntos
+gem 'sassc-rails'#, '2.1.0'      # Conversión a CSS
 
-gem 'pg' # Postgresql
+gem 'simple_form'               # Formularios
 
-gem 'pick-a-color-rails'
+gem 'tiny-color-rails'          # Colores en tema
 
-gem 'puma'  # Servidor web durante desarrollo
+gem 'turbolinks', '~> 5'        # Acelera carga de paginas
 
-gem 'rails', '~> 6.0.0.rc1'
+gem 'twitter_cldr'              # Localiación e internacionalización 
 
-gem 'rails-i18n'
+gem 'tzinfo'                    # Zonas horarias
 
-gem 'rubyzip','>= 2.0.0'
+gem 'webpacker', '~> 4.0'       # Traduce y compila modulos Javascript
 
-gem 'sassc'
-
-gem 'sassc-rails'
-
-gem 'simple_form' # Formularios simples 
-
-gem 'tiny-color-rails'
-
-gem 'turbolinks' # Seguir enlaces rápido. https://github.com/rails/turbolinks
-
-gem 'twitter_cldr' # ICU con CLDR
-
-gem 'tzinfo' # Zonas horarias
-
-gem 'uglifier'#, '>= 1.3.0' # Uglifier comprime recursos Javascript
-
-gem 'webpacker' # módulos en Javascript https://github.com/rails/webpacker
-
-gem 'will_paginate' # Pagina listados
+gem 'will_paginate'             # Pagina listados
 
 
 group :development, :test do
+  #gem 'byebug'
 
-  #gem 'byebug' # Depurar
-  
+  gem 'colorize'
 end
 
 group :development do
-  
-  gem 'rails-erd' # Para generar modelo entidad asociación 
+  gem 'web-console', '>= 3.3.0'
 
-  gem 'thor' # Requerido por rake
-
-  gem 'web-console' # Consola anten excepciones o <%= console %> en vistas
+  gem 'spring'
 end
-
-
-group :development, :test do
-
-  #gem 'byebug' # Depurar
-  
-end
-
 
 group :test do
-
-  gem 'chromedriver-helper'
-
-  gem 'connection_pool'
-
-  gem 'minitest'
-
-  gem 'minitest-reporters'
-
-  gem 'rails-controller-testing'
+  gem 'capybara', '>= 2.15'
 
   gem 'selenium-webdriver'
 
   gem 'simplecov'
 
-  gem 'spork' # Un proceso para cada prueba -- acelera
-
-  gem 'spring' # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
-  
+  gem 'webdrivers'
 end
+
+
+
