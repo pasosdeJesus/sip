@@ -68,7 +68,7 @@ module Sip
                    'aria-controls' => 'navbarSupportedContent',
                    'aria-expanded' => false,
                    'aria-label' => 'Intercambiar navegación') do
-          content_tag(:span, class: 'navbar-toggler-icon')
+          content_tag(:span, '', class: 'navbar-toggler-icon')
         end +
         content_tag(:div, class: 'collapse navbar-collapse', 
                     id: 'navbarSupportedContent', &bloque)
@@ -80,9 +80,20 @@ module Sip
     module_function :nav_bar
 
     def anuncios_bootstrap
+      r = ''
       flash.each do |tipo, mensaje| 
-        mensaje 
+        case tipo.to_sym
+        when :success, :notice
+          tal = :success
+        else
+          tal = :danger
+        end
+        r << content_tag(:div, class: 'alert alert-' + tal.to_s, 
+                         role: :alert) do
+          mensaje
+        end
       end 
+      return r.html_safe
     end
     module_function :anuncios_bootstrap
 

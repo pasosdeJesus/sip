@@ -10,7 +10,7 @@
         <%= opcion_menu "Personas", sip.personas_path, true %>
     <% end %>
   <% end %>
-  <%= grupo_menus :empuja => :derecha do %>
+  <%= grupo_menus empuja: :derecha do %>
     <%= opcion_menu "Documentacion", "https://github.com/pasosdeJesus/sip/tree/master/doc" %>
     <% if current_usuario %>
       <%= despliega_abajo "Administrar" do %>
