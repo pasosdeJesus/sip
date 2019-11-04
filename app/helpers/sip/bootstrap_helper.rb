@@ -1,5 +1,7 @@
 #encoding: UTF-8 
 
+# Ayudadores para Bootstrap 4 basados en los ayudaddores para 
+# Bootstrap 3 de la gema twitter-bootstrap-rails
 module Sip
   module BootstrapHelper
 
@@ -54,10 +56,12 @@ module Sip
     alias_method :drop_down, :despliega_abajo
     module_function :drop_down
 
-    def nav_bar(opciones, &bloque)
+    def barra_navegacion(opciones, &bloque)
       r = content_tag(:nav, 
                       class: 'navbar navbar-expand-lg navbar-light bg-ligt') do
-        link_to(opciones[:brand], opciones[:brand_link], class: 'navbar-brand') +
+        link_to(opciones[:marca] ? opciones[:marca] : opciones[:brand], 
+                opciones[:enlace_marca] ? opciones[:enalce_marca] : opciones[:brand_link], 
+                class: 'navbar-brand') +
         content_tag(:button, class: 'navbar-toggler', type: 'button',
                    'data-toggle' => 'collapse',
                    'data-target' => '#navbarSupportedContent',
@@ -70,7 +74,9 @@ module Sip
                     id: 'navbarSupportedContent', &bloque)
       end
     end
-    module_function :nav_bar
+    module_function :barra_navegacion
 
+    alias_method :nav_bar, :barra_navegacion
+    module_function :nav_bar
   end
 end

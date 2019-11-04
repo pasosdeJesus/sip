@@ -6,24 +6,24 @@
 <% content_for :menu do %>
   <%= grupo_menus do %>
     <% if !current_usuario.nil? %>
-        <%= menu_item "Actores sociales", sip.actoressociales_path, true %>
-        <%= menu_item "Personas", sip.personas_path, true %>
+        <%= opcion_menu "Actores sociales", sip.actoressociales_path, true %>
+        <%= opcion_menu "Personas", sip.personas_path, true %>
     <% end %>
   <% end %>
-  <%= menu_group :pull => :right do %>
-    <%= menu_item "Documentacion", "https://github.com/pasosdeJesus/sip/tree/master/doc" %>
+  <%= grupo_menus :empuja => :derecha do %>
+    <%= opcion_menu "Documentacion", "https://github.com/pasosdeJesus/sip/tree/master/doc" %>
     <% if current_usuario %>
-      <%= drop_down "Administrar" do %>
-        <%= menu_item "Clave", main_app.editar_registro_usuario_path, false %>
-        <%= menu_item "Copia de respaldo cifrada", sip.respaldo7z_path, false %>
-        <%= menu_item "Usuarios", main_app.usuarios_path, false %>
-        <%= menu_item "Tablas Básicas", sip.tablasbasicas_path, false %>
-        <%= menu_item "Ayuda CA", sip.ayuda_controldeacceso_path, false %>
+      <%= despliega_abajo "Administrar" do %>
+        <%= opcion_menu "Clave", main_app.editar_registro_usuario_path, false %>
+        <%= opcion_menu "Copia de respaldo cifrada", sip.respaldo7z_path, false %>
+        <%= opcion_menu "Usuarios", main_app.usuarios_path, false %>
+        <%= opcion_menu "Tablas Básicas", sip.tablasbasicas_path, false %>
+        <%= opcion_menu "Ayuda CA", sip.ayuda_controldeacceso_path, false %>
       <% end %>
-      <%= menu_item "Salir #{current_usuario.nusuario}", main_app.sign_out_path, true %>
+      <%= opcion_menu "Salir #{current_usuario.nusuario}", main_app.sign_out_path, true %>
     <% else %>
-      <%= menu_item "Acerca de", sip.acercade_path, true %>
-      <%= menu_item "Iniciar Sesión", main_app.new_usuario_session_path, true %> 
+      <%= opcion_menu "Acerca de", sip.acercade_path, true %>
+      <%= opcion_menu "Iniciar Sesión", main_app.new_usuario_session_path, true %> 
     <% end %>
   <% end %>
 <% end %>

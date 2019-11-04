@@ -51,21 +51,33 @@ group :development, :test do
   #gem 'byebug'
 
   gem 'colorize'
+
+  gem "spring" # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
 end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
 
-  gem 'spring'
 end
 
 group :test do
-  gem 'capybara', '>= 2.15'
+  #gem 'chromedriver-helper'
+
+  gem "connection_pool"
+
+  gem "minitest"
+
+  gem "minitest-reporters"
+
+  gem 'rails-controller-testing'
 
   gem 'selenium-webdriver'
 
   gem 'simplecov'
 
+  gem 'spork' # Un proceso para cada prueba -- acelera
+
+  
   gem 'webdrivers'
 end
 

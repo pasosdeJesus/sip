@@ -47,10 +47,9 @@
   </head>
   <body>
 
-    <%= nav_bar fixed: :top, 
-      brand: content_for?(:titulo) ? yield(:titulo) : Sip.titulo,
-      brand_link: sip.root_url, 
-      responsive: true do %>
+    <%= barra_navegacion(
+      marca: content_for?(:titulo) ? yield(:titulo) : Sip.titulo,
+      enlace_marca: main_app.root_path) do %>
       <%= yield :menu %>
     <% end %>
 

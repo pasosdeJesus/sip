@@ -24,7 +24,8 @@ require("turbolinks").start()   // Acelera carga de paginas
 //require("channels")           // ActiveChannel
 
 
-var $ = require("jquery");      // Jquery reciente 
+//var $ = require("jquery");      // Jquery reciente 
+import {$, jQuery} from 'jquery';
 import "popper.js"              // Dialogos emergentes usados por bootstrap
 import "bootstrap"              // Maquetacion y elementos de diseño
 import "chosen-js/chosen.jquery";       // Cuadros de seleccion potenciados
