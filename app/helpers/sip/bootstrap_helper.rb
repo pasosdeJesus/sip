@@ -78,5 +78,15 @@ module Sip
 
     alias_method :nav_bar, :barra_navegacion
     module_function :nav_bar
+
+    def anuncios_bootstrap
+      flash.each do |tipo, mensaje| 
+        mensaje 
+      end 
+    end
+    module_function :anuncios_bootstrap
+
+    alias_method :bootstrap_flash, :anuncios_bootstrap
+    module_function :bootstrap_flash
   end
 end
