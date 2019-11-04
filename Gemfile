@@ -96,9 +96,7 @@ end
 
 group :test do
 
-  gem 'capybara'
-
-  gem 'chromedriver-helper'
+  #gem 'webdrivers'
 
   gem "connection_pool"
 
