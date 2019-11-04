@@ -59,16 +59,23 @@ gem 'bootstrap-datepicker-rails'# Control para elegir fechas
 
 gem 'cancancan'                  # Control de acceso
 
-gem 'chosen-rails', git: 'https://github.com/vtamara/chosen-rails.git',
-  branch: 'several-fixes' # Cuadros de selección potenciados  
-  
+gem 'coffee-rails'               # Coffescript
+
 gem 'devise'                     # Autenticación
 
 gem 'devise-i18n'                # Localización e Internacionalización                  
 
 gem 'paperclip'                  # Anexos
 
+gem 'jbuilder', '>= 2.7'        # Json
+
+gem 'jquery-ui-rails'           # Usamos jquery
+
+gem 'paperclip'                 # Anexos
+
 gem 'pick-a-color-rails'
+
+gem 'puma'                      # Lanza en modo desarrollo
 
 gem 'rails-i18n'                 # Localización e Internacionalización 
 
@@ -77,6 +84,8 @@ gem 'simple_form'  # Formularios
 gem 'twitter_cldr'               # Localiación e internacionalización 
 
 gem 'tiny-color-rails'
+
+gem 'twitter_cldr'              # Localiación e internacionalización
 
 gem 'will_paginate'              # Pagina listados
 
