@@ -55,6 +55,7 @@ minsipdes_des=# \q
 - Incluye otras gemas necesarias y ```sip``` en el archivo `Gemfile`:
 ```sh
 $ cat >> Gemfile <<EOF
+gem 'bootstrap-datepicker-rails'# Control para elegir fechas 
 
 gem 'cancancan'                  # Control de acceso
 
@@ -277,15 +278,12 @@ end
 ```
 y el logo (logo.jpg) y los favicons en la ruta `app/assets/images`, aunque inicialmente puedes copiar los de la aplicación e prueba de sip <https://github.com/pasosdeJesus/sip/tree/master/test/dummy/app/assets/images> 
 
-- Para preparar maquetacin adaptable de bootsrap y experiencia de usuario con Javascript debes instalar paquetes npm mínimos: 
+- Para preparar experiencia de usuario con ayuda de Bootstrap y Javascript debes instalar paquetes npm mínimos: 
 ```sh
-yarn add jquery 
-yarn add popper.js
-yarn add bootstrap
-yarn add font-awesome
+yarn add @rails/ujs  turbolinks @rails/activestorage channels jquery expose-loader popper.js bootstrap font-awesome
 CXX=c++ yarn install
 ```
-y en `app/javascript/packs/application.js` cargarlos e iniciarlos:
+en `app/javascript/packs/application.js` cargarlos e iniciarlos:
 ```js
 require("@rails/ujs").start()
 require("turbolinks").start()
@@ -298,7 +296,41 @@ import "popper.js"
 import "bootstrap"
 import "bootstrap/js/dist/dropdown"
 ```
-- Configurar la tubería de recursos (o sprockets) para cargar hojas de estilo dejando en `app/assets/stylesheet/application.css`:
+y configurar jQuery de manera global (mientras sip deja de depender), editando `config/webpack/environment.js` dejando algo como lo siguiente (sin puntos suspensivos):
+```js
+const { environment } = require('@rails/webpacker')
+...
+
+const webpack = require('webpack')
+
+environment.plugins.prepend(
+  'Provide',
+  new webpack.ProvidePlugin({
+   $: 'jquery',
+    jQuery: 'jquery',
+    jquery: 'jquery',
+    Popper: ['popper.js', 'default'],
+  })
+)
+
+environment.loaders.append('expose', {
+    test: require.resolve('jquery'),
+    use: [
+          { loader: 'expose-loader', options: '$' },
+          { loader: 'expose-loader', options: 'jQuery' }
+        ]
+})
+      
+...
+module.exports = environment
+```
+
+
+- Configurar la tubería de recursos (o sprockets) para cargar hojas de estilo y operar en paralelo con webpack agregando a `config/initalizers/assets.rb`:
+```ruby
+Rails.application.config.assets.paths << Rails.root.join('node_modules')
+```
+dejando en `app/assets/stylesheet/application.css`:
 ```css
 /*
  *= require_tree .
@@ -310,6 +342,10 @@ y para cargar otros javascript que no se maneje con webpacker en `app/assets/jav
 ```js
 //= require sip/application
 //= require_tree .
+```
+Tras esto deberías poder precompilar recursos con:
+```
+bin/rails assets:precompile --trace
 ```
 - El menú y los elementos generales del maquetado los pones en `app/views/layouts/application.html.erb` con:
 ```erb
@@ -356,6 +392,7 @@ y para cargar otros javascript que no se maneje con webpacker en `app/assets/jav
 
 <%= render template: "layouts/sip/application" %>
 ```
+
 - Si faltaba, lanza la aplicación en modo desarrollo con:
 ```sh
 $ bin/rails s
