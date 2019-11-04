@@ -59,16 +59,23 @@ gem 'bootstrap-datepicker-rails'# Control para elegir fechas
 
 gem 'cancancan'                  # Control de acceso
 
-gem 'chosen-rails', git: 'https://github.com/vtamara/chosen-rails.git',
-  branch: 'several-fixes' # Cuadros de selección potenciados  
-  
+gem 'coffee-rails'               # Coffescript
+
 gem 'devise'                     # Autenticación
 
 gem 'devise-i18n'                # Localización e Internacionalización                  
 
 gem 'paperclip'                  # Anexos
 
+gem 'jbuilder', '>= 2.7'        # Json
+
+gem 'jquery-ui-rails'           # Usamos jquery
+
+gem 'paperclip'                 # Anexos
+
 gem 'pick-a-color-rails'
+
+gem 'puma'                      # Lanza en modo desarrollo
 
 gem 'rails-i18n'                 # Localización e Internacionalización 
 
@@ -77,6 +84,8 @@ gem 'simple_form'  # Formularios
 gem 'twitter_cldr'               # Localiación e internacionalización 
 
 gem 'tiny-color-rails'
+
+gem 'twitter_cldr'              # Localiación e internacionalización
 
 gem 'will_paginate'              # Pagina listados
 
@@ -276,27 +285,26 @@ Rails.application.routes.draw do
   mount Sip::Engine, at: "/"
 end
 ```
-y el logo (logo.jpg) y los favicons en la ruta `app/assets/images`, aunque inicialmente puedes copiar los de la aplicación e prueba de sip <https://github.com/pasosdeJesus/sip/tree/master/test/dummy/app/assets/images> 
+y el logo (`logo.jpg`) y los favicons en la ruta `app/assets/images`, aunque inicialmente puedes copiar los de la aplicación e prueba de sip <https://github.com/pasosdeJesus/sip/tree/master/test/dummy/app/assets/images> 
 
-- Para preparar experiencia de usuario con ayuda de Bootstrap y Javascript debes instalar paquetes npm mínimos: 
+- Para preparar experiencia de usuario con ayuda de Bootstrap y Javascript debes instalar paquetes `npm` mínimos: 
 ```sh
-yarn add @rails/ujs  turbolinks @rails/activestorage channels jquery expose-loader popper.js bootstrap font-awesome
+yarn add @rails/ujs  turbolinks chosen-js jquery expose-loader popper.js bootstrap font-awesome
 CXX=c++ yarn install
 ```
 en `app/javascript/packs/application.js` cargarlos e iniciarlos:
 ```js
 require("@rails/ujs").start()
 require("turbolinks").start()
-require("@rails/activestorage").start()
-require("channels")
 
-import $ from "jquery";
+import {$, jQuery} from "jquery"
 
 import "popper.js"
 import "bootstrap"
-import "bootstrap/js/dist/dropdown"
+import "chosen-js/chosen.jquery"
+
 ```
-y configurar jQuery de manera global (mientras sip deja de depender), editando `config/webpack/environment.js` dejando algo como lo siguiente (sin puntos suspensivos):
+y configurar jQuery de manera global (mientras ̣`sip` deja de depender de ese paquete), editando `config/webpack/environment.js` dejando algo como lo siguiente (sin puntos suspensivos):
 ```js
 const { environment } = require('@rails/webpacker')
 ...
@@ -343,43 +351,45 @@ y para cargar otros javascript que no se maneje con webpacker en `app/assets/jav
 //= require sip/application
 //= require_tree .
 ```
+En `app/assets/config/manifest.js` indica recursos por incluir.  En general sugerimos preparar hojas de estilo e imagenes con sprockets y todo lo de Javascript transmitirlo mediante webpacker.  Sin embargo las fuentes javascript que aún no se han migrado a webpacker pueden seguirse preparando con sprockets, recordando que en el navegador operarán en el enterno global --mientras que lo trasmitido por webpacker por omisión operará como módulo.
+```
+//= link_tree ../images
+//= link_directory ../javascripts .js
+//= link_directory ../stylesheets .css
+//= link_directory ../../../node_modules/chosen-js .png
+//= link application.css
+```
 Tras esto deberías poder precompilar recursos con:
 ```
 bin/rails assets:precompile --trace
 ```
-- El menú y los elementos generales del maquetado los pones en `app/views/layouts/application.html.erb` con:
+- El menú y los elementos generales del maquetado los pones en `app/views/layouts/application.html.erb` como se presenta a continuación (nota que usamos funciones auxiliares para generar HTML con clases de bootstrap, se pueden emplear también sus formas originales en inglés basadas en las de la gema twitter-bootstrap-rails):
 ```erb
 <% content_for :titulo do %>
     <%= Sip.titulo %>
 <% end %>
 
 <% content_for :menu do %>
-  <%= menu_group do %>
+   <%= grupo_menus do %>
     <% if !current_usuario.nil? %>
-      <%= menu_item "Personas", sip.personas_path %>
-      <%= menu_item "Actores sociales", sip.actoressociales_path %>
+        <%= opcion_menu "Actores sociales", sip.actoressociales_path, true %>
+        <%= opcion_menu "Personas", sip.personas_path, true %>
     <% end %>
   <% end %>
-  <%= menu_group :pull => :right do %>
-    <%= menu_item "Documentacion", "https://github.com/pasosdeJesus/sip/blob/master/doc/README.md" %>
+  <%= grupo_menus :empuja => :derecha do %>
+    <%= opcion_menu "Documentacion", "https://github.com/pasosdeJesus/sip/tree/master/doc" %>
     <% if current_usuario %>
-      <%= drop_down "Administrar" do %>
-        <%= menu_item "Clave", main_app.editar_registro_usuario_path %>
-        <% if can? :manage, Sip::Respaldo7z %>
-          <%= menu_item "Copia de respaldo cifrada", sip.respaldo7z_path %>
-        <% end %>
-        <% if can? :manage, ::Usuario %>
-          <%= menu_item "Usuarios", main_app.usuarios_path %>
-        <% end %>
-        <% if can? :manage, :tablasbasicas %>
-          <%= menu_item "Tablas Básicas", sip.tablasbasicas_path %>
-        <% end %>
-        <%= menu_item "Ayuda CA", sip.ayuda_controldeacceso_path %>
-        <%= menu_item "Salir #{current_usuario.nusuario}", main_app.sign_out_path %>
+      <%= despliega_abajo "Administrar" do %>
+        <%= opcion_menu "Clave", main_app.editar_registro_usuario_path, false %>
+        <%= opcion_menu "Copia de respaldo cifrada", sip.respaldo7z_path, false %>
+        <%= opcion_menu "Usuarios", main_app.usuarios_path, false %>
+        <%= opcion_menu "Tablas Básicas", sip.tablasbasicas_path, false %>
+        <%= opcion_menu "Ayuda CA", sip.ayuda_controldeacceso_path, false %>
       <% end %>
+      <%= opcion_menu "Salir #{current_usuario.nusuario}", main_app.sign_out_path, true %>
     <% else %>
-      <%= menu_item "Acerca de", sip.acercade_path %>
-      <%= menu_item "Iniciar Sesión", main_app.new_usuario_session_path %>
+      <%= opcion_menu "Acerca de", sip.acercade_path, true %>
+      <%= opcion_menu "Iniciar Sesión", main_app.new_usuario_session_path, true %>
     <% end %>
   <% end %>
 <% end %>
