@@ -276,25 +276,24 @@ Rails.application.routes.draw do
   mount Sip::Engine, at: "/"
 end
 ```
-y el logo (logo.jpg) y los favicons en la ruta `app/assets/images`, aunque inicialmente puedes copiar los de la aplicación e prueba de sip <https://github.com/pasosdeJesus/sip/tree/master/test/dummy/app/assets/images> 
+y el logo (`logo.jpg`) y los favicons en la ruta `app/assets/images`, aunque inicialmente puedes copiar los de la aplicación e prueba de sip <https://github.com/pasosdeJesus/sip/tree/master/test/dummy/app/assets/images> 
 
-- Para preparar experiencia de usuario con ayuda de Bootstrap y Javascript debes instalar paquetes npm mínimos: 
+- Para preparar experiencia de usuario con ayuda de Bootstrap y Javascript debes instalar paquetes `npm` mínimos: 
 ```sh
-yarn add @rails/ujs  turbolinks @rails/activestorage channels jquery expose-loader popper.js bootstrap font-awesome
+yarn add @rails/ujs  turbolinks chosen-js jquery expose-loader popper.js bootstrap font-awesome
 CXX=c++ yarn install
 ```
 en `app/javascript/packs/application.js` cargarlos e iniciarlos:
 ```js
 require("@rails/ujs").start()
 require("turbolinks").start()
-require("@rails/activestorage").start()
-require("channels")
 
-import $ from "jquery";
+import $ from "jquery"
 
 import "popper.js"
 import "bootstrap"
-import "bootstrap/js/dist/dropdown"
+import "chosen-js/chosen.jquery"
+
 ```
 y configurar jQuery de manera global (mientras sip deja de depender), editando `config/webpack/environment.js` dejando algo como lo siguiente (sin puntos suspensivos):
 ```js
