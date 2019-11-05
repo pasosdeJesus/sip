@@ -21,13 +21,16 @@ module Sip
     module_function :menu_group
 
     # Genera opcion menú
-    def opcion_menu(opcionmenu, url, conli=true)
-      if conli
-        r = content_tag(:li, class: 'nav-item') do
-          link_to opcionmenu, url, class: 'nav-link' 
-        end
+    def opcion_menu(opcionmenu, url, opciones={})
+      cop = opciones.clone
+      if cop[:desplegable] || cop[:dropdown]
+        cop.delete(:desplegable)
+        cop.delete(:dropdown)
+        r = link_to opcionmenu, url, cop.merge({class: 'dropdown-item'})
       else
-        r = link_to opcionmenu, url, class: 'dropdown-item' 
+        r = content_tag(:li, class: 'nav-item') do
+          link_to opcionmenu, url, cop.merge({class: 'nav-link'})
+        end
       end
       return r
     end 
