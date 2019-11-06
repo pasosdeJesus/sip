@@ -14,8 +14,6 @@ gem 'devise'                    # Autenticación
 gem 'devise-i18n'               # Localización e Internacionalización                  
 gem 'jbuilder', '>= 2.7'        # Json
 
-gem 'jquery-ui-rails'           # Usamos jquery
-
 gem 'paperclip'                 # Anexos
 
 gem 'pg', '>= 0.18', '< 2.0'    # PostgreSQL

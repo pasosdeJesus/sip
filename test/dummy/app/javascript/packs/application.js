@@ -18,18 +18,17 @@
 
 console.log('Hola Mundo desde Webpacker')
 
-require("@rails/ujs").start()   // Javascript no intrusivo segun rails
-require("turbolinks").start()   // Acelera carga de paginas
-//require("@rails/activestorage").start()         // Activestorage
-//require("channels")           // ActiveChannel
+require('@rails/ujs').start()   // Javascript no intrusivo segun rails
+require('turbolinks').start()   // Acelera carga de paginas
+//require('@rails/activestorage').start()         // Activestorage
+//require('channels')           // ActiveChannel
 
 
-//var $ = require("jquery");      // Jquery reciente 
 import {$, jQuery} from 'jquery';
-import "popper.js"              // Dialogos emergentes usados por bootstrap
-import "bootstrap"              // Maquetacion y elementos de diseño
-import "chosen-js/chosen.jquery";       // Cuadros de seleccion potenciados
+import 'popper.js'              // Dialogos emergentes usados por bootstrap
+import 'bootstrap'              // Maquetacion y elementos de diseño
+import 'chosen-js/chosen.jquery';       // Cuadros de seleccion potenciados
 import 'bootstrap-datepicker'
 import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js'
-//import 'jquery-ui'
+import 'jquery-ui'
 

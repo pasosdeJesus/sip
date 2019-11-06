@@ -11,8 +11,28 @@
  *= require_self
  *= require bootstrap/dist/css/bootstrap.css
  *= require font-awesome/css/font-awesome.css
- * jquery-ui/themes/base/all.css
- *= require jquery-ui
+ *= require jquery-ui/themes/base/accordion.css
+ *= require jquery-ui/themes/base/all.css
+ *= require jquery-ui/themes/base/autocomplete
+ *= require jquery-ui/themes/base/controlgroup.css
+ *= require jquery-ui/themes/base/core.css
+ *= require jquery-ui/themes/base/datepicker.css
+ *= require jquery-ui/themes/base/menu.css
+ *= require jquery-ui/themes/base/sortable.css
+ *= require jquery-ui/themes/base/progressbar.css
+ *= require jquery-ui/themes/base/spinner.css
+ *= require jquery-ui/themes/base/resizable.css
+ *= require jquery-ui/themes/base/tabs.css
+ *= require jquery-ui/themes/base/base.css
+ *= require jquery-ui/themes/base/dialog.css
+ *= require jquery-ui/themes/base/selectable.css
+ *= require jquery-ui/themes/base/theme.css
+ *= require jquery-ui/themes/base/button.css
+ *= require jquery-ui/themes/base/draggable.css
+ *= require jquery-ui/themes/base/selectmenu.css
+ *= require jquery-ui/themes/base/tooltip.css
+ *= require jquery-ui/themes/base/checkboxradio.css
+ *= require jquery-ui/themes/base/slider.css
  *= require chosen-js/chosen
  *= require pick-a-color.min
  *= require bootstrap-datepicker/dist/css/bootstrap-datepicker.css
@@ -28,9 +48,9 @@ p.derechos {
 	color: #000000;
 	background-color: #f8f8f8;
 	border-top: 1px solid #e7e7e7;
-} 
+}
 
-.anexosdiv { 
+.anexosdiv {
 	border: 1px solid #e7e7e7;
 	border-radius: 5px;
 }
