@@ -9,11 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require bootstrap/dist/css/bootstrap.css
+ *= require font-awesome/css/font-awesome.css
+ * jquery-ui/themes/base/all.css
  *= require jquery-ui
  *= require chosen-js/chosen
  *= require pick-a-color.min
- *= require bootstrap/dist/css/bootstrap.css
- *= require font-awesome/css/font-awesome.css
+ *= require bootstrap-datepicker/dist/css/bootstrap-datepicker.css
  *= require_tree .
  */
 

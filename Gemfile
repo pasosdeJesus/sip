@@ -5,8 +5,6 @@ ruby '2.6.5'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'bootstrap-datepicker-rails'# Control para elegir fechas 
-
 gem 'cancancan'                 # Control de acceso
 
 gem 'coffee-rails'              # CoffeeScript para recursos .js.coffee 
@@ -16,7 +14,7 @@ gem 'devise'                    # Autenticación
 gem 'devise-i18n'               # Localización e Internacionalización                  
 gem 'jbuilder', '>= 2.7'        # Json
 
-gem 'jquery-ui-rails'           # Usamos jquery 
+gem 'jquery-ui-rails'           # Usamos jquery
 
 gem 'paperclip'                 # Anexos
 
