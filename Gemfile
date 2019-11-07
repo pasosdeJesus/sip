@@ -18,8 +18,6 @@ gem 'paperclip'                 # Anexos
 
 gem 'pg', '>= 0.18', '< 2.0'    # PostgreSQL
 
-gem 'pick-a-color-rails'        # Elegir color de tema
-
 gem 'puma'                      # Lanza en modo desarrollo
 
 gem 'rails', '>= 6.0.0'

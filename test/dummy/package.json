@@ -11,6 +11,7 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
     "jquery-ui": "^1.12.1",
+    "pick-a-color": "^1.2.3",
     "popper.js": "^1.16.0",
     "turbolinks": "^5.2.0"
   },

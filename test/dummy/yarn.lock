@@ -4858,6 +4858,11 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
+pick-a-color@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/pick-a-color/-/pick-a-color-1.2.3.tgz#223d06f629325f0ca55a92e5cbd8ac503902f554"
+  integrity sha1-Ij0G9ikyXwylWpLly9isUDkC9VQ=
+
 pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
