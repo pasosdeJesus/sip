@@ -29,7 +29,7 @@ module Sip
     test "no valido" do
       actorsocial = Sip::Actorsocial.new PRUEBA_ACTORSOCIAL
       actorsocial.grupoper = nil
-      assert actorsocial.valid?
+      assert !actorsocial.valid?
       actorsocial.destroy
     end
 

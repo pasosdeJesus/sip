@@ -6,7 +6,7 @@ module Sip
   module FontawesomeHelper
 
     # Genera grupo de menus
-    def icono_fa(nomicon, opciones)
+    def icono_fa(nomicon, opciones = {})
       content_tag(:i, class: "fa fa-#{nomicon}", 'aria-hidde' => true) do
         opciones[:texto] ? opciones[:texto] : opciones[:text]
       end
