@@ -208,8 +208,6 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    tiny-color-rails (0.0.2)
-      railties (>= 3.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -266,7 +264,6 @@ DEPENDENCIES
   simplecov
   spork
   spring
-  tiny-color-rails
   turbolinks (~> 5)
   twitter_cldr
   tzinfo

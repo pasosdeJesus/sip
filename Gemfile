@@ -28,8 +28,6 @@ gem 'sassc-rails'#, '2.1.0'      # Conversión a CSS
 
 gem 'simple_form'               # Formularios
 
-gem 'tiny-color-rails'          # Colores en tema
-
 gem 'turbolinks', '~> 5'        # Acelera carga de paginas
 
 gem 'twitter_cldr'              # Localiación e internacionalización 

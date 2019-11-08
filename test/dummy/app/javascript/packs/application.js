@@ -32,4 +32,4 @@ import 'bootstrap-datepicker'
 import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js'
 import 'jquery-ui'
 import 'pick-a-color'
-
+import {tinycolor}  from 'tinycolor2'
