@@ -692,7 +692,7 @@ if (typeof String.prototype.endsWith != 'function')
 
   $('#mundep').on('focusin', (e) ->
     sip_arregla_puntomontaje(root)
-    busca_gen($(this), null, root.puntomontaje + "/mundep.json")
+    busca_gen($(this), null, root.puntomontaje + "mundep.json")
   )
 
   $(document).on('click', 'a.enviarautomatico[href^="#"]', (e) ->
