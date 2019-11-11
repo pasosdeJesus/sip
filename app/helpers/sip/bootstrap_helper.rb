@@ -93,9 +93,15 @@ module Sip
         end
         r << content_tag(:div, class: 'alert alert-' + tal.to_s, 
                          role: :alert) do
-          mensaje
+          content_tag(:span, mensaje) + 
+          content_tag(
+            :button, type: :button, class: :close, 'data-dismiss' =>  :alert,
+            'aria-label' => "Close") do
+              content_tag(:span,  '&times;'.html_safe, 'aria-hidden' => true) 
+          end
         end
       end 
+
       return r.html_safe
     end
     module_function :anuncios_bootstrap
