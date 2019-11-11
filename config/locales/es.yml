@@ -48,8 +48,8 @@ es:
       other_than: debe ser distinto de %{count}
       other_than: "En '%{model}' el valor de '%{attribute}' debe ser distinto de %{count}"
   will_paginate:
-    previous_label: "&#8592; anterior"
-    next_label: "&#8594; siguiente"
+    previous_label: "&#8592;"
+    next_label: "&#8594;"
     page_gap: "&hellip;"
   activerecord:
     attributes:

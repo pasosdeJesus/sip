@@ -83,7 +83,7 @@
             <% else %>
               <% if can?(:edit, registro ) %>
                 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                  edit_modelo_path(registro), :class => 'btn btn-xs' %>
+                  edit_modelo_path(registro), :class => 'btn btn-sm' %>
               <% end %>
               <%= render partial: 'index_mas_acciones' %>
               <% if can?(:destroy, registro ) %>
@@ -98,7 +98,7 @@
                        )
                      ) 
                   },
-                  :class => 'btn btn-xs btn-danger' %>
+                  :class => 'btn btn-sm btn-danger' %>
               <% end %>
             <% end %>
           </td>
