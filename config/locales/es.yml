@@ -108,7 +108,7 @@ es:
         updated_at: Fecha en la que se actualizó en base de datos
       "sip/perfilactorsocial":
         Perfilactorsocial: Perfil en actor social
-        Perfilesactorsocial: Perfiles en actor social
+        Perfilactoressociales: Perfiles en actor social
       "sip/actorsocial_persona":
         perfilactorsocial: Perfil en actor social
         actorsocial: Actor social al que pertenece
