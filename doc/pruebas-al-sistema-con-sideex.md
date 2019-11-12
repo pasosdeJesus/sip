@@ -184,7 +184,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     . Pulse en el signo mas (+) del cuadro de TEST SUITES a la izquierda del panel y dele 
     nombre a la suit y aceptar.
        
-      ![img4](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img5.png) 
+      ![img4](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img4.png) 
     
    . Pulse en  el lado derecho del nombre de la suit creada sobre el signo mas (+) y de el 
        nombre del primer caso de la suit
