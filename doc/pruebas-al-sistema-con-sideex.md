@@ -184,7 +184,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     . Pulse en el signo mas (+) del cuadro de TEST SUITES a la izquierda del panel y dele 
     nombre a la suit y aceptar.
        
-      ![img4](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img5.png) 
+      ![img4](https://github.com/pasosdeJesus/sip/master/doc/sideex.img/img4.png) 
     
    . Pulse en  el lado derecho del nombre de la suit creada sobre el signo mas (+) y de el 
        nombre del primer caso de la suit
@@ -197,7 +197,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
      le da varias opciones guardar, abrir, cerrar, renombrar, añadir un nuevo caso 
      a la suit de casos de pruebas.
 
- ![img6](https://raw.githubusercontent.com/BlancaInesAcosta/sip/master/doc/img/img6.png) 
+ ![img6](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img6.png) 
  
 * Al pasar el mouse al lado izquierdo del nombre aparece una flecha hacia abajo 
   y haga clic para guardar la suit de pruebas.
