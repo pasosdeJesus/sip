@@ -201,6 +201,8 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
  
 * Al pasar el mouse al lado izquierdo del nombre aparece una flecha hacia abajo 
   y haga clic para guardar la suit de pruebas.
+  
+  ![]()
 
   ![img7](https://github.com/BlancaInesAcosta/sip/blob/master/doc/img/img7.png)
 
@@ -214,7 +216,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
 * En la parte superior vemos varias opciones:
 
-  ![5opciones]()
+  ![8opciones](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img8.png)
 
   . Record: Grabar. Pulse Record para empezar a grabar la secuencia de 
     comandos de una prueba 
