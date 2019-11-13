@@ -166,7 +166,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   suits de prueba en un solo panel. Las suits de prueba se pueden activar y 
   procesar automáticamente de forma secuencial. 
   
-  ![img33](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/varias-suits-en-un-panel.png)
+  ![img4](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img44.varias-suits-en-un-panel.png)
 * Sideex2 espera automáticamente para completar la carga de la página.
 * Las nuevas versiones de Sideex2 no se actualizarán 
   automáticamente. 
