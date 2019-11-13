@@ -206,6 +206,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   ![img55 ](velocidad)
   
   . Pulse sobre el icono de sideex2 en la barra de herramientas del navegador  
+  
     
      ![img3](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img3.png) 
      
