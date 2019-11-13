@@ -193,7 +193,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   . Pause: Pausa. Sirve para detener una prueba en determinado momento, 
     luego pulse de nuevo y se puede continuar. 
     
-  . Debajo de Record hay una barra de desplazamiento que podemos usar para
+* Debajo de Record hay una barra de desplazamiento que podemos usar para
     cambiar la velocidad de las pruebas a nuestra elección.
     
     ![img55](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img55.velocidad.png)
