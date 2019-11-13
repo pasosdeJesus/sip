@@ -210,7 +210,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     Al lado de las palabras TEST SUITES se ve un icono de archivo y que 
     al pulsar abre las pruebas que hemos guardado anteriormente. 
 
-  ![img55 ](velocidad)
+  
   
   . Pulse sobre el icono de sideex2 en la barra de herramientas del navegador  
   
