@@ -27,7 +27,9 @@ MiAp::Application.config.relative_url_root = '/miorg/miap'
 MiAp::Application.config.assets.prefix = '/miorg/miap/assets'
 </pre>
 Siendo `MiAp` el mismo nombre de aplicación que haya configurado en `config/application.rb`
+
 5. En la aplicación si requiere referirse a una ruta y no puede utilizar auxiliares, ponga como prefijo de la ruta el contenido de ```Rails.configuration.relative_url_root```
+
 6. En javascript ese punto de montaje quedará disponible en `window.puntomontaje` (por si requiere hacer llamados AJAX  o usar URLs de la aplicación).
 
 Aunque en versiones de Rails anteriores a la 5 se usaba la variable de ambiente `RAILS_RELATIVE_URL_ROOT` para especificar el punto de montaje, hemos notado que con Rails 5 no es necesario usarla y puede resultar conflictivo con el método anterior.  
