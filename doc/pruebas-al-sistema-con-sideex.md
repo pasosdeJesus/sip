@@ -193,21 +193,34 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   
   . Pause: Pausa. Sirve para detener una prueba en determinado momento, 
     luego pulse de nuevo y se puede continuar. 
-    Luego vera dos cuadros grandes:
-    A la izquierda se ve :
+    
+    . Luego vera dos cuadros grandes:
+      A la izquierda se ve :
 
-  ![6tessuit]()
+  ![img44](varias suit)
 
   . TEST SUITES
     Al lado de las palabras TEST SUITES se ve un icono de archivo y que 
     al pulsar abre las pruebas que hemos guardado anteriormente. 
 
-  ![7archivo ]()
+  ![img55 ](velocidad)
+  
+  . Pulse sobre el icono de sideex2 en la barra de herramientas del navegador  
+    
+     ![img3](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img3.png) 
+     
+    . Pulse en el signo mas (+) del cuadro de TEST SUITES a la izquierda del panel y dele 
+    nombre a la suit y aceptar.
+       ![img4](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img4.png) 
+    
+   . Pulse en  el lado derecho del nombre de la suit creada sobre el signo mas (+) y de el 
+       nombre del primer caso de la suit.
+       ![img5](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img5.png) 
 
   . Al lado derecho aparece un signo mas (+) que al las pulsar se puede dar 
     nombre a la suit.
 
-    ![8mas]()
+    ![img66]()
 
   . Al lado derecho hay otro cuadro que contiene en su parte superior 
     COMMAND: Comando. Cuando graba un caso se verán debajo todos los 
