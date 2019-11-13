@@ -202,9 +202,9 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     
     Slow: Despacio
     
- * Más abajo un cuadro grande a la izquierda y se ve :
+ * Más abajo hay un cuadro grande a la izquierda y se ve :
 
-  ![img33](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img33.suit.png
+  ![img33](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img33.suit.png)
 
   . TEST SUITES
     Al lado de las palabras TEST SUITES se ve un icono de archivo y que 
