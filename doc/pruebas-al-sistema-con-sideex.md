@@ -217,19 +217,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
     ![mas](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/mas.png)
     
-    
-    
-    
-    
-    
-    
-  
-  . Pulse sobre el icono de sideex2 en la barra de herramientas del navegador  
-  
-    
-     ![img3](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img3.png) 
-     
-    . Pulse en el signo mas (+) del cuadro de TEST SUITES a la izquierda del panel y dele 
+    Pulse en el signo mas (+) del cuadro de TEST SUITES a la izquierda del panel y dele 
     nombre a la suit y aceptar.
        ![img4](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img4.png) 
     
@@ -266,7 +254,12 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   Value: 
   Otro cuadro en la parte inferior 
   . Log :
-  . Reference :  
+  . Reference : 
+  
+   . Pulse sobre el icono de sideex2 en la barra de herramientas del navegador  
+  
+    
+     ![img3](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img3.png) 
   
   #### 3.3.3 Empezar pruebas con Sideex2
 
