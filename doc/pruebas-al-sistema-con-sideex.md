@@ -196,7 +196,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 * Debajo de Record hay una barra de desplazamiento que podemos usar para
     cambiar la velocidad de las pruebas a nuestra elección.
     
-      ![img55](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img55.velocidad.png)
+     ![img55](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img55.velocidad.png)
     
     Fast: Rápido
     
