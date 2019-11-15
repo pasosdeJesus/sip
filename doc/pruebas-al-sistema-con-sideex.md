@@ -202,7 +202,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     
     Slow: Despacio
     
- * Más abajo hay un cuadro grande a la izquierda y se ve :
+ * En el cuadro suiguiente a la izquierda se ve :
 
   ![img33](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img33.suit.png)
 
