@@ -31,6 +31,7 @@ fuentes  (por ejemplo para autenticación se emplea `Devise` con modelo
     * [Vistas automáticas con Sip::Modelo y Sip::ModelosController](https://github.com/pasosdeJesus/sip/blob/master/doc/vistas-automaticas.md)
     * [Tablas Básicas](https://github.com/pasosdeJesus/sip/blob/master/doc/tablas-basicas.md)
     * [Uso y personalización del modelo usuario](https://github.com/pasosdeJesus/sip/blob/master/doc/modelo-usuario.md)
+    * [Inflecciones en español]()
   * [Personalización de rutas, controladores y vistas](https://github.com/pasosdeJesus/sip/blob/master/doc/rutas-controladores-vistas.md)
     * [Personalización del punto de montaje](https://github.com/pasosdeJesus/sip/blob/master/doc/punto-de-montaje.md)
     * [Personalización de recursos javascript y css](https://github.com/pasosdeJesus/sip/blob/master/doc/recursos-javascript-y-css.md)
