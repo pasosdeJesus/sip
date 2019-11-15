@@ -6,7 +6,7 @@ module Sip
       load_and_authorize_resource class: Sip::Trelacion
 
       def clase 
-        "Sip::Trelacion"
+        'Sip::Trelacion'
       end
 
       def set_trelacion
@@ -18,14 +18,15 @@ module Sip
       end
 
       def atributos_index
-        ["id", "nombre", "inverso", "observaciones", 
-         "fechacreacion_localizada", "habilitado"]
+        [ :id, 
+          :nombre, 
+          :inverso, 
+          :observaciones, 
+          :fechacreacion_localizada, 
+          :habilitado
+        ]
       end
 
-      def atributos_form
-        atributos_index
-      end
- 
       def trelacion_params
         params.require(:trelacion).permit(*atributos_form)
       end

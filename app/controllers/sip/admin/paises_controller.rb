@@ -14,15 +14,23 @@ module Sip
       end
   
       def atributos_index
-        ["id", "nombre", "nombreiso", "latitud", "longitud", "alfa2", 
-          "alfa3", "codiso", "div1", "div2", "div3", "observaciones",
-          "fechacreacion_localizada", "habilitado"]
+        [ :id, 
+          :nombre, 
+          :nombreiso, 
+          :latitud, 
+          :longitud, 
+          :alfa2, 
+          :alfa3, 
+          :codiso, 
+          :div1, 
+          :div2, 
+          :div3, 
+          :observaciones,
+          :fechacreacion_localizada, 
+          :habilitado
+        ]
       end
      
-      def atributos_form
-        atributos_index
-      end
-  
       def genclase
         return 'M';
       end

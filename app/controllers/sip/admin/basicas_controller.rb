@@ -25,8 +25,7 @@ module Sip
         ]
       end
 
-      # Campos por mostrar en presentación de un registro
-      def atributos_show
+      def atributos_transf_habilitado
         r = atributos_index - ['habilitado', :habilitado]
         if !r.include?("fechadeshabilitacion_localizada") &&
           !r.include?(:fechadeshabilitacion_localizada) &&
@@ -37,9 +36,14 @@ module Sip
         r
       end
 
+      # Campos por mostrar en presentación de un registro
+      def atributos_show
+        atributos_transf_habilitado
+      end
+
       # Campos que se presentar en formulario
       def atributos_form
-        atributos_show - ["id", :id]
+        atributos_transf_habilitado - ["id", :id]
       end
 
       def index_reordenar(c)

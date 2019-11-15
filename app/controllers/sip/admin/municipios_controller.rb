@@ -40,14 +40,9 @@ module Sip
         ]
       end
 
-      def atributos_show
-        atributos_index
-      end
-      
       def atributos_form
         Sip::Departamento.conf_presenta_nombre_con_origen = true
-        atributos_show - [:id, 'id', :pais, :habilitado, 'habilitado'] + 
-          [:fechadeshabilitacion_localizada]
+        atributos_transf_habilitado - [:id, 'id', :pais, 'pais']
       end
         
       
