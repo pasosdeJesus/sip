@@ -215,7 +215,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
    . Al lado derecho aparece un signo mas (+) que al pulsar se puede dar 
     nombre a la suit.
 
-    ![img66]()
+    ![mas](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/mas.png)
     
     
     
