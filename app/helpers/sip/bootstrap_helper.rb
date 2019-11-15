@@ -62,20 +62,27 @@ module Sip
     def barra_navegacion(opciones, &bloque)
       r = content_tag(:nav, 
                       class: 'navbar navbar-expand-lg navbar-light bg-ligt') do
-        link_to(opciones[:marca] ? opciones[:marca] : opciones[:brand], 
-                opciones[:enlace_marca] ? opciones[:enalce_marca] : opciones[:brand_link], 
-                class: 'navbar-brand') +
-        content_tag(:button, class: 'navbar-toggler', type: 'button',
+        r2 = ''
+        if  opciones[:marca] || opciones[:brand]
+          r2 += link_to(
+            opciones[:marca] ? opciones[:marca] : opciones[:brand],
+            opciones[:enlace_marca] ? opciones[:enlace_marca] : 
+            opciones[:brand_link], 
+            class: 'navbar-brand') 
+        end
+        r2 += content_tag(:button, class: 'navbar-toggler', type: 'button',
                    'data-toggle' => 'collapse',
                    'data-target' => '#navbarSupportedContent',
                    'aria-controls' => 'navbarSupportedContent',
                    'aria-expanded' => false,
                    'aria-label' => 'Intercambiar navegación') do
           content_tag(:span, '', class: 'navbar-toggler-icon')
-        end +
-        content_tag(:div, class: 'collapse navbar-collapse', 
+        end
+        r2 += content_tag(:div, class: 'collapse navbar-collapse', 
                     id: 'navbarSupportedContent', &bloque)
+        r2.html_safe
       end
+      r.html_safe
     end
     module_function :barra_navegacion
 
