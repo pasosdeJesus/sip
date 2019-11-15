@@ -212,13 +212,12 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
      ![archivo](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/archivo.png)
     
-   . Al lado derecho aparece un signo mas (+) que al pulsar se puede dar 
-    nombre a la suit.
+   . Al lado derecho aparece un signo mas (+) que al pulsar se abre una ventana
+     emergente donde se puede escribir el nombre de la suit nueva.
 
     ![mas](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/mas.png)
     
-    Pulse en el signo mas (+) del cuadro de TEST SUITES a la izquierda del panel y dele 
-    nombre a la suit y aceptar.
+     luego aceptar.
        ![img4](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img4.png) 
     
    . Pulse en  el lado derecho del nombre de la suit creada sobre el signo mas (+) y de el 
