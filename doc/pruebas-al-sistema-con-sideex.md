@@ -206,11 +206,23 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
   ![img33](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img33.suit.png)
 
-  . TEST SUITES
-    Al lado de las palabras TEST SUITES se ve un icono de archivo y que 
-    al pulsar abre las pruebas que hemos guardado anteriormente. 
-
+  . TEST SUITES: Conjunto de pruebas
   
+  . Un icono de archivo que al pulsar abre las pruebas que hemos guardado anteriormente. 
+
+    ![]()
+    
+    . Al lado derecho aparece un signo mas (+) que al pulsar se puede dar 
+    nombre a la suit.
+
+    ![img66]()
+    
+    
+    
+    
+    
+    
+    
   
   . Pulse sobre el icono de sideex2 en la barra de herramientas del navegador  
   
