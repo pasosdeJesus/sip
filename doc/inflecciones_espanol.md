@@ -4,7 +4,7 @@ modelos en singular
 Preferimos nombres en español
 Preferimos modelos en singular, pero controladores en plural.
 
-Estamos usando reglas globales de inflección de singular a plural
+Estamos usando reglas globales (no de un sólo locale) de inflección de singular a plural
 en español, como se configuran en sip/config/initializers/inflections.rb
 
 En cada motor y aplicación se amplian en config/initializes/inflections.rb
@@ -21,9 +21,11 @@ cargan en el orden de dependencia, pero cuando esto no ocurre
 o si prefiere cambiarse (digamos dejand primero sip, despues mr519_gen,
 después cor1440_gen y despues las del archivo:
 
-['sip', 'mr519_gen', 'cor1440_gen'].each do |nomm|
-  require File.join(
-    Gem::Specification.find_by_name(nomm).gem_dir, 
-    'config/initializers/inflections')
+```rb
+['sip', 'mr519_gen', 'heb412_gen', 'cor1440_gen', 'sal7711_gen', 'sal7711_web',
+ 'sivel2_gen', 'sivel2_sjr'].each do |s|
+  byebug
+  require_dependency File.join(Gem::Specification.find_by_name(s).gem_dir,
+                             '/config/initializers/inflections.rb')
 end
-
+```
