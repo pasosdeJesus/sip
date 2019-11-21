@@ -1,4 +1,1 @@
-Vista mundep deberia re-crearse al inicializar para asegurar que
-usa municipios y departamentos del pais por omision configurado
-en Sip.paisomision
-
+Municipio 52203 debe ser COLÓN (GENOVA)
