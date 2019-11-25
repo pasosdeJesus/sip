@@ -211,7 +211,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    twitter_cldr (5.0.0)
+    twitter_cldr (5.1.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
