@@ -1,21 +1,16 @@
 # encoding: UTF-8
+
+require 'sip/concerns/controllers/oficinas_controller'
+
 module Sip
   module Admin
-    class OficinasController < BasicasController #ApplicationController 
-      before_action :set_oficina, only: [:show, :edit, :update, :destroy]
-      load_and_authorize_resource class: Sip::Oficina
- 
-      def clase 
-        "Sip::Oficina"
-      end
-  
-      def set_oficina
-        @basica = Oficina.find(params[:id])
-      end
- 
-      def oficina_params
-        params.require(:oficina).permit(*atributos_form)
-      end
+    class OficinasController < Sip::Admin::BasicasController
+
+      before_action :set_oficina, 
+        only: [:show, :edit, :update, :destroy]
+      load_and_authorize_resource  class: Sip::Oficina
+
+      include Sip::Concerns::Controllers::OficinasController
   
     end
   end
