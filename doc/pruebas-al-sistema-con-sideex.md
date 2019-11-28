@@ -170,6 +170,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 * Las nuevas versiones de Sideex2 no se actualizarán 
   automáticamente. 
   Debe volver al sitio oficial y buscar nuevas versiones.  
+* Sideex2 no soporta sistema operativo de 32 bits, solo soporta el sistema operativo de 64 bits.  
   
   #### 3.3.2 Estructura y contenido del panel de Sideex2 
   
