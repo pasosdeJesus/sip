@@ -77,7 +77,7 @@ module Sip
 
 
           # Listado de registros
-          def index(c = nil)
+          def index_sip(c = nil)
             if (c != nil)
               if c.class.to_s.end_with?('ActiveRecord_Relation')
                 if clase.constantize.to_s != c.klass.to_s
@@ -167,6 +167,11 @@ module Sip
               }
               index_otros_formatos(format, params)
             end
+          end
+
+          # Listado de registros
+          def index(c = nil)
+            index_sip(c)
           end
 
           def show_plantillas
