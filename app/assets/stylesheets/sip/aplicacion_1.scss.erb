@@ -4,3 +4,19 @@ $fa-font-path:        "@fortawesome/fontawesome-free/webfonts/";
 @import "@fortawesome/fontawesome-free/scss/solid.scss";
 
 @import "bootstrap/scss/bootstrap.scss";
+
+
+/* Fuentes de fontawesome 5 */
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: $fa-font-display;
+  src: url('<%= font_path('@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot') %>');
+  src: url('<%= asset_path('@fortawesome/fontawesome-free/webfonts/fa-solid-900.eot') %>?#iefix') format('embedded-opentype'),
+  url('<%= asset_path('@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2') %>') format('woff2'),
+  url('<%= asset_path('@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff') %>') format('woff'),
+  url('<%= asset_path('@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf') %>') format('truetype'),
+  url('<%= asset_path('@fortawesome/fontawesome-free/webfonts/fa-solid-900.svg') %>#fontawesome') format('svg');
+}
+
