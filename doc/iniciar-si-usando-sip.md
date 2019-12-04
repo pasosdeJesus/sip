@@ -59,7 +59,7 @@ gem 'bootstrap-datepicker-rails'# Control para elegir fechas
 
 gem 'cancancan'                  # Control de acceso
 
-gem 'coffee-rails'               # Coffescript
+gem 'coffee-rails'               # Coffescript si se quiere en app/assets/javascript
 
 gem 'devise'                     # Autenticación
 
@@ -69,11 +69,7 @@ gem 'paperclip'                  # Anexos
 
 gem 'jbuilder', '>= 2.7'        # Json
 
-gem 'jquery-ui-rails'           # Usamos jquery
-
 gem 'paperclip'                 # Anexos
-
-gem 'pick-a-color-rails'
 
 gem 'puma'                      # Lanza en modo desarrollo
 
@@ -82,8 +78,6 @@ gem 'rails-i18n'                 # Localización e Internacionalización
 gem 'simple_form'  # Formularios
 
 gem 'twitter_cldr'               # Localiación e internacionalización 
-
-gem 'tiny-color-rails'
 
 gem 'twitter_cldr'              # Localiación e internacionalización
 
@@ -99,7 +93,7 @@ Y después verifica la instalación de las gemas con:
 ```
 $ bundle install
 ```
-- Crea el modelo `usuario` en ```app/models/usuario.rb``` inicialmente basta:
+- Crea el modelo `usuario` en ```app/models/usuario.rb``` inicialmente con:
 ```rb
 require 'sip/concerns/models/usuario'
 
@@ -289,25 +283,30 @@ y el logo (`logo.jpg`) y los favicons en la ruta `app/assets/images`, aunque ini
 
 - Para preparar experiencia de usuario con ayuda de Bootstrap y Javascript debes instalar paquetes `npm` mínimos: 
 ```sh
-yarn add @rails/ujs  turbolinks chosen-js jquery expose-loader popper.js bootstrap font-awesome
+yarn add @rails/ujs  bootstrap bootstrap-datepicker chosen-js expose-loader @fortawesome/fontawesome-free jquery jquery-ui pick-a-color popper.js  tinycolor2 turbolinks 
 CXX=c++ yarn install
 ```
 en `app/javascript/packs/application.js` cargarlos e iniciarlos:
 ```js
-require("@rails/ujs").start()
-require("turbolinks").start()
+console.log('Hola Mundo desde Webpacker')
 
-import {$, jQuery} from "jquery"
+require('@rails/ujs').start()   // Javascript no intrusivo segun rails
+require('turbolinks').start()   // Acelera carga de paginas
 
-import "popper.js"
-import "bootstrap"
-import "chosen-js/chosen.jquery"
-
+import {$, jQuery} from 'jquery';
+import 'popper.js'              // Dialogos emergentes usados por bootstrap
+import 'bootstrap'              // Maquetacion y elementos de diseño
+import 'chosen-js/chosen.jquery';       // Cuadros de seleccion potenciados
+import 'bootstrap-datepicker'
+import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js'
+import 'jquery-ui'
+import 'jquery-ui/ui/widgets/autocomplete'
+import 'pick-a-color'
+import tinycolor from 'tinycolor2'
 ```
-y configurar jQuery de manera global (mientras ̣`sip` deja de depender de ese paquete), editando `config/webpack/environment.js` dejando algo como lo siguiente (sin puntos suspensivos):
+y configurar jQuery de manera global (mientras ̣`sip` deja de depender de ese paquete), editando `config/webpack/environment.js` dejando algo como:
 ```js
 const { environment } = require('@rails/webpacker')
-...
 
 const webpack = require('webpack')
 
@@ -317,7 +316,9 @@ environment.plugins.prepend(
    $: 'jquery',
     jQuery: 'jquery',
     jquery: 'jquery',
+    'window.jQuery': 'jquery',
     Popper: ['popper.js', 'default'],
+    tinycolor: 'tinycolor2'
   })
 )
 
@@ -325,16 +326,16 @@ environment.loaders.append('expose', {
     test: require.resolve('jquery'),
     use: [
           { loader: 'expose-loader', options: '$' },
-          { loader: 'expose-loader', options: 'jQuery' }
+          { loader: 'expose-loader', options: 'jQuery' },
+          { loader: 'expose-loader', options: 'tinycolor' }
         ]
 })
       
-...
 module.exports = environment
 ```
 
 
-- Configurar la tubería de recursos (o sprockets) para cargar hojas de estilo y operar en paralelo con webpack agregando a `config/initalizers/assets.rb`:
+- Configura la tubería de recursos (o sprockets) para cargar hojas de estilo y operar en paralelo con webpack agregando a `config/initalizers/assets.rb`:
 ```ruby
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
 ```
@@ -363,7 +364,7 @@ Tras esto deberías poder precompilar recursos con:
 ```
 bin/rails assets:precompile --trace
 ```
-- El menú y los elementos generales del maquetado los pones en `app/views/layouts/application.html.erb` como se presenta a continuación (nota que usamos funciones auxiliares para generar HTML con clases de bootstrap, se pueden emplear también sus formas originales en inglés basadas en las de la gema twitter-bootstrap-rails):
+- El menú y los elementos generales del maquetado los pones en `app/views/layouts/application.html.erb` como se presenta a continuación (nota que usamos funciones auxiliares para generar HTML con clases de bootstrap, se pueden emplear también sus formas originales en inglés basadas en las de la gema `twitter-bootstrap-rails`):
 ```erb
 <% content_for :titulo do %>
     <%= Sip.titulo %>
@@ -372,31 +373,31 @@ bin/rails assets:precompile --trace
 <% content_for :menu do %>
    <%= grupo_menus do %>
     <% if !current_usuario.nil? %>
-        <%= opcion_menu "Actores sociales", sip.actoressociales_path, true %>
-        <%= opcion_menu "Personas", sip.personas_path, true %>
+        <%= opcion_menu "Actores sociales", sip.actoressociales_path %>
+        <%= opcion_menu "Personas", sip.personas_path %>
     <% end %>
   <% end %>
   <%= grupo_menus :empuja => :derecha do %>
     <%= opcion_menu "Documentacion", "https://github.com/pasosdeJesus/sip/tree/master/doc" %>
     <% if current_usuario %>
       <%= despliega_abajo "Administrar" do %>
-        <%= opcion_menu "Clave", main_app.editar_registro_usuario_path, false %>
-        <%= opcion_menu "Copia de respaldo cifrada", sip.respaldo7z_path, false %>
-        <%= opcion_menu "Usuarios", main_app.usuarios_path, false %>
-        <%= opcion_menu "Tablas Básicas", sip.tablasbasicas_path, false %>
-        <%= opcion_menu "Ayuda CA", sip.ayuda_controldeacceso_path, false %>
+        <%= opcion_menu "Clave", main_app.editar_registro_usuario_path, desplegable: true %>
+        <%= opcion_menu "Copia de respaldo cifrada", sip.respaldo7z_path, desplegable: true %>
+        <%= opcion_menu "Usuarios", main_app.usuarios_path, desplegable: true %>
+        <%= opcion_menu "Tablas Básicas", sip.tablasbasicas_path, desplegable: true %>
+        <%= opcion_menu "Ayuda CA", sip.ayuda_controldeacceso_path, desplegable: true %>
       <% end %>
-      <%= opcion_menu "Salir #{current_usuario.nusuario}", main_app.sign_out_path, true %>
+      <%= opcion_menu "Salir #{current_usuario.nusuario}", main_app.sign_out_path %>
     <% else %>
-      <%= opcion_menu "Acerca de", sip.acercade_path, true %>
-      <%= opcion_menu "Iniciar Sesión", main_app.new_usuario_session_path, true %>
+      <%= opcion_menu "Acerca de", sip.acercade_path %>
+      <%= opcion_menu "Iniciar Sesión", main_app.new_usuario_session_path %>
     <% end %>
   <% end %>
 <% end %>
 
 <% content_for :piedepagina do %>
-  <p><span class='derechos'><a href="http://www.pasosdejesus.org/dominio_publico_colombia.html">Dominio Público de acuerdo a Legislación Colombiana</a><br/>
-    Desarrollado por <a href="http://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>. 2019.
+  <p><span class='derechos'><a href="https://www.pasosdejesus.org/dominio_publico_colombia.html">Dominio Público de acuerdo a Legislación Colombiana</a><br/>
+    Desarrollado por <a href="https://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>. 2019.
   </span></p>
 <% end %>
 
