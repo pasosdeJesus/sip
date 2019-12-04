@@ -12,15 +12,15 @@ Sin embargo el diseño visual (o diseño gráfico) de una página web relaciona 
 
 Se refiere a la organización de los elementos visuales en una página.  
 
-Como se explica en [Layout] "a alto nivel, incluye decidir la ubicación de textos e imagenes ... requiere inteligencia, sentimiento y creatividad, y se informa de la cultura, de la psicologia y de lo que los autores del contenido y los editores deseam comunicar y enfatizar."
+Como se explica en [Layout] "a alto nivel, incluye decidir la ubicación de textos e imagenes ... requiere inteligencia, sentimiento y creatividad, y se informa de la cultura, de la psicologia y de lo que los autores del contenido y los editores desean comunicar y enfatizar."
 
-Nos parecen preferibles maquetaciones dinámicas (o adaptables, del inglés responsive), pues optimizan esfuerzo y recursos de diseñar maquetaciones estáticas para cada posible dispositivo donde se consultará la página web.
+Nos parecen preferibles maquetaciones dinámicas (o adaptables, del inglés _responsive_), pues optimizan esfuerzo y recursos comparando con diseñar maquetaciones estáticas para cada posible dispositivo donde se consultará la página web.
 
 Las decisiones suelen incluir (traducido de [Layout]):
 
 * Tamaño de las margenes
 * Tamaño y posición de imagenes y figuras
-* Decidir el número y tamaño de las columnas y los canales (del inglés gutters que es el espacio entre columnas)
+* Decidir el número y tamaño de las columnas y los canales (del inglés _gutters_ que es el espacio entre columnas)
 * Ubicación de espacio en blanco intencional
 * Uso de efectos especiales como superponer texto sobre una imagen, alrededores o instrusión, o sangrar una imagen sobre el margen de una página.
 
@@ -42,7 +42,7 @@ Es recomendable usar dos tipos de letra, uno serif (o con adornos como el tipo R
 
 ## Colores
 
-Es importante elegir una paleta de colores, tipicamente de 5 colores. La paleta puede partir de un color base (por ejemplo tomado del logo de la institución o de un tema del negocio)  y después emplear un esquema de colores (ver [EsqColor])  para completar la paleta.   Una herramienta en línea que facilita proponer un color base y usar alguno de los esquemas de colores (o regla de armonia de colores) es https://color.adobe.com/create  
+Es importante elegir una paleta de colores, tipicamente de 5 colores. La paleta puede partir de un color base (por ejemplo tomado del logo de la institución o de un tema del negocio)  y después emplear un esquema de colores (ver [EsqColor])  para completar la paleta.   Una herramienta en línea que facilita proponer un color base y usar alguno de los esquemas de colores (o regla de armonia de colores) para generar los otros 4 es https://color.adobe.com/create  
  
 
 ## Iconos
