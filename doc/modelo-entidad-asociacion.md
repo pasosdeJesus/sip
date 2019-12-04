@@ -20,4 +20,5 @@ Podríamos dividir las tablas en grandes bloques así (tener en cuenta que todas
 - Grupos de personas, actores sociales y relación de una persona con un actor social: grupoper, actorsocial, sectoractor, actorsocial_sectoractor, perfilactorsocial, actorsocial_persona.
 - Control de Acceso: usuario, grupo, grupo_usuario.
 - Anexos: anexo.
+- Tema: tema
 - Miscelanea: etiqueta, fuenteprensa, tdocumento (tipo de documento) y oficina.
