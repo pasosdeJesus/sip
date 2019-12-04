@@ -15,9 +15,14 @@ Esperamos inicialmente desarrolladores de habla hispana, por eso esperamos los i
 
 Si algún componente resulta muy popular como para ser usado por hablantes de otros idiomas, esperamos su ayuda para traducir a inglés.
 
+# Tablas y modelos en singular, controladores y vistas en plural
+
+En el mundo SQL una convencin usual es emplear en singular nombres de tablas, pero rails buscando dejar más legible algunos casos de uso ha propuesto emplear plural para nombres de tablas y modelos.
+
+Preferimos la convención tradicional de SQL y por lo mismo los modelos también deben especificarse en singular.
+
 # SQL
-* Tablas combinadas (Join tables), el nombre debe tener lo principal de las tablas que une, ordenadas alfabéticamente.
-* Los nombres de tablas en la base --a diferencia de la convención rails-- se dejan en singular.
+* Tablas combinadas (Join tables), el nombre debe tener lo principal de las tablas que une  ordenadas alfabéticamente (por ejemplo sip_grupo con sip_usuario sería sip_grupo_usuario).
 
 # Ruby
 
