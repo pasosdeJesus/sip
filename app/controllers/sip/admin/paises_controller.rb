@@ -30,6 +30,10 @@ module Sip
           :habilitado
         ]
       end
+
+      def atributos_form
+        atributos_transf_habilitado
+      end
      
       def genclase
         return 'M';

@@ -27,6 +27,10 @@ module Sip
         ]
       end
 
+      def atributos_form
+        atributos_transf_habilitado
+      end
+     
       def trelacion_params
         params.require(:trelacion).permit(*atributos_form)
       end
