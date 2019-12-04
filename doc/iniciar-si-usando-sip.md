@@ -59,7 +59,7 @@ gem 'bootstrap-datepicker-rails'# Control para elegir fechas
 
 gem 'cancancan'                  # Control de acceso
 
-gem 'coffee-rails'               # Coffescript si se quiere en app/assets/javascript
+gem 'coffee-rails'               # Aún parte del Javascript manejado por sprockets de sip está en Coffescript
 
 gem 'devise'                     # Autenticación
 
