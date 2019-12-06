@@ -3,7 +3,7 @@
     "@fortawesome/fontawesome-free": "^5.11.2",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "^4.0.7",
+    "@rails/webpacker": "^4.2.0",
     "bootstrap": "^4.3.1",
     "bootstrap-datepicker": "^1.9.0",
     "channels": "^0.0.4",
@@ -12,7 +12,6 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
     "jquery-ui": "^1.12.1",
-    "pick-a-color": "^1.2.3",
     "popper.js": "^1.16.0",
     "tinycolor2": "^1.4.1",
     "turbolinks": "^5.2.0"

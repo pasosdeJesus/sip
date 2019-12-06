@@ -709,7 +709,7 @@
   resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.0.1.tgz#5eb013bd7f18a1cc7c314602d3b4d68302e20b60"
   integrity sha512-IwUGMGke2u5W/hkJLOSU5xcQT3Y0gjIdiEsG27kHyLvsPOzdABKeAD8l37j6romhzeCmM56Wv52OGqSueUmyig==
 
-"@rails/webpacker@^4.0.7":
+"@rails/webpacker@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@rails/webpacker/-/webpacker-4.2.0.tgz#7cb40af589c3f38f9cc7847ee5f15e16d5d89d29"
   integrity sha512-ze0wrschNOjPtY9v0wJEesao2h8/G9MuSJG6T/hHoKxwW9IVrqhsXyi7NiObW3Rpp8yRrHYMXmuSXu9il7fgDw==
@@ -5049,11 +5049,6 @@ performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
-
-pick-a-color@^1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/pick-a-color/-/pick-a-color-1.2.3.tgz#223d06f629325f0ca55a92e5cbd8ac503902f554"
-  integrity sha1-Ij0G9ikyXwylWpLly9isUDkC9VQ=
 
 pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"

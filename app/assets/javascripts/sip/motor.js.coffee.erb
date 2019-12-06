@@ -666,9 +666,6 @@ if (typeof String.prototype.endsWith != 'function')
     $(ns).attr('data-toggle', 'tooltip')
   )
 
-  #Permite desplegar paleta de colores para estilos
-  $(".pick-a-color").pickAColor();
-
   # Pone colores de acuerdo al tema
   sip_ajax_recibe_json(root, 'temausuario', {}, sip_pone_tema)
 

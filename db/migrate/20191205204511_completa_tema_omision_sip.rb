@@ -3,7 +3,7 @@ class CompletaTemaOmisionSip < ActiveRecord::Migration[6.0]
     t = Sip::Tema.find(1)
     t.fondo = '#ffffff'
     t.color_fuente = '#000000'
-    t.nav_ini = '#266dd3'
+    t.nav_ini = '#95c4ff'
     t.nav_fin = '#266dd3'
     t.nav_fuente = '#ffffff'
     t.fondo_lista = '#95c4ff'

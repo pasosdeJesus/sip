@@ -68,7 +68,7 @@ module Sip
     self.paisomision = 170
     self.colorom_fondo = '#ffffff'
     self.colorom_color_fuente = '#000000'
-    self.colorom_nav_ini = '#266dd3'
+    self.colorom_nav_ini = '#95c4ff'
     self.colorom_nav_fin = '#266dd3'
     self.colorom_nav_fuente = '#ffffff'
     self.colorom_fondo_lista = '#95c4ff'
