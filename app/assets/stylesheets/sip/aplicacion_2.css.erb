@@ -24,8 +24,89 @@
  *= require pick-a-color/build/1.2.2/css/pick-a-color-1.2.2.min.css
  */
 
+/** Tema **/
 
-<% tema = ::Sip::TemasHelper.tema_usuario(defined?(current_usuario) ? current_usuario : nil) %>
+<% tema = ::Sip::TemasHelper.tema_usuario(defined?(current_usuario) ?  current_usuario : nil) %>
+
+
+.navbar-default .navbar-nav > li > a { 
+	color: <%= tema.nav_fuente %>; 
+}
+
+.navbar-default .navbar-brand { 
+	color: <%= tema.nav_fuente %>; 
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: <%= tema.nav_fuente %> !important; 
+}
+
+.navbar-light .navbar-brand {
+	color: <%= tema.nav_fuente %> !important; 
+}
+
+.navbar {
+	min-height: 30px;
+	background-image: linear-gradient(<%= tema.nav_ini %>, <%= tema.nav_fin %>);
+	background-repeat: repeat-x;
+	margin-bottom: 5px;
+}
+
+.table-striped > tbody > tr:nth-child(odd) {
+	background-color: <%= tema.fondo_lista %>;
+}
+
+.dropdown-menu {
+  background-color: <%= tema.nav_fin %>;
+}
+
+.dropdown-item {
+  color: <%= tema.nav_fuente %>;
+}
+
+.alert-success {
+  color: <%= tema.alerta_exito_fuente %>;
+  background-color: <%= tema.alerta_exito_fondo %>
+}
+
+.alert-danger {
+  color: <%= tema.alerta_problema_fuente %>;
+  background-color: <%= tema.alerta_problema_fondo %>;
+}
+
+.btn {
+  background-image: linear-gradient(to bottom, <%= tema.btn_accion_fondo_ini %>, <%= tema.btn_accion_fondo_fin %>);
+  color: <%= tema.btn_accion_fuente %>;
+}
+
+.btn-primary {
+  background-image: linear-gradient(to bottom, <%= tema.btn_primario_fondo_ini %>, <%= tema.btn_primario_fondo_fin %>);
+  color: <%= tema.btn_primario_fuente %>;
+}
+
+.btn-danger {
+  background-image: linear-gradient(to bottom, <%= tema.btn_peligro_fondo_ini %>, <%= tema.btn_peligro_fondo_fin %>);
+  color: <%= tema.btn_peligro_fuente %>;
+}
+
+body {
+  background-color: <%= tema.fondo %>;
+  color: <%=tema.color_fuente %>;
+}
+
+.form-control {
+  background-color: <%= tema.fondo %>;
+  color: <%=  tema.color_fuente %>;
+}
+
+table {
+  color: <%= tema.color_fuente %>;
+}
+
+
+
+/** Otros **/
+
 .form-horizontal .control-label {
 	padding-right: 20px;
 }
@@ -55,28 +136,7 @@
 	height: auto;
 }
 
-.navbar-default .navbar-nav > li > a { 
-	color: #<%= tema.nav_fuente %>; 
-}
 
-.navbar-default .navbar-brand { 
-	color: #<%= tema.nav_fuente %>; 
-}
-
-.navbar-light .navbar-nav .nav-link {
-	color: #<%= tema.nav_fuente %> !important; 
-}
-
-.navbar {
-	min-height: 30px;
-	background-image: linear-gradient(#<%= tema.nav_ini %>, #<%= tema.nav_fin %>);
-	background-repeat: repeat-x;
-	margin-bottom: 5px;
-}
-
-.table-striped > tbody > tr:nth-child(odd) {
-	background-color: #<%= tema.fondo_lista %>;
-}
 
 .master-container {
 	margin-top: 20px;

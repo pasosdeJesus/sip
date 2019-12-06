@@ -145,10 +145,25 @@ es:
         Tdocumento: Tipo de documento
         Tdocumentos: Tipos de documentos
       "sip/tema":
-        nav_ini: Color inicial de barra de navegación
-        nav_fin: Color final de barra de navegación
+        btn_primario_fondo_ini:  Color de arriba del fondo del botón primario
+        btn_primario_fondo_fin:  Color de abajo del fondo del botón primario
+        btn_primario_fuente: Color de letra de botón primario
+        btn_peligro_fondo_ini: Color de arriba del fondo del botón de peligro
+        btn_peligro_fondo_fin: Color de abajo del fondo del botón de peligro
+        btn_peligro_fuente: Color de letra de botón de peligro
+        btn_accion_fondo_ini: Color de arriba del fondo del botón de otras acciones
+        btn_accion_fondo_fin: Color de abajo del fondo del botón de otras acciones
+        btn_accion_fuente: Color de letra de botón de otras acciones
+        nav_ini: Color de arriba del fondo de la barra de navegación
+        nav_fin: Color de abajo del fondo de la barra de navegación
         nav_fuente: Color de fuente de barra de navegación
-        fondo_lista: Color de fondo para listas
+        fondo_lista: Segundo color para listas alternates
+        fondo:  Fondo
+        color_fuente: Color de fuente
+        alerta_exito_fondo: Fondo de alerta de éxito
+        alerta_exito_fuente: Color de letra de alerta de éxito
+        alerta_problema_fondo: Fondo de alerta de problema
+        alerta_problema_fuente: Color de letra de alerta de problema
       "sip/trelacion": 
         Trelacion: Tipo de relación familiar
         Trelaciones: Tipos de relaciones familiares
