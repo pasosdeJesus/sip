@@ -24,7 +24,7 @@ Preferimos la convención tradicional de SQL y por lo mismo los modelos también
 # SQL
 * Nombres de tablas en singular.
 * Palabras reservadas de SQL en mayúscula.
-* Identificadores que se introduzcan en minúsculas y cuando se componene de varias palabras, separarlas con  `_`.   Por ejemplo `causa_refugio_id` en lugar de `causaRefugio_id`
+* Identificadores  que se introduzcan en minúsculas y cuando sea nombre de una tabla que se componene de varias palabras, separarlas con  `_`.   Por ejemplo `causa_refugio_id` en lugar de `causaRefugio_id`
 * Tablas combinadas (Join tables), el nombre debe tener lo principal de las tablas que une  ordenadas alfabéticamente (por ejemplo sip_grupo con sip_usuario sería sip_grupo_usuario).
 
 # Ruby
