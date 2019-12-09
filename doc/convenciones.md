@@ -22,6 +22,9 @@ En el mundo SQL una convencin usual es emplear en singular nombres de tablas, pe
 Preferimos la convención tradicional de SQL y por lo mismo los modelos también deben especificarse en singular.
 
 # SQL
+* Nombres de tablas en singular.
+* Palabras reservadas de SQL en mayúscula.
+* Identificadores que se introduzcan en minúsculas y cuando se componene de varias palabras, separarlas con  `_`.   Por ejemplo `causa_refugio_id` en lugar de `causaRefugio_id`
 * Tablas combinadas (Join tables), el nombre debe tener lo principal de las tablas que une  ordenadas alfabéticamente (por ejemplo sip_grupo con sip_usuario sería sip_grupo_usuario).
 
 # Ruby
