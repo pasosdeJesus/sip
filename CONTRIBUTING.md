@@ -182,3 +182,4 @@ quedan al final de la pestaña de comentarios).
   ```
 	CONFIG_HOSTS=127.0.0.1 bin/rails test
   ```
+* Sigue las convenciones acordes al lenguaje de lo que estás aportando descritas en [Convenciones](https://github.com/pasosdeJesus/sip/blob/master/doc/convenciones.md)
