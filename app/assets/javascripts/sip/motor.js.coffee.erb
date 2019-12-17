@@ -597,6 +597,12 @@ if (typeof String.prototype.endsWith != 'function')
   $('.navbar-light .navbar-brand').attr('style', 'color: ' + tema.nav_fuente + ' !important')
   $('.dropdown-menu').css('background-color', tema.nav_fin)
   $('.dropdown-item').css('color', tema.nav_fuente)
+  $('.dropdown-item').hover(
+    ->
+      $(this).css('color', 'black')
+    ->
+      $(this).css('color', tema.nav_fuente)
+      )
   $('.alert-success').css('color', tema.alerta_exito_fuente)
   $('.alert-success').css('background-color', tema.alerta_exito_fondo)
   $('.alert-danger').css('color', tema.alerta_problema_fuente)
