@@ -22,10 +22,9 @@ En el mundo SQL una convencin usual es emplear en singular nombres de tablas, pe
 Preferimos la convención tradicional de SQL y por lo mismo los modelos también deben especificarse en singular.
 
 # SQL
-* Nombres de tablas en singular.
 * Palabras reservadas de SQL en mayúscula.
-* Identificadores  que se introduzcan en minúsculas y cuando sea nombre de una tabla que se componene de varias palabras, separarlas con  `_`.   Por ejemplo `causa_refugio_id` en lugar de `causaRefugio_id`
-* Tablas combinadas (Join tables), el nombre debe tener lo principal de las tablas que une  ordenadas alfabéticamente (por ejemplo sip_grupo con sip_usuario sería sip_grupo_usuario).
+* Nombres de tablas en singular y preferible que sean una sola palabra.  Si son de un motor comienzan con el nombre del motor y `_` por ejemplo `sip_grupo`.  La excpecion pueden ser tablas combinadas (Join tables), cuyo nombre se puede componer del nombre de las dos tablas que une  ordenadas alfabéticamente (por ejemplo `sip_grupo` con `sip_pais` sería `sip_grupo_usuario`).
+* SQL no es sensitivo a mayúsculas/minúsculas pero Ruby si lo es.  Sugerimos escribir nombres de campos que se compongan de varias palabras con capitalización camello pero empezando en minúscula, por ejemplo  colorFlotaSubitemFuente en lugar de color_flota_subitem_fuente pero los que sean llaves foraneas si mejor terminados en `_id`, por ejemplo `caso_id` 
 
 # Ruby
 
