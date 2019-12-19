@@ -23,8 +23,8 @@ Preferimos la convención tradicional de SQL y por lo mismo los modelos también
 
 # SQL
 * Palabras reservadas de SQL en mayúscula.
-* Nombres de tablas en singular y preferible que sean una sola palabra.  Si son de un motor comienzan con el nombre del motor y `_` por ejemplo `sip_grupo`.  La excpecion pueden ser tablas combinadas (Join tables), cuyo nombre se puede componer del nombre de las dos tablas que une  ordenadas alfabéticamente (por ejemplo `sip_grupo` con `sip_pais` sería `sip_grupo_usuario`).
-* SQL no es sensitivo a mayúsculas/minúsculas pero Ruby si lo es.  Sugerimos escribir nombres de campos que se compongan de varias palabras con capitalización camello pero empezando en minúscula, por ejemplo  colorFlotaSubitemFuente en lugar de color_flota_subitem_fuente pero los que sean llaves foraneas si mejor terminados en `_id`, por ejemplo `caso_id` 
+* Nombres de tablas en singular y preferible que sean una sola palabra.  Si son de un motor comienzan con el nombre del motor y `_` por ejemplo `sip_grupo`.  La excepcion pueden ser tablas combinadas (Join tables), cuyo nombre se puede componer del nombre de las dos tablas que une  ordenadas alfabéticamente (por ejemplo `sip_pais` con `sip_grupo` sería `sip_grupo_pais`).
+* SQL no es sensitivo a mayúsculas/minúsculas pero Ruby si lo es.  Sugerimos escribir nombres de campos que se compongan de varias palabras con capitalización camello pero empezando en minúscula, por ejemplo  `colorFlotaSubitemFuente` en lugar de `color_flota_subitem_fuente` pero los que sean llaves foraneas si mejor terminados en `_id`, por ejemplo `caso_id` 
 
 # Ruby
 
