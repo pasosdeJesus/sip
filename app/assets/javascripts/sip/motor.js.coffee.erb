@@ -599,9 +599,9 @@ if (typeof String.prototype.endsWith != 'function')
   $('.dropdown-item').css('color', tema.nav_fuente)
   $('.dropdown-item').hover(
     ->
-      $(this).css('color', 'black')
+      $(this).css({'color' : tema.color_flota_subitem_fuente, 'background-color': tema.color_flota_subitem_fondo})
     ->
-      $(this).css('color', tema.nav_fuente)
+      $(this).css({'color' : tema.nav_fuente, 'background-color': tema.nav_fin})
       )
   $('.alert-success').css('color', tema.alerta_exito_fuente)
   $('.alert-success').css('background-color', tema.alerta_exito_fondo)

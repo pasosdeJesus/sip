@@ -28,6 +28,8 @@ module Sip
               :nombre,
               :fondo,
               :color_fuente,
+              :color_flota_subitem_fuente,
+              :color_flota_subitem_fondo,
               :nav_ini,
               :nav_fin,
               :nav_fuente,
@@ -57,6 +59,8 @@ module Sip
             render json: {
               fondo: t.fondo,
               color_fuente: t.color_fuente,
+              color_flota_subitem_fuente: t.color_flota_subitem_fuente,
+              color_flota_subitem_fondo: t.color_flota_subitem_fondo,
               nav_ini: t.nav_ini,
               nav_fin: t.nav_fin,
               nav_fuente: t.nav_fuente,
