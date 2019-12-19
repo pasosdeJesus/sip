@@ -824,7 +824,11 @@ CREATE TABLE public.sip_tema (
     alerta_problema_fondo character varying(127),
     alerta_problema_fuente character varying(127),
     fondo character varying(127),
-    color_fuente character varying(127)
+    color_fuente character varying(127),
+    "colorFlotaSubitemFuente" character varying,
+    "colorFlotaSubitemFondo" character varying,
+    color_flota_subitem_fuente character varying,
+    color_flota_subitem_fondo character varying
 );
 
 
@@ -1420,11 +1424,27 @@ ALTER TABLE ONLY public.sip_actorsocial_persona
 
 
 --
+-- Name: sip_ubicacion fk_rails_4dd7a7f238; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_ubicacion
+    ADD CONSTRAINT fk_rails_4dd7a7f238 FOREIGN KEY (id_departamento) REFERENCES public.sip_departamento(id);
+
+
+--
 -- Name: sip_actorsocial fk_rails_5b21e3a2af; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.sip_actorsocial
     ADD CONSTRAINT fk_rails_5b21e3a2af FOREIGN KEY (grupoper_id) REFERENCES public.sip_grupoper(id);
+
+
+--
+-- Name: sip_ubicacion fk_rails_6ed05ed576; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_ubicacion
+    ADD CONSTRAINT fk_rails_6ed05ed576 FOREIGN KEY (id_pais) REFERENCES public.sip_pais(id);
 
 
 --
@@ -1473,6 +1493,22 @@ ALTER TABLE ONLY public.sip_departamento
 
 ALTER TABLE ONLY public.sip_actorsocial_sectoractor
     ADD CONSTRAINT fk_rails_9f61a364e0 FOREIGN KEY (sectoractor_id) REFERENCES public.sip_sectoractor(id);
+
+
+--
+-- Name: sip_ubicacion fk_rails_a1d509c79a; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_ubicacion
+    ADD CONSTRAINT fk_rails_a1d509c79a FOREIGN KEY (id_clase) REFERENCES public.sip_clase(id);
+
+
+--
+-- Name: sip_ubicacion fk_rails_b82283d945; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_ubicacion
+    ADD CONSTRAINT fk_rails_b82283d945 FOREIGN KEY (id_municipio) REFERENCES public.sip_municipio(id);
 
 
 --
@@ -1661,6 +1697,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190926104116'),
 ('20191205200007'),
 ('20191205202150'),
-('20191205204511');
+('20191205204511'),
+('20191218215710'),
+('20191219011910');
 
 
