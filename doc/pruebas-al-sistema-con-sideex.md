@@ -204,6 +204,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     Slow: Despacio
     
 * Luego abajo se ve un cuadro a la izquierda y otro a la derecha:
+  
   En el cuadro izquierdo vemos:
 
     ![img33](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img33.suit.png)
@@ -214,7 +215,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
      ![archivo](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/archivo.png)
     
-   . Al lado derecho aparece un signo mas (+) que al pulsar se abre una ventana
+   . Al lado derecho del icono de archivo aparece un signo mas (+) que al pulsar se abre una ventana
      emergente donde se puede escribir el nombre de la suit nueva.
 
     ![mas](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/mas.png)
@@ -226,16 +227,15 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
        nombre del primer caso de la suit.
        ![img5](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img5.png) 
 
-  . Al lado derecho hay otro cuadro que contiene en su parte superior 
+  . Al lado derecho hay otro cuadro que contiene en su parte superior:
+  
     COMMAND: Comando. Cuando graba un caso se verán debajo todos los 
     comandos utilizados en cada prueba.
     ![8opciones](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img8.png)
-
-  ![9comando]()
   
   .  TARGET: 
   
-  .  VALUE: Valor. Son valores que nosotros escribimos  
+  .  VALUE: Valor. Son valores que nosotros escribimos.  
      y en la parte inferior al hacer clic sobre una linea aparecen 
      todos los Command, Target y Value de esa linea. Y se pueden modificar.
      
