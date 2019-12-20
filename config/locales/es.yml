@@ -159,8 +159,8 @@ es:
         nav_fuente: Color de fuente de barra de navegación
         fondo_lista: Segundo color para listas alternates
         fondo:  Fondo
-        color_flota_subitem_fuente: Color flotante de fuente en subitems
-        color_flota_subitem_fondo: Color flotante de fondo en subitems
+        color_flota_subitem_fuente: Color de fuente de opción del menú sobre la que está el cursor (hover)
+        color_flota_subitem_fondo: Color de fondo de opción del menú sobre la que esté el cursor (hover)
         color_fuente: Color de fuente
         alerta_exito_fondo: Fondo de alerta de éxito
         alerta_exito_fuente: Color de letra de alerta de éxito
