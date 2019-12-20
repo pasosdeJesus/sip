@@ -398,6 +398,20 @@ Sideex cuando se enfoca la orden en un caso de prueba.
   
   
   ### 3.3.6 Algunos Comandos para el uso de Sideex2
+  
+* runScript  $('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select').
+Chosen es un plugin para jQuery que se utiliza en listas de opciones relativamente grande, los elementos select
+ofrece un control absoluto sobre su diseño (el aspecto de los elementos select no son totalmente controlables con CSS)
+Selección y deselección de opciones, Opción de búsqueda entre las opciones.
+Con el comando runScript y el target que es una linea de codigo o sea como una orden para ejecutar, lo que se hace es quitar el chosen a la lista de elementos para seleccionar.   
+  
+* runScript  $('[type=number]').removeAttr('type')
+  Hay campos que es obligatorio que el tipo de fuente sea numero y para quitar esta obligatoriead usamos esta linea de        comando.  
+* runScript  $('[type=email]').removeAttr('type')
+ Hay campos que es obligatorio que el tipo de fuente sea un correo y para quitar esta obligatoriead usamos esta linea de comando. 
+* pause   500 
+  Este comando lo usamos para esperar que la linea anterior se ejecute completamente, antes de empezar un nuevo comando.
+* 
   ### 3.3.7 Comandos de especial interes para crear cada caso de prueba
   
 * Es bueno utilizar ordenes assert (el más típico debe ser 
