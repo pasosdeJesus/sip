@@ -225,11 +225,6 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
        nombre del primer caso de la suit.
        ![img5](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img5.png) 
 
-  . Al lado derecho aparece un signo mas (+) que al las pulsar se puede dar 
-    nombre a la suit.
-
-    ![img66]()
-
   . Al lado derecho hay otro cuadro que contiene en su parte superior 
     COMMAND: Comando. Cuando graba un caso se verán debajo todos los 
     comandos utilizados en cada prueba.
