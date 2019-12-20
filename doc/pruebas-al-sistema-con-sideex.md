@@ -228,6 +228,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   . Al lado derecho hay otro cuadro que contiene en su parte superior 
     COMMAND: Comando. Cuando graba un caso se verán debajo todos los 
     comandos utilizados en cada prueba.
+    ![8opciones](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img8.png)
 
   ![9comando]()
   
