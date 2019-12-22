@@ -1,5 +1,5 @@
-| Características | Sideex 2 | Sideex 3|
-----------------------------------------
+| Característica | Sideex 2 | Sideex 3|
+|----------------|----------|---------|
 | Licenciamiento | Fuentes abiertas | Privativo |
 | Ejecución de varios sideex en paralelo | Posible en varias ventanas | NO es posible |
 | Edición de ordenes selenese | Pueden arrastrarse para intercambiar orden | No pueden arrastrarse |
