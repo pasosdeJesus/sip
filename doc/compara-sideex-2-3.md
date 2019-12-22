@@ -1,4 +1,4 @@
-Comparación entre Sideex 2 y Sideex 3
+# Comparación entre Sideex 2 y Sideex 3
 Agradecimientos a Paola Martínez por proveer documento base para este
 
 ![img1](https://github.com/pasosdeJesus/sip/raw/master/doc/sideex.img/sideex-Paola.png)
