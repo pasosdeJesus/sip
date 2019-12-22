@@ -51,19 +51,25 @@ con periodicidad semanal (o según el tipo de contrato).
 
 Cada vez que el equipo de desarrollo anuncia cambios, el equipo de pruebas:
 
-- Ejecuta las pruebas de regresión para verificar que siga funcionando lo que ya operaba, trascribir resultados a una hoja de cálculo donde se reportan las pruebas que fallan y como comentario el mensaje de error producido por sideex2. 
-- De las pruebas que fallan identifica si se trata de un problema en la prueba, un cambio en la aplicación que requiere un cambio en la prueba o una falla o cambio en la aplicación que debe reportarse al equipo de desarrollo.
-- Prueba las novedades buscando hacer fallar la aplicación.  Esto implica entender bien los cambios implementados (o pedir retroalimentacion al equipo de desarrollo hasta entender y poder realizar las pruebas).
+- Ejecuta las pruebas de regresión para verificar que siga funcionando lo que ya operaba 
+  y registra en una hoja de cálculo los resultados (particularmente las que fallan), dejando 
+  como comentario en la celda de la que falla el error producido. 
+- De las pruebas que fallan identifica si se trata de (1) un problema en la prueba, o (2) 
+  que un cambio en la aplicación exije un cambio en la prueba o (3) una falla en la aplicación 
+  en cuyo caso debe reportarse al equipo de desarrollo.
+- Prueba las novedades buscando hacer fallar la aplicación.  Esto implica entender bien los 
+  cambios implementados (o pedir retroalimentacion al equipo de desarrollo hasta entender y 
+  poder realizar las pruebas).
 - Reporta en Trello las fallas que encuentre (a más tardar  5 días después del anuncio
   del equipo de desarrollo, si los anuncios de desarrollo son semanales
   o si el tipo de contrato lo requiere hasta un día después).  
-- Cuando el equipo de desarrollo mueve una tarjetas de la columna haciendo a la columna hecho puede haber 
-  algunas tarjetas sin tiempo con un comentario y con fallas que no se han podido reproducir que el equipo de 
-  pruebas debe leer y revisar el comentario para ver si quedó alguna falla.
-- Amplia y actualiza pruebas del sistema en directorio ```test/sideex``` --el
-  equipo de pruebas tiene a su cargo mantener al día este directorio
-  con pruebas para sideex2 que puedan reproducirse y funcionar
-  (con excepciones que se mantienen en Trello)
+- Cuando el equipo de desarrollo mueve una tarjetas de la columna haciendo a la columna 
+  hecho puede quedar algunas tarjetas de fallas sin tiempo, que seguramente al abrirse
+  tendrán un comentario que el equipo de pruebas debe leer y revisar para 
+  mejorar el reporte de prueba o verificar si la falla persiste.
+- Amplia y actualiza pruebas del sistema en directorio ```test/sideex``` --el equipo de pruebas 
+  tiene a su cargo mantener al día este directorio con pruebas para sideex2 que puedan 
+  reproducirse y funcionar (con excepciones que se mantienen en Trello)
 
 ## 3. Pruebas del sistema
 
@@ -72,16 +78,11 @@ Cada vez que el equipo de desarrollo anuncia cambios, el equipo de pruebas:
 a. Clonar o actualizar el repositorio que se va a probar.  
    Esto en particular actualizará el directorio `test/sideex` donde deben 
    estar casos de pruebas para las diversas funcionalidades del sistema
-   con títulos que sugieran lo que se prueba en una suit de pruebas 
-con el sistema, rol del usuario, numeración con dos digitos y tema de prueba  
-  ** (`lac-01-admin-tablas-basicas.sideex`) que agrupa todos los  casos de prueba.  **
-   **Cuando tenga completas tablas, iniciar `lac-02-admin-casos.sideex` y así**
-   **sucesivamente.**
-    **lac-03-⁠admin-usuarios**
-
-
-   Las pruebas como un usuarios de roles diferentes al administrador
-   se nombran con el rol que prueba por ejemplo `lac-02-⁠analista-casos.sideex`.
+   con títulos que sugieran lo que se prueba en una suit de pruebas. 
+   Se recomienda que el título se componga de: (1) sistema, (2) consecutivo de dos dígitos
+   (3) rol del usuario con el que se ejecuta la prueba, 
+   (4) tema de prueba.  Por ejemplo `lac-01-admin-tablas-basicas.sideex`, 
+   `lac-02-⁠admin-usuarios`, `lac-03-⁠analista-casos.sideex`.
 
 b.  Empleando Chrome con sideex2 instalado, ingresar a la aplicación en
     el sitio de desarrollo (o de ensayo) con un usuario y contraseña acorde 
@@ -107,8 +108,8 @@ c.4. Si se detienen las pruebas pero no por fallas en la aplicación sino en la
    pero sin errores, se mejora la prueba de sideex2 para que pase 
    y se guarda y actualizan pruebas en github.
 
-c.5. En la tarjeta P-1 del tablero Trello agregar un comentario  del estilo
-   "Ejecutada suit de pruebas. 2 errores"
+c.5. Agregar una tarjet P-233 (siguiendo consecutivo de otras tarjetas recientes) con
+   un título de la forma  "Ejecutada suit de pruebas. 2 errores"
    
 c.6 Si hay dificultades que no logran superarse para describir un caso de prueba
     con sideex2 guardar el caso de prueba en un solo archivo en la carpeta
@@ -123,15 +124,14 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
    guardar lo que se prueba.  Poner nombre o renombrar para que el nombre 
    corresponda a la funcionalidad que se prueba.   
 
-2. Referenciar en la tarjeta P-1 del tablero de Trello la novedad o falla 
-   que está probando, en un comentario con la referencia a la novedad o
-   falla probada (e.g Probadas F-12, R-16).
+2. Agregar en Trello una tarjeta de la forma P-234 con la descripción de las
+   novedades o fallas que se probaron (e.g Probadas F-12, R-16).
 
 3. Si una falla supuestamente resuelta sigue fallando, examinar posibles
    comentarios del equipo de desarrollo en la tarjeta y si es el caso devolver 
    la tarjeta de la columna Hecho a Haciendo, agregar comentario, pantallazo y archivo
    para sideex2 para reproducirlo (los casos de pruebas que fallan por 
-   dificultades con sideex 2 almacenar en `test/sideex/con_error`.
+   dificultades con sideex 2 almacenar en `test/sideex/con_error`).
 
 4. Si la prueba pasa agregar la prueba a la suit de pruebas con un nombre
    acorde a la prueba, agrega el archivo al repositorio y actualizar en github.
@@ -394,26 +394,27 @@ Sideex cuando se enfoca la orden en un caso de prueba.
   crearon los iniciales --digamos un usuario)
   
   
-  ### 3.3.6 Algunos Comandos para el uso de Sideex2
-  
-* runScript  $('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select').
-Chosen es un plugin para jQuery que se utiliza en listas de opciones relativamente grande, los elementos select
-ofrece un control absoluto sobre su diseño (el aspecto de los elementos select no son totalmente controlables con CSS)
-Selección y deselección de opciones, Opción de búsqueda entre las opciones.
-Con el comando runScript y el target que es una linea de codigo o sea como una orden para ejecutar, lo que se hace es quitar el chosen a la lista de elementos para seleccionar.   
-  
-* runScript  $('[type=number]').removeAttr('type')
-  Hay campos que es obligatorio que el tipo de fuente sea numero y para quitar esta obligatoriead usamos esta linea de        comando.  
-* runScript  $('[type=email]').removeAttr('type')
- Hay campos que es obligatorio que el tipo de fuente sea un correo y para quitar esta obligatoriead usamos esta linea de comando. 
-* pause   500 
-  Este comando lo usamos para esperar que la linea anterior se ejecute completamente, antes de empezar un nuevo comando.
-* 
-  ### 3.3.7 Comandos de especial interes para crear cada caso de prueba
-  
-* Es bueno utilizar ordenes assert (el más típico debe ser 
-  ```assertText```) que verifiquen que en un momento dado de la prueba 
-  el estado de la aplicación sea el esperado sin lugar a dudas.
+### 3.3.6 Sobrellevando fallas de Sideex 2
+
+* Sideex 2 no logra elegir opciones en cuadros de selección que emplean el plugin chosen.  chosen es un plugin para jquery que mejora la apariencia y usabilidad de los cuadros de selección.  Para que sideex pueda elegir opciones de este tipo de cuadroes es encesario primero quitar el plugin chosen de los cuadros de selección donde esté.  Se hace con la orden runScript y 
+como target usar:
+```
+$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')
+```
+* Sideex 2 no logra escribir en campos abiertos con tipo, por ejemplo numérico o de tipo email.  Para lograr que Sideex-2 escriba en estos, primero debe eliminarse el tipo con runScript y un target como:
+```
+$('[type=number]').removeAttr('type')
+```
+o 
+```
+$('[type=email]').removeAttr('type')
+```
+
+### 3.3.7 Comandos de especial interes para crear cada caso de prueba
+
+* Para sobrellevar problemas de velocidad de Internet o de la aplicación y para 
+  verificar que la aplicación está en el estado que se espera al comienzo, durante y 
+  al final de una prueba debe emplearse assert (el más típico es ```assertText```). 
 * Aunque sideex 2 se inspiró en Selenium-IDE, en general no requiere ordenes que 
   esperen la presencia de un element como ```waitForElementPresent```
 * ```ChooseOkOnNextConfirmation``` es un comando que se utiliza antes de 
