@@ -18,6 +18,9 @@ Pasos de Jesús usando sideex2 (http://sideex.org/), suponiendo que las fuentes 
 aplicación (y de las pruebas) se almacenan en un repositorio de github (https://github.com)
 y que el seguimiento al desarrollo se realiza en un tablero Trello (https://trello.com).
 
+Aunque existe Sideex 3, preferimos usar Sideex 2 porque es de fuentes abiertas, ver [Comparación](https://github.com/pasosdeJesus/sip/blob/master/doc/compara-sideex-2-3.md).
+
+
 ## 1. Tablero Trello
 
 El tablero Trello suele tener 5 columnas:
