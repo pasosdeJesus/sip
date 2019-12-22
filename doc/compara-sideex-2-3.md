@@ -10,4 +10,4 @@
 | **Estabilidad** | Buena | La versión beta suele cerrarse |
 
 
-![img1](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/sideex-Paola.png)
+![img1](https://github.com/pasosdeJesus/sip/raw/master/doc/sideex.img/sideex-Paola.png)
