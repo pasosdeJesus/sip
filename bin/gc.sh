@@ -1,16 +1,12 @@
 #!/bin/sh
 # Revisa errore comunes, ejecuta pruebas de regresión y del sistema y envia a github 
 
-function cableado {
-	for n in $*; do 
-		echo "Revisando $n"
-		grep "^ *gem *.${n}.*, *path:" Gemfile > /dev/null 2> /dev/null
-		if (test "$?" = "0") then {
-			echo "Gemfile incluye un ${n} cableado al sistema de archivos"
-			exit 1;
-		} fi;
-	done
-}
+
+s=`grep -B 1 "^ *path" Gemfile 2> /dev/null`
+if (test "$?" = "0") then {
+  echo "Gemfile incluye gema cableada al sistema de archivos ($s)"
+  exit 1;
+} fi;
 
 grep "^ *gem *.debugger*" Gemfile > /dev/null 2> /dev/null
 if (test "$?" = "0") then {
