@@ -171,56 +171,51 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   
 #### 3.3.2 Estructura y contenido de la ventana de Sideex2 
   
-* En la parte superior vemos varias opciones:
+* En la parte superior vemos varios botones:
 
   ![8opciones](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img8.png)
 
-    * Record: Grabar. Pulse Record para empezar a grabar la secuencia de 
+    * `Record`: Grabar. Pulse Record para empezar a grabar la secuencia de 
     comandos de una prueba 
   
-    * PlayThisCase: Correr este caso. Se puede correr un solo caso de 
+    * `PlayThisCase`: Correr este caso. Se puede correr un solo caso de 
     una suit. Pulse sobre el caso que quiere correr, se hará visible 
     y luego Pulse en PlayThisCase
   
-    * PlayThisSuite: Correr esta suit. Pulse sobre PlayThisSuite 
+    * `PlayThisSuite`: Correr esta suit. Pulse sobre PlayThisSuite 
     para correr toda la suit con que esta trabajando.
   
-    * PlayAllSuites: Correr todas las suits. Pulse sobre PlayAllSuites y 
+    * `PlayAllSuites`: Correr todas las suits. Pulse sobre PlayAllSuites y 
     podrá correr todas las suit que halla abierto en el panel.
   
-    * Pause: Pausa. Sirve para detener una prueba en determinado momento, 
+    * `Pause`: Pausa. Sirve para detener una prueba en determinado momento, 
     luego pulse de nuevo y se puede continuar. 
     
-* Debajo de Record hay una barra de desplazamiento que podemos usar para
+* Debajo de `Record` hay una barra de desplazamiento que podemos usar para
     cambiar la velocidad de las pruebas a nuestra elección.
     
      ![img55](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img55.velocidad.png)
     
-    * Fast: Rápido
+    * `Fast`: Rápido
     
-    * Slow: Despacio
+    * `Slow`: Despacio
     
-* Luego abajo se ve un cuadro a la izquierda y otro a la derecha:
-  
-  En el cuadro izquierdo vemos:
+* En el panel titulado  `TEST SUITES` (conjuntos de pruebas) se verán las suits que haya cargado 
+  o creado y dentro de cada suit los casos de prueba que la conforman:
 
     ![img33](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img33.suit.png)
-
-    * TEST SUITES: Conjunto de pruebas
-  
-    * Un icono de archivo que al pulsar abre las pruebas que hemos guardado anteriormente. 
-
+    
+    * A la derecha del título `TEST SUITES` verá un icono de archivo que permite cargar
+      pruebas almacenadas previamente.
      ![archivo](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/archivo.png)
     
-    * Al lado derecho del icono de archivo aparece un signo mas (+) que al pulsar se abre una ventana
-     emergente donde se puede escribir el nombre de la suit nueva.
-
-    ![mas](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/mas.png)
-     
-    ![img4](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img4.png) 
+    * Más a la derecha verá un signo mas (+) para crear una nueva suit de pruebas, al pulsarlo
+      se abrirá una ventana emergente donde se puede escribir el nombre de la suit nueva.
+     ![img4](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img4.png) 
     
-    * Pulse en  el lado derecho del nombre de la suit creada sobre el signo mas (+) y de el 
-      nombre del primer caso de la suit.
+    * Al crear o cargar una suit de prueba, cuando pase el curso sobre esta, 
+      verá a la izquerda del título un icono para guardar la suit y a la la derecha un singo más (+)
+      que permite agregar un nuevo caso de prueba a esa suit.
       ![img5](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img5.png) 
     
   Al lado derecho hay una tabla de ordenes.  Cada fila tendrá una orden completa, las columnas son:
@@ -240,87 +235,79 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     * En el campo `Target`  se ve una flecha, si hace clic sobre la flecha se presentará  
       una lista de selectores  que se pueden utilizar de ser necesario.
      ![10flecha2](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img10.png)
-        * En la misma fila de target hay un boton `SELECT` (seleccionar) que puede utilizar para 
+        * En la misma fila de target hay un boton `Select` (seleccionar) que puede utilizar para 
           elegir visualmente un selector en la ventana del navegador donde corre la prueba.
-        * En la misma fila hay un botón `FIND` (encontrar) que resaltará en la ventana del 
+        * En la misma fila hay un botón `Find` (encontrar) que resaltará en la ventana del 
           navegador donde corre la prueba el elemento al que corresponde el selector
     * En el campo `Value` podrá digitar el valor que pudiera requerir la orden.
 
 * En la parte inferior hay otro panel con: 
 
-    *  Log:  Que es una bitácora de la ejecución de la prueba. La ejecución de cada orden dejará allí un rastro y si ocurre un error quedará en rojo.
+    *  `Log`:  Que es una bitácora de la ejecución de la prueba. La ejecución de cada orden dejará allí un rastro y si ocurre un error quedará en rojo.
     
-    * Reference : Presenta el manual correspondiente a la orden selenese elegida en la tabla de ordenes.
+    * `Reference`: Presenta el manual correspondiente a la orden selenese elegida en la tabla de ordenes.
     
-    * Save: Para guardar la bitácora
+    * `Save`: Para guardar la bitácora
     
-    * Clear: Para limpiara la bitácora.
+    * `Clear`: Para limpiara la bitácora.
     
 #### 3.3.3 Empezar pruebas con Sideex2
 
 * Para empezar a hacer pruebas con sideex2
-    . Inicie firefox/ Chrome
+    * Inicie Chrome
     
-    . Abra la página en que se va a hacer las pruebas.
+    * Abra la página en que se va a hacer las pruebas.
     
-    . Pulse sobre el icono de sideex2 en la barra de herramientas del navegador  
-    
+    * Pulse sobre el icono de sideex2 en la barra de herramientas del navegador  
      ![img3](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img3.png) 
      
-    . Pulse en el signo mas (+) del cuadro de TEST SUITES a la izquierda del panel y dele 
-    nombre a la suit y aceptar.
-       ![img4](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img4.png) 
+    * Pulse en el signo mas (+) del cuadro de TEST SUITES a la izquierda del panel y dele 
+      nombre a la suit y aceptar.
+      [img4](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img4.png) 
     
-   . Pulse en  el lado derecho del nombre de la suit creada sobre el signo mas (+) y de el 
-       nombre del primer caso de la suit.
-       ![img5](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img5.png) 
+    * Pulse en  el lado derecho del nombre de la suit creada sobre el signo mas (+) y de el 
+      nombre del primer caso de la suit.
+      ![img5](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img5.png) 
    
-   . Pulse en el botón Record(grabar) para iniciar las operaciones de grabación 
+    * Pulse en el botón Record(grabar) para iniciar las operaciones de grabación 
 
-   * Pulse con el botón derecho en el nombre de la suit de pruebas y 
-     le da varias opciones guardar, abrir, cerrar, renombrar, añadir un nuevo caso 
-     a la suit de casos de pruebas.
-
- ![img6](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img6.png) 
+    * Pulse con el botón derecho en el nombre de la suit de pruebas y 
+      le da varias opciones guardar, abrir, cerrar, renombrar, añadir un nuevo caso 
+      a la suit de casos de pruebas.
+      ![img6](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img6.png) 
  
 * Al pasar el mouse al lado izquierdo del nombre aparece una flecha hacia abajo 
   y haga clic para guardar la suit de pruebas.
-  
-  ![]()
-
   ![img7](https://github.com/BlancaInesAcosta/sip/blob/master/doc/img/img7.png)
 
 * Todos los casos de una suit de pruebas se guardarán como un único archivo 
   de suit de pruebas. 
 * En la parte inferior aparecen las palabras 
- 
-  . RUN  que al correr la suit hace conteo de los casos que se corren correctamente. 
-  
-  . FAILURES que cuenta el numero de casos que fallan.
+    * `Run`  que al correr la suit hace conteo de los casos que se corren correctamente. 
+    * `FAILURES` que cuenta el numero de casos que fallan.
 
 * En la parte superior vemos varias opciones:
 
   ![8opciones](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img8.png)
 
-  . Record: Grabar. Pulse Record para empezar a grabar la secuencia de 
+    * Record: Grabar. Pulse Record para empezar a grabar la secuencia de 
     comandos de una prueba 
   
-  . PlayThisCase: Correr este caso. Se puede correr un solo caso de 
+    * PlayThisCase: Correr este caso. Se puede correr un solo caso de 
     una suit. Pulse sobre el caso que quiere correr, se hará visible 
     y luego Pulse en PlayThisCase
   
-  . PlayThisSuite: Correr esta suit. Pulse sobre PlayThisSuite 
+    * PlayThisSuite: Correr esta suit. Pulse sobre PlayThisSuite 
     para correr toda la suit con que esta trabajando.
   
-  . PlayAllSuites: Correr todas las suits. Pulse sobre PlayAllSuites y 
+   * PlayAllSuites: Correr todas las suits. Pulse sobre PlayAllSuites y 
     podrá correr todas las suit que halla abierto en el panel.
   
-  . Pause: Pausa. Sirve para detener una prueba en determinado momento, 
+   * Pause: Pausa. Sirve para detener una prueba en determinado momento, 
     luego Pulse de nuevo y se puede continuar. 
     Luego vera dos cuadros grandes:
     A la izquierda se ve :
-
-  ![6tessuit]()
+    ![6tessuit]()
 
   . TEST SUITES
     Al lado de las palabras TEST SUITES se ve un icono de archivo y que 
