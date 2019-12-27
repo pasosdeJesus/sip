@@ -171,7 +171,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   
 #### 3.3.2 Estructura y contenido de la ventana de Sideex2 
   
-* En la parte superior vemos varios botones:
+* En la parte superior vemos varios _botones principales_:
 
   ![8opciones](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img8.png)
 
@@ -191,8 +191,8 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     * `Pause`: Pausa. Sirve para detener una prueba en determinado momento, 
     luego pulse de nuevo y se puede continuar. 
     
-* Debajo de `Record` hay una barra de desplazamiento que podemos usar para
-    cambiar la velocidad de las pruebas a nuestra elección.
+* Debajo de `Record` hay una _barra de velocidad_ que podemos usar para
+    cambiar la velocidad de ejecución de las pruebas a nuestra elección.
     
      ![img55](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img55.velocidad.png)
     
@@ -200,7 +200,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     
     * `Slow`: Despacio
     
-* En el panel titulado  `TEST SUITES` (conjuntos de pruebas) se verán las suits que haya cargado 
+* En el panel titulado  `TEST SUITES` _suits de pruebas_ se verán las suits que haya cargado 
   o creado y dentro de cada suit los casos de prueba que la conforman:
 
     ![img33](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img33.suit.png)
@@ -219,34 +219,44 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
       ![img5](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img5.png)
       
         * Al pulsar con el botón derecho sobre el nombre de una suit de pruebas, verá
-          un menú contextual con las opciones: guardar, abrir, cerrar, renombrar y añadir un nuevo caso 
-          a la suit de casos de pruebas.
+          un menú contextual con las opciones: Abrir suit de pruebas, Agregar nueva suit de pruebas, 
+          Guardar suit de pruebas como, Cerrar suit de pruebas, Agregar nuevo caso de prueba y 
+          renombrar suit de pruebas
           ![img6](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img6.png) 
-    
-  Al lado derecho hay una tabla de ordenes.  Cada fila tendrá una orden completa, las columnas son:
+          
+       * Al pulsar con el botón derecho sobre un caso de prueba, verá un menú contextual
+         con opciones Agregar Nuevo Caso de Prueba, Eliminar Caso de Prueba y Renombrar Caso de Prueba.
+         
+  * Al lado derecho hay una _tabla de ordenes_ donde se presentarán las ordenes que componene el caso
+    de prueba que se haya elegido en el panel con la suit de pruebas. 
+    Cada fila de esta fila tendrá una orden completa, las columnas son:
   
-    * `Command`: Orden. En esta fila vera las ordenes del caso de prueba.
+    * `Command`: Orden selenese. En esta fila vera las ordenes del caso de prueba.
       ![8opciones](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img8.png)
   
     * `Target`: Objetivo. En esta columna verá selectores sobre los que se aplica cada orden.  
   
     * `Value`: Valor. En esta columna se ven valores para algunas ordenes que lo requieren.
     
-* Debajo de la tabla de ordenes, hay un panel para ver y editar en detalle una orden completa, 
-  i.e la orden selenese, el selector y el valor.
+    * Debajo pero pegado a la tabla de ordenes, hay un panel para ver y editar en detalle una orden completa, 
+      i.e la orden selenese, el selector y el valor.
     
-    * En el campo `Command` podrá digitar la orden selenese 
+        * En el campo `Command` podrá digitar la orden selenese 
     
-    * En el campo `Target`  se ve una flecha, si hace clic sobre la flecha se presentará  
-      una lista de selectores  que se pueden utilizar de ser necesario.
-     ![10flecha2](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img10.png)
-        * En la misma fila de target hay un boton `Select` (seleccionar) que puede utilizar para 
-          elegir visualmente un selector en la ventana del navegador donde corre la prueba.
-        * En la misma fila hay un botón `Find` (encontrar) que resaltará en la ventana del 
-          navegador donde corre la prueba el elemento al que corresponde el selector
-    * En el campo `Value` podrá digitar el valor que pudiera requerir la orden.
+        * En el campo `Target`  se ve una flecha, si hace clic sobre la flecha se presentará  
+          una lista de selectores  que se pueden utilizar de ser necesario.
+         ![10flecha2](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img10.png)
+            * En la misma fila de target hay un boton `Select` (seleccionar) que puede utilizar para 
+              elegir visualmente un selector en la ventana del navegador donde corre la prueba.
+            * En la misma fila hay un botón `Find` (encontrar) que resaltará en la ventana del 
+              navegador donde corre la prueba el elemento al que corresponde el selector
+        * En el campo `Value` podrá digitar el valor que pudiera requerir la orden.
 
-* En la parte inferior hay otro panel con: 
+* Debajo del panel de suits de pruebas, hay un panel con _Resultados agregados de la última ejecución_:
+    * `Run`  conteo de los casos que se corren correctamente. 
+    * `Failures` conteo del numero de casos que fallan.
+
+* En la parte inferior hay otro panel _bitácora y referencia_ con: 
 
     *  `Log`:  Que es una bitácora de la ejecución de la prueba. La ejecución de cada orden dejará allí un rastro y si ocurre un error quedará en rojo.
     
@@ -256,101 +266,12 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     
     * `Clear`: Para limpiara la bitácora.
     
-#### 3.3.3 Empezar pruebas con Sideex2
+#### 3.3.3 ¿Qué es un caso de prueba?
 
-* Para empezar a hacer pruebas con sideex2
-    * Inicie Chrome
-    
-    * Abra la página en que se va a hacer las pruebas.
-    
-    * Pulse sobre el icono de sideex2 en la barra de herramientas del navegador  
-     ![img3](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img3.png) 
-     
-    * Pulse en el signo mas (+) del cuadro de TEST SUITES a la izquierda del panel y dele 
-      nombre a la suit y aceptar.
-      [img4](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img4.png) 
-    
-    * Pulse en  el lado derecho del nombre de la suit creada sobre el signo mas (+) y de el 
-      nombre del primer caso de la suit.
-      ![img5](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img5.png) 
-   
-    * Pulse en el botón Record(grabar) para iniciar las operaciones de grabación 
+Una secuencia de acciones repetibles en la página que se prueba, que se esperan den un resultado.
+El caso de prueba falla si tras realizar la secuencia de acciones no se obtiene el resultado esperado.
 
-    
- 
-* Al pasar el mouse al lado izquierdo del nombre aparece una flecha hacia abajo 
-  y haga clic para guardar la suit de pruebas.
-  ![img7](https://github.com/BlancaInesAcosta/sip/blob/master/doc/img/img7.png)
-
-* Todos los casos de una suit de pruebas se guardarán como un único archivo 
-  de suit de pruebas. 
-* En la parte inferior aparecen las palabras 
-    * `Run`  que al correr la suit hace conteo de los casos que se corren correctamente. 
-    * `FAILURES` que cuenta el numero de casos que fallan.
-
-* En la parte superior vemos varias opciones:
-
-  ![8opciones](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img8.png)
-
-    * Record: Grabar. Pulse Record para empezar a grabar la secuencia de 
-    comandos de una prueba 
-  
-    * PlayThisCase: Correr este caso. Se puede correr un solo caso de 
-    una suit. Pulse sobre el caso que quiere correr, se hará visible 
-    y luego Pulse en PlayThisCase
-  
-    * PlayThisSuite: Correr esta suit. Pulse sobre PlayThisSuite 
-    para correr toda la suit con que esta trabajando.
-  
-   * PlayAllSuites: Correr todas las suits. Pulse sobre PlayAllSuites y 
-    podrá correr todas las suit que halla abierto en el panel.
-  
-   * Pause: Pausa. Sirve para detener una prueba en determinado momento, 
-    luego Pulse de nuevo y se puede continuar. 
-    Luego vera dos cuadros grandes:
-    A la izquierda se ve :
-    ![6tessuit]()
-
-  . TEST SUITES
-    Al lado de las palabras TEST SUITES se ve un icono de archivo y que 
-    al pulsar abre las pruebas que hemos guardado anteriormente. 
-
-  ![7archivo ]()
-
-  . Al lado derecho aparece un signo mas (+) que al las pulsar se puede dar 
-    nombre a la suit.
-
-    ![8mas]()
-
-  . Al lado derecho hay otro cuadro que contiene en su parte superior 
-    COMMAND: Comando. Cuando graba un caso se verán debajo todos los 
-    comandos utilizados en cada prueba.
-
-  ![9comando]()
-  
-  .  TARGET: 
-  
-  .  VALUE: Valor. Son valores que nosotros escribimos  
-     y en la parte inferior al hacer clic sobre una linea aparecen 
-     todos los Command, Target y Value de esa linea. Y se pueden modificar.
-     
-  .  En Target  se ve una flecha, si hace clic sobre la flecha le muestra 
-     una lista de selectores  que se pueden utilizar de ser necesario.
-
-  ![10flecha2]()
-
-  .  Tiene un boton con la opción SELECT (seleccionar) que la puede utilizar para 
-     insertar una linea nueva en medio de un prueba. Haga clic sobre 
-  la linea, haga clic en Record, haga clic en select, haga clic en 
-  Y también tiene la opción find
-  Value: 
-  Otro cuadro en la parte inferior 
-  . Log :
-  . Reference :
-  
-#### 3.3.4 Como se construye casos de prueba
-
-Un caso de pruebas en sideex2 consta de una serie de ordenes, 
+Un caso de pruebas en sideex2 consta de una serie de ordenes,  
 cada orden puede tener cero, uno o dos argumentos.  El primer 
 argumento cuando existe típicamente es un selector del elemento al que se aplica 
 la orden y el segundo cuando existe es un valor.  Por ejemplo la orden ```clickAt``` 
@@ -363,59 +284,69 @@ Al guardar un caso de prueba, se almacenan las ordenes en un formato de tabla
 HTML, donde cada fila es una orden y con 3 columnas: la primera para el nombre
 del comando, la segunda para el selector y la tercera para el valor.
 
-#### 3.3.5 Pautas para crear cada caso de prueba
+
+#### 3.3.4 Hacer un primer caso de prueba con Sideex2
+
+* Inicie Chrome
+    
+* Abra la página que va a probar
+
+* Pulse sobre el icono de sideex2 en la barra de herramientas del navegador  
+  ![img3](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img3.png) 
+     
+* Pulse en el signo mas (+) del cuadro de TEST SUITES a la izquierda del panel y digite 
+  el nombre da la suit que creará y pulse Aceptar.
+  [img4](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img4.png) 
+    
+* Pulse en  el lado derecho del nombre de la suit creada sobre el signo mas (+) y de el 
+  nombre del primer caso de prueba de la suit.
+  ![img5](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img5.png) 
+   
+* Pulse en el botón `Record` para iniciar las operaciones de grabación
+    
+* Opere en la página ralizando las operaciones de su caso de prueba
+    
+* Cuando termine de operar, vuelva a la ventan de sideex y pulse el botón `Stop`
+    
+* Revise una a una las ordenes grabadas, elimine las redundantes, mejore selectores
+  y valores. Asegurese de entender lo que cada una hace para que sean fiel reflejo del caso
+  de prueba que está creando.
 
 Las ayudas que se presentan a continuación son mínimas, se recomienda consultar
-la ayuda de sideex (botón Help o disponible en 
-<http://www.sideex.org/>), así como la especificación de 
-cada orden disponible en la pestaña Reference de la interfaz de
-Sideex cuando se enfoca la orden en un caso de prueba.
+la ayuda de sideex (botón Help o disponible en  <http://www.sideex.org/>), 
+así como la especificación de cada orden disponible en la pestaña Reference de la interfaz de
+Sideex cuando se da el foco a la orden en un caso de prueba.
+
+
+#### 3.3.5 Pautas para crear casos de prueba
 
 * En general suponer que ya se ha iniciado sesión en la aplicación con la cuenta
   administrativa de prueba y que está en la pantalla inicial de la aplicación. 
+
 * De requerirse crear nuevos elementos pero con nombres que no puedan interferir
   con una aplicación de producción (en caso de ejecutarse sobre una).   Por 
   ejemplo nombres AAAA.
+
 * En general cada caso de prueba debe eliminar los elementos que cree (excepción 
   si la suit de pruebas completa elimina con casos de prueba finales lo que 
   crearon los iniciales --digamos un usuario)
   
-  
-#### 3.3.6 Sobrellevar fallas de Sideex 2
-
-* Sideex 2 no logra elegir opciones en cuadros de selección que emplean el plugin chosen.  chosen es un plugin para jquery que mejora la apariencia y usabilidad de los cuadros de selección.  Para que sideex pueda elegir opciones de este tipo de cuadroes es encesario primero quitar el plugin chosen de los cuadros de selección donde esté.  Se hace con la orden runScript y 
-como target usar:
-```
-$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')
-```
-* Sideex 2 no logra escribir en campos abiertos con tipo, por ejemplo numérico o de tipo email.  En pruebas sideex esto se evidencia cuando al teclear (type) en un campo abierto sale el error "Cannot set selection end" y puede confirmarse examinando el HTML y revisando si el elemento `input` tiene un atributo `type=number` o `type=email`. Para lograr que Sideex-2 escriba en estos campos, primero debe eliminarse el tipo con runScript y un target como:
-```
-$('[type=number]').removeAttr('type')
-```
-o como
-```
-$('[type=email]').removeAttr('type')
-```
-
-#### 3.3.7 Ordenes de especial interes para crear cada caso de prueba
-
 * Para sobrellevar problemas de velocidad de Internet o de la aplicación y para 
   verificar que la aplicación está en el estado que se espera al comienzo, durante y 
   al final de una prueba debe emplearse assert (el más típico es ```assertText```). 
-* Aunque sideex 2 se inspiró en Selenium-IDE, en general no requiere ordenes que 
-  esperen la presencia de un element como ```waitForElementPresent```
+
 * ```ChooseOkOnNextConfirmation``` es un comando que se utiliza antes de 
   eliminar y evita tener que ayudarle manualmente en confirmar si 
   quiere eliminar 
   
- #### 3.3.8 Pequeños trucos para crear cada caso de prueba
-    
-  para ubicación del país me da la opción con una fecha que hay en 
-  target al final y se puede escoger con otro selector
-  ejemplo yo tenia //select[@id='caso_ubicacion_attributes_9_id_pais']
-  y para que funcione cambiamos por //div[@id='ubicacion']/div/div/div/select
+* Evitar selectores que tengan códigos (pues cambian de una ejecución a otra) por ejemplo
+  `//select[@id='caso_ubicacion_attributes_9_id_pais']` tipicamente puede elegirse otro
+  con la flecha del campo `Target`, digamos  `//div[@id='ubicacion']/div/div/div/select`
+  o de requerirse puede examinarse el HTML y/o el CSS para emplear un mejor selector que
+  los propuestos por Sideex.
 
- #### 3.3.9 Teclas de acceso rápido
+
+#### 3.3.6 Teclas de acceso rápido
   
   . *Ctrl + S*:          Guardar una suite de prueba
   
@@ -437,4 +368,20 @@ $('[type=email]').removeAttr('type')
   
   . *Ctrl + B*:          Alternar un punto de interrupción
 
+
+#### 3.3.7 Sobrellevar fallas de Sideex 2
+
+* Sideex 2 no logra elegir opciones en cuadros de selección que emplean el plugin chosen.  chosen es un plugin para jquery que mejora la apariencia y usabilidad de los cuadros de selección.  Para que sideex pueda elegir opciones de este tipo de cuadroes es encesario primero quitar el plugin chosen de los cuadros de selección donde esté.  Se hace con la orden runScript y 
+como target usar:
+```
+$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')
+```
+* Sideex 2 no logra escribir en campos abiertos de tipo numérico o de tipo email.  En pruebas Sideex esto se evidencia cuando al digitar (type) en un campo abierto sale el error `Cannot set selection end` y puede confirmarse examinando el HTML y revisando si el elemento `input` tiene un atributo `type=number` o `type=email`. Para lograr que Sideex-2 escriba en estos campos, primero debe eliminarse el tipo con runScript y un target como:
+```
+$('[type=number]').removeAttr('type')
+```
+o como
+```
+$('[type=email]').removeAttr('type')
+```
 
