@@ -216,32 +216,28 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
      emergente donde se puede escribir el nombre de la suit nueva.
 
     ![mas](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/mas.png)
-    
-     luego aceptar:
      
     ![img4](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img4.png) 
     
     * Pulse en  el lado derecho del nombre de la suit creada sobre el signo mas (+) y de el 
       nombre del primer caso de la suit.
-       ![img5](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img5.png) 
+      ![img5](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img5.png) 
     
-  Al lado derecho hay una tabla, cuyo encabezado consta de:
+  Al lado derecho hay una tabla de ordenes.  Cada fila tendrá una orden completa, las columnas son:
   
-    * COMMAND: Orden. En esta fila vera las ordenes del caso de prueba.
+    * `Command`: Orden. En esta fila vera las ordenes del caso de prueba.
       ![8opciones](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img8.png)
   
-    * TARGET: Objetivo. En esta columna verá selectores sobre los que se aplica cada orden.  
+    * `Target`: Objetivo. En esta columna verá selectores sobre los que se aplica cada orden.  
   
-    * VALUE: Valor. En esta columna se ven valores para algunas ordenes que lo requieren.
+    * `Value`: Valor. En esta columna se ven valores para algunas ordenes que lo requieren.
     
-* En la parte inferior se ve el detalle de la fila elegida de la tabla.  
-  Se elige una fila pulsando sobre esta. Hay una fila para la orden, 
-  una para el selector (target) de esa orden y otra para el valor para esa orden y selector.  
-  Así mismo es posible modificarlos.
+* Debajo de la tabla de ordenes, hay un panel para ver y editar en detalle una orden completa, 
+  i.e la orden selenese, el selector y el valor.
     
     * En el campo `Command` podrá digitar la orden selenese 
     
-    * En el campo `Target`  se ve una flecha, si hace clic sobre la flecha le muestra  
+    * En el campo `Target`  se ve una flecha, si hace clic sobre la flecha se presentará  
       una lista de selectores  que se pueden utilizar de ser necesario.
      ![10flecha2](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img10.png)
         * En la misma fila de target hay un boton `SELECT` (seleccionar) que puede utilizar para 
@@ -250,12 +246,15 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
           navegador donde corre la prueba el elemento al que corresponde el selector
     * En el campo `Value` podrá digitar el valor que pudiera requerir la orden.
 
-* Más abajo hay otro panel con: 
+* En la parte inferior hay otro panel con: 
 
     *  Log:  Que es una bitácora de la ejecución de la prueba. La ejecución de cada orden dejará allí un rastro y si ocurre un error quedará en rojo.
     
     * Reference : Presenta el manual correspondiente a la orden selenese elegida en la tabla de ordenes.
-  
+    
+    * Save: Para guardar la bitácora
+    
+    * Clear: Para limpiara la bitácora.
     
 #### 3.3.3 Empezar pruebas con Sideex2
 
