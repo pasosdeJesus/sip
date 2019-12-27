@@ -404,11 +404,11 @@ como target usar:
 ```
 $('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')
 ```
-* Sideex 2 no logra escribir en campos abiertos con tipo, por ejemplo numérico o de tipo email.  Para lograr que Sideex-2 escriba en estos, primero debe eliminarse el tipo con runScript y un target como:
+* Sideex 2 no logra escribir en campos abiertos con tipo, por ejemplo numérico o de tipo email.  En pruebas sideex esto se evidencia cuando al teclear (type) en un campo abierto sale el error "Cannot set selection end" y puede confirmarse examinando el HTML y revisando si el elemento `input` tiene un atributo `type=number` o `type=email`. Para lograr que Sideex-2 escriba en estos campos, primero debe eliminarse el tipo con runScript y un target como:
 ```
 $('[type=number]').removeAttr('type')
 ```
-o 
+o como
 ```
 $('[type=email]').removeAttr('type')
 ```
