@@ -78,7 +78,7 @@ Cada vez que el equipo de desarrollo anuncia cambios, el equipo de pruebas:
 
 ### 3.1 Verificar que lo que funcionaba siga funcionando
 
-a. Clonar o actualizar el repositorio que se va a probar.  
+1. Clonar o actualizar el repositorio que se va a probar.  
    Esto en particular actualizará el directorio `test/sideex` donde deben 
    estar casos de pruebas para las diversas funcionalidades del sistema
    con títulos que sugieran lo que se prueba en una suit de pruebas. 
@@ -86,35 +86,28 @@ a. Clonar o actualizar el repositorio que se va a probar.
    (3) rol del usuario con el que se ejecuta la prueba, 
    (4) tema de prueba.  Por ejemplo `lac-01-admin-tablas-basicas.sideex`, 
    `lac-02-⁠admin-usuarios`, `lac-03-⁠analista-casos.sideex`.
-
-b.  Empleando Chrome con sideex2 instalado, ingresar a la aplicación en
+2.  Empleando Chrome con sideex2 instalado, ingresar a la aplicación en
     el sitio de desarrollo (o de ensayo) con un usuario y contraseña acorde 
     al rol que se prueba,  iniciar sideex2, cargar la suit de pruebas y ejecutarla completa.
-
-
-c. Por cada falla que se encuentre:
-
-    c.1 Reproducirla manualmente y asegurar que es una falla del sistema 
+3. Por cada falla que se encuentre:
+    3.1 Reproducirla manualmente y asegurar que es una falla del sistema 
         (y no de las pruebas o de sideex2)
 
-    c.2 Si era una falla ya resuelta buscar la tarjeta donde se había reportado
+    3.2 Si era una falla ya resuelta buscar la tarjeta donde se había reportado
         y pasarla de la columna "Hecho" del tablero Trello a "Haciendo"
 
-    c.3 Si es una falla nueva, crear una nueva tarjeta Trello en la columna
+    3.3 Si es una falla nueva, crear una nueva tarjeta Trello en la columna
         "Haciendo".  Iniciar el título con un código ```F-n``` donde n es un número
         consecutivo respecto a las demás tarjetas.  Adjuntar a esta tarjeta
         la prueba de Sideex2 que falló, un pantallazo y si es el caso
         detalles adicionales de como reproducir en comentarios.
-
-    c.4. Si se detienen las pruebas pero no por fallas en la aplicación sino en la 
+    3.4. Si se detienen las pruebas pero no por fallas en la aplicación sino en la 
        prueba para sideex2 o por cambios en funcionalidad de la aplicación
        pero sin errores, se mejora la prueba de sideex2 para que pase 
        y se guarda y actualizan pruebas en github.
-
-    c.5. Agregar una tarjet P-233 (siguiendo consecutivo de otras tarjetas recientes) con
+    3.5. Agregar una tarjet P-233 (siguiendo consecutivo de otras tarjetas recientes) con
        un título de la forma  "Ejecutada suit de pruebas. 2 errores"
-   
-    c.6 Si hay dificultades que no logran superarse para describir un caso de prueba
+    3.6 Si hay dificultades que no logran superarse para describir un caso de prueba
         con sideex2 guardar el caso de prueba en un solo archivo en la carpeta
         test/sideex/con_error
   
