@@ -135,7 +135,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
 
 
-### 3.3 Ayudas para crear cada caso de prueba con Sideex2
+### 3.3  Crear caso de prueba con Sideex2
 
 #### 3.3.1 Descarga e instalación de sideex2
 
@@ -175,20 +175,20 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
   ![8opciones](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img8.png)
 
-  . Record: Grabar. Pulse Record para empezar a grabar la secuencia de 
+    * Record: Grabar. Pulse Record para empezar a grabar la secuencia de 
     comandos de una prueba 
   
-  . PlayThisCase: Correr este caso. Se puede correr un solo caso de 
+    * PlayThisCase: Correr este caso. Se puede correr un solo caso de 
     una suit. Pulse sobre el caso que quiere correr, se hará visible 
     y luego Pulse en PlayThisCase
   
-  . PlayThisSuite: Correr esta suit. Pulse sobre PlayThisSuite 
+    * PlayThisSuite: Correr esta suit. Pulse sobre PlayThisSuite 
     para correr toda la suit con que esta trabajando.
   
-  . PlayAllSuites: Correr todas las suits. Pulse sobre PlayAllSuites y 
+    * PlayAllSuites: Correr todas las suits. Pulse sobre PlayAllSuites y 
     podrá correr todas las suit que halla abierto en el panel.
   
-  . Pause: Pausa. Sirve para detener una prueba en determinado momento, 
+    * Pause: Pausa. Sirve para detener una prueba en determinado momento, 
     luego pulse de nuevo y se puede continuar. 
     
 * Debajo de Record hay una barra de desplazamiento que podemos usar para
