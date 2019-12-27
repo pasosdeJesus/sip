@@ -94,29 +94,29 @@ b.  Empleando Chrome con sideex2 instalado, ingresar a la aplicación en
 
 c. Por cada falla que se encuentre:
 
-c.1 Reproducirla manualmente y asegurar que es una falla del sistema 
-    (y no de las pruebas o de sideex2)
+    c.1 Reproducirla manualmente y asegurar que es una falla del sistema 
+        (y no de las pruebas o de sideex2)
 
-c.2 Si era una falla ya resuelta buscar la tarjeta donde se había reportado
-    y pasarla de la columna "Hecho" del tablero Trello a "Haciendo"
+    c.2 Si era una falla ya resuelta buscar la tarjeta donde se había reportado
+        y pasarla de la columna "Hecho" del tablero Trello a "Haciendo"
 
-c.3 Si es una falla nueva, crear una nueva tarjeta Trello en la columna
-    "Haciendo".  Iniciar el título con un código ```F-n``` donde n es un número
-    consecutivo respecto a las demás tarjetas.  Adjuntar a esta tarjeta
-    la prueba de Sideex2 que falló, un pantallazo y si es el caso
-    detalles adicionales de como reproducir en comentarios.
+    c.3 Si es una falla nueva, crear una nueva tarjeta Trello en la columna
+        "Haciendo".  Iniciar el título con un código ```F-n``` donde n es un número
+        consecutivo respecto a las demás tarjetas.  Adjuntar a esta tarjeta
+        la prueba de Sideex2 que falló, un pantallazo y si es el caso
+        detalles adicionales de como reproducir en comentarios.
 
-c.4. Si se detienen las pruebas pero no por fallas en la aplicación sino en la 
-   prueba para sideex2 o por cambios en funcionalidad de la aplicación
-   pero sin errores, se mejora la prueba de sideex2 para que pase 
-   y se guarda y actualizan pruebas en github.
+    c.4. Si se detienen las pruebas pero no por fallas en la aplicación sino en la 
+       prueba para sideex2 o por cambios en funcionalidad de la aplicación
+       pero sin errores, se mejora la prueba de sideex2 para que pase 
+       y se guarda y actualizan pruebas en github.
 
-c.5. Agregar una tarjet P-233 (siguiendo consecutivo de otras tarjetas recientes) con
-   un título de la forma  "Ejecutada suit de pruebas. 2 errores"
+    c.5. Agregar una tarjet P-233 (siguiendo consecutivo de otras tarjetas recientes) con
+       un título de la forma  "Ejecutada suit de pruebas. 2 errores"
    
-c.6 Si hay dificultades que no logran superarse para describir un caso de prueba
-    con sideex2 guardar el caso de prueba en un solo archivo en la carpeta
-    test/sideex/con_error
+    c.6 Si hay dificultades que no logran superarse para describir un caso de prueba
+        con sideex2 guardar el caso de prueba en un solo archivo en la carpeta
+        test/sideex/con_error
   
 
 ### 3.2 Probar Novedades
@@ -126,16 +126,13 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 1. Abrir sideex2 y la suit de pruebas e iniciar un nuevo caso de prueba, 
    guardar lo que se prueba.  Poner nombre o renombrar para que el nombre 
    corresponda a la funcionalidad que se prueba.   
-
 2. Agregar en Trello una tarjeta de la forma P-234 con la descripción de las
    novedades o fallas que se probaron (e.g Probadas F-12, R-16).
-
 3. Si una falla supuestamente resuelta sigue fallando, examinar posibles
    comentarios del equipo de desarrollo en la tarjeta y si es el caso devolver 
    la tarjeta de la columna Hecho a Haciendo, agregar comentario, pantallazo y archivo
    para sideex2 para reproducirlo (los casos de pruebas que fallan por 
    dificultades con sideex 2 almacenar en `test/sideex/con_error`).
-
 4. Si la prueba pasa agregar la prueba a la suit de pruebas con un nombre
    acorde a la prueba, agrega el archivo al repositorio y actualizar en github.
 
