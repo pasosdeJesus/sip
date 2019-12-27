@@ -216,7 +216,12 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     * Al crear o cargar una suit de prueba, cuando pase el curso sobre esta, 
       verá a la izquerda del título un icono para guardar la suit y a la la derecha un singo más (+)
       que permite agregar un nuevo caso de prueba a esa suit.
-      ![img5](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img5.png) 
+      ![img5](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img5.png)
+      
+        * Al pulsar con el botón derecho sobre el nombre de una suit de pruebas, verá
+          un menú contextual con las opciones: guardar, abrir, cerrar, renombrar y añadir un nuevo caso 
+          a la suit de casos de pruebas.
+          ![img6](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img6.png) 
     
   Al lado derecho hay una tabla de ordenes.  Cada fila tendrá una orden completa, las columnas son:
   
@@ -271,10 +276,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
    
     * Pulse en el botón Record(grabar) para iniciar las operaciones de grabación 
 
-    * Pulse con el botón derecho en el nombre de la suit de pruebas y 
-      le da varias opciones guardar, abrir, cerrar, renombrar, añadir un nuevo caso 
-      a la suit de casos de pruebas.
-      ![img6](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img6.png) 
+    
  
 * Al pasar el mouse al lado izquierdo del nombre aparece una flecha hacia abajo 
   y haga clic para guardar la suit de pruebas.
