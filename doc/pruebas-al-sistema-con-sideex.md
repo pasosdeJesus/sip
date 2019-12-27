@@ -169,7 +169,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   Debe volver al sitio oficial y buscar nuevas versiones.  
 * Sideex2 no soporta sistema operativo de 32 bits, solo soporta el sistema operativo de 64 bits.  
   
-#### 3.3.2 Estructura y contenido del panel de Sideex2 
+#### 3.3.2 Estructura y contenido de la ventana de Sideex2 
   
 * En la parte superior vemos varias opciones:
 
@@ -196,9 +196,9 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     
      ![img55](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img55.velocidad.png)
     
-    Fast: Rápido
+    * Fast: Rápido
     
-    Slow: Despacio
+    * Slow: Despacio
     
 * Luego abajo se ve un cuadro a la izquierda y otro a la derecha:
   
@@ -206,55 +206,57 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
     ![img33](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img33.suit.png)
 
-  . TEST SUITES: Conjunto de pruebas
+    * TEST SUITES: Conjunto de pruebas
   
-  . Un icono de archivo que al pulsar abre las pruebas que hemos guardado anteriormente. 
+    * Un icono de archivo que al pulsar abre las pruebas que hemos guardado anteriormente. 
 
      ![archivo](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/archivo.png)
     
-   . Al lado derecho del icono de archivo aparece un signo mas (+) que al pulsar se abre una ventana
+    * Al lado derecho del icono de archivo aparece un signo mas (+) que al pulsar se abre una ventana
      emergente donde se puede escribir el nombre de la suit nueva.
 
     ![mas](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/mas.png)
     
-     luego aceptar.
-       ![img4](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img4.png) 
-    
-   . Pulse en  el lado derecho del nombre de la suit creada sobre el signo mas (+) y de el 
-       nombre del primer caso de la suit.
-       ![img5](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img5.png) 
-
-  . Al lado derecho hay otro cuadro que contiene en su parte superior:
-  
-    COMMAND: Comando. Cuando graba un caso se verán debajo todos los 
-    comandos utilizados en cada prueba.
-    ![8opciones](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img8.png)
-  
-  .  TARGET: 
-  
-  .  VALUE: Valor. Son valores que nosotros escribimos.  
-     y en la parte inferior al hacer clic sobre una linea aparecen 
-     todos los Command, Target y Value de esa linea. Y se pueden modificar.
+     luego aceptar:
      
-  .  En Target  se ve una flecha, si hace clic sobre la flecha le muestra 
-     una lista de selectores  que se pueden utilizar de ser necesario.
-
-  ![10flecha2]()
-
-  .  Tiene un boton con la opción SELECT (seleccionar) que la puede utilizar para 
-     insertar una linea nueva en medio de un prueba. Haga clic sobre 
-  la linea, haga clic en Record, haga clic en select, haga clic en 
-  Y también tiene la opción find
-  Value: 
-  Otro cuadro en la parte inferior 
-  . Log :
-  . Reference : 
+    ![img4](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img4.png) 
+    
+    * Pulse en  el lado derecho del nombre de la suit creada sobre el signo mas (+) y de el 
+      nombre del primer caso de la suit.
+       ![img5](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img5.png) 
+    
+  Al lado derecho hay una tabla, cuyo encabezado consta de:
   
-   . Pulse sobre el icono de sideex2 en la barra de herramientas del navegador  
+    * COMMAND: Orden. En esta fila vera las ordenes del caso de prueba.
+      ![8opciones](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img8.png)
+  
+    * TARGET: Objetivo. En esta columna verá selectores sobre los que se aplica cada orden.  
+  
+    * VALUE: Valor. En esta columna se ven valores para algunas ordenes que lo requieren.
+    
+* En la parte inferior se ve el detalle de la fila elegida de la tabla.  
+  Se elige una fila pulsando sobre esta. Hay una fila para la orden, 
+  una para el selector (target) de esa orden y otra para el valor para esa orden y selector.  
+  Así mismo es posible modificarlos.
+    
+    * En el campo `Command` podrá digitar la orden selenese 
+    
+    * En el campo `Target`  se ve una flecha, si hace clic sobre la flecha le muestra  
+      una lista de selectores  que se pueden utilizar de ser necesario.
+     ![10flecha2](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img10.png)
+        * En la misma fila de target hay un boton `SELECT` (seleccionar) que puede utilizar para 
+          elegir visualmente un selector en la ventana del navegador donde corre la prueba.
+        * En la misma fila hay un botón `FIND` (encontrar) que resaltará en la ventana del 
+          navegador donde corre la prueba el elemento al que corresponde el selector
+    * En el campo `Value` podrá digitar el valor que pudiera requerir la orden.
+
+* Más abajo hay otro panel con: 
+
+    *  Log:  Que es una bitácora de la ejecución de la prueba. La ejecución de cada orden dejará allí un rastro y si ocurre un error quedará en rojo.
+    
+    * Reference : Presenta el manual correspondiente a la orden selenese elegida en la tabla de ordenes.
   
     
-     ![img3](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img3.png) 
-  
 #### 3.3.3 Empezar pruebas con Sideex2
 
 * Para empezar a hacer pruebas con sideex2
