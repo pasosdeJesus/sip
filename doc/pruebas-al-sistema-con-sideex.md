@@ -40,7 +40,7 @@ El tablero Trello suele tener 5 columnas:
 Solemos estimar que las pruebas del sistema requieren 1/4 del tiempo
 de desarrollo.
 
-## 2. Dinámica desarrollo - pruebas del sistema
+## 2. Dinámica desarrollo
 
 De acuerdo a las prioridades acordadas con clientes (tipicamente en una reunión
 al inicio de cada carrera) y del diseño de la carrera, el equipo 
@@ -175,7 +175,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   Debe volver al sitio oficial y buscar nuevas versiones.  
 * Sideex2 no soporta sistema operativo de 32 bits, solo soporta el sistema operativo de 64 bits.  
   
-  #### 3.3.2 Estructura y contenido del panel de Sideex2 
+#### 3.3.2 Estructura y contenido del panel de Sideex2 
   
 * En la parte superior vemos varias opciones:
 
@@ -261,7 +261,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     
      ![img3](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img3.png) 
   
-  #### 3.3.3 Empezar pruebas con Sideex2
+#### 3.3.3 Empezar pruebas con Sideex2
 
 * Para empezar a hacer pruebas con sideex2
     . Inicie firefox/ Chrome
@@ -397,7 +397,7 @@ Sideex cuando se enfoca la orden en un caso de prueba.
   crearon los iniciales --digamos un usuario)
   
   
-### 3.3.6 Sobrellevando fallas de Sideex 2
+#### 3.3.6 Sobrellevar fallas de Sideex 2
 
 * Sideex 2 no logra elegir opciones en cuadros de selección que emplean el plugin chosen.  chosen es un plugin para jquery que mejora la apariencia y usabilidad de los cuadros de selección.  Para que sideex pueda elegir opciones de este tipo de cuadroes es encesario primero quitar el plugin chosen de los cuadros de selección donde esté.  Se hace con la orden runScript y 
 como target usar:
@@ -413,7 +413,7 @@ o como
 $('[type=email]').removeAttr('type')
 ```
 
-### 3.3.7 Comandos de especial interes para crear cada caso de prueba
+#### 3.3.7 Ordenes de especial interes para crear cada caso de prueba
 
 * Para sobrellevar problemas de velocidad de Internet o de la aplicación y para 
   verificar que la aplicación está en el estado que se espera al comienzo, durante y 
@@ -424,14 +424,14 @@ $('[type=email]').removeAttr('type')
   eliminar y evita tener que ayudarle manualmente en confirmar si 
   quiere eliminar 
   
-   ### 3.3.8 Pequeños trucos para crear cada caso de prueba
+ #### 3.3.8 Pequeños trucos para crear cada caso de prueba
     
   para ubicación del país me da la opción con una fecha que hay en 
   target al final y se puede escoger con otro selector
   ejemplo yo tenia //select[@id='caso_ubicacion_attributes_9_id_pais']
   y para que funcione cambiamos por //div[@id='ubicacion']/div/div/div/select
 
-  ### 3.3.9 Teclas de acceso rápido
+ #### 3.3.9 Teclas de acceso rápido
   
   . *Ctrl + S*:          Guardar una suite de prueba
   
