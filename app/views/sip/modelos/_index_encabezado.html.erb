@@ -3,7 +3,8 @@
       <% ng = (!genclase.nil? && genclase == 'F') ? 'Nueva' : 'Nuevo' %>
       <% if @registros && @registros.size > 5 && can?(:new, clase.constantize)%>
         <%= link_to t('.new', default: [ng, t("helpers.links.new")]),
-          new_modelo_path(@registros), class: 'btn btn-primary' 
+          new_modelo_path(@registros), class: 'btn btn-primary',
+          data: { turbolinks: false }
         %>
     <% end %>
   </div>

@@ -10,7 +10,8 @@
     <% if can?(:new, clase.constantize) && @registros %>
       <%= link_to t('.new', default: [ng, t("helpers.links.new")]),
         new_modelo_path(@registros), 
-        class: 'btn btn-primary' %>
+        class: 'btn btn-primary',
+        data: { turbolinks: false } %>
     <% end %>
   </div>
 </div>
