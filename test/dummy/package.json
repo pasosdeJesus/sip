@@ -13,11 +13,10 @@
     "jquery": "^3.4.1",
     "jquery-ui": "^1.12.1",
     "popper.js": "^1.16.0",
-    "tinycolor2": "^1.4.1",
     "turbolinks": "^5.2.0"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.8.1",
-    "serialize-javascript": "^2.1.1"
+    "serialize-javascript": "^2.1.1",
+    "webpack-dev-server": "^3.8.1"
   }
 }
