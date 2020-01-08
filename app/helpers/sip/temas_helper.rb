@@ -25,6 +25,8 @@ module Sip
             alerta_problema_fuente: Sip.colorom_alerta_problema_fuente,
             fondo: Sip.colorom_fondo,
             color_fuente: Sip.colorom_color_fuente,
+            color_flota_subitem_fondo: Sip.colorom_flota_subitem_fondo,
+            color_flota_subitem_fuente: Sip.colorom_flota_subitem_fuente,
           )
         end
       else

@@ -59,6 +59,8 @@ module Sip
     mattr_accessor :colorom_alerta_problema_fuente
     mattr_accessor :colorom_fondo
     mattr_accessor :colorom_color_fuente
+    mattr_accessor :colorom_color_flota_subitem_fondo
+    mattr_accessor :colorom_color_flota_subitem_fuente
 
 
     self.ruta_anexos = "#{Rails.root}/archivos/anexos"
@@ -85,6 +87,8 @@ module Sip
     self.colorom_alerta_exito_fuente = '#468847'
     self.colorom_alerta_problema_fondo = '#f8d7da'
     self.colorom_alerta_problema_fuente = '#721c24'
+    self.colorom_color_flota_subitem_fondo = '#266dd3'
+    self.colorom_color_flota_subitem_fuente = '#ffffff'
   end
 
   def self.setup(&block)
