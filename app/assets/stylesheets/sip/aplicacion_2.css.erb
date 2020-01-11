@@ -28,82 +28,82 @@
 <% tema = ::Sip::TemasHelper.tema_usuario(defined?(current_usuario) ?  current_usuario : nil) %>
 
 .navbar-default .navbar-nav > li > a { 
-	color: <%= tema.nav_fuente %>; 
+	color: <%= tema.nav_fuente || '#ffffff' %>; 
 }
 
 .navbar-default .navbar-brand { 
-	color: <%= tema.nav_fuente %>; 
+	color: <%= tema.nav_fuente || '#ffffff' %>; 
 }
 
 .navbar-light .navbar-nav .nav-link {
-	color: <%= tema.nav_fuente %> !important; 
+	color: <%= tema.nav_fuente || '#ffffff' %> !important; 
 }
 
 .navbar-light .navbar-brand {
-	color: <%= tema.nav_fuente %> !important; 
+	color: <%= tema.nav_fuente || '#ffffff' %> !important; 
 }
 
 .navbar {
 	min-height: 30px;
-	background-image: linear-gradient(<%= tema.nav_ini %>, <%= tema.nav_fin %>);
+	background-image: linear-gradient(<%= tema.nav_ini || '#95c4ff' %>, <%= tema.nav_fin || '#266dd3' %>);
 	background-repeat: repeat-x;
 	margin-bottom: 5px;
 }
 
 .table-striped > tbody > tr:nth-child(odd) {
-	background-color: <%= tema.fondo_lista %>;
+	background-color: <%= tema.fondo_lista || '#95c4ff' %>;
 }
 
 .dropdown-menu {
-  background-color: <%= tema.nav_fin %>;
+  background-color: <%= tema.nav_fin || '#266dd3' %>;
 }
 
 .dropdown-item {
-  color: <%= tema.nav_fuente %>;
+  color: <%= tema.nav_fuente || '#ffffff' %>;
 }
 
 .dropdown-item:hover {
-  color: <%= tema.color_flota_subitem_fuente %>;
-  background-color: <%= tema.color_flota_subitem_fondo %>
+  color: <%= tema.color_flota_subitem_fuente || '#ffffff' %>;
+  background-color: <%= tema.color_flota_subitem_fondo || '#266dd3' %>
 }
 
 .alert-success {
-  color: <%= tema.alerta_exito_fuente %>;
-  background-color: <%= tema.alerta_exito_fondo %>
+  color: <%= tema.alerta_exito_fuente || '#468847' %>;
+  background-color: <%= tema.alerta_exito_fondo || '#dff0d8' %>
 }
 
 .alert-danger {
-  color: <%= tema.alerta_problema_fuente %>;
-  background-color: <%= tema.alerta_problema_fondo %>;
+  color: <%= tema.alerta_problema_fuente || '#721c24' %>;
+  background-color: <%= tema.alerta_problema_fondo || '#f8d7da' %>;
 }
 
 .btn {
-  background-image: linear-gradient(to bottom, <%= tema.btn_accion_fondo_ini %>, <%= tema.btn_accion_fondo_fin %>);
-  color: <%= tema.btn_accion_fuente %>;
+  background-image: linear-gradient(to bottom, <%= tema.btn_accion_fondo_ini || '#ffffff' %>, <%= tema.btn_accion_fondo_fin || '#e6e6e6' %>);
+  color: <%= tema.btn_accion_fuente || '#000000' %>;
 }
 
 .btn-primary {
-  background-image: linear-gradient(to bottom, <%= tema.btn_primario_fondo_ini %>, <%= tema.btn_primario_fondo_fin %>);
-  color: <%= tema.btn_primario_fuente %>;
+  background-image: linear-gradient(to bottom, <%= tema.btn_primario_fondo_ini || '#0088cc' %>, <%= tema.btn_primario_fondo_fin || '#0044cc'%>);
+  color: <%= tema.btn_primario_fuente || '#ffffff' %>;
 }
 
 .btn-danger {
-  background-image: linear-gradient(to bottom, <%= tema.btn_peligro_fondo_ini %>, <%= tema.btn_peligro_fondo_fin %>);
-  color: <%= tema.btn_peligro_fuente %>;
+  background-image: linear-gradient(to bottom, <%= tema.btn_peligro_fondo_ini || '#ee5f5b' %>, <%= tema.btn_peligro_fondo_fin || '#bd362f' %>);
+  color: <%= tema.btn_peligro_fuente || '#ffffff'%>;
 }
 
 body {
-  background-color: <%= tema.fondo %>;
-  color: <%=tema.color_fuente %>;
+  background-color: <%= tema.fondo || '#ffffff' %>;
+  color: <%=tema.color_fuente || '#000000' %>;
 }
 
 .form-control {
-  background-color: <%= tema.fondo %>;
-  color: <%=  tema.color_fuente %>;
+  background-color: <%= tema.fondo || '#ffffff' %>;
+  color: <%=  tema.color_fuente || '#000000' %>;
 }
 
 table {
-  color: <%= tema.color_fuente %>;
+  color: <%= tema.color_fuente || '#000000' %>;
 }
 
 
