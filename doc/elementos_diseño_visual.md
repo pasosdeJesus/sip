@@ -30,28 +30,28 @@ Los elementos específicos por ubicar pueden incluir:
 * Cajas o notas al margen, que presenten información al lado del flujo del texto principal.
 * Encabezados y pies de página, cuyo contenido es usualmente uniforme a lo largo de diversas páginas del sitio web.
 
-Flexbox y CSS Grid son ayudas importantes para lograr maquetaciones adaptables, pero para comenzar a maquetar, especialmente cuando no se tiene mucha experiencia, recomendamos emplear Bootstrap (ver https://getbootstrap.com/).  
+Flexbox y CSS Grid son ayudas importantes para lograr maquetaciones adaptables, pero para comenzar a maquetar, especialmente cuando no se tiene mucha experiencia, recomendamos emplear Bootstrap (ver <https://getbootstrap.com/>).  
 
-O aún más comenzar con una herramienta que genera HTML y CSS con Bootrap como  https://www.layoutit.com/build e inspirarse en ideas de maquetaciones (y diseños visuales web completos)  en galerias como por ejemplo https://colorlib.com/wp/free-bootstrap-gallery-templates/
+O aún más comenzar con una herramienta que genera HTML y CSS con Bootrap como  <https://www.layoutit.com/build> e inspirarse en ideas de maquetaciones (y diseños visuales web completos)  en galerias como por ejemplo <https://colorlib.com/wp/free-bootstrap-gallery-templates/>
 
 
 ## Tipografía
 
-Es recomendable usar dos tipos de letra, uno serif (o con adornos como el tipo Roman) para títulos y uno sans-serif (sin adornos como el tipo Arial) para el texto.   Recomendamos emplear https://fonts.google.com/ pues consta de tipografías de libre uso, información de cada tipografía y muestra de como se ve una tipografía en combinación con una segunda.
+Es recomendable usar dos tipos de letra, uno serif (o con adornos como el tipo Roman) para títulos y uno sans-serif (sin adornos como el tipo Arial) para el texto.   Recomendamos emplear <https://fonts.google.com/> pues consta de tipografías de libre uso, información de cada tipografía y muestra de como se ve una tipografía en combinación con una segunda. Otro sitio de tipografías usables desde el web es <https://fontlibrary.org/>
 
 
 ## Colores
 
-Es importante elegir una paleta de colores, tipicamente de 5 colores. La paleta puede partir de un color base (por ejemplo tomado del logo de la institución o de un tema del negocio)  y después emplear un esquema de colores (ver [EsqColor])  para completar la paleta.   Una herramienta en línea que facilita proponer un color base y usar alguno de los esquemas de colores (o regla de armonia de colores) para generar los otros 4 es https://color.adobe.com/create  
+Es importante elegir una paleta de colores, tipicamente de 5 colores. La paleta puede partir de un color base (por ejemplo tomado del logo de la institución o de un tema del negocio)  y después emplear un esquema de colores (ver [EsqColor])  para completar la paleta.   Una herramienta en línea que facilita proponer un color base y usar alguno de los esquemas de colores (o regla de armonia de colores) para generar los otros 4 es <https://color.adobe.com/create>  
  
 
 ## Iconos
 
-Pueden ayudar a simplificar y a la vez aclarar la interfaz, se recomienda FontAwesome: https://fontawesome.com/
+Pueden ayudar a simplificar y a la vez aclarar la interfaz, se recomienda FontAwesome: <https://fontawesome.com/>
 
 
 # Referencias
 
-* [Grdes] https://en.wikipedia.org/wiki/Graphic_design. Consultado Oct.2019
-* [Layout] https://en.wikipedia.org/wiki/Page_layout. Consultado Oct.2019
-* [EsqColor] https://es.wikipedia.org/wiki/Esquema_del_color. Consultado Oct.2019
+* [Grdes] <https://en.wikipedia.org/wiki/Graphic_design>. Consultado Oct.2019
+* [Layout] <https://en.wikipedia.org/wiki/Page_layout>. Consultado Oct.2019
+* [EsqColor] <https://es.wikipedia.org/wiki/Esquema_del_color>. Consultado Oct.2019
