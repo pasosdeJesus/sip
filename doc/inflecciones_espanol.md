@@ -8,7 +8,7 @@ Preferimos nombres en español
 
 Preferimos modelos en singular, pero controladores en plural.
 
-# 2. Mezcla de las reglas entre diversos motores de una aplicación
+# 2. Mezcla de las reglas de inflección entre diversos motores de una aplicación
 
 Estamos usando reglas sin locale de inflección de singular a plural
 en español, como se configuran en 
@@ -45,7 +45,7 @@ end
 ```
 
 
-# 3. Orden de las reglas en un archivo 
+# 3. Orden de las reglas de inflección en un archivo `config/initializers/inflections.rb`
 
 Es ideal ponerlas en orden alfabético, sin embargo hemos notado que las reglas irregulares se usan como si fuesen
 postfijos, es decir si se tiene la regla:
