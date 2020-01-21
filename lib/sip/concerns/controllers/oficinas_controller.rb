@@ -15,9 +15,9 @@ module Sip
           def show
             @oficina = Sip::Oficina.new(params[:oficina])
             respond_to do |format|
-              format.json{ render 'show.json', locals: { oficina: @oficina }}
+              format.json { render 'show.json', locals: { oficina: @oficina } }
             end
-          end  
+          end
 
           def set_oficina
             @basica = Oficina.find(params[:id])
