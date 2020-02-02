@@ -18,7 +18,7 @@ module Sip
       end
 
       def atributos_index
-        ["id", "nombre", "formatoregex", "observaciones",
+        ["id", "nombre", "sigla", "formatoregex", "observaciones",
          "fechacreacion_localizada", "habilitado"]
       end
   
