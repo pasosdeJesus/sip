@@ -261,7 +261,7 @@ module Sip
           }
 
           scope :filtro_numerodocumento, lambda { |n|
-            where("unaccent(numerodocuemnto) ILIKE '%' || " +
+            where("unaccent(numerodocumento) ILIKE '%' || " +
                   "unaccent(?) || '%'", n)
           }
 
