@@ -18,16 +18,9 @@ module Sip
             ["MASCULINO", :M]
           ]
             
-          # Si agrego el siguiente al agregar una victima individual
-          # y ponerle organización falla con
-          # undefined method `find_all' for #<Sip::ActorsocialPersona:0x0000158dc0553d00>
           # Bien sea o no con inverse_of aqui y/o en actorsocial_persona
           #has_many :actorsocial_persona, foreign_key: "persona_id", 
           #  class_name: "Sip::ActorsocialPersona", #inverse_of: :persona
-          has_many :persona_trelacion1, foreign_key: "persona1", validate: true,
-            class_name: "Sip::PersonaTrelacion"
-          has_many :persona_trelacion2, foreign_key: "persona2", validate: true,
-            class_name: "Sip::PersonaTrelacion"
           belongs_to :clase, class_name: 'Sip::Clase',
             foreign_key: "id_clase", validate: true, optional: true
           belongs_to :nacional, class_name: "Sip::Pais",
@@ -40,6 +33,16 @@ module Sip
             validate: true, optional: true
           belongs_to :tdocumento, class_name: "Sip::Tdocumento", 
             foreign_key: "tdocumento_id", validate: true, optional: true
+
+          has_many :persona_trelacion1, foreign_key: "persona1", validate: true,
+            class_name: "Sip::PersonaTrelacion"
+          has_many :persona_trelacion2, foreign_key: "persona2", validate: true,
+            class_name: "Sip::PersonaTrelacion"
+          accepts_nested_attributes_for :persona_trelacion1,
+            reject_if: :all_blank
+          accepts_nested_attributes_for :persona_trelacion2,
+            reject_if: :all_blank
+
 
           # identificación autogenerada en este y demás modelos (excepto los de
           # información geográfica).
