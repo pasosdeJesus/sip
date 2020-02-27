@@ -12,6 +12,10 @@ BUNDLE_DISABLE_SHARED_GEMS: "true"
 EOF
 $ CXX=c++ rails new minsip --database=postgresql
 ```
+Es posible que el último paso genere algunos mensajes de error por gemas que no logra instalar porque requieren permisos de superusuario --entre otras esto ocurre con nokogiri-- en tal caso anote la versión por instalar --ejemplo 1.10.8:
+```
+doas gem install  nokogiri -v 1.10.8
+```
 - Crea el usuario de PostgreSQL y la base de datos de desarrollo que emplearás. Por ejemplo en adJ para crear el usuario 'isa5417' con clave 'aquilaclave' y la base de datos 'minsip_des' sería:
 ```sh
 $ doas su - _postgresql
