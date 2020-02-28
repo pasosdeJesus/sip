@@ -290,7 +290,8 @@ end
 $ bin/rails s
 ```
  y verla operando en un navegador en la dirección http://localhost:3000 presentando la página por omisión de rails.
-- Para ver el pantallazo inicial sin menús, ni una maquetación con bootstrap debes configurar rutas en `config/routes.rb`
+ Deten la aplicación con Control-C para continuar configurando.
+- Para ver el pantallazo inicial (sin menús, ni una maquetación con bootstrap) debes configurar rutas en `config/routes.rb`
 ```rb
 Rails.application.routes.draw do
   devise_scope :usuario do
