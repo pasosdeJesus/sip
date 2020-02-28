@@ -332,8 +332,6 @@ import 'bootstrap-datepicker'
 import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js'
 import 'jquery-ui'
 import 'jquery-ui/ui/widgets/autocomplete'
-import 'pick-a-color'
-import tinycolor from 'tinycolor2'
 ```
 y configurar jQuery de manera global (mientras ̣`sip` deja de depender de ese paquete), editando `config/webpack/environment.js` dejando algo como:
 ```js
@@ -348,8 +346,7 @@ environment.plugins.prepend(
     jQuery: 'jquery',
     jquery: 'jquery',
     'window.jQuery': 'jquery',
-    Popper: ['popper.js', 'default'],
-    tinycolor: 'tinycolor2'
+    Popper: ['popper.js', 'default']
   })
 )
 
@@ -357,8 +354,7 @@ environment.loaders.append('expose', {
     test: require.resolve('jquery'),
     use: [
           { loader: 'expose-loader', options: '$' },
-          { loader: 'expose-loader', options: 'jQuery' },
-          { loader: 'expose-loader', options: 'tinycolor' }
+          { loader: 'expose-loader', options: 'jQuery' }
         ]
 })
       
