@@ -431,7 +431,7 @@ bin/rails assets:precompile --trace
 
 <% content_for :piedepagina do %>
   <p><span class='derechos'><a href="https://www.pasosdejesus.org/dominio_publico_colombia.html">Dominio Público de acuerdo a Legislación Colombiana</a><br/>
-    Desarrollado por <a href="https://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>. 2019.
+    Desarrollado por <a href="https://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>. 2020.
   </span></p>
 <% end %>
 
