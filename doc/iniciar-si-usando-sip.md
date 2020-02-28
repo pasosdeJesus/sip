@@ -13,9 +13,36 @@ BUNDLE_DISABLE_SHARED_GEMS: "true"
 EOF
 $ CXX=c++ rails new minsip --database=postgresql
 ```
-Es posible que el último paso genere algunos mensajes de error por gemas que no logra instalar porque requieren permisos de superusuario --entre otras esto ocurre con nokogiri-- en tal caso anote la versión por instalar --ejemplo 1.10.8:
+Es posible que el último paso genere algunos mensajes de error por gemas que no logra instalar porque requieren permisos de superusuario --entre otras esto ocurre con nokogiri-- en tal caso anota la versión por instalar --ejemplo 1.10.8-- y ejecuta algo como:
 ```
 doas gem install  nokogiri -v 1.10.8
+```
+Y después desde el directorio `minsip` vuelve a ejecutar 
+```sh
+$ bundle install
+```
+- Instala `yarn`
+```sh
+doas gem install bash
+curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+```
+- Configura webpacker desde el directorio `minsip`
+```sh
+bin/rails webpacker:install
+```
+- Con esto ya deberías poder lanzar la aplicación en modo desarrollo (aunque no correrá mucho sin base de datos, así que detenla con Control-C después de lanzarla):
+```sh
+$ bin/rails s
+=> Booting Puma
+=> Rails 6.0.2.1 application starting in development 
+=> Run `rails server --help` for more startup options
+Puma starting in single mode...
+* Version 4.3.2 (ruby 2.7.0-p0), codename: Mysterious Traveller
+* Min threads: 5, max threads: 5
+* Environment: development
+* Listening on tcp://[::1]:3000
+* Listening on tcp://127.0.0.1:3000
+Use Ctrl-C to stop
 ```
 - Crea el usuario de PostgreSQL y la base de datos de desarrollo que emplearás. Por ejemplo en adJ para crear el usuario 'isa5417' con clave 'aquilaclave' y la base de datos 'minsip_des' sería:
 ```sh
@@ -60,8 +87,6 @@ minsipdes_des=# \q
 - Incluye otras gemas necesarias y ```sip``` en el archivo `Gemfile`:
 ```sh
 $ cat >> Gemfile <<EOF
-gem 'bootstrap-datepicker-rails'# Control para elegir fechas 
-
 gem 'cancancan'                  # Control de acceso
 
 gem 'coffee-rails'               # Aún parte del Javascript manejado por sprockets de sip está en Coffescript
@@ -70,13 +95,9 @@ gem 'devise'                     # Autenticación
 
 gem 'devise-i18n'                # Localización e Internacionalización                  
 
-gem 'paperclip'                  # Anexos
-
 gem 'jbuilder', '>= 2.7'        # Json
 
 gem 'paperclip'                 # Anexos
-
-gem 'puma'                      # Lanza en modo desarrollo
 
 gem 'rails-i18n'                 # Localización e Internacionalización 
 
@@ -84,17 +105,15 @@ gem 'simple_form'  # Formularios
 
 gem 'twitter_cldr'               # Localiación e internacionalización 
 
-gem 'twitter_cldr'              # Localiación e internacionalización
-
 gem 'will_paginate'              # Pagina listados
 
 
 # Motores que sobrecargan vistas o basados en SIP en orden de apilamento
 gem 'sip',                       # SI estilo Pasos de Jesús
-  git: "https://github.com/pasosdeJesus/sip.git"
+  git: 'https://github.com/pasosdeJesus/sip.git'
 EOF
 ```
-Y después verifica la instalación de las gemas con:
+Y después instala las nuevas gemas con:
 ```
 $ bundle install
 ```
@@ -107,6 +126,10 @@ class Usuario < ActiveRecord::Base
 end
 ```
 Posteriormente puedes ver como personalizar el modelo y el controlador del usuario en <https://github.com/pasosdeJesus/sip/wiki/Uso-y-personalizaci%C3%B3n-del-modelo-usuario>.
+Puedes verificar la sintaxis con:
+```
+ruby -c app/models/usario.rb
+```
 - Crea el control de acceso en el archivo ```app/models/ability.rb``` inicialmente con:
 ```rb
 class Ability  < Sip::Ability
