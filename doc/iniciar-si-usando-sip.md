@@ -412,7 +412,7 @@ bin/rails assets:precompile --trace
     <% end %>
   <% end %>
   <%= grupo_menus :empuja => :derecha do %>
-    <%= opcion_menu "Documentacion", "https://github.com/pasosdeJesus/sip/tree/master/doc" %>
+    <%= opcion_menu "Documentacion", "https://github.com/pasosdeJesus/sip/tree/master/doc/README.md" %>
     <% if current_usuario %>
       <%= despliega_abajo "Administrar" do %>
         <%= opcion_menu "Clave", main_app.editar_registro_usuario_path, desplegable: true %>
