@@ -1,10 +1,10 @@
 # Requisitos
 
-* Ruby version >= 2.6
+* Ruby version >= 2.7
 * Ruby on Rails >= 6.0.0 
-* PostgreSQL >= 11.5 con extensión `unaccent` disponible
-* `node.js` >= 10.15 y `coffescript` instalado globalmente (i.e  `npm install -g coffee-script`)
-* Recomendado sobre adJ 6.5 (que incluye todos los componentes mencionados y donde `sassc` compila bien)
+* PostgreSQL >= 12.0 con extensión `unaccent` disponible
+* `node.js` >= 10.16 y `coffescript` instalado globalmente (i.e  `npm install -g coffee-script`)
+* Recomendado sobre adJ 6.6 (que incluye todos los componentes mencionados y donde `sassc` compila bien)
   usando `bundler` con `doas`, ver
   <http://pasosdejesus.github.io/usuario_adJ/conf-programas.html#ruby>.
 * El usuario que utilice la aplicación debe tener permiso de usar al menos
