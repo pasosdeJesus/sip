@@ -29,6 +29,7 @@ curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 - Configura webpacker desde el directorio `minsip`
 ```sh
 bin/rails webpacker:install
+CXX=c++ yarn add webpack @rails/webpacker
 ```
 - Con esto ya deberías poder lanzar la aplicación en modo desarrollo (aunque no correrá mucho sin base de datos, así que detenla con Control-C después de lanzarla):
 ```sh
@@ -374,7 +375,7 @@ dejando en `app/assets/stylesheet/application.css`:
  *= require_self
  */
 ```
-y para cargar otros javascript que no se maneje con webpacker en `app/assets/javascript/application.js`:
+y para cargar otros javascript que no se maneje con webpacker en `app/assets/javascripts/application.js`:
 ```js
 //= require sip/application
 //= require_tree .
