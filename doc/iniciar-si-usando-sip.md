@@ -261,9 +261,9 @@ class UsuariosController < Sip::ModelosController
   end
 end
 ```
-- Para establecer ruta de anexos crea un directorio (ej.
-  `mkdir -p archivos/anexos/; mkdir -p archivos/volcados`) y configura tu aplicación
-  con un título y esa ruta para enviar anexos y volcados, lo haces en
+- Para establecer rutas de anexos y de volcados crea dos directorio (ej.
+  `mkdir -p archivos/anexos/; mkdir -p archivos/volcados`) y configuralos en tu aplicación
+  así como el título, lo haces en
   `config/initializers/sip.rb` con algo como:
 ```rb
 Sip.setup do |config|
