@@ -2,7 +2,7 @@
 
 Para iniciar una aplicación que usará **sip** en adJ sugerimos:
 
-- Disponer una plataforma que cumpla (los requisitos de instalación)[https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md]
+- Disponer una plataforma que cumpla [los requisitos de instalación](https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md)
 - Crea una aplicación rails que use la base de datos PostgreSQL. Además crea y configura la carpeta  `.bundle` así:
 ```sh
 $ mkdir -p minsip/.bundle
