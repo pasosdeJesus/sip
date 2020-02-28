@@ -29,7 +29,6 @@ curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 - Configura webpacker desde el directorio `minsip`
 ```sh
 bin/rails webpacker:install
-CXX=c++ yarn add webpack @rails/webpacker
 ```
 - Con esto ya deberías poder lanzar la aplicación en modo desarrollo (aunque no correrá mucho sin base de datos, así que detenla con Control-C después de lanzarla):
 ```sh
@@ -315,7 +314,7 @@ y el logo (`logo.jpg`) y los favicons en la ruta `app/assets/images`, aunque ini
 
 - Para preparar experiencia de usuario con ayuda de Bootstrap y Javascript debes instalar paquetes `npm` mínimos: 
 ```sh
-yarn add @rails/ujs  bootstrap bootstrap-datepicker chosen-js expose-loader @fortawesome/fontawesome-free jquery jquery-ui pick-a-color popper.js  tinycolor2 turbolinks 
+yarn add @rails/webpacker webpack @rails/ujs  bootstrap bootstrap-datepicker chosen-js expose-loader @fortawesome/fontawesome-free jquery jquery-ui popper.js  turbolinks 
 CXX=c++ yarn install
 ```
 en `app/javascript/packs/application.js` cargarlos e iniciarlos:
@@ -361,8 +360,15 @@ environment.loaders.append('expose', {
       
 module.exports = environment
 ```
-
-
+- Completa la instalación de webpack y la configuración de webpacker con:
+```
+CXX=c++ yarn add @rails/webpacker webpack
+CXX=c++ yarn install
+```
+tras lo cual deberías poder ejecutar
+```
+bin/webpack
+```
 - Configura la tubería de recursos (o sprockets) para cargar hojas de estilo y operar en paralelo con webpack agregando a `config/initalizers/assets.rb`:
 ```ruby
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
