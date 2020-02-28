@@ -91,6 +91,8 @@ gem 'cancancan'                  # Control de acceso
 
 gem 'coffee-rails'               # Aún parte del Javascript manejado por sprockets de sip está en Coffescript
 
+gem 'colorize'                   # Colores en consola
+
 gem 'devise'                     # Autenticación
 
 gem 'devise-i18n'                # Localización e Internacionalización                  
