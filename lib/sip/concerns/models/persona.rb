@@ -34,15 +34,18 @@ module Sip
           belongs_to :tdocumento, class_name: "Sip::Tdocumento", 
             foreign_key: "tdocumento_id", validate: true, optional: true
 
-          has_many :persona_trelacion1, foreign_key: "persona1", validate: true,
+          has_many :persona_trelacion1, foreign_key: "persona1", 
+            dependent: :delete_all, 
             class_name: "Sip::PersonaTrelacion"
-          has_many :persona_trelacion2, foreign_key: "persona2", validate: true,
+          has_many :persona_trelacion2, foreign_key: "persona2", 
+            dependent: :delete_all, 
             class_name: "Sip::PersonaTrelacion"
-          accepts_nested_attributes_for :persona_trelacion1,
-            reject_if: :all_blank
-          accepts_nested_attributes_for :persona_trelacion2,
-            reject_if: :all_blank
 
+          has_many :personados, through: :persona_trelacion1, 
+            class_name: 'Sip::Persona'
+          accepts_nested_attributes_for :personados, reject_if: :all_blank
+          accepts_nested_attributes_for :persona_trelacion1,
+            reject_if: :all_blank, allow_destroy: true
 
           # identificación autogenerada en este y demás modelos (excepto los de
           # información geográfica).
