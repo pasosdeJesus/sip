@@ -60,10 +60,25 @@ module Sip
             params.require(:actorsocial).permit(
               atributos_form - [:grupoper] +
               [ :pais_id,
-                :grupoper_attributes => [
-                :id,
-                :nombre,
-                :anotaciones ]
+                :grupoper_attributes => 
+                [
+                  :id,
+                  :nombre,
+                  :anotaciones 
+                ],
+                :actorsocial_persona_attributes => 
+                [
+                  :id,
+                  :perfilactorsocial_id,
+                  :correo,
+                  :_destroy,
+                  :persona_attributes => 
+                  [
+                    :id,
+                    :nombres,
+                    :apellidos,
+                  ]
+                ]
               ]) 
           end
 

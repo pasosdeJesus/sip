@@ -17,6 +17,9 @@ module Sip
             optional: true
           belongs_to :persona, class_name: 'Sip::Persona',
             foreign_key: 'persona_id', validate: true
+
+          accepts_nested_attributes_for :persona, reject_if: :all_blank
+
           belongs_to :perfilactorsocial, class_name: 'Sip::Perfilactorsocial',
             foreign_key: 'perfilactorsocial_id', validate: true, optional: true
 

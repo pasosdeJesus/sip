@@ -131,18 +131,18 @@ module Sip
           else
             ""
           end
-        elsif self.respond_to?(atr) && 
-          self.send(atr.to_sym).respond_to?(:presenta_nombre)
-          self.send(atr.to_sym).presenta_nombre
-        elsif self.respond_to?(atr) && self[atr.to_s].nil?
-          if self.send(atr).to_s.include?("ActiveRecord_Associations_CollectionProxy")
-            e = self.send(atr)
+        elsif self.respond_to?(atr.to_s) && 
+          self.send(atr.to_s).respond_to?(:presenta_nombre)
+          self.send(atr.to_s).presenta_nombre
+        elsif self.respond_to?(atr.to_s) && self[atr.to_s].nil?
+          if self.send(atr.to_s).to_s.include?("ActiveRecord_Associations_CollectionProxy")
+            e = self.send(atr.to_s)
             e.inject("") { |memo, i| 
               (memo == "" ? "" : memo + "; ") + 
                 (i.respond_to?('presenta_nombre') ? i.presenta_nombre.to_s : i.to_s)
             }
           else
-            self.send(atr).to_s
+            self.send(atr.to_s).to_s
           end
         else
           self[atr.to_s].to_s

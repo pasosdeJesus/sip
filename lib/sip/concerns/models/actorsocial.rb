@@ -22,9 +22,12 @@ module Sip
           has_many :actorsocial_persona, 
             class_name: 'Sip::ActorsocialPersona',
             foreign_key: "actorsocial_id"
+          accepts_nested_attributes_for :actorsocial_persona,
+            allow_destroy: true, reject_if: :all_blank
+
           has_many :persona, through: :actorsocial_persona, 
             class_name: 'Sip::Persona'
-
+          accepts_nested_attributes_for :persona, reject_if: :all_blank
 
           has_and_belongs_to_many :sectoractor, 
             class_name: 'Sip::Sectoractor',
