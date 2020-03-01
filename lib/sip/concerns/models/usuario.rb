@@ -155,15 +155,17 @@ module Sip
           attr_accessor :habilitado
 
           def habilitado
-            fechadeshabilitacion.nil? ? 'Si' : 'No'
+            (fechadeshabilitacion.nil? or fechadeshabilitacion.future?) ?
+              'Si':'No'
           end
 
           scope :filtro_habilitado, lambda {|o|
             if o.upcase.strip == 'SI'
-              where(fechadeshabilitacion: nil)
+              where('fechadeshabilitacion IS NULL OR ' +
+                    'DATE(fechadeshabilitacion) > ?', Date.today)
             elsif o.upcase.strip == 'NO'
-              where.not(fechadeshabilitacion: nil)
-            end 
+              where('DATE(fechadeshabilitacion) <= ?', Date.today)
+            end
           }
 
         end
