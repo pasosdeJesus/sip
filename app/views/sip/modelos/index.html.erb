@@ -1,5 +1,5 @@
 <%- model_class = clase.constantize -%>
-<%- titulo = model_class.human_attribute_name(
+<%- titulo = @titulo ? @titulo : model_class.human_attribute_name(
       model_class.model_name.to_s.demodulize.pluralize) -%>
 <div class="page-header">
   <h1>
