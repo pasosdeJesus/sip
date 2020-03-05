@@ -347,6 +347,62 @@ if (typeof String.prototype.endsWith != 'function')
         )
       })
   return
+  
+# Ejecuta función con respuesta que recibe mendiante AJAX
+# rutajson Ruta del API que respondera JSON (sin punto de montaje, ni .json)
+# params   Parametros por pasar a consulta AJAX
+# f        Función por llamar
+# descerr  Descripcion por presentar en caso de que el JSON no responda
+# root     Donde se almacenan objetos globales
+@sip_funcion_tras_AJAX = (rutajson, params, f, descerr, root = window) ->
+  sip_arregla_puntomontaje(root)
+  t = Date.now()
+  d = -1
+  if (root.sip_funcion_tras_AJAX_t)
+    d = (t - root.sip_funcion_tras_AJAX_t)/1000
+  root.sip_funcion_tras_AJAX_t = t
+  # NO se permite mas de un envio en 2 segundos 
+  if (d > 0 && d <= 2)
+    return
+
+  x = $.getJSON(root.puntomontaje + rutajson + ".json", params)
+  x.done((res) ->
+    f(root, res)
+  )
+  x.fail((m1, m2, m3) -> 
+    alert(
+      'Problema ' + descerr + '. ' + params + ' ' + m1 + ' ' + m2 + ' ' + m3)
+    )
+
+# Ejecuta función que recibe un parametro además de root y la respuesta que
+# recibe mendiante AJAX
+# rutajson Ruta del API que respondera JSON (sin punto de montaje, ni .json)
+# params   Parametros por pasar a consulta AJAX
+# f        Función por llamar
+# p1       Parametro por pasara a la funcion f
+# descerr  Descripcion por presentar en caso de que el JSON no responda
+# root     Donde se almacenan objetos globales
+@sip_funcion_1p_tras_AJAX = (rutajson, params, f, p1, descerr, root = window) ->
+  sip_arregla_puntomontaje(root)
+  t = Date.now()
+  d = -1
+  if (root.sip_funcion_1p_tras_AJAX_t)
+    d = (t - root.sip_funcion_1p_tras_AJAX_t)/1000
+  root.sip_funcion_1p_tras_AJAX_t = t
+  # NO se permite mas de un envio en 2 segundos 
+  if (d > 0 && d <= 2)
+    return
+
+  x = $.getJSON(root.puntomontaje + rutajson + ".json", params)
+  x.done((res) ->
+    f(root, res, p1)
+  )
+  x.fail((m1, m2, m3) -> 
+    alert(
+      'Problema ' + descerr + '. ' + params + ' ' + m1 + ' ' + m2 + ' ' + m3)
+    )
+
+
 
 # Cambia cuadro de texto con cadena que recibe mediante AJAX
 # rutajson Ruta del API que respondera JSON (sin punto de montaje), se
@@ -373,7 +429,7 @@ if (typeof String.prototype.endsWith != 'function')
     if f != null
       f(root)
   )
-  x.error((m1, m2, m3) -> 
+  x.fail((m1, m2, m3) -> 
     alert(
       'Problema ' + descerr + '. ' + params + ' ' + m1 + ' ' + m2 + ' ' + m3)
     )
@@ -409,7 +465,7 @@ if (typeof String.prototype.endsWith != 'function')
     if f != null
       f(root)
   )
-  x.error((m1, m2, m3) -> 
+  x.fail((m1, m2, m3) -> 
     alert(
       'Problema ' + descerr + '. ' + param + ' ' + m1 + ' ' + m2 + ' ' + m3)
     )
@@ -453,7 +509,7 @@ if (typeof String.prototype.endsWith != 'function')
     if f != null
       f(root)
   )
-  x.error((m1, m2, m3) -> 
+  x.fail((m1, m2, m3) -> 
     alert(
       'Problema ' + descerr + '. ' + param + ' ' + m1 + ' ' + m2 + ' ' + m3)
     )
@@ -497,7 +553,7 @@ if (typeof String.prototype.endsWith != 'function')
     if f != null
       f(root)
   )
-  x.error((m1, m2, m3) -> 
+  x.fail((m1, m2, m3) -> 
     alert(
       'Problema ' + descerr + '. ' + params + ' ' + m1 + ' ' + m2 + ' ' + m3)
     )
