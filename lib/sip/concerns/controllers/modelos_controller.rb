@@ -234,6 +234,7 @@ module Sip
           # bien no se desean que generen una excepción o bien
           # que no se pudieron realizar con cancancan
           def validaciones(registro)
+            @validaciones_error = ''
             return true
           end
 
@@ -257,7 +258,8 @@ module Sip
             # y comentó en update_gen
             eval "@#{c2} = @registro" 
             if !validaciones(@registro) || !@registro.valid?
-              render action: 'new', layout: 'application' 
+              flash[:error] = @validaciones_error 
+              render action: 'new', layout: 'application'
               return
             end
             authorize! :create, @registro
@@ -324,7 +326,8 @@ module Sip
                 }
               else
                 format.html { 
-                  render action: 'edit', layout: 'application' 
+                  flash[:error] = @validaciones_error 
+                  render action: 'edit', layout: 'application'
                 }
                 format.json { 
                   render json: @registro.errors, 

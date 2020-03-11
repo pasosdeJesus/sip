@@ -27,15 +27,19 @@ fuentes  (por ejemplo para autenticación se emplea `Devise` con modelo
   * [Ejemplo de creación de tabla, modelo y controlador con vistas automáticas](https://github.com/pasosdeJesus/sip/blob/master/doc/ejemplo-con-vistas-automaticas.md)
   * Modelos
     * [Tablas incluidas y modelo entidad-asociación](https://github.com/pasosdeJesus/sip/blob/master/doc/modelo-entidad-asociacion.md)
-    * [Personalización de modelos](https://github.com/pasosdeJesus/sip/blob/master/doc/personalizacion-de-modelos.md)
-    * [Vistas automáticas con Sip::Modelo y Sip::ModelosController](https://github.com/pasosdeJesus/sip/blob/master/doc/vistas-automaticas.md)
     * [Tablas Básicas](https://github.com/pasosdeJesus/sip/blob/master/doc/tablas-basicas.md)
     * [Uso y personalización del modelo usuario](https://github.com/pasosdeJesus/sip/blob/master/doc/modelo-usuario.md)
-    * [Inflecciones en español]()
-  * [Personalización de rutas, controladores y vistas](https://github.com/pasosdeJesus/sip/blob/master/doc/rutas-controladores-vistas.md)
+    * [Personalización de modelos](https://github.com/pasosdeJesus/sip/blob/master/doc/personalizacion-de-modelos.md)
+  * Controladores
+    * [Facilidades con controladors descendientes de Sip::ModelosController](https://github.com/pasosdeJesus/sip/blob/master/doc/facilidades-controlador.md)
+  * Rutas y vistas
+    * [Vistas automáticas con Sip::Modelo y Sip::ModelosController](https://github.com/pasosdeJesus/sip/blob/master/doc/vistas-automaticas.md)
+    * [Personalización de rutas, controladores y vistas](https://github.com/pasosdeJesus/sip/blob/master/doc/rutas-controladores-vistas.md)
     * [Personalización del punto de montaje](https://github.com/pasosdeJesus/sip/blob/master/doc/punto-de-montaje.md)
     * [Personalización de recursos javascript y css](https://github.com/pasosdeJesus/sip/blob/master/doc/recursos-javascript-y-css.md)
     * [Personalización de diseño visual, logo y favicon](https://github.com/pasosdeJesus/sip/blob/master/doc/diseño-visual-logo-y-favicon.md)
+  * Internacionalización
+    * [Inflecciones en español]()
     * [Internacionalización y personalización de nombres de campos y tablas](https://github.com/pasosdeJesus/sip/blob/master/doc/internacionalizacion-nombres-campos-y-tablas.md)
     * [Localización de cantidades numéricas y fechas](https://github.com/pasosdeJesus/sip/blob/master/doc/localizacion-numeros-y-fechas.md)
 * Pruebas
