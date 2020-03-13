@@ -347,7 +347,24 @@ if (typeof String.prototype.endsWith != 'function')
         )
       })
   return
-  
+
+# Antes de visitar un enlace, producto de presionar un elemento <a...>,
+# agrega al URL destino datos de formulario
+@sip_completa_enlace = (elema, idruta, rutagenera) ->
+  if idruta == null
+    f = $(elema).closest('form')
+  else
+    f = $("form[action$='" + idruta + "']")
+  d = f.serialize()
+  d += '&commit=Enviar'
+  root = window;
+  sip_arregla_puntomontaje(root)
+  if (root.puntomontaje != '/' || rutagenera[0] != '/') && rutagenera.substring(0, root.puntomontaje.length) != root.puntomontaje
+    rutagenera = root.puntomontaje + rutagenera
+  e = rutagenera + '?' + d
+  $(elema).attr('href', e)
+
+
 # Ejecuta función con respuesta que recibe mendiante AJAX
 # rutajson Ruta del API que respondera JSON (sin punto de montaje, ni .json)
 # params   Parametros por pasar a consulta AJAX

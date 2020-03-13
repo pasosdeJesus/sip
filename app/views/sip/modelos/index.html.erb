@@ -8,8 +8,6 @@
 </div>
 
 
-<%= render partial: 'index_encabezado', locals: {titulo: titulo} %>
-
 <% #byebug %>
 <% if !@url_formulario_sipmodelo.nil? %>
   <% url_formulario = @url_formulario_sipmodelo %>
@@ -20,6 +18,8 @@
   { url: url_formulario,
     method: "get"} do |f| %>
  
+  <%= render partial: 'index_encabezado', locals: {titulo: titulo, f: f} %>
+
   <table class="table table-striped">
     <thead>
       <tr>
