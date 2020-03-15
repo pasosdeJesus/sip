@@ -106,9 +106,9 @@ module Sip
     # clase completa Modulo::Clase
     def self.tb_clase(t)
       if (t[0] != '') 
-        k = t[0] + '::' + t[1].capitalize
+        k = t[0] + '::' + t[1].camelize
       else
-        k = t[1].capitalize
+        k = t[1].camelize
       end
       k.constantize 
     end

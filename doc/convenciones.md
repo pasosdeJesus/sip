@@ -17,13 +17,18 @@ Si algún componente resulta muy popular como para ser usado por hablantes de ot
 
 # Tablas y modelos en singular, controladores y vistas en plural
 
-En el mundo SQL una convencin usual es emplear en singular nombres de tablas, pero rails buscando dejar más legible algunos casos de uso ha propuesto emplear plural para nombres de tablas y modelos.
+En el mundo SQL una convención usual es emplear en singular nombres de tablas, 
+pero rails buscando dejar más legible algunos casos de uso ha propuesto 
+emplear plural para nombres de tablas y modelos.
 
-Preferimos la convención tradicional de SQL y por lo mismo los modelos también deben especificarse en singular.
+Preferimos la convención tradicional de SQL y por lo mismo los modelos 
+también deben especificarse en singular, sin embargo si mantenemos
+la convención de controladores y vistas en plural.
 
 # SQL
+
 * Palabras reservadas de SQL en mayúscula.
-* Nombres de tablas en singular y preferible que sean una sola palabra.  Si son de un motor comienzan con el nombre del motor y `_` por ejemplo `sip_grupo`.  La excepcion pueden ser tablas combinadas (Join tables), cuyo nombre se puede componer del nombre de las dos tablas que une  ordenadas alfabéticamente (por ejemplo `sip_pais` con `sip_grupo` sería `sip_grupo_pais`).
+* Nombres de tablas en singular y preferible que sean una sola palabra (sin usar `_`).  Si son de un motor comienzan con el nombre del motor y `_` por ejemplo `sip_grupo`.  La excepcion pueden ser tablas combinadas (Join tables), cuyo nombre se puede componer del nombre de las dos tablas que une  ordenadas alfabéticamente (por ejemplo `sip_pais` con `sip_grupo` sería `sip_grupo_pais`).
 * SQL no es sensitivo a mayúsculas/minúsculas pero Ruby si lo es.  Sugerimos escribir nombres de campos que se compongan de varias palabras con capitalización camello pero empezando en minúscula, por ejemplo  `colorFlotaSubitemFuente` en lugar de `color_flota_subitem_fuente` pero los que sean llaves foraneas si mejor terminados en `_id`, por ejemplo `caso_id` 
 
 # Ruby
