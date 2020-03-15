@@ -406,8 +406,8 @@ if (typeof String.prototype.endsWith != 'function')
   if (root.sip_funcion_1p_tras_AJAX_t)
     d = (t - root.sip_funcion_1p_tras_AJAX_t)/1000
   root.sip_funcion_1p_tras_AJAX_t = t
-  # NO se permite mas de un envio en 2 segundos 
-  if (d > 0 && d <= 2)
+  # NO se permite mas de un envio en 1 segundos 
+  if (d > 0 && d <= 1)
     return
 
   x = $.getJSON(root.puntomontaje + rutajson + ".json", params)
