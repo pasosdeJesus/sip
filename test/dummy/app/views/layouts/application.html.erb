@@ -19,6 +19,7 @@
         <%= opcion_menu "Usuarios", main_app.usuarios_path, desplegable: true %>
         <%= opcion_menu "Tablas Básicas", sip.tablasbasicas_path, desplegable: true %>
         <%= opcion_menu "Ayuda CA", sip.ayuda_controldeacceso_path, desplegable: true %>
+        <%= opcion_menu "Bitácoras", sip.bitacoras_path, desplegable: true %>
       <% end %>
       <%= opcion_menu "Salir #{current_usuario.nusuario}", main_app.sign_out_path %>
     <% else %>
@@ -31,7 +32,7 @@
 
 <% content_for :piedepagina do %>
   <p><span class='derechos'><a href="http://www.pasosdejesus.org/dominio_publico_colombia.html">Dominio Público de acuerdo a Legislación Colombiana</a><br/>
-    Desarrollado por <a href="http://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>. 2019. 
+    Desarrollado por <a href="http://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>. 2020. 
   </span></p>
 <% end %>
 

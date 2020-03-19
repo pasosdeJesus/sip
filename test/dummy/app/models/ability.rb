@@ -47,6 +47,8 @@ class Ability  < Sip::Ability
       when Ability::ROLADMIN
         can :manage, ::Usuario
         can :manage, Sip::Actorsocial
+        can :manage, Sip::Bitacora
+        can :manage, Sip::Grupoper
         can :manage, Sip::Persona
         can :manage, Sip::Respaldo7z
         can :manage, Sip::Tema

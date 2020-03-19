@@ -21,6 +21,8 @@ Sip::Engine.routes.draw do
 
   resources :actoressociales, path_names: { new: 'nuevo', edit: 'edita' } 
   
+  resources :bitacoras, path_names: { new: 'nueva', edit: 'edita' } 
+  
   resources :personas, path_names: { new: 'nueva', edit: 'edita' } 
 
   # En su aplicación al emplear ayudadores de rutas utilice prefijo
