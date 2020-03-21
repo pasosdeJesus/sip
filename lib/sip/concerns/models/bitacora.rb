@@ -22,18 +22,24 @@ module Sip
           validates :params, length: {maximum: 5000}
           validates :modelo, length: {maximum: 511}
           validates :operacion, length: {maximum: 63}
-          validates :detalle, length: {maximum: 5000}
 
           def self.a(ip, usuario_id, url, params, 
-                     modelo, modelo_id, operacion, detalle = nil)
+                     modelo, modelo_id, operacion, detalle_json = '{}')
             url = url ? url.to_s : ''
             url = url[0..49] if url && url.length > 50
             modelo = modelo ? modelo.to_s : ''
             modelo = modelo[0..49] if modelo && modelo.length > 50
             operacion = operacion ? operacion.to_s : ''
             operacion = operacion[0..49] if operacion && operacion.length > 50
-            detalle = detalle ? detalle.to_s : ''
-            detalle = detalle[0..49] if detalle && detalle.length > 50
+            if detalle_json = ''
+              detalle_json = '{}'
+            else
+              begin
+                JSON.parse(detalle_json)
+              rescue JSON::ParserError => e
+                detalle_json = detalle_json.to_json
+              end
+            end
             b = Sip::Bitacora.new(
               fecha: Time.now.utc.iso8601,
               ip: ip,
@@ -43,12 +49,17 @@ module Sip
               modelo: modelo,
               modelo_id: modelo_id.to_i,
               operacion: operacion,
-              detalle: detalle
+              detalle: detalle_json
             )
             if b.params && b.params.to_yaml.length > 5000
               b.params = b.params.to_yaml[0..4000]
             end
             b.save!
+            if b.errors.messages != {}
+              STDERR.puts "** No se puede escribir en bitácora: " +
+                "#{b.errors.messages.to_s}"
+              byebug
+            end
           end
 
 

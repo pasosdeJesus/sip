@@ -289,7 +289,7 @@ CREATE TABLE public.sip_bitacora (
     modelo character varying(511),
     modelo_id integer,
     operacion character varying(63),
-    detalle character varying(5000),
+    detalle json,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );

@@ -65,6 +65,9 @@ es:
         sectoractor: Sector(es)
         telefono: Teléfono
         "{:sectoractor_ids=>[]}": Sector(es)
+      "sip/bitacora":
+        Bitacora: Registro en bitácora
+        Bitacoras: Registros en bitácora
       "sip/clase":
         Clase: Centro poblado
         Clases: Centros poblados

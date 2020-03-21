@@ -11,6 +11,11 @@ module Sip
           include ModeloHelper
           helper ModeloHelper
 
+          # Deben registrarse en Sip::Bitacora usos de este controlador
+          def registrar_en_bitacora
+            return false
+          end
+
           # Permite modificar params
           def prefiltrar()
           end
@@ -131,6 +136,11 @@ module Sip
             index_plantillas
 
             respond_to do |format|
+              if registrar_en_bitacora
+                Sip::Bitacora.a(request.remote_ip, current_usuario.id,
+                                request.url, params, self.clase,
+                                0,  'listar', '')
+              end
               format.html {  
                 @registros = @registro = c ? c.paginate(
                   :page => params[:pagina], per_page: 20
@@ -189,6 +199,12 @@ module Sip
               authorize! :read, @registro
             end
             show_plantillas
+            if registrar_en_bitacora
+              Sip::Bitacora.a(request.remote_ip, current_usuario.id,
+                              request.url, params, @registro.class.to_s,
+                              @registro.id,  'presentar', '')
+            end
+
             render layout: 'application'
           end
 
@@ -213,6 +229,11 @@ module Sip
               @registro.fechacreacion = DateTime.now.strftime('%Y-%m-%d')
             end
 
+            if registrar_en_bitacora
+              Sip::Bitacora.a(request.remote_ip, current_usuario.id,
+                              request.url, params, @registro.class.to_s,
+                              nil,  'iniciar', '')
+            end
             render layout: 'application'
           end
 
@@ -225,6 +246,12 @@ module Sip
             if cannot? :edit, clase.constantize
               # Supone alias por omision de https://github.com/CanCanCommunity/cancancan/blob/develop/lib/cancan/ability/actions.rb
               authorize! :update, @registro
+            end
+
+            if registrar_en_bitacora
+              Sip::Bitacora.a(request.remote_ip, current_usuario.id,
+                              request.url, params, @registro.class.to_s,
+                              @registro.id,  'editar', '')
             end
             render layout: 'application'
           end
@@ -266,6 +293,11 @@ module Sip
             creada = genclase == 'M' ? 'creado' : 'creada';
             respond_to do |format|
               if @registro.save
+                if registrar_en_bitacora
+                  Sip::Bitacora.a(request.remote_ip, current_usuario.id,
+                                  request.url, params, @registro.class.to_s,
+                                  @registro.id,  'crear', '')
+                end
                 format.html { 
                   redirect_to modelo_path(@registro), 
                   notice: clase + " #{creada}."
@@ -310,6 +342,17 @@ module Sip
             respond_to do |format|
               if validaciones(@registro) && @registro.valid? && 
                 @registro.save
+                if registrar_en_bitacora
+                  Sip::Bitacora.a(request.remote_ip,
+                                  current_usuario.id,
+                                  request.url,
+                                  params, 
+                                  @registro.class.to_s,
+                                  @registro.id,
+                                  'actualizar', 
+                                  '{}')
+                end
+
                 format.html { 
                   if params[:_sip_enviarautomatico_y_repinta]
                     redirect_to edit_modelo_path(@registro), 
@@ -368,7 +411,15 @@ module Sip
                 return
               end
             end
+            cregistro=@registro.class.to_s
+            cregistroid=@registro.id
             @registro.destroy
+            if registrar_en_bitacora
+              Sip::Bitacora.a(request.remote_ip, current_usuario.id,
+                              request.url, params, cregistro,
+                              cregistroid,  'eliminar', '')
+            end
+
             eliminada = genclase == 'M' ? 'eliminado' : 'eliminada';
             respond_to do |format|
               format.html { redirect_to modelos_url(@registro),

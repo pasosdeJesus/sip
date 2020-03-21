@@ -9,7 +9,7 @@ class CreateSipBitacora < ActiveRecord::Migration[6.0]
       t.string :modelo, limit: 511
       t.integer :modelo_id
       t.string :operacion, limit: 63
-      t.string :detalle,  limit: 5000
+      t.json :detalle
       t.timestamp :created_at, null: false
       t.timestamp :updated_at, null: false
     end

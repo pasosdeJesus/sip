@@ -21,13 +21,17 @@ module Sip
               :ip,
               :usuario_id,
               :url,
-              :params,
               :modelo,
               :modelo_id,
               :operacion,
               :detalle
             ]
           end
+
+          def atributos_form
+            atributos_index - [ :id ] + [ :params ]
+          end
+
 
           def index_reordenar(registros)
             return registros.reorder(:id)
