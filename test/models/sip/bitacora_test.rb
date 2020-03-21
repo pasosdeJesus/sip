@@ -44,9 +44,9 @@ module Sip
       bitacora.destroy
     end
 
-    test "no valido por detalle largo" do
+    test "no valido por modelo largo" do
       bitacora = Sip::Bitacora.new PRUEBA_BITACORA
-      bitacora.detalle = 'x'*6000
+      bitacora.modelo = 'x'*6000
       assert_not bitacora.valid?
       bitacora.destroy
     end
