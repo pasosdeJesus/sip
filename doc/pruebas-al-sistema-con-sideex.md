@@ -67,7 +67,7 @@ Cada vez que el equipo de desarrollo anuncia cambios, el equipo de pruebas:
   del equipo de desarrollo, si los anuncios de desarrollo son semanales
   o si el tipo de contrato lo requiere hasta un día después).  
 - Cuando el equipo de desarrollo mueve una tarjetas de la columna haciendo a la columna 
-  hecho puede quedar algunas tarjetas de fallas sin tiempo, que seguramente al abrirse
+  hecho pueden quedar algunas tarjetas de fallas sin tiempo, que seguramente al abrirse
   tendrán un comentario que el equipo de pruebas debe leer y revisar para 
   mejorar el reporte de prueba o verificar si la falla persiste.
 - Amplia y actualiza pruebas del sistema en directorio ```test/sideex``` --el equipo de pruebas 
