@@ -360,6 +360,14 @@ environment.loaders.append('expose', {
       
 module.exports = environment
 ```
+y asegurar que se podrán usar funciones auxiliares relacionadas con Bootstrap, dejando `app/helpers/application_helper.rb` con el siguiente contenido:
+```rb
+module ApplicationHelper 
+
+  include Sip::BootstrapHelper
+  
+end
+```
 - Completa la instalación de webpack y la configuración de webpacker con:
 ```
 CXX=c++ yarn add @rails/webpacker webpack
