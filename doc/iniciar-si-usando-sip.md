@@ -360,6 +360,14 @@ environment.loaders.append('expose', {
       
 module.exports = environment
 ```
+y asegurar que se podrán usar funciones auxiliares relacionadas con Bootstrap, dejando `app/helpers/application_helper.rb` con el siguiente contenido:
+```rb
+module ApplicationHelper 
+
+  include Sip::BootstrapHelper
+  
+end
+```
 - Completa la instalación de webpack y la configuración de webpacker con:
 ```
 CXX=c++ yarn add @rails/webpacker webpack
@@ -369,11 +377,11 @@ tras lo cual deberías poder ejecutar
 ```
 bin/webpack
 ```
-- Configura la tubería de recursos (o sprockets) para cargar hojas de estilo y operar en paralelo con webpack agregando a `config/initalizers/assets.rb`:
+- Configura la tubería de recursos (o sprockets) para cargar hojas de estilo y operar en paralelo con webpack agregando a `config/initializers/assets.rb`:
 ```ruby
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
 ```
-dejando en `app/assets/stylesheet/application.css`:
+dejando en `app/assets/stylesheets/application.css`:
 ```css
 /*
  *= require_tree .
@@ -381,7 +389,7 @@ dejando en `app/assets/stylesheet/application.css`:
  *= require_self
  */
 ```
-y para cargar otros javascript que no se maneje con webpacker en `app/assets/javascripts/application.js`:
+y para cargar otros javascript que no se manejen con webpacker, asegurese de dejar en `app/assets/javascripts/application.js` el siguiente contenido (creando antes el directorio `app/assets/javascripts`):
 ```js
 //= require sip/application
 //= require_tree .
