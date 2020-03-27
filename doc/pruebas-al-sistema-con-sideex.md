@@ -384,4 +384,5 @@ o como
 ```
 $('[type=email]').removeAttr('type')
 ```
+Hemos notado que esta orden puede entrar en conflicto con la que quita el estilo de chosen a campos de selección para evitarlo, hemos notado que es mejor correr primero la que quitar el atributo type, digamos recién se despliega el formulario.
 
