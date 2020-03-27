@@ -93,8 +93,8 @@ es:
         id_pais: País
         id_departamento: Departamento
       "sip/pais":
-        Pais: Pais
-        Paises: Paises
+        Pais: País
+        Paises: Países
         nombre: Nombre
         nombreiso: Nombre ISO
         alfa2: Código ISO de 2 letras

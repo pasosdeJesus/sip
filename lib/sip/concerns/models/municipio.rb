@@ -33,7 +33,7 @@ module Sip
             scope: :id_departamento,
             case_sensitive: false, 
             message: "debe ser único en el departamento/estado",
-            allow_blank: true
+            allow_blank: false
 
           scope :filtro_pais, lambda {|p|
             joins(:departamento).where('sip_departamento.id_pais=?', p)
