@@ -29,7 +29,7 @@ module Sip
           validates_uniqueness_of :id_deplocal, 
             scope: :id_pais, 
             message: "debe ser único en el país", 
-            allow_blank: true
+            allow_blank: false
 
           scope :filtro_id_pais, lambda {|p|
             where(id_pais: p)
