@@ -35,9 +35,15 @@ bin/rails db:setup
 bin/rails sip:indices
 ```
 
-Finalmetne inicia la aplicación, por ejemplo asociándola al puerto 3000 (por omisión) de la IP del servidor donde operas (en este ejemplo 192.168.1.3) con:
+Finalmetne inicia la aplicación, por ejemplo asociándola al puerto 2300 (que suponemos está abierto en el cortafuegos) de la IP del servidor donde operas (en este ejemplo 192.168.1.3) con:
 ```
-bin/rails s -b 192.168.1.3
+bin/rails s -p 2300 -b 192.168.1.3
 ```
 
-Usa la aplicación con un navegador en la URL http://192.168.1.3:3000/sip/, puedes ingresar con el usuario ```sip``` y la clave ```sip```
+Usa la aplicación con un navegador en la URL http://192.168.1.3:2300/sip/, puedes ingresar con el usuario ```sip``` y la clave ```sip```
+
+Si prefiere o necesita SSL, empleando un certificado del cual deja las llaves pública y privada en tmp/llave-publica.crt y tmp/llave-privada.key, inicie con:
+
+```sh
+CONFIG_HOSTS=192.168.1.3 bin/rails s puma -b 'ssl://192.168.1.3:2300?key=tmp/llave-privada.key&cert=tmp/llave-publica.crt'
+```
