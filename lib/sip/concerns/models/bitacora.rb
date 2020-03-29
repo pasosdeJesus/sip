@@ -31,7 +31,7 @@ module Sip
             modelo = modelo[0..49] if modelo && modelo.length > 50
             operacion = operacion ? operacion.to_s : ''
             operacion = operacion[0..49] if operacion && operacion.length > 50
-            if detalle_json = ''
+            if detalle_json == ''
               detalle_json = '{}'
             else
               begin
