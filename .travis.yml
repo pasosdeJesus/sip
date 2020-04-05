@@ -31,7 +31,7 @@ before_install:
         - yarn install
         - cp config/database.travis.yml config/database.yml
         - cp db/structure.sql db/structure.sql.copia # Return SQL from 10 to 9.6
-        - sed -e 's/provider = libc,//g' db/structure.sql.copia > db/structure.sql 
+        - sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g' db/structure.sql.copia > db/structure.sql 
         - rake db:setup
         - rake sip:indices
         - cd ../..
