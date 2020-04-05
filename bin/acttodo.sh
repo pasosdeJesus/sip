@@ -82,6 +82,7 @@ if (test "$SALTACOR1440" != "1") then {
 	actuno cor1440; 
 	actuno cor1440_pdJ; 
 } fi;
+
 if (test "$SALTASAL7711" != "1") then {
 	echo "**** sal7711"
 	actuno sal7711_gen test/dummy; 
@@ -90,7 +91,6 @@ if (test "$SALTASAL7711" != "1") then {
 	actuno sal7711_cinep; 
 	actuno sal7711_ld test/dummy; 
 } fi;
-
 
 # Usan 2 motores
 if (test "$SALTACOR1440CINEP" != "1") then {

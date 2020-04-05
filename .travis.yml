@@ -15,6 +15,7 @@ env:
                 - CC_TEST_REPORTER_ID=e83ead47cfc0912ab49acb6658bf8a22bd4257d73c5ddcd8eebfb450efd51640
 
 before_install: 
+        - nvm install node
         - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         - chmod +x ./cc-test-reporter
         - ./cc-test-reporter before-build
@@ -27,6 +28,7 @@ before_install:
         - gem update --system
         - bundle update --bundler
         - bundle install
+        - yarn install
         - cp config/database.travis.yml config/database.yml
         - cp db/structure.sql db/structure.sql.copia # Return SQL from 10 to 9.6
         - sed -e 's/provider = libc,//g' db/structure.sql.copia > db/structure.sql 
