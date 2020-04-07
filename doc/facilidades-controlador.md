@@ -34,3 +34,10 @@ def validaciones(registro)
 end
 ```
 
+## Evitar eliminación de registros referenciados por otras tablas
+
+El método destroy de este controlador, puede recibr un parámetro 
+`verifica_tablas_union`, en caso de ser verdadero, antes de la eliminación
+revisa si el registro está referenciado en otras tablas y en caso
+afirmativo impide la eliminacin y presenta un mensaje indicado las tablas
+en la que el registro es referenciado y cuantas veces en cada una.
