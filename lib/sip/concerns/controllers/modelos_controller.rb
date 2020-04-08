@@ -399,12 +399,28 @@ module Sip
                 if !r.options[:through]
                   rel = @registro.send(r.name)
                   if (rel.count > 0) 
-                    nom = @registro.class.human_attribute_name(r.name)
-                    mens += " Hay #{rel.count} elementos relacionados en " +
-                      " la tabla #{nom}, no puede eliminarse aún. "
+                    nom = rel[0].class.human_attribute_name(r.name)
+                    mens += " Este registro se relaciona con " +
+                      "#{rel.count} registro(s) '#{nom}' (con id(s) " +
+                      "#{rel.map(&:id).join(', ')}), " +
+                      "no puede eliminarse aún. "
                   end
                 end
               end
+              m = @registro.class.reflect_on_all_associations(:has_and_belongs_to_many)
+              m.each do |r|
+                if !r.options[:through]
+                  rel = @registro.send(r.name)
+                  if (rel.count > 0) 
+                    nom = rel[0].class.human_attribute_name(r.name)
+                    mens += " Este registro se relaciona con " +
+                      "#{rel.count} registro(s) '#{nom}' (con id(s) " +
+                      "#{rel.map(&:id).join(', ')}), " +
+                      "no puede eliminarse aún. "
+                  end
+                end
+              end
+
               if mens != ''
                 redirect_back fallback_location: main_app.root_path, 
                   flash: {error: mens}
