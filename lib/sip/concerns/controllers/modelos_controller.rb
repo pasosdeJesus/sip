@@ -300,7 +300,7 @@ module Sip
                 end
                 format.html { 
                   redirect_to modelo_path(@registro), 
-                  notice: clase + " #{creada}."
+                    notice: clase + " #{creada}."
                 }
                 format.json { 
                   render action: 'show', status: :created, location: @registro
