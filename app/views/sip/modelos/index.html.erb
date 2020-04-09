@@ -30,15 +30,18 @@
           <%= render partial: rutaf, locals: {f: f} %>
         <% else %>
           <% atributos_index.each do |atr| %>
-            <% #byebug %>
-            <% # Si en config/locale/es.yml dice "{:proyecto_ids=>[]}": Áreas
+            <% rutaat = clase.pluralize.underscore + 
+              '/index_titulo_tabla_' + atr.to_s %>
+            <% if lookup_context.find_all(rutaat, [], true).any? %>
+              <% m = render partial: rutaat, locals: {f: f} %>
+            <% elsif atr.class == Hash && atr.keys.count == 1 && 
+                atr[atr.keys[0]] == [] %>
+              <% # Si en config/locale/es.yml dice "{:proyecto_ids=>[]}": Áreas
               # Al usar model_class.human_attribute_name("{:proyecto_ids=>[]}")
               # estrañamente da Proyectos.  Aunque si opera bien para otros
               # casos como más complejos como "{:objetivopf_attributes=>[:id, :numero, :objetivo, :_destroy]}": Objetivo.
               # Soportamos entonces que config/locale/es.ym diga proyeto_ids: Áreas
               # %>
-            <% if atr.class == Hash && atr.keys.count == 1 && 
-                atr[atr.keys[0]] == [] %>
               <% m = model_class.human_attribute_name(atr.keys[0]) %>
             <% else %>
               <% m = model_class.human_attribute_name(atr) %>
