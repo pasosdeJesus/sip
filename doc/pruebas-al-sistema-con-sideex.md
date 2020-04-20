@@ -132,6 +132,10 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
    dificultades con sideex 2 almacenar en `test/sideex/con_error`).
 4. Si la prueba pasa agregar la prueba a la suit de pruebas con un nombre
    acorde a la prueba, agrega el archivo al repositorio y actualizar en github.
+5. Al correr todas las pruebas y después guardar el reporte de errores es muy bueno 
+   porque en el reporte guardado se buscan los errores --pues la bitácora de errores 
+   de sideex se reinicia cada vez que corre un nuevo caso de prueba después de haber 
+   corrido todas las suites).
 
 
 
