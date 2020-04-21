@@ -31,3 +31,4 @@ import 'chosen-js/chosen.jquery';       // Cuadros de seleccion potenciados
 import 'bootstrap-datepicker'   // Seleccion de fecha potenciada
 import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js'
 import 'jquery-ui'              // Autocompletacion
+import 'jquery-ui/ui/widgets/autocomplete' 
