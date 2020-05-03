@@ -311,6 +311,11 @@ prefiere especificar un control particular para un campo cree una plantilla
 %>
 ```
 
+También puede emplear otros nombres en los campos de filtro (no incluido en `atributos_index` del controlador), en 
+tal caso puede detectar y filtrar por estos en un scop de nombre `filtrar_alterno` en el modelo.   
+Puede ver un ejemplo de campos de filtro no definidos en `atributos_index` en <https://github.com/pasosdeJesus/sivel2_gen/blob/master/app/views/sivel2_gen/victimas/_filtro_pconsolidado.html.erb> y 
+su scope filtrar_alterno en <https://github.com/pasosdeJesus/sivel2_gen/blob/master/lib/sivel2_gen/concerns/models/victima.rb>
+
 #### 4.1.2.2 Otros controles de un filtro
 
 A la derecha del filtro debajo de la columna acciones por omisión se 
