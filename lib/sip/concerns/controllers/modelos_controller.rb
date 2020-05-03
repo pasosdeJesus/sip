@@ -36,24 +36,28 @@ module Sip
               a.to_s.end_with?('_localizada') ? 
                 [a, a.to_s.chomp('_localizada')] : [a]
             }.flatten
+            quedan = params_filtro.keys
             for ai in latr do
               i = nom_filtro(ai)
               if params_filtro["bus#{i}"] && 
                 params_filtro["bus#{i}"] != '' &&
                 reg.respond_to?("filtro_#{i.to_s}")
                 reg = reg.send("filtro_#{i.to_s}", params_filtro["bus#{i}"])
+                quedan -= ["bus#{i}"]
               else 
                 if params_filtro["bus#{i}ini"] && 
                   params_filtro["bus#{i}ini"] != '' &&
                   reg.respond_to?("filtro_#{i.to_s}ini")
                   reg = reg.send("filtro_#{i.to_s}ini", 
                                  params_filtro["bus#{i}ini"])
+                  quedan -= ["bus#{i}ini"]
                 end
                 if params_filtro["bus#{i}fin"] && 
                   params_filtro["bus#{i}fin"] != '' &&
                   reg.respond_to?("filtro_#{i.to_s}fin")
                   reg = reg.send("filtro_#{i.to_s}fin", 
                                  params_filtro["bus#{i}fin"])
+                  quedan -= ["bus#{i}ini"]
                 end
               end
             end
@@ -65,6 +69,13 @@ module Sip
               if lids.length > 0 && lids[0] > 0
                 reg = reg.where("id IN (?)", lids)
               end
+              quedan -= ["ids"]
+            end
+            quedan2 = params_filtro.delete_if do |l, v| 
+              v == '' || !quedan.include?(l)
+            end
+            if reg.respond_to?("filtrar_alterno")
+              reg = reg.filtrar_alterno(quedan2)
             end
             return reg
           end
