@@ -67,6 +67,33 @@
     )
   )
   return
+  
+# Actualiza opciones de cuadros de selección que dependen de datos de un 
+# formulario anidado. Etiquetas de opciones se calculan con función.
+#
+# @params idfuente id en html del formulario anidado
+# @params posfijo_id_fuente posfijo para identificaciones de campos con 
+#  valores para opciones
+# @params fun_etiqueta función que retorna etiqueta que corresponde a una
+#   opción
+# @params seldestino lista de selectores que identifica cuadros de selección
+#   dependientes de la fuente y que serán modificados
+@sip_actualiza_cuadros_seleccion_dependientes_fun_etiqueta =  (idfuente, posfijo_id_fuente, fun_etiqueta, seldestino, opvacia = false) ->
+  nuevasop = []
+  lobj = $('#' + idfuente + ' .nested-fields[style!="display: none;"]')
+  lobj.each((k, v) ->
+    id = $(v).find('input[id$=' + posfijo_id_fuente + ']').val()
+    etiqueta = fun_etiqueta($(v))
+    nuevasop.push({id: id, etiqueta: etiqueta})
+   )
+  seldestino.forEach( (sel) ->
+    $(sel).each((i,r) ->
+      conch = $(r).hasOwnProperty('chosen')
+      sip_remplaza_opciones_select($(r).attr('id'), nuevasop, conch, 'id', 'etiqueta', opvacia) 
+    )
+  )
+  return
+
 
 
 # Intenta eliminar una fila añadida con coocon
