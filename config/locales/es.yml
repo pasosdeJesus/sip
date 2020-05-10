@@ -187,6 +187,8 @@ es:
         email: Correo
         encrypted_password: Clave
         failed_attempts: Intentos fallidos
+        fechacreacion_localizada: Fecha de creación
+        fechadeshabilitacion_localizada: Fecha de deshabilitación
         locked_at: Hora de bloqueo
         nusuario: Usuario
         "sip_grupo": Grupos
