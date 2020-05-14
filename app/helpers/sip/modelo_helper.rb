@@ -164,10 +164,10 @@ module Sip
     end
 
     def self.poromision(params, s)
-      if params.nil? || params[:filtro].nil? || param[:filtro][s].nil?
+      if params.nil? || params[:filtro].nil? || params[:filtro][s].nil?
         ''
       else
-        Sip::Usuario.connection.quote_string(params[:filtro][s]))
+        Sip::Usuario.connection.quote_string(params[:filtro][s])
       end
     end 
 
