@@ -71,7 +71,7 @@ module Sip
               end
               quedan -= ["ids"]
             end
-            quedan2 = params_filtro.delete_if do |l, v| 
+            quedan2 = params_filtro.clone.delete_if do |l, v| 
               v == '' || !quedan.include?(l)
             end
             if reg.respond_to?("filtrar_alterno")

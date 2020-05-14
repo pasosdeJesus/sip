@@ -164,7 +164,11 @@ module Sip
     end
 
     def self.poromision(params, s)
-      params.nil? ? '' : (params[:filtro].nil? ? '' : params[:filtro][s])
+      if params.nil? || params[:filtro].nil? || param[:filtro][s].nil?
+        ''
+      else
+        Sip::Usuario.connection.quote_string(params[:filtro][s]))
+      end
     end 
 
     # Convierte un atributo a nombre de filtro (dejando solo letras numeros y _)

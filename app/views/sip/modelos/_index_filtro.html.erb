@@ -54,7 +54,7 @@
         include_blank: true,
         label_method: :presenta_nombre,
         value_method: :id,
-        selected: Sip::ModeloHelper.poromision(params,n),
+        selected: Sip::ModeloHelper.poromision(params, n),
         input_html: { 
           class: 'chosen-select',
           "data-enviarautomatico" => "" } 
@@ -67,9 +67,9 @@
       <% if r.class.to_s == 
           'ActiveRecord::Reflection::ThroughReflection' ||
           r.class.to_s == 
-          'ActiveRecord::Reflection::HasAndBelongsToManyReflection'
-        %>
-      <% # Tabla combinada %>
+          'ActiveRecord::Reflection::HasAndBelongsToManyReflection' %>
+        <% # Tabla combinada %>
+        <% #byebug %>
         <% col = r.class_name.constantize.respond_to?(:habilitados) ?
               r.class_name.constantize.habilitados :
               r.class_name.constantize.all %>
