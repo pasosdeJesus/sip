@@ -7,26 +7,26 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'cancancan'                 # Control de acceso
 
-gem 'coffee-rails'              # CoffeeScript para recursos .js.coffee 
+gem 'coffee-rails'              , '>= 5.0.0' # CoffeeScript para recursos .js.coffee 
 
-gem 'devise'                    # Autenticación
+gem 'devise'                    , '>= 4.7.1' # Autenticación
 
-gem 'devise-i18n'               # Localización e Internacionalización                  
-gem 'jbuilder', '>= 2.7'        # Json
+gem 'devise-i18n'               , '>= 1.9.1' # Localización e Internacionalización                  
+gem 'jbuilder', '>= 2.10.0' # Json
 
-gem 'paperclip'                 # Anexos
+gem 'paperclip'                 , '>= 6.1.0' # Anexos
 
 gem 'pg', '>= 0.18', '< 2.0'    # PostgreSQL
 
 gem 'puma'                      # Lanza en modo desarrollo
 
-gem 'rails', '>= 6.0.0'
+gem 'rails', '>= 6.0.3.1'
 
-gem 'rails-i18n'                # Localización e Internacionalización 
+gem 'rails-i18n'                , '>= 6.0.0' # Localización e Internacionalización 
 
-gem 'sassc-rails'#, '2.1.0'      # Conversión a CSS
+gem 'sassc-rails', '>= 2.1.2' #, '2.1.0'      # Conversión a CSS
 
-gem 'simple_form'               # Formularios
+gem 'simple_form'               , '>= 5.0.2' # Formularios
 
 gem 'turbolinks', '~> 5'        # Acelera carga de paginas
 
@@ -34,7 +34,7 @@ gem 'twitter_cldr'              # Localiación e internacionalización
 
 gem 'tzinfo'                    # Zonas horarias
 
-gem 'webpacker', '~> 4.0'       # Traduce y compila modulos Javascript
+gem 'webpacker', '~> 4.2', '>= 4.2.2' # Traduce y compila modulos Javascript
 
 gem 'will_paginate'             # Pagina listados
 
@@ -48,7 +48,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console', '>= 4.0.2'
 
 end
 
@@ -60,7 +60,7 @@ group :test do
 
   gem "minitest-reporters"
 
-  gem 'rails-controller-testing'
+  gem 'rails-controller-testing', '>= 1.0.4'
 
   gem 'selenium-webdriver'
 
