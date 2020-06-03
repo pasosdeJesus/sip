@@ -13,10 +13,10 @@ module Sip
       rproc = []
       p=`ps axww`
       l=p.split("\n")
-      l.each do |p|
+      l[1..-1].each do |p|
         pp = p.split(" ")
         rproc.push({
-          pid: pp[0],
+          pid: pp[0].to_i,
           tt: pp[1],
           stat: pp[2],
           time: pp[3],
