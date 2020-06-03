@@ -234,7 +234,7 @@ GEM
       railties (>= 4.2)
     websocket-driver (0.7.2)
       websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.4)
+    websocket-extensions (0.1.5)
     will_paginate (3.3.0)
     zeitwerk (2.3.0)
 
@@ -255,7 +255,7 @@ DEPENDENCIES
   paperclip
   pg (>= 0.18, < 2.0)
   puma
-  rails (>= 6.0.0)
+  rails (>= 6.0.3.1)
   rails-controller-testing
   rails-i18n
   sassc-rails
@@ -276,4 +276,4 @@ RUBY VERSION
    ruby 2.6.5p114
 
 BUNDLED WITH
-   2.1.4
+   1.17.3
