@@ -10,9 +10,9 @@
   <http://pasosdejesus.github.io/usuario_adJ/conf-programas.html#ruby>.
 * El usuario que utilice la aplicación debe tener permiso de usar al menos
   1024M en RAM y para abrir al menos 2048 archivos.  En adJ asegurate de poner
-  un valor alto al máximo de archivos que el kernel pueden abrir
-  simultanemanete en la variable de configuración ```kern.maxfiles``` por
-  ejemplo 20000 en ```/etc/sysctl.conf``` y en la clase del usuario que
+  un valor alto al máximo de archivos que el kernel puede abrir
+  simultaneamente en la variable de configuración ```kern.maxfiles```, por
+  ejemplo 20000 en ```/etc/sysctl.conf```, y en la clase del usuario que
   inicia la aplicación (en ```/etc/login.conf```) que al menos diga
   ```:datasize-cur=1024M:``` y  ```:openfiles-cur=2048:```
 
