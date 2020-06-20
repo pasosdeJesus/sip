@@ -4,7 +4,7 @@
 
 Al hacer una contribución estás aceptando los términos de reproducción
 que estamos usando para este motor, que encuentras en:
-<https://www.pasosdejesus.org/dominio_publico_colombia.html>
+<https://github.com/pasosdeJesus/sip/blob/master/LICENCIA.md>
 
 ## 2. Tareas de integración continua
 
