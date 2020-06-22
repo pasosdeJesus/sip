@@ -9,7 +9,7 @@
     <% end %>
   </div>
   <div class="offset-sm-4 col-sm-4">
-    <%= titulo %>: <span id="numregistros"><%= @registros ? @registros.count : '' %></span>
+    <%= render partial: 'index_contadores', locals: {titulo: titulo, f: f} %>
     <%= render partial: 'index_encabezado_complemento' %>
   </div>
 </div> <!-- row -->
