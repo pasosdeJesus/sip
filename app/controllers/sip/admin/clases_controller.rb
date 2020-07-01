@@ -24,6 +24,13 @@ module Sip
       def set_clase
         @basica = Clase.find(params[:id])
       end
+
+      def tipo_clase
+        id = params[:id].to_i
+        id_tclase = Sip::Clase.find(id).id_tclase
+        nombre_tipo = Sip::Tclase.find(id_tclase).nombre
+        render json: {idcat: nombre_tipo}
+      end
   
       def atributos_index
         [
