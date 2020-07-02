@@ -18,6 +18,7 @@ Sip::Engine.routes.draw do
   get "/temausuario" => 'admin/temas#temausuario'
   get '/ubicaciones/nuevo' => 'ubicaciones#nuevo'
   get '/tipoclase' => 'admin/clases#tipo_clase'
+  get '/ubicaciones' => 'admin/clases#ubicaciones'
 
 
   resources :actoressociales, path_names: { new: 'nuevo', edit: 'edita' } 
