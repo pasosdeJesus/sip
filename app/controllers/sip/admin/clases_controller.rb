@@ -29,7 +29,7 @@ module Sip
         id = params[:id].to_i
         id_tclase = Sip::Clase.find(id).id_tclase
         nombre_tipo = Sip::Tclase.find(id_tclase).nombre
-        render json: {idcat: nombre_tipo}
+        render json: {nombre: nombre_tipo}
       end
   
       def atributos_index
