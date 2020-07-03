@@ -26,7 +26,6 @@ module Sip
           end
 
           def atributos_form
-            byebug
             a = atributos_show - [:id]
             return a
           end

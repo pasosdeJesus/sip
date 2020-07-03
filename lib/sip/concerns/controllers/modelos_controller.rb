@@ -251,7 +251,7 @@ module Sip
           # Llamada en mitad de un edit
           # Después de autenticar, antes de desplegar si retorna
           # false no se despliega en llamadora
-          def edit_intermedio(registro, usuario_actual_id)
+          def editar_intermedio(registro, usuario_actual_id)
             return true
           end
 
@@ -266,7 +266,7 @@ module Sip
               # Supone alias por omision de https://github.com/CanCanCommunity/cancancan/blob/develop/lib/cancan/ability/actions.rb
               authorize! :update, @registro
             end
-            if edit_intermedio(@registro, current_usuario.id)
+            if editar_intermedio(@registro, current_usuario.id)
               if registrar_en_bitacora
                 Sip::Bitacora.a(request.remote_ip, current_usuario.id,
                                 request.url, params, @registro.class.to_s,
@@ -341,6 +341,13 @@ module Sip
             create_gen
           end
 
+
+          # Retorna verdader si logra hacer operaciones adicionales
+          # de actualización a @registro
+          def actualizar_intermedio
+            return true
+          end
+
           # Actualiza un registro con información recibida de formulario
           def update_gen(registro = nil)
             if registro
@@ -360,8 +367,8 @@ module Sip
             # cuando viene de actividades_controller emplea @actividad
             eval "@#{c2} = @registro" 
             respond_to do |format|
-              if validaciones(@registro) && @registro.valid? && 
-                @registro.save
+              if actualizar_intermedio && validaciones(@registro) && 
+                  @registro.valid? && @registro.save
                 if registrar_en_bitacora
                   Sip::Bitacora.a(request.remote_ip,
                                   current_usuario.id,
