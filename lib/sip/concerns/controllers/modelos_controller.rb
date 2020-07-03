@@ -248,6 +248,14 @@ module Sip
             render layout: 'application'
           end
 
+          # Llamada en mitad de un edit
+          # Después de autenticar, antes de desplegar si retorna
+          # false no se despliega en llamadora
+          def edit_intermedio(registro, usuario_actual_id)
+            return true
+          end
+
+
           # Despliega formulario para editar un regisro
           def edit
             @registro = clase.constantize.find(params[:id])
@@ -258,13 +266,14 @@ module Sip
               # Supone alias por omision de https://github.com/CanCanCommunity/cancancan/blob/develop/lib/cancan/ability/actions.rb
               authorize! :update, @registro
             end
-
-            if registrar_en_bitacora
-              Sip::Bitacora.a(request.remote_ip, current_usuario.id,
-                              request.url, params, @registro.class.to_s,
-                              @registro.id,  'editar', '')
+            if edit_intermedio(@registro, current_usuario.id)
+              if registrar_en_bitacora
+                Sip::Bitacora.a(request.remote_ip, current_usuario.id,
+                                request.url, params, @registro.class.to_s,
+                                @registro.id,  'editar', '')
+              end
+              render layout: 'application'
             end
-            render layout: 'application'
           end
 
           # Validaciones adicionales a las del modelo que 
