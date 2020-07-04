@@ -48,7 +48,7 @@
     )
 
 #  Completa departamento
-@llena_departamento_congancho = ($this, root, sincoord=false, datacallback, ubcallback) ->
+@llena_departamento_congancho = ($this, root, sincoord=false, datosgancho, ubigancho) ->
   sip_arregla_puntomontaje(root)
   idpais = $this.attr('id')
   iddep = busca_campo_similar(idpais, 'pais', 'departamento')
@@ -67,8 +67,8 @@
         $("#" + idcla + " option[value='']").attr('selected', true) if idcla
         $('#' + idcla).attr('disabled', true) if idcla
         $('#' + idcla).trigger('chosen:updated')
-        id_ub = datacallback[0].id
-        ubcallback.val(id_ub).trigger('chosen:updated')
+        id_ub = datosgancho[0].id
+        ubigancho.val(id_ub).trigger('chosen:updated')
       )
       x.fail((m1, m2, m3) -> 
           alert(
@@ -92,7 +92,7 @@
   llena_departamento_congancho($this, root, sincoord=false)
 
 #  Completa municipio.
-@llena_municipio_congancho = ($this, root, sincoord=false, datacallback, ubcallback) ->
+@llena_municipio_congancho = ($this, root, sincoord=false, datosgancho, ubigancho) ->
   sip_arregla_puntomontaje(root)
   iddep = $this.attr('id')
   idpais = busca_campo_similar(iddep, 'departamento', 'pais')
@@ -108,8 +108,8 @@
         $("#" + idcla + " option[value='']").attr('selected', true) if idcla
         $("#" + idcla).attr("disabled", true) if idcla
         $('#' + idcla).trigger('chosen:updated')
-        id_ub = datacallback[0].id
-        ubcallback.val(id_ub).trigger('chosen:updated')
+        id_ub = datosgancho[0].id
+        ubigancho.val(id_ub).trigger('chosen:updated')
       )
       x.fail((m1, m2, m3) -> 
           alert(
