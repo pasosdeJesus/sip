@@ -47,10 +47,8 @@
         alert('Problema leyendo ' + tabla + ", id=" + id + ". " + m1 + m2 + m3)
     )
 
-
-
 #  Completa departamento
-@llena_departamento = ($this, root, sincoord=false) -> 
+@llena_departamento_congancho = ($this, root, sincoord=false, datacallback, ubcallback) ->
   sip_arregla_puntomontaje(root)
   idpais = $this.attr('id')
   iddep = busca_campo_similar(idpais, 'pais', 'departamento')
@@ -59,7 +57,7 @@
   pais = $this.val()
   if (+pais > 0 && iddep) 
       x = $.getJSON(root.puntomontaje + "admin/departamentos", {id_pais: pais})
-      x.done((data) -> 
+      x.done((data) ->
         sip_remplaza_opciones_select(iddep, data, true, 'id', 'nombre', true)
         $('#' + iddep).attr('disabled', false) 
         $('#' + iddep).trigger('chosen:updated')
@@ -69,6 +67,8 @@
         $("#" + idcla + " option[value='']").attr('selected', true) if idcla
         $('#' + idcla).attr('disabled', true) if idcla
         $('#' + idcla).trigger('chosen:updated')
+        id_ub = datacallback[0].id
+        ubcallback.val(id_ub).trigger('chosen:updated')
       )
       x.fail((m1, m2, m3) -> 
           alert(
@@ -88,10 +88,11 @@
       $("#" + idcla).attr("disabled", true) if idcla
       $('#' + idcla).trigger('chosen:updated')
 
-
+@llena_departamento = ($this, root, sincoord=false) ->
+  llena_departamento_congancho($this, root, sincoord=false)
 
 #  Completa municipio.
-@llena_municipio = ($this, root, sincoord=false) -> 
+@llena_municipio_congancho = ($this, root, sincoord=false, datacallback, ubcallback) ->
   sip_arregla_puntomontaje(root)
   iddep = $this.attr('id')
   idpais = busca_campo_similar(iddep, 'departamento', 'pais')
@@ -107,6 +108,8 @@
         $("#" + idcla + " option[value='']").attr('selected', true) if idcla
         $("#" + idcla).attr("disabled", true) if idcla
         $('#' + idcla).trigger('chosen:updated')
+        id_ub = datacallback[0].id
+        ubcallback.val(id_ub).trigger('chosen:updated')
       )
       x.fail((m1, m2, m3) -> 
           alert(
@@ -123,6 +126,8 @@
       $("#" + idcla).attr("disabled", true) if idcla
       $('#' + idcla).trigger('chosen:updated')
 
+@llena_municipio = ($this, root, sincoord=false) ->
+  llena_municipio_congancho($this, root, sincoord=false)
 
 # Completa cuadro de selección para clase de acuerdo a depto y mcpio.
 @llena_clase = ($this, root, sincoord=false) -> 

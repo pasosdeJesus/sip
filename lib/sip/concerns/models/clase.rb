@@ -50,7 +50,7 @@ module Sip
             mun = Sip::Municipio.find(self.id_municipio)
             dep= Sip::Departamento.find(mun.id_departamento)
             pais = Sip::Pais.find(dep.id_pais)
-            self.nombre + " / " + mun.nombre + "/" + dep.nombre + 
+            self.nombre + " / " + mun.nombre + " / " + dep.nombre + 
               " / " + pais.nombre
           end
 

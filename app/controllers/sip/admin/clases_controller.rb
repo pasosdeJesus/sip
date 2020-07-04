@@ -50,27 +50,9 @@ module Sip
       
       def ubicaciones
         @ubicaciones = Clase.order(:nombre).where("nombre LIKE ?", "%#{params[:term]}%")
-        ## Diccionario de municipios
-        @muns = Municipio.order(:nombre).where("nombre LIKE ?", "%#{params[:term]}%")
-        @noms_mun = @muns.map(&:nombre)
-        @ids_mun = @muns.map(&:id)
-        @municipios = Hash[@ids_mun.zip(@noms_mun.map {|i| i.include?(',') ? (i.split /, /) : i})]
         
-        ## Diccionario de Paises
-        @paisesob = Pais.habilitados.order(:nombre)
-        @noms_pais = @paisesob.map(&:nombre)
-        @ids_mun = @paisesob.map(&:id)
-        @paises = Hash[@ids_mun.zip(@noms_mun.map {|i| i.include?(',') ? (i.split /, /) : i})]
-        @departamentosob = Departamento.habilitados
-        @noms_departamentos = @departamentosob.map(&:nombre)
-        @ids_departeamentos = @departamentosob.map(&:id)
-        @departamentos = Hash[@ids_mun.zip(@noms_mun.map {|i| i.include?(',') ? (i.split /, /) : i})]
-        @clasesob = Clase.habilitados
-        @noms_clases = @departamentosob.map(&:nombre)
-        @ids_clases = @departamentosob.map(&:id)
-        @clases = Hash[@ids_mun.zip(@noms_mun.map {|i| i.include?(',') ? (i.split /, /) : i})]
-        @ubi2 = @clasesob.map{|x| x.nombre + x.municipio.nombre}
-        render json: @ubi2
+        @ubi = @ubicaciones.map{|x| x.presenta_nombre_con_origen} 
+        render json: @ubi
       end
       
       def atributos_form
