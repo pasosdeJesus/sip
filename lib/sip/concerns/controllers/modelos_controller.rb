@@ -209,6 +209,8 @@ module Sip
               # Supone alias por omision de https://github.com/CanCanCommunity/cancancan/blob/develop/lib/cancan/ability/actions.rb
               authorize! :read, @registro
             end
+            c2 = clase.demodulize.underscore
+            eval "@#{c2} = @registro" 
             show_plantillas
             if registrar_en_bitacora
               Sip::Bitacora.a(request.remote_ip, current_usuario.id,
