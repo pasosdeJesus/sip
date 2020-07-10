@@ -48,7 +48,7 @@
     )
 
 #  Completa departamento
-@llena_departamento_congancho = ($this, root, sincoord=false, datosgancho, ubigancho) ->
+@llena_departamento_congancho = ($this, root, sincoord, datosgancho, ubigancho) ->
   sip_arregla_puntomontaje(root)
   idpais = $this.attr('id')
   iddep = busca_campo_similar(idpais, 'pais', 'departamento')
@@ -68,7 +68,10 @@
         $('#' + idcla).attr('disabled', true) if idcla
         $('#' + idcla).trigger('chosen:updated')
         id_ub = datosgancho[0].id
-        ubigancho.val(id_ub).trigger('chosen:updated')
+        if (ubigancho != null )
+          ubigancho.val(id_ub).trigger('chosen:updated')
+        else
+          alert('Departamento no Encontrado')
       )
       x.fail((m1, m2, m3) -> 
           alert(
@@ -89,10 +92,10 @@
       $('#' + idcla).trigger('chosen:updated')
 
 @llena_departamento = ($this, root, sincoord=false) ->
-  llena_departamento_congancho($this, root, sincoord=false)
+  llena_departamento_congancho($this, root, sincoord, null, null)
 
 #  Completa municipio.
-@llena_municipio_congancho = ($this, root, sincoord=false, datosgancho, ubigancho) ->
+@llena_municipio_congancho = ($this, root, sincoord, datosgancho, ubigancho) ->
   sip_arregla_puntomontaje(root)
   iddep = $this.attr('id')
   idpais = busca_campo_similar(iddep, 'departamento', 'pais')
@@ -109,7 +112,10 @@
         $("#" + idcla).attr("disabled", true) if idcla
         $('#' + idcla).trigger('chosen:updated')
         id_ub = datosgancho[0].id
-        ubigancho.val(id_ub).trigger('chosen:updated')
+        if (ubigancho != null )
+          ubigancho.val(id_ub).trigger('chosen:updated')
+        else
+          alert('Municipio no Encontrado')
       )
       x.fail((m1, m2, m3) -> 
           alert(
@@ -127,7 +133,7 @@
       $('#' + idcla).trigger('chosen:updated')
 
 @llena_municipio = ($this, root, sincoord=false) ->
-  llena_municipio_congancho($this, root, sincoord=false)
+  llena_municipio_congancho($this, root, sincoord, null, null)
 
 # Completa cuadro de selección para clase de acuerdo a depto y mcpio.
 @llena_clase = ($this, root, sincoord=false) -> 
