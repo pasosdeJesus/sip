@@ -18,7 +18,7 @@ Que generará varios archivos automáticamente, algunos de los cuales debe edita
 | `test/models/acpcatmotivo_test.rb` | Pruebas a modelo |  |
 | `test/controllers/acpcatsmotivo_controller_test.rb` | Borrador de pruebas a controlador | Requiere implementarlas |
 
-Además debe editar otros archivos ya existente para implementar cambios como se indica a continuación:
+Además debe editar otros archivos ya existentes para realizar los siguientes cambios:
 
 | Archivo | Edición que requiere |
 | --- | --- |
@@ -31,6 +31,19 @@ Además debe editar otros archivos ya existente para implementar cambios como se
    Acpcatmotivo: Categoria de motivos
    Acpcatmotivo: Categorias de motivos
 ```
+
+Los datos iniciales para esta tabla, los puede agregar en una nueva migración
+```
+bin/rails g migration datosini_acpcatmotivo
+```
+cuyo contenido puede ser como el de 
+
+Tras esto ejecute las migraciones:
+```
+bin/rails db:migrate
+```
+
+Lance la aplicación y revise la tabla básica desde el menú Administrar->Tablas básicas.
 
 
 # Modelo
