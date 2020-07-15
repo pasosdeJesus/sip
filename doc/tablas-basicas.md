@@ -4,17 +4,29 @@ Una tabla básica representa un tipo de dato por utilizar en un sistema de infor
 
 # Generador de nuevas tablas básicas
 
-Las nuevas tablas básicas y bastantes de los cambios requeridos se recomienda iniciarlos con la tarea  `sip:tablabasica`. Por ejemplo para generar la tabla
-basica `acpcatmot` con forma plural `acpcatsmot`:
+Las nuevas tablas básicas y bastantes de los cambios requeridos se recomienda iniciarlos con la tarea  `sip:tablabasica`. Por ejemplo para generar una tabla básica de categorias de motivos, con nombre interno `acpcatmotivo` y forma plural interna `acpcatsmotivo`:
 ```sh
-$ DISABLE_SPRING=1 bin/rails g sip:tablabasica acpcatmot acpcatsmot --modelo
+$ DISABLE_SPRING=1 bin/rails g sip:tablabasica acpcatmotivo acpcatsmotivo --modelo
 ```  
 Que generará varios archivos automáticamente, algunos de los cuales debe editar:
 
-| Archivo | Contenido | Edición que requiere |
+| Archivo | Descripción | Edición que requiere |
 | --- | --- | --- |
-| app/models/acpcatmot.rb | Modelo | |
-| db/migrate/20200715103001_create_acpcatmot.rb | Migración --el nombre incluirá la fecha de ejecución | Agregar `, null: false` en líneas `nombre`, `fechacreacion`, `created_at` y `updated_at` |
+| `app/models/acpcatmotivo.rb` | Modelo | |
+| `db/migrate/20200715103001_create_acpcatmotivo.rb` | Migración --el nombre incluirá la fecha de ejecución | Agregar `, null: false` en líneas `nombre`, `fechacreacion`, `created_at` y `updated_at` |
+| `app/controllers/admin/acpcatsmotivo_controller.rb` | Controlador | Cambiar sexo en función `genclase`. Por ejemplo como categoría es femenino debería quedar en 'F' |
+| `test/models/acpcatmotivo_test.rb` | Pruebas a modelo |  |
+| `test/controllers/acpcatsmotivo_controller_test.rb` | Borrador de pruebas a controlador | Requiere implementarlas |
+
+Además debe editar otros archivos ya existente para implementar cambios como se indica a continuación:
+
+| Archivo | Edición que requiere |
+| --- | --- |
+| `app/models/ability.rb` | En la función tablas básicas (o en la constante apropiada) agregar la nueva tabla básica de la forma `['', 'acpcatmotivo']` (ver como queda en <https://github.com/pasosdeJesus/cor1440_cinep/blob/master/app/models/ability.rb>) |
+| `config/initializers/inflections.rb` | Añadir en orden alfabético o en un orden que asegure que se carga correctamente, una línea de la forma `inflect.irregular 'acpcatmotivo', 'acpcatsmotivo'` |
+| `config/locales/es.yml` | En es: -> activerecord -> attributes añada líneas de la forma: "acpcatmotivo":  Acpcatmotivo: Categoria de motivos Acpcatmotivo: Categorias de motivos |
+  
+
 
 # Modelo
 
