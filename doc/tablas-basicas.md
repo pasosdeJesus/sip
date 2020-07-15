@@ -5,10 +5,15 @@ Una tabla básica representa un tipo de dato por utilizar en un sistema de infor
 # Generador de nuevas tablas básicas
 
 Las nuevas tablas básicas y bastantes de los cambios requeridos se recomienda iniciarlos con la tarea  `sip:tablabasica`. Por ejemplo para generar la tabla
-basica `motivo` con forma plural `motivos`:
+basica `acpcatmot` con forma plural `acpcatsmot`:
 ```sh
-$ bin/rails g sip:tablabasica motivo motivos --modelo
+$ DISABLE_SPRING=1 bin/rails g sip:tablabasica acpcatmot acpcatsmot --modelo
 ```  
+Que generará varios archivos automáticamente, algunos de los cuales debe editar:
+
+| Archivo | Contenido | Edición que requiere |
+| app/models/acpcatmot.rb | Modelo | |
+| db/migrate/20200715103001_create_acpcatmot.rb | Migración --el nombre incluirá la fecha de ejecución | Agregar `, null: false` en líneas `nombre`, `fechacreacion`, `created_at` y `updated_at` |
 
 # Modelo
 
