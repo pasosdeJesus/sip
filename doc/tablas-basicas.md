@@ -24,8 +24,13 @@ Además debe editar otros archivos ya existente para implementar cambios como se
 | --- | --- |
 | `app/models/ability.rb` | En la función tablas básicas (o en la constante apropiada) agregar la nueva tabla básica de la forma `['', 'acpcatmotivo']` (ver como queda en <https://github.com/pasosdeJesus/cor1440_cinep/blob/master/app/models/ability.rb>) |
 | `config/initializers/inflections.rb` | Añadir en orden alfabético o en un orden que asegure que se carga correctamente, una línea de la forma `inflect.irregular 'acpcatmotivo', 'acpcatsmotivo'` |
-| `config/locales/es.yml` | En es: -> activerecord -> attributes añada líneas de la forma: "acpcatmotivo":  Acpcatmotivo: Categoria de motivos Acpcatmotivo: Categorias de motivos |
+| `config/locales/es.yml` | En `es:` -> `activerecord:` -> `attributes:` añada líneas como las que se ven a continuación |
   
+```yaml
+ "acpcatmotivo":  
+   Acpcatmotivo: Categoria de motivos
+   Acpcatmotivo: Categorias de motivos
+```
 
 
 # Modelo
