@@ -29,7 +29,7 @@ Además debe editar otros archivos ya existentes para realizar los siguientes ca
 ```yaml
  "acpcatmotivo":  
    Acpcatmotivo: Categoria de motivos
-   Acpcatmotivo: Categorias de motivos
+   Acpcatsmotivo: Categorias de motivos
 ```
 
 Los datos iniciales para esta tabla, los puede agregar en una nueva migración
