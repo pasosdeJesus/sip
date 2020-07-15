@@ -12,6 +12,7 @@ $ DISABLE_SPRING=1 bin/rails g sip:tablabasica acpcatmot acpcatsmot --modelo
 Que generará varios archivos automáticamente, algunos de los cuales debe editar:
 
 | Archivo | Contenido | Edición que requiere |
+| --- | --- |
 | app/models/acpcatmot.rb | Modelo | |
 | db/migrate/20200715103001_create_acpcatmot.rb | Migración --el nombre incluirá la fecha de ejecución | Agregar `, null: false` en líneas `nombre`, `fechacreacion`, `created_at` y `updated_at` |
 
