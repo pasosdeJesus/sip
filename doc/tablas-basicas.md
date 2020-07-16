@@ -1,15 +1,55 @@
 # Tablas Básicas
 
-Una tabla básica representa un tipo de dato por utilizar en un sistema de información con unas pocas opciones, cada una con un nombre (por ejemplo país, tipo de documento de identidad, etc.). Incluye lo que en otros sistemas de información se llama _parámetros de la aplicación_ y _vocabularios controlados_.
+Una tabla básica representa un tipo de dato por utilizar en un sistema de información con unas pocas opciones, cada una con un nombre (por ejemplo país, tipo de documento de identidad, etc.). Incluye lo que en otros sistemas de información se llama _variable_, _tesauro_, _diccionario_, _parámetros de la aplicación_ y _vocabularios controlados_.
 
 # Generador de nuevas tablas básicas
 
-Las nuevas tablas básicas y bastantes de los cambios requeridos se recomienda iniciarlos con la tarea ```rake sip:tablabasica```  
+Las nuevas tablas básicas y bastantes de los cambios requeridos se recomienda iniciarlos con la tarea  `sip:tablabasica`. Por ejemplo para generar una tabla básica de categorias de motivos, con nombre interno `acpcatmotivo` y forma plural interna `acpcatsmotivo`:
+```sh
+$ DISABLE_SPRING=1 bin/rails g sip:tablabasica acpcatmotivo acpcatsmotivo --modelo
+```  
+Que generará varios archivos automáticamente, algunos de los cuales debe editar:
+
+| Archivo | Descripción | Edición que requiere |
+| --- | --- | --- |
+| `app/models/acpcatmotivo.rb` | Modelo | |
+| `db/migrate/20200715103001_create_acpcatmotivo.rb` | Migración --el nombre incluirá la fecha de ejecución | Agregar `, null: false` en líneas `nombre`, `fechacreacion`, `created_at` y `updated_at` |
+| `app/controllers/admin/acpcatsmotivo_controller.rb` | Controlador | Cambiar sexo en función `genclase`. Por ejemplo como categoría es femenino debería quedar en 'F' |
+| `test/models/acpcatmotivo_test.rb` | Pruebas a modelo |  |
+| `test/controllers/acpcatsmotivo_controller_test.rb` | Borrador de pruebas a controlador | Requiere implementarlas |
+
+Además debe editar otros archivos ya existentes para realizar los siguientes cambios:
+
+| Archivo | Edición que requiere |
+| --- | --- |
+| `app/models/ability.rb` | En la función tablas básicas (o en la constante apropiada) agregar la nueva tabla básica de la forma `['', 'acpcatmotivo']` (ver como queda en <https://github.com/pasosdeJesus/cor1440_cinep/blob/master/app/models/ability.rb>) |
+| `config/initializers/inflections.rb` | Añadir en orden alfabético o en un orden que asegure que se carga correctamente, una línea de la forma `inflect.irregular 'acpcatmotivo', 'acpcatsmotivo'` |
+| `config/locales/es.yml` | En `es:` -> `activerecord:` -> `attributes:` añada líneas como las que se ven a continuación |
+  
+```yaml
+ "acpcatmotivo":  
+   Acpcatmotivo: Categoria de motivos
+   Acpcatsmotivo: Categorias de motivos
+```
+
+Los datos iniciales para esta tabla, los puede agregar en una nueva migración
+```
+bin/rails g migration datosini_acpcatmotivo
+```
+cuyo contenido puede ser como el de 
+
+Tras esto ejecute las migraciones:
+```
+bin/rails db:migrate
+```
+
+Lance la aplicación y revise la tabla básica desde el menú Administrar->Tablas básicas.
+
 
 # Modelo
 
 A nivel de tabla en la base de datos tiene por lo menos: 
-- ```id``` (por omisión un entero autoincremental, pero puede ser otro tipo)
+- ```id``` (obligatorio, por omisión un entero autoincremental, pero puede ser otro tipo)
 - ```nombre``` (por omisión máximo de 500 caracteres, obligatorio, se recomienda unicidad y mayúsculas),
 - ```observaciones``` (por omisión máximo de 5000 caracteres)
 - ```fechacreacion``` (indispensable)
@@ -24,7 +64,7 @@ Si deben hacerse cambios a datos de tablas básicas de motores que se carguen se
 
 En una aplicación los datos básicos de los motores que la aplicación use se cargarán desde ```db/seed.rb``` con la función ```Sip::carga_semillas_sql```
 
-Cuando modifique desde la aplicación los datos de tablas básicas, se recomienda generar nuevamente el archivo ```db/datos-basicas.sql``` ejecutando la tarea ```rake sip:vuelcabasicas```
+Cuando modifique desde la aplicación los datos de tablas básicas, se recomienda generar nuevamente el archivo ```db/datos-basicas.sql``` ejecutando la tarea ```bin/rails sip:vuelcabasicas```
 
 # Migraciones
 
@@ -34,7 +74,7 @@ Además de  la migración inicial para crear la tabla básica y una migración p
 
 # Listado de tablas básicas
 
-Es importante definir algunas funciones en  ```ability.rb``` (ubicado en ```app/models``` en aplicaciones y en ```app/models/mimotor en motores```) para:
+Es importante definir algunas funciones en  ```ability.rb``` (ubicado en ```app/models``` en aplicaciones y en ```app/models/mimotor``` en motores) para:
 1. Que las rutas para ver y modificar tablas básicas y sus vistas se generen automáticamente
 2. Que operen algunas tareas ```rake``` para actualizar índices (```rake sip:indices```) y  volcar y restaurar tablas.
 Las funciones a definir son:
@@ -43,7 +83,7 @@ Las funciones a definir son:
 - ```def nobasicas_indice_seq_con_id```: Listado de tablas no básicas pero que tienen un índice que requiere actualización.
 - ```def tablasbasicas_prio```: Listado de tablas básicas que deben volcarse primero (para mantener integridad referencial).
 
-Además es recomendable (especialmente si hace un motor) que defina constantes relacionadas pero propias del motor: ```BASICAS_PROPIAS, BASICAS_ID_NOAUTO, NOBASICAS_INDSEQID, BASICAS_PRIO``` para que puedan ser referenciadas facilmente desde el ability.rb de otros motores o aplicaciones.
+Además es recomendable (especialmente si desarrolla un motor) que defina constantes relacionadas pero propias del motor: ```BASICAS_PROPIAS, BASICAS_ID_NOAUTO, NOBASICAS_INDSEQID, BASICAS_PRIO``` para que puedan ser referenciadas facilmente desde el archivo `ability.rb` de otros motores o aplicaciones.
 
 Para mantener los arreglos descritos, recomendamos no emplear variables de clase (e.g Antes usabamos @@tablasbasicas) por que el orden en el que se cargan los archivo ```ability.rb``` de los diversos motores y de la aplicación es diferente en modo de producción que en modo de desarrollo (en modo de producción usa carga ávida _eager_) que puede dar lugar a definiciones erradas e inesperadas.
 
@@ -78,9 +118,9 @@ En el formulario de edición/creación como controles de edición se usaran:
 Sin embargo puede personalizarse el control para edición para un campo
 digamos con nombre ```tfuente``` creando en la aplicación la vista parcial ```app/views/sip/admin/basicas/_tfuente.html.erb```
 
-Hay tablas que no son básicas pero son muy similares (por cuanto tienen un campo nombre). En tales casos es posible usar la infraestructura para tablas básicas, simplificar así la creación del controlador y ahorrarse la creación de vistas, puede ver un ejemplo con proyectofinanciero del motor cor1440_gen:
-- Modelo: https://github.com/pasosdeJesus/cor1440_gen/blob/master/lib/cor1440_gen/concerns/models/proyectofinanciero.rb y https://github.com/pasosdeJesus/cor1440_gen/blob/master/app/models/cor1440_gen/proyectofinanciero.rb
-- Controlador: https://github.com/pasosdeJesus/cor1440_gen/blob/master/lib/cor1440_gen/concerns/controllers/proyectosfinancieros_controller.rb y https://github.com/pasosdeJesus/cor1440_gen/blob/master/app/controllers/cor1440_gen/proyectosfinancieros_controller.rb
+Hay tablas que no son básicas pero son muy similares (por cuanto tienen un campo nombre). En tales casos es posible usar la infraestructura para tablas básicas, simplificar así la creación del controlador y ahorrarse la creación de vistas, puede ver un ejemplo con `proyectofinanciero` del motor `cor1440_gen`:
+- Modelo: <https://github.com/pasosdeJesus/cor1440_gen/blob/master/lib/cor1440_gen/concerns/models/proyectofinanciero.rb> y <https://github.com/pasosdeJesus/cor1440_gen/blob/master/app/models/cor1440_gen/proyectofinanciero.rb>
+- Controlador: <https://github.com/pasosdeJesus/cor1440_gen/blob/master/lib/cor1440_gen/concerns/controllers/proyectosfinancieros_controller.rb> y <https://github.com/pasosdeJesus/cor1440_gen/blob/master/app/controllers/cor1440_gen/proyectosfinancieros_controller.rb>
 - Vista: no se requiere
 
 ### Actualización de indices y volcado de datos
@@ -103,6 +143,6 @@ e integrar los cambios necesarios, preferiblemente con:
 ```
 cp db/datos-basicas.sql ../../db/datos-basicas.sql
 ```
-Esta forma de integración es ideal pero no siempre es posible por ejemplo por temas de integridad referencial que requieran deshabilitar al comienzo de db/datos-basicas.sql y rehabilitar al final.  Ver ejemplo el caso de  sivel2_gen
+Esta forma de integración es ideal pero no siempre es posible por ejemplo por temas de integridad referencial que requieran deshabilitar al comienzo de `db/datos-basicas.sql` y rehabilitar al final.  Ver ejemplo el caso de sivel2_gen en <https://github.com/pasosdeJesus/sivel2_gen/blob/master/db/datos-basicas.sql>
 
 
