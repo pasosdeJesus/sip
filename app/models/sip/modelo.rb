@@ -168,10 +168,18 @@ module Sip
           else
             asig = ll.to_s + '='
             if self.respond_to?(asig)
-              begin
-                self.send(asig, datosent[ll.to_sym])
-              rescue 
-                menserror <<  " No se pudo asignar a #{ll.to_s} el valor #{datosent[ll.to_sym]}."
+              rll = self.send(ll.to_s)
+              if rll && rll.class && 
+                  rll.class.ancestors.include?(Sip::Modelo) && 
+                  rll.class.all.where(nombre: datosent[ll.to_sym]).count > 0
+                n = rll.class.all.where(nombre: datosent[ll.to_sym]).take
+                self.send(asig, n)
+              else
+                begin
+                  self.send(asig, datosent[ll.to_sym])
+                rescue 
+                  menserror <<  " No se pudo asignar a #{ll.to_s} el valor #{datosent[ll.to_sym]}."
+                end
               end
             else
               menserror << " No se conoce como importar atributo " +
