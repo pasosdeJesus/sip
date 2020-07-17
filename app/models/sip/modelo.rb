@@ -170,15 +170,19 @@ module Sip
             if self.respond_to?(asig)
               rll = self.send(ll.to_s)
               if rll && rll.class && 
-                  rll.class.ancestors.include?(Sip::Modelo) && 
-                  rll.class.all.where(nombre: datosent[ll.to_sym]).count > 0
-                n = rll.class.all.where(nombre: datosent[ll.to_sym]).take
-                self.send(asig, n)
+                  rll.class.ancestors.include?(Sip::Modelo)
+                consr = rll.class.all.where('LOWER(UNACCENT(nombre))=LOWER(UNACCENT(?))', datosent[ll.to_sym])
+                if consr.count > 0
+                  n = consr.take
+                  self.send(asig, n)
+                else
+                  menserror <<  " Se buscó sin exito en tabla basica #{rll.class} el valor '#{datosent[ll.to_sym]}'."
+                end
               else
                 begin
                   self.send(asig, datosent[ll.to_sym])
                 rescue 
-                  menserror <<  " No se pudo asignar a #{ll.to_s} el valor #{datosent[ll.to_sym]}."
+                  menserror <<  " No se pudo asignar a #{ll.to_s} el valor '#{datosent[ll.to_sym]}'."
                 end
               end
             else
