@@ -27,6 +27,13 @@ module Sip
       assert_equal f1, '2018-05-03'
     end
 
+    test "adivina" do
+      Rails.application.config.x.formato_fecha = 'dd-M-yyyy'
+      f1 = reconoce_adivinando_locale('2-ene.-19')
+      assert_equal f1.to_s, '2019-01-02'
+    end
+
+
 
 
   end  # class

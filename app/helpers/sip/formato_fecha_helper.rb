@@ -1,10 +1,10 @@
-#encoding: UTF-8 
+#encoding: UTF-8
 
 module Sip
   module FormatoFechaHelper
 
 
-    MESES=["", 
+    MESES=["",
            "Enero",
            "Febrero",
            "Marzo",
@@ -31,22 +31,22 @@ module Sip
              "Oct",
              "Nov",
              "Dic"]
-    # Este ayudador emplea Rails.application.config.x.formato_fecha 
-    # al que llama formato local.  
+    # Este ayudador emplea Rails.application.config.x.formato_fecha
+    # al que llama formato local.
     #
-    # Ese formato local es apropiado para la libreria datepicker de 
+    # Ese formato local es apropiado para la libreria datepicker de
     # Javascript que infortunadamente es diferente a POSIX
     # Por el momento soporta bien:
     # dd-M-yyyy, dd/M/yyyy, dd-mm-yyyy, dd/mm/yyyy y yyyy-mm-ddd
-    # 
+    #
     # El formato estándar es el usado por PostgreSQL yyyy-mm-dd
-  
+
     def fecha_local_colombia_estandar(f, menserror=nil)
-        # Date.strptime(f, '%d-%M-%Y') no ha funcionado, 
+        # Date.strptime(f, '%d-%M-%Y') no ha funcionado,
         # %b debe ser en ingles
         # datepicker produce meses cortos comenzando en mayúsculas.
-        # rails-i18n I18n.localize con %b produce mes en minuscula 
-      if !f 
+        # rails-i18n I18n.localize con %b produce mes en minuscula
+      if !f
         return nil
       end
       if f == ''
@@ -55,7 +55,7 @@ module Sip
 
       nf = nil
       pf = f.split('/')
-      if pf.count < 3 
+      if pf.count < 3
         pf = f.split('-')
       end
       if pf.count < 3
@@ -69,33 +69,40 @@ module Sip
       else
         return nil if !pf[1]
         m = case pf[1].downcase
-            when 'ene' 
+            when 'ene', 'ene.'
               1
-            when 'feb' 
+            when 'feb', 'feb.'
               2
-            when 'mar' 
+            when 'mar', 'mar.'
               3
-            when 'abr' 
+            when 'abr', 'abr.'
               4
-            when 'may' 
+            when 'may', 'may.'
               5
-            when 'jun' 
+            when 'jun', 'jun.'
               6
-            when 'jul' 
+            when 'jul', 'jul.'
               7
-            when 'ago' 
+            when 'ago', 'ago.'
               8
-            when 'sep' 
+            when 'sep', 'sep.'
               9
-            when 'oct' 
+            when 'oct', 'oct.'
               10
-            when 'nov' 
+            when 'nov', 'nov.'
               11
-            else 
+            when 'dic', 'dic.'
+              12
+            else
+              menserror << "  Formato de fecha en locale de Colombia con mes desconocido suponiendo 12."
               12
             end
+        a = pf[2].to_i
+        if (a < 100)
+          a += 2000
+        end
         begin
-            nf = Date.new(pf[2].to_i, m, pf[0].to_i).strftime('%Y-%m-%d')
+            nf = Date.new(a, m, pf[0].to_i).strftime('%Y-%m-%d')
         rescue
           if menserror
             menserror << "  Formato de fecha en locale de colombia desconocido: #{f}"
@@ -105,12 +112,12 @@ module Sip
         end
       end
       return nf
-    end 
+    end
     module_function :fecha_local_colombia_estandar
 
     # Convierte una fecha de formato local a formato estándar
     def fecha_local_estandar f
-      if !f 
+      if !f
         return nil
       end
       if f == ''
@@ -133,7 +140,7 @@ module Sip
 
     # Convierte una fecha de formato estándar a formato local
     def fecha_estandar_local f
-      if !f || (f.class != String && f.class != Date) || 
+      if !f || (f.class != String && f.class != Date) ||
         (f.class == String && f == '')
         return nil
       end
@@ -142,7 +149,7 @@ module Sip
       elsif f.class == Date
         fr = f
       end
-      case Rails.application.config.x.formato_fecha 
+      case Rails.application.config.x.formato_fecha
       when 'dd/M/yyyy'
         nf = I18n.localize(fr, :format => '%d/%b/%Y')
       when 'dd-M-yyyy'
@@ -160,18 +167,24 @@ module Sip
 
     # Adivina locale de fecha y retorna Date
     def reconoce_adivinando_locale(f, menserror = nil)
-      if !f || (f.class != String && f.class != Date) || 
+      if !f || (f.class != String && f.class != Date) ||
         (f.class == String && f == '')
         return nil
       end
       if f.class == Date
         return f
       end
+      nf = f  # nf se espera yyyy-mm-dd
       if f.include?('/')
         #'dd/M/yyyy'
         nf =fecha_local_colombia_estandar(f, menserror)
       else
-        nf = f
+        if f.include?('-')
+          p = f.split('-')
+          if p[0].to_i >= 1 && p[0].to_i <=31 && p[2].to_i >= 0
+            nf = fecha_local_colombia_estandar(f, menserror)
+          end
+        end
       end
       begin
         r = Date.strptime(nf, '%Y-%m-%d')
@@ -194,7 +207,7 @@ module Sip
         Date.new(f.year, 1, 1)
       else
         Date.new(f.year, 7, 1)
-      end 
+      end
     end
     module_function :inicio_semestre
 
@@ -203,7 +216,7 @@ module Sip
         Date.new(f.year, 6, 30)
       else
         Date.new(f.year, 12, 31)
-      end 
+      end
     end
     module_function :fin_semestre
 
@@ -211,9 +224,9 @@ module Sip
     # Retorna fecha inicial del semestre anterior
     ##
     def inicio_semestre_ant
-      hoy = Date.today 
+      hoy = Date.today
       anio = hoy.year
-      if hoy.mon >= 7 && hoy.mon < 12 
+      if hoy.mon >= 7 && hoy.mon < 12
         ini = anio.to_s + "-" + "01-01"
       elsif hoy.mon == 12
         ini = anio.to_s + "-" + "07-01"
@@ -228,8 +241,8 @@ module Sip
     ##
     # Retorna fecha final del semestre anterior
     ##
-    def fin_semestre_ant 
-      hoy = Date.today 
+    def fin_semestre_ant
+      hoy = Date.today
       anio = hoy.year
       if hoy.mon >= 7 && hoy.mon < 12
         fin = anio.to_s + "-" + "06-30"
