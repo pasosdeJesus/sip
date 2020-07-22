@@ -1,8 +1,0 @@
-coffeescript:
-  config_file: estilo/coffeescript.json
-
-jshint:
-  config_file: estilo/jshintrc
-
-ruby:
-  config_file: estilo/ruby.yml
