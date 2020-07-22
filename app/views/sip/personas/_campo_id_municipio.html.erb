@@ -1,6 +1,0 @@
-<%= f.association :municipio,
-  collection: ( Sip::Municipio.habilitados.where(
-    id_departamento: f.object.id_departamento)),
-    label_method: :nombre,
-    value_method: :id 
-%>
