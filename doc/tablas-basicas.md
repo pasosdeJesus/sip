@@ -22,7 +22,7 @@ Además debe editar otros archivos ya existentes para realizar los siguientes ca
 
 | Archivo | Edición que requiere |
 | --- | --- |
-| `app/models/ability.rb` | En la función tablas básicas (o en la constante apropiada) agregar la nueva tabla básica de la forma `['', 'acpcatmotivo']` y en la función initialize definir el control de acceso, por lo menos que el administrador pueda hacer todas las operaciones (`can :manage, ::Acpcatmotivo`).  Ver ejemplo completo en <https://github.com/pasosdeJesus/cor1440_cinep/blob/master/app/models/ability.rb> |
+| `app/models/ability.rb` | En la función tablas básicas (o en la constante apropiada) agregar la nueva tabla básica de la forma `['', 'acpcatmotivo']` y en la función initialize definir el control de acceso, por ejemplo si un rol o grupo puede administrarla ponerle `can :manage, ::Acpcatmotivo`.  Ver ejemplo completo en <https://github.com/pasosdeJesus/cor1440_cinep/blob/master/app/models/ability.rb> |
 | `config/initializers/inflections.rb` | Añadir en orden alfabético o en un orden que asegure que se carga correctamente, una línea de la forma `inflect.irregular 'acpcatmotivo', 'acpcatsmotivo'` |
 | `config/locales/es.yml` | En `es:` -> `activerecord:` -> `attributes:` añada líneas como las que se ven a continuación |
   
