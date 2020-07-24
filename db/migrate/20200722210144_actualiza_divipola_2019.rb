@@ -17,10 +17,10 @@ class ActualizaDivipola2019 < ActiveRecord::Migration[6.0]
         WHERE id=11724; 
       UPDATE sip_departamento SET nombre='QUINDÍO', 
         observaciones=completa_obs(observaciones, 'Departamento cambiado en revisión de DIVIPOLA 2019. Antes era QUINDIO')
-        WHERE id_deplocal=63;
+        WHERE id_deplocal=63 AND id_pais=170;
       UPDATE sip_departamento SET nombre='BOGOTÁ, D.C.', 
         observaciones=completa_obs(observaciones, 'Departamento cambiado en revisión de DIVIPOLA 2019. Antes era BOGOTÁ D.C.')
-        WHERE id_deplocal=11;
+        WHERE id_deplocal=11 AND id_pais=170;
       UPDATE sip_municipio SET fechadeshabilitacion='2020-07-22',
         observaciones=completa_obs(observaciones, 'Municipio deshabilitado en DIVIPOLA 2019')
         WHERE id=1079; -- MAPIRIPANA (2 centros poblados 13067 PUERTO ZANCUDO 94663001 y MAPIRIPANA 94663000)
