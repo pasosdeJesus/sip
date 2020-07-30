@@ -15,6 +15,9 @@
   ejemplo 20000 en ```/etc/sysctl.conf```, y en la clase del usuario que
   inicia la aplicación (en ```/etc/login.conf```) que al menos diga
   ```:datasize-cur=1024M:``` y  ```:openfiles-cur=2048:```
+* `yarn` instalado en cuenta del usuario. Según https://yarnpkg.com/getting-started/install#global-install:
+npm install -g yarn
+
 
 Estas instrucciones suponen que operas en este ambiente, puedes ver más sobre
 la instalación de Ruby on Rails en adJ en
