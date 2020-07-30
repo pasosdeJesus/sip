@@ -69,29 +69,29 @@ module Sip
       else
         return nil if !pf[1]
         m = case pf[1].downcase
-            when 'ene', 'ene.'
+            when 'ene', 'ene.', 'jan', 'jan.', '1', '01'
               1
-            when 'feb', 'feb.'
+            when 'feb', 'feb.', '2', '02'
               2
-            when 'mar', 'mar.'
+            when 'mar', 'mar.', '3', '03'
               3
-            when 'abr', 'abr.'
+            when 'abr', 'abr.', 'apr', 'apr.', '4', '04'
               4
-            when 'may', 'may.'
+            when 'may', 'may.', '5', '05'
               5
-            when 'jun', 'jun.'
+            when 'jun', 'jun.', '6', '06'
               6
-            when 'jul', 'jul.'
+            when 'jul', 'jul.', '7', '07'
               7
-            when 'ago', 'ago.'
+            when 'ago', 'ago.', 'aug', 'aug.', '8', '08'
               8
-            when 'sep', 'sep.'
+            when 'sep', 'sep.', '9', '09'
               9
-            when 'oct', 'oct.'
+            when 'oct', 'oct.', '10'
               10
-            when 'nov', 'nov.'
+            when 'nov', 'nov.', '11'
               11
-            when 'dic', 'dic.'
+            when 'dic', 'dic.', 'dec', 'dec.', '12'
               12
             else
               menserror << "  Formato de fecha en locale de Colombia con mes desconocido suponiendo 12."
