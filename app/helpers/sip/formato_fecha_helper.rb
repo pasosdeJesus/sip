@@ -140,14 +140,17 @@ module Sip
 
     # Convierte una fecha de formato estándar a formato local
     def fecha_estandar_local f
-      if !f || (f.class != String && f.class != Date) ||
-        (f.class == String && f == '')
+      if !f || (f.class != String && f.class != Date &&
+          f.class != ActiveSupport::TimeWithZone) ||
+         (f.class == String && f == '')
         return nil
       end
       if f.class == String
         fr = Date.strptime(f, '%Y-%m-%d')
       elsif f.class == Date
         fr = f
+      elsif f.class == ActiveSupport::TimeWithZone
+        fr = f.to_date
       end
       case Rails.application.config.x.formato_fecha
       when 'dd/M/yyyy'

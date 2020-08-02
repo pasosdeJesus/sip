@@ -144,6 +144,14 @@ module Sip
           else
             self.send(atr.to_s).to_s
           end
+        elsif atr == 'fechacreacion'
+          created_at
+        elsif atr == 'fechacreacion_localizada'
+          Sip::FormatoFechaHelper.fecha_estandar_local created_at
+        elsif atr == 'fechaactualizacion'
+          updated_at
+        elsif atr ==  'fechaactualizacion_localizada'
+          Sip::FormatoFechaHelper.fecha_estandar_local updated_at
         else
           self[atr.to_s].to_s
         end
