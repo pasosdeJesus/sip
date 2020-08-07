@@ -36,7 +36,9 @@ Los datos iniciales para esta tabla, los puede agregar en una nueva migración
 ```
 bin/rails g migration datosini_acpcatmotivo
 ```
-cuyo contenido puede ser como el de <https://github.com/pasosdeJesus/cor1440_cinep/blob/master/db/migrate/20200715105931_datosini_acpcatmotivo.rb>  o si son muy pocos datos también puede incluirlos en la migración que crea la tabla.
+cuyo contenido puede ser como el de <https://github.com/pasosdeJesus/cor1440_cinep/blob/master/db/migrate/20200715105931_datosini_acpcatmotivo.rb> 
+
+O si prefiere también puede incluirlos en la migración que crea la tabla, como se hace por ejemplo en <https://github.com/pasosdeJesus/cor1440_cinep/blob/master/db/migrate/20200805141624_create_acpactor1.rb>
 
 Tras esto ejecute las migraciones:
 ```
