@@ -13,7 +13,7 @@ Que generará varios archivos automáticamente, algunos de los cuales debe edita
 | Archivo | Descripción | Edición que requiere |
 | --- | --- | --- |
 | `app/models/acpcatmotivo.rb` | Modelo | |
-| `db/migrate/20200715103001_create_acpcatmotivo.rb` | Migración --el nombre incluirá la fecha de ejecución | Agregar `, null: false` en líneas `nombre`, `fechacreacion`, `created_at` y `updated_at` |
+| `db/migrate/20200715103001_create_acpcatmotivo.rb` | Migración --el nombre incluirá la fecha de ejecución | Agregar `, null: false` en líneas `nombre`, `fechacreacion`, `created_at` y `updated_at`.  Agregar al comienzo `include Sip::MigracionHelper`. Cambiar `def change` por `def up` y agregar  `def down` que solo ejecute `drop_table :tabla`. En método up, después de la creación de tabla agregar `cambiaCotejacion('tabla', 'nombre', 500, 'es_co_utf_8').` |
 | `app/controllers/admin/acpcatsmotivo_controller.rb` | Controlador | Cambiar sexo en función `genclase`. Por ejemplo como categoría es femenino debería quedar en 'F' |
 | `test/models/acpcatmotivo_test.rb` | Pruebas a modelo |  |
 | `test/controllers/acpcatsmotivo_controller_test.rb` | Borrador de pruebas a controlador | Requiere implementarlas |
@@ -36,7 +36,9 @@ Los datos iniciales para esta tabla, los puede agregar en una nueva migración
 ```
 bin/rails g migration datosini_acpcatmotivo
 ```
-cuyo contenido puede ser como el de 
+cuyo contenido puede ser como el de <https://github.com/pasosdeJesus/cor1440_cinep/blob/master/db/migrate/20200715105931_datosini_acpcatmotivo.rb> 
+
+O si prefiere también puede incluirlos en la migración que crea la tabla, como se hace por ejemplo en <https://github.com/pasosdeJesus/cor1440_cinep/blob/master/db/migrate/20200805141624_create_acpactor1.rb>
 
 Tras esto ejecute las migraciones:
 ```
