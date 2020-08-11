@@ -95,11 +95,11 @@ module Sip
           }
 
           scope :filtro_created_atini, lambda { |f|
-            where('date(created_at) >= ?', f)
+            where('date(sip_actorsocial.created_at) >= ?', f)
           }
 
           scope :filtro_created_atfin, lambda { |f|
-            where('date(created_at) <= ?', f)
+            where('date(sip_actorsocial.created_at) <= ?', f)
           }
 
           scope :filtro_sectoractor_ids, lambda { |s|
