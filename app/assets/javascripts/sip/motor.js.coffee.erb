@@ -320,7 +320,7 @@ if (typeof String.prototype.endsWith != 'function')
           listaidsremp.forEach((idf) ->
             t = $(e).find('#' + idf)[0]
             #$('#' + idf).replaceWith(t)
-            $('#' + idf).html(t)
+            $('#' + idf).html(t.innerHTML)
           )
           return
     )
