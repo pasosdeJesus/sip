@@ -45,7 +45,7 @@ module Sip
               ip: ip,
               usuario_id: usuario_id,
               url: url,
-              params: params,
+              params: params.to_s,
               modelo: modelo,
               modelo_id: modelo_id.to_i,
               operacion: operacion,
