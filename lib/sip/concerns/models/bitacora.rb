@@ -40,25 +40,29 @@ module Sip
                 detalle_json = detalle_json.to_json
               end
             end
-            b = Sip::Bitacora.new(
-              fecha: Time.now.utc.iso8601,
-              ip: ip,
-              usuario_id: usuario_id,
-              url: url,
-              params: params.to_s,
-              modelo: modelo,
-              modelo_id: modelo_id.to_i,
-              operacion: operacion,
-              detalle: detalle_json
-            )
-            if b.params && b.params.to_yaml.length > 5000
-              b.params = b.params.to_yaml[0..4000]
+            probex = ''
+            begin
+              b = Sip::Bitacora.new(
+                fecha: Time.now.utc.iso8601,
+                ip: ip,
+                usuario_id: usuario_id,
+                url: url,
+                params: params.to_s,
+                modelo: modelo,
+                modelo_id: modelo_id.to_i,
+                operacion: operacion,
+                detalle: detalle_json
+              )
+              if b.params && b.params.to_yaml.length > 5000
+                b.params = b.params.to_yaml[0..4000]
+              end
+              b.save!
+            rescue StandardError => e
+              probex = e.message + e.backtrace.inspect
             end
-            b.save!
-            if b.errors.messages != {}
+            if b.errors.messages != {} || probex != ''
               STDERR.puts "** No se puede escribir en bitácora: " +
-                "#{b.errors.messages.to_s}"
-              byebug
+                "#{b.errors.messages.to_s} " + probex
             end
           end
 
