@@ -63,7 +63,6 @@ module Sip
             if b.errors.messages != {} || probex != ''
               STDERR.puts "** No se puede escribir en bitácora: " +
                 "#{b.errors.messages.to_s} " + probex
-              byebug
             end
           end
 

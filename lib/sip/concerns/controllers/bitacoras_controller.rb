@@ -34,7 +34,7 @@ module Sip
 
 
           def index_reordenar(registros)
-            return registros.reorder(:id)
+            return registros.order(created_at: :desc)
           end
 
           def new_modelo_path(o)
