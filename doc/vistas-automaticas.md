@@ -334,7 +334,7 @@ la función `presenta` del modelo.
 
 Un ejemplo puede verse en `cor1440_cinep`, donde los anexos de un efecto 
 se presentan agregando el archivo `app/views/efectos/_index_campo_anexo_efecto.html.erb` 
-con un contenido que utiliza la variable registro:
+con un contenido que utiliza la variable `registro`:
 ```erb
 <% if registro %>
   <% registro.sip_anexo.each do |i| %>
