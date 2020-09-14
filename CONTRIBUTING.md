@@ -24,10 +24,10 @@ buen estado:
 
 Consideramos que tu contribución a `sip` (y a otros proyectos de fuentes 
 abiertas) será más ordenada si sigues los lineamientos de uso de FreeCodeCamp 
-(ver https://github.com/freeCodeCamp/freeCodeCamp/blob/master/docs/how-to-setup-freecodecamp-locally.md), 
+(ver <https://github.com/freeCodeCamp/freeCodeCamp/blob/master/docs/how-to-setup-freecodecamp-locally.md>), 
 que procuramos resumir aquí:
 
-1. Bifurca (del inglés fork) el repositorio (https://github.com/pasosdeJesus/sip) 
+1. Bifurca (del inglés fork) el repositorio (<https://github.com/pasosdeJesus/sip>) 
    a tu cuenta personal.
 2. En el computador de desarrollo clona tu bifurcación:
   ```
