@@ -111,16 +111,30 @@ y ```presenta```, así como definir traducciones o sobrecargar el método de cla
 Son automáticas, no necesita editar código para estas. 
 
 En el formulario de edición/creación como controles de edición se usaran:
-* Campos de selección para llaves foraneas
+* Campos de selección para llaves foráneas  ```belongs_to```
 * Campos de selección múltiple para asociaciones ```has_many```
 * Campos de feha para campos con tipo ```:date```
 * Campos enteros para campos con tipo ```:integer```
 * Campos de texto para los demás casos.
 
 Sin embargo puede personalizarse el control para edición para un campo
-digamos con nombre ```tfuente``` creando en la aplicación la vista parcial ```app/views/sip/admin/basicas/_tfuente.html.erb```
+digamos con nombre ```tfuente``` creando en la aplicación la vista parcial ```app/views/sip/admin/basicas/mitabla/_tfuente.html.erb```
 
-Hay tablas que no son básicas pero son muy similares (por cuanto tienen un campo nombre). En tales casos es posible usar la infraestructura para tablas básicas, simplificar así la creación del controlador y ahorrarse la creación de vistas, puede ver un ejemplo con `proyectofinanciero` del motor `cor1440_gen`:
+###Agregando campos nuevos a una tabla básica
+Hay tablas que no son básicas pero son muy similares (por cuanto tienen un campo nombre). En tales casos es posible desear usar la misma infraestructura para tablas básicas y agregar los campos asicionales que se desee, de esta manera se puede simplificar así la creación del controlador y ahorrarse la creación de vistas. Para agregar un nuevo campo a una tabla básica se debe:
+
+1. Agregar el campo por medio de una migración: 
+    ```add_column :mitablabasica, :nuevocampo, :tipodecampo```
+   si es una asociación con otra tabla se agrega:
+    ```add_foreign_key :mitablabasica, :otratabla, column: :nuevocampo```
+
+2. Definir cómo se presentará en la vista, especificando en ```config/locales/es.yml``` fijando:
+  ```
+     "mimotor/tablabasica": 
+      nuevocampo: Nuevo Campo
+  ```
+3. Definir en modelo alguna validación o asociación correspondiente.
+4. Definir en controlador el nombre del campo, si esta en un motor y el controlador no está creado, creélo nuevamente y únicamente cambia los atributos en donde define los campos. Puede ver un ejemplo con `proyectofinanciero` del motor `cor1440_gen`:
 - Modelo: <https://github.com/pasosdeJesus/cor1440_gen/blob/master/lib/cor1440_gen/concerns/models/proyectofinanciero.rb> y <https://github.com/pasosdeJesus/cor1440_gen/blob/master/app/models/cor1440_gen/proyectofinanciero.rb>
 - Controlador: <https://github.com/pasosdeJesus/cor1440_gen/blob/master/lib/cor1440_gen/concerns/controllers/proyectosfinancieros_controller.rb> y <https://github.com/pasosdeJesus/cor1440_gen/blob/master/app/controllers/cor1440_gen/proyectosfinancieros_controller.rb>
 - Vista: no se requiere
