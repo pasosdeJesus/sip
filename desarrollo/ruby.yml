@@ -235,3 +235,6 @@ Lint/LiteralInCondition:
 Lint/LiteralInInterpolation:
   Description: Checks for literals used in interpolation.
   Enabled: false
+Layout/AlignHash:
+  Description: Align the elements of a hash literal if they span more than one line.
+  Enabled: false
