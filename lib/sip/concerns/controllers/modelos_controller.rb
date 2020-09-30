@@ -391,6 +391,7 @@ module Sip
                       'actualizada';
                     redirect_to modelo_path(@registro), 
                       notice: clase + " #{actualizada}." 
+		    return
                   end
                 }
                 format.json { 
