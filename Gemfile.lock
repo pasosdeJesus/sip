@@ -129,7 +129,7 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     pg (1.2.3)
-    puma (5.0.0)
+    puma (5.0.2)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
@@ -186,7 +186,7 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    simple_form (5.0.2)
+    simple_form (5.0.3)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     simplecov (0.17.1)
@@ -211,7 +211,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    twitter_cldr (6.1.0)
+    twitter_cldr (6.2.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.0)
       tzinfo
