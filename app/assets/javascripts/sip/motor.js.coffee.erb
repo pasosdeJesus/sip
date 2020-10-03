@@ -213,13 +213,16 @@ if (typeof String.prototype.endsWith != 'function')
 # @funproc Funcion para procesar respuesta
 @sip_ajax_recibe_json = (root, ruta, datos, funproc) ->
   sip_arregla_puntomontaje(root)
-  # Evitar ejecutr 2 veces en menos de 2 segundos (suele pasar con
-  # rails+turbolinks+jquery)
+  # Evitar cargar de la misma ruta 2 veces en menos de 2 segundos 
+  # (suele pasar con rails+turbolinks+jquery)
   t = Date.now()
   d = -1
-  if (root.sip_ajax_recibe_json_t) 
-    d = (t - root.sip_ajax_recibe_json_t) / 1000
-  root.sip_ajax_recibe_json_t = t
+  if (root.sip_ajax_recibe_json_t)
+    if (root.sip_ajax_recibe_json_t[ruta])
+      d = (t - root.sip_ajax_recibe_json_t[ruta]) / 1000
+  else
+    root.sip_ajax_recibe_json_t = {}
+  root.sip_ajax_recibe_json_t[ruta] = t
   if (d == -1 || d > 2) 
     rutac = root.puntomontaje + ruta + ".json"
     $.ajax({
