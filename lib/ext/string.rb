@@ -39,4 +39,20 @@ class String
     end
   end
 
+  # Convierte una cadena a altas y bajas es decir primera letra de
+  # cada palabra mayúscula y las demás de la palabra en minúsculas.
+  def altas_bajas
+    inip = true
+    r = ''
+    self.each_char do |c|
+      if inip
+        r << c.upcase
+      else
+        r << c.downcase
+      end
+      inip = !c.match(/^[[:alpha:]]$/)
+    end
+    return r
+  end
+
 end
