@@ -88,7 +88,7 @@ module Sip
 
     def modelo_prefijo_ruta(o)
       if o.nil?
-	return 'main_app.root_path'	
+        return 'main_app.root_path'
       end
       if o.id
         n = self.nombreobj(o, false) + "_path"

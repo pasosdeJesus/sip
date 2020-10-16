@@ -1,3 +1,6 @@
+<% if @registro.nil? %>
+  <% return %>
+<% end %>
 <%= simple_form_for @registro, 
     url: modelo_path(@registro),
     defaults: { input_html: { class: 'span10' } } do |f| 
