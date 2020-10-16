@@ -21,8 +21,26 @@ module Sip
             return 'F'
           end
 
+          def atributos_show_sip
+            [ :id, 
+              :nombres,
+              :apellidos,
+              :anionac,
+              :mesnac,
+              :dianac,
+              :sexo,
+              :pais,
+              :departamento,
+              :municipio,
+              :clase,
+              :nacionalde,
+              :tdocumento,
+              :numerodocumento
+            ]
+          end
+
           def atributos_show
-            self.class.atributos_show_sip
+            self.atributos_show_sip
           end
 
           def atributos_index
@@ -128,25 +146,6 @@ module Sip
         end # include
 
         class_methods do
-
-          def atributos_show_sip
-            [ :id, 
-              :nombres,
-              :apellidos,
-              :anionac,
-              :mesnac,
-              :dianac,
-              :sexo,
-              :pais,
-              :departamento,
-              :municipio,
-              :clase,
-              :nacionalde,
-              :tdocumento,
-              :numerodocumento
-            ]
-          end
-
         end
 
 
