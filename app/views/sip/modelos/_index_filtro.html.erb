@@ -42,7 +42,7 @@
         <%= render partial: "sip/modelos/filtro_#{atrf}", locals: {f: f} %>
       <% elsif alf && respfiltro %>
         <% # Es llave Foranea %>
-        <% #byebug 
+          <% 
           col = alf.class_name.constantize.all
           if col.respond_to?(:habilitados)
             col = col.habilitados
@@ -69,7 +69,6 @@
           r.class.to_s == 
           'ActiveRecord::Reflection::HasAndBelongsToManyReflection' %>
         <% # Tabla combinada %>
-        <% #byebug %>
         <% col = r.class_name.constantize.respond_to?(:habilitados) ?
               r.class_name.constantize.habilitados :
               r.class_name.constantize.all %>
