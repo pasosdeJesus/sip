@@ -21,6 +21,10 @@ module Sip
             return 'F'
           end
 
+          def atributos_show
+            self.class.atributos_show_sip
+          end
+
           def atributos_index
             atributos_show
           end
@@ -28,24 +32,6 @@ module Sip
           def atributos_form
             a = atributos_show - [:id]
             return a
-          end
-
-          def atributos_show
-            [ :id, 
-              :nombres,
-              :apellidos,
-              :anionac,
-              :mesnac,
-              :dianac,
-              :sexo,
-              :pais,
-              :departamento,
-              :municipio,
-              :clase,
-              :nacionalde,
-              :tdocumento,
-              :numerodocumento
-            ]
           end
 
           def index(c = nil)
@@ -138,8 +124,32 @@ module Sip
             params.require(:persona).permit(listaparams)
           end
 
-          
+
         end # include
+
+        class_methods do
+
+          def atributos_show_sip
+            [ :id, 
+              :nombres,
+              :apellidos,
+              :anionac,
+              :mesnac,
+              :dianac,
+              :sexo,
+              :pais,
+              :departamento,
+              :municipio,
+              :clase,
+              :nacionalde,
+              :tdocumento,
+              :numerodocumento
+            ]
+          end
+
+        end
+
+
 
       end
     end
