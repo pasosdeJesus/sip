@@ -18,12 +18,35 @@ module Sip
             class_name: "Sip::Clase" , optional: true
           belongs_to :tsitio, foreign_key: "id_tsitio", validate: true, 
             class_name: "Sip::Tsitio", optional: true 
-            
+
           validates_presence_of :pais
           validates_presence_of :id_tsitio
 
           validates :lugar, length: { maximum: 500 } 
           validates :sitio, length: { maximum: 500 } 
+
+          def presenta_nombre(opciones = {}) 
+            sep = ''
+            r = ''
+            if opciones[:sin_pais].nil? && self.pais
+              r = self.pais.nombre 
+              sep = ' / '
+            end
+            if opciones[:sin_departamento].nil? && self.departamento
+              r = self.departamento.nombre 
+              sep = ' / '
+            end
+            if opciones[:sin_municipio].nil? && self.municipio
+              r = self.municipio.nombre 
+              sep = ' / '
+            end
+            if opciones[:sin_clase].nil? && self.clase
+              r = self.clase.nombre 
+              sep = ' / '
+            end
+            r
+          end
+
         end
       end
     end
