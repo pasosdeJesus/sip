@@ -33,15 +33,15 @@ module Sip
               sep = ' / '
             end
             if opciones[:sin_departamento].nil? && self.departamento
-              r = self.departamento.nombre 
+              r += sep + self.departamento.nombre 
               sep = ' / '
             end
             if opciones[:sin_municipio].nil? && self.municipio
-              r = self.municipio.nombre 
+              r += sep + self.municipio.nombre 
               sep = ' / '
             end
             if opciones[:sin_clase].nil? && self.clase
-              r = self.clase.nombre 
+              r += sep + self.clase.nombre 
               sep = ' / '
             end
             r
