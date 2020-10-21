@@ -42,6 +42,7 @@ Por ejemplo algunas de las aplicaciones en el repositorio de Pasos de Jesús en 
 ## Fuentes
 
 * Usar en fuentes codificación UTF-8
+* Terminar líneas sólo con \n (como es típico en el mundo Unix).
 * 2 espacios de indentación.
 * Para configurarlo en vim, agregue al final de ```~/.vim/ftplugin/ruby.vim```:
 ``` vim
@@ -57,10 +58,6 @@ https://hakiri.io/blog/ruby-security-tools-and-resources
 
 
 # Javascript/Coffeescript
-
-Preferimos fuentes cuyas líneas terminen en '\n' (cómo es típico en el mundo Unix).
-
-Preferimos indentación a 2 espacios.
 
 Seguir sugerencias de https://github.com/thoughtbot/guides/blob/main/javascript/README.md
 
