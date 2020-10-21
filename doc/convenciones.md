@@ -62,6 +62,8 @@ Preferimos fuentes cuyas líneas terminen en '\n' (cómo es típico en el mundo 
 
 Preferimos indentación a 2 espacios.
 
+Seguir sugerencias de https://github.com/thoughtbot/guides/blob/main/javascript/README.md
+
 Si tiene instalado coffeescript, podrá verificar sintaxis de archivos del directorio `app/assets/javascript/` con:
 ```sh
   make
