@@ -3,7 +3,7 @@
 Respecto a licenciamiento y uso de github por favor ver https://github.com/pasosdeJesus/sip/blob/master/CONTRIBUTING.md
 
 En general adoptamos las de thoughtbot:
-https://github.com/thoughtbot/guides/tree/master/style
+https://github.com/thoughtbot/guides
 
 
 
