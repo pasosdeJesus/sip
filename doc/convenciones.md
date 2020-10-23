@@ -72,3 +72,5 @@ En adJ para instalar coffeescript basta:
 ```
 
 # HTML/CSS
+
+Para CSS seguir https://github.com/thoughtbot/guides/tree/main/css
