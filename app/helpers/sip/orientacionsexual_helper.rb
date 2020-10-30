@@ -2,7 +2,7 @@
 module Sip
   module OrientacionsexualHelper
     include ActionView::Helpers::TextHelper
-    
+
       ORIENTACIONES= [
         [:HETEROSEXUAL, :H],
         [:LESBIANA, :L], 
