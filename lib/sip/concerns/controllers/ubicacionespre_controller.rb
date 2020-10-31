@@ -9,9 +9,6 @@ module Sip
 
         included do
 
-          before_action :set_persona, only: [:show, :edit, :update, :destroy]
-          load_and_authorize_resource class: Sip::Persona
-
           def clase
             "Sip::Ubicacionpre"
           end
