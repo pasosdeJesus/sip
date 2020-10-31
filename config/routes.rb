@@ -18,6 +18,7 @@ Sip::Engine.routes.draw do
   get "/temausuario" => 'admin/temas#temausuario'
   get '/ubicaciones/nuevo' => 'ubicaciones#nuevo'
   get '/tipoclase' => 'admin/clases#tipo_clase'
+  get '/ubicacionespre_mundep' => 'ubicacionespre#mundep'
 
 
   resources :actoressociales, path_names: { new: 'nuevo', edit: 'edita' } 
@@ -25,6 +26,7 @@ Sip::Engine.routes.draw do
   resources :bitacoras, path_names: { new: 'nueva', edit: 'edita' } 
   
   resources :personas, path_names: { new: 'nueva', edit: 'edita' } 
+  resources :ubicacionespre, path_names: { new: 'nueva', edit: 'edita' }
 
   # En su aplicación al emplear ayudadores de rutas utilice prefijo
   # "sip." si viene de sip o "main_app." si es de las rutas de la aplicación.
