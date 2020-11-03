@@ -28,13 +28,13 @@ Y que en la migración que se crea (digamos
 ```ruby
 class CreaTasacambio < ActiveRecord::Migration[5.1]
   def change
-    create_table :tongue: acambio do |t|
+    create_table :tasacambio do |t|
       t.date :fecha
       t.integer :tipomoneda_id
       t.decimal :enpesos
       t.string :observaciones, limit: 5000
     end
-    add_foreign_key :tasacambio, :tipomoneda
+    add_foreign_key :tasacambio, :tipomoneda, column: :tipomoneda_id
   end
 end
 ```
@@ -70,7 +70,11 @@ end
 
 Note que es un modelo típico pero incluye `Sip::Modelo` para facilitar la creación de vistas genéricas y `Sip::Localizacion` para facilitar localización de fechas.
 
+Administre los permisos para gestionar según el rol en app/models/ability.rb:
 
+```ruby
+  can :manage, Tasacambio
+```
 # 2. El controlador debe ser descendiente de `Sip::ModelosController`
 
 En este caso como la forma plural de tasa de cambio es tasas de cambio en 
