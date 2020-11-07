@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-sm-4">
-      <% ng = (!genclase.nil? && genclase == 'F') ? 'Nueva' : 'Nuevo' %>
-      <% if @registros && @registros.size > 5 && can?(:new, clase.constantize)%>
-        <%= link_to t('.new', default: [ng, t("helpers.links.new")]),
-          new_modelo_path(@registros), class: 'btn btn-primary',
-          data: { turbolinks: false }
-        %>
-    <% end %>
+    <% ng = (!genclase.nil? && genclase == 'F') ? 'Nueva' : 'Nuevo' %>
+    <% if @registros && @registros.size > 5 && can?(:new, clase.constantize)%>
+      <%= link_to t('.new', default: [ng, t("helpers.links.new")]),
+        new_modelo_path(@registros), class: 'btn btn-primary',
+        data: { turbolinks: false }
+      %>
+  <% end %>
   </div>
   <div class="offset-sm-4 col-sm-4">
     <%= render partial: 'index_contadores', locals: {titulo: titulo, f: f} %>
