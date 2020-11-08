@@ -48,6 +48,99 @@ bin/rails db:migrate
 Lance la aplicación y revise la tabla básica desde el menú Administrar->Tablas básicas.
 
 
+# Para el caso de un motor
+
+Si la tabla básica será usada en un motor que servirá a la vez para otras aplicaciones derivadas del motor, entonces deberá ejecutar el comando anteriormente visto dento del directorio test/dummy/, es decir en la aplicación de prueba de motor. Una vez generados los archivos correspondientes estos deberán moverse a la raíz principal del motor de la siguiente forma:
+
+## Para migraciones
+Desupués de ejecutar bin/rails db:migrate (para que se cree la tabla correspondiente), debe mover las respectivas migraciones así
+```
+mv test/dummy/db/migrate/[nombre_de_migracion] db/migrate
+```
+## Para modelo
+debe moverse el modelo a los modelos del motor situados en app/models y en lib/[nombre_motor]/conerns/models/. Por ejemplo para el caso de la tabla básica Tipo de testigo en el motor de sivel2_gen los modelos correspondientes son:
+
+En app/models/sivel2_gen/tipotestigo.rb:
+
+```ruby
+# encoding: UTF-8
+
+require 'sivel2_gen/concerns/models/tipotestigo'
+
+module Sivel2Gen
+  class Tipotestigo < ActiveRecord::Base
+    include Sivel2Gen::Concerns::Models::Tipotestigo
+  end
+end
+```
+
+En lib/sivel2_gen/concerns/models/tipotestigo.rb:
+```ruby
+# encoding: UTF-8
+
+module Sivel2Gen
+  module Concerns
+    module Models
+      module Tipotestigo
+        extend ActiveSupport::Concern
+
+        included do
+          include Sip::Basica
+        end
+
+      end
+    end
+  end
+end
+```
+
+## Para controlador
+El controlador se debe mover a app/controllers/[nombre_motor]/admin/ así:
+```
+mv test/dummy/app/controllers/[nombre_controlador] app/controllers/[nombre_motor]/admin/
+```
+Para el mismo ejemplo de tipo de testigo queda el archivo app/controllers/sivel2_gen/tipostestigo_controller.rb:
+
+``` ruby
+# encoding: UTF-8
+
+module Admin
+  class TipostestigoController < Sip::Admin::BasicasController
+    before_action :set_tipotestigo, 
+      only: [:show, :edit, :update, :destroy]
+    load_and_authorize_resource  class: ::Tipotestigo
+
+    def clase 
+      "::Tipotestigo"
+    end
+
+    def set_tipotestigo
+      @basica = Tipotestigo.find(params[:id])
+    end
+
+    def atributos_index
+      [
+        :id, 
+        :nombre, 
+        :observaciones, 
+        :fechacreacion_localizada, 
+        :habilitado
+      ]
+    end
+
+    def genclase
+      'M'
+    end
+
+    def tipotestigo_params
+      params.require(:tipotestigo).permit(*atributos_form)
+    end
+
+  end
+end
+```
+Las demás configuraciones si son equivalentes al proceso estándar que se ha comenzado explicar en la anterior sección.
+
 # Modelo
 
 A nivel de tabla en la base de datos tiene por lo menos: 
