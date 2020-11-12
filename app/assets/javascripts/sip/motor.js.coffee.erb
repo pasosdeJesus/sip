@@ -471,8 +471,8 @@ if (typeof String.prototype.endsWith != 'function')
     return
 
   x = $.getJSON(root.puntomontaje + rutajson + ".json", params)
-  x.done((data) ->
-    $('#' + iddest).val(data['res'])
+  x.done((datos) ->
+    $('#' + iddest).val(datos['res'])
     if f != null
       f(root)
   )
@@ -505,9 +505,9 @@ if (typeof String.prototype.endsWith != 'function')
 
   val = $elem.val()
   x = $.getJSON(root.puntomontaje + rutajson + "/" + val + ".json")
-  x.done((data) ->
+  x.done((datos) ->
     lid.forEach( (p) ->
-      $('#' + p[0]).val(data[p[1]])
+      $('#' + p[0]).val(datos[p[1]])
     )
     if f != null
       f(root)
@@ -551,8 +551,8 @@ if (typeof String.prototype.endsWith != 'function')
   if paramfiltro
     param = {filtro: param}
   x = $.getJSON(root.puntomontaje + rutajson, param)
-  x.done((data) ->
-    sip_remplaza_opciones_select(idsel, data, true, cid, cnombre)
+  x.done((datos) ->
+    sip_remplaza_opciones_select(idsel, datos, true, cid, cnombre)
     if f != null
       f(root)
   )
@@ -595,8 +595,9 @@ if (typeof String.prototype.endsWith != 'function')
   if (d > 0 && d <= 2 && rutajson == root.sip_llena_select_con_AJAX2_r &&  params == root.sip_llena_select_con_AJAX2_p)
     return
   x = $.getJSON(root.puntomontaje + rutajson, params)
-  x.done((data) ->
-    sip_remplaza_opciones_select(idsel, data, true, cid, cnombre)
+  x.done((datos) ->
+    debugger
+    sip_remplaza_opciones_select(idsel,datos, true, cid, cnombre)
     if f != null
       f(root)
   )
