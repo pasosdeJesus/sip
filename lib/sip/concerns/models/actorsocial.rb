@@ -65,7 +65,8 @@ module Sip
               self.pais_id ? Sip::Pais.find(self.pais_id).nombre : ""
             when "pais_id" 
               self[atr] ? Sip::Pais.find(self[atr]).nombre : ""
-            when "sectores" 
+            when 'sectores', Sip::Actorsocial.
+              human_attribute_name(:sectoresactores).downcase.gsub(' ', '_')
               self.sectoractor ? self.sectoractor.inject("") { |memo, s|
                 (memo == "" ? "" : memo + "; ") + s.nombre
               } : ""
