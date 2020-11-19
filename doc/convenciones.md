@@ -30,6 +30,7 @@ la convención de controladores y vistas en plural.
 * Palabras reservadas de SQL en mayúscula.
 * Nombres de tablas en singular y preferible que sean una sola palabra (sin usar `_`).  Si son de un motor comienzan con el nombre del motor y `_` por ejemplo `sip_grupo`.  La excepcion pueden ser tablas combinadas (Join tables), cuyo nombre se puede componer del nombre de las dos tablas que une  ordenadas alfabéticamente (por ejemplo `sip_pais` con `sip_grupo` sería `sip_grupo_pais`).
 * SQL no es sensitivo a mayúsculas/minúsculas pero Ruby si lo es.  Sugerimos escribir nombres de campos que se compongan de varias palabras con capitalización camello pero empezando en minúscula, por ejemplo  `colorFlotaSubitemFuente` en lugar de `color_flota_subitem_fuente` pero los que sean llaves foraneas si mejor terminados en `_id`, por ejemplo `caso_id` 
+* Emplear funciones para utilidades generales. Separar palabras con raya al piso `_`.  
 
 # Ruby
 
