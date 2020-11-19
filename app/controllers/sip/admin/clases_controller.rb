@@ -3,7 +3,7 @@ module Sip
   module Admin
     class ClasesController < BasicasController
       before_action :set_clase, only: [:show, :edit, :update, :destroy]
-      load_and_authorize_resource class: Sip::Clase
+      load_and_authorize_resource class: Sip::Clase, except: [:tipo_clase]
   
       def clase 
         "Sip::Clase"
