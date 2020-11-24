@@ -151,11 +151,11 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   
 * Haga clic en Code y descargue el archivo en Download ZIP.
 
-  ![img12](https://github.com/pasosdeJesus/sip/tree/master/doc/sideex.img/img12)
+  ![kF0Hu9w%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/kF0Hu9w%20-%20Imgur.png)
   
 * Abrir con Gestor de archivadores y Extraer.
   
-  ![img13](https://github.com/pasosdeJesus/sip/tree/master/doc/sideex.img/img13)
+  ![qGu3pjp%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/qGu3pjp%20-%20Imgur.png)
   
 * Ahora el página de Google vaya a Personaliza y controla Google Chrome en la parte superior derecha de la página.
   Escoja Más herramientas y luego Extensiones.
@@ -167,11 +167,11 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
 * Haga clic en el icono Extensiones  en la parte superior derecha de la página
 
-  ![img14](https://github.com/pasosdeJesus/sip/tree/master/doc/sideex.img/img14)
+  ![uooGhNd%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/uooGhNd%20-%20Imgur.png)
   
 * Haga clic en el icono Fijar extensión al lado derecho del icono de sideex2
 
-  ![img15](https://github.com/pasosdeJesus/sip/tree/master/doc/sideex.img/img15)
+  ![lUqpscY%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/lUqpscY%20-%20Imgur.png)
     
 * Después de descargar Sideex2 se vera en la barra de 
   herramientas el icono de Sideex2.
