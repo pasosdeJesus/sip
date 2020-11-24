@@ -147,7 +147,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   Está disponible para descargar de uso gratuito en el repositorio https://github.com/vtamara/sideex
   en la rama espera-asercion
   
-  ![sosX5dn - Imgur.png](https://github.com/pasosdeJesus/sip/tree/master/doc/sideex.img/sosX5dn - Imgur.png)
+  ![sosX5dn - Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/sosX5dn%20-%20Imgur.png)
   
 * Haga clic en Code y descargue el archivo en Download ZIP.
 
