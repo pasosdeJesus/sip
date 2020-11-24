@@ -144,9 +144,36 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 #### 3.3.1 Descarga e instalación de sideex2
 
 * Sideex2 se ejecuta como una extensión para Chrome o para Firefox. 
-  Está disponible para descargar de uso gratuito en  http://sideex.org/
+  Está disponible para descargar de uso gratuito en el repositorio https://github.com/vtamara/sideex
+  en la rama espera-asercion
   
-  Después de descargar Sideex2 se vera en la barra de 
+  ![img11](https://github.com/pasosdeJesus/sip/tree/master/doc/sideex.img/img11)
+  
+* Haga clic en Code y descargue el archivo en Download ZIP.
+
+  ![img12](https://github.com/pasosdeJesus/sip/tree/master/doc/sideex.img/img12)
+  
+* Abrir con Gestor de archivadores y Extraer.
+  
+  ![img13](https://github.com/pasosdeJesus/sip/tree/master/doc/sideex.img/img13)
+  
+* Ahora el página de Google vaya a Personaliza y controla Google Chrome en la parte superior derecha de la página.
+  Escoja Más herramientas y luego Extensiones.
+   
+* Activa el modo de desarrollador en Extensiones.
+  Haga Clic en Cargar extensión sin empaquetar y busca el sideex-2.3.4 que acabas de descargar
+  
+* Haga doble clic sobre el archivo y vera src y abrir.
+
+* Haga clic en el icono Extensiones  en la parte superior derecha de la página
+
+  ![img14](https://github.com/pasosdeJesus/sip/tree/master/doc/sideex.img/img14)
+  
+* Haga clic en el icono Fijar extensión al lado derecho del icono de sideex2
+
+  ![img15](https://github.com/pasosdeJesus/sip/tree/master/doc/sideex.img/img15)
+    
+* Después de descargar Sideex2 se vera en la barra de 
   herramientas el icono de Sideex2.
   
   ![img1](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img1.png)  
