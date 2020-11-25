@@ -385,11 +385,11 @@ Sideex cuando se da el foco a la orden en un caso de prueba.
    
 * Puede correr toda la suit pulsando sobre PlayThisSuite.
 
-   ![VPV7DwA%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/VPV7DwA%20-%20Imgur.png)
+   ![s8MipPe%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/s8MipPe%20-%20Imgur.png)
    
 * Tambien puede correr un solo caso de la suite pulsando sobre PlayThisCase.
 
-   ![px1yokA%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/px1yokA%20-%20Imgur.png)
+   ![bjAgimK%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/bjAgimK%20-%20Imgur.png)
    
 #### 3.3.7 Teclas de acceso rápido
   
