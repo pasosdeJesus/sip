@@ -395,7 +395,24 @@ Sideex cuando se da el foco a la orden en un caso de prueba.
 
    ![bjAgimK%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/bjAgimK%20-%20Imgur.png)
    
-#### 3.3.7 Teclas de acceso rápido
+#### 3.3.7 Pruebas con error y sin error
+
+* Cuando se corre una prueba y no tiene errores se ve el panel en verde, al lado del nombre de la prueba un visto bueno
+  y aumenta el numero en RUNS 
+
+![]()
+
+* Y cuando tiene error, se ve roja la linea que tiene el error, al lado del nombre de la prueba una X en rojo
+  y se aumenta el numero en FAILURES  
+
+![]()
+
+* En la parte inferior se van viendo todos y cada uno de los comando que se estan ejecutando y cuando se genera 
+  error tambien se ve la linea del error en rojo.
+  
+  ![]()
+  
+#### 3.3.8 Teclas de acceso rápido
   
   . *Ctrl + S*:          Guardar una suite de prueba
   
