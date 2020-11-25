@@ -376,8 +376,22 @@ Sideex cuando se da el foco a la orden en un caso de prueba.
   o de requerirse puede examinarse el HTML y/o el CSS para emplear un mejor selector que
   los propuestos por Sideex.
 
+#### 3.3.6 Como correr una suit ya creada
 
-#### 3.3.6 Teclas de acceso rápido
+* Para correr una suit ya creada, debemos tenerla guardada en el computador.
+* Pulse en el icono de archivo y busquelo en los archivos en el computador.
+
+   ![UcCiUsu%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/UcCiUsu%20-%20Imgur.png)
+   
+* Puede correr toda la suit pulsando sobre PlayThisSuite.
+
+   ![VPV7DwA%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/VPV7DwA%20-%20Imgur.png)
+   
+* Tambien puede correr un solo caso de la suite pulsando sobre PlayThisCase.
+
+   ![px1yokA%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/px1yokA%20-%20Imgur.png)
+   
+#### 3.3.7 Teclas de acceso rápido
   
   . *Ctrl + S*:          Guardar una suite de prueba
   
