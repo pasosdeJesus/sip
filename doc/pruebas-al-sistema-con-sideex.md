@@ -381,7 +381,7 @@ Sideex cuando se da el foco a la orden en un caso de prueba.
 * Para correr una suit ya creada, debemos tenerla guardada en el computador.
 * Pulse en el icono de archivo y busquelo en los archivos en el computador.
 
-   ![UcCiUsu%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/UcCiUsu%20-%20Imgur.png)
+   ![px1yokA%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/px1yokA%20-%20Imgur.png)
    
 * Puede correr toda la suit pulsando sobre PlayThisSuite.
 
