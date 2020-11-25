@@ -384,6 +384,7 @@ Sideex cuando se da el foco a la orden en un caso de prueba.
    ![px1yokA%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/px1yokA%20-%20Imgur.png)
 
 * Escoja un archivo y lo abre. 
+
   ![H1VJZ0D%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/H1VJZ0D%20-%20Imgur.png)
    
 * Puede correr toda la suit pulsando sobre PlayThisSuite.
