@@ -147,6 +147,8 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   Está disponible para descargar de uso gratuito en el repositorio https://github.com/vtamara/sideex
   en la rama espera-asercion
   
+*  Para  poder correr pruebas en sideex2 necesita  verificar  equerimientos que debe cumplir la persona para poder operar, computadores soportados, navegadores         
+
   ![sosX5dn - Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/sosX5dn%20-%20Imgur.png)
   
 * Haga clic en Code y descargue el archivo en Download ZIP.
