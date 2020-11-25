@@ -382,12 +382,15 @@ Sideex cuando se da el foco a la orden en un caso de prueba.
 * Pulse en el icono de archivo y busquelo en los archivos en el computador.
 
    ![px1yokA%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/px1yokA%20-%20Imgur.png)
+
+* Escoja un archivo y lo abre. 
+  ![H1VJZ0D%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/H1VJZ0D%20-%20Imgur.png)
    
 * Puede correr toda la suit pulsando sobre PlayThisSuite.
 
    ![s8MipPe%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/s8MipPe%20-%20Imgur.png)
    
-* Tambien puede correr un solo caso de la suite pulsando sobre PlayThisCase.
+* Tambien puede correr un solo caso de la suite pulsando sobre el caso que va a correr y luego sobre PlayThisCase.
 
    ![bjAgimK%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/bjAgimK%20-%20Imgur.png)
    
