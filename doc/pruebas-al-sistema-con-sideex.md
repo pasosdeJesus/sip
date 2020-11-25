@@ -400,7 +400,7 @@ Sideex cuando se da el foco a la orden en un caso de prueba.
 * Cuando se corre una prueba y no tiene errores se ve el panel en verde, al lado del nombre de la prueba un visto bueno
   y aumenta el numero en RUNS 
 
-![]()
+![vliRAtI%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/vliRAtI%20-%20Imgur.png)
 
 * Y cuando tiene error, se ve roja la linea que tiene el error, al lado del nombre de la prueba una X en rojo
   y se aumenta el numero en FAILURES  
@@ -410,7 +410,7 @@ Sideex cuando se da el foco a la orden en un caso de prueba.
 * En la parte inferior se van viendo todos y cada uno de los comando que se estan ejecutando y cuando se genera 
   error tambien se ve la linea del error en rojo.
   
-  ![]()
+  ![i0s8RRi%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/i0s8RRi%20-%20Imgur.png)
   
 #### 3.3.8 Teclas de acceso rápido
   
