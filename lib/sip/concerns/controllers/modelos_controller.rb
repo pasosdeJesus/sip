@@ -229,7 +229,7 @@ module Sip
           end
 
           # Presenta formulario para crear nuevo registro
-          def new
+          def new_gen
             if cannot? :new, clase.constantize
               # Supone alias por omision de https://github.com/CanCanCommunity/cancancan/blob/develop/lib/cancan/ability/actions.rb
               authorize! :create, clase.constantize
@@ -247,6 +247,11 @@ module Sip
                               request.url, params, @registro.class.to_s,
                               nil,  'iniciar', '')
             end
+          end
+
+
+          def new
+            new_gen
             render layout: 'application'
           end
 
