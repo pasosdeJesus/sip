@@ -8,12 +8,12 @@
   <%= render partial: 'sip/hogar/errores', locals: { f: f } %> 
   
   <% atributos_form.each do |atr|  %>
-    <% #byebug %>
     <% alf = @registro.class.asociacion_llave_foranea(atr) %>
     <% vatr = atr.to_s.gsub(/[^a-z_A-Z0-9]/, '') %>
     <% rutavatr = clase.pluralize.underscore + "/campo_#{vatr}" %>
     <% (ri, rm, rd)=clase.pluralize.underscore.rpartition("/") %>
     <% radmin = "#{ri}/admin/#{rd}/campo_#{vatr}" %>
+    <% #byebug %>
     <% if lookup_context.find_all(rutavatr, [], true).any? %>
       <% # Hay un parcial especifico %>
       <%= render partial: rutavatr, locals: {f: f} %>
@@ -75,9 +75,12 @@
             value_method: :id ,
             input_html: { class: 'chosen-select' } %>
       <% end %>
-    <% elsif @registro.class && @registro.class.columns_hash[atr] %>
+    <% elsif @registro.class && (@registro.class.columns_hash[atr.to_s] || 
+                                 @registro.class.columns_hash[atr]) %>
       <% # Escogemos el control %>
-      <% col = @registro.class.columns_hash[atr] %>
+      <% #byebug %>
+      <% col = @registro.class.columns_hash[atr.to_s] || 
+        @registro.class.columns_hash[atr.to]  %>
       <% if col && col.type == :date then %>
         <% # fecha %>
         <%= f.input atr.to_sym,
