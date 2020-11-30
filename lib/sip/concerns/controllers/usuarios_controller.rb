@@ -77,12 +77,12 @@ module Sip
               create(params[:usuario][:encrypted_password],
                      {:cost => Rails.application.config.devise.stretches})
           end
-          
+
           def create
             sip_pre_create
             super
           end
-        
+
          def update
            if (!params[:usuario][:encrypted_password].nil? &&
                params[:usuario][:encrypted_password] != "")
@@ -106,20 +106,41 @@ module Sip
             current_usuario
           end
 
+          def lista_params_sip
+            r = [
+              :id, 
+              :nusuario, 
+              :password, 
+              :nombre, 
+              :descripcion, 
+              :oficina_id,
+              :rol, 
+              :idioma, 
+              :email, 
+              :tema_id, 
+              :encrypted_password, 
+              :fechacreacion_localizada, 
+              :fechadeshabilitacion_localizada, 
+              :reset_password_token, 
+              :reset_password_sent_at, 
+              :remember_created_at, 
+              :sign_in_count, 
+              :current_sign_in_at, 
+              :last_sign_in_at, 
+              :current_sign_in_ip, 
+              :failed_attempts, 
+              :unlock_token, 
+              :locked_at,
+              :last_sign_in_ip, 
+              :etiqueta_ids => [],
+              :sip_grupo_ids => []
+            ]
+            r
+          end
+
           # Lista blanca de paramétros
           def usuario_params
-            p = params.require(:usuario).permit(
-              :id, :nusuario, :password, 
-              :nombre, :descripcion, :oficina_id,
-              :rol, :idioma, :email, :tema_id, :encrypted_password, 
-              :fechacreacion_localizada, :fechadeshabilitacion_localizada, 
-              :reset_password_token, 
-              :reset_password_sent_at, :remember_created_at, :sign_in_count, 
-              :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, 
-              :failed_attempts, :unlock_token, :locked_at,
-              :last_sign_in_ip, :etiqueta_ids => [],
-              :sip_grupo_ids => []
-            )
+            p = params.require(:usuario).permit(lista_params_sip)
             return p
           end
 
