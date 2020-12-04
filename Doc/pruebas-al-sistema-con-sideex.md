@@ -143,13 +143,12 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
 #### 3.3.1 Descarga e instalación de sideex2
 
+*  Para correr las pruebas de sideex2 se hacen con un navegador que soporte Javascript.  Al momento  del escrito no solo por economia, sino tambien por  seguridad  velocidad, sugerimos Chromium. En cuanto al sistema operativo y teniendo en cuenta que los virus evidencias huecos de segurida que pueden  hacer perder los esfuerzos de seguridad, recomendamos usar desde computadores con OpenBSD / adJ o en su defecto Linux.
+
 * Sideex2 se ejecuta como una extensión para Chrome o para Firefox. 
   Está disponible para descargar de uso gratuito en el repositorio https://github.com/vtamara/sideex
   en la rama espera-asercion
-  
-*  Para  poder correr pruebas en sideex2 necesita  verificar que cumple con los requerimientos para poder operar ,
-  , computadores soportados, navegadores soportados.
-  
+    
   ![sosX5dn - Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/sosX5dn%20-%20Imgur.png)
   
 * Haga clic en Code y descargue el archivo en Download ZIP.
