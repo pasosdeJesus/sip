@@ -157,6 +157,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   
 * Abrir con Gestor de archivadores y Extraer.
   
+   ![]()  
   ![qGu3pjp%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/qGu3pjp%20-%20Imgur.png)
   
 * Ahora el página de Google vaya a Personaliza y controla Google Chrome en la parte superior derecha de la página.
