@@ -1,4 +1,10 @@
 es:
+  mes:
+    one: '%{count} mes'
+    other: '%{count} meses'
+  dia:
+    one: '%{count} día'
+    other: '%{count} días'
   attributes:
     departamento: Departamento/Estado
     descripcion: Descripción
