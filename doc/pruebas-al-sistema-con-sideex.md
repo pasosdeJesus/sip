@@ -143,25 +143,34 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
 #### 3.3.1 Descarga e instalación de sideex2
 
-*  Para correr las pruebas de sideex2 se hacen con un navegador que soporte Javascript.  Al momento  del escrito no solo por economia, sino tambien por  seguridad  velocidad, sugerimos Chromium. En cuanto al sistema operativo y teniendo en cuenta que los virus evidencias huecos de segurida que pueden  hacer perder los esfuerzos de seguridad, recomendamos usar desde computadores con OpenBSD / adJ o en su defecto Linux.
+*  Para correr las pruebas de sideex2 se hacen con un navegador que soporte Javascript.  Al momento  del escrito no solo por economia, sino tambien por  seguridad  velocidad, sugerimos Chromium. En cuanto al sistema operativo y teniendo en cuenta que los virus evidencian huecos de segurida que pueden  hacer perder los esfuerzos de seguridad, recomendamos usar desde computadores con OpenBSD / adJ o en su defecto Linux.
 
-* Sideex2 se ejecuta como una extensión para Chrome o para Firefox. 
+* Sideex2 se ejecuta como una extensión para Chrome, para Firefox para Brave, para Chromium. 
   Está disponible para descargar de uso gratuito en el repositorio https://github.com/vtamara/sideex
-  en la rama espera-asercion
+  Ya en el repositorio que abre por omision en la rama master.
+  
+  ![]()sideex40
+  
+  Haga clic sobre la flecha en la parte superior izquierda del repositorio, debajo de la palabra Code
+  a la derecha de master para escoger y cambiar la rama espera-asercion.
     
   ![sosX5dn - Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/sosX5dn%20-%20Imgur.png)
   
-* Haga clic en Code y descargue el archivo en Download ZIP.
+* Haga clic en la parte superior derecha sobre Code y vera Download ZIP para descargar el sideex.
 
   ![kF0Hu9w%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/kF0Hu9w%20-%20Imgur.png)
   
-* Abrir con Gestor de archivadores y Extraer.
+* En la parte inferior de la pagina se vera el archivo y se debe abrir con Gestor de archivadores y Extraer.
   
-   ![]()  
+   ![]() extraer con gestor de archivos
+   
+* Ahora en la página de Google en la parte superior derecha se ven 3 punticos de forma vertical
+
+![]() 3 puntos
+* Haga clic sobre los 3 puntos y vera Personaliza y controla Google Chrome.
+  Escoja Más herramientas y luego Extensiones. 
+   
   ![qGu3pjp%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/qGu3pjp%20-%20Imgur.png)
-  
-* Ahora el página de Google vaya a Personaliza y controla Google Chrome en la parte superior derecha de la página.
-  Escoja Más herramientas y luego Extensiones.
    
 * Activa el modo de desarrollador en Extensiones.
   Haga Clic en Cargar extensión sin empaquetar y busca el sideex-2.3.4 que acabas de descargar
@@ -210,11 +219,11 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   ![8opciones](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img8.png)
 
     * `Record`: Grabar. Pulse Record para empezar a grabar la secuencia de 
-    comandos de una prueba 
+    comandos de una prueba. 
   
     * `PlayThisCase`: Correr este caso. Se puede correr un solo caso de 
     una suit. Pulse sobre el caso que quiere correr, se hará visible 
-    y luego Pulse en PlayThisCase
+    y luego Pulse en PlayThisCase.
   
     * `PlayThisSuite`: Correr esta suit. Pulse sobre PlayThisSuite 
     para correr toda la suit con que esta trabajando.
@@ -245,17 +254,20 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
     
     * Más a la derecha verá un signo mas (+) para crear una nueva suit de pruebas, al pulsarlo
       se abrirá una ventana emergente donde se puede escribir el nombre de la suit nueva.
+      
      ![img4](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img4.png) 
     
-    * Al crear o cargar una suit de prueba, cuando pase el curso sobre esta, 
-      verá a la izquerda del título un icono para guardar la suit y a la la derecha un singo más (+)
+    * Al crear o cargar una suit de prueba, cuando pase el cursor sobre esta, 
+      verá a la izquerda del título un icono para guardar la suit y a la la derecha un signo más (+)
       que permite agregar un nuevo caso de prueba a esa suit.
+      
       ![img5](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img5.png)
       
         * Al pulsar con el botón derecho sobre el nombre de una suit de pruebas, verá
           un menú contextual con las opciones: Abrir suit de pruebas, Agregar nueva suit de pruebas, 
           Guardar suit de pruebas como, Cerrar suit de pruebas, Agregar nuevo caso de prueba y 
-          renombrar suit de pruebas
+          renombrar suit de pruebas.
+          
           ![img6](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/img6.png) 
           
        * Al pulsar con el botón derecho sobre un caso de prueba, verá un menú contextual
