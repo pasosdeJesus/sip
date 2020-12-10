@@ -172,7 +172,8 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
    
   ![qGu3pjp%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/qGu3pjp%20-%20Imgur.png)
    
-* Activa el modo de desarrollador en Extensiones.
+* Activa el modo de desarrollador en Extensiones
+
   Haga Clic en Cargar extensión sin empaquetar y busca el sideex-2.3.4 que acabas de descargar
   
 * Haga doble clic sobre el archivo y vera src y abrir.
