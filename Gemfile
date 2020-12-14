@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '>= 2.6.0'
+ruby '>= 2.7.0'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -20,7 +20,7 @@ gem 'pg', '>= 0.18', '< 2.0'    # PostgreSQL
 
 gem 'puma'                      # Lanza en modo desarrollo
 
-gem 'rails', '>= 6.0.0'
+gem 'rails', '~> 6.0.3.4'
 
 gem 'rails-i18n'                # Localización e Internacionalización 
 
