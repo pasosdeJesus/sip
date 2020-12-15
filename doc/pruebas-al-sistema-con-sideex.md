@@ -18,7 +18,8 @@ Pasos de Jesús usando sideex2 (http://sideex.org/), suponiendo que las fuentes 
 aplicación (y de las pruebas) se almacenan en un repositorio de github (https://github.com)
 y que el seguimiento al desarrollo se realiza en un tablero Trello (https://trello.com).
 
-Aunque existe Sideex 3, preferimos usar Sideex 2 porque es de fuentes abiertas, ver [Comparación](https://github.com/pasosdeJesus/sip/blob/master/doc/compara-sideex-2-3.md).
+Aunque existe Sideex 3, preferimos usar Sideex 2 porque es de fuentes abiertas, ver 
+[Comparación](https://github.com/pasosdeJesus/sip/blob/master/doc/compara-sideex-2-3.md).
 
 
 ## 1. Tablero Trello
@@ -143,7 +144,10 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
 #### 3.3.1 Descarga e instalación de sideex2
 
-*  Para correr las pruebas de sideex2 se hacen con un navegador que soporte Javascript.  Al momento  del escrito no solo por economia, sino tambien por  seguridad  velocidad, sugerimos Chromium. En cuanto al sistema operativo y teniendo en cuenta que los virus evidencian huecos de segurida que pueden  hacer perder los esfuerzos de seguridad, recomendamos usar desde computadores con OpenBSD / adJ o en su defecto Linux.
+*  Para correr las pruebas de sideex2 se hacen con un navegador que soporte Javascript.  
+   Al momento  del escrito no solo por economia, sino tambien por  seguridad  velocidad, sugerimos Chromium. 
+   En cuanto al sistema operativo y teniendo en cuenta que los virus evidencian huecos de segurida que pueden  
+   hacer perder los esfuerzos de seguridad, recomendamos usar desde computadores con OpenBSD / adJ o en su defecto Linux.
 
 * Sideex2 se ejecuta como una extensión para Chrome, para Firefox para Brave, para Chromium. 
   Está disponible para descargar de uso gratuito en el repositorio https://github.com/vtamara/sideex
