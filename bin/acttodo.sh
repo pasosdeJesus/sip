@@ -104,6 +104,11 @@ if (test "$SALTASIVEL" != "1") then {
 	actuno sivel2_somosdefensores
 } fi;
 
+if (test "$SALTAAPO214" != "1") then {
+	echo "**** apo214"
+	actuno apo214 test/dummy; 
+} fi;
+
 # Usan 3 motores
 if (test "$SALTASIANZORC" != "1") then {
         actuno si_anzorc; 
