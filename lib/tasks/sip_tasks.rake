@@ -4,6 +4,8 @@ require 'active_support/core_ext/object/inclusion'
 require 'active_record'
 require 'colorize'
 
+#require 'byebug'
+
 require_relative '../../app/helpers/sip/tareasrake_helper'
 
 namespace :sip do
@@ -11,25 +13,25 @@ namespace :sip do
   task indices: :environment do
     connection = ActiveRecord::Base.connection();
     puts "sip - indices"
-		# Primero tablas basicas creadas en Rails
+    # Primero tablas basicas creadas en Rails
     #byebug
     ab = ::Ability.new
     tbn = ab.tablasbasicas - ab.basicas_id_noauto
     tbn.each do |t|
       #puts "OJO tbn, t=#{t}"
-			nomt = Ability::tb_modelo t
-			case nomt
-			when 'sip_departamento', 'sip_municipio', 'sip_pais', 'sip_clase'
-				maxv = 100000
-			else	
-				maxv = 100
-			end
-			q = "SELECT setval('public.#{nomt}_id_seq', MAX(id)) FROM 
+      nomt = Ability::tb_modelo t
+      case nomt
+      when 'sip_departamento', 'sip_municipio', 'sip_pais', 'sip_clase'
+        maxv = 100000
+      else  
+        maxv = 100
+      end
+      q = "SELECT setval('public.#{nomt}_id_seq', MAX(id)) FROM 
           (SELECT #{maxv} as id UNION 
             SELECT MAX(id) FROM public.#{Ability::tb_modelo t}) AS s;"
-		  #puts q
-    	connection.execute(q)
-		end
+      #puts q
+      connection.execute(q)
+    end
     # Finalmente otras tablas no basicas pero con índices
     tb = ab.nobasicas_indice_seq_con_id
     tb.each do |t|
@@ -43,28 +45,30 @@ namespace :sip do
 
   end
 
-	# De implementacion de structure:dump de rake y de
-	# https://github.com/opdemand/puppet-modules/blob/master/rails/files/databases.rakeset
+  # De implementacion de structure:dump de rake y de
+  # https://github.com/opdemand/puppet-modules/blob/master/rails/files/databases.rakeset
   desc "Vuelca tablas básicas de aplicación en orden"
   task vuelcabasicas: :environment do
     puts "sip - vuelcabasicas"
-		abcs = ActiveRecord::Base.configurations
+    abcs = ActiveRecord::Base.configurations
     set_psql_env(abcs[Rails.env])
-    search_path = abcs[Rails.env]['schema_search_path']
+    #search_path = abcs[Rails.env][:schema_search_path]
     connection = ActiveRecord::Base.connection()
     ab = ::Ability.new
-		# Volcar primero superbasicas y otras en orden correcto
+    # Volcar primero superbasicas y otras en orden correcto
     tb = ab.tablasbasicas_prio + 
       (ab.tablasbasicas - ab.tablasbasicas_prio);
-    unless search_path.blank?
-      search_path = search_path.split(",").map{|search_path_part| 
-        "--schema=#{Shellwords.escape(search_path_part.strip)}" 
-      }.join(" ")
-    end
+    #unless search_path.blank?
+    #  search_path = search_path.split(",").map{|search_path_part| 
+    #    "--schema=#{Shellwords.escape(search_path_part.strip)}" 
+    #  }.join(" ")
+    # end
+    maq = '-h ' + abcs[Rails.env][:host] + ' -U ' + abcs[Rails.env][:username]
     archt = Tempfile.create(["vb", ".sql"], nil)
-		filename = "db/datos-basicas.sql"
+    filename = "db/datos-basicas.sql"
     modobj = '';
-    if Rails.application.class.parent_name == 'Dummy'
+    if Rails.application.class.respond_to?(:parent_name) && 
+        Rails.application.class.parent_name == 'Dummy'
       # en aplicaciones de prueba de motor el modulo objetivo es el del motor
       modobj = Ability.superclass.name.deconstantize;
     end
@@ -73,7 +77,10 @@ namespace :sip do
       tb.each do |t|
         printf "%s:%s - ", t[0], t[1]
         if t[0] == modobj
-          command = "pg_dump --inserts --data-only --no-privileges --no-owner --column-inserts --table=#{Ability::tb_modelo t}  #{search_path} #{Shellwords.escape(abcs[Rails.env]['database'])} | sed -e \"s/SET lock_timeout = 0;//g\" > #{archt.to_path}"
+          command = "pg_dump --inserts --data-only --no-privileges " +
+            "--no-owner --column-inserts --table=#{Ability::tb_modelo t} " +
+            "#{maq} #{Shellwords.escape(abcs[Rails.env][:database])} " +
+            "| sed -e \"s/SET lock_timeout = 0;//g\" > #{archt.to_path}"
           puts command.green
           raise "Error al volcar tabla #{Ability::tb_modelo t}" unless Kernel.system(command)
           inserto = false
@@ -105,67 +112,71 @@ namespace :sip do
         else
           puts "Saltando".red
         end
-        
+
       end
     }
   end
 
- 	desc "Actualiza tablas básicas"
-	task actbasicas: :environment do
+  desc "Actualiza tablas básicas"
+  task actbasicas: :environment do
     puts "sip - actbasicas"
-		value = %x(
-			pwd
-			rails dbconsole <<-EOF
+    value = %x(
+      pwd
+      rails dbconsole <<-EOF
         \\i db/datos-basicas.sql
       EOF
-		)
+    )
   end
 
-	desc "Vuelca base de datos completa"
+  desc "Vuelca base de datos completa"
   task vuelca: :environment do
     puts "sip - vuelca"
-		abcs = ActiveRecord::Base.configurations
-		fecha = DateTime.now.strftime('%Y-%m-%d') 
+    abcs = ActiveRecord::Base.configurations
+    fecha = DateTime.now.strftime('%Y-%m-%d') 
     archcopia = Sip::TareasrakeHelper::nombre_volcado(Sip.ruta_volcados)
-		File.open(archcopia, "w") { |f| f << "-- Volcado del #{fecha}\n\n" }
-		set_psql_env(abcs[Rails.env])
-		search_path = abcs[Rails.env]['schema_search_path']
-		unless search_path.blank?
-			search_path = search_path.split(",").map{|search_path_part| 
-        "--schema=#{Shellwords.escape(search_path_part.strip)}" 
-      }.join(" ")
-		end
-		command = "pg_dump --encoding=UTF8 -cO --column-inserts " +
-      "#{search_path} #{Shellwords.escape(abcs[Rails.env]['database'])} " +
+    File.open(archcopia, "w") { |f| f << "-- Volcado del #{fecha}\n\n" }
+    set_psql_env(abcs[Rails.env])
+    #search_path = abcs[Rails.env][:schema_search_path]
+    #unless search_path.blank?
+    #  search_path = search_path.split(",").map{|search_path_part| 
+    #    "--schema=#{Shellwords.escape(search_path_part.strip)}" 
+    #  }.join(" ")
+    #end
+    maq = '-h ' + abcs[Rails.env][:host] + ' -U ' + abcs[Rails.env][:username]
+    command = "pg_dump --encoding=UTF8 -cO --column-inserts " +
+      "#{maq} " +
+      "#{Shellwords.escape(abcs[Rails.env][:database])} " +
       " > #{Shellwords.escape(archcopia)}"
-		puts command
-		raise "Error al volcar" unless Kernel.system(command)
-	end	
+    puts command
+    raise "Error al volcar" unless Kernel.system(command)
+  end # vuelca
 
   desc "Restaura volcado"
   task restaura: :environment do |t|
     arch=ENV['ARCH']
     puts "Restaurar #{arch} en ambiente"
-		abcs = ActiveRecord::Base.configurations
-		set_psql_env(abcs[Rails.env])
-		search_path = abcs[Rails.env]['schema_search_path']
-		unless search_path.blank?
-			search_path = search_path.split(",").map{|search_path_part| 
-        "--schema=#{Shellwords.escape(search_path_part.strip)}" 
-      }.join(" ")
-		end
-		command = "psql " +
-      "#{search_path} #{Shellwords.escape(abcs[Rails.env]['database'])} " +
+    abcs = ActiveRecord::Base.configurations
+    set_psql_env(abcs[Rails.env])
+    maq = '-h ' + abcs[Rails.env][:host] + ' -U ' + abcs[Rails.env][:username]
+    #search_path = abcs[Rails.env][:schema_search_path]
+    #unless search_path.blank?
+    #  search_path = search_path.split(",").map{|search_path_part| 
+    #    "--schema=#{Shellwords.escape(search_path_part.strip)}" 
+    #  }.join(" ")
+    #end
+    command = "psql " +
+      "#{maq} #{Shellwords.escape(abcs[Rails.env][:database])} " +
       " -f #{Shellwords.escape(arch)}"
-		puts command
-		raise "Error al restaurar #{arch}" unless Kernel.system(command)
-  end
+    puts command
+    raise "Error al restaurar #{arch}" unless Kernel.system(command)
+  end # restaura
+
 end
 
 # de https://github.com/opdemand/puppet-modules/blob/master/rails/files/databases.rake
 def set_psql_env(config)
-	ENV['PGHOST']     = config['host']          if config['host']
-	ENV['PGPORT']     = config['port'].to_s     if config['port']
-	ENV['PGPASSWORD'] = config['password'].to_s if config['password']
-	ENV['PGUSER']     = config['username'].to_s if config['username']
+  ENV['PGHOST']     = config['host']          if config['host']
+  ENV['PGPORT']     = config['port'].to_s     if config['port']
+  ENV['PGPASSWORD'] = config['password'].to_s if config['password']
+  ENV['PGUSER']     = config['username'].to_s if config['username']
 end
