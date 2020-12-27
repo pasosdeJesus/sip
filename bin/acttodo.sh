@@ -114,6 +114,10 @@ if (test "$SALTASIANZORC" != "1") then {
         actuno si_anzorc; 
 } fi;
 
+if (test "$SALTASIIAP" != "1") then {
+        actuno si_iap; 
+} fi;
+
 if (test "$SALTASIVELSJR" != "1") then {
 	echo "**** sivelsjr"
 	actuno sivel2_sjr test/dummy; 
