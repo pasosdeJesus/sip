@@ -14,6 +14,8 @@ gem 'devise'                    # Autenticación
 gem 'devise-i18n'               # Localización e Internacionalización                  
 gem 'jbuilder', '>= 2.7'        # Json
 
+gem 'nokogiri', '>=1.11.0.rc4'
+
 gem 'paperclip'                 # Anexos
 
 gem 'pg', '>= 0.18', '< 2.0'    # PostgreSQL
