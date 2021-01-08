@@ -52,18 +52,12 @@ namespace :sip do
     puts "sip - vuelcabasicas"
     abcs = ActiveRecord::Base.configurations
     set_psql_env(abcs[Rails.env])
-    #search_path = abcs[Rails.env][:schema_search_path]
     connection = ActiveRecord::Base.connection()
     ab = ::Ability.new
     # Volcar primero superbasicas y otras en orden correcto
     tb = ab.tablasbasicas_prio + 
       (ab.tablasbasicas - ab.tablasbasicas_prio);
-    #unless search_path.blank?
-    #  search_path = search_path.split(",").map{|search_path_part| 
-    #    "--schema=#{Shellwords.escape(search_path_part.strip)}" 
-    #  }.join(" ")
-    # end
-    maq = '-h ' + abcs[Rails.env][:host] + ' -U ' + abcs[Rails.env][:username]
+    maq = '-h ' + abcs[Rails.env]['host'] + ' -U ' + abcs[Rails.env]['username']
     archt = Tempfile.create(["vb", ".sql"], nil)
     filename = "db/datos-basicas.sql"
     modobj = '';
@@ -79,7 +73,7 @@ namespace :sip do
         if t[0] == modobj
           command = "pg_dump --inserts --data-only --no-privileges " +
             "--no-owner --column-inserts --table=#{Ability::tb_modelo t} " +
-            "#{maq} #{Shellwords.escape(abcs[Rails.env][:database])} " +
+            "#{maq} #{Shellwords.escape(abcs[Rails.env]['database'])} " +
             "| sed -e \"s/SET lock_timeout = 0;//g\" > #{archt.to_path}"
           puts command.green
           raise "Error al volcar tabla #{Ability::tb_modelo t}" unless Kernel.system(command)
@@ -136,16 +130,10 @@ namespace :sip do
     archcopia = Sip::TareasrakeHelper::nombre_volcado(Sip.ruta_volcados)
     File.open(archcopia, "w") { |f| f << "-- Volcado del #{fecha}\n\n" }
     set_psql_env(abcs[Rails.env])
-    #search_path = abcs[Rails.env][:schema_search_path]
-    #unless search_path.blank?
-    #  search_path = search_path.split(",").map{|search_path_part| 
-    #    "--schema=#{Shellwords.escape(search_path_part.strip)}" 
-    #  }.join(" ")
-    #end
-    maq = '-h ' + abcs[Rails.env][:host] + ' -U ' + abcs[Rails.env][:username]
+    maq = '-h ' + abcs[Rails.env]['host'] + ' -U ' + abcs[Rails.env]['username']
     command = "pg_dump --encoding=UTF8 -cO --column-inserts " +
       "#{maq} " +
-      "#{Shellwords.escape(abcs[Rails.env][:database])} " +
+      "#{Shellwords.escape(abcs[Rails.env]['database'])} " +
       " > #{Shellwords.escape(archcopia)}"
     puts command
     raise "Error al volcar" unless Kernel.system(command)
@@ -157,15 +145,9 @@ namespace :sip do
     puts "Restaurar #{arch} en ambiente"
     abcs = ActiveRecord::Base.configurations
     set_psql_env(abcs[Rails.env])
-    maq = '-h ' + abcs[Rails.env][:host] + ' -U ' + abcs[Rails.env][:username]
-    #search_path = abcs[Rails.env][:schema_search_path]
-    #unless search_path.blank?
-    #  search_path = search_path.split(",").map{|search_path_part| 
-    #    "--schema=#{Shellwords.escape(search_path_part.strip)}" 
-    #  }.join(" ")
-    #end
+    maq = '-h ' + abcs[Rails.env]['host'] + ' -U ' + abcs[Rails.env]['username']
     command = "psql " +
-      "#{maq} #{Shellwords.escape(abcs[Rails.env][:database])} " +
+      "#{maq} #{Shellwords.escape(abcs[Rails.env]['database'])} " +
       " -f #{Shellwords.escape(arch)}"
     puts command
     raise "Error al restaurar #{arch}" unless Kernel.system(command)
