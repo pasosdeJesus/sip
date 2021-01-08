@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '>= 2.7.0'
+ruby '>= 2.7.1'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -14,7 +14,7 @@ gem 'devise'                    # Autenticación
 gem 'devise-i18n'               # Localización e Internacionalización                  
 gem 'jbuilder', '>= 2.7'        # Json
 
-gem 'nokogiri', '>=1.11.0.rc4'
+gem 'nokogiri', '>=1.11.1'
 
 gem 'paperclip'                 # Anexos
 
@@ -22,7 +22,7 @@ gem 'pg', '>= 0.18', '< 2.0'    # PostgreSQL
 
 gem 'puma'                      # Lanza en modo desarrollo
 
-gem 'rails', '>= 6.1.0'
+gem 'rails', '~> 6.0.3.4'
 
 gem 'rails-i18n'                # Localización e Internacionalización 
 

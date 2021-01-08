@@ -1,4 +1,3 @@
-# encoding: UTF-8
 module Sip
   module ModeloHelper
     include ActionView::Helpers::TextHelper
@@ -41,54 +40,106 @@ module Sip
       return r
     end
 
-    def modelos_prefijo_ruta(o)
+    # Busca ruta n sin parámetros en la aplicación, luego en main_app 
+    # y luego en motores
+    # Debió implementarse porque respond_to? no está operando bien para rutas
+    # ni con rails 6.0 ni con rails 6.1
+    # @return [] sii no se encuentra ruta n o
+    #   [rutacompleta, resultado] si se encuentra, donde rutacompleta es ruta 
+    #   con posible prefijo (main_app o un motor) y resultado es el resultado
+    #   de la llamada
+    def ruta_responde_0p(n)
+      begin
+        r = send(n)
+        return [n, r]
+      rescue NoMethodError => e
+        begin
+          r = main_app.send(n)
+          return ["main_app.#{n}", r]
+        rescue NoMethodError => e
+          for cr in Rails.application.routes.routes.custom_routes.map(&:name)
+            if cr
+              begin
+                r = send(cr).send(n)
+                return [cr + "." + n, r]
+              rescue NoMethodError => e1
+              end
+            end
+          end
+        end
+      end
+      return []
+    end
+
+    # Busca ruta n con un parámetro p en la aplicación, luego en main_app 
+    # y luego en motores
+    # Debió implementarse porque respond_to? no está operando bien para rutas
+    # con rails 6.0 ni con rails 6.1
+    # return [] sii no se encuentra ruta n o
+    #   [rutacompleta, resultado] si se encuentra, donde rutacompleta es ruta 
+    #   con posible prefijo (main_app o un motor) y resultado es el resultado
+    #   de la llamada
+    def ruta_responde_1p(n, p)
+      begin
+        r = send(n, p)
+        return [n, r]
+      rescue NoMethodError => e
+        begin
+          r = main_app.send(n, p)
+          return ["main_app.#{n}", r]
+        rescue NoMethodError => e
+          for cr in Rails.application.routes.routes.custom_routes.map(&:name)
+            if cr
+              begin
+                r = send(cr).send(n, p)
+                return [cr + "." + n, r]
+              rescue NoMethodError => e1
+              end
+            end
+          end
+        end
+      end
+      return []
+    end
+
+    # Ruta para listado de registros o
+    # @posfijo_path Si el posfijo de la ruta es _path (si es falso se usa _url)
+    def modelos_path(o, posfijo_path = true)
+      if o.nil?
+        return '#'
+      end
       if o.respond_to?(:modelos_path) 
         n = o.modelos_path
       elsif o.respond_to?(:klass) && o.klass.respond_to?(:modelos_path)
         n = o.klass.modelos_path
       else
-        n = self.nombreobj(o, true) + "_path"
+        n = self.nombreobj(o, true) + '_path'
       end
-      if !respond_to?(n.to_sym)
-        if main_app.respond_to?(n.to_sym)
-          n="main_app.#{n}"
-        else
-          n = "admin_#{n}"
-        end
+      if !posfijo_path 
+        n = n.chomp('_path') + '_url'
       end
-      return n
+
+      arr = ruta_responde_0p(n)
+      if arr != []
+        return arr[1]
+      end
+      arr = ruta_responde_0p("admin_#{n}")
+      if arr != []
+        return arr[1]
+      end
+      raise "No se encontró ruta a lista de #{n}"
     end
 
-    # Ruta para administrar modelo
-    def modelos_path(o)
-      if o.nil?
-        return '#'
-      end
-      n = self.modelos_prefijo_ruta(o) 
-      if !n
-        byebug
-      end
-      if n.starts_with?('main_app.') 
-        main_app.send(n[9..-1].to_sym)
-      else
-        send(n.to_sym)
-      end
-    end
-
-    # Url para administrar modelo
+    # Url para listado de registros o
     def modelos_url(o)
-      n = self.modelos_prefijo_ruta(o) 
-      n = n.chomp('_path') + '_url'
-      if n.starts_with?('main_app.') 
-        main_app.send(n[9..-1].to_sym)
-      else
-        send(n.to_sym)
-      end
+      modelos_path(o, false)
     end
 
-    def modelo_prefijo_ruta(o)
+    # Ruta a resumen de un registro
+    # En caso de registros no existentes retorna ruta para crearlo con POST
+    def modelo_path(o, posfijo_path = true)
       if o.nil?
-        return 'main_app.root_path'
+        return main_app.root_path
       end
       if o.id
         n = self.nombreobj(o, false) + "_path"
@@ -101,69 +152,61 @@ module Sip
           end
         end
       end
-      if !respond_to?(n.to_sym, o)
-        if main_app.respond_to?(n.to_sym, o)
-          n = "main_app.#{n}"
-        else
-          n = "admin_#{n}"
-        end
+
+      if !posfijo_path 
+        n = n.chomp('_path') + '_url'
       end
-      return n
+
+      arr = ruta_responde_1p(n, o)
+      if arr != []
+        return arr[1]
+      end
+      arr = ruta_responde_1p("admin_#{n}", o)
+      if arr != []
+        return arr[1]
+      end
+      raise "No se encontró ruta para examinar un #{n}"
     end
 
 
-    # Ruta para examinar un registro 
-    # En caso de registros no existentes retorna ruta para crearlo con POST
-    def modelo_path(o)
-      n = self.modelo_prefijo_ruta(o) 
-      if n.starts_with?('main_app.') 
-        main_app.send(n[9..-1].to_sym, o)
-      else
-        send(n.to_sym, o)
-      end
-    end
-
-    # URL para examinar un registro
+    # URL para ver resumen de un registro
     def modelo_url(o, format)
-      n = self.modelo_prefijo_ruta(o) 
-      n = n.chomp('_path') + '_url'
-      if n.starts_with?('main_app.') 
-        main_app.send(n[9..-1].to_sym, o, format)
-      else
-        send(n.to_sym, o, format)
-      end
+      modelo_path(o, false)
     end
 
-    # Ruta para crear un registro
+
+    # Ruta para crear un nuevo registro o
     def new_modelo_path(o)
-      n = "new_" + self.nombreobj(o) + "_path"
-      if !respond_to?(n.to_sym, o)
-        if main_app.respond_to?(n.to_sym, o)
-          return main_app.send(n.to_sym)
-        end
-        n = "new_admin_#{self.nombreobj(o)}_path"
-        if !respond_to?(n.to_sym, o)
-          if main_app.respond_to?(n.to_sym, o)
-            return main_app.send(n.to_sym)
-          end
-        end
+      n = "new_#{self.nombreobj(o)}_path"
+      arr = ruta_responde_1p(n, o)
+      if arr != []
+        return arr[1]
       end
 
-      send(n.to_sym)
+      n = "new_admin_#{self.nombreobj(o)}_path"
+      arr = ruta_responde_1p(n, o)
+      if arr != []
+        return arr[1]
+      end
+
+      raise "No se encontró ruta para nuevo #{n}"
     end
 
-    # Ruta para editar un registro de la tabla básica o
+    # Ruta para editar un registro existente o
     def edit_modelo_path(o)
       n = "edit_#{self.nombreobj(o)}_path"
-      if !respond_to?(n.to_sym, o)
-        if  main_app.respond_to?(n.to_sym, o)
-          return main_app.send(n.to_sym, o)
-        else
-          n = "edit_admin_#{self.nombreobj(o)}_path"
-        end
+      arr = ruta_responde_1p(n, o)
+      if arr != []
+        return arr[1]
       end
 
-      return send(n.to_sym, o)
+      n = "edit_admin_#{self.nombreobj(o)}_path"
+      arr = ruta_responde_1p(n, o)
+      if arr != []
+        return arr[1]
+      end
+
+      raise "No se encontro ruta para editar #{n}"
     end
 
     def self.poromision(params, s)

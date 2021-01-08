@@ -1,4 +1,3 @@
-# encoding: utf-8
 require_dependency 'will_paginate/view_helpers/action_view'
 
 module Sip
