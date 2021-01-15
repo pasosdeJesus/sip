@@ -377,14 +377,34 @@ module Sip
               if actualizar_intermedio && validaciones(@registro) && 
                   @registro.valid? && @registro.save
                 if registrar_en_bitacora
-                  Sip::Bitacora.a(request.remote_ip,
-                                  current_usuario.id,
-                                  request.url,
-                                  params, 
-                                  @registro.class.to_s,
-                                  @registro.id,
-                                  'actualizar', 
-                                  '{}')
+                  # Se intentó implementar a nivel de modelo con
+                  # before_update, after_update pero a Sivel2Gen::Caso
+                  # sólo le llegan los cambios al modelo Caso y no a los
+                  # asociados. Por eso inicialmente se prefirió a nivel de
+                  # controlador y los cambios al formulario en el cliente
+                  # con Javascript.
+                  detalle_bitacora = {}
+                  regcorto = clase.demodulize.underscore.to_s
+                  if request.params[regcorto] &&
+                      request.params[regcorto][:bitacora_cambio] &&
+                      request.params[regcorto][:bitacora_cambio] != ''
+                    begin
+                      detalle_bitacora = JSON.parse(
+                        request.params[regcorto][:bitacora_cambio])
+                    rescue
+                      detalle_bitacora = {error: 'Error al reconocer JSON'}
+                    end
+                  end
+                  if detalle_bitacora != {}
+                    Sip::Bitacora.a(request.remote_ip,
+                                    current_usuario.id,
+                                    request.url,
+                                    params,
+                                    @registro.class.to_s,
+                                    @registro.id,
+                                    'actualizar',
+                                    detalle_bitacora.to_json)
+                  end
                 end
 
                 format.html { 

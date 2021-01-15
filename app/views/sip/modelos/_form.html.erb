@@ -6,7 +6,7 @@
     defaults: { input_html: { class: 'span10' } } do |f| 
 %>
   <%= render partial: 'sip/hogar/errores', locals: { f: f } %> 
-  
+
   <% atributos_form.each do |atr|  %>
     <% alf = @registro.class.asociacion_llave_foranea(atr) %>
     <% vatr = atr.to_s.gsub(/[^a-z_A-Z0-9]/, '') %>
@@ -109,6 +109,11 @@
   <% end %>
   
   <div class="form-actions">
+    <% if controller.registrar_en_bitacora %>
+      <% regcorto = clase.demodulize.underscore %>
+      <input class='bitacora_cambio' id='<%= regcorto %>_bictacora_cambio' 
+             name='<%= regcorto %>[bitacora_cambio]' type='hidden'>
+    <% end %>
     <%= f.button :submit, (f.object.new_record? ? 'Crear' : 'Actualizar'), 
       :class => 'btn-primary' 
     %>
