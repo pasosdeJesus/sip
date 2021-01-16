@@ -2,7 +2,7 @@
 
 Una tabla básica representa un tipo de dato por utilizar en un sistema de información con unas pocas opciones, cada una con un nombre (por ejemplo país, tipo de documento de identidad, etc.). Incluye lo que en otros sistemas de información se llama _variable_, _tesauro_, _diccionario_, _parámetros de la aplicación_ y _vocabularios controlados_.
 
-# Generador de nuevas tablas básicas
+# 1. Generador de nuevas tablas básicas
 
 Las nuevas tablas básicas y bastantes de los cambios requeridos se recomienda iniciarlos con la tarea  `sip:tablabasica`. Por ejemplo para generar una tabla básica de categorias de motivos, con nombre interno `acpcatmotivo` y forma plural interna `acpcatsmotivo`:
 ```sh
@@ -48,16 +48,16 @@ bin/rails db:migrate
 Lance la aplicación y revise la tabla básica desde el menú Administrar->Tablas básicas.
 
 
-# Para el caso de un motor
+## 1.1 Generación en un motor
 
 Si la tabla básica será usada en un motor que servirá a la vez para otras aplicaciones derivadas del motor, entonces deberá ejecutar el comando anteriormente visto dento del directorio test/dummy/, es decir en la aplicación de prueba de motor. Una vez generados los archivos correspondientes estos deberán moverse a la raíz principal del motor de la siguiente forma:
 
-## Para migraciones
+### 1.1.1 Migraciones
 Desupués de ejecutar bin/rails db:migrate (para que se cree la tabla correspondiente), debe mover las respectivas migraciones así
 ```
 mv test/dummy/db/migrate/[nombre_de_migracion] db/migrate
 ```
-## Para modelo
+### 1.1.2. Modelo
 debe moverse el modelo a los modelos del motor situados en app/models y en lib/[nombre_motor]/conerns/models/. Por ejemplo para el caso de la tabla básica Tipo de testigo en el motor de sivel2_gen los modelos correspondientes son:
 
 En app/models/sivel2_gen/tipotestigo.rb:
@@ -94,7 +94,7 @@ module Sivel2Gen
 end
 ```
 
-## Para controlador
+### 1.1.3 Controlador
 El controlador se debe mover a app/controllers/[nombre_motor]/admin/ así:
 ```
 mv test/dummy/app/controllers/[nombre_controlador] app/controllers/[nombre_motor]/admin/
@@ -142,7 +142,7 @@ end
 ```
 Las demás configuraciones si son equivalentes al proceso estándar que se ha comenzado explicar en la anterior sección.
 
-# Modelo
+# 2. Modelo
 
 A nivel de tabla en la base de datos tiene por lo menos: 
 - ```id``` (obligatorio, por omisión un entero autoincremental, pero puede ser otro tipo)
@@ -153,7 +153,7 @@ A nivel de tabla en la base de datos tiene por lo menos:
 
 El modelo en Rails debe incluir el módulo ```Sip::Basica``` que tendrá en cuenta esto y otros detalles.  Si una tabla básica no requiere unicidad de nombres debe definirse la constante ```Nombresunicos=false```  Ver por ejemplo tablas básicas, departamentos, municipios y clases.
 
-# Datos por omisión
+# 3. Datos por omisión
 
 Se recomienda ubicar datos básicos de las tablas propias del motor en ```db/datos-basicas.rb```
 Si deben hacerse cambios a datos de tablas básicas de motores que se carguen se recomienda hacerlo en ```db/cambios-basicas.rb```
@@ -162,13 +162,13 @@ En una aplicación los datos básicos de los motores que la aplicación use se c
 
 Cuando modifique desde la aplicación los datos de tablas básicas, se recomienda generar nuevamente el archivo ```db/datos-basicas.sql``` ejecutando la tarea ```bin/rails sip:vuelcabasicas```
 
-# Migraciones
+# 4. Migraciones
 
 Además de  la migración inicial para crear la tabla básica y una migración por cada actualización a la estructura de la tabla, se recomienda:
 * Una migración para incluir los datos por omisión iniciales
 * Una migración por cada modificación a los datos por omisión de la tabla básica --y la respectiva modificación a las semillas de ```db/datos-basicas.rb``` y/o ```db/cambios-basicas.rb```, de forma que estos últimos consten únicamente de ```INSERT``` (y si acaso ```UPDATE``` para sobrellevar integridad referencial) y así tengan el estado esperado más reciente de los datos por omisión de las tablas básicas.
 
-# Listado de tablas básicas
+# 5. Listado de tablas básicas
 
 Es importante definir algunas funciones en  ```ability.rb``` (ubicado en ```app/models``` en aplicaciones y en ```app/models/mimotor``` en motores) para:
 1. Que las rutas para ver y modificar tablas básicas y sus vistas se generen automáticamente
@@ -183,7 +183,7 @@ Además es recomendable (especialmente si desarrolla un motor) que defina consta
 
 Para mantener los arreglos descritos, recomendamos no emplear variables de clase (e.g Antes usabamos @@tablasbasicas) por que el orden en el que se cargan los archivo ```ability.rb``` de los diversos motores y de la aplicación es diferente en modo de producción que en modo de desarrollo (en modo de producción usa carga ávida _eager_) que puede dar lugar a definiciones erradas e inesperadas.
 
-# Controlador
+# 6. Controlador
 
 A nivel de controlador las acciones ```index``` y ```show``` presentan los nombres de campos usando
 el método de clase ```human_attribute_name(campo)```
@@ -200,7 +200,7 @@ En los modelos puede sobrecargar los métodos de objeto ```presenta_nombre```
 y ```presenta```, así como definir traducciones o sobrecargar el método de clase
 ```human_attribute_name``` para personalizar más.
 
-# Vistas
+# 7. Vistas
 
 Son automáticas, no necesita editar código para estas. 
 
@@ -233,7 +233,7 @@ Hay tablas que no son básicas pero son muy similares (por cuanto tienen un camp
 - Controlador: <https://github.com/pasosdeJesus/cor1440_gen/blob/master/lib/cor1440_gen/concerns/controllers/proyectosfinancieros_controller.rb> y <https://github.com/pasosdeJesus/cor1440_gen/blob/master/app/controllers/cor1440_gen/proyectosfinancieros_controller.rb>
 - Vista: no se requiere
 
-### Actualización de indices y volcado de datos
+# 8. Actualización de indices y volcado de datos
 
 La actualización de índice se hace con 
 ```
