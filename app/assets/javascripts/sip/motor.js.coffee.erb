@@ -837,6 +837,22 @@ if (typeof String.prototype.endsWith != 'function')
   return
 
 
+# LOCALE
+
+@sip_reconocer_decimal_locale_es_CO = (n) ->
+  if n == ""
+    return 0
+  i = 0
+  r = ""
+  while i<n.length
+    if n[i] == ','
+      r = r + '.'
+    if n[i] >= '0' && n[i] <='9'
+      r = r + n[i]
+    i++
+  return parseFloat(r)
+
+
 # Prepara eventos comunes al usar sip
 # @param root espacio para poner variables globales
 @sip_prepara_eventos_comunes = (root, sincoord = false, conenv = true) ->
