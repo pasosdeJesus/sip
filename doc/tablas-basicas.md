@@ -50,97 +50,15 @@ Lance la aplicación y revise la tabla básica desde el menú Administrar->Tabla
 
 ## 1.1 Generación en un motor
 
-Si la tabla básica será usada en un motor que servirá a la vez para otras aplicaciones derivadas del motor, entonces deberá ejecutar el comando anteriormente visto dento del directorio test/dummy/, es decir en la aplicación de prueba de motor. Una vez generados los archivos correspondientes estos deberán moverse a la raíz principal del motor de la siguiente forma:
+Si la tabla básica será usada en un motor, que servirá a la vez en otras aplicaciones que usen el motor,  deberá ejecutar la tarea `sip:tablabasica` desde el directorio `test/dummy/`, es decir en la aplicación de prueba de motor. Una vez generados los archivos correspondientes estos deberán moverse a la raíz principal del motor de la siguiente forma:
 
-### 1.1.1 Migraciones
-Desupués de ejecutar bin/rails db:migrate (para que se cree la tabla correspondiente), debe mover las respectivas migraciones así
+* Mover las migraciones así
 ```
-mv test/dummy/db/migrate/[nombre_de_migracion] db/migrate
+mv test/dummy/db/migrate/[migracion] db/migrate
 ```
-### 1.1.2. Modelo
-debe moverse el modelo a los modelos del motor situados en app/models y en lib/[nombre_motor]/conerns/models/. Por ejemplo para el caso de la tabla básica Tipo de testigo en el motor de sivel2_gen los modelos correspondientes son:
-
-En app/models/sivel2_gen/tipotestigo.rb:
-
-```ruby
-# encoding: UTF-8
-
-require 'sivel2_gen/concerns/models/tipotestigo'
-
-module Sivel2Gen
-  class Tipotestigo < ActiveRecord::Base
-    include Sivel2Gen::Concerns::Models::Tipotestigo
-  end
-end
-```
-
-En lib/sivel2_gen/concerns/models/tipotestigo.rb:
-```ruby
-# encoding: UTF-8
-
-module Sivel2Gen
-  module Concerns
-    module Models
-      module Tipotestigo
-        extend ActiveSupport::Concern
-
-        included do
-          include Sip::Basica
-        end
-
-      end
-    end
-  end
-end
-```
-
-### 1.1.3 Controlador
-El controlador se debe mover a app/controllers/[nombre_motor]/admin/ así:
-```
-mv test/dummy/app/controllers/[nombre_controlador] app/controllers/[nombre_motor]/admin/
-```
-Para el mismo ejemplo de tipo de testigo queda el archivo app/controllers/sivel2_gen/tipostestigo_controller.rb:
-
-``` ruby
-# encoding: UTF-8
-module Sivel2Gen
-  module Admin
-    class TipostestigoController < Sip::Admin::BasicasController
-      before_action :set_tipotestigo, 
-        only: [:show, :edit, :update, :destroy]
-      load_and_authorize_resource  class: Sivel2Gen::Tipotestigo
-  
-      def clase 
-        "Sivel2Gen::Tipotestigo"
-      end
-  
-      def set_tipotestigo
-        @basica = Sivel2Gen::Tipotestigo.find(params[:id])
-      end
-  
-      def atributos_index
-        [
-          :id, 
-          :nombre, 
-          :observaciones, 
-          :fechacreacion_localizada, 
-          :habilitado
-        ]
-      end
-  
-      def genclase
-        'M'
-      end
-  
-      def tipotestigo_params
-        params.require(:tipotestigo).permit(*atributos_form)
-      end
-  
-    end
-  end
-end
-```
-Las demás configuraciones si son equivalentes al proceso estándar que se ha comenzado explicar en la anterior sección.
+*  Mover el modelo dividiendolo en una clase ubicada en `app/models/[motor]/` y en un módulo ubicado en `lib/[motor]/conerns/models/`. Por ejemplo para el caso de la tabla básica Financiador del motor `cor1440_gen`, el módulo queda en [lib/cor1440_gen/concerns/models/financiador.rb](https://github.com/pasosdeJesus/cor1440_gen/blob/master/lib/cor1440_gen/concerns/models/financiador.rb) y la clase queda en [app/models/cor1440_gen/tipoindicador.rb](https://github.com/pasosdeJesus/cor1440_gen/blob/master/app/models/cor1440_gen/financiador.rb).
+* Mover el controlador dividiendolo en dos archivos, una clase en `app/controllers/[motor]/admin/` y un modulo en `lib/[motor]/concerns/controller`. Para el caso de la tabla básica Financiador del motor `cor1440_gen`,  la clase queda en [app/controllers/cor1440_gen/admin/financiadores_controller.rb](https://github.com/pasosdeJesus/cor1440_gen/blob/master/app/controllers/cor1440_gen/admin/financiadores_controller.rb) y el módulo en [lib/cor1440_gen/concerns/controllers/financiadores_controller.rb](https://github.com/pasosdeJesus/cor1440_gen/blob/master/lib/cor1440_gen/concerns/controllers/financiadores_controller.rb)
+* La inflección del plural y las cadenas en español deben ubicarse en los archivos de configuración del motor (`config`) y no en los de la aplicación de prueba (`test/dummy/config`).
 
 # 2. Modelo
 
