@@ -596,7 +596,7 @@ if (typeof String.prototype.endsWith != 'function')
     return
   x = $.getJSON(root.puntomontaje + rutajson, params)
   x.done((datos) ->
-    debugger
+    ##debugger
     sip_remplaza_opciones_select(idsel,datos, true, cid, cnombre)
     if f != null
       f(root)
