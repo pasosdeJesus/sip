@@ -24,7 +24,7 @@
             <% Sip::Bitacora.where(
               modelo: clase, 
               modelo_id: @registro.id, 
-              operacion: ['actualizar', 'importar', 'iniciar', 'tocar']).order(:fecha).each do |r| %>
+              operacion: ['actualizar', 'importar', 'iniciar', 'tocar']).order('fecha DESC').each do |r| %>
               <tr>
                 <th scope="row"><%= r.fecha %></th>
                 <td><%= r.usuario_id ? Usuario.find(r.usuario_id).nusuario : ''  %></td>
