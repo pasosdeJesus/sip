@@ -1,12 +1,15 @@
-* Cambiar paperclip (que no tiene soporte desde 2018) por ActiveStorage
-
+* Cambiar `paperclip` (que no tiene soporte desde 2018) por `ActiveStorage`
+* Renombrar `sip_actorsocial` por `sip_organizacionsocial` --requiere
+  cambio prácticamente en todos los motores y aplicaciones.
+* Agregar `etnia_id` en `sip_persona` (requiere quitarla de victima en
+  `sivel2_gen` y sus motores y aplicaciones descendientes)
 
 
 IDEAS
 -----
 
-A 10.Mar.2020 del Gemfile de este y sivel2_gen que tienen menos de 100.000 
-dependencias:
+A 10.Mar.2020 del `Gemfile` de este y `sivel2_gen` las gemas que tienen 
+menos de 100.000 dependencias:
 
   https://github.com/gorn/rspreadsheet/network/dependents 27
   https://github.com/sandrods/odf-report/network/dependents 96
