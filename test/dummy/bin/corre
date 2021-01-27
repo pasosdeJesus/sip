@@ -36,6 +36,11 @@ FileUtils.chdir RAIZ_AP do
   end
   puts "\n== Ejecutando aplicacion #{ENV['RC']} =="
 
+  if !File.exists?('/tmp/node')
+    puts "\n== Enlace a /usr/local/bin/node desde /tmp =="
+    system! 'doas ln -s /usr/local/bin/node /tmp'
+  end
+
   if !ENV['RAILS_ENV'] || ENV['RAILS_ENV'] == ''
     ENV['RAILS_ENV'] = 'development'
   end
