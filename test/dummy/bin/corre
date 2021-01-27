@@ -71,7 +71,7 @@ FileUtils.chdir RAIZ_AP do
 
   if ENV['RAILS_ENV'] == "development"
     puts "\n== Ejecutando en modo desarrollo  =="
-    ord = "bin/rails s"
+    ord = "RAILS_RELATIVE_URL_ROOT='' bin/rails s"
     if ENV['PUERTODES'] != ''
       ord += " -p #{ENV['PUERTODES']}"
     end
