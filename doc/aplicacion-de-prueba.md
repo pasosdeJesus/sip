@@ -68,9 +68,11 @@ Usa la aplicación con un navegador en una URL que tenga
 la IP y el puerto que configuraste (e.g. <http://192.168.1.3:2300/sip/>), 
 puedes ingresar con el usuario `sip` y la clave `sip`
 
-Si prefiere o necesita SSL, empleando un certificado del cual deja las 
+Si prefieres o necesitas SSL, empleando un certificado del cual dejas las 
 llaves pública y privada en `tmp/llave-publica.crt` y 
-`tmp/llave-privada.key`, configura `PUERTODES` en `.env` con algo como:
+`tmp/llave-privada.key`, configura `IPDES` y `PUERTODES` en `.env` con algo 
+como:
 ```
-PUERTODES=2300?key=tmp/llave-privada.key&cert=tmp/llave-publica.crt
+PUERTODES=
+IPDES="ssl://192.168.1.3:2300?key=tmp/llave-privada.key&cert=tmp/llave-publica.crt"
 ```

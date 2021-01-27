@@ -39,7 +39,7 @@ FileUtils.chdir RAIZ_AP do
   if !ENV['RAILS_ENV'] || ENV['RAILS_ENV'] == ''
     ENV['RAILS_ENV'] = 'development'
   end
-  if !ENV['PUERTODES'] || ENV['PUERTODES'] == ''
+  if !ENV['PUERTODES']
     ENV['PUERTODES'] = '2300'
   end
   if !ENV['IPDES'] || ENV['IPDES'] == ''
@@ -69,7 +69,13 @@ FileUtils.chdir RAIZ_AP do
 
   if ENV['RAILS_ENV'] == "development"
     puts "\n== Ejecutando en modo desarrollo  =="
-    system!("bin/rails s -p #{ENV['PUERTODES']} -b #{ENV['IPDES']}")
+    ord = "bin/rails s"
+    if ENV['PUERTODES'] != ''
+      ord += " -p #{ENV['PUERTODES']}"
+    end
+    ord += " -b '#{ENV['IPDES']}'"
+    puts "#{ord}"
+    system!(ord)
   elsif ENV['RAILS_ENV'] == 'production'
     if !File.exist("/etc/rc.d/#{ENV['RC']}")
       puts "\nFalta script /etc/rc.d/#{ENV['RC']}"
