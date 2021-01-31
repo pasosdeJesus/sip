@@ -18,9 +18,20 @@ buen estado:
      como tales en _Hakiri_ (al cual agradecemos por el servicio de auditoría).
 
 
-## 3. Uso recomendado de git
+## 3. Desarrollo y aplicación de prueba
 
-### 3.1 Configuración inicial
+Puedes probar el motor sip y los cambios que hagas en la aplicación de prueba
+disponible en el directorio `test/dummy`
+
+Para hacer operar la aplicación sigue las instrucciones disponibles en
+
+<https://github.com/pasosdeJesus/sip/blob/master/doc/aplicacion-de-prueba.md>
+
+
+
+## 4. Uso recomendado de git
+
+### 4.1 Configuración inicial
 
 Consideramos que tu contribución a `sip` (y a otros proyectos de fuentes 
 abiertas) será más ordenada si sigues los lineamientos de uso de FreeCodeCamp 
@@ -53,7 +64,7 @@ regularidad:
   git push -f origin master
   ```
 
-### 3.2 Iniciar una contribución
+### 4.2 Iniciar una contribución
 
 Cuando desees hacer una contribución, comienza por sincronizar tu rama 
 `master` y desde esta crear una nueva rama donde propondrás el cambio 
@@ -118,7 +129,7 @@ Es decir habrá un diálogo en la parte de comentarios de tu solicitud de
 cambio que debe continuar.
 
 
-### 3.3 Mejorar una contribución
+### 4.3 Mejorar una contribución
 
 Con la retroalimentación de las tareas de integración continúa y de
 desarrolladores debes realizar los cambios en la misma rama donde 
@@ -163,23 +174,25 @@ nuevos comentarios que puedan haber (los comentarios más recientes
 quedan al final de la pestaña de comentarios).
 
 
-## 4. Otros aspectos a tener en cuenta
+## 5. Otros aspectos a tener en cuenta
 
 * Durante el desarrollo de tu contribución actualiza constantemente 
   las dependencias para usar siempre las versiones más recientes de librerías 
   y motores: `bundle update; bundle install`
 
-* La plataforma principal de desarrollo y de producción es adJ (Distribución de OpenBSD) ver descripción en:
-	<https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
+* La plataforma principal de desarrollo y de producción es adJ 
+  (Distribución de OpenBSD) ver descripción en:
+	<https://aprendiendo.pasosdeJesus.org>
   Por eso después de hacer cambios sugerimos que en esa plataforma pruebes 
   las novedades que introduces y que ejecutes las pruebas de regresión para 
   asegurar que pasan. Suele bastar desde el directorio raíz de las fuentes 
   o desde `test/dummy` si es un motor:
   ```sh
-  RAILS_ENV=test  bin/rails db:drop db:setup db:migrate sip:indices
+  RAILS_ENV=test  bin/rails db:drop db:prepare sip:indices
   ```
   Y desde el directorio raíz de las fuentes:
   ```
-	CONFIG_HOSTS=127.0.0.1 bin/rails test
+	CONFIG_HOSTS=www.example.com bin/rails test
   ```
-* Sigue las convenciones acordes al lenguaje de lo que estás aportando descritas en [Convenciones](https://github.com/pasosdeJesus/sip/blob/master/doc/convenciones.md)
+* Sigue las convenciones acordes al lenguaje de lo que estás aportando 
+  descritas en [Convenciones](https://github.com/pasosdeJesus/sip/blob/master/doc/convenciones.md)
