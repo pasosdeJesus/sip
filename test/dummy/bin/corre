@@ -60,10 +60,10 @@ FileUtils.chdir RAIZ_AP do
     system! 'CXX=c++ bin/yarn'
 
     puts "\n== Preparando base de datos =="
-    system! 'bin/rails db:prepare'
+    system! "RAILS_ENV=#{ENV['RAILS_ENV']} bin/rails db:prepare"
 
     puts "\n== Actualizando índices =="
-    system!('bin/rails sip:indices')
+    system!("RAILS_ENV=#{ENV['RAILS_ENV']} bin/rails sip:indices")
 
     puts "\n== Eliminando bitácoras, archivos temporales y recursos =="
     system! 'bin/rails log:clear tmp:clear'
@@ -71,25 +71,31 @@ FileUtils.chdir RAIZ_AP do
     system! "rm -rf public/#{ENV['RAILS_RELATIVE_URL_ROOT']}/assets/*"
 
     puts "\n== Crea recursos CSS y Javascript =="
-    system! 'bin/rails assets:precompile --trace'
+    system! "RAILS_ENV=#{ENV['RAILS_ENV']} bin/rails assets:precompile --trace"
   end
 
   if ENV['RAILS_ENV'] == "development"
     puts "\n== Ejecutando en modo desarrollo  =="
-    ord = "RAILS_RELATIVE_URL_ROOT='' bin/rails s"
-    if ENV['PUERTODES'] != ''
-      ord += " -p #{ENV['PUERTODES']}"
+
+    ord = ""
+    if ENV['CONFIG_HOSTS'] && ENV['CONFIG_HOSTS'] != ''
+      ord += "CONFIG_HOSTS=#{ENV['CONFIG_HOSTS'].downcase} "
     end
-    ord += " -b '#{ENV['IPDES']}'"
+    ord += "RAILS_RELATIVE_URL_ROOT='' "
+    ord += "bin/rails s "
+    if ENV['PUERTODES'] != ''
+      ord += "-p #{ENV['PUERTODES']} "
+    end
+    ord += "-b '#{ENV['IPDES']}' "
     puts "#{ord}"
-    system!(ord)
   elsif ENV['RAILS_ENV'] == 'production'
     if !File.exist("/etc/rc.d/#{ENV['RC']}")
       puts "\nFalta script /etc/rc.d/#{ENV['RC']}"
       exit 1
     end
     puts "\n== Ejecutando en modo producción =="
-    system!("doas sh /etc/rc.d/#{ENV['RC']} -d start")
+    ord = "doas sh /etc/rc.d/#{ENV['RC']} -d start"
   end
+  system!(ord)
 
 end
