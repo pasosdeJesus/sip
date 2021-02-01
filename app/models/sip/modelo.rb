@@ -110,9 +110,13 @@ module Sip
         elsif self.class.asociacion_combinada(atr)
           ac = self.class.asociacion_combinada(atr).name.to_s
           e = self.send(ac)
-          e.inject("") { |memo, i| 
-            (memo == "" ? "" : memo + "; ") + i.presenta_nombre.to_s
-          }
+          if e
+            e.inject("") { |memo, i| 
+              (memo == "" ? "" : memo + "; ") + i.presenta_nombre.to_s
+            }
+          else
+            ''
+          end
         elsif clf
           if (self[atr.to_s])
             r = clf.find(self[atr.to_s])
