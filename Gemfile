@@ -46,6 +46,8 @@ group :development, :test do
 
   gem 'colorize'
 
+  gem 'dotenv-rails'
+
   gem 'rails-erd'
 
   gem "spring" # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
