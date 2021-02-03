@@ -70,10 +70,13 @@ de información como:
 - Propuesta inicial para anexos con tabla `sip_anexo` y vistas
   incrustables y gema `paperclip`
 - Facilidades de configuración de aplicaciones que usen este motor mediante
-  archivo `config/initializers/sip.rb` que define por ejemplo: país por
-  omisión en `Sip.paisomision`.  Así mismo la inicialización de este
-  motor (`lib/sip/engine.rb`) incluye automáticamente migraciones de
-  motores en la aplicación final.
+  - Variables de ambiente en un archivo `.env` y la gema `dotenv`.  
+  - Con variables de configuración de rails en el espacio de 
+  nombres `config.x`, 
+  - Con variables de configuración  en `config/initializers/sip.rb` (por 
+  ejemplo país por omisión en `Sip.paisomision`.
+  - La inicialización de este motor (`lib/sip/engine.rb`) incluye 
+  automáticamente migraciones de motores en la aplicación final.
 - Propuesta de respaldo cifrado y comprimido con `7z` por parte de usuario
   final (del rol que se configure) desde menús de la aplicación.
 - Localización con mecanismos estándar de `rails` y de `twitter_cldr`.
