@@ -5,7 +5,7 @@ Asegúrate de contar con los
 
 Crea un usuario (digamos `sipdes` que es usado en los ejemplos y archivos
 de configuración de manera predeterminada) para la base de datos 
-(remplaza `nuevaclave``` por la clave que le pondrás):
+(remplaza `nuevaclave` por la clave que le pondrás):
 ```
 $ doas su - _postgresql
 $ createuser -Upostgres -h /var/www/var/run/postgresql/ -s sipdes
@@ -17,55 +17,52 @@ postgres=# \q
 $ exit
 ```
 
-Para facilitar interacción con las bases de datos del usuario ```sipdes``` 
+Para facilitar interacción con las bases de datos del usuario `sipdes` 
 (o el que prefieras) y que no solicite clave para operar, agrega el usuario 
-y la clave que asignaste al archivo ```~/.pgpass```:
+y la clave que asignaste al archivo `~/.pgpass`:
 ```
 echo "*:*:*:sipdes:nuevaclave" >> ~/.pgpass
 ```
-Copia la plantilla de configuración de la base de datos y modifícala con 
-la nueva clave que asignaste (y el usuario si lo cambiaste y si lo deseas 
-puedes cambiar nombres de base de datos, o ubicación del socket de PostgreSQL):
+Copia la plantilla de configuración y modifícala con la nueva clave 
+que asignaste (y el usuario si lo cambiaste y si lo deseas 
+puedes cambiar nombres de base de datos):
 ```
 $ cd test/dummy
-$ cp config/database.yml.plantilla config/database.yml
-$ vi config/database.yml
+$ cp .env.plantilla .env
+$ vi .env
 ```
-En el editor remplaza la clave de ejemplo (```aquilaclave```) por la que 
-hayas asignado al usuario ```sipdes```.
+En el editor remplaza la clave de ejemplo (que está en una línea de la
+forma `BD_CLAVE=aquilaclave`) por la que hayas asignado al usuario 
+`sipdes` (o al usuario que prefieras que está en una línea de la
+forma `BD_USUARIO=sipdes`).
 
 En el mismo archivo revisa el nombre de la base en modo de desarrollo
-que por omisión es `sipdes_des` y cambialo si prefieres.
+en una línea de la forma `BD_DES=sipdes` y cámbialo si prefieres.
 
 A continuación  crea la base de datos para el modo de desarrollo (sugerimos 
 que lo hagas con las herramientas de PostgreSQL pues en ocasiones esta 
-operación no logra ser completada por `rails`):
+operación no se logra completar solo con `rails`):
 ```sh
 createdb -h /var/www/var/run/postgresql -U sipdes sipdes_des
 ```
 Y desde el mismo directorio `test/dummy` prepárala para operar:
 ```sh
-bin/rails db:drop db:create db:prepare
+bin/rails db:drop db:create db:setup db:prepare
 bin/rails sip:indices
 ```
 
 Para iniciar la aplicación te sugerimos usar el script `bin/corre` que
-requiere especificar la configuración en .env:
-
-```
-cp .env.plantilla .env
-vi .env
-```
-
-Edita las variables de ese archivo, en particular `PUERTODES` con el puerto 
-en el que vas a correr la aplicación de prueba (que debes abrir en el 
-cortafuegos si lo hay) y en `IPDES` la IP del servidor donde operas:
+emplea el archivo `.env`, que debes editar para poner el puerto
+en el que quieres correr la aplicación de prueba, lo encuentras en una 
+línea de la forma `PUERTODES=3000` (si tienes un cortafuegos recuerda
+abrir ese puerto) y en una línea de la forma `IPDES=192.168.10.1` pon
+la IP del servidor donde operas.  Después ejecuta:
 ```
 bin/corre
 ```
 
 Usa la aplicación con un navegador en una URL que tenga
-la IP y el puerto que configuraste (e.g. <http://192.168.1.3:2300/sip/>), 
+la IP y el puerto que configuraste (e.g. <http://192.168.10.1:3000/sip/>), 
 puedes ingresar con el usuario `sip` y la clave `sip`
 
 Si prefieres o necesitas SSL, empleando un certificado del cual dejas las 
@@ -74,5 +71,8 @@ llaves pública y privada en `tmp/llave-publica.crt` y
 como:
 ```
 PUERTODES=
-IPDES="ssl://192.168.1.3:2300?key=tmp/llave-privada.key&cert=tmp/llave-publica.crt"
+```
+y
+```
+IPDES="ssl://192.168.10.1:3000?key=tmp/llave-privada.key&cert=tmp/llave-publica.crt"
 ```
