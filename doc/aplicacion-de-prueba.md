@@ -3,9 +3,14 @@
 Asegúrate de contar con los
 [Requisitos](https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md)
 
-Crea un usuario (digamos `sipdes` que es usado en los ejemplos y archivos
-de configuración de manera predeterminada) para la base de datos 
-(remplaza `nuevaclave` por la clave que le pondrás):
+## 1. Base de datos
+
+### 1.1 Como superusuario crea un usuario en la base de datos
+
+Como administrador de PostgreSQL (en adJ suele ser la cuenta
+`_postgresql` crea un usuario para la base de datos (digamos `sipdes` 
+que es usado en los ejemplos y archivos de configuración de manera 
+predeterminada):
 ```
 $ doas su - _postgresql
 $ createuser -Upostgres -h /var/www/var/run/postgresql/ -s sipdes
@@ -17,39 +22,77 @@ postgres=# \q
 $ exit
 ```
 
-Para facilitar interacción con las bases de datos del usuario `sipdes` 
-(o el que prefieras) y que no solicite clave para operar, agrega el usuario 
-y la clave que asignaste al archivo `~/.pgpass`:
+En el ejmplo anterior remplaza `nuevaclave` por la clave que le pondrás.
+
+### 1.2 Como desarrollador crea base de datos
+
+Desde tu cuenta de desarrollador en el sistema operativo, puedes facilitar 
+la interacción con las bases de datos del usuario `sipdes` 
+(o el que tengas) y que no solicite clave para operar, agregando 
+el usuario y su clave al archivo `~/.pgpass`:
 ```
 echo "*:*:*:sipdes:nuevaclave" >> ~/.pgpass
 ```
-Copia la plantilla de configuración y modifícala con la nueva clave 
-que asignaste (y el usuario si lo cambiaste y si lo deseas 
-puedes cambiar nombres de base de datos):
-```
-$ cd test/dummy
-$ cp .env.plantilla .env
-$ vi .env
-```
-En el editor remplaza la clave de ejemplo (que está en una línea de la
-forma `BD_CLAVE=aquilaclave`) por la que hayas asignado al usuario 
-`sipdes` (o al usuario que prefieras que está en una línea de la
-forma `BD_USUARIO=sipdes`).
 
-En el mismo archivo revisa el nombre de la base en modo de desarrollo
-en una línea de la forma `BD_DES=sipdes` y cámbialo si prefieres.
-
-A continuación  crea la base de datos para el modo de desarrollo (sugerimos 
+Crea la base de datos para el modo de desarrollo que se llama
+`sipdes_des` de manera predeterminada, o el nombre que prefieras (sugerimos 
 que lo hagas con las herramientas de PostgreSQL pues en ocasiones esta 
 operación no se logra completar solo con `rails`):
 ```sh
 createdb -h /var/www/var/run/postgresql -U sipdes sipdes_des
 ```
-Y desde el mismo directorio `test/dummy` prepárala para operar:
+
+## 2. Gemas
+
+Asegura que puedes instalar las gemas requeridas por la aplicación,
+no sólo configurando bundler para instalar gemas en un directorio
+de la forma `/var/www/bundler-miusuario`, tanto de forma general (como se 
+indica en el documento de
+[Requisitos](https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md)
+como de manera particular en el directorio del motor
+(digamos que sea `$HOME/comp/rails/sip`) con:
+
+```
+cd $HOME/comp/rails/sip
+mkdir .bundle
+cat > .bundle/config <<EOF
+---
+BUNDLE_PATH: "/var/www/bundler-miusuario"
+BUNDLE_DISABLE_SHARED_GEMS: "true"
+EOF
+```
+
+Y ejecuta `bundle` desde el directorio de la aplicación de prueba (digamos
+`$HOME/comp/rails/sip/test/dumy`):
+```
+cd $HOME/comp/rails/sip/test/dummy
+bundle
+```
+
+# 3. Configuración con variables de ambiente
+
+En el directorio de la aplicación copia la plantilla de configuración 
+`.env.plantilla` en `.env` y modifícala la base de datos y su usuario:
+```
+$ cd test/dummy
+$ cp .env.plantilla .env
+$ vi .env
+```
+Con el editor remplaza:
+* La clave de ejemplo que está en una línea de la forma `BD_CLAVE=aquilaclave`
+* El usuario en la base de datos que está en una línea de la
+  forma `BD_USUARIO=sipdes`.
+* El nombre de la base en modo de desarrollo en una línea de la forma `BD_DES=sipdes_des`
+* El nombre de la base en modo de pruebas en una línea de la forma `BD_PRUEBA=sipdes_prueba`
+
+Y desde el mismo directorio `test/dummy` prepárala para operar (suponiendo
+que ya creaste la base según se indicó en sección 1.2):
 ```sh
 bin/rails db:drop db:create db:setup db:prepare
 bin/rails sip:indices
 ```
+
+# 4. Iniciar la aplicación de prueba
 
 Para iniciar la aplicación te sugerimos usar el script `bin/corre` que
 emplea el archivo `.env`, que debes editar para poner el puerto
