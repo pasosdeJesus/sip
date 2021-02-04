@@ -95,13 +95,21 @@ bin/rails sip:indices
 # 4. Iniciar la aplicación de prueba
 
 Para iniciar la aplicación te sugerimos usar el script `bin/corre` que
-emplea el archivo `.env`, que debes editar para poner el puerto
+emplea el archivo `.env`, que debes editar antes para poner el puerto
 en el que quieres correr la aplicación de prueba, lo encuentras en una 
 línea de la forma `PUERTODES=3000` (si tienes un cortafuegos recuerda
 abrir ese puerto) y en una línea de la forma `IPDES=192.168.10.1` pon
 la IP del servidor donde operas.  Después ejecuta:
 ```
 bin/corre
+```
+Al iniciar de esta forma se actualizarán indices, se borraran caches y
+directorios con recursos HTML, CSS y Javascript (`public/packs` y 
+`public/sip/assets`) y se volveran a generar con sprockets y con 
+webpacker.    Si ya lo ejecutaste la primera vez, puedes obviar todas 
+estas preparación e  iniciar más rápido con:
+```
+R=1 bin/corre
 ```
 
 Usa la aplicación con un navegador en una URL que tenga
