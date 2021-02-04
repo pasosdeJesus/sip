@@ -30,13 +30,13 @@ module Dummy
     config.railties_order = [:main_app, Sip::Engine, :all]
 
     # En el momento soporta 3: yyyy-mm-dd, dd-mm-yyyy y dd/M/yyyy
-    config.x.formato_fecha = 'dd/M/yyyy'
+    config.x.formato_fecha = (ENV['SIP_FORMATO_FECHA'] || 'dd/M/yyyy')
 
     config.colorize_logging = true
 
     config.active_record.schema_format = :sql
 
-    config.hosts << ENV['CONFIG_HOSTS'] || '127.0.0.1'
+    config.hosts << (ENV['CONFIG_HOSTS'] || '127.0.0.1')
 
     #config.web_console.whitelisted_ips = ['186.154.35.237']
    
