@@ -65,7 +65,7 @@ http://www.caliban.org/ruby/rubyguide.shtml
 https://hakiri.io/blog/ruby-security-tools-and-resources
 
 
-## Configuración de aplicacíon Ruby on Rails en variables de ambiente {#conf-varamb}
+## Configuración de aplicacíon Ruby on Rails en variables de ambiente
 
 * Deja las variables de configuración en .env.plantilla (que al iniciar
   el uso de una aplicación debe copiarse en .env) y usalas a lo largo
