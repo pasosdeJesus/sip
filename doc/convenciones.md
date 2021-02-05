@@ -15,7 +15,7 @@ Esperamos inicialmente desarrolladores de habla hispana, por eso esperamos los i
 
 Si algún componente resulta muy popular como para ser usado por hablantes de otros idiomas, esperamos su ayuda para traducir a inglés.
 
-# Configuración en variables de ambiente
+# Configuración con variables de ambiente
 
 Es un lineamiento de https://12factor.net/
 La forma particular de lograrlo en cada lenguaje y ambiente varía.
@@ -65,7 +65,7 @@ http://www.caliban.org/ruby/rubyguide.shtml
 https://hakiri.io/blog/ruby-security-tools-and-resources
 
 
-## Configuración de aplicacíon Ruby on Rails en variables de ambiente
+## Configuración de aplicacíon Ruby on Rails con variables de ambiente
 
 * Deja las variables de configuración en .env.plantilla (que al iniciar
   el uso de una aplicación debe copiarse en .env) y usalas a lo largo
@@ -92,6 +92,10 @@ https://hakiri.io/blog/ruby-security-tools-and-resources
     La idea es que al final del proceso todas las configuraciones se 
     concentren en `.env.plantilla` y en lo posible que sea el único archivo 
     plantilla.
+  * Ten atención especial con `config/database.yml` donde deben emplearse
+    las variables `BD_USUARIO`, `BD_CLAVE`, `BD_DES`, `BD_PRUEBA` y `BD_PRO`.
+    También con `config/routes.rb` y `config/initializers/punto_montaje.rb` donde
+    debe emplearse la variable `RUTA_RELATIVA` con el punto de montaje.
 
 * Emplea la gema `dotenv-rails` para leer las variables de ambiente
   en modos de desarrollo y producción y el sistema operativo para 
