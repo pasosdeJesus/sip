@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  scope 'sip' do
+  rutarel = ENV.fetch('RUTA_RELATIVA', 'sip/')
+  scope rutarel do 
     # The priority is based upon order of creation: first created -> highest priority.
     # See how all your routes lay out with "rake routes".
     devise_scope :usuario do
@@ -26,5 +27,6 @@ Rails.application.routes.draw do
     root 'sip/hogar#index'
   end
 
-  mount Sip::Engine, at: "/sip"
+  mount Sip::Engine, at: rutarel, as: 'sip'
+
 end
