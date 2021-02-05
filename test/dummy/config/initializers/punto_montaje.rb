@@ -1,4 +1,4 @@
-Cor1440::Application.config.relative_url_root = ENV.fetch(
+Sip::Application.config.relative_url_root = ENV.fetch(
   'RUTA_RELATIVA', '/sip')
-Cor1440::Application.config.assets.prefix = ENV.fetch(
+Sip::Application.config.assets.prefix = ENV.fetch(
   'RUTA_RELATIVA', '/sip') + '/assets'
