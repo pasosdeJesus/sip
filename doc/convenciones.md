@@ -92,10 +92,6 @@ https://hakiri.io/blog/ruby-security-tools-and-resources
     La idea es que al final del proceso todas las configuraciones se 
     concentren en `.env.plantilla` y en lo posible que sea el único archivo 
     plantilla.
-  * Ten atención especial con `config/database.yml` donde deben emplearse
-    las variables `BD_USUARIO`, `BD_CLAVE`, `BD_DES`, `BD_PRUEBA` y `BD_PRO`.
-    También con `config/routes.rb` y `config/initializers/punto_montaje.rb` donde
-    debe emplearse la variable `RUTA_RELATIVA` con el punto de montaje.
 
 * Emplea la gema `dotenv-rails` para leer las variables de ambiente
   en modos de desarrollo y producción y el sistema operativo para 
