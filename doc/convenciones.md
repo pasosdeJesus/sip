@@ -67,10 +67,10 @@ https://hakiri.io/blog/ruby-security-tools-and-resources
 
 ## Configuración de aplicacíon Ruby on Rails con variables de ambiente
 
-* Deja las variables de configuración en .env.plantilla (que al iniciar
-  el uso de una aplicación debe copiarse en .env) y usalas a lo largo
-  de las fuentes. 
-  * Puedes iniciar el archivo .env.plantilla copiandolo de otra motor
+* Deja las variables de configuración como variables de ambiente en 
+  `.env.plantilla` (que en la  primera configuración debe copiarse 
+  en `.env`) y usalas a lo largo de las fuentes. 
+  * Puedes iniciar el archivo `.env.plantilla` copiandolo de otra motor
     o aplicación similar o en su defecto de sip.
   * Predefine cada variable en un bloque de la 
     forma siguiente (cambia `BD_USUARIO` por el nombre de la variable 
@@ -86,7 +86,7 @@ https://hakiri.io/blog/ruby-security-tools-and-resources
     remplazando espacios por _ y que comiencen con el nombre del motor 
     (e.g `SIP_FORMATO_FECHA`). Recuerda definir los valores predeterminados
     en `.env.plantilla` y además en el código ruby en lugar de 
-    `ENV['MIMOTOR_VAR']` emplea 
+    `ENV['MIMOTOR_VAR']` mejor emplea 
     `ENV.fetch('MIMOTOR_VAR', 'valor predeterminado')` o si la aplicación 
     debe fallar si no está definida usa `ENV.fetch('MIMOTOR_VAR')`. 
     La idea es que al final del proceso todas las configuraciones se 
