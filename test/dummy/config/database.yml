@@ -10,9 +10,10 @@ development:
   <<: *default
   database: <%= ENV.fetch('BD_DES', 'sipdes_des') %>
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
+
+# Advertencia: La base de datos definida como "test" será eliminada
+# y re-generada desde su base de datos de desarrollo con ejecute "rake".
+# No establezca esa base de datos como la misma de desarrollo o producción.
 test:
   <<: *default
   database: <%= ENV.fetch('BD_PRUEBA', 'sipdes_pru') %>
