@@ -17,7 +17,7 @@ module Sip
           end
 
           def genclase
-            return 'M'
+            return 'F'
           end
 
           def atributos_index
