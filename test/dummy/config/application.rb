@@ -41,7 +41,10 @@ module Dummy
 
     #config.web_console.whitelisted_ips = ['186.154.35.237']
 
-    config.relative_url_root = ENV.feth('RUTA_RELATIVA', '/sip')
+    # La siguiente puede producir rutas /sip/sip en las pruebas
+    # En general debe bastar dejarla solo en
+    #   config/initializers/punto_montaje.rb
+    # config.relative_url_root = ENV.fetch('RUTA_RELATIVA', '/sip')
 
     # sip
     config.x.formato_fecha = ENV.fetch('SIP_FORMATO_FECHA', 'dd/M/yyyy')
