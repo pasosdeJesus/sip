@@ -12,12 +12,44 @@ module Sip
 
           self.table_name = 'sip_persona'
 
-          OPCIONES_SEXO = [
-            ["SIN INFORMACIÓN", :S], 
-            ["FEMENINO", :F], 
-            ["MASCULINO", :M]
+          # Opciones para sexo biológico,
+          # cada par se compone de (cadena larga, letra que representa en base)
+          SEXO_OPCIONES = [
+            ['SIN INFORMACIÓN', :S], 
+            ['FEMENINO', :F], 
+            ['MASCULINO', :M]
           ]
-            
+
+          def self.sexo_opciones_diccionario
+            Sip::Persona::SEXO_OPCIONES.map {|e| [e[1], e[0]]}.to_h
+          end
+
+          # Opciones cortas para sexo biológico,
+          # cada par se compone de (letra por presentar, letra en base)
+          SEXO_OPCIONES_CORTAS = [
+            ['S', :S], 
+            ['F', :F], 
+            ['M', :M]
+          ]
+
+          def self.sexo_opciones_cortas_diccionario
+            Sip::Persona::SEXO_OPCIONES_CORTAS.map {|e| [e[1], e[0]]}.to_h
+          end
+
+          ORIENTACION_OPCIONES = [
+            ['HETEROSEXUAL', :H],
+            ['LESBIANA', :L], 
+            ['GAY', :G],
+            ['BISEXUAL', :B], 
+            ['TRANSEXUAL', :T], 
+            ['SIN INFORMACIÓN', :S] 
+          ]
+
+          def self.orientacion_opciones_diccionario
+            Sip::Persona::ORIENTACION_OPCIONES.map {|e| [e[1], e[0]]}.to_h
+          end
+
+
           # Bien sea o no con inverse_of aqui y/o en actorsocial_persona
           #has_many :actorsocial_persona, foreign_key: "persona_id", 
           #  class_name: "Sip::ActorsocialPersona", #inverse_of: :persona
@@ -128,10 +160,13 @@ module Sip
 
           def sip_presenta(atr)
             case atr.to_s
-            when 'nacionalde'
-              nacionalde ? nacional.nombre : ''
             when 'centro_poblado'
               self.clase ? self.clase.nombre : ''
+            when 'nacionalde'
+              nacionalde ? nacional.nombre : ''
+            when 'sexo'
+              ds = Sip::Persona::sexo_opciones_diccionario
+              ds[self.sexo.to_sym] || 'Sexo desconocido'
             when 'tdoc'
               self.tdocumento.sigla if self.tdocumento
             else

@@ -1,12 +1,8 @@
 module Sip
   module EdadSexoHelper
 
-    SEXO_OPCIONES=[
-      ['SIN INFORMACIÓN', 'S'],
-      ['FEMENINO', 'F'],
-      ['MASCULINO', 'M']
-    ]
-
+    # Opciones de sexo están en Sip::Persona::SEXO_OPCIONES
+    
     # Retorna edad de una persona en cierta fecha
     # @param anionac año de nacimiento
     # @param mesnac mes de nacimiento

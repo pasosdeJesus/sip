@@ -79,14 +79,12 @@ module Sip
       ['', 'usuario']
     ]
 
-     
 
     # Tablas no básicas pero que tienen índice *_seq_id
     def nobasicas_indice_seq_con_id
       NOBASICAS_INDSEQID
     end
 
-    
     BASICAS_PRIO = [
       ['Sip', 'tclase'], 
       ['Sip', 'pais'], 
