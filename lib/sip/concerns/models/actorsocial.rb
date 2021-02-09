@@ -13,7 +13,7 @@ module Sip
           self.table_name = 'sip_actorsocial'
 
           belongs_to :grupoper, class_name: 'Sip::Grupoper',
-            foreign_key: 'grupoper_id', validate: true
+            foreign_key: 'grupoper_id', validate: true, optional: false
           accepts_nested_attributes_for :grupoper, reject_if: :all_blank
 
           belongs_to :pais, class_name: 'Sip::Pais',
