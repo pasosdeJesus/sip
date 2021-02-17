@@ -23,7 +23,7 @@ gem 'pg', '>= 0.18', '< 2.0'    # PostgreSQL
 
 gem 'puma'                      # Lanza en modo desarrollo
 
-gem 'rails', #'~> 6.0.3.4'
+gem 'rails', #'~> 6.1'
   git: 'https://github.com/rails/rails.git', branch: '6-1-stable'
 
 gem 'rails-i18n'                # Localización e Internacionalización
