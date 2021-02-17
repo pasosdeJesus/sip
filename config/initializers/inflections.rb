@@ -15,26 +15,26 @@
 #   inflect.acronym 'RESTful'
 # end
 ActiveSupport::Inflector.inflections do |inflect|
-	inflect.plural(/^(.*s)$/i, '\1es')
-	inflect.singular(/^(.*s)es$/i, '\1')
-	inflect.plural(/^(.*a)$/i, '\1s')
-	inflect.plural(/^(.*d)$/i, '\1es')
-	inflect.singular(/^(.*d)es$/i, '\1')
-	inflect.plural(/^(.*l)$/i, '\1es')
-	inflect.singular(/^(.*l)es$/i, '\1')
-	inflect.plural(/^(.*n)$/i, '\1es')
-	inflect.singular(/^(.*n)es$/i, '\1')
+  inflect.plural(/^(.*s)$/i, '\1es')
+  inflect.singular(/^(.*s)es$/i, '\1')
+  inflect.plural(/^(.*a)$/i, '\1s')
+  inflect.plural(/^(.*d)$/i, '\1es')
+  inflect.singular(/^(.*d)es$/i, '\1')
+  inflect.plural(/^(.*l)$/i, '\1es')
+  inflect.singular(/^(.*l)es$/i, '\1')
+  inflect.plural(/^(.*n)$/i, '\1es')
+  inflect.singular(/^(.*n)es$/i, '\1')
   inflect.irregular 'actorsocial', 'actoressociales'
-	inflect.irregular 'clase', 'clases'
-	inflect.irregular 'etiqueta', 'etiquetas'
-	inflect.irregular 'error', 'errores'
-	inflect.irregular 'fuenteprensa', 'fuentesprensa'
-	inflect.irregular 'grupoper', 'gruposper'
-	inflect.irregular 'pais', 'paises'
-	inflect.irregular 'perfilactorsocial', 'perfilesactorsocial'
-	inflect.irregular 'sectoractor', 'sectoresactores'
-	inflect.irregular 'trelacion', 'trelaciones'
-	inflect.irregular 'trivalente', 'trivalentes'
-	inflect.irregular 'ubicacion', 'ubicaciones'
-	inflect.irregular 'ubicacionpre', 'ubicacionespre'
+  inflect.irregular 'clase', 'clases'
+  inflect.irregular 'etiqueta', 'etiquetas'
+  inflect.irregular 'error', 'errores'
+  inflect.irregular 'fuenteprensa', 'fuentesprensa'
+  inflect.irregular 'grupoper', 'gruposper'
+  inflect.irregular 'pais', 'paises'
+  inflect.irregular 'perfilactorsocial', 'perfilesactorsocial'
+  inflect.irregular 'sectoractor', 'sectoresactores'
+  inflect.irregular 'trelacion', 'trelaciones'
+  inflect.irregular 'trivalente', 'trivalentes'
+  inflect.irregular 'ubicacion', 'ubicaciones'
+  inflect.irregular 'ubicacionpre', 'ubicacionespre'
 end
