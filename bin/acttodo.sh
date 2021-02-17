@@ -81,6 +81,7 @@ if (test "$SALTACOR1440" != "1") then {
   actuno cor1440_gen test/dummy; 
   actuno cor1440; 
   actuno cor1440_pdJ; 
+  actuno si_codacop
 } fi;
 
 if (test "$SALTASAL7711" != "1") then {
@@ -112,6 +113,10 @@ if (test "$SALTAAPO214" != "1") then {
 # Usan 3 motores
 if (test "$SALTASIANZORC" != "1") then {
         actuno si_anzorc; 
+} fi;
+
+if (test "$SALTASIASOM" != "1") then {
+  actuno si_asom
 } fi;
 
 if (test "$SALTASIIAP" != "1") then {
