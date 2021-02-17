@@ -10,9 +10,9 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require sip/application.css
  *= require bootstrap/dist/css/bootstrap.css
  *= require chosen-js/chosen.css
+ *= require_tree .
  *= require_self
  */

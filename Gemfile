@@ -7,11 +7,12 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'cancancan'                 # Control de acceso
 
-gem 'coffee-rails'              # CoffeeScript para recursos .js.coffee 
+gem 'coffee-rails'              # CoffeeScript para recursos .js.coffee
 
 gem 'devise'                    # Autenticación
 
-gem 'devise-i18n'               # Localización e Internacionalización                  
+gem 'devise-i18n'               # Localización e Internacionalización
+
 gem 'jbuilder', '>= 2.7'        # Json
 
 gem 'nokogiri', '>=1.11.1'
@@ -22,9 +23,10 @@ gem 'pg', '>= 0.18', '< 2.0'    # PostgreSQL
 
 gem 'puma'                      # Lanza en modo desarrollo
 
-gem 'rails', '~> 6.0.3.4'
+gem 'rails', #'~> 6.0.3.4'
+  git: 'https://github.com/rails/rails.git', branch: '6-1-stable'
 
-gem 'rails-i18n'                # Localización e Internacionalización 
+gem 'rails-i18n'                # Localización e Internacionalización
 
 gem 'sassc-rails'#, '2.1.0'      # Conversión a CSS
 
@@ -32,7 +34,7 @@ gem 'simple_form'               # Formularios
 
 gem 'turbolinks', '~> 5'        # Acelera carga de paginas
 
-gem 'twitter_cldr'              # Localiación e internacionalización 
+gem 'twitter_cldr'              # Localiación e internacionalización
 
 gem 'tzinfo'                    # Zonas horarias
 
@@ -50,7 +52,7 @@ group :development, :test do
 
   gem 'rails-erd'
 
-  gem "spring" # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
+  #gem "spring" # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
 end
 
 group :development do
@@ -77,7 +79,6 @@ group :test do
 
   gem 'spork' # Un proceso para cada prueba -- acelera
 
-  
   gem 'webdrivers'
 end
 
