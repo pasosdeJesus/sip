@@ -21,6 +21,16 @@ jobs:
       matrix:
         ruby-version: ['2.6', '2.7', '3.0']
 
+    services:
+      postgres:
+        image: postgres:11
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: link_shortener
+          POSTGRES_PASSWORD: link_shortener
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
@@ -31,7 +41,8 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Copiar .env
-      run: cp test/dummy/.env.plantilla test/dummy/.env
+    - name: Preparar .env
+      run: |
+        cp test/dummy/.env.plantilla test/dummy/.env
     - name: Run tests
       run: bundle exec rake

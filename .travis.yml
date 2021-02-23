@@ -2,6 +2,7 @@ language: ruby
 
 rvm:
         - 2.7.1
+        - 3.0.0
 
 addons:
         postgresql: '9.6'
@@ -32,6 +33,7 @@ before_install:
         - cp config/database.travis.yml config/database.yml
         - cp db/structure.sql db/structure.sql.copia # Return SQL from 10 to 9.6
         - sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g' db/structure.sql.copia > db/structure.sql 
+        - sed -e 's/DBCLAVE/DBCLAVE/g' .env.plantilla > .env.copia
         - rake db:setup
         - rake sip:indices
         - cd ../..
