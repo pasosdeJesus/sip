@@ -31,6 +31,7 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Run tests
+    - name: Copiar .env
       run: cp test/dummy/.env.plantilla test/dummy/.env
+    - name: Run tests
       run: bundle exec rake
