@@ -19,5 +19,7 @@ APP_RAKEFILE = File.expand_path("../test/dummy/Rakefile", __FILE__)
 load 'rails/tasks/engine.rake'
 
 Bundler::GemHelper.install_tasks
-
-task default: 'test'
+if ENV['CONFIG_HOSTS']
+  ENV['CONFIG_HOSTS'] = 'www.example.com'
+end
+task default: 'app:test'
