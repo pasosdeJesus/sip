@@ -1,5 +1,3 @@
-#encoding: UTF-8 
-
 module Sip
   module TareasrakeHelper
 
@@ -7,7 +5,7 @@ module Sip
     def nombre_volcado(ruta_volcados)
       dia = DateTime.now.strftime('%d') 
       abcs = ActiveRecord::Base.configurations
-      return ruta_volcados + "/" + abcs[Rails.env]['database'] +
+      return ruta_volcados + "/" + abcs[Rails.env][:database] +
         "-" + dia + ".sql"
     end
     module_function :nombre_volcado
