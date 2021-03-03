@@ -95,7 +95,6 @@ if (test "$SALTASAL7711" != "1") then {
 if (test "$SALTASAL7711CINEP" != "1") then {
   actuno sal7711_cinep; 
 } fi;
-
 # Usan 2 motores
 if (test "$SALTACOR1440CINEP" != "1") then {
   actuno cor1440_cinep; 
