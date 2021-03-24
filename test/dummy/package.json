@@ -10,6 +10,7 @@
     "chosen-js": "^1.8.7",
     "expose-loader": "^0.7.5",
     "font-awesome": "^4.7.0",
+    "is-svg": "^4.2.2",
     "jquery": "^3.5.1",
     "jquery-ui": "^1.12.1",
     "node-forge": "0.10.0",

@@ -17,8 +17,8 @@ gem 'jbuilder', '>= 2.7'        # Json
 
 gem 'nokogiri', '>=1.11.1'
 
-gem 'paperclip',                 # Anexos
-  git: 'https://github.com/vtamara/paperclip.git', branch: 'fix-ruby3'
+gem 'kt-paperclip'                 # Anexos
+  #git: 'https://github.com/vtamara/paperclip.git', branch: 'fix-ruby3'
   #path: '../tmp/paperclip'
 
 gem 'pg', '>= 0.18', '< 2.0'    # PostgreSQL
