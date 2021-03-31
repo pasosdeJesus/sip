@@ -472,3 +472,8 @@ $('[type=email]').removeAttr('type')
 ```
 Hemos notado que esta orden puede entrar en conflicto con la que quita el estilo de chosen a campos de selección para evitarlo, hemos notado que es mejor correr primero la que quitar el atributo type, digamos recién se despliega el formulario.
 
+##  Reportar en Cor1440pdJ
+## 4.1  Fecha
+Es la fecha en que se realiza la  actividad, y  se  debe  reportar el mismo dia .
+##  4.2  Duración  
+
