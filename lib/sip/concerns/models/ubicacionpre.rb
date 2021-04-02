@@ -5,7 +5,7 @@ module Sip
     module Models
       module Ubicacionpre
         extend ActiveSupport::Concern
-        
+
         included do
           self.table_name = 'sip_ubicacionpre'
 
@@ -18,10 +18,10 @@ module Sip
           belongs_to :clase, class_name: "Sip::Clase",
             foreign_key: "clase_id", validate: true, optional: true
           belongs_to :tsitio, class_name: "Sip::Tsitio",
-            foreign_key: "clase_id", validate: true, optional: true
+            foreign_key: "tsitio_id", validate: true, optional: true
 
           validates :nombre, uniqueness: true, presence: true,
-	    length: { maximum: 2000 }
+            length: { maximum: 2000 }
           validates :lugar, length: { maximum: 500 } 
           validates :sitio, length: { maximum: 500 } 
 
