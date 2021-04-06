@@ -34,17 +34,26 @@ module Sip
           tamanexos=`du -s #{Sip.ruta_anexos}`.to_i
           puts "Tamaño de #{archcopia} es "\
             "#{File.size(Pathname.new(archcopia))}"
-          puts "Tamaña de anexos #{Sip.ruta_anexos} es #{tamanexos}"
-          if tamanexos > 100000000
-            cmd = Shellwords.join(['7z', 'a', "-r", 
+          puts "Tamaño de anexos #{Sip.ruta_anexos} es #{tamanexos}"
+          lpi = []
+          if ENV['DOAS_7Z'].to_i == 1 
+            lpi = ['doas']
+          end
+          if tamanexos > 10000000
+            puts "Creando copia solo de base de datos" 
+            cmd = Shellwords.join(lpi + ['7z', 'a', "-r", 
                                    "-p#{@respaldo7z.clave7z}", 
                                    dest, archcopia])
           else
-            cmd = Shellwords.join(['7z', 'a', "-r", 
+            puts "Creando copia de base y anexos" 
+            cmd = Shellwords.join(lpi + ['7z', 'a', "-r", 
                                    "-p#{@respaldo7z.clave7z}", 
                                    dest, archcopia, Sip.ruta_anexos])
           end
-          r = `#{cmd}`
+          puts "cmd=#{cmd}"
+          cmd2 = "sh -c 'ulimit -c unlimited; whoami; #{cmd}'"
+          puts "cmd2=#{cmd2}"
+          r = `#{cmd2}`
           if $?.exitstatus == 0
             format.html { 
               send_file(dest,
