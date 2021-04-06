@@ -32,6 +32,9 @@ module Sip
           dest = "#{archcopia[0..-5]}.7z"
           FileUtils.rm_f dest
           tamanexos=`du -s #{Sip.ruta_anexos}`.to_i
+          puts "Tamaño de #{archcopia} es "\
+            "#{File.size(Pathname.new(archcopia))}"
+          puts "Tamaña de anexos #{Sip.ruta_anexos} es #{tamanexos}"
           if tamanexos > 100000000
             cmd = Shellwords.join(['7z', 'a', "-r", 
                                    "-p#{@respaldo7z.clave7z}", 
