@@ -92,7 +92,7 @@ GEM
     coffee-script-source (1.12.2)
     colorize (0.8.1)
     concurrent-ruby (1.1.8)
-    connection_pool (2.2.4)
+    connection_pool (2.2.5)
     crass (1.0.6)
     devise (4.7.3)
       bcrypt (~> 3.0)
