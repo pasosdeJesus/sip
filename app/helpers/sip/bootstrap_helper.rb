@@ -26,7 +26,9 @@ module Sip
       if cop[:desplegable] || cop[:dropdown]
         cop.delete(:desplegable)
         cop.delete(:dropdown)
-        r = link_to opcionmenu, url, cop.merge({class: 'dropdown-item'})
+        r = content_tag(:li) do
+          link_to opcionmenu, url, cop.merge({class: 'dropdown-item'})
+        end
       else
         r = content_tag(:li, class: 'nav-item') do
           link_to opcionmenu, url, cop.merge({class: 'nav-link'})
@@ -46,10 +48,9 @@ module Sip
         link_to(opcionmenu, '#', class: 'nav-link dropdown-toggle',
                id: 'navbarDropdown' + opab,
                role: 'button',
-               'data-toggle' => 'dropdown',
-               'aria-haspopup' => true,
+               'data-bs-toggle' => 'dropdown',
                'aria-expanded' => false) +
-        content_tag(:div, class: 'dropdown-menu', 
+        content_tag(:ul, class: 'dropdown-menu dropdown-menu-light', 
                       'aria-labelledby' => 'navbarDropdown' + opab, &bloque)
       end
       return r
@@ -61,26 +62,33 @@ module Sip
 
     def barra_navegacion(opciones, &bloque)
       r = content_tag(:nav, 
-                      class: 'navbar navbar-expand-lg navbar-light bg-ligt') do
-        r2 = ''
-        if  opciones[:marca] || opciones[:brand]
-          r2 += link_to(
-            opciones[:marca] ? opciones[:marca] : opciones[:brand],
-            opciones[:enlace_marca] ? opciones[:enlace_marca] : 
-            opciones[:brand_link], 
-            class: 'navbar-brand') 
+                      class: 'navbar navbar-expand-lg navbar-light bg-light') do
+        content_tag(:div,
+                    class: 'container-fluid') do 
+          r2 = ''
+          if  opciones[:marca] || opciones[:brand]
+            r2 += link_to(
+              opciones[:marca] ? opciones[:marca] : opciones[:brand],
+              opciones[:enlace_marca] ? opciones[:enlace_marca] : 
+              opciones[:brand_link], 
+              class: 'navbar-brand') 
+          end
+          r2 += content_tag(
+            :button, 
+            class: 'navbar-toggler', 
+            type: 'button',
+            'data-bs-toggle' => 'collapse',
+            'data-bs-target' => '#navbarSupportedContent',
+            'aria-controls' => 'navbarSupportedContent',
+            'aria-expanded' => false,
+            'aria-label' => 'Intercambiar navegación'
+          ) do
+            content_tag(:span, '', class: 'navbar-toggler-icon')
+          end
+          r2 += content_tag(:div, class: 'collapse navbar-collapse', 
+                            id: 'navbarSupportedContent', &bloque)
+          r2.html_safe
         end
-        r2 += content_tag(:button, class: 'navbar-toggler', type: 'button',
-                   'data-toggle' => 'collapse',
-                   'data-target' => '#navbarSupportedContent',
-                   'aria-controls' => 'navbarSupportedContent',
-                   'aria-expanded' => false,
-                   'aria-label' => 'Intercambiar navegación') do
-          content_tag(:span, '', class: 'navbar-toggler-icon')
-        end
-        r2 += content_tag(:div, class: 'collapse navbar-collapse', 
-                    id: 'navbarSupportedContent', &bloque)
-        r2.html_safe
       end
       r.html_safe
     end
