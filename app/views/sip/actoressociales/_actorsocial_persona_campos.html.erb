@@ -1,0 +1,47 @@
+<tr class='nested-fields'>
+  <% if f.object.persona.nil? %>
+    <% f.object.persona = Sip::Persona.new %>
+  <% end %>
+
+  <%= f.simple_fields_for :persona do |p| %>
+    <td>
+      <%= p.input :id, as: :hidden %>
+      <% ph = 'N'
+      ac = {'data-autocompleta' => 'no' }
+      if (!p.object || !p.object.nombres || p.object.nombres == 'N' || p.object.nombres == '')
+        ph = ''
+        ac = { }
+      end %>
+      <%= p.input :nombres, placeholder: ph,
+        value_method: lambda {|t| '' if t.nombres == 'N'},
+        label: false,
+        :input_html => ac %>
+    </td>
+    <td>
+      <%= p.input :apellidos, label: false %>
+      <%= p.input :sexo, as: :hidden, 
+        input_html: { value: p.object.sexo || 'S' } %>
+    </td>
+    <td>
+      <%= f.association :perfilactorsocial, 
+        collection: Sip::Perfilactorsocial.habilitados.order(:nombre),
+        include_blank: false,
+        label: false,
+        label_method: :nombre,
+        value_method: :id
+      %>
+    </td>
+    <td>
+      <%= f.input :cargo, label: false %>
+    </td>
+    <td>
+      <%= f.input :correo, label: false %>
+    </td>
+    <td>
+      <%= f.input :id, as: :hidden %>
+      <%= link_to_remove_association "Eliminar", f, 
+        :class => 'btn-danger', "data-existing" => true %>
+      <div><%= f.error_notification %></div>
+    </td>
+  <% end %>
+</tr>

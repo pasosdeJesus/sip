@@ -69,6 +69,7 @@ es:
         grupoper_id: Nombre
         pais_id: País
         sectoractor: Sector(es)
+        sectoractor_ids: Sector(es)
         telefono: Teléfono
         "{:sectoractor_ids=>[]}": Sector(es)
       "sip/bitacora":
