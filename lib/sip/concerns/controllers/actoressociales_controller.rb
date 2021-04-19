@@ -35,7 +35,7 @@ module Sip
             [ :id, 
               :grupoper_id,
               { :sectoractor_ids => [] },
-              {:actorsocial_persona =>  [] },
+              { :actorsocial_persona =>  [] },
               :web,
               :pais_id,
               :direccion,

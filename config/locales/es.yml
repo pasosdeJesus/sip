@@ -62,6 +62,8 @@ es:
       "sip/actorsocial":
         Actorsocial: Organización social
         Actoressociales: Organizaciones sociales
+        actorsocial_persona: Contacto(s)
+        "{:actorsocial_persona=>[]}": Contacto(s)
         direccion: Dirección
         fechadeshabilitacion: Fecha de deshabilitación
         fechadeshabilitacion_localizada: Fecha de deshabilitación

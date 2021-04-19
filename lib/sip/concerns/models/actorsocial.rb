@@ -55,6 +55,12 @@ module Sip
 
           def presenta_sip(atr)
             case atr.to_s
+            when "{:actorsocial_persona=>[]}"
+              self.actorsocial_persona ? self.actorsocial_persona.inject("") { |memo, s|
+                (memo == "" ? "" : memo + "; ") + 
+                  (s.persona ? 
+                   s.persona.nombres + ' ' + s.persona.apellidos : '')
+              } : ""
             when "anotaciones"
               self['grupoper_id'] ? self.grupoper.anotaciones : ""
             when "grupoper"
