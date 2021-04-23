@@ -94,7 +94,9 @@ module Sip
             when 'dic', 'dic.', 'dec', 'dec.', '12'
               12
             else
-              menserror << "  Formato de fecha en locale de Colombia con mes desconocido suponiendo 12."
+              if menserror
+                menserror << "  Formato de fecha en locale de Colombia con mes desconocido suponiendo 12."
+              end
               12
             end
         a = pf[2].to_i
