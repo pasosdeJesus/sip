@@ -31,13 +31,16 @@
         n = alf.name
         nclase = alf.class_name.constantize
         col = Sip::ModeloHelper.opciones_tabla_basica(nclase, f, n)
+        opassoc = {collection: col,
+                   label_method: :presenta_nombre,
+                   value_method: :id,
+                   input_html: { class: 'chosen-select' } 
+        }
+        if @registro.respond_to?(n) && @registro.send(n).id
+          opassoc[:selected] = @registro.send(n).id
+        end
       %>
-      <%= f.association n,
-        collection: col,
-        label_method: :presenta_nombre,
-        value_method: :id,
-        input_html: { class: 'chosen-select' }
-      %>
+      <%= f.association n, opassoc %>
     <% elsif @registro.class.asociacion_combinada(atr) %>
       <% #byebug %>
       <% # Tabla Combinada 
