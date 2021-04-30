@@ -36,7 +36,8 @@
                    value_method: :id,
                    input_html: { class: 'chosen-select' } 
         }
-        if @registro.respond_to?(n) && @registro.send(n).id
+        if @registro.respond_to?(n) && @registro.send(n) &&
+          @registro.send(n).id
           opassoc[:selected] = @registro.send(n).id
         end
       %>
