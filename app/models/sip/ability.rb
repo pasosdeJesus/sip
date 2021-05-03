@@ -5,7 +5,7 @@ module Sip
 
     ROLADMIN  = 1
     #ROLINV    = 2
-    #ROLDIR    = 3
+    ROLDIR    = 3
     #ROLCOOR   = 4
     ROLOPERADOR = ROLANALI  = 5
     #ROLSIST   = 6
@@ -13,7 +13,7 @@ module Sip
     ROLES = [
       ["Administrador", ROLADMIN],  # 1
       ["", 0], # 2
-      ["", 0], # 3
+      ["Directivo", ROLDIR], # 3
       ["", 0], # 4
       ["Operador", ROLOPERADOR], # 5
       ["", 0], #6

@@ -113,6 +113,7 @@ module Sip
             if c.count == 0 && cannot?(:index, clase.constantize)
               # Supone alias por omision de https://github.com/CanCanCommunity/cancancan/blob/develop/lib/cancan/ability/actions.rb
               if cannot?(:read, clase.constantize)
+                flash[:error] = "No se puede acceder a #{clase}"
                 redirect_to main_app.root_path
                 return
               end
