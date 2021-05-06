@@ -1,6 +1,5 @@
 <%- model_class = clase.constantize -%>
 <div class="page-header">
-    <% byebug %>
   <% if !defined?(@formulario_sin_titulo) || !@formulario_sin_titulo %>
     <h1><%=t '.title', 
       :default => ["Edita #{model_class.human_attribute_name(
