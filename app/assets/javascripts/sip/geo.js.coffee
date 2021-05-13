@@ -144,7 +144,7 @@
     )
     if (sincoord != true && root.sip_sincoord != true) 
       pone_coord(root, 'municipio', mun, idmun)
-  else
+  else if idcla != ''
     $("#" + idcla + " option[value='']").attr('selected', true) if idcla
     $("#" + idcla).attr("disabled", true) if idcla
     $('#' + idcla).trigger('chosen:updated')
