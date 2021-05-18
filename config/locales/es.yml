@@ -147,8 +147,8 @@ es:
         clave7z: Clave de cifrado
         clave7z_confirmation: Confirmación de clave de cifrado
       "sip/sectoractor":
-        Sectoractor: Sector de actor social
-        Sectoresactores: Sectores de actores sociales
+        Sectoractor: Sector de organización social
+        Sectoresactores: Sectores de organizaciones sociales
       "sip/tclase":
         Tclase: Tipo de centro poblado
         Tclases: Tipos de centros poblados
