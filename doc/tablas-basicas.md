@@ -1,11 +1,12 @@
 # Tablas Básicas
 
-Una tabla básica representa un tipo de dato por utilizar en un sistema de información con unas pocas opciones, cada una con un nombre (por ejemplo país, tipo de documento de identidad, etc.). Incluye lo que en otros sistemas de información se llama _variable_, _tesauro_, _diccionario_, _parámetros de la aplicación_ y _vocabularios controlados_.
+Una tabla básica representa un tipo de dato con unas pocas opciones. Tipicamente se usa en campos de selección simple o campos de selección múltiple. Cada opción o registro tiene un nombre (por ejemplo país, tipo de documento de identidad, etc.). Incluye lo que en otros sistemas de información se llama _variable_, _tesauro_, _diccionario_, _parámetros de la aplicación_ y _vocabularios controlados_.  
 
-Se agrega un poco de control a lo largo del tiempo mediante el campo `fechadeshabilitación`, que se espera vacío para registros habilitados y con la fecha en la que se deshabilitó para registros deshabilitados.
-En campos de selección simple o múltiple que utilicen la tabla básica se busca mantener información histórica así esté deshabilitada al momento de la edición:
-* En el caso de campos de selección simple si tiene elegido un registro deshabilitado se mantiene y se permiten cambiar pero a registros habilitados.
-* En el caso de campos de selección múltiple si tiene agregados registros deshabilitados se mantienene y al usuario se le permite añadir.
+En sip además del nombre tiene unas observaciones (por ejemplo para poner una definición o casos de uso) y  se agrega un poco de control a lo largo del tiempo mediante los campos `fechacreacion` y `fechadeshabilitación`.  El campo `fechadeshabilitacion` se espera vacío en registros habilitados y con la fecha en la que se deshabilitó para registros deshabilitados.
+
+En formularios con campos de selección simple o múltiple que utilicen la tabla básica, se busca mantener información histórica (i.e registros deshabilitados) si los hay, pero a su vez agregar o cambiar a información actual (i.e registros habilitados):
+* En el caso de campos de selección simple si tiene elegido un registro deshabilitado se mantiene y al usuario se le permiten cambiar pero a registros habilitados.
+* En el caso de campos de selección múltiple si tiene agregados registros deshabilitados se mantienenen y al usuario se le permite añadir sólo registros habilitados.
 
 
 # 1. Generador de nuevas tablas básicas
