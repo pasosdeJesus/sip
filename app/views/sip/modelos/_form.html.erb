@@ -31,7 +31,7 @@
         n = alf.name
         nclase = alf.class_name.constantize
         col = Sip::ModeloHelper.opciones_tabla_basica(nclase, f, n)
-        opassoc = {collection: col,
+        opassoc = {collection: col.order(nclase.send(:orden_presenta_nombre)),
                    label_method: :presenta_nombre,
                    value_method: :id,
                    input_html: { class: 'chosen-select' } 
@@ -66,15 +66,13 @@
       <% else %>
         <% # r.class.to_s == 
           #'ActiveRecord::Reflection::ThroughReflection' # Tabla combinada %>
-         <% 
+         <%
            n = r.name
            nclase = r.class_name.constantize
            col = Sip::ModeloHelper.opciones_tabla_basica(nclase, f, n)
-           # En la clase que se presenta, puede modificarse
-           # la funcion presenta_nombre (e.g Sip::Municipio)
-          %>
+         %>
           <%= f.association n,
-            collection: col,
+            collection: col.order(nclase.send(:orden_presenta_nombre)),
             label_method: lambda {|e| e.presenta_nombre }, #:nombre,
             value_method: :id ,
             input_html: { class: 'chosen-select' } %>

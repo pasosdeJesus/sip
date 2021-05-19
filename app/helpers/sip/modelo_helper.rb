@@ -300,6 +300,8 @@ module Sip
           ids2 = f.object.send(campo).select { |v| v != "" }.map(&:to_i)
         elsif r.nil? || r == ''
           ids2 = []
+        elsif f.object.respond_to?("#{campo}_ids")
+          ids2 = f.object.send("#{campo}_ids")
         elsif r.respond_to?(:id)
           ids2 = [ r.id ]
         elsif r.respond_to?(:to_i)

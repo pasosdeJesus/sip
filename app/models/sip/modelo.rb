@@ -92,12 +92,25 @@ module Sip
         updated_at
       end
 
+
       # Como presentar un registro por ejemplo en un campo de selección
+      # Si se sobrecarga, sobrecargar también orden_presenta_nombre
       def presenta_nombre
         if respond_to?(:nombre)
           self[:nombre]
         else
           self[:id]
+        end
+      end
+
+      # Columnas por las cuales ordenar en campos de selección
+      # para que resulten ordenados según presenta_nombre
+      # Debe coincidir con presenta_nombre
+      def self.orden_presenta_nombre
+        if self.columns && self.columns.map(&:name).include?('nombre')
+          ['lower(nombre)']
+        else
+          [:id]
         end
       end
 
