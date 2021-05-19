@@ -2,6 +2,12 @@
 
 Una tabla básica representa un tipo de dato por utilizar en un sistema de información con unas pocas opciones, cada una con un nombre (por ejemplo país, tipo de documento de identidad, etc.). Incluye lo que en otros sistemas de información se llama _variable_, _tesauro_, _diccionario_, _parámetros de la aplicación_ y _vocabularios controlados_.
 
+Se agrega un poco de control a lo largo del tiempo mediante el campo `fechadeshabilitación`, que se espera vacío para registros habilitados y con la fecha en la que se deshabilitó para registros deshabilitados.
+En campos de selección simple o múltiple que utilicen la tabla básica se busca mantener información histórica así esté deshabilitada al momento de la edición:
+* En el caso de campos de selección simple si tiene elegido un registro deshabilitado se mantiene y se permiten cambiar pero a registros habilitados.
+* En el caso de campos de selección múltiple si tiene agregados registros deshabilitados se mantienene y al usuario se le permite añadir.
+
+
 # 1. Generador de nuevas tablas básicas
 
 Las nuevas tablas básicas y bastantes de los cambios requeridos se recomienda iniciarlos con la tarea  `sip:tablabasica`. Por ejemplo para generar una tabla básica de categorias de motivos, con nombre interno `acpcatmotivo` y forma plural interna `acpcatsmotivo`:
