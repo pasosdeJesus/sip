@@ -41,7 +41,7 @@ gem 'twitter_cldr'              # Localiación e internacionalización
 
 gem 'tzinfo'                    # Zonas horarias
 
-gem 'webpacker', '~> 4.0'       # Traduce y compila modulos Javascript
+gem 'webpacker', '~> 5.4'       # Traduce y compila modulos Javascript
 
 gem 'will_paginate'             # Pagina listados
 
