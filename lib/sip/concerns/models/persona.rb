@@ -37,12 +37,13 @@ module Sip
           end
 
           ORIENTACION_OPCIONES = [
+            ['SIN INFORMACIÓN', :S],
             ['HETEROSEXUAL', :H],
             ['LESBIANA', :L], 
             ['GAY', :G],
             ['BISEXUAL', :B], 
             ['TRANSEXUAL', :T], 
-            ['SIN INFORMACIÓN', :S] 
+            ['OTRA', :O]
           ]
 
           def self.orientacion_opciones_diccionario
