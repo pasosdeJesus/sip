@@ -302,6 +302,9 @@ module Sip
           ids2 = []
         elsif f.object.respond_to?("#{campo}_ids")
           ids2 = f.object.send("#{campo}_ids")
+          if ids2.nil?
+            ids2 = [f.object.send("#{campo}")]
+          end
         elsif r.respond_to?(:id)
           ids2 = [ r.id ]
         elsif r.respond_to?(:to_i)
