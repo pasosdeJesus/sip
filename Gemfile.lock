@@ -1,12 +1,12 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 58b5fdb638574c70276b9135051a2f8c8776bf12
+  revision: 94a0f39f3f2d4ac2b67e18e3931d7d70660636b8
   specs:
-    kt-paperclip (6.4.1)
+    kt-paperclip (7.0.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
+      marcel (~> 1.0.1)
       mime-types
-      mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
 
 GEM
@@ -127,11 +127,8 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2021.0225)
-    mimemagic (0.3.10)
-      nokogiri (~> 1)
-      rake
     mini_mime (1.0.3)
-    mini_portile2 (2.5.1)
+    mini_portile2 (2.5.3)
     minitest (5.14.4)
     minitest-reporters (1.4.3)
       ansi
@@ -151,7 +148,7 @@ GEM
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
-    rack-proxy (0.6.5)
+    rack-proxy (0.7.0)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
