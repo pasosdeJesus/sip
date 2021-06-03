@@ -13,9 +13,37 @@ Una aplicación que requiera modificar uno de estos modelos tiene dos posibilida
 Las tablas básicas no requieren que se definan vistas, sino que su modelo incluya ```Sip::Basica``` y que su  controlador sea descendiente de ```Sip::Admin::BasicasController```, ver [Tablas Básicas] (https://github.com/pasosdeJesus/sip/blob/master/doc/tablas-basicas.md)
 
 ### Tablas unión
-Las tablas unión que rails genera no tienen llave primaria simple (es compuesta), por eso no debe llamarse el método destroy en objetos de esta.
 
-Por lo mismo las asociaciones (e.g has_many) que se definan a estas tablas en los modelos de otras tablas (las que se unen) deben usar ```dependent: delete_all``` en lugar de ```dependent: destroy```
+Si la tabla unión que está planeando crear, sólo relacionará registros entre tablas existentes, sin requerir información adicional, no será indispensable que tenga un campo `id`.  Pero si requiere poner información adicional en esa tabla unión, si debe tener campo `id`.
+
+Las tablas unión que rails genera con `CreateJoinTable...` no tienen llave primaria simple (es compuesta), por eso no debe llamarse el método `destroy` en objetos de estas.
+
+Por lo mismo las asociaciones (e.g `has_many`) que se definan a estas tablas en los modelos de otras tablas (las que se unen) deben usar ```dependent: delete_all``` en lugar de ```dependent: destroy```
+
+Para generar una tabla unión sin un campo `id` sugerimos:
+```
+bin/rails g migration create_actorsocial_lineabase
+```
+Editar la migración generado y definir algo como lo siguiente (puede que no requiera renombramientos en su caso):
+```
+ def up                                                                         
+    create_join_table :sip_actorsocial, :linebase,·                              
+      table_name: 'actorsocial_lineabase'                                 
+    add_foreign_key :actorsocial_lineabase, :sip_actorsocial              
+    add_foreign_key :actorsocial_lineabase, :lineabase                    
+    rename_column :actorsocial_lineabase, :sip_actorsocial_id,            
+      :organizacionsocial_id                                                     
+    execute <<-SQL                                                               
+      INSERT INTO actorsocial_linebase·                                   
+        (actorsocial_id, lineabase_id)                                    
+        (SELECT  id, 1 FROM sip_actorsocial WHERE lineabase20182021='t');        
+    SQL                                                                          
+  end                                                                            
+  def down                                                                       
+    drop_table :actorsocial_lineabase                                     
+  end       
+```
+
 
 ### Herencia con ```ability``` y ```usuarios```
 
