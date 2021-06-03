@@ -74,6 +74,8 @@ es:
         sectoractor_ids: Sector(es)
         telefono: Teléfono
         "{:sectoractor_ids=>[]}": Sector(es)
+      "sip/anexo":
+        descripcion: Descripción
       "sip/bitacora":
         Bitacora: Registro en bitácora
         Bitacoras: Registros en bitácora
