@@ -40,8 +40,7 @@ module Sip
           "app/models/#{nom_arch}.rb"
 				generate "migration", "Create#{nom_arch.camelize} " +
 					"nombre:string{500} observaciones:string{5000} " +
-					"fechacreacion:date fechadeshabilitacion:date " +
-					"created_at:timestamp updated_at:timestamp"
+					"fechacreacion:date fechadeshabilitacion:date " 
         ab='app/models/ability.rb'
         if !File.exist?(ab)
           ab='spec/dummy/app/models/ability.rb'
