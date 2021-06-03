@@ -141,39 +141,20 @@ En el formulario de edición/creación como controles de edición se usaran:
 Sin embargo puede personalizarse el control para edición para un campo
 digamos con nombre ```tfuente``` creando en la aplicación la vista parcial ```app/views/sip/admin/basicas/mitabla/_tfuente.html.erb```
 
-###Agregando campos nuevos a una tabla básica
-Hay tablas que no son básicas pero son muy similares (por cuanto tienen un campo nombre). En tales casos es posible desear usar la misma infraestructura para tablas básicas y agregar los campos asicionales que se desee, de esta manera se puede simplificar así la creación del controlador y ahorrarse la creación de vistas. Para agregar un nuevo campo a una tabla básica se debe:
-
-1. Agregar el campo por medio de una migración: 
-    ```add_column :mitablabasica, :nuevocampo, :tipodecampo```
-   si es una asociación con otra tabla se agrega:
-    ```add_foreign_key :mitablabasica, :otratabla, column: :nuevocampo```
-
-2. Definir cómo se presentará en la vista, especificando en ```config/locales/es.yml``` fijando:
-  ```
-     "mimotor/tablabasica": 
-      nuevocampo: Nuevo Campo
-  ```
-3. Definir en modelo alguna validación o asociación correspondiente.
-4. Definir en controlador el nombre del campo, si esta en un motor y el controlador no está creado, creélo nuevamente y únicamente cambia los atributos en donde define los campos. Puede ver un ejemplo con `proyectofinanciero` del motor `cor1440_gen`:
-- Modelo: <https://github.com/pasosdeJesus/cor1440_gen/blob/master/lib/cor1440_gen/concerns/models/proyectofinanciero.rb> y <https://github.com/pasosdeJesus/cor1440_gen/blob/master/app/models/cor1440_gen/proyectofinanciero.rb>
-- Controlador: <https://github.com/pasosdeJesus/cor1440_gen/blob/master/lib/cor1440_gen/concerns/controllers/proyectosfinancieros_controller.rb> y <https://github.com/pasosdeJesus/cor1440_gen/blob/master/app/controllers/cor1440_gen/proyectosfinancieros_controller.rb>
-- Vista: no se requiere
-
 # 8. Actualización de indices y volcado de datos
 
 La actualización de índice se hace con 
 ```
-rake sip:indices
+bin/rails sip:indices
 ```
 Y el volcado de los datos de las tablas básicas (en db/datos_basicas.sql):
 ```
-rake sip:vuelcabasicas
+bin/rails sip:vuelcabasicas
 ```
 Aunque si está desarrollando un motor y deja bien los datos de las tablas básicas en la aplicación de pruebas puede copiarlos a la ubicación recomendada con:
 ```
 cd spec/dummy
-RAILS_ENV=test rake sip:vuelcabasicas
+RAILS_ENV=test bin/rails sip:vuelcabasicas
 diff ../../db/datos-basicas.sql db/datos-basicas.sql
 ```
 e integrar los cambios necesarios, preferiblemente con:
