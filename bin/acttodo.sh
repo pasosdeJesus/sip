@@ -133,5 +133,8 @@ if (test "$SALTASIVELSJR" != "1") then {
   actuno sivel2_mujeresindigenas;
 } fi;
 
+# Usan 4 motores
+#actuno si_jrslac; 
+#actuno sivel2_sjrven; 
 actuno si_jrscol
 
