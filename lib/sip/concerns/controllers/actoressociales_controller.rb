@@ -86,6 +86,7 @@ module Sip
                     :id,
                     :nombres,
                     :apellidos,
+                    :sexo
                   ]
                 ]
               ]) 

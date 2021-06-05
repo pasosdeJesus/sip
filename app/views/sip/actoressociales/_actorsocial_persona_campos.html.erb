@@ -19,8 +19,13 @@
     </td>
     <td>
       <%= p.input :apellidos, label: false %>
-      <%= p.input :sexo, as: :hidden, 
-        input_html: { value: p.object.sexo || 'S' } %>
+    </td>
+    <td>
+      <%= p.input :sexo, 
+        collection: Sip::Persona::SEXO_OPCIONES_CORTAS,
+        label: false,
+        input_html: { style: 'width: 4em' },
+        include_blank: false %>
     </td>
     <td>
       <%= f.association :perfilactorsocial, 
