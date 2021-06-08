@@ -16,15 +16,24 @@ Las tablas básicas no requieren que se definan vistas, sino que su modelo inclu
 
 Si la tabla unión que está planeando crear, sólo relacionará registros entre tablas existentes, sin requerir información adicional, no será indispensable que tenga un campo `id`.  Pero si requiere poner información adicional en esa tabla unión, si debe tener campo `id`.
 
-Las tablas unión que rails genera con `CreateJoinTable...` no tienen llave primaria simple (es compuesta), por eso no debe llamarse el método `destroy` en objetos de estas.
-
-Por lo mismo las asociaciones (e.g `has_many`) que se definan a estas tablas en los modelos de otras tablas (las que se unen) deben usar ```dependent: delete_all``` en lugar de ```dependent: destroy```
+Las tablas unión que rails genera con `create_join_table`:
+* No tienen llave primaria `id` (es una llave compuesta por las referencias), por eso no debe llamarse el método `destroy` en objetos de estas.
+* Las asociaciones (e.g `has_many`) que se definan a estas tablas en los modelos de otras tablas (las que se unen) deben usar ```dependent: delete_all``` en lugar de ```dependent: destroy```
+* Puede servir como `join_table` en asociaciones `has_and_belongs_to_many`, por ejemplo si se hiciera una tabla unión entre `sip_actorsocial` y `lineabase` en el modelo `sip_actorsocial`:
+```
+has_and_belongs_to_many :lineabase,·                                       
+  class_name: '::Lineabase',                                               
+  foreign_key: 'actorsocial_id',                                    
+  association_foreign_key: 'lineabase_id',                                 
+  join_table: 'lineabase_actorsocial'
+```
+* En el controlador de `sip_actorsocial` en `atributos_index` se incluiría `lineabase_ids` y en `atributos_show` y `atributos_form` se incluye `[:lineabase_ids => []]`
 
 Para generar una tabla unión sin un campo `id` sugerimos:
 ```
 bin/rails g migration create_actorsocial_lineabase
 ```
-Editar la migración generado y definir algo como lo siguiente (puede que no requiera renombramientos en su caso):
+Editar la migración generado y definir algo como lo siguiente (puede que no requiera renombramientos en su caso, ni homologación de información):
 ```
  def up                                                                         
     create_join_table :sip_actorsocial, :linebase,·                              
@@ -43,7 +52,6 @@ Editar la migración generado y definir algo como lo siguiente (puede que no req
     drop_table :actorsocial_lineabase                                     
   end       
 ```
-
 
 ### Herencia con ```ability``` y ```usuarios```
 
