@@ -30,7 +30,7 @@
     <td>
       <%= f.association :perfilorgsocial, 
         collection: Sip::Perfilorgsocial.habilitados.order(:nombre),
-        include_blank: false,
+        include_blank: true,
         label: false,
         label_method: :nombre,
         value_method: :id
