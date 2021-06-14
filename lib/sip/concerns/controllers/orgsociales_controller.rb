@@ -84,6 +84,7 @@ module Sip
             end
             update_gen(@registro)
           end
+
           def orgsocial_params
             params.require(:orgsocial).permit(
               atributos_form - [:grupoper] +

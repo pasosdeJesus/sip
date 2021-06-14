@@ -63,6 +63,21 @@ es:
     page_gap: "&hellip;"
   activerecord:
     attributes:
+      "sip/orgsocial":
+        Orgsocial: Organización social
+        Orgsociales: Organizaciones sociales
+        orgsocial_persona: Contacto(s)
+        "{:orgsocial_persona=>[]}": Contacto(s)
+        direccion: Dirección
+        fechadeshabilitacion: Fecha de deshabilitación
+        fechadeshabilitacion_localizada: Fecha de deshabilitación
+        grupoper: Nombre
+        grupoper_id: Nombre
+        pais_id: País
+        sectororgsocial: Sector(es)
+        sectororgsocial_ids: Sector(es)
+        telefono: Teléfono
+        "{:sectororgsocial_ids=>[]}": Sector(es)
       "sip/anexo":
         descripcion: Descripción
       "sip/bitacora":
@@ -132,6 +147,9 @@ es:
       "sip/perfilorgsocial":
         Perfilorgsocial: Perfil en organización social
         Perfilesorgsocial: Perfiles en organización social
+      "sip/orgsocial_persona":
+        perfilorgsocial: Perfil en organización social
+        orgsocial: Organización social a la que pertenece
       "sip/persona":
         anionac: Año nacimiento
         clase: Centro poblado nacimiento
