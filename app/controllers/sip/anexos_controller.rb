@@ -1,4 +1,3 @@
-# encoding: UTF-8
 module Sip
   class AnexosController < ApplicationController
     load_and_authorize_resource class: Sip::Anexo

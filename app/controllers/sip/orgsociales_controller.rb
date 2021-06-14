@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require_dependency "sip/concerns/controllers/orgsociales_controller"
 
 module Sip

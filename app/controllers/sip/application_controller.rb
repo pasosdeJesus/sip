@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 module Sip
   class ApplicationController < ActionController::Base
 

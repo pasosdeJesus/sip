@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 # http://stackoverflow.com/questions/1170148/run-rake-task-in-controller
 require 'rake'
 Rake::Task.clear # evitar cargar muchas veces en modo desarrollo
