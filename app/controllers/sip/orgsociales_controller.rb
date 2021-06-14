@@ -6,5 +6,6 @@ module Sip
     load_and_authorize_resource class: Sip::Orgsocial
     include Sip::Concerns::Controllers::OrgsocialesController
 
+    include Sip::Concerns::Controllers::OrgsocialesController
   end
 end

@@ -109,6 +109,7 @@ Una convención respecto a permiso de ingresar a la página principal por
 parte de un usuario autenticado es que tenga la habilidad de CanCan
 `:contar,  Sip::Ubicacion` Por esto en motores que sobrecargen la función
 `initialize` de `ability.rb` debe asegurarse de permitir esta operación a
+`app/models/usuario.rb` que hereden respectivamente de `Sip::Ability` y 
 todos los usuarios:
 ```
   can :contar, Sip::Ubicacion

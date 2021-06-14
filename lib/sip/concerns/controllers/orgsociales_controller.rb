@@ -6,6 +6,10 @@ module Sip
 
         included do
 
+          before_action :set_orgsocial, only: [:show, :edit, :update, :destroy]
+          load_and_authorize_resource class: Sip::Orgsocial
+
+
           def clase
             "Sip::Orgsocial"
           end

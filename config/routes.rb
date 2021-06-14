@@ -22,9 +22,9 @@ Sip::Engine.routes.draw do
 
 
   resources :orgsociales, path_names: { new: 'nueva', edit: 'edita' } 
-  
+
   resources :bitacoras, path_names: { new: 'nueva', edit: 'edita' } 
-  
+
   resources :personas, path_names: { new: 'nueva', edit: 'edita' } 
   resources :ubicacionespre, path_names: { new: 'nueva', edit: 'edita' }
 
