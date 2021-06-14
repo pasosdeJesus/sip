@@ -59,21 +59,21 @@ es:
     page_gap: "&hellip;"
   activerecord:
     attributes:
-      "sip/actorsocial":
-        Actorsocial: Organización social
-        Actoressociales: Organizaciones sociales
-        actorsocial_persona: Contacto(s)
-        "{:actorsocial_persona=>[]}": Contacto(s)
+      "sip/orgsocial":
+        Orgsocial: Organización social
+        Orgsociales: Organizaciones sociales
+        orgsocial_persona: Contacto(s)
+        "{:orgsocial_persona=>[]}": Contacto(s)
         direccion: Dirección
         fechadeshabilitacion: Fecha de deshabilitación
         fechadeshabilitacion_localizada: Fecha de deshabilitación
         grupoper: Nombre
         grupoper_id: Nombre
         pais_id: País
-        sectoractor: Sector(es)
-        sectoractor_ids: Sector(es)
+        sectororgsocial: Sector(es)
+        sectororgsocial_ids: Sector(es)
         telefono: Teléfono
-        "{:sectoractor_ids=>[]}": Sector(es)
+        "{:sectororgsocial_ids=>[]}": Sector(es)
       "sip/anexo":
         descripcion: Descripción
       "sip/bitacora":
@@ -121,12 +121,12 @@ es:
         fechadeshabilitacion: Fecha de deshabilitacion
         created_at: Fecha en la que se creó en base de datos
         updated_at: Fecha en la que se actualizó en base de datos
-      "sip/perfilactorsocial":
-        Perfilactorsocial: Perfil en organización social
-        Perfilesactorsocial: Perfiles en organización social
-      "sip/actorsocial_persona":
-        perfilactorsocial: Perfil en organización social
-        actorsocial: Organización social a la que pertenece
+      "sip/perfilorgsocial":
+        Perfilorgsocial: Perfil en organización social
+        Perfilesorgsocial: Perfiles en organización social
+      "sip/orgsocial_persona":
+        perfilorgsocial: Perfil en organización social
+        orgsocial: Organización social a la que pertenece
       "sip/persona":
         anionac: Año nacimiento
         clase: Centro poblado nacimiento
@@ -148,9 +148,9 @@ es:
       "sip/respaldo7z":
         clave7z: Clave de cifrado
         clave7z_confirmation: Confirmación de clave de cifrado
-      "sip/sectoractor":
-        Sectoractor: Sector de organización social
-        Sectoresactores: Sectores de organizaciones sociales
+      "sip/sectororgsocial":
+        Sectororgsocial: Sector de organización social
+        Sectoresorgsocial: Sectores de organizaciones sociales
       "sip/tclase":
         Tclase: Tipo de centro poblado
         Tclases: Tipos de centros poblados

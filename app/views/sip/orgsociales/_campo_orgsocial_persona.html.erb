@@ -1,0 +1,35 @@
+<% ao = f.object ? f.object : @orgsocial %>
+<% div_id = "orgsocial_persona_#{ao.id}" %>
+<div id="<%= div_id %>" class="orgsocial_persona">
+  <label class="string optional control-label" for="tabla_<%= div_id %>">Contactos en la organización social</label>
+  <table id="tabla_<%= div_id %>" class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Nombres</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Sexo</th>
+        <th scope="col">Perfil</th>
+        <th scope="col">Cargo</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody id='orgsocial_persona'>
+      <%= f.simple_fields_for :orgsocial_persona, 
+        Sip::OrgsocialPersona.where(orgsocial_id: ao.id) do |ap| %>
+      <%= render 'orgsocial_persona_campos', :f => ap %>
+    <% end %>
+    </tbody>
+  </table>
+
+  <div class="links">
+    <%= link_to_add_association 'Añadir Contacto', f, 
+      :orgsocial_persona,
+      :"data-association-insertion-node" => "tbody#orgsocial_persona", 
+      :"data-association-insertion-method" => "append", 
+      partial: 'orgsocial_persona_campos',
+      :class => 'btn-primary'
+    %>
+  </div>
+
+</div>

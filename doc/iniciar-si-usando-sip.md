@@ -170,13 +170,13 @@ class Ability  < Sip::Ability
     if usuario && usuario.rol then
       case usuario.rol
       when Ability::ROLANALI
-        can :read, Sip::Actorsocial
+        can :read, Sip::Orgsocial
         can :read, Sip::Persona
         can :read, Sip::Ubicacion
         can :new, Sip::Ubicacion
         can [:update, :create, :destroy], Sip::Ubicacion
       when Ability::ROLADMIN
-        can :manage, Sip::Actorsocial
+        can :manage, Sip::Orgsocial
         can :manage, Sip::Persona
         can :manage, Sip::Respaldo7z
         can :manage, Sip::Ubicacion
@@ -415,7 +415,7 @@ bin/rails assets:precompile --trace
 <% content_for :menu do %>
    <%= grupo_menus do %>
     <% if !current_usuario.nil? %>
-        <%= opcion_menu "Actores sociales", sip.actoressociales_path %>
+        <%= opcion_menu "Organizaciones sociales", sip.orgsociales_path %>
         <%= opcion_menu "Personas", sip.personas_path %>
     <% end %>
   <% end %>

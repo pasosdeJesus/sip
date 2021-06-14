@@ -1,6 +1,3 @@
-* Cambiar `paperclip` (que no tiene soporte desde 2018) por `ActiveStorage`
-* Renombrar `sip_actorsocial` por `sip_organizacionsocial` --requiere
-  cambio prácticamente en todos los motores y aplicaciones.
 * Agregar `etnia_id` en `sip_persona` (requiere quitarla de victima en
   `sivel2_gen` y sus motores y aplicaciones descendientes)
 

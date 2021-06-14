@@ -1,0 +1,9 @@
+<%= f.input :id, as: :hidden %>
+<% if f.object.grupoper.nil? %>
+  <% f.object.grupoper = Sip::Grupoper.new %>
+<% end %>
+<%= f.simple_fields_for :grupoper do |g| %>
+  <%= render partial: 'sip/gruposper/grupoper_campos', 
+    locals: {f: g, forgsocial: f}  %>
+<% end %>
+     

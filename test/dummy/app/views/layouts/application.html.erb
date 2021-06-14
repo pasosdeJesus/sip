@@ -6,7 +6,7 @@
 <% content_for :menu do %>
   <%= grupo_menus do %>
     <% if !current_usuario.nil? %>
-        <%= opcion_menu "Actores sociales", sip.actoressociales_path %>
+        <%= opcion_menu "Organizaciones sociales", sip.orgsociales_path %>
         <%= opcion_menu "Personas", sip.personas_path %>
     <% end %>
   <% end %>

@@ -21,7 +21,7 @@ Sip::Engine.routes.draw do
   get '/ubicacionespre_mundep' => 'ubicacionespre#mundep'
 
 
-  resources :actoressociales, path_names: { new: 'nuevo', edit: 'edita' } 
+  resources :orgsociales, path_names: { new: 'nuevo', edit: 'edita' } 
   
   resources :bitacoras, path_names: { new: 'nueva', edit: 'edita' } 
   

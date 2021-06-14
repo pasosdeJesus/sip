@@ -32,8 +32,8 @@ de información como:
   (Administrate)[https://github.com/thoughtbot/administrate] y
   (Rails Admin)[https://github.com/sferik/rails_admin]
   Usa Sip::Modelo, Sip::ModelosController y vistas de
-  `app/views/sip/modelos/`. La vista index incluye
-  un filtro definible con scope en el modelo.  La vista parcial
+  `app/views/sip/modelos/`. La vista `index` incluye
+  un filtro definible con `scope` en el modelo.  La vista parcial
   `_form` genera automáticamente un formulario con elementos típicos.
   Consulta <https://github.com/pasosdeJesus/sip/wiki/Vistas-autom%C3%A1ticas-con-Sip::Modelo-y-Sip::ModelosController>
 - Concepto y propuesta de tablas básicas (también llamados tesauros
@@ -55,18 +55,19 @@ de información como:
   poblados), `sip_tclase` (tipos de centros poblados), `sip_tsitio`
   (tipo de sitio) y `sip_ubicacion`. Con datos de todos los países,
   aunque estados y municipios completos para Colombia y Venezuela y ciudades
-  completas para Colombia de acuerdo a DIVIPOLA 2018 con actualización
+  completas para Colombia de acuerdo a DIVIPOLA 2019 con actualización
   periódica (vía migraciones de `rails`) de acuerdo a esa fuente oficial.
 - Tablas estándar iniciales para personas y relaciones entre personas
   `sip_persona`, `sip_trelacion` (tipo de relación entre personas),  
   `tdocumento` (tipo de documento de identificación personal),
   `sip_persona_trelacion` (relación entre 2 personas).
 - Tablas estándar iniciales para grupos de personas
-  `sip_grupoper`, actores sociales `sip_actorsocial` (así llamamos a un grupo
-  de personas que se ponen de acuerdo para un trabajo o representacíon
-  conjunta), sus sectores `sip_sectoractor` y la relación entre una persona
-  y un actor social con su perfil `sip_actorsocial_persona` y
-  `sip_perfilactorsocial`
+  `sip_grupoper`, organizaciones sociales `sip_orgsocial` (así llamamos a 
+  un grupo de personas que se ponen de acuerdo para un trabajo o 
+  representación conjunta), sus sectores `sip_sectororgsocial` y la 
+  relación entre una persona y una organización social con su perfil 
+  `sip_orgsocial_persona` y
+  `sip_perfilorgsocial`
 - Propuesta inicial para anexos con tabla `sip_anexo` y vistas
   incrustables y gema `paperclip`
 - Facilidades de configuración de aplicaciones que usen este motor mediante
@@ -82,7 +83,7 @@ de información como:
 - Localización con mecanismos estándar de `rails` y de `twitter_cldr`.
   Propuesta para localización de campos tipo fecha(s) (que en español no es
   bien soportado por `rails`) especificando el formato local en
-   config.x.formato_fecha`, así como ayudas para definir campos de fecha
+  `config.x.formato_fecha`, así como ayudas para definir campos de fecha
   localizados en ese formato.
 - Vistas y formularios generados con las herramientas estándar de `rails`
   y `simple_form` y `chosen-rails` para cuadros de selección simple y múltiple,
@@ -90,7 +91,7 @@ de información como:
   Listados paginados con `will_paginate`.
 - Tareas `rake` para actualizar indices y sacar copia de respaldo de base
   de datos
-- Preparado para construir aplicaciones adaptables (responsive) con
+- Preparado para construir aplicaciones adaptables (_responsive_) con
   `bootstrap`, `coffescript`, `jquery` y `jquery-ui`
 - Incluye biblioteca para operaciones comunes con javascript, por ejemplo para
   facilitar actualización automática mediante AJAX (ver
@@ -107,8 +108,8 @@ Ver <https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md>
 
 **sip** ya viene con una aplicación mínima (en el directorio `test/dummy` )
 que es la usada para hacer pruebas de regresión.  Es una aplicación completa
-con diseño web adaptable, autenticación, manejo de clave con condensado bcrypt,
-usuarios, grupos, vistas completas para tablas básicas y para
+con diseño web adaptable, autenticación, manejo de clave con condensado 
+`bcrypt`, usuarios, grupos, vistas completas para tablas básicas y para
 modelos persona y organización social. Incluso antes de intentar
 iniciar una aplicación aparte, puede intentar ejecutar esa aplicación mínima,
 siguiendo las instrucciones de:
