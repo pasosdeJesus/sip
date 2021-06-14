@@ -20,13 +20,13 @@ En cada motor y aplicación se amplian en `config/initializes/inflections.rb`
 
 Si no se dejan reglas general del español con expresiones regulares en `sip` sino digamos en 
 `sivel2_gen` pueden ocurrir cosas como estas:
-* De sip:  'actorsocial'.pluralize -> 'actorsociales'
+* De sip:  'orgsocial'.pluralize -> 'orgsociales'
 * De heb412_gen: 'plantillahcm'.pluralize -> "plantillahcm"
 * De mr519_gen: 'valorcampo'.pluralize -> 'valorescampo' pero 
   'encuestapersona'.pluralize -> 'encuestapersonas' y 
   'opcioncs'.pluralize => 'opcioncses'
 * De cor1440_gen: 'campotind'.pluralize -> "campotindes" pero 
- 'sectoractor'.pluralize -> 'sectoresactores'
+ 'sectororgsocial'.pluralize -> 'sectoresorgsocial'
 
 En algunas versiones de rails esos archivos de inflecciones se
 cargan en el orden de dependencia, pero cuando esto no ocurre 
@@ -47,8 +47,9 @@ end
 
 # 3. Orden de las reglas de inflección en un archivo `config/initializers/inflections.rb`
 
-Es ideal ponerlas en orden alfabético, sin embargo hemos notado que las reglas irregulares se usan como si fuesen
-postfijos, es decir si se tiene la regla:
+Es ideal ponerlas en orden alfabético, sin embargo hemos notado que las 
+reglas irregulares se usan como si fuesen postfijos, es decir si se tiene 
+la regla:
 ```
 inflect.irregular 'zrc', 'zrcs'
 ```
@@ -63,4 +64,5 @@ inflect.irregular 'estadozrc', 'estadoszrc'
 
 Para que tome esta última regla debe ponerse su definición después de la de `zrc`.
 
-Así que ese archivo debe ordenarse de manera alfabetica, pero si hay posfijos repetidos por longitud (primero los de menor longitud).
+Así que ese archivo debe ordenarse de manera alfabetica, pero si hay 
+posfijos repetidos por longitud (primero los de menor longitud).
