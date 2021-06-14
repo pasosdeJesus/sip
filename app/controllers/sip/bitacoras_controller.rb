@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 require 'sip/concerns/controllers/bitacoras_controller'
 
 module Sip

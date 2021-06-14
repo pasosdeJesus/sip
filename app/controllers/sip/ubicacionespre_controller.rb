@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 require 'sip/concerns/controllers/ubicacionespre_controller'
 
 module Sip

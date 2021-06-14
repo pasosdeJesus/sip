@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 require 'sip/concerns/controllers/modelos_controller'
 
 module Sip
