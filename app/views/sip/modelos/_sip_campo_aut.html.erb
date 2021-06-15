@@ -1,0 +1,93 @@
+
+<% if @registro.nil? %>
+  @registro no puede ser nil. Debe ser objeto que se edita.
+  <% return %>
+<% end %>
+<% if atr.nil? %>
+  atr no puede ser nil. Debe ser atributo por editar.
+  <% return %>
+<% end %>
+<% if f.nil? %>
+  f no puede ser nil. Debe ser formulario.
+  <% return %>
+<% end %>
+
+<% alf = @registro.class.asociacion_llave_foranea(atr) %>
+<% vatr = atr.to_s.gsub(/[^a-z_A-Z0-9]/, '') %>
+<% rutavatr = clase.pluralize.underscore + "/campo_#{vatr}" %>
+<% (ri, rm, rd)=clase.pluralize.underscore.rpartition("/") %>
+<% if alf # Es llave Foranea   %>
+  <% n = alf.name %>
+  <% nclase = alf.class_name.constantize %>
+  <% col = Sip::ModeloHelper.opciones_tabla_basica(nclase, f, n) %>
+  <% opassoc = {
+    collection: col.order(nclase.send(:orden_presenta_nombre)),
+    label_method: :presenta_nombre,
+    value_method: :id,
+    input_html: { class: 'chosen-select' } 
+  } %>
+  <% if @registro.respond_to?(n) && @registro.send(n) &&
+    @registro.send(n).id %>
+    <% opassoc[:selected] = @registro.send(n).id %>
+  <% end %>
+  <%= f.association n, opassoc %>
+<% elsif @registro.class.asociacion_combinada(atr) %>
+  <% #byebug %>
+  <% r = @registro.class.asociacion_combinada(atr) # Tabla Combinada  %>
+  <% if lookup_context.find_all(r.name.to_s + '_campos', [], true).any? %>
+    <% # Suponemos que tiene un accepts_nested_attributes_for %>
+    <% nd = r.class_name.constantize.human_attribute_name(r.name.to_s) %>
+    <div class="panel panel-default">
+      <div class="panel-heading"><%= nd %></div>
+      <div class="panel-body">
+        <%= f.simple_fields_for r.name.to_sym do |cfo| %>
+          <%= render (r.name.to_s + '_campos'), :f => cfo %>
+        <% end %>
+        <div class="links">
+          <%= link_to_add_association "Añadir #{nd}", f, 
+            r.name.to_sym, partial: (r.name.to_s + '_campos'),
+            :class => 'btn-primary' %>
+        </div>
+      </div> <!-- .panel-body -->
+    </div> <!-- .panel -->
+  <% else %>
+    <% # r.class.to_s == 
+      #'ActiveRecord::Reflection::ThroughReflection' # Tabla combinada %>
+    <% n = r.name %>
+    <% nclase = r.class_name.constantize %>
+    <% col = Sip::ModeloHelper.opciones_tabla_basica(nclase, f, n) %>
+    <%= f.association n,
+      collection: col.order(nclase.send(:orden_presenta_nombre)),
+      label_method: lambda {|e| e.presenta_nombre }, #:nombre,
+      value_method: :id ,
+      input_html: { class: 'chosen-select' } %>
+  <% end %>
+<% elsif @registro.class && (
+  @registro.class.columns_hash[atr.to_s] || 
+  @registro.class.columns_hash[atr] ) %>
+  <% # Escogemos el control %>
+  <% #byebug %>
+  <% col = @registro.class.columns_hash[atr.to_s] || 
+  @registro.class.columns_hash[atr.to]  %>
+  <% if col && col.type == :date then %>
+    <% # fecha %> 
+    <%= f.input atr.to_sym, :input_html => { type: 'date'}, :as => :string %>
+  <% elsif col && col.type == :integer %>
+    <%= f.input atr.to_sym, as: :integer %>
+  <% elsif col.limit && col.limit > 1000 %>
+    <%= f.input atr.to_sym, as: :text%>
+  <% else %>
+    <%= f.input atr.to_sym %>
+  <% end %>
+<% else %>
+    <% if (atr.class == String || atr.class == Symbol) && 
+        (atr.to_s[0, 5] == 'fecha' || atr.to_s[-11..-1] == '_localizada')  %>
+      <%= f.input atr.to_sym,
+        :input_html => { "data-behaviour" => "datepicker"}, 
+        :as => :string %>
+    <% elsif @registro.respond_to?(atr) then %>
+      <%= f.input atr.to_sym %>
+    <% else %>
+      <%= "Campo #{atr} sin control para editar"  %>
+    <% end %>
+<% end %>
