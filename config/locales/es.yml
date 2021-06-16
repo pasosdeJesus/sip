@@ -99,11 +99,12 @@ es:
         "{:usuario_ids=>[]}": Miembros
         "usuario": Miembros
       "sip/municipio":
-        Municipio: Municipio
-        Municipios: Municipios
+        etiqueta_ids: Etiquetas
         id_munlocal: Código dentro del departamento/estado
         id_pais: País
         id_departamento: Departamento
+        Municipio: Municipio
+        Municipios: Municipios
       "sip/pais":
         Pais: País
         Paises: Países
