@@ -23,6 +23,12 @@ module Sip
           has_one :pais, through: :departamento,
             class_name: 'Sip::Pais', source: :pais
 
+          has_and_belongs_to_many :etiqueta, 
+            class_name: 'Sip::Etiqueta',
+            foreign_key: 'municipio_id',
+            association_foreign_key: 'etiqueta_id',
+            join_table: 'sip_etiqueta_municipio'
+
           validates :id_departamento, presence: true
 
           validates_uniqueness_of :nombre, 
@@ -38,6 +44,11 @@ module Sip
           scope :filtro_pais, lambda {|p|
             joins(:departamento).where('sip_departamento.id_pais=?', p)
           }
+
+          scope :filtro_etiqueta_ids, lambda {|e|
+            joins(:etiqueta).where('sip_etiqueta.id = ?', e)
+          }
+
 
           @@conf_presenta_nombre_con_origen = false
           mattr_accessor :conf_presenta_nombre_con_origen
