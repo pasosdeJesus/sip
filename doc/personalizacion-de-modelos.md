@@ -19,37 +19,37 @@ Si la tabla unión que está planeando crear, sólo relacionará registros entre
 Las tablas unión que rails genera con `create_join_table`:
 * No tienen llave primaria `id` (es una llave compuesta por las referencias), por eso no debe llamarse el método `destroy` en objetos de estas.
 * Las asociaciones (e.g `has_many`) que se definan a estas tablas en los modelos de otras tablas (las que se unen) deben usar ```dependent: delete_all``` en lugar de ```dependent: destroy```
-* Puede servir como `join_table` en asociaciones `has_and_belongs_to_many`, por ejemplo si se hiciera una tabla unión entre `sip_actorsocial` y `lineabase` en el modelo `sip_actorsocial`:
+* Puede servir como `join_table` en asociaciones `has_and_belongs_to_many`, por ejemplo si se hiciera una tabla unión entre `sip_orgsocial` y `lineabase`, la asociación en el modelo `sip_orgsocial` será:
 ```
 has_and_belongs_to_many :lineabase,·                                       
   class_name: '::Lineabase',                                               
-  foreign_key: 'actorsocial_id',                                    
+  foreign_key: 'orgsocial_id',                                    
   association_foreign_key: 'lineabase_id',                                 
-  join_table: 'lineabase_actorsocial'
+  join_table: 'lineabase_orgsocial'
 ```
-* En el controlador de `sip_actorsocial` en `atributos_index` se incluiría `lineabase_ids` y en `atributos_show` y `atributos_form` se incluye `[:lineabase_ids => []]`
+* En el controlador de `sip_orgsocial` en `atributos_index` se incluiría `lineabase_ids` y en `atributos_show` y `atributos_form` se incluye `[:lineabase_ids => []]`
 
 Para generar una tabla unión sin un campo `id` sugerimos:
 ```
 bin/rails g migration create_actorsocial_lineabase
 ```
-Editar la migración generado y definir algo como lo siguiente (puede que no requiera renombramientos en su caso, ni homologación de información):
+Editar la migración generada y definir algo como lo siguiente (puede que no requiera renombramientos en su caso, ni homologación de información):
 ```
  def up                                                                         
-    create_join_table :sip_actorsocial, :linebase,·                              
-      table_name: 'actorsocial_lineabase'                                 
-    add_foreign_key :actorsocial_lineabase, :sip_actorsocial              
-    add_foreign_key :actorsocial_lineabase, :lineabase                    
-    rename_column :actorsocial_lineabase, :sip_actorsocial_id,            
-      :organizacionsocial_id                                                     
+    create_join_table :linebase, :sip_orgsocial, ·                              
+      table_name: 'lineabase_orgsocial'                                 
+    add_foreign_key :lineabase_orgsocial, :sip_orgsocial              
+    add_foreign_key :lineabase_orgsocial, :lineabase                    
+    rename_column :lineabase_orgsocial, :sip_orgsocial_id,            
+      :orgsocial_id                                                     
     execute <<-SQL                                                               
-      INSERT INTO actorsocial_linebase·                                   
-        (actorsocial_id, lineabase_id)                                    
-        (SELECT  id, 1 FROM sip_actorsocial WHERE lineabase20182021='t');        
+      INSERT INTO lineabase_orgsocial                                   
+        (orgsocial_id, lineabase_id)                                    
+        (SELECT  id, 1 FROM sip_orgsocial WHERE lineabase20182021='t');        
     SQL                                                                          
   end                                                                            
   def down                                                                       
-    drop_table :actorsocial_lineabase                                     
+    drop_table :lineabase_orgsocial
   end       
 ```
 
