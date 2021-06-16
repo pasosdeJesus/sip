@@ -36,7 +36,7 @@ bin/rails g migration create_actorsocial_lineabase
 Editar la migración generada y definir algo como lo siguiente (puede que no requiera renombramientos en su caso, ni homologación de información):
 ```
  def up                                                                         
-    create_join_table :linebase, :sip_orgsocial, ·                              
+    create_join_table :linebase, :sip_orgsocial,
       table_name: 'lineabase_orgsocial'                                 
     add_foreign_key :lineabase_orgsocial, :sip_orgsocial              
     add_foreign_key :lineabase_orgsocial, :lineabase                    
