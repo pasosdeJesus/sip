@@ -109,7 +109,7 @@ module Sip
             where('date(sip_orgsocial.created_at) <= ?', f)
           }
 
-          scope :filtro_sectororgsocial, lambda { |s|
+          scope :filtro_sectororgsocial_ids, lambda { |s|
             joins('JOIN sip_orgsocial_sectororgsocial ON 
                   sip_orgsocial_sectororgsocial.orgsocial_id=sip_orgsocial.id').where(
               'sip_orgsocial_sectororgsocial.sectororgsocial_id=?', s)
