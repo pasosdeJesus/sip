@@ -9,7 +9,7 @@
       <% ph = 'N'
       ac = {'data-autocompleta' => 'no' }
       if (!p.object || !p.object.nombres || p.object.nombres == 'N' || p.object.nombres == '')
-        ph = 'Buscaraa'
+        ph = 'Buscar'
         ac = { }
       end %>
       <%= p.input :nombres, placeholder: ph,
