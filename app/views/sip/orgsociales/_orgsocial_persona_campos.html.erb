@@ -1,4 +1,4 @@
-<tr class='nested-fields'>
+<tr class='nested-fields campos_persona'>
   <% if f.object.persona.nil? %>
     <% f.object.persona = Sip::Persona.new %>
   <% end %>
@@ -9,7 +9,7 @@
       <% ph = 'N'
       ac = {'data-autocompleta' => 'no' }
       if (!p.object || !p.object.nombres || p.object.nombres == 'N' || p.object.nombres == '')
-        ph = ''
+        ph = 'Buscaraa'
         ac = { }
       end %>
       <%= p.input :nombres, placeholder: ph,
