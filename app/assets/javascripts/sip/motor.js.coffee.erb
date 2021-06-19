@@ -647,6 +647,7 @@ if (typeof String.prototype.endsWith != 'function')
      ini = ini + t + 1
   # pl[1] cnom, pl[2] es cape, pl[3] es cdoc
   d = "&id_persona=" + id_persona
+  d += "&ac_orgsocial_persona=" + true
   a = root.puntomontaje + 'personas/datos'
   $.ajax({
     url: a, 
@@ -654,7 +655,7 @@ if (typeof String.prototype.endsWith != 'function')
     dataType: "json"
   }).fail( (jqXHR, texto) ->
     alert("Error con ajax " + texto)
-  ).done( (e, r) ->
+    ).done( (e, r) ->
     divcp.find('[id$=_attributes_id]').val(e.id)
     divcp.find('[id$=_attributes_nombres]').val(e.nombres)
     divcp.find('[id$=_attributes_apellidos]').val(e.apellidos)
@@ -665,6 +666,8 @@ if (typeof String.prototype.endsWith != 'function')
     divcp.find('[id$=_anionac]').val(e.anionac)
     divcp.find('[id$=_mesnac]').val(e.mesnac)
     divcp.find('[id$=_dianac]').val(e.dianac)
+    divcp.find('[id$=_cargo]').val(e.cargo)
+    divcp.find('[id$=_correo]').val(e.correo)
   )
   return
 
@@ -682,7 +685,7 @@ if (typeof String.prototype.endsWith != 'function')
       alert('No se ubico .campos_persona')
       return
     $("#" + cnom).autocomplete({
-      source: root.puntomontaje + "/personas.json",
+      source: root.puntomontaje + "personas.json",
       minLength: 2,
       select: ( event, ui ) -> 
         if (ui.item) 
