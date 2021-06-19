@@ -266,6 +266,12 @@ if (typeof String.prototype.endsWith != 'function')
           $(selelem).replaceWith(t)
         else
           $(selelem).html(t)
+        $('[data-behaviour~=datepicker]').datepicker({
+          format: root.formato_fecha,
+          autoclose: true,
+          todayHighlight: true,
+          language: 'es'	
+        })
       return
     )
   return
