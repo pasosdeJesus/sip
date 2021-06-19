@@ -105,19 +105,28 @@ module Sip
             return if !params[:id_persona] 
             @persona = Sip::Persona.find(params[:id_persona].to_i)
             authorize! :read, @persona
+            oj = { 
+              id: @persona.id,
+              nombres: @persona.nombres,
+              apellidos: @persona.apellidos,
+              sexo: @persona.sexo,
+              tdocumento: @persona.tdocumento ? @persona.tdocumento.sigla :
+               '',
+              numerodocumento: @persona.numerodocumento,
+              dianac: @persona.dianac,
+              mesnac: @persona.mesnac,
+              anionac: @persona.anionac 
+            }
+            ## Si está autocompletando una persona de orgsocial persona
+            # entonces autcompletar cargo y correo
+            if params[:ac_orgsocial_persona]
+              orgsocial_persona = Sip::OrgsocialPersona.find_by(persona_id: @persona.id)
+              if orgsocial_persona
+                oj[:cargo] = orgsocial_persona.cargo 
+                oj[:correo] = orgsocial_persona.cargo 
+              end
+            end
             respond_to do |format|
-              oj = { 
-                id: @persona.id,
-                nombres: @persona.nombres,
-                apellidos: @persona.apellidos,
-                sexo: @persona.sexo,
-                tdocumento: @persona.tdocumento ? @persona.tdocumento.sigla :
-                 '',
-                numerodocumento: @persona.numerodocumento,
-                dianac: @persona.dianac,
-                mesnac: @persona.mesnac,
-                anionac: @persona.anionac 
-              }
               format.json { render json: oj, status: :ok }
               format.html { render inilne: oj.to_s, status: :ok }
             end
