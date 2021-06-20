@@ -51,9 +51,15 @@ group :development, :test do
 
   gem 'colorize'
 
+  gem 'code-scanning-rubocop'
+
   gem 'dotenv-rails'
 
   gem 'rails-erd'
+  
+  gem 'rubocop-minitest'
+  
+  gem 'rubocop-rails'
 
   #gem "spring" # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
 end
