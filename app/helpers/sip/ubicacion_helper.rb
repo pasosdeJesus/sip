@@ -38,8 +38,13 @@ module Sip
     module_function :formato_ubicacion_partes
 
     def formato_ubicacion u, con_clase = true, con_pais = true
-      formato_ubicacion_partes(u.id_pais, u.id_departamento, u.id_municipio,
-                               u.id_clase, con_clase, con_pais)
+      if u.nil?
+        return ""
+      end
+      formato_ubicacion_partes((u ? u.id_pais : nil), 
+                               (u ? u.id_departamento : nil), 
+                               (u ? u.id_municipio : nil),
+                               (u ? u.id_clase : nil), con_clase, con_pais)
     end
     module_function :formato_ubicacion
 
