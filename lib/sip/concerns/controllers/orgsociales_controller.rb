@@ -66,17 +66,19 @@ module Sip
           end
 
           def update
-            op_params = params[:orgsocial][:orgsocial_persona_attributes]
-            op_params.each do |clave, valor|
-              if valor[:id] == ""
-                op = Sip::OrgsocialPersona.create(
-                  correo: valor[:correo],
-                  orgsocial_id: @registro.id,
-                  perfilorgsocial_id: valor[:perfilorgsocial_id],
-                  cargo: valor[:cargo],
-                  persona_id: valor[:persona_attributes][:id]
-                )
-                valor[:id] = op.id.to_s
+            if params && params[:orgsocial] && params[:orgsocial][:orgsocial_persona_attributes]
+              op_params = params[:orgsocial][:orgsocial_persona_attributes]
+              op_params.each do |clave, valor|
+                if valor[:id] == ""
+                  op = Sip::OrgsocialPersona.create(
+                    correo: valor[:correo],
+                    orgsocial_id: @registro.id,
+                    perfilorgsocial_id: valor[:perfilorgsocial_id],
+                    cargo: valor[:cargo],
+                    persona_id: valor[:persona_attributes][:id]
+                  )
+                  valor[:id] = op.id.to_s
+                end
               end
             end
             update_gen(@registro)
