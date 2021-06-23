@@ -66,7 +66,8 @@ module Sip
           end
 
           def update
-            if params && params[:orgsocial] && params[:orgsocial][:orgsocial_persona_attributes]
+            if params && params[:orgsocial] && 
+                params[:orgsocial][:orgsocial_persona_attributes]
               op_params = params[:orgsocial][:orgsocial_persona_attributes]
               op_params.each do |clave, valor|
                 if valor[:id] == ""
