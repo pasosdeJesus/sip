@@ -17,12 +17,10 @@
     "node-forge": "0.10.0",
     "popper.js": "^2.0.0-next.4",
     "turbolinks": "^5.2.0",
-    "webpack": "^5.38.0",
+    "webpack": "^5.38.1",
     "webpack-cli": "^4.7.2"
   },
   "devDependencies": {
-<<<<<<< HEAD
-<<<<<<< HEAD
     "@webpack-cli/serve": "^1.5.1",
     "babel-plugin-macros": "^3.1.0",
     "glob-parent": "^5.1.2",
@@ -39,23 +37,4 @@
   "browserslist": [
     "defaults"
   ]
-=======
-    "postcss": "^8.2.10",
-    "webpack-dev-server": "^3.11.2"
-  }
->>>>>>> f1d6daa (Actualzia)
-=======
-    "@webpack-cli/serve": "^1.5.1",
-    "postcss": "^8.2.10",
-    "webpack-dev-server": "^3.11.2"
-  },
-  "babel": {
-    "presets": [
-      "./node_modules/@rails/webpacker/package/babel/preset.js"
-    ]
-  },
-  "browserslist": [
-    "defaults"
-  ]
->>>>>>> 4bd0cb6 (Actualiza js)
 }
