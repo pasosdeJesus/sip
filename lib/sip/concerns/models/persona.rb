@@ -43,7 +43,7 @@ module Sip
             ['GAY', :G],
             ['BISEXUAL', :B], 
             ['TRANSEXUAL', :T], 
-            ['OTRA', :O]
+            ['LGBTQ+', :O]
           ]
 
           def self.orientacion_opciones_diccionario
