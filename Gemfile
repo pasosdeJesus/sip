@@ -41,7 +41,8 @@ gem 'twitter_cldr'              # Localiación e internacionalización
 
 gem 'tzinfo'                    # Zonas horarias
 
-gem 'webpacker', '~> 5.4'       # Traduce y compila modulos Javascript
+gem 'webpacker',#, '~> 5.4'       # Traduce y compila modulos Javascript
+  git: 'https://github.com/rails/webpacker'
 
 gem 'will_paginate'             # Pagina listados
 
