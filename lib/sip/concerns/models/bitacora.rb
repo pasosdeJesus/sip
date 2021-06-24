@@ -85,12 +85,12 @@ module Sip
             # controlador y los cambios al formulario en el cliente
             # con Javascript.
             detalle_bitacora = {}
-            if request.params[indparam1] &&
-                request.params[indparam1][indparam2] &&
-                request.params[indparam1][indparam2] != ''
+            if request.params[indparam1.to_sym] &&
+                request.params[indparam1.to_sym][indparam2.to_sym] &&
+                request.params[indparam1.to_sym][indparam2.to_sym] != ''
               begin
                 detalle_bitacora = JSON.parse(
-                  request.params[indparam1][indparam2])
+                  request.params[indparam1.to_sym][indparam2.to_sym])
               rescue
                 detalle_bitacora = {error: 'Error al reconocer JSON'}
               end
@@ -100,7 +100,7 @@ module Sip
                               usuario_id,
                               request.url,
                               params,
-                              'Sivel2Gen::Caso',
+                              modelo,
                               registro_id,
                               'actualizar',
                               detalle_bitacora.to_json)
