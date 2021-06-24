@@ -1,42 +1,46 @@
-<div class="panel-group" id="acordeonlc">
-  <div class="panel panel-default" id="panellc">
-    <div class="panel-heading">
-      <div class="panel-title">
-        <a data-toggle="collapse" data-target="#colapsalc" href="#colapsalc">
-          Expandir / colapsar bitácora de cambios
-        </a>
-      </div> <!-- panel-title -->
-    </div> <!-- panel-heading -->
-
-    <div id="colapsalc" class="panel-collapse collapse">
-      <div class="panel-body table-responsive" style="overflow-x:scroll;">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Fecha</th>
-              <th scope="col">Usuario</th>
-              <th scope="col">IP</th>
-              <th scope="col">Operación</th>
-              <th scope="col">Detalle cambio</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% Sip::Bitacora.where(
-              modelo: clase, 
-              modelo_id: @registro.id, 
-              operacion: ['actualizar', 'importar', 'iniciar', 'tocar']).order('fecha DESC').each do |r| %>
-              <tr>
-                <th scope="row"><%= r.fecha %></th>
-                <td><%= r.usuario_id ? Usuario.find(r.usuario_id).nusuario : ''  %></td>
-                <td><%= r.ip %></td>
-                <td><%= r.operacion %></td>
-                <td><%= r.detalle %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-
-      </div> <!-- panel-body -->
-    </div> <!-- colapsalc -->
-  </div> <!-- panellc -->
-</div> <!-- acordeonlc -->
+<% if  controller.registrar_en_bitacora %>
+  <div class='bitacora'>
+    <div class="panel-group" id="acordeonlc">
+      <div class="panel panel-default" id="panellc">
+        <div class="panel-heading">
+          <div class="panel-title">
+            <a data-toggle="collapse" data-target="#colapsalc" href="#colapsalc">
+              Expandir / colapsar bitácora de cambios (<%= @registro.class %>)
+            </a>
+          </div> <!-- panel-title -->
+        </div> <!-- panel-heading -->
+    
+        <div id="colapsalc" class="panel-collapse collapse">
+          <div class="panel-body table-responsive" style="overflow-x:scroll;">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Usuario</th>
+                  <th scope="col">IP</th>
+                  <th scope="col">Operación</th>
+                  <th scope="col">Detalle cambio</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% Sip::Bitacora.where(
+                  modelo: clase, 
+                  modelo_id: @registro.id, 
+                  operacion: ['actualizar', 'importar', 'iniciar', 'tocar']).order('fecha DESC').each do |r| %>
+                  <tr>
+                    <th scope="row"><%= r.fecha %></th>
+                    <td><%= r.usuario_id ? Usuario.find(r.usuario_id).nusuario : ''  %></td>
+                    <td><%= r.ip %></td>
+                    <td><%= r.operacion %></td>
+                    <td><%= r.detalle %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+    
+          </div> <!-- panel-body -->
+        </div> <!-- colapsalc -->
+      </div> <!-- panellc -->
+    </div> <!-- acordeonlc -->
+  </div> <! -- bitacora -->
+<% end %>
