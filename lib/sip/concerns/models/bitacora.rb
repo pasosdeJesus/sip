@@ -66,6 +66,46 @@ module Sip
             end
           end
 
+          # Agrega un registro de actualizar a la bitácra
+          # @param request petición HTTP
+          # @param indparam1 se usará request.param[indparam1]
+          # @param indparam2 se usará request.param[indparam1][indparam2]
+          #   debe tener los cambios realizados, recolectado por Javascript
+          # @param usuario_id
+          # @param params params
+          # @param modelo e.g "Sivel2Gen::Caso"
+          # @param registro_id e.g @registro.id
+          def self.agregar_actualizar(
+            request, indparam1, indparam2, usuario_id, params,
+            modelo, registro_id)
+            # Se intentó implementar a nivel de modelo con
+            # before_update, after_update pero a Sivel2Gen::Caso
+            # sólo le llegan los cambios al modelo Caso y no a los
+            # asociados. Por eso inicialmente se prefirió a nivel de
+            # controlador y los cambios al formulario en el cliente
+            # con Javascript.
+            detalle_bitacora = {}
+            if request.params[indparam1] &&
+                request.params[indparam1][indparam2] &&
+                request.params[indparam1][indparam2] != ''
+              begin
+                detalle_bitacora = JSON.parse(
+                  request.params[indparam1][indparam2])
+              rescue
+                detalle_bitacora = {error: 'Error al reconocer JSON'}
+              end
+            end
+            if detalle_bitacora != {}
+              Sip::Bitacora.a(request.remote_ip,
+                              usuario_id,
+                              request.url,
+                              params,
+                              'Sivel2Gen::Caso',
+                              registro_id,
+                              'actualizar',
+                              detalle_bitacora.to_json)
+            end
+          end
 
           def presenta_nombre
             "#{id}"
