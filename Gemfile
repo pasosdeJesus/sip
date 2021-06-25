@@ -57,10 +57,10 @@ group :development, :test do
   gem 'dotenv-rails'
 
   gem 'rails-erd'
-  
-  gem 'rubocop-minitest'
-  
-  gem 'rubocop-rails'
+
+  #gem 'rubocop-minitest'
+
+  #gem 'rubocop-rails'
 
   #gem "spring" # Acelera ejecutando en fondo. https://github.com/jonleighton/spring
 end

@@ -891,9 +891,9 @@
   integrity sha512-rFnSUN/QOtnOAgqFRooTA3H57JLDm0QEG/jPdk+tLQNL/eWd+Aok8g3qCI+Q1xuDPWpGW/i9JySpJVsq8Q0s9w==
 
 "@rails/ujs@^6.0.0":
-  version "6.0.4"
-  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.0.4.tgz#b155b0e23b766fe8038cb9bc796efb55ea840c15"
-  integrity sha512-pi6BTIAuMAgfh0tz9jHyKwuzT8HKWlZdfI6/pxcR+NWRuTyN9psYmxskP2QnxFehSkSuvQmQuKv3Hyrs13l3xQ==
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.1.4.tgz#093d5341595a02089ed309dec40f3c37da7b1b10"
+  integrity sha512-O3lEzL5DYbxppMdsFSw36e4BHIlfz/xusynwXGv3l2lhSlvah41qviRpsoAlKXxl37nZAqK+UUF5cnGGK45Mfw==
 
 "@rails/webpacker@6.0.0-beta.7":
   version "6.0.0-beta.7"
@@ -1894,9 +1894,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.723:
-  version "1.3.756"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.756.tgz#942cee59cd64d19f576d8d5804eef09cb423740c"
-  integrity sha512-WsmJym1TMeHVndjPjczTFbnRR/c4sbzg8fBFtuhlb2Sru3i/S1VGpzDSrv/It8ctMU2bj8G7g7/O3FzYMGw6eA==
+  version "1.3.758"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.758.tgz#0baeb8f0a89d1850cc65f92da5f669343e4f6241"
+  integrity sha512-StYtiDbgZdjcck3OLwsVVVif7QDuD5m5v2gF+XpETp5lHa7X0y3129YBlYaHRPyj1fep1oAaC6i//gAdp+rhbw==
 
 emoji-regex@^7.0.1:
   version "7.0.3"
@@ -3854,6 +3854,13 @@ serialize-javascript@^5.0.1:
   dependencies:
     randombytes "^2.1.0"
 
+serialize-javascript@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/serialize-javascript/-/serialize-javascript-6.0.0.tgz#efae5d88f45d7924141da8b5c3a7a7e663fefeb8"
+  integrity sha512-Qr3TosvguFt8ePWqsvRfrKyQXIiW+nGbYpy8XK24NQHE83caxWt+mIymTT19DGFbNWNLfEwsrkSmN64lVWB9ag==
+  dependencies:
+    randombytes "^2.1.0"
+
 serve-index@^1.9.1:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/serve-index/-/serve-index-1.9.1.tgz#d3768d69b1e7d82e5ce050fff5b453bea12a9239"
@@ -4167,14 +4174,14 @@ tapable@^2.0, tapable@^2.1.1, tapable@^2.2.0:
   integrity sha512-FBk4IesMV1rBxX2tfiK8RAmogtWn53puLOQlvO8XuwlgxcYbP4mVPS9Ph4aeamSyyVjOl24aYWAuc8U5kCVwMw==
 
 terser-webpack-plugin@^5.0.3, terser-webpack-plugin@^5.1.3:
-  version "5.1.3"
-  resolved "https://registry.yarnpkg.com/terser-webpack-plugin/-/terser-webpack-plugin-5.1.3.tgz#30033e955ca28b55664f1e4b30a1347e61aa23af"
-  integrity sha512-cxGbMqr6+A2hrIB5ehFIF+F/iST5ZOxvOmy9zih9ySbP1C2oEWQSOUS+2SNBTjzx5xLKO4xnod9eywdfq1Nb9A==
+  version "5.1.4"
+  resolved "https://registry.yarnpkg.com/terser-webpack-plugin/-/terser-webpack-plugin-5.1.4.tgz#c369cf8a47aa9922bd0d8a94fe3d3da11a7678a1"
+  integrity sha512-C2WkFwstHDhVEmsmlCxrXUtVklS+Ir1A7twrYzrDrQQOIMOaVAYykaoo/Aq1K0QRkMoY2hhvDQY1cm4jnIMFwA==
   dependencies:
     jest-worker "^27.0.2"
     p-limit "^3.1.0"
     schema-utils "^3.0.0"
-    serialize-javascript "^5.0.1"
+    serialize-javascript "^6.0.0"
     source-map "^0.6.1"
     terser "^5.7.0"
 
