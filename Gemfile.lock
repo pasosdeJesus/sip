@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/webpacker
-  revision: beb645ecbf707eb4f3311e61b05abb67fe0ca010
+  revision: 032c2d11a3758035305fe34e6795ab133128ee32
   specs:
     webpacker (6.0.0.beta.7)
       activesupport (>= 5.2)
@@ -213,7 +213,7 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
-    rubocop (1.17.0)
+    rubocop (1.18.1)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
@@ -263,7 +263,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    twitter_cldr (6.6.0)
+    twitter_cldr (6.6.1)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
@@ -326,4 +326,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.2.15
+   2.2.20
