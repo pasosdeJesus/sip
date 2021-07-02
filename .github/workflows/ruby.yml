@@ -59,7 +59,6 @@ jobs:
           pwd
           echo $HOME
           whoami
-          cat ~/.pgpass
       - name: Preparar .env
         run: |
           cp test/dummy/.env.github test/dummy/.env
