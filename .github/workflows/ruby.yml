@@ -90,8 +90,7 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Localización
         run: |
-          sudo locale-gen --no-archive es_CO.UTF-8
-          locale -a
+          sudo locale-gen --no-archive es_CO.UTF-8; locale -a
       - name: Preparar BD
         run: |
           cd test/dummy
