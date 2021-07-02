@@ -57,7 +57,7 @@ jobs:
     # Ideas de
     # https://github.com/hostolab/covidliste/blob/main/.github/workflows/test.yml
     - name: Instalar bundle
-        run: |
+      - run: |
           gem install bundle
           bundle update --bundler
           bundle install --jobs 4 --retry 3 --path 'vendor/bundle' --without development production
