@@ -31,7 +31,6 @@ blocks:
             - bundle install
             - cache store
             - bundle exec rubocop
-              #- bundle exec brakeman
   - name: Unit tests
     dependencies:
       - Code scanning
