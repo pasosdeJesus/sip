@@ -30,10 +30,17 @@ test:
       - node_modules
       - vendor/bundle
   before_script:
+    - uname -a
+    - whoami
+    - echo "HOME=${HOME}"
     - pwd
-    - echo "HOME=${HOME}
-    - ruby -v
+    - ls
+    - which psql
+    - psql --version
     - which ruby
+    - ruby -v
+    - which node
+    - node -v
     - export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
     - apt-get update -yy && apt-get install build-essential libpq-dev postgresql-client -y
     - apt-get install -y -qq nodejs
