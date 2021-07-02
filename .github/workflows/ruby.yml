@@ -23,7 +23,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:11
+        image: postgres:13
         ports:
           - 5432:5432
         env:
@@ -43,6 +43,6 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Preparar .env
       run: |
-        cp test/dummy/.env.plantilla test/dummy/.env
+        cp test/dummy/.env.github test/dummy/.env
     - name: Run tests
       run: bundle exec rake
