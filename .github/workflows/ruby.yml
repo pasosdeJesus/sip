@@ -15,11 +15,13 @@ on:
 
 jobs:
   test:
-
+    env:
+      RAILS_ENV: test
+      NODE_ENV: test
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['2.6', '2.7', '3.0']
+        ruby-version: ['3.0']
 
     services:
       postgres:
@@ -27,9 +29,13 @@ jobs:
         ports:
           - 5432:5432
         env:
-          POSTGRES_USER: link_shortener
-          POSTGRES_PASSWORD: link_shortener
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready 
+          --health-interval 10s 
+          --health-timeout 5s 
+          --health-retries 5
 
     steps:
     - uses: actions/checkout@v2
@@ -41,11 +47,43 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Revisar 
+    - name: Revisar entorno
       run: |
         pwd; echo $HOME; whoami
     - name: Preparar .env
       run: |
         cp test/dummy/.env.github test/dummy/.env        
-    - name: Run tests
+
+    # Ideas de
+    # https://github.com/hostolab/covidliste/blob/main/.github/workflows/test.yml
+    - name: Instalar bundle
+        run: |
+          gem install bundle
+          bundle update --bundler
+          bundle install --jobs 4 --retry 3 --path 'vendor/bundle' --without development production
+      - name: Versión de node.js
+        id: nvm
+        run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
+      - name: Configurar Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "${{ steps.nvm.outputs.NODE_VERSION }}"
+      - name: Ruta a yarn
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Cache para node_modules 
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+      - name: Instalar Yarn
+        run: yarn install --frozen-lockfile
+      - name: Prepare DB
+        run: |
+          bundle exec rails db:create db:setup db:migrate
+      - name: Ejecutar pruebas
+        run: ./bin/rails test
+      - name: Acción Brakeman
+        uses: artplan1/brakeman-action@v1.2.1
+    - name: Ejecutar pruebas
       run: bundle exec rake
