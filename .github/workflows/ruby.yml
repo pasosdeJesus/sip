@@ -94,7 +94,7 @@ jobs:
         run: |
           sudo locale-gen --no-archive es_CO.UTF-8
           locale -a
-          localedef -i es_CO -c -f UTF-8 -A /usr/share/locale/locale.alias es_CO.UTF-8
+          sudo localedef -i es_CO -c -f UTF-8 -A /usr/share/locale/locale.alias es_CO.UTF-8
       - name: Preparar BD
         run: |
           cd test/dummy
