@@ -62,6 +62,9 @@ jobs:
           whoami
           lsb_release --all
           locale -a
+          psql -v
+          ruby -v
+          node -v
       - name: Preparar .env
         run: |
           cp test/dummy/.env.github test/dummy/.env
