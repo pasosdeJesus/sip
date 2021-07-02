@@ -60,6 +60,7 @@ jobs:
           pwd
           echo $HOME
           whoami
+          lsb_release --all
           locale -a
       - name: Preparar .env
         run: |
