@@ -59,6 +59,7 @@ jobs:
           pwd
           echo $HOME
           whoami
+          locale -a
       - name: Preparar .env
         run: |
           cp test/dummy/.env.github test/dummy/.env
