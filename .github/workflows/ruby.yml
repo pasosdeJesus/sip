@@ -61,11 +61,18 @@ jobs:
           echo $HOME
           whoami
           lsb_release --all
-          sudo dpkg-reconfigure locales
-          locale -a
           psql --version
           ruby -v
           node -v
+      -name: Establecer locale
+        run: |
+          sudo dpkg-reconfigure locales
+          sudo locale-gen es_CO.UTF-8
+          sudo update-locale LANG=es_CO.UTF-8
+          locale -a
+      -name: Prueba locale
+        run: |
+          date
       - name: Preparar .env
         run: |
           cp test/dummy/.env.github test/dummy/.env
