@@ -85,7 +85,9 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Prepare DB
         run: |
-          bundle exec rails db:create db:setup db:migrate
+          bundle exec rails db:create
+          bundle exec rails db:setup
+          bundle exec rails db:migrate
       - name: Ejecutar pruebas
         run: ./bin/rails test
       - name: Acción Brakeman
