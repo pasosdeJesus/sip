@@ -92,17 +92,15 @@ jobs:
         run: |
           sudo locale-gen --no-archive es_CO.UTF-8
           locale -a
-
       - name: Preparar BD
         run: |
           cd test/dummy
           cp db/structure.sql db/structure.sql.copia
-          sed -e 's/provider = libc,//g' db/structure.sql.copia > db/structure.sql
+          sed -e 's/provider = libc,//g;s/es_CO.UTF-8/es_CO.utf8/g' db/structure.sql.copia > db/structure.sql
           echo "*:*:*:postgres:postgres" > ~/.pgpass
           chmod 0600 ~/.pgpass
           psql -h localhost -c 'CREATE DATABASE sipdes_pru;' -U postgres
-          bundle exec rails db:create
-          bundle exec rails db:setup
+          bundle exec rails db:drop db:create db:setup
           bundle exec rails db:migrate
           bundle exec rails sip:indices
           cd ../..
