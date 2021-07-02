@@ -41,8 +41,11 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Revisar 
+      run: |
+        pwd; echo $HOME; whoami
     - name: Preparar .env
       run: |
-        cp test/dummy/.env.github test/dummy/.env
+        cp test/dummy/.env.github test/dummy/.env        
     - name: Run tests
       run: bundle exec rake
