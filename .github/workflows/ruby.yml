@@ -88,7 +88,7 @@ jobs:
       - name: Preparar BD
         run: |
           cd test/dummy
-          psql -c 'CREATE DATABASE sipdes_pru;' -U postgres
+          psql -h localhost -c 'CREATE DATABASE sipdes_pru;' -U postgres
           bundle exec rails db:create
           bundle exec rails db:setup
           bundle exec rails db:migrate
