@@ -93,6 +93,7 @@ jobs:
         run: |
           cd test/dummy
           echo "*:*:*:postgres:postgres" > ~/.pgpass
+          chmod 0600 ~/.pgpass
           psql -h localhost -c 'CREATE DATABASE sipdes_pru;' -U postgres
           bundle exec rails db:create
           bundle exec rails db:setup
