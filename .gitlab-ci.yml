@@ -30,6 +30,8 @@ test:
       - node_modules
       - vendor/bundle
   before_script:
+    - pwd
+    - echo "HOME=${HOME}
     - ruby -v
     - which ruby
     - export APT_CACHE_DIR=`pwd`/apt-cache && mkdir -pv $APT_CACHE_DIR
