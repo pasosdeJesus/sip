@@ -23,6 +23,7 @@ jobs:
       NODE_ENV: test
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+      LANG: es_CO.UTF-8
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -92,11 +93,12 @@ jobs:
         run: |
           sudo locale-gen --no-archive es_CO.UTF-8
           locale -a
+          localedef -i es_CO -c -f UTF-8 -A /usr/share/locale/locale.alias es_CO.UTF-8
       - name: Preparar BD
         run: |
           cd test/dummy
           cp db/structure.sql db/structure.sql.copia
-          sed -e 's/provider = libc,//g;s/es_CO.UTF-8/es_CO.utf8/g' db/structure.sql.copia > db/structure.sql
+          sed -e 's/provider = libc,//g' db/structure.sql.copia > db/structure.sql
           echo "*:*:*:postgres:postgres" > ~/.pgpass
           chmod 0600 ~/.pgpass
           psql -h localhost -c 'CREATE DATABASE sipdes_pru;' -U postgres
