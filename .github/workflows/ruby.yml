@@ -21,6 +21,8 @@ jobs:
     env:
       RAILS_ENV: test
       NODE_ENV: test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     runs-on: ubuntu-latest
     strategy:
       matrix:
