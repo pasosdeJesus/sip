@@ -61,8 +61,9 @@ jobs:
           echo $HOME
           whoami
           lsb_release --all
+          sudo dpkg-reconfigure locales
           locale -a
-          psql -v
+          psql --version
           ruby -v
           node -v
       - name: Preparar .env
