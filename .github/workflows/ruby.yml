@@ -56,7 +56,10 @@ jobs:
           # runs 'bundle install' and caches installed gems automatically
       - name: Revisar entorno
         run: |
-          pwd; echo $HOME; whoami
+          pwd
+          echo $HOME
+          whoami
+          cat ~/.pgpass
       - name: Preparar .env
         run: |
           cp test/dummy/.env.github test/dummy/.env
@@ -90,6 +93,7 @@ jobs:
       - name: Preparar BD
         run: |
           cd test/dummy
+          echo "*:*:*:postgres:postgres" > ~/.pgpass
           psql -h localhost -c 'CREATE DATABASE sipdes_pru;' -U postgres
           bundle exec rails db:create
           bundle exec rails db:setup
