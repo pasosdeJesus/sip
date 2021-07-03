@@ -5,8 +5,6 @@ image: "ruby:3.0.1"
 services:
   - name: vtamara/postgis-es_co:13.3-1
     alias: postgres
-  - name: selenium/standalone-chrome
-    alias: chrome
 
 variables:
   RAILS_ENV: test
@@ -16,7 +14,6 @@ variables:
   POSTGRES_DB: sipdes_pru
   POSTGRES_HOST_AUTH_METHOD: trust
   NOKOGIRI_USE_SYSTEM_LIBRARIES: "true"
-  SELENIUM_REMOTE_URL: http://chrome:4444/wd/hub
 
 
 stages:
@@ -34,7 +31,6 @@ test:
     - whoami
     - echo "HOME=${HOME}"
     - pwd
-    - psql --version
     - which ruby
     - ruby -v
     - which node
@@ -52,11 +48,9 @@ test:
     - cp .env.gitlab .env
     - cp db/structure.sql db/structure.sql.copia 
     - sed -e 's/provider = libc,//g;s/SET default_table_access_method.*/-- &/g' db/structure.sql.copia > db/structure.sql 
-    #- psql -h postgres -U runner --set ON_ERROR_STOP=1 --no-psqlrc --file /builds/pasosdeJesus/si_jrscol/db/structure.sql sip
     - bin/rails db:drop db:create db:setup
     - bin/rails sip:indices
   script:
     - CONFIG_HOSTS=www.example.com bin/rails test
-    #- CONFIG_HOSTS=127.0.0.1 bin/rails test:system
 
 
