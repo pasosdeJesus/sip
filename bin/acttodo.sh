@@ -115,7 +115,7 @@ if (test "$SALTAAPO214" != "1") then {
   actuno apo214 test/dummy; 
 } fi;
 
-# Usan 3 motores
+# Usan 3 o más motores
 if (test "$SALTASIANZORC" != "1") then {
         actuno si_anzorc; 
 } fi;
@@ -134,8 +134,5 @@ if (test "$SALTASIVELSJR" != "1") then {
   actuno sivel2_mujeresindigenas;
 } fi;
 
-# Usan 4 motores
-#actuno si_jrslac; 
-#actuno sivel2_sjrven; 
 actuno si_jrscol
 
