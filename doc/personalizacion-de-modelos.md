@@ -43,7 +43,7 @@ Las tablas unión que `rails` genera con `create_join_table`:
   por ejemplo si se hiciera una tabla unión entre `sip_orgsocial` y
   `lineabase` en el modelo `sip_orgsocial`:
 ```
-has_and_belongs_to_many :lineabase,·
+has_and_belongs_to_many :lineabase,
   class_name: '::Lineabase',
   foreign_key: 'orgsocial_id',
   association_foreign_key: 'lineabase_id',
