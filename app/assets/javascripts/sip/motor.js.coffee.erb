@@ -242,7 +242,7 @@ if (typeof String.prototype.endsWith != 'function')
 # Envía con ajax a la ruta especificada junto con los datos, espera
 # respuesta html de la cual extrae una parte con selector selresp y
 # lo usa para volver a pintar el elemento con selector selelem
-@sip_envia_ajax_datos_ruta_y_pinta= (ruta, datos, selresp, selelem, metodo='GET', tipo='html' ) ->
+@sip_envia_ajax_datos_ruta_y_pinta= (ruta, datos, selresp, selelem, metodo='GET', tipo='html', concsrf = false ) ->
   root =  window
   t = Date.now()
   d = -1
@@ -251,11 +251,16 @@ if (typeof String.prototype.endsWith != 'function')
   root.sip_envia_ajax_t = t
   if (d == -1 || d > 2)
     sip_arregla_puntomontaje(root)
+    token = $('meta[name="csrf-token"]').attr('content');
     rutac = root.puntomontaje + ruta + ".js"
     $.ajax({
       url: rutac, 
       data: datos, 
       dataType: tipo,
+      beforeSend: ((xhr) ->
+        if concsrf
+          xhr.setRequestHeader('X-CSRF-Token', token)
+      ),
       method: metodo
     }).fail( (jqXHR, texto) ->
       alert("Error con ajax a " + rutac + ": " + texto)

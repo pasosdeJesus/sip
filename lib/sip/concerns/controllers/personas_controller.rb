@@ -96,7 +96,7 @@ module Sip
             end
           end
 
-          # Remplaza persona por la elejida por el usuario en autocompletación
+          # Remplaza persona por la elegida por el usuario en autocompletación
           def remplazar
           end
 
