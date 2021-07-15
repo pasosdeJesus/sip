@@ -587,7 +587,8 @@ if (typeof String.prototype.endsWith != 'function')
 #          además pasará parametro presenta_nombre al hacer la consulta para 
 #          que el controlador responda con presenta_nombre de Sip::Modelo)
 # f        Función por llamar despues de cambiar el cuadro de seleccion
-@sip_llena_select_con_AJAX2 = (rutajson, params, idsel, descerr, root = window, cid = 'id', cnombre = 'nombre', f = null) ->
+# opvacia  Si es verdadero agrega opción vacía al cuadro de selección
+@sip_llena_select_con_AJAX2 = (rutajson, params, idsel, descerr, root = window, cid = 'id', cnombre = 'nombre', f = null, opvacia = false) ->
   sip_arregla_puntomontaje(root)
   t = Date.now()
   d = -1
@@ -609,7 +610,7 @@ if (typeof String.prototype.endsWith != 'function')
   x = $.getJSON(root.puntomontaje + rutajson, params)
   x.done((datos) ->
     ##debugger
-    sip_remplaza_opciones_select(idsel,datos, true, cid, cnombre)
+    sip_remplaza_opciones_select(idsel, datos, true, cid, cnombre, opvacia)
     if f != null
       f(root)
   )
