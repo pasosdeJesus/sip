@@ -158,8 +158,8 @@ es:
         id_tclase: Tipo de centro poblado
         id_clalocal: Código dentro del municipio
       "sip/tdocumento":
-        Tdocumento: Tipo de documento
-        Tdocumentos: Tipos de documentos
+        Tdocumento: Tipo de documento de identidad
+        Tdocumentos: Tipos de documentos de identidad
       "sip/tema":
         btn_primario_fondo_ini:  Color de arriba del fondo del botón primario
         btn_primario_fondo_fin:  Color de abajo del fondo del botón primario
