@@ -1,5 +1,5 @@
 <%= f.input :busnusuario,
-  collection: ::Usuario.all,
+  collection: ::Usuario.all.order('LOWER(nusuario)'),
   label: false,
   label_method: :nusuario,
   value_method: :nusuario,
