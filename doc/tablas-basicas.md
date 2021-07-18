@@ -134,7 +134,7 @@ Son automáticas, no necesita editar código para estas.
 En el formulario de edición/creación como controles de edición se usaran:
 * Campos de selección para llaves foráneas  ```belongs_to```
 * Campos de selección múltiple para asociaciones ```has_many```
-* Campos de feha para campos con tipo ```:date```
+* Campos de fecha para campos con tipo ```:date```
 * Campos enteros para campos con tipo ```:integer```
 * Campos de texto para los demás casos.
 
@@ -147,7 +147,7 @@ La actualización de índice se hace con
 ```
 bin/rails sip:indices
 ```
-Y el volcado de los datos de las tablas básicas (en db/datos_basicas.sql):
+Y el volcado de los datos de las tablas básicas (en `db/datos_basicas.sql`):
 ```
 bin/rails sip:vuelcabasicas
 ```
