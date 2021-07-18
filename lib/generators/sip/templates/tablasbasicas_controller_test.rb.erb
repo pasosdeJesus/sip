@@ -1,57 +1,76 @@
 require 'test_helper'
 
-class <%= nom_clase_plural %>ControllerTest < ActionController::TestCase
-  setup do
-    skip
-    @<%= nom_arch %> = <%= nom_clase %>(:one)
-  end
+# Esta prueba supone que en la tabla básica hay un registro con id 1
+# Si no lo hay agregar skip a pruebas que lo suponen o crear registro
+# con id 1 en las mismas o en setup
 
-  test "should get index" do
-    skip
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:<%= nom_arch %>)
-  end
+module Admin
+  class <%= nom_clase_plural %>ControllerTest < ActionDispatch::IntegrationTest
+    <%= nom_clase.upcase %>_NUEVA = {
+      nombre: 'X',
+      observaciones: 'y',
+      fechacreacion: '<%= Date.today %>',
+      fechadeshabilitacion: nil,
+      created_at: '<%= Date.today %>',
+      updated_at: '<%= Date.today %>',
+    }
 
-  test "should get new" do
-    skip
-    get :new
-    assert_response :success
-  end
+    include Rails.application.routes.url_helpers
+    include Devise::Test::IntegrationHelpers
 
-  test "should create <%= nom_arch %>" do
-    skip
-    assert_difference('<%= nom_clase %>.count') do
-      post :create, <%= nom_arch %>: { created_at: @<%= nom_arch %>.created_at, fechacreacion: @<%= nom_arch %>.fechacreacion, fechadeshabilitacion: @<%= nom_arch %>.fechadeshabilitacion, nombre: @<%= nom_arch %>.nombre, observaciones: @<%= nom_arch %>.observaciones, updated_at: @<%= nom_arch %>.updated_at }
+    setup do
+      @current_usuario = ::Usuario.find(1)
+      sign_in @current_usuario
     end
 
-    assert_redirected_to <%= nom_arch %>_path(assigns(:<%= nom_arch %>))
-  end
-
-  test "should show <%= nom_arch %>" do
-    skip
-    get :show, id: @<%= nom_arch %>
-    assert_response :success
-  end
-
-  test "should get edit" do
-    skip
-    get :edit, id: @<%= nom_arch %>
-    assert_response :success
-  end
-
-  test "should update <%= nom_arch %>" do
-    skip
-    patch :update, id: @<%= nom_arch %>, <%= nom_arch %>: { created_at: @<%= nom_arch %>.created_at, fechacreacion: @<%= nom_arch %>.fechacreacion, fechadeshabilitacion: @<%= nom_arch %>.fechadeshabilitacion, nombre: @<%= nom_arch %>.nombre, observaciones: @<%= nom_arch %>.observaciones, updated_at: @<%= nom_arch %>.updated_at }
-    assert_redirected_to <%= nom_arch %>_path(assigns(:<%= nom_arch %>))
-  end
-
-  test "should destroy <%= nom_arch %>" do
-    skip
-    assert_difference('<%= nom_clase %>.count', -1) do
-      delete :destroy, id: @<%= nom_arch %>
+    # Cada prueba se ejecuta se hace en una transacción
+    # que después de la prueba se revierte. Por lo que no
+    # debe preocuparse por restaurar/borrar lo que modifique/elimine/agregue
+    # en cada prueba.
+   
+    test "debe presentar listado" do
+      get admin_<%= nom_clase %>_path
+      assert_response :success
+      assert_template :index
     end
 
-    assert_redirected_to <%= nom_arch_plural %>_path
+    test "debe presentar resumen de existente" do
+      get admin_<%= nom_arch %>_url(<%= nom_clase %>.find(1))
+      assert_response :success
+      assert_template :show
+    end
+
+    test "debe presentar formulario para nueva" do
+      get new_admin_<%= nom_arch %>_path
+      assert_response :success
+      assert_template :new
+    end
+
+    test "debe crear nueva" do
+      assert_difference('<%= nom_clase %>.count') do
+        post admin_<%= nom_arch_plural %>_path, params: { 
+          <%= nom_arch %>: <%= nom_clase.upcase %>_NUEVA
+        }
+      end
+
+      assert_redirected_to admin_<%= nom_arch %>_path(
+        assigns(:<%= nom_arch %>))
+    end
+
+    test "debe actualizar existente" do
+      patch admin_<%= nom_arch %>_path(<%= nom_clase %>.find(1)),
+        params: { <%= nom_arch %>: { nombre: 'YY'}}
+
+      assert_redirected_to admin_<%= nom_arch %>_path(
+        assigns(:<%= nom_arch %>))
+    end
+
+    test "debe eliminar" do
+      assert_difference('<%= nom_clase %>.count', -1) do
+        delete admin_<%= nom_arch %>_url(<%= nom_clase %>.find(1))
+      end
+
+      assert_redirected_to admin_<%= nom_arch_plural %>_path
+    end
   end
 end
