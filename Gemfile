@@ -48,7 +48,7 @@ gem 'will_paginate'             # Pagina listados
 
 
 group :development, :test do
-  #gem 'byebug'
+  # gem 'byebug'
 
   gem 'colorize'
 
