@@ -40,6 +40,7 @@ module Sip
           def email_required?
             false
           end
+          validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
           validates_uniqueness_of :nusuario, :case_sensitive => false
           validates_format_of :nusuario, 
             :with  => /\A[a-zA-Z_0-9]+[-.a-zA-Z_0-9]*\z/
@@ -79,8 +80,14 @@ module Sip
             end
           end
 
-          validates_presence_of   :encrypted_password, :on=>:create
-          validates_confirmation_of   :encrypted_password, :on=>:create
+          validates_presence_of :password, :on=>:create
+          validates_confirmation_of :password, :on=>:create
+          validate :password_complexity
+          def password_complexity
+            return if password.blank? || password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,70}$/
+
+            errors.add :password, 'Tu clave debe incluir por lo menos 1 letra mayúscula, 1 letra minúscula, 1 número y 1 caracter especial'
+          end
 
           def confirmation_token=(value)
             if value == '' 

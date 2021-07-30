@@ -22,6 +22,8 @@ es:
   errors:
     format: "%{message}"
     messages:
+      password:
+        password_strength: "La contraseña ingresada es muy débil"
       accepted: "En '%{model}' debe aceptar '%{attribute}'"
       blank: "En '%{model}' falta un valor para '%{attribute}'"
       present: "En '%{model}' debe estar en blanco '%{attribute}'"
