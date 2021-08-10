@@ -60,7 +60,10 @@ module Sip
               cons = "SELECT TRIM(nombre_sin_pais) AS value, id AS id " +
                 "FROM public.sip_ubicacionpre AS ubicacionpre " +
                 "WHERE #{where} AND pais_id=170 " +
-                "AND clase_id IS NULL AND departamento_id IS NOT NULL " +
+                "AND clase_id IS NULL " +
+                "AND departamento_id IS NOT NULL " +
+                "AND lugar IS NULL " +
+                "AND sitio IS NULL " +
                 " ORDER BY 1";
       
               r = ActiveRecord::Base.connection.select_all cons
