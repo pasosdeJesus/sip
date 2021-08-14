@@ -44,11 +44,9 @@ module Sip
           validates_format_of :nusuario, 
             :with  => /\A[a-zA-Z_0-9]+[-.a-zA-Z_0-9]*\z/
 
-          # NO se valida longitud de nusuario para permitir
-          # cambiarla en aplicaciones o motores que usen este --pero
-          # debe hacerse alli
-          # validates_length_of :nusuario, maximum: 15 
           validates_presence_of :nusuario
+          # La longitud de nusuario se configura en Sip.longitud_nusuario
+          # De manera predeterminada es 15 (qe no basta para correos)
           validates_length_of :nusuario, maximum: Sip.longitud_nusuario
  
           #validates_length_of :nombre, maximum: 50, unless: 'nombre.nil?'
