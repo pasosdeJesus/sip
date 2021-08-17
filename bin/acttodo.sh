@@ -5,7 +5,7 @@
 # SALTACOR1440=1 SALTASAL7711=1 
 # SALTACOR1440CINEP=1 
 # SALTASIVEL2=1 SALTAAPO214=1 
-# SALTASIANZORC=1 SALTASIASOM=1 SALTASIIAP=1 SALTACODACOP=1 
+# SALTASIANZORC=1 SALTASIASOM=1 SALTASIIAP=1 
 # SALTASIVELSJR=1
 
 if [ -z "$SSH_AUTH_SOCK" ] ; then
@@ -117,7 +117,7 @@ if (test "$SALTAAPO214" != "1") then {
 
 # Usan 3 o más motores
 if (test "$SALTASIANZORC" != "1") then {
-        actuno si_anzorc; 
+  actuno si_anzorc; 
 } fi;
 
 if (test "$SALTASIASOM" != "1") then {
@@ -125,7 +125,7 @@ if (test "$SALTASIASOM" != "1") then {
 } fi;
 
 if (test "$SALTASIIAP" != "1") then {
-        actuno si_iap; 
+  actuno si_iap; 
 } fi;
 
 if (test "$SALTASIVELSJR" != "1") then {
