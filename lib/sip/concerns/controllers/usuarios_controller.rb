@@ -119,7 +119,6 @@ module Sip
               :email, 
               :tema_id, 
               :encrypted_password,
-              :password_confirmation,
               :fechacreacion_localizada, 
               :fechadeshabilitacion_localizada, 
               :reset_password_token, 

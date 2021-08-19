@@ -81,9 +81,8 @@ module Sip
           end
 
           validates_presence_of :password, :on=>:create
-          validates_confirmation_of :password, :on=>:create
-          validate :password_complexity
-          def password_complexity
+          validate :complejidad_clave
+          def complejidad_clave
             return if password.blank? || password =~ /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,70}$/
 
             errors.add :password, 'Tu clave debe incluir por lo menos 1 letra mayúscula, 1 letra minúscula, 1 número y 1 caracter especial'
