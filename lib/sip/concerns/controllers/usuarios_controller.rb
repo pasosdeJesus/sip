@@ -132,15 +132,21 @@ module Sip
               :unlock_token, 
               :locked_at,
               :last_sign_in_ip, 
-              :etiqueta_ids => [],
+            ] + [ 
+              :etiqueta_ids => [] 
+            ] + [
               :sip_grupo_ids => []
             ]
             r
           end
 
+          def lista_params
+            lista_params_sip
+          end
+
           # Lista blanca de paramétros
           def usuario_params
-            p = params.require(:usuario).permit(lista_params_sip)
+            p = params.require(:usuario).permit(lista_params)
             return p
           end
 

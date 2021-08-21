@@ -13,7 +13,7 @@ module Sip
           logger.debug "Descargando #{n}"
           send_file n, x_sendfile: true
         else
-          redirect_to casos_url
+          redirect_to usuarios_url
         end
       end
     end

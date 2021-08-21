@@ -41,6 +41,24 @@ module Sip
     alias_method :menu_item, :opcion_menu
     module_function :menu_item
 
+
+    # Opción de un menú dashboardkit
+    def opcion_menu_dk(opcionmenu, url, opciones={})
+      cop = opciones.clone
+      if cop[:desplegable] || cop[:dropdown]
+        cop.delete(:desplegable)
+        cop.delete(:dropdown)
+        r = link_to opcionmenu, url, cop.merge({class: 'dropdown-item'})
+      else
+        r = content_tag(:li, class: 'pc-item') do
+          link_to opcionmenu, url, cop.merge({class: 'pc-link'})
+        end
+      end
+      return r
+    end 
+    module_function :opcion_menu_dk
+
+
     # Genera grupo de menus
     def despliega_abajo(opcionmenu, &bloque)
       opab = opcionmenu.gsub(' ', '_')
