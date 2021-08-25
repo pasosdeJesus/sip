@@ -156,6 +156,17 @@ module Sip
         where("unaccent(#{table_name}.observaciones) ILIKE '%' || unaccent(?) || '%'", o)
       }
 
+      scope :filtro_fechacreacionini, lambda { |f|
+        where('fechacreacion >= ?', f)
+        # El control de fecha HTML estándar retorna la fecha
+        # en formato yyyy-mm-dd siempre
+      }
+
+      scope :filtro_fechacreacionfin, lambda { |f|
+        where('fechacreacion <= ?', f)
+      }
+
+
     end
 
   end
