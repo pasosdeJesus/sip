@@ -38,7 +38,7 @@ class Ability  < Sip::Ability
       can :read, [Sip::Persona]
       case usuario.rol 
       when Ability::ROLANALI
-        can :read, Sip::Orgsocial
+        can [:new, :create, :read, :update], Sip::Orgsocial
         can :read, Sip::Ubicacion
         can :new, Sip::Ubicacion
         can [:update, :create, :destroy], Sip::Ubicacion

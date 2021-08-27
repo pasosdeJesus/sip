@@ -124,14 +124,18 @@ module Sip
         else
           tal = :danger
         end
-        r << content_tag(:div, class: 'alert alert-' + tal.to_s, 
-                         role: :alert) do
+        r << content_tag(
+          :div, class: "alert alert-#{tal.to_s} "\
+          "alert-dismissible fade show", 
+          role: :alert
+        ) do
           content_tag(:span, mensaje) + 
-          content_tag(
-            :button, type: :button, class: :close, 'data-dismiss' =>  :alert,
-            'aria-label' => "Close") do
-              content_tag(:span,  '&times;'.html_safe, 'aria-hidden' => true) 
-          end
+            content_tag(
+              :button, type: :button, class: 'btn-close', 
+              'data-bs-dismiss' =>  :alert,
+              'aria-label' => "Close"
+            ) do
+            end
         end
       end 
 

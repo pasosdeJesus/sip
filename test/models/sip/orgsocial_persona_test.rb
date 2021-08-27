@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 require_relative '../../test_helper'
 require_relative './grupoper_test'
 require_relative './orgsocial_test'
