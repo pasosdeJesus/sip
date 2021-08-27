@@ -38,11 +38,7 @@ class Ability  < Sip::Ability
       can :read, [Sip::Persona]
       case usuario.rol 
       when Ability::ROLANALI
-<<<<<<< HEAD
         can [:new, :create, :read, :update], Sip::Orgsocial
-=======
-        can :read, Sip::Orgsocial
->>>>>>> bcd9c11 (Renombre actorsocial por orgsocial)
         can :read, Sip::Ubicacion
         can :new, Sip::Ubicacion
         can [:update, :create, :destroy], Sip::Ubicacion
