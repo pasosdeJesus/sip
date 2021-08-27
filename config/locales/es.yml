@@ -6,6 +6,10 @@ es:
     one: '%{count} día'
     other: '%{count} días'
   attributes:
+    created_at: Fecha de creacíon
+    created_at_localizada: Fecha de creacíon
+    updated_at: Fecha de actualizacíon
+    updated_at_localizada: Fecha de actualizacíon
     departamento: Departamento/Estado
     descripcion: Descripción
     fechacreacion: Creación
@@ -59,21 +63,6 @@ es:
     page_gap: "&hellip;"
   activerecord:
     attributes:
-      "sip/orgsocial":
-        Orgsocial: Organización social
-        Orgsociales: Organizaciones sociales
-        orgsocial_persona: Contacto(s)
-        "{:orgsocial_persona=>[]}": Contacto(s)
-        direccion: Dirección
-        fechadeshabilitacion: Fecha de deshabilitación
-        fechadeshabilitacion_localizada: Fecha de deshabilitación
-        grupoper: Nombre
-        grupoper_id: Nombre
-        pais_id: País
-        sectororgsocial: Sector(es)
-        sectororgsocial_ids: Sector(es)
-        telefono: Teléfono
-        "{:sectororgsocial_ids=>[]}": Sector(es)
       "sip/anexo":
         descripcion: Descripción
       "sip/bitacora":
@@ -105,6 +94,24 @@ es:
         id_departamento: Departamento
         Municipio: Municipio
         Municipios: Municipios
+      "sip/orgsocial":
+        direccion: Dirección
+        fechadeshabilitacion: Fecha de deshabilitación
+        fechadeshabilitacion_localizada: Fecha de deshabilitación
+        grupoper: Nombre
+        grupoper_id: Nombre
+        Orgsocial: Organización social
+        Orgsociales: Organizaciones sociales
+        orgsocial_persona: Contacto(s)
+        "{:orgsocial_persona=>[]}": Contacto(s)
+        pais_id: País
+        sectororgsocial: Sector(es)
+        sectororgsocial_ids: Sector(es)
+        telefono: Teléfono
+        "{:sectororgsocial_ids=>[]}": Sector(es)
+      "sip/orgsocial_persona":
+        perfilorgsocial: Perfil en organización social
+        orgsocial: Organización social a la que pertenece
       "sip/pais":
         Pais: País
         Paises: Países
@@ -125,9 +132,6 @@ es:
       "sip/perfilorgsocial":
         Perfilorgsocial: Perfil en organización social
         Perfilesorgsocial: Perfiles en organización social
-      "sip/orgsocial_persona":
-        perfilorgsocial: Perfil en organización social
-        orgsocial: Organización social a la que pertenece
       "sip/persona":
         anionac: Año nacimiento
         clase: Centro poblado nacimiento

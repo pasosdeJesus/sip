@@ -37,6 +37,8 @@ module Sip
             join_table: 'sip_orgsocial_sectororgsocial'
 
           campofecha_localizado :fechadeshabilitacion
+          campofecha_localizado :created_at
+          campofecha_localizado :updated_at
 
           validates :telefono, length: { maximum: 500 }
           validates :fax, length: { maximum: 500 }
