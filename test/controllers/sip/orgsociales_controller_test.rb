@@ -39,6 +39,11 @@ module Sip
     end
 
     test "debe crear nueva" do
+      # Arreglamos indice
+      Sip::Orgsocial.connection.execute <<-SQL
+        SELECT setval('public.sip_orgsocial_id_seq', MAX(id)) 
+          FROM public.sip_orgsocial;
+      SQL
       assert_difference('Orgsocial.count') do
         post sip.orgsociales_path, params: { 
           orgsocial: { 
