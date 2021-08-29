@@ -107,17 +107,20 @@ https://hakiri.io/blog/ruby-security-tools-and-resources
 
 Seguir sugerencias de https://github.com/thoughtbot/guides/blob/main/javascript/README.md
 
-* Para localizar elementos en el DOM preferir ids y clases (o atributos data) en lugar de posiciones.  Así pueden moverse los elementos en la página sin requrir cambios en el javascript.
+* Para localizar elementos en el DOM preferir ids y clases (o atributos data) 
+  en lugar de posiciones.  Así pueden moverse los elementos en la página sin 
+  requrir cambios en el javascript.
 
 
-Si tiene instalado coffeescript, podrá verificar sintaxis de archivos del directorio `app/assets/javascript/` con:
+Si tiene instalado coffeescript 2, podrá verificar sintaxis de archivos 
+del directorio `app/assets/javascript/` con:
 ```sh
   make
 ```
 
 En adJ para instalar coffeescript basta:
 ```sh
-  sudo npm install -g coffee-script
+  sudo yarn global add coffeescript
 ```
 
 # HTML/CSS
