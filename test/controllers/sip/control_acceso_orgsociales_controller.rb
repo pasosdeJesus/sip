@@ -85,13 +85,13 @@ module Sip
       assert_response :ok
     end
 
-    test "autenticado como operador debería poder editar pero hay problema de rutas en pruebas de motores" do
+    test "autenticado como operador debería poder editar" do
       current_usuario = Usuario.create!(PRUEBA_USUARIO_OP)
       sign_in current_usuario
       get sip.edit_orgsocial_path(@orgsocial.id)
     end
 
-    test "autenticaodo como operador no debe eliminar" do
+    test "autenticado como operador no debe eliminar" do
       assert_raise CanCan::AccessDenied do
         delete sip.orgsocial_path(@orgsocial.id)
       end
