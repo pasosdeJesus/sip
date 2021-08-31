@@ -153,21 +153,32 @@ module Sip
     # @param titulo Titulo del item
     # @param expandido booleano para que inicie expandido
     # @param bloque Que se presenta al expandir
-    def item_acordeon_bs(acid, idit, titulo, expandido = false, &bloque)
+    def item_acordeon_bs(
+      acid, idit, titulo, expandido = false, opciones = {}, &bloque)
       r = content_tag(
-        :div, class: 'accordion-item'
+        :div, 
+        class: 'accordion-item ' + opciones.fetch("clase_accordion-item", '')
       ) do
         content_tag(
-          :h5, class: 'accordion-header mb-0', id: 'enc_' + idit
+          :h5, 
+          class: 'accordion-header mb-0 ' + opciones.fetch(
+            "clase_accordion-header", ''), 
+          id: 'enc_' + idit,
+          style: opciones.fetch('estilo_accordion-header', '')
         ) do 
           content_tag(
             :button, 
-            class: 'accordion-button ' + (expandido ? '' : 'collapsed'),
+            class: 'accordion-button ' + (
+              expandido ? '' : 'collapsed '
+            ) + opciones.fetch(
+              "clase_accordion-button", ''
+            ), 
             type: 'button',
             'data-bs-toggle' => 'collapse',
             'data-bs-target' => '#' + idit,
             'aria-expanded' => (expandido ? 'true' : 'false'),
             'aria-controls' => idit,
+            style: opciones.fetch("estilo_accordion-button", ''),
             id: 'enc_' + idit
           ) do 
             titulo
@@ -175,13 +186,21 @@ module Sip
         end + 
         content_tag(
           :div, 
-          class: 'accordion-collapse collapse ' + (expandido ? 'show' : ''), 
+          class: 'accordion-collapse collapse ' + (
+            expandido ? 'show ' : ''
+          ) + (
+            opciones.fetch("clase_accordion-collapse", '')
+          ), 
           "aria-labelledby" => "enc_#{idit}",
           "data-bs-parent" => acid,
           id: idit
         ) do 
           content_tag(
-            :div, class: 'accordion-body'
+            :div, 
+            class: 'accordion-body ' + (
+              opciones.fetch("clase_accordion-body", '')
+            ),
+            style: opciones.fetch("estilo_accordion-body", '')
           ) do 
             yield bloque
           end

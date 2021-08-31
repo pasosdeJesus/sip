@@ -1,51 +1,38 @@
 <% if  controller.registrar_en_bitacora %>
   <div class="accordion" id="acordeon-bitacora">
-    <div class="accordion-item">
-      <h6 id="encabezado-bitacora" 
-          class="mb-0 accordion-header" 
-          style='text-align: center'>
-        <button class="accordion-button collapsed" 
-                  type="button"
-                  data-bs-toggle="collapse" 
-                  data-bs-target="#colapsa-bitacora" 
-                  aria-expanded= "false" 
-                  aria-controls="colapsa-bitacora">
-          Expandir / colapsar bitácora de cambios <!-- (<%= @registro.class %>) -->
-        </button>
-      </h6>
-      <div class="accordion-collapse collapse"
-           id="colapsa-bitacora" 
-           aria-labelledby="encabezado-listadoasistencia" 
-           data-bs-parent="#acordeon-listadoasistencia">
-        <div class="accordion-body table-responsive" style="overflow-x:scroll;">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Fecha</th>
-                <th scope="col">Usuario</th>
-                <th scope="col">IP</th>
-                <th scope="col">Operación</th>
-                <th scope="col">Detalle cambio</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% Sip::Bitacora.where(
-                modelo: clase, 
-                modelo_id: @registro.id, 
-                operacion: ['actualizar', 'importar', 'iniciar', 'tocar']).order('fecha DESC').each do |r| %>
-                <tr>
-                  <th scope="row"><%= r.fecha %></th>
-                  <td><%= r.usuario_id ? Usuario.find(r.usuario_id).nusuario : ''  %></td>
-                  <td><%= r.ip %></td>
-                  <td><%= r.operacion %></td>
-                  <td><%= r.detalle %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
+    <%= item_acordeon_bs(
+      'acordeon-bitacora', 'bitacora', 
+      "Expandir / colapsar bitácora de cambios "\
+      "<!-- (#{@registro.class}) -->".html_safe,
+      false, {"clase_accordion-body" => 'table-responsive',
+              "estilo_accordion-body" => 'overflow-x:scroll'
+      }) do %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">IP</th>
+            <th scope="col">Operación</th>
+            <th scope="col">Detalle cambio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% Sip::Bitacora.where(
+            modelo: clase, 
+            modelo_id: @registro.id, 
+            operacion: ['actualizar', 'importar', 'iniciar', 'tocar']).order('fecha DESC').each do |r| %>
+            <tr>
+              <th scope="row"><%= r.fecha %></th>
+              <td><%= r.usuario_id ? Usuario.find(r.usuario_id).nusuario : ''  %></td>
+              <td><%= r.ip %></td>
+              <td><%= r.operacion %></td>
+              <td><%= r.detalle %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
 
-        </div> <!-- accordion-body -->
-      </div> <!-- accordion-collapse -->
-      </div> <!-- accordion-item-->
   </div> <!-- accordion-->
 <% end %>
