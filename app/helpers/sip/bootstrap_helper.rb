@@ -1,9 +1,10 @@
 #encoding: UTF-8 
 
-# Ayudadores para Bootstrap 4 basados en los ayudaddores para 
+# Ayudadores para Bootstrap 5 basados en los ayudaddores para 
 # Bootstrap 3 de la gema twitter-bootstrap-rails
 module Sip
   module BootstrapHelper
+
 
     # Genera grupo de menus
     def grupo_menus(opciones={}, &bloque)
@@ -145,5 +146,98 @@ module Sip
 
     alias_method :bootstrap_flash, :anuncios_bootstrap
     module_function :bootstrap_flash
+
+    # Sección colapsable dentro de un div con clase accordion
+    # @param acid Id del acorden
+    # @param idit Id del item
+    # @param titulo Titulo del item
+    # @param expandido booleano para que inicie expandido
+    # @param bloque Que se presenta al expandir
+    def item_acordeon_bs(acid, idit, titulo, expandido = false, &bloque)
+      r = content_tag(
+        :div, class: 'accordion-item'
+      ) do
+        content_tag(
+          :h5, class: 'accordion-header mb-0', id: 'enc_' + idit
+        ) do 
+          content_tag(
+            :button, 
+            class: 'accordion-button ' + (expandido ? '' : 'collapsed'),
+            type: 'button',
+            'data-bs-toggle' => 'collapse',
+            'data-bs-target' => '#' + idit,
+            'aria-expanded' => (expandido ? 'true' : 'false'),
+            'aria-controls' => idit,
+            id: 'enc_' + idit
+          ) do 
+            titulo
+          end
+        end + 
+        content_tag(
+          :div, 
+          class: 'accordion-collapse collapse ' + (expandido ? 'show' : ''), 
+          "aria-labelledby" => "enc_#{idit}",
+          "data-bs-parent" => acid,
+          id: idit
+        ) do 
+          content_tag(
+            :div, class: 'accordion-body'
+          ) do 
+            yield bloque
+          end
+        end
+      end
+    end
+    module_function :item_acordeon_bs
+
+    # Encabezado de pestaña.  Debe tener un contenido_pestaña_bs
+    # Va dentro de un <ul class="nav nav-tabs" role="tablist">
+    # @param idit Id del item
+    # @param titulo Titulo del item
+    # @param elegida booleano para que inicie enfocado
+    # @param bloque Que se presenta al expandir
+    def item_nav_pestaña_bs(idit, titulo, elegida = false, 
+                               clase_boton = '', &bloque)
+      r = content_tag(
+        :li, 
+        class: 'nav-item',
+        role: 'presentation'
+      ) do 
+        content_tag(
+          :button,
+          class: "nav-link #{clase_boton} #{elegida ? 'active' : ''}",
+          id: "#{idit}-pestana",
+          "aria-selected" => (elegida ? 'true' : 'false'),
+          "aria-controls" => idit,
+          role: "tab",
+          "data-bs-toggle" => "tab",
+          "data-bs-target" => '#' + idit,
+          type: "button"
+        ) do
+          titulo
+        end
+      end
+    end
+    module_function :item_nav_pestaña_bs
+
+    # Contenido de una pestaña. Debe tener un item_nav_pestaña_bs
+    # Va dentro de un <ul class="nav nav-tabs" role="tablist">
+    # @param idit Id del item
+    # @param elegida booleano para que inicie enfocada
+    # @param bloque Que se presenta al expandir
+    def contenido_pestaña_bs(idit, elegida = false, &bloque)
+      content_tag(
+        :div,
+        class: "tab-pane fade #{elegida ? 'show active' : ''}",
+        role: "tabpanel",
+        id: idit,
+        "aria-labelledby" => idit + "-pestana"
+      ) do
+        yield bloque
+      end
+    end
+    module_function :contenido_pestaña_bs
+
+
   end
 end
