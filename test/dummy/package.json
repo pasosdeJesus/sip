@@ -19,7 +19,6 @@
     "turbolinks": "^5.2.0",
     "webpack-cli": "^4.7.2"
   },
-  "version": "0.1.0",
   "devDependencies": {
     "@webpack-cli/serve": "^1.5.1",
     "babel-plugin-macros": "^3.1.0",
