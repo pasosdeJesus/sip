@@ -89,9 +89,9 @@ if (test "$SALTACOR1440" != "1") then {
 
 if (test "$SALTASAL7711" != "1") then {
   echo "**** sal7711"
-#  actuno sal7711_gen test/dummy; 
-#  actuno sal7711; 
-#  actuno sal7711_web test/dummy; 
+  actuno sal7711_gen test/dummy; 
+  actuno sal7711; 
+  actuno sal7711_web test/dummy; 
 } fi;
 
 if (test "$SALTASAL7711CINEP" != "1") then {
