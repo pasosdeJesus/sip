@@ -91,6 +91,44 @@ function sip_ubicacionpre_expandible_autocompleta_lugar(clase_id, tsit, lug, sit
   return
 }
 
+
+function deshabilita_otros_sinohaymun(e, campoubi){
+  ubp = $(e.target).closest('.ubicacionpre')
+  lugar = ubp.find('[id$='+campoubi+'_lugar]')
+  sitio = ubp.find('[id$='+campoubi+'_sitio]')
+  tsitio = ubp.find('[id$='+campoubi+'_tsitio_id]')
+  latitud = ubp.find('[id$='+campoubi+'_latitud]')
+  longitud = ubp.find('[id$='+campoubi+'_longitud]')
+  lugar.val("")
+  lugar.attr('disabled', true).trigger('chosen:updated')
+  sitio.val(null)
+  sitio.attr('disabled', true).trigger('chosen:updated')
+  tsitio.val(1)
+  tsitio.attr('disabled', true).trigger('chosen:updated')
+  latitud.val("")
+  latitud.attr('disabled', true).trigger('chosen:updated')
+  longitud.val("")
+  longitud.attr('disabled', true).trigger('chosen:updated')
+}
+
+function habilita_otros_sihaymun(e, tipo, campoubi){
+  ubp = $(e.target).closest('.ubicacionpre')
+  lugar = ubp.find('[id$='+campoubi+'_lugar]')
+  sitio = ubp.find('[id$='+campoubi+'_sitio]')
+  tsitio = ubp.find('[id$='+campoubi+'_tsitio_id]')
+  latitud = ubp.find('[id$='+campoubi+'_latitud]')
+  longitud = ubp.find('[id$='+campoubi+'_longitud]')
+  if(tipo == 1){
+    lugar.attr('disabled', false).trigger('chosen:updated')
+    tsitio.attr('disabled', false).trigger('chosen:updated')
+  }
+  if(tipo == 2){
+    sitio.attr('disabled', false).trigger('chosen:updated')
+    latitud.attr('disabled', false).trigger('chosen:updated')
+    longitud.attr('disabled', false).trigger('chosen:updated')
+  }
+}
+
 // iniid Inicio de identificacion por ejemplo 'caso_migracion_attributes'
 // campoubi Identificación particular del que se registra por ejemplo 'salida'
 //    (teniendo en cuenta que haya campos para el mismo, por ejemplo
