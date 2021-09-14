@@ -118,7 +118,7 @@ namespace :sip do
       pwd
       rails dbconsole <<-EOF
         \\i db/datos-basicas.sql
-      EOF
+EOF
     )
   end
 
