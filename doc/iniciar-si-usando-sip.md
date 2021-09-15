@@ -34,11 +34,11 @@ bin/rails webpacker:install
 ```
 gem 'dotenv-rails'
 ```
-ejecuta `bundle` y por ejemplo comienza tu archivo `.env` con una variable para poner el nombre del servidor donde verás tu aplicación o inicialmente `127.0.0.1`:
+  ejecuta `bundle` y por ejemplo comienza tu archivo `.env` con una variable para poner el nombre del servidor donde verás tu aplicación o inicialmente `127.0.0.1`:
 ```
 CONFIG_HOSTS=127.0.0.1
 ```
-Y en `config/application.rb` usa la variable de configuración:
+  Y en `config/application.rb` usa la variable de configuración:
 ```
 config.hosts.concat(
   ENV.fetch('CONFIG_HOSTS', 'cifrasdelconflicto.org').downcase.split(',')
