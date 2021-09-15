@@ -414,7 +414,7 @@ Rails.application.routes.draw do
   mount Sip::Engine, at: rutarel, as: 'sip'
 end
 ``` 
-y en `config/initializers/punto_montaje.rb`:
+en `config/initializers/punto_montaje.rb`:
 ```
 Minsip::Application.config.relative_url_root = ENV.fetch(                 
   'RUTA_RELATIVA', '/minsip')                                            
@@ -422,7 +422,12 @@ Minsip::Application.config.assets.prefix = ENV.fetch(
   'RUTA_RELATIVA', '/minsip') == '/' ?·                                  
  '/assets' : (ENV.fetch('RUTA_RELATIVA', '/minsip') + '/assets')         
 ```
-
+y preparar directorio `public/minsip`:
+```
+mkdir public/minsip
+cd public/minsip
+ln -s ../packs .
+```
 - Para preparar experiencia de usuario con Bootstrap 5, Javascript con módulos y Jquery debes instalar paquetes `npm` mínimos: 
 ```sh
 yarn add @rails/webpacker@6.0.0-rc.1 @rails/ujs @popperjs/core babel-plugin-macros bootstrap bootstrap-datepicker chosen-js expose-loader @fortawesome/fontawesome-free jquery jquery-ui popper.js@2.0.0-next.4 turbolinks 
@@ -462,7 +467,7 @@ module ApplicationHelper
   
 end
 ```
-Y verifica que la configuración de javascript con módulos es correcta empaquetando con webpacker:
+Y verifica que la configuración de javascript con módulos es correcta empaquetando en `public/packs` con webpacker:
 ```
 bin/webpack
 ```
