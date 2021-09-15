@@ -26,9 +26,23 @@ $ bundle install
 doas gem install bash
 curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 ```
-- Configura webpacker desde el directorio `minsip`
+- Si empaquetarás los recursos javascript con webpacker, preparalo desde el directorio `minsip`:
 ```sh
 bin/rails webpacker:install
+```
+- Si vas a manejar la configuración de tu aplicación a nivel de servidor en el archivo .env, agrega a tu archivo Gemfile la gema `dotenv-rails`:
+```
+gem 'dotenv-rails'
+```
+ejecuta `bundle` y por ejemplo comienza tu archivo `.env` con una variable para poner el nombre del servidor donde verás tu aplicación o inicialmente `127.0.0.1`:
+```
+CONFIG_HOSTS=127.0.0.1
+```
+Y en `config/application.rb` usa la variable de configuración:
+```
+config.hosts.concat(
+  ENV.fetch('CONFIG_HOSTS', 'cifrasdelconflicto.org').downcase.split(',')
+) 
 ```
 - Con esto ya deberías poder lanzar la aplicación en modo desarrollo (aunque no correrá mucho sin base de datos, así que detenla con Control-C después de lanzarla):
 ```sh
