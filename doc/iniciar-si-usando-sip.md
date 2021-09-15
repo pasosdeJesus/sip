@@ -358,7 +358,7 @@ class UsuariosController < Sip::ModelosController
   end
 end
 ```
-puedes probar desde `bin/s console` con:
+puedes probar desde `bin/rails console` con:
 ```
 irb(main):001:0> UsuariosController
 => UsuariosController
