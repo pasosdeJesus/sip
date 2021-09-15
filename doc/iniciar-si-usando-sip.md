@@ -54,6 +54,18 @@ postgres=# \q
 $ exit
 $ createdb -h/var/www/var/run/postgresql/ -Uisa5417 minsip_des
 ```
+Puedes probar el ingreso con la interfaz de línea de ordenes psql con:
+```
+$ psql -h/var/www/var/run/postgresql/ -Uisa5417 minsip_des
+Password for user isa5417: 
+psql (13.4)
+Type "help" for help.
+[local:/var/www/var/run/postgresql/] sipdes@minsip_des=# 
+```
+Para evitar que te solicite clave del usuario PostgreSQL en cada ingreso a `psql` puedes crear o agregar a tu archivo `~/.pgpass` la línea:
+```
+*:*:*:isa5417:aquilaclave
+```
 - Crea el archivo `.env` con algunas configuraciones a nivel de servidor como el usuario para PostgreSQL, su clave, así como los nombres que usarás para las bases de datos de pruebas, desarrollo y producción (la de desarrollo debe coincidir con la creada en el punto anterior):
 ```
 #!/bin/sh
@@ -103,26 +115,27 @@ production:
   <<: *default
   database: <%= ENV.fetch("BD_PRO") %>
 ```
-A continuación prueba que puedes ingresar a la interfaz `psql` de la base de desarrollo con:
+A continuación prueba que puedes ingresar a la interfaz `psql` de la base de desarrollo pero mediante rails:
 ```sh
 $ bin/rails dbconsole   
-psql (13.3)
+psql (13.4)
 Type "help" for help.
 
 minsipdes_des=# \q
 ```
-Para evitar que te solicite clave del usuario PostgreSQL en cada ingreso a `psql` puedes crear o agregar a tu archivo `~/.pgpass` la línea:
-```
-*:*:*:isa5417:aquilaclave
-```
 - Incluye otras gemas necesarias y ```sip``` en el archivo `Gemfile`:
 ```sh
 $ cat >> Gemfile <<EOF
+gem 'bcrypt'                     # Condensando de claves con bcrypt
+
+gem 'bootsnap'                   # Arranque rápido
+
 gem 'cancancan'                  # Control de acceso
 
-gem 'coffee-rails'               # Aún parte del Javascript manejado por sprockets de sip está en Coffescript
+gem 'cocoon', git: 'https://github.com/vtamara/cocoon.git',
+  branch: 'new_id_with_ajax' # Formularios anidados (algunos con ajax)
 
-gem 'colorize'                   # Colores en consola
+gem 'coffee-rails'               # Aún parte del Javascript manejado por sprockets de sip está en Coffescript
 
 gem 'devise'                     # Autenticación
 
@@ -130,15 +143,27 @@ gem 'devise-i18n'                # Localización e Internacionalización
 
 gen 'dotenv-rails'
 
-gem 'jbuilder', '>= 2.7'        # Json
+gem 'jbuilder', '>= 2.7'         # Json
 
-gem 'paperclip'                 # Anexos
+gem 'kt-paperclip'               # Anexos
+
+gem 'nokogiri'                   # Procesamiento XML
+
+gem 'pg'
+
+gem 'puma'                       # Lanza en modo desarrollo
+
+gem 'rails'
 
 gem 'rails-i18n'                 # Localización e Internacionalización 
 
 gem 'simple_form'  # Formularios
 
+gem 'turbolinks'
+
 gem 'twitter_cldr'               # Localiación e internacionalización 
+
+gem 'webpacker'
 
 gem 'will_paginate'              # Pagina listados
 
@@ -147,6 +172,37 @@ gem 'will_paginate'              # Pagina listados
 gem 'sip',                       # SI estilo Pasos de Jesús
   git: 'https://github.com/pasosdeJesus/sip.git'
 EOF
+
+group :development, :test do                                                     
+  #gem 'byebug'                                                                  
+                                                                                  
+  gem 'code-scanning-rubocop'                                                    
+                                                                                 
+  gem 'rails-erd'                                                                
+end     
+
+group :development do                                                            
+  gem 'web-console', '>= 3.3.0'
+end                                                                              
+                                                                                 
+group :test do                                                                   
+                                                                                 
+  gem "connection_pool"                                                          
+                                                                                 
+  gem "minitest"                                                                 
+                                                                                 
+  gem "minitest-reporters"                                                       
+                                                                                 
+  gem 'rails-controller-testing'                                                 
+                                                                                 
+  gem 'selenium-webdriver'    
+  
+  gem 'simplecov', '~> 0.10', '< 0.18'                                           
+                                                                                 
+  gem 'spork' # Un proceso para cada prueba -- acelera                           
+                                                                                 
+  gem 'webdrivers'                                                               
+end      
 ```
 Y después instala las nuevas gemas con:
 ```
