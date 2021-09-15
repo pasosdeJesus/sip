@@ -340,7 +340,6 @@ irb(main):002:0> Usuario.all.count
    (0.7ms)  SELECT COUNT(*) FROM "usuario"
 => 1
 irb(main):003:0> exit
-
 ```
 - Crea un controlador para usuarios en `app/controllers/usuarios_controller.rb` inicialmente con:
 ```rb
@@ -458,12 +457,12 @@ Y verifica que la configuración de javascript con módulos es correcta empaquet
 ```
 bin/webpack
 ```
-- La tubería de recursos se encargará de ubicar en un directorio `public/minsip/assets/images` el logo (`logo.jpg`) y los favicons que pongas en la ruta `app/assets/images`. Inicialmente puedes copiar los de la aplicación e prueba de sip <https://github.com/pasosdeJesus/sip/tree/master/test/dummy/app/assets/images> 
+- La tubería de recursos se encargará de ubicar en un directorio `public/minsip/assets/images` el logo (`logo.jpg`) y los favicons que pongas en la ruta `app/assets/images`. Inicialmente puedes copiar allí los de la aplicación de prueba de sip <https://github.com/pasosdeJesus/sip/tree/master/test/dummy/app/assets/images> 
 Configura sprockets para cargar recursos de los paquetes npm asegurando que en `config/initializers/assets.rb` está:
 ```ruby
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
 ```
-Usa sprockets para transmitir hojas de estilo preconfiguradas de sip y sobrecargables en `app/assets/stylesheets/` dejando en `app/assets/stylesheets/application.css`:
+Puedes usar sprockets para transmitir hojas de estilo preconfiguradas de sip y sobrecargables en `app/assets/stylesheets/` dejando en `app/assets/stylesheets/application.css`:
 ```css
 /*
  *= require sip/application.css
@@ -471,12 +470,12 @@ Usa sprockets para transmitir hojas de estilo preconfiguradas de sip y sobrecarg
  *= require_self
  */
 ```
-Para cargar otros javascript que no se manejen con webpacker, asegurese de dejar en `app/assets/javascripts/application.js` el siguiente contenido (creando antes el directorio `app/assets/javascripts`):
+Para cargar otros javascript de sip que no se manjan con webpacker, asegurate de dejar en `app/assets/javascripts/application.js` el siguiente contenido (creando antes el directorio `app/assets/javascripts`):
 ```js
 //= require sip/application
 //= require_tree .
 ```
-En `app/assets/config/manifest.js` indica recursos por incluir.  En general sugerimos preparar hojas de estilo e imagenes con sprockets y todo lo de Javascript con módulos transmitirlo mediante webpacker.  Sin embargo las fuentes javascript que aún no sean modulos pueden seguirse preparando con sprockets, recordando que en el navegador operarán en el enterno global --mientras que lo trasmitido por webpacker por omisión operará como módulo.
+En `app/assets/config/manifest.js` indica recursos por incluir.  En general con rails 6.1 sugerimos preparar hojas de estilo e imagenes con sprockets y todo lo de Javascript con módulos transmitirlo mediante webpacker.  Sin embargo las fuentes javascript que aún no sean modulos pueden seguirse preparando con sprockets, recordando que en el navegador operarán en el enterno global --mientras que lo trasmitido por webpacker por omisión operará como módulo.
 ```
 //= link_tree ../images
 //= link_directory ../javascripts .js
@@ -484,7 +483,7 @@ En `app/assets/config/manifest.js` indica recursos por incluir.  En general suge
 //= link_directory ../../../node_modules/chosen-js .png
 //= link application.css
 ```
-Tras esto deberías poder precompilar recursos con:
+Tras esto deberías poder precompilar recursos con: 
 ```
 bin/rails assets:precompile --trace
 ```
