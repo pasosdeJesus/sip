@@ -26,10 +26,6 @@ $ bundle install
 doas gem install bash
 curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 ```
-- Si empaquetarás los recursos javascript con webpacker, preparalo desde el directorio `minsip`:
-```sh
-bin/rails webpacker:install
-```
 - Con esto ya deberías poder lanzar la aplicación en modo desarrollo (aunque no correrá mucho sin base de datos, así que detenla con Control-C después de lanzarla):
 ```sh
 $ bin/rails s
@@ -170,7 +166,7 @@ gem 'turbolinks'                 # Acelera HTML
 
 gem 'twitter_cldr'               # Localiación e internacionalización 
 
-gem 'webpacker'                  # Empaqueta javascript de app/javascript
+gem 'webpacker', '6.0.0.rc.1'    # Empaqueta javascript de app/packs
 
 gem 'will_paginate'              # Pagina listados
 
@@ -419,11 +415,9 @@ Rails.application.routes.draw do
   mount Sip::Engine, at: rutarel, as: 'sip'
 end
 ```
-y el logo (`logo.jpg`) y los favicons en la ruta `app/assets/images`, aunque inicialmente puedes copiar los de la aplicación e prueba de sip <https://github.com/pasosdeJesus/sip/tree/master/test/dummy/app/assets/images> 
-,
 - Para preparar experiencia de usuario con Bootstrap 5, Javascript con módulos y Jquery debes instalar paquetes `npm` mínimos: 
 ```sh
-yarn add @rails/webpacker@6.0.0-rc.1 @rails/ujs bootstrap bootstrap-datepicker chosen-js expose-loader @fortawesome/fontawesome-free jquery jquery-ui popper.js@2.0.0-next.4 turbolinks 
+yarn add @rails/webpacker@6.0.0-rc.1 @rails/ujs @popperjs/core babel-plugin-macros bootstrap bootstrap-datepicker chosen-js expose-loader @fortawesome/fontawesome-free jquery jquery-ui popper.js@2.0.0-next.4 turbolinks 
 CXX=c++ yarn install
 ```
 en `app/packs/entrypoints/application.js` debes configurar como cargarlos como módulos, dejando jQuery de manera global (mientras ̣`sip` deja de depender de ese paquete):
@@ -466,7 +460,10 @@ tras lo cual deberías poder ejecutar
 ```
 bin/webpack
 ```
-- Configura la tubería de recursos (o sprockets) para cargar hojas de estilo y operar en paralelo con webpack agregando a `config/initializers/assets.rb`:
+
+- La tubería de recursos se encargará de ubicar en un directorio `public/minsip/assets/images` el logo (`logo.jpg`) y los favicons que pongas en la ruta `app/assets/images`, aunque inicialmente puedes copiar los de la aplicación e prueba de sip <https://github.com/pasosdeJesus/sip/tree/master/test/dummy/app/assets/images> 
+
+Configura sprockets para cargar hojas de estilo y operar en paralelo con webpack agregando a `config/initializers/assets.rb`:
 ```ruby
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
 ```
