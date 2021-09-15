@@ -30,20 +30,6 @@ curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 ```sh
 bin/rails webpacker:install
 ```
-- Si vas a manejar la configuración de tu aplicación a nivel de servidor en el archivo .env, agrega a tu archivo Gemfile la gema `dotenv-rails`:
-```
-gem 'dotenv-rails'
-```
-  ejecuta `bundle` y por ejemplo comienza tu archivo `.env` con una variable para poner el nombre del servidor donde verás tu aplicación o inicialmente `127.0.0.1`:
-```
-CONFIG_HOSTS=127.0.0.1
-```
-  Y en `config/application.rb` usa la variable de configuración:
-```
-config.hosts.concat(
-  ENV.fetch('CONFIG_HOSTS', 'cifrasdelconflicto.org').downcase.split(',')
-) 
-```
 - Con esto ya deberías poder lanzar la aplicación en modo desarrollo (aunque no correrá mucho sin base de datos, así que detenla con Control-C después de lanzarla):
 ```sh
 $ bin/rails s
@@ -68,35 +54,66 @@ postgres=# \q
 $ createdb -h/var/www/var/run/postgresql/ -Upostgres minsip_des  -Oisa5417
 $ exit
 ```
--  Configura el usuario, su clave, así como los nombres que usarás para las bases de datos de pruebas, desarrollo y producción  en ```config/database.yml``` (la de desarrollo debe coincidir con la creada en el punto anterior)   Recuerda que en adJ debes incluir para la conexión por omisión `host: /var/www/var/run/postgresql`.  Un ejemplo de este archivo completo es:
+- Crea el archivo `.env` con algunas configuraciones a nivel de servidor como el usuario para PostgreSQL, su clave, así como los nombres que usarás para las bases de datos de pruebas, desarrollo y producción (la de desarrollo debe coincidir con la creada en el punto anterior):
+```
+#!/bin/sh
+
+export BD_SERVIDOR=/var/www/var/run/postgresql    # Ruta al socket de PostgreSQL, en adJ es /var/www/var/run/postgresql/
+export BD_USUARIO=isa5417                         # Usuario PostgreSQL
+export BD_CLAVE=aquilaclave                       # Clave PostgreSQL
+export BD_DES=minsip_des                          # Base de datos de desarrollo
+export BD_PRUEBA=minsip_pru                       # Base de datos de pruebas
+export BD_PRO=minsip_pro                          # Base de datos de producción (no requerida en desarrollo)
+
+export CONFIG_HOSTS=rbd.nocheyniebla.org          # Nombre del servidor donde se correrá
+export RUTA_RELATIVA=/minsip/                     # Ruta en la que correra, puede ser /
+export DIRAP=${HOME}/comp/rails/minsip            # Directorio donde están las fuentes de la aplicación
+export RAILS_ENV=development                      # Modo en el que correrá (podría ser también production)
+                                                  
+export IPDES=127.0.0.1                            # En modo desarrollo IP en la que escuchará conexiones
+export PUERTODES=3300                             # En modo desarrollo puerto en el que escuchará conexiones
+
+export SIP_FORMATO_FECHA="dd/M/yyyy"              # Formato para presentar y recibir fechas, también podría ser yyyy-mm-dd
+```
+Para dar posibilidad de sobrecargar esas variables desde la línea de órdenes, cada una debe ponerse dentro de un ``if` como en el ejemplo siguiente con la primera:
+```
+if (test "$BD_SERVIDOR" = "") then {
+  export BD_SERVIDOR=/var/www/var/run/postgresql # Ruta al socket de PostgreSQL, en adJ es /var/www/var/run/postgresql/   
+}
+```
+-  Modifica el archivo `config/database.yml` empleando las variables de configuración que usaste en `.env`:
 ```yml
 default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: isa5417
-  password: aquilaclave
-  host: /var/www/var/run/postgresql
+  username: <%= ENV.fetch("BD_USUARIO") %>
+  password: <%= ENV.fetch("BD_CLAVE") %>
+  host: <%= ENV.fetch("BD_SERVIDOR") %>
 
 development:
   <<: *default
-  database: minsip_des
+  database: <%= ENV.fetch("BD_DES") %>
 
 test:
   <<: *default
-  database: minsip_pru
+  database: <%= ENV.fetch("BD_PRU") %>
 
 production:
   <<: *default
-  database: minsip_pro
+  database: <%= ENV.fetch("BD_PRO") %>
 ```
-A continuación prueba que puede ingresar a la interfaz psql de la base de desarrollo con:
+A continuación prueba que puedes ingresar a la interfaz `psql` de la base de desarrollo con:
 ```sh
 $ bin/rails dbconsole   
-psql (11.5)
+psql (13.3)
 Type "help" for help.
 
 minsipdes_des=# \q
+```
+Para evitar que te solicite clave del usuario PostgreSQL en cada ingreso a `psql` puedes crear o agregar a tu archivo `~/.pgpass` la línea:
+```
+*:*:*:isa5417:aquilaclave
 ```
 - Incluye otras gemas necesarias y ```sip``` en el archivo `Gemfile`:
 ```sh
@@ -110,6 +127,8 @@ gem 'colorize'                   # Colores en consola
 gem 'devise'                     # Autenticación
 
 gem 'devise-i18n'                # Localización e Internacionalización                  
+
+gen 'dotenv-rails'
 
 gem 'jbuilder', '>= 2.7'        # Json
 
@@ -133,7 +152,7 @@ Y después instala las nuevas gemas con:
 ```
 $ bundle install
 ```
-- Crea el modelo `usuario` en ```app/models/usuario.rb``` inicialmente con:
+- Crea el modelo `usuario` en `app/models/usuario.rb` inicialmente con:
 ```rb
 require 'sip/concerns/models/usuario'
 
@@ -206,14 +225,23 @@ class Ability  < Sip::Ability
 
 end
 ```
+  Y en `config/application.rb` usa la variable de configuración:
+```
+```
+
 - Modifica la configuración de `config/application.rb` asegurando
   emplear volcados SQL, estableciendo zona horaria y localización por ejemplo:
 ```rb
 config.time_zone = 'America/Bogota'
 config.i18n.default_locale = :es
-config.x.formato_fecha = 'dd/M/yyyy'
 config.active_record.schema_format = :sql
 config.railties_order = [:main_app, Sip::Engine, :all]
+
+config.x.formato_fecha = ENV.fetch('SIP_FORMATO_FECHA', 'dd/M/yyyy')
+config.hosts.concat(
+  ENV.fetch('CONFIG_HOSTS', '127.0.0.1').downcase.split(',')
+) 
+
 ```
 - Copia la estructura de la base de datos
 ```sh
