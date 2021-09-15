@@ -238,7 +238,6 @@ config.x.formato_fecha = ENV.fetch('SIP_FORMATO_FECHA', 'dd/M/yyyy')
 config.hosts.concat(
   ENV.fetch('CONFIG_HOSTS', '127.0.0.1').downcase.split(',')
 ) 
-
 ```
 - Copia la estructura de la base de datos
 ```sh
