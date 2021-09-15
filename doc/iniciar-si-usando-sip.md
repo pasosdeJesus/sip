@@ -487,7 +487,7 @@ Tras esto deberías poder precompilar recursos con:
 ```
 bin/rails assets:precompile --trace
 ```
-- El menú y los elementos generales del maquetado los pones en `app/views/layouts/application.html.erb` como se presenta a continuación (nota que usamos funciones auxiliares para generar HTML con clases de bootstrap, se pueden emplear también sus formas originales en inglés basadas en las de la gema `twitter-bootstrap-rails`):
+- Para usar la maquetación predeterminada de sip, y sólo modificar el menú deja `app/views/layouts/application.html.erb` como se presenta a continuación (nota que usamos funciones auxiliares para generar HTML con clases de bootstrap, se pueden emplear también sus formas originales en inglés basadas en las de la gema `twitter-bootstrap-rails`):
 ```erb
 <% content_for :titulo do %>
     <%= Sip.titulo %>
