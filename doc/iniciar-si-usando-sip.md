@@ -51,8 +51,8 @@ $ createuser -h /var/www/var/run/postgresql/ -s -Upostgres isa5417
 $ psql -h /var/www/var/run/postgresql/ -Upostgres  
 postgres=# ALTER USER isa5417 WITH PASSWORD 'aquilaclave';  
 postgres=# \q
-$ createdb -h/var/www/var/run/postgresql/ -Upostgres minsip_des  -Oisa5417
 $ exit
+$ createdb -h/var/www/var/run/postgresql/ -Uisa5417 minsip_des
 ```
 - Crea el archivo `.env` con algunas configuraciones a nivel de servidor como el usuario para PostgreSQL, su clave, así como los nombres que usarás para las bases de datos de pruebas, desarrollo y producción (la de desarrollo debe coincidir con la creada en el punto anterior):
 ```
@@ -97,7 +97,7 @@ development:
 
 test:
   <<: *default
-  database: <%= ENV.fetch("BD_PRU") %>
+  database: <%= ENV.fetch("BD_PRUEBA") %>
 
 production:
   <<: *default
