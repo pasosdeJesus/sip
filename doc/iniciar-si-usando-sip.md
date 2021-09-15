@@ -416,11 +416,11 @@ end
 ``` 
 y en `config/initializers/punto_montaje.rb`:
 ```
-Sivel2Explora::Application.config.relative_url_root = ENV.fetch(                 
-  'RUTA_RELATIVA', '/sivel2_explora')                                            
-Sivel2Explora::Application.config.assets.prefix = ENV.fetch(                     
-  'RUTA_RELATIVA', '/sivel2_explora') == '/' ?·                                  
- '/assets' : (ENV.fetch('RUTA_RELATIVA', '/sivel2_explora') + '/assets')         
+Minsip::Application.config.relative_url_root = ENV.fetch(                 
+  'RUTA_RELATIVA', '/minsip')                                            
+Minsip::Application.config.assets.prefix = ENV.fetch(                     
+  'RUTA_RELATIVA', '/minsip') == '/' ?·                                  
+ '/assets' : (ENV.fetch('RUTA_RELATIVA', '/minsip') + '/assets')         
 ```
 
 - Para preparar experiencia de usuario con Bootstrap 5, Javascript con módulos y Jquery debes instalar paquetes `npm` mínimos: 
