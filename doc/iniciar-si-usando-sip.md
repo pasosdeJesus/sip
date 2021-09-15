@@ -384,7 +384,7 @@ class ApplicationController < Sip::ApplicationController
   protect_from_forgery with: :exception
 end
 ```
-- En este punto deberías poder arrancar la aplicación en modo desarrollo por ejemplo esuchando en el puerto 3000 de 127.0.0.1 con:
+- En este punto deberías poder arrancar la aplicación en modo desarrollo por ejemplo escuchando en el puerto 3000 de 127.0.0.1 con:
 ```sh
 $ bin/rails s -p 3000 -b 127.0.0.1
 ```
