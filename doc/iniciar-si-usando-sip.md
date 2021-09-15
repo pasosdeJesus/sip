@@ -413,7 +413,16 @@ Rails.application.routes.draw do
   end  # scope
   mount Sip::Engine, at: rutarel, as: 'sip'
 end
+``` 
+y en `config/initializers/punto_montaje.rb`:
 ```
+Sivel2Explora::Application.config.relative_url_root = ENV.fetch(                 
+  'RUTA_RELATIVA', '/sivel2_explora')                                            
+Sivel2Explora::Application.config.assets.prefix = ENV.fetch(                     
+  'RUTA_RELATIVA', '/sivel2_explora') == '/' ?·                                  
+ '/assets' : (ENV.fetch('RUTA_RELATIVA', '/sivel2_explora') + '/assets')         
+```
+
 - Para preparar experiencia de usuario con Bootstrap 5, Javascript con módulos y Jquery debes instalar paquetes `npm` mínimos: 
 ```sh
 yarn add @rails/webpacker@6.0.0-rc.1 @rails/ujs @popperjs/core babel-plugin-macros bootstrap bootstrap-datepicker chosen-js expose-loader @fortawesome/fontawesome-free jquery jquery-ui popper.js@2.0.0-next.4 turbolinks 
