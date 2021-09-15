@@ -225,9 +225,6 @@ class Ability  < Sip::Ability
 
 end
 ```
-  Y en `config/application.rb` usa la variable de configuración:
-```
-```
 
 - Modifica la configuración de `config/application.rb` asegurando
   emplear volcados SQL, estableciendo zona horaria y localización por ejemplo:
