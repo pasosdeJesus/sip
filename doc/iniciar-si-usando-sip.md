@@ -529,7 +529,7 @@ bin/rails assets:precompile --trace
 
 - Si faltaba, lanza la aplicación en modo desarrollo con:
 ```sh
-$ bin/rails s
+$ bin/rails s -b 127.0.0.1 -p 3000
 ```
 y examínala en el puerto 3000 con tu navegador <http://localhost:3000>,
-recuerda que el usuario inicial es sip con clave sip.
+recuerda que el usuario inicial es `sip` con clave `sip`.
