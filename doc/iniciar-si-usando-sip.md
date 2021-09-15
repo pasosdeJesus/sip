@@ -420,62 +420,42 @@ Rails.application.routes.draw do
 end
 ```
 y el logo (`logo.jpg`) y los favicons en la ruta `app/assets/images`, aunque inicialmente puedes copiar los de la aplicación e prueba de sip <https://github.com/pasosdeJesus/sip/tree/master/test/dummy/app/assets/images> 
-
-- Para preparar experiencia de usuario con ayuda de Bootstrap y Javascript debes instalar paquetes `npm` mínimos: 
+,
+- Para preparar experiencia de usuario con Bootstrap 5, Javascript con módulos y Jquery debes instalar paquetes `npm` mínimos: 
 ```sh
 yarn add @rails/webpacker@6.0.0-rc.1 @rails/ujs bootstrap bootstrap-datepicker chosen-js expose-loader @fortawesome/fontawesome-free jquery jquery-ui popper.js@2.0.0-next.4 turbolinks 
 CXX=c++ yarn install
 ```
-en `app/javascript/packs/application.js` cargarlos e iniciarlos:
+en `app/packs/entrypoints/application.js` debes configurar como cargarlos como módulos, dejando jQuery de manera global (mientras ̣`sip` deja de depender de ese paquete):
 ```js
 console.log('Hola Mundo desde Webpacker')
 
-require('@rails/ujs').start()   // Javascript no intrusivo segun rails
-require('turbolinks').start()   // Acelera carga de paginas
+import Rails from "@rails/ujs"                                                   
+Rails.start()                                                                    
+import Turbolinks from "turbolinks"                                              
+Turbolinks.start()                                                               
+                                                                                 
+import $ from "expose-loader?exposes=$,jQuery!jquery"
 
-import {$, jQuery} from 'jquery';
 import 'popper.js'              // Dialogos emergentes usados por bootstrap
-import 'bootstrap'              // Maquetacion y elementos de diseño
+import * as bootstrap from 'bootstrap'              // Maquetacion y elementos de diseño
 import 'chosen-js/chosen.jquery';       // Cuadros de seleccion potenciados
 import 'bootstrap-datepicker'
 import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js'
 import 'jquery-ui'
 import 'jquery-ui/ui/widgets/autocomplete'
 ```
-y configurar jQuery de manera global (mientras ̣`sip` deja de depender de ese paquete), editando `config/webpack/environment.js` dejando algo como:
-```js
-const { environment } = require('@rails/webpacker')
-
-const webpack = require('webpack')
-
-environment.plugins.prepend(
-  'Provide',
-  new webpack.ProvidePlugin({
-   $: 'jquery',
-    jQuery: 'jquery',
-    jquery: 'jquery',
-    'window.jQuery': 'jquery',
-    Popper: ['popper.js', 'default']
-  })
-)
-
-environment.loaders.append('expose', {
-    test: require.resolve('jquery'),
-    use: [
-          { loader: 'expose-loader', options: '$' },
-          { loader: 'expose-loader', options: 'jQuery' }
-        ]
-})
-      
-module.exports = environment
-```
-y asegurar que se podrán usar funciones auxiliares relacionadas con Bootstrap, dejando `app/helpers/application_helper.rb` con el siguiente contenido:
+Asegurar que se podrán usar funciones auxiliares relacionadas con Bootstrap, dejando `app/helpers/application_helper.rb` con el siguiente contenido:
 ```rb
 module ApplicationHelper 
 
   include Sip::BootstrapHelper
   
 end
+```
+Verifica que la configuración de javascript es correcta empaquetando con webpacker:
+```
+bin/webpack
 ```
 - Completa la instalación de webpack y la configuración de webpacker con:
 ```
