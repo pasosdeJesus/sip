@@ -86,8 +86,16 @@ export IPDES=127.0.0.1                            # En modo desarrollo IP en la 
 export PUERTODES=3300                             # En modo desarrollo puerto en el que escuchará conexiones
 
 export SIP_FORMATO_FECHA="dd/M/yyyy"              # Formato para presentar y recibir fechas, también podría ser yyyy-mm-dd
+export SIP_RUTA_ANEXOS=${DIRAP}/archivos/anexos
+export SIP_RUTA_VOLCADOS=${DIRAP}/archivos/bd
 ```
-Para dar posibilidad de sobrecargar esas variables desde la línea de órdenes, cada una debe ponerse dentro de un `if` como en el ejemplo siguiente con la primera:
+Puedes verificar la sintaxis cargando ese archivo desde la línea de ordenes y revisando alguna variable con:
+```
+$ . .env
+$ echo $BD_USUARIO
+isa5417
+```
+Para dar posibilidad de sobrecargar esas variables de configuracion del servidor desde la línea de órdenes, cada una debe ponerse dentro de un `if` como en el ejemplo siguiente con la primera:
 ```
 if (test "$BD_SERVIDOR" = "") then {
   export BD_SERVIDOR=/var/www/var/run/postgresql # Ruta al socket de PostgreSQL, en adJ es /var/www/var/run/postgresql/   
@@ -123,9 +131,8 @@ Type "help" for help.
 
 minsipdes_des=# \q
 ```
-- Incluye otras gemas necesarias y ```sip``` en el archivo `Gemfile`:
-```sh
-$ cat >> Gemfile <<EOF
+- Incluye otras gemas necesarias y ```sip``` en el archivo `Gemfile` que debe quedar al menos con:
+```
 gem 'bcrypt'                     # Condensando de claves con bcrypt
 
 gem 'bootsnap'                   # Arranque rápido
@@ -171,7 +178,7 @@ gem 'will_paginate'              # Pagina listados
 #### Motores que sobrecargan vistas o basados en SIP en orden de apilamento
 gem 'sip',                       # SI estilo Pasos de Jesús
   git: 'https://github.com/pasosdeJesus/sip.git'
-EOF
+
 
 group :development, :test do                                                     
   #gem 'byebug'                 # Depura                                                
@@ -203,19 +210,25 @@ Y después instala las nuevas gemas con:
 ```
 $ bundle install
 ```
-- Crea el modelo `usuario` en `app/models/usuario.rb` inicialmente con:
+- Modifica la configuración de `config/application.rb` asegurando
+  emplear volcados SQL, estableciendo zona horaria, localización, formato de la fecha por ejemplo:
 ```rb
-require 'sip/concerns/models/usuario'
+config.active_record.schema_format = :sql
+config.railties_order = [:main_app, Sip::Engine, :all]
 
-class Usuario < ActiveRecord::Base
-  include Sip::Concerns::Models::Usuario
-end
+config.time_zone = 'America/Bogota'
+config.i18n.default_locale = :es
+
+config.x.formato_fecha = ENV.fetch('SIP_FORMATO_FECHA', 'dd/M/yyyy')
+config.hosts.concat(
+  ENV.fetch('CONFIG_HOSTS', '127.0.0.1').downcase.split(',')
+) 
 ```
-Posteriormente puedes ver como personalizar el modelo y el controlador del usuario en <https://github.com/pasosdeJesus/sip/wiki/Uso-y-personalizaci%C3%B3n-del-modelo-usuario>.
-Puedes verificar la sintaxis con:
+Verifica la sintaxis tras cada modificación con:
 ```
-ruby -c app/models/usario.rb
+ruby -c config/application.rb
 ```
+
 - Crea el control de acceso en el archivo ```app/models/ability.rb``` inicialmente con:
 ```rb
 class Ability  < Sip::Ability
@@ -276,26 +289,12 @@ class Ability  < Sip::Ability
 
 end
 ```
-
-- Modifica la configuración de `config/application.rb` asegurando
-  emplear volcados SQL, estableciendo zona horaria y localización por ejemplo:
-```rb
-config.time_zone = 'America/Bogota'
-config.i18n.default_locale = :es
-config.active_record.schema_format = :sql
-config.railties_order = [:main_app, Sip::Engine, :all]
-
-config.x.formato_fecha = ENV.fetch('SIP_FORMATO_FECHA', 'dd/M/yyyy')
-config.hosts.concat(
-  ENV.fetch('CONFIG_HOSTS', '127.0.0.1').downcase.split(',')
-) 
-```
 - Copia la estructura de la base de datos
 ```sh
 $ ftp -o db/structure.sql https://raw.githubusercontent.com/pasosdeJesus/sip/master/test/dummy/db/structure.sql
 ```
 - Prepara como semillas para la base de datos las semillas incluidas en
-  sip y un usuario `sip` con clave `sip`, modificando `db/seeds.rb`:
+  sip y un usuario `sip` con clave `sip`, modificando `db/seeds.rb` para que sea:
 ```rb
 conexion = ActiveRecord::Base.connection();
 
@@ -316,7 +315,7 @@ $ bin/rails db:drop db:setup sip:indices
 ```$
 $ bin/rails dbconsole
 Password for user minsipdes: 
-psql (11.5)
+psql (13.4)
 Type "help" for help.
 
 minsipdes_des=# select count(*) from sip_clase;
@@ -327,7 +326,16 @@ minsipdes_des=# select count(*) from sip_clase;
 
 minsipdes_des=# \q
 ```
-- Prueba lo que llevas en una consola irb, por ejemplo:
+- Crea el modelo `usuario` en `app/models/usuario.rb` inicialmente con:
+```rb
+require 'sip/concerns/models/usuario'
+
+class Usuario < ActiveRecord::Base
+  include Sip::Concerns::Models::Usuario
+end
+```
+Posteriormente puedes ver como personalizar el modelo y el controlador del usuario en <https://github.com/pasosdeJesus/sip/wiki/Uso-y-personalizaci%C3%B3n-del-modelo-usuario>.
+Puedes probar que el modelo opera en una consola irb, por ejemplo:
 ```sh
 $ bin/rails console
 irb(main):002:0> Usuario.connection
@@ -350,19 +358,21 @@ class UsuariosController < Sip::ModelosController
   end
 end
 ```
-- Para establecer rutas de anexos y de volcados crea dos directorio (ej.
-  `mkdir -p archivos/anexos/; mkdir -p archivos/volcados`) y configuralos en tu aplicación
-  así como el título, lo haces en
+puedes probar desde `bin/s console` con:
+```
+irb(main):001:0> UsuariosController
+=> UsuariosController
+```
+- Para establecer rutas de anexos y de volcados crea dos directorio según hayas configurado en `.env` (ej.
+  `mkdir -p archivos/anexos/ rchivos/volcados`) y crea el archivo 
   `config/initializers/sip.rb` con algo como:
 ```rb
 Sip.setup do |config|
-      config.ruta_anexos = "#{Rails.root}/archivos/anexos/"
-      config.ruta_volcados = "#{Rails.root}/archivos/volcados/"
-      # En heroku los anexos son super-temporales
-      if !ENV["HEROKU_POSTGRESQL_GREEN_URL"].nil?
-        config.ruta_anexos = "#{Rails.root}/tmp/"
-      end
-      config.titulo = "Aplicación mínima que usa SIP"
+  config.ruta_anexos = ENV.fetch(
+    'SIP_RUTA_ANEXOS', "#{Rails.root}/archivos/anexos/")               
+  config.ruta_volcados = ENV.fetch(
+    'SIP_RUTA_VOLCADOS', "#{Rails.root}/archivos/bd/")
+  config.titulo = "Aplicación mínima que usa SIP"
 end
 ```
 - Remplaza `app/controllers/application_controller.rb` por
@@ -374,29 +384,39 @@ class ApplicationController < Sip::ApplicationController
   protect_from_forgery with: :exception
 end
 ```
-- En este punto deberías poder arrancar la aplicación en modo desarrollo:
+- En este punto deberías poder arrancar la aplicación en modo desarrollo por ejemplo esuchando en el puerto 3000 de 127.0.0.1 con:
 ```sh
-$ bin/rails s
+$ bin/rails s -p 3000 -b 127.0.0.1
 ```
  y verla operando en un navegador en la dirección http://localhost:3000 presentando la página por omisión de rails.
  Deten la aplicación con Control-C para continuar configurando.
-- Para ver el pantallazo inicial (sin menús, ni una maquetación con bootstrap) debes configurar rutas en `config/routes.rb`
+- Para ver el pantallazo inicial en en la ruta (o punto de montaje) `/minsip/` (sin menús, ni una maquetación con bootstrap) debes configurar rutas en `config/routes.rb`
 ```rb
 Rails.application.routes.draw do
-  devise_scope :usuario do
-    get 'sign_out' => 'devise/sessions#destroy'
-  end
-  devise_for :usuarios, :skip => [:registrations], module: :devise
-  as :usuario do
-    get 'usuarios/edit' => 'devise/registrations#edit',
-      :as => 'editar_registro_usuario'    
-    put 'usuarios/:id' => 'devise/registrations#update',
-      :as => 'registro_usuario'            
-  end
-  resources :usuarios, path_names: { new: 'nuevo', edit: 'edita' }  
+  rutarel = ENV.fetch('RUTA_RELATIVA', 'minsip/')                                
+  scope rutarel do· 
+    devise_scope :usuario do
+      get 'sign_out' => 'devise/sessions#destroy'
+      if (Rails.configuration.relative_url_root != '/')·                         
+        ruta = File.join(Rails.configuration.relative_url_root,·                 
+                         'usuarios/sign_in')                                     
+        post ruta, to: 'devise/sessions#create'                                  
+        get  ruta, to: 'devise/sessions#new'                                     
+      end
+    end
+    
+    devise_for :usuarios, :skip => [:registrations], module: :devise
+    as :usuario do
+      get 'usuarios/edit' => 'devise/registrations#edit',
+        :as => 'editar_registro_usuario'    
+      put 'usuarios/:id' => 'devise/registrations#update',
+        :as => 'registro_usuario'            
+    end
+    resources :usuarios, path_names: { new: 'nuevo', edit: 'edita' }  
 
-  root 'sip/hogar#index'
-  mount Sip::Engine, at: "/"
+    root 'sip/hogar#index'
+  end  # scope
+  mount Sip::Engine, at: rutarel, as: 'sip'
 end
 ```
 y el logo (`logo.jpg`) y los favicons en la ruta `app/assets/images`, aunque inicialmente puedes copiar los de la aplicación e prueba de sip <https://github.com/pasosdeJesus/sip/tree/master/test/dummy/app/assets/images> 
