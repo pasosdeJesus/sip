@@ -75,7 +75,7 @@ export PUERTODES=3300                             # En modo desarrollo puerto en
 
 export SIP_FORMATO_FECHA="dd/M/yyyy"              # Formato para presentar y recibir fechas, también podría ser yyyy-mm-dd
 ```
-Para dar posibilidad de sobrecargar esas variables desde la línea de órdenes, cada una debe ponerse dentro de un ``if` como en el ejemplo siguiente con la primera:
+Para dar posibilidad de sobrecargar esas variables desde la línea de órdenes, cada una debe ponerse dentro de un `if` como en el ejemplo siguiente con la primera:
 ```
 if (test "$BD_SERVIDOR" = "") then {
   export BD_SERVIDOR=/var/www/var/run/postgresql # Ruta al socket de PostgreSQL, en adJ es /var/www/var/run/postgresql/   
