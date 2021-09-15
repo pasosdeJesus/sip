@@ -423,7 +423,7 @@ y el logo (`logo.jpg`) y los favicons en la ruta `app/assets/images`, aunque ini
 
 - Para preparar experiencia de usuario con ayuda de Bootstrap y Javascript debes instalar paquetes `npm` mínimos: 
 ```sh
-yarn add @rails/webpacker webpack @rails/ujs  bootstrap bootstrap-datepicker chosen-js expose-loader @fortawesome/fontawesome-free jquery jquery-ui popper.js  turbolinks 
+yarn add @rails/webpacker@6.0.0-rc.1 @rails/ujs bootstrap bootstrap-datepicker chosen-js expose-loader @fortawesome/fontawesome-free jquery jquery-ui popper.js@2.0.0-next.4 turbolinks 
 CXX=c++ yarn install
 ```
 en `app/javascript/packs/application.js` cargarlos e iniciarlos:
