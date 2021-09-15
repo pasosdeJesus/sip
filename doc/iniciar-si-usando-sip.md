@@ -533,3 +533,12 @@ $ bin/rails s -b 127.0.0.1 -p 3000
 ```
 y examínala en el puerto 3000 con tu navegador <http://localhost:3000>,
 recuerda que el usuario inicial es `sip` con clave `sip`.
+
+- Para facilitar arrancar, detener o actualizar sugerimos copiar de `sip/test/dummy/bin` en el directorio `bin` de tu aplicación los guiones `corre`, `detiene` y `migra`. Así podrás configurar puerto e IP en .env e iniciar con:
+```
+bin/corre
+```
+o sin precompilar recursos (rápido) con:
+```
+R=1 bin/corre
+```
