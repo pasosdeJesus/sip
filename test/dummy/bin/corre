@@ -45,7 +45,7 @@ FileUtils.chdir RAIZ_AP do
     ENV['RAILS_ENV'] = 'development'
   end
   if !ENV['PUERTODES']
-    ENV['PUERTODES'] = '2300'
+    ENV['PUERTODES'] = '3300'
   end
   if !ENV['IPDES'] || ENV['IPDES'] == ''
     ENV['IPDES'] = '127.0.0.1'
