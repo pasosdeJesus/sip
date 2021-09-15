@@ -420,7 +420,14 @@ end
 yarn add @rails/webpacker@6.0.0-rc.1 @rails/ujs @popperjs/core babel-plugin-macros bootstrap bootstrap-datepicker chosen-js expose-loader @fortawesome/fontawesome-free jquery jquery-ui popper.js@2.0.0-next.4 turbolinks 
 CXX=c++ yarn install
 ```
-en `app/packs/entrypoints/application.js` debes configurar como cargarlos como módulos, dejando jQuery de manera global (mientras ̣`sip` deja de depender de ese paquete):
+prepara la estructura de directorios para webpack saque javascript con módulos de `app/packs` con:
+```
+mv app/javascript app/packs
+mv app/packs/packs app/packs/entrypoints
+rm config/webpack/environment.js
+bin/rails webpacker:install
+```
+en `app/packs/entrypoints/application.js` debes configurar como cargar los módulos javascript, dejando jQuery de manera global (mientras ̣`sip` deja de depender de ese paquete):
 ```js
 console.log('Hola Mundo desde Webpacker')
 
@@ -447,40 +454,29 @@ module ApplicationHelper
   
 end
 ```
-Verifica que la configuración de javascript es correcta empaquetando con webpacker:
+Y verifica que la configuración de javascript con módulos es correcta empaquetando con webpacker:
 ```
 bin/webpack
 ```
-- Completa la instalación de webpack y la configuración de webpacker con:
-```
-CXX=c++ yarn add @rails/webpacker webpack
-CXX=c++ yarn install
-```
-tras lo cual deberías poder ejecutar
-```
-bin/webpack
-```
-
-- La tubería de recursos se encargará de ubicar en un directorio `public/minsip/assets/images` el logo (`logo.jpg`) y los favicons que pongas en la ruta `app/assets/images`, aunque inicialmente puedes copiar los de la aplicación e prueba de sip <https://github.com/pasosdeJesus/sip/tree/master/test/dummy/app/assets/images> 
-
-Configura sprockets para cargar hojas de estilo y operar en paralelo con webpack agregando a `config/initializers/assets.rb`:
+- La tubería de recursos se encargará de ubicar en un directorio `public/minsip/assets/images` el logo (`logo.jpg`) y los favicons que pongas en la ruta `app/assets/images`. Inicialmente puedes copiar los de la aplicación e prueba de sip <https://github.com/pasosdeJesus/sip/tree/master/test/dummy/app/assets/images> 
+Configura sprockets para cargar recursos de los paquetes npm asegurando que en `config/initializers/assets.rb` está:
 ```ruby
 Rails.application.config.assets.paths << Rails.root.join('node_modules')
 ```
-dejando en `app/assets/stylesheets/application.css`:
+Usa sprockets para transmitir hojas de estilo preconfiguradas de sip y sobrecargables en `app/assets/stylesheets/` dejando en `app/assets/stylesheets/application.css`:
 ```css
 /*
- *= require_tree .
  *= require sip/application.css
+ *= require_tree .
  *= require_self
  */
 ```
-y para cargar otros javascript que no se manejen con webpacker, asegurese de dejar en `app/assets/javascripts/application.js` el siguiente contenido (creando antes el directorio `app/assets/javascripts`):
+Para cargar otros javascript que no se manejen con webpacker, asegurese de dejar en `app/assets/javascripts/application.js` el siguiente contenido (creando antes el directorio `app/assets/javascripts`):
 ```js
 //= require sip/application
 //= require_tree .
 ```
-En `app/assets/config/manifest.js` indica recursos por incluir.  En general sugerimos preparar hojas de estilo e imagenes con sprockets y todo lo de Javascript transmitirlo mediante webpacker.  Sin embargo las fuentes javascript que aún no se han migrado a webpacker pueden seguirse preparando con sprockets, recordando que en el navegador operarán en el enterno global --mientras que lo trasmitido por webpacker por omisión operará como módulo.
+En `app/assets/config/manifest.js` indica recursos por incluir.  En general sugerimos preparar hojas de estilo e imagenes con sprockets y todo lo de Javascript con módulos transmitirlo mediante webpacker.  Sin embargo las fuentes javascript que aún no sean modulos pueden seguirse preparando con sprockets, recordando que en el navegador operarán en el enterno global --mientras que lo trasmitido por webpacker por omisión operará como módulo.
 ```
 //= link_tree ../images
 //= link_directory ../javascripts .js
