@@ -141,7 +141,7 @@ gem 'devise'                     # Autenticación
 
 gem 'devise-i18n'                # Localización e Internacionalización                  
 
-gen 'dotenv-rails'
+gen 'dotenv-rails'               # Configuración de servidor en .env
 
 gem 'jbuilder', '>= 2.7'         # Json
 
@@ -149,52 +149,47 @@ gem 'kt-paperclip'               # Anexos
 
 gem 'nokogiri'                   # Procesamiento XML
 
-gem 'pg'
+gem 'pg'                         # PostgreSQL
 
 gem 'puma'                       # Lanza en modo desarrollo
 
-gem 'rails'
+gem 'rails'      
 
 gem 'rails-i18n'                 # Localización e Internacionalización 
 
-gem 'simple_form'  # Formularios
+gem 'simple_form'                # Formularios
 
-gem 'turbolinks'
+gem 'turbolinks'                 # Acelera HTML
 
 gem 'twitter_cldr'               # Localiación e internacionalización 
 
-gem 'webpacker'
+gem 'webpacker'                  # Empaqueta javascript de app/javascript
 
 gem 'will_paginate'              # Pagina listados
 
 
-# Motores que sobrecargan vistas o basados en SIP en orden de apilamento
+#### Motores que sobrecargan vistas o basados en SIP en orden de apilamento
 gem 'sip',                       # SI estilo Pasos de Jesús
   git: 'https://github.com/pasosdeJesus/sip.git'
 EOF
 
 group :development, :test do                                                     
-  #gem 'byebug'                                                                  
+  #gem 'byebug'                 # Depura                                                
                                                                                   
-  gem 'code-scanning-rubocop'                                                    
+  gem 'code-scanning-rubocop'   # Busca fallas de seguridad                                                    
                                                                                  
-  gem 'rails-erd'                                                                
+  gem 'rails-erd'               # Genera diagrama entidad asociación
 end     
 
 group :development do                                                            
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console', '>= 3.3.0' # Depura en navegador
 end                                                                              
                                                                                  
-group :test do                                                                   
-                                                                                 
-  gem "connection_pool"                                                          
-                                                                                 
-  gem "minitest"                                                                 
-                                                                                 
-  gem "minitest-reporters"                                                       
-                                                                                 
-  gem 'rails-controller-testing'                                                 
-                                                                                 
+group :test do                                                                              
+  gem 'minitest'                # Pruebas automáticas de regresión con minitest                                                 
+  
+  gem 'capybara'                # Pruebas del sistema 
+  
   gem 'selenium-webdriver'    
   
   gem 'simplecov', '~> 0.10', '< 0.18'                                           
