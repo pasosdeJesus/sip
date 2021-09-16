@@ -25,7 +25,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "paperclip"
   s.add_runtime_dependency "cancancan"
   s.add_runtime_dependency "simple_form"
-  s.add_runtime_dependency "will_paginate"
   s.add_runtime_dependency "jquery-ui-rails"
   s.add_runtime_dependency "twitter_cldr"
   s.add_runtime_dependency "chosen-rails"

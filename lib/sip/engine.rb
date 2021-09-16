@@ -6,8 +6,8 @@ module Sip
     isolate_namespace Sip
 
     config.generators do |g|
-      g.test_framework      :rspec,        :fixture => false
-      g.fixture_replacement :factory_girl, :dir => 'spec/factories'
+      g.test_framework      :mintest,        :fixture => false
+      #g.fixture_replacement :factory_girl, :dir => 'spec/factories'
       g.assets false
       g.helper false
     end
@@ -34,11 +34,14 @@ module Sip
 
   end
 
+  self.mattr_accessor :longitud_nusuario
+  self.mattr_accessor :paginador
+  self.mattr_accessor :paisomision
   self.mattr_accessor :ruta_anexos
   self.mattr_accessor :ruta_volcados
   self.mattr_accessor :titulo
-  self.mattr_accessor :longitud_nusuario
-  self.mattr_accessor :paisomision
+  
+  # Tema
   self.mattr_accessor :colorom_nav_ini
   self.mattr_accessor :colorom_nav_fin
   self.mattr_accessor :colorom_nav_fuente
@@ -61,11 +64,13 @@ module Sip
   self.mattr_accessor :colorom_color_flota_subitem_fondo
   self.mattr_accessor :colorom_color_flota_subitem_fuente
 
+  self.longitud_nusuario = 15
+  self.paginador = :will_paginate
+  self.paisomision = 170
   self.ruta_anexos = "#{Rails.root}/archivos/anexos"
   self.ruta_volcados = "#{Rails.root}/archivos/bd"
   self.titulo = "Motor para Sistemas de Información estilo Pasos de Jesús" 
-  self.longitud_nusuario = 15
-  self.paisomision = 170
+
   self.colorom_fondo = '#ffffff'
   self.colorom_color_fuente = '#000000'
   self.colorom_nav_ini = '#95c4ff'
