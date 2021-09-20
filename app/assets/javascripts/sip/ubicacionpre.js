@@ -129,6 +129,31 @@ function habilita_otros_sihaymun(e, tipo, campoubi){
   }
 }
 
+
+function sip_ubicacionpre_fija_coordenadas(e, campoubi, elemento, ubi_plural){
+  ubp = $(e.target).closest('.ubicacionpre')
+  latitud = ubp.find('[id$='+campoubi+'_latitud]')
+  longitud = ubp.find('[id$='+campoubi+'_longitud]')
+
+  id = $(elemento).val()
+  root = window
+  $.getJSON(root.puntomontaje + "admin/" + ubi_plural +".json", function(o){
+    ubi = o.filter(function(item){
+      return item.id == id
+    })
+    if(ubi[0]){
+      if(ubi[0].latitud){
+        latitud.val(ubi[0].latitud).trigger('chosen:updated')
+        longitud.val(ubi[0].longitud).trigger('chosen:updated')
+      }
+    }else{
+      latitud.val(null).trigger('chosen:updated')
+      longitud.val(null).trigger('chosen:updated')
+    }
+  });
+}
+
+
 // iniid Inicio de identificacion por ejemplo 'caso_migracion_attributes'
 // campoubi Identificación particular del que se registra por ejemplo 'salida'
 //    (teniendo en cuenta que haya campos para el mismo, por ejemplo
@@ -146,7 +171,7 @@ function sip_ubicacionpre_expandible_registra(iniid, campoubi, root) {
   // Cambia coordenadas al cambiar pais
   $(document).on('change', 
     '[id^=' + iniid + '][id$=' + campoubi + '_pais_id]', function (evento) {
-      fija_coordenadas(evento, campoubi, $(this), "paises")
+      sip_ubicacionpre_fija_coordenadas(evento, campoubi, $(this), "paises")
       deshabilita_otros_sinohaymun(evento, campoubi)
     }
   )
@@ -158,9 +183,9 @@ function sip_ubicacionpre_expandible_registra(iniid, campoubi, root) {
       if($(this).val() == "") {
         ubp = $(evento.target).closest('.ubicacionpre')
         pais = ubp.find('[id$='+campoubi+'_pais_id]')
-        fija_coordenadas(evento, campoubi, pais, "paises")
+        sip_ubicacionpre_fija_coordenadas(evento, campoubi, pais, "paises")
       } else {
-        fija_coordenadas(evento, campoubi, $(this), "departamentos")
+        sip_ubicacionpre_fija_coordenadas(evento, campoubi, $(this), "departamentos")
       }
       deshabilita_otros_sinohaymun(evento, campoubi)
     })
@@ -172,10 +197,10 @@ function sip_ubicacionpre_expandible_registra(iniid, campoubi, root) {
       if($(this).val() == '') {
         ubp = $(evento.target).closest('.ubicacionpre')
         dep = ubp.find('[id$='+campoubi+'_departamento_id]')
-        fija_coordenadas(evento, campoubi, dep, "departamentos")
+        sip_ubicacionpre_fija_coordenadas(evento, campoubi, dep, "departamentos")
         deshabilita_otros_sinohaymun(evento, campoubi)
       }else{
-        fija_coordenadas(evento, campoubi, $(this), "municipios")
+        sip_ubicacionpre_fija_coordenadas(evento, campoubi, $(this), "municipios")
         habilita_otros_sihaymun(evento, 1, campoubi)
       }
     })
@@ -187,9 +212,9 @@ function sip_ubicacionpre_expandible_registra(iniid, campoubi, root) {
       if($(this).val()==""){
         ubp = $(evento.target).closest('.ubicacionpre')
         mun = ubp.find('[id$='+campoubi+'_municipio_id]')
-        fija_coordenadas(evento, campoubi, mun, "municipios")
+        sip_ubicacionpre_fija_coordenadas(evento, campoubi, mun, "municipios")
       }else{
-        fija_coordenadas(evento, campoubi, $(this), "clases")
+        sip_ubicacionpre_fija_coordenadas(evento, campoubi, $(this), "clases")
       }
       habilita_otros_sihaymun(evento, 1, campoubi)
     })

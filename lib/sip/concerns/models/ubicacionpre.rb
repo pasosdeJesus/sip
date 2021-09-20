@@ -102,18 +102,18 @@ module Sip
                                     clase_id, lugar, sitio, tsitio_id,
                                     latitud, longitud, usa_latlon = true)
 
-            latitud = usa_latlon ? latitud.to_f : 0.0
             longitud = usa_latlon ? longitud.to_f : 0.0
 
             if !pais_id || Sip::Pais.where(id: pais_id.to_i).count == 0
               return nil 
             end
             opais = Sip::Pais.find(pais_id.to_i)
-            if !usa_latlon
+            # Aquí debería chequearse que la latitud y longitud estén 
+            # dentro del país
+            if (latitud == 0.0 && longitud == 0.0) || !usa_latlon
               latitud = opais.latitud
               longitud = opais.longitud
             end
-            # Aquí debería chequearse que la latitud y longitud estén dentro del país
 
             w = {
               pais_id: opais.id,
@@ -134,7 +134,8 @@ module Sip
               return Sip::Ubicacionpre.where(w).take.id # SIN INFORMACIÓN
             end
             odepartamento = Sip::Departamento.find(departamento_id.to_i)
-            if !usa_latlon
+            if (latitud == opais.latitud && longitud == opais.longitud) || 
+                !usa_latlon
               latitud = odepartamento.latitud
               longitud = odepartamento.longitud
             end
@@ -150,7 +151,8 @@ module Sip
               return Sip::Ubicacionpre.where(w).take.id
             end
             omunicipio = Sip::Municipio.find(municipio_id.to_i)
-            if !usa_latlon
+            if (latitud == odepartamento.latitud && 
+                longitud == odepartamento.longitud) || !usa_latlon
               latitud = omunicipio.latitud
               longitud = omunicipio.longitud
             end
@@ -171,7 +173,8 @@ module Sip
             if clase_id.to_i > 0
               w[:clase_id] = clase_id.to_i # Urbana
               oclase = Sip::Clase.find(clase_id.to_i)
-              if !usa_latlon
+              if (latitud == omunicipio.latitud && 
+                  longitud == omunicipio.longitud) || !usa_latlon
                 latitud = oclase.latitud
                 longitud = oclase.longitud
               end
