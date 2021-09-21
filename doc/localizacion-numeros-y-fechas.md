@@ -24,6 +24,12 @@ Esto agregará la posibilidad de presentar ```saldo_localizado``` o escribir en 
 
 Para validaciones en el modelo puede seguir usando ```saldo```, pero en vistas y donde aplique en el controlador podrá usar ```saldo_localizado``` (por ejemplo en el formulario y por tanto en la lista blanca de parámetros por recibir). 
 
+Las extensiones al tipo string permiten las siguientes expresiones:
+* "3.2".a_decimal_localizado  dará la cadena "3,2"
+* "3,2".a_decimal_nolocalizado dará la cadena "3.2"
+Y la extensión al tipo numeric:
+* 3.2.a_decimal_localizado dará la cadena "3,2"
+
 ## Campos de fecha en formatos localizados
 
 El formato de la fecha especifiquelo en  ```config/application.rb``` con ```config.x.formato_fecha```.  Esto fijara el formato que DatePicker usará en la interfaz, con algunas funciones auxiliares este mismo se emplea al lado del servidor para convertir al formato de PostgreSQL (al lado del servidor los formatos se especifican con notación de POSIX que es diferente, por eso y para convertir al formato estándar de PostgreSQL se requieren ayudadores).   En el momento de este escrito los formatos que más se han probado son:
