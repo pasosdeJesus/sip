@@ -24,11 +24,14 @@ Esto agregará la posibilidad de presentar ```saldo_localizado``` o escribir en 
 
 Para validaciones en el modelo puede seguir usando ```saldo```, pero en vistas y donde aplique en el controlador podrá usar ```saldo_localizado``` (por ejemplo en el formulario y por tanto en la lista blanca de parámetros por recibir). 
 
-Las extensiones al tipo string permiten las siguientes expresiones:
-* "3.2".a_decimal_localizado  dará la cadena "3,2"
-* "3,2".a_decimal_nolocalizado dará la cadena "3.2"
-Y la extensión al tipo numeric:
-* 3.2.a_decimal_localizado dará la cadena "3,2"
+Las extensiones a clases permiten escribir las siguientes expresiones:
+* Con el tipo `string`
+  * `"3.2".a_decimal_loc`alizado`  dará la cadena `"3,2"`
+  * `"3,2".a_decimal_nolocalizado` dará la cadena `"3.2"`
+* Con el tipo `numeric`:
+  * `3.2.a_decimal_localizado` dará la cadena `"3,2"`
+* Con el tipo `NilClass`:
+  * nil.a_decimal_localizado dará la cadena `"0.0"`  (imitando que `nil.to_f` da el flotante `0.0`)
 
 ## Campos de fecha en formatos localizados
 
