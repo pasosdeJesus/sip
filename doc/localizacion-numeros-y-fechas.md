@@ -26,12 +26,12 @@ Para validaciones en el modelo puede seguir usando ```saldo```, pero en vistas y
 
 Las extensiones a clases permiten escribir las siguientes expresiones:
 * Con el tipo `string`
-  * `"3.2".a_decimal_loc`alizado`  dará la cadena `"3,2"`
+  * `"3.2".a_decimal_localizado`  dará la cadena `"3,2"`
   * `"3,2".a_decimal_nolocalizado` dará la cadena `"3.2"`
 * Con el tipo `numeric`:
   * `3.2.a_decimal_localizado` dará la cadena `"3,2"`
 * Con el tipo `NilClass`:
-  * nil.a_decimal_localizado dará la cadena `"0.0"`  (imitando que `nil.to_f` da el flotante `0.0`)
+  * `nil.a_decimal_localizado` dará la cadena `"0.0"`  (imitando que `nil.to_f` da el flotante `0.0`)
 
 ## Campos de fecha en formatos localizados
 
