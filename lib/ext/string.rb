@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 class String
 
   # Basado en soluciones de
@@ -11,6 +9,9 @@ class String
   end
 
   def a_decimal_localizado
+    if !self || self == ''
+      return ''
+    end
     delimiter = I18n::t('number.format.delimiter')
     #puts "delimiter=#{delimiter}"
     separator = I18n::t('number.format.separator')

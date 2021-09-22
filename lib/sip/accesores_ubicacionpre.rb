@@ -15,6 +15,11 @@ module Sip
                 foreign_key: "#{prefijo.to_s}ubicacionpre_id", 
                 optional: true)
 
+      # No usamos attr_reader en los siguientes porque aunque
+      # no definamos escritores para los siguientes atributos,
+      # parece que rails prefiere que estén declarados o al 
+      # ejecutar update da: 
+      # unknown attribute 'ubicacionpre_clase_id' for Cor1440Gen::Actividad.
       self.send(:attr_accessor, "#{prefijo.to_s}_pais_id")
       self.send(:attr_accessor, "#{prefijo.to_s}_departamento_id")
       self.send(:attr_accessor, "#{prefijo.to_s}_municipio_id")
@@ -24,6 +29,10 @@ module Sip
       self.send(:attr_accessor, "#{prefijo.to_s}_tsitio_id")
       self.send(:attr_accessor, "#{prefijo.to_s}_latitud")
       self.send(:attr_accessor, "#{prefijo.to_s}_longitud")
+
+      # Se espera que la clase que lo extienda también tendrá
+      # flotante_localizado :ubicacionpre_latitud
+      # flotante_localizado :ubicacionpre_longitud
 
       define_method("#{prefijo.to_s}_pais_id") do
         self.send("#{prefijo.to_s}") ?

@@ -20,6 +20,9 @@ module Sip
           belongs_to :tsitio, class_name: "Sip::Tsitio",
             foreign_key: "tsitio_id", validate: true, optional: true
 
+          flotante_localizado :latitud
+          flotante_localizado :longitud
+
           validates :nombre, uniqueness: true, presence: true,
             length: { maximum: 2000 }
           validates :lugar, length: { maximum: 500 } 
@@ -97,10 +100,12 @@ module Sip
           # Si usa_latlon es falso y la ubicación con lugar
           # es válida ignora las que recibe y pone unas
           # de acuerdo al pais, departamento, municipio y clase
+          # La latitud y longitud que recibe no debe estar localizadas
           # Retorna id de ubicación que encuentra o que crea o nil si tiene problema
           def buscar_o_agregar(pais_id, departamento_id, municipio_id,
                                     clase_id, lugar, sitio, tsitio_id,
-                                    latitud, longitud, usa_latlon = true)
+                                    latitud, longitud, 
+                                    usa_latlon = true)
 
             longitud = usa_latlon ? longitud.to_f : 0.0
 
@@ -110,7 +115,9 @@ module Sip
             opais = Sip::Pais.find(pais_id.to_i)
             # Aquí debería chequearse que la latitud y longitud estén 
             # dentro del país
-            if (latitud == 0.0 && longitud == 0.0) || !usa_latlon
+            if (latitud.to_f == 0.0 && 
+                longitud.to_f == 0.0) || 
+               !usa_latlon
               latitud = opais.latitud
               longitud = opais.longitud
             end
@@ -134,7 +141,8 @@ module Sip
               return Sip::Ubicacionpre.where(w).take.id # SIN INFORMACIÓN
             end
             odepartamento = Sip::Departamento.find(departamento_id.to_i)
-            if (latitud == opais.latitud && longitud == opais.longitud) || 
+            if (latitud.to_f == opais.latitud && 
+                longitud.to_f == opais.longitud) || 
                 !usa_latlon
               latitud = odepartamento.latitud
               longitud = odepartamento.longitud
@@ -174,7 +182,8 @@ module Sip
               w[:clase_id] = clase_id.to_i # Urbana
               oclase = Sip::Clase.find(clase_id.to_i)
               if (latitud == omunicipio.latitud && 
-                  longitud == omunicipio.longitud) || !usa_latlon
+                  longitud == omunicipio.longitud &&
+                  oclase.latitud && oclase.longitud) || !usa_latlon
                 latitud = oclase.latitud
                 longitud = oclase.longitud
               end
@@ -232,7 +241,6 @@ module Sip
                 sitio = ''
               end
             end
-
             # Preparamos tsitio_id
             tsitio_id = tsitio_id.to_i > 0 ? tsitio_id.to_i : nil
             if tsitio_id && Sip::Tsitio.where(id: tsitio_id.to_i).count == 0
@@ -280,7 +288,6 @@ module Sip
               w[:lugar] = lugar.strip.gsub(/  */, ' ')
               w[:sitio] = sitio.strip.gsub(/  */, ' ')
             end
-
             # Intentamos añadir nuevo teniendo en cuenta que lugar y sitio 
             # ya estan dilig.
             w[:tsitio_id] = tsitio_id

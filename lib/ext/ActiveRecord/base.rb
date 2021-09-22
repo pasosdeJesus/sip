@@ -5,11 +5,19 @@ class ActiveRecord::Base
   def self.flotante_localizado(*fields)
     fields.each do |f|
       define_method("#{f}_localizado") do
-        val = read_attribute(f)
+        if attribute_method?(f)
+          val = read_attribute(f)
+        else
+          val = self.send(f) #read_attribute(f)
+        end
         val ? val.to_s.a_decimal_localizado : nil
       end
       define_method("#{f}_localizado=") do |e|
-        write_attribute(f, e.to_s.a_decimal_nolocalizado)
+        if attribute_method?(f)
+          write_attribute(f, e.to_s.a_decimal_nolocalizado)
+        else
+          self.send(f.to_s + '=', e.to_s.a_decimal_nolocalizado)
+        end
       end
     end
   end

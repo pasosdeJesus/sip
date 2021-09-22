@@ -130,23 +130,23 @@
           } %>
       </div>
       <div class="col-md-4">
-        <%= f.input campolatitud, #:salida_latitud,
+        <%= f.input campolatitud, #:salida_latitud_localizado,
           label: false,
-          as: :float,
           disabled: estsinmun,
           input_html: {
             "data-toggle" => 'tooltip',
-            placeholder: campolatitud_etiqueta #'Latitud'
+            placeholder: campolatitud_etiqueta, #'Latitud'
+            value: f.object.send(campolatitud) || '0,0'
           } %>
       </div>
       <div class="col-md-4">
-        <%= f.input campolongitud, #:salida_longitud,
+        <%= f.input campolongitud, #:salida_longitud_localizado,
           label: false,
-          as: :float,
           disabled: estsinmun,
           input_html: {
             "data-toggle" => 'tooltip',
-            placeholder: campolongitud_etiqueta #'Longitud'
+            placeholder: campolongitud_etiqueta, #'Longitud'
+            value: f.object.send(campolongitud) || '0,0'
           } %>
       </div>
     </div> <!-- row -->
