@@ -504,8 +504,8 @@ if (typeof String.prototype.endsWith != 'function')
 #          select por modificar y campores es campo por usar de la respuesta 
 #          JSON 
 # descerr  Descripcion por presentar en caso de que el JSON no responda
-# root     Donde se almacenan objetos globales
 # f        Función por llamar despues de cambiar opción 
+# root     Donde se almacenan objetos globales
 @sip_elige_opcion_select_con_AJAX = ($elem,  rutajson, lid, descerr, f = null, root = window) ->
   sip_arregla_puntomontaje(root)
   t = Date.now()
@@ -518,7 +518,7 @@ if (typeof String.prototype.endsWith != 'function')
     return
 
   val = $elem.val()
-  x = $.getJSON(root.puntomontaje + rutajson + "/" + val + ".json")
+  x = $.getJSON(root.puntomontaje + rutajson + ".json")
   x.done((datos) ->
     lid.forEach( (p) ->
       $('#' + p[0]).val(datos[p[1]])

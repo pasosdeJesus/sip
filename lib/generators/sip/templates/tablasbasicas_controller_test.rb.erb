@@ -23,13 +23,13 @@ module Admin
       sign_in @current_usuario
     end
 
-    # Cada prueba se ejecuta se hace en una transacción
+    # Cada prueba se ejecuta en una transacción de la base de datos
     # que después de la prueba se revierte. Por lo que no
     # debe preocuparse por restaurar/borrar lo que modifique/elimine/agregue
     # en cada prueba.
-   
+
     test "debe presentar listado" do
-      get admin_<%= nom_clase %>_path
+      get admin_<%= nom_arch_plural %>_path
       assert_response :success
       assert_template :index
     end

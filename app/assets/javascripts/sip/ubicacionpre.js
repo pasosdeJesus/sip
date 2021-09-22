@@ -159,7 +159,10 @@ function sip_ubicacionpre_fija_coordenadas(e, campoubi, elemento, ubi_plural){
 //    (teniendo en cuenta que haya campos para el mismo, por ejemplo
 //    uno terminado en salida_lugar).
 // root Raiz
-function sip_ubicacionpre_expandible_registra(iniid, campoubi, root) {
+// fcamdep Función opcional por llamar cuando cambie el departamento
+// fcammun Función opcional por llamar cuando cambie el municipio
+function sip_ubicacionpre_expandible_registra(iniid, campoubi, root, 
+  fcamdep = null, fcammun = null) {
   sip_arregla_puntomontaje(root)
 
   // Buscador en campo lugar
@@ -188,6 +191,9 @@ function sip_ubicacionpre_expandible_registra(iniid, campoubi, root) {
         sip_ubicacionpre_fija_coordenadas(evento, campoubi, $(this), "departamentos")
       }
       deshabilita_otros_sinohaymun(evento, campoubi)
+      if (fcamdep) {
+        fcamdep()
+      }
     })
 
   // Cambia coordenadas y habilita otros campos al cambiar municipio
@@ -202,6 +208,9 @@ function sip_ubicacionpre_expandible_registra(iniid, campoubi, root) {
       }else{
         sip_ubicacionpre_fija_coordenadas(evento, campoubi, $(this), "municipios")
         habilita_otros_sihaymun(evento, 1, campoubi)
+      }
+      if (fcammun) {
+        fcammun()
       }
     })
 
