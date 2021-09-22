@@ -1,4 +1,3 @@
-# encoding: UTF-8
 
 class AgregaCargoActorsocialPersona < ActiveRecord::Migration[6.0]
   def change

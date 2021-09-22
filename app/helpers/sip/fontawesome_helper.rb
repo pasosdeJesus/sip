@@ -1,4 +1,3 @@
-#encoding: UTF-8 
 
 # Funciones auxiliares para Fontawesome basadas en las de la gema
 # fontawesome-rails.

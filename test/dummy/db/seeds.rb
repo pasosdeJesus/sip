@@ -1,5 +1,4 @@
-# encoding: UTF-8
-#
+
 # Este archivo debe contener todas las creaciones de registros
 # necesarias para alimentar la base de datos con sus valores por defecto.
 # Los datos puede cargarse con la tarea rake db:seed (o creados junto

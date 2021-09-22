@@ -1,4 +1,3 @@
-# encoding: UTF-8
 module Sip
   module Admin
     class FuentesprensaController < Sip::Admin::BasicasController

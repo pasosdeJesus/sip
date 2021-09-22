@@ -1,4 +1,3 @@
-# encoding: UTF-8
 
 # Ideas de https://www.sitepoint.com/speed-up-with-materialized-views-on-postgresql-and-rails/
 module Sip

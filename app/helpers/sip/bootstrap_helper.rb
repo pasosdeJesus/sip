@@ -1,4 +1,3 @@
-#encoding: UTF-8 
 
 # Ayudadores para Bootstrap 5 basados en los ayudaddores para 
 # Bootstrap 3 de la gema twitter-bootstrap-rails

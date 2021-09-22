@@ -1,4 +1,3 @@
-# encoding: UTF-8
 require 'rails/generators/base'
 
 module Sip

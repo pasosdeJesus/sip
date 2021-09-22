@@ -1,4 +1,3 @@
-# encoding: UTF-8
 module Sip
   module Admin
     class EtiquetasController < BasicasController #ApplicationController 
