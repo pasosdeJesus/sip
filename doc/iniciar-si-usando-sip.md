@@ -65,6 +65,11 @@ Para evitar que te solicite clave del usuario PostgreSQL en cada ingreso a `psql
 
 - Instala globlamente dotenv con `doas gem install dotenv` e incluye otras gemas necesarias y `sip` en el archivo `Gemfile` que debe quedar al menos con:
 ```
+source 'https://rubygems.org'                                                                                
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+ruby '>=3.0.2'
+
 gem 'bcrypt'                     # Condensando de claves con bcrypt
 
 gem 'bootsnap'                   # Arranque rápido
@@ -80,7 +85,7 @@ gem 'devise'                     # Autenticación
 
 gem 'devise-i18n'                # Localización e Internacionalización                  
 
-gen 'dotenv-rails'               # Configuración de servidor en .env
+gem 'dotenv-rails'               # Configuración de servidor en .env
 
 gem 'jbuilder', '>= 2.7'         # Json
 
