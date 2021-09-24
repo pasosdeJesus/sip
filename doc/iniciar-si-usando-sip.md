@@ -291,7 +291,7 @@ $ bin/rails dbconsole
 psql (13.4)
 Type "help" for help.
 
-minsipdes_des=# \q
+minsip_des=# \q
 ```
 
 - Modifica la configuración de `config/application.rb` asegurando
@@ -357,17 +357,16 @@ $ bin/rails db:drop db:setup sip:indices
 - Prueba lo que llevas en la base de datos iniciando consola interactiva de PostgreSQL y realizando una consulta:
 ```$
 $ bin/rails dbconsole
-Password for user minsipdes: 
 psql (13.4)
 Type "help" for help.
 
-minsipdes_des=# select count(*) from sip_clase;
+minsip_des=# select count(*) from sip_clase;
  count 
 -------
  14390
 (1 row)
 
-minsipdes_des=# \q
+minsip_des=# \q
 ```
 - Crea el modelo `usuario` en `app/models/usuario.rb` inicialmente con:
 ```rb
