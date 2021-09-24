@@ -2,9 +2,8 @@ Una tabla asociativa (que tambien hemos llamado tabla combinada o tabla unión) 
 
 # 1. Tabla asociativa sólo con las llaves foráneas de las tablas que asocia
 
-Si la tabla asociativa no va a tener información adicional a las llaves foráneas de las tablas que asocia en rails, no se requiere que tenga campo id, ni marcas de tiempo, 
-pero para evitar duplicaciones es importante agregarle como llave primaria la combinación de las llaves foráneas.   En la vista lo típico es implementarla con un campo de
-selección múltiple en el formulario de alguna (o todas) las tablas que asocia.
+Si la tabla asociativa no va a tener información adicional a las llaves foráneas de las tablas que asocia y si en la vista se desea presentar como un
+cuadro de selección (o tal vez cajas de chequeo), lo más recomendable con rails sería crear una tabla sin campo `id` ni marcas de tiempo pero para evitar duplicaciones es importante agregarle como llave primaria la combinación de las llaves foráneas.``
 
 El ejemplo de usuarios y permisos de https://es.wikipedia.org/wiki/Entidad_asociativa se podría implementar (agregando campo id a las tablas Usuarios y Permisos) con:
 ```
