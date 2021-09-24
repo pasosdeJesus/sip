@@ -87,8 +87,7 @@ export SIP_RUTA_VOLCADOS=${DIRAP}/archivos/bd
 ```
 Puedes verificar la sintaxis cargando ese archivo desde la línea de ordenes y revisando alguna variable con:
 ```
-$ . .env
-$ echo $BD_USUARIO
+$ (. .env; echo $BD_USUARIO)
 isa5417
 ```
 Para dar posibilidad de sobrecargar esas variables de configuracion del servidor desde la línea de órdenes, cada una debe ponerse dentro de un `if` como en el ejemplo siguiente con la primera:
@@ -97,6 +96,18 @@ if (test "$BD_SERVIDOR" = "") then {
   export BD_SERVIDOR=/var/www/var/run/postgresql # Ruta al socket de PostgreSQL, en adJ es /var/www/var/run/postgresql/   
 }
 ```
+No agregues este archivo al repositorio git (si emplearás uno) porque tiene claves y 
+datos sensibles que podrían usarse para atacar tu servidor.
+Puedes ayudarte a evitarlo agreando .env a tu archivo .gitignore
+```
+echo .env >> .gitignore
+``` 
+Pero si quieres distribuir en tu repositorio una plantilla del archivo .env puedes copiarlo en .env.plantilla y agregar .env.plantilla a tu repositorio:
+```
+cp .env .env.plantilla
+git add .env.plantilla
+```
+
 -  Modifica el archivo `config/database.yml` empleando las variables de configuración que usaste en `.env`:
 ```yml
 default: &default
