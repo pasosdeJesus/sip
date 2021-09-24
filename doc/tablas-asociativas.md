@@ -70,7 +70,7 @@ class CreateJoinTablePermisoUsuario < ActiveRecord::Migration[6.1]
   end                                                                            
 end 
 ```
-Y que recomendamos modificar para referenciar las tablas que asocia y definir la combianción de las llaves foraneas como llavea primaria:
+Y que recomendamos modificar para referenciar las tablas que asocia y definir la combianción de las llaves foraneas como llavea primaria (esto último evitaría que se duplique información en la tabla asociativa, cuando se importe masivamente en SQL reiteradas veces la misma información):
 ```
 class CreateJoinTablePermisoUsuario < ActiveRecord::Migration[6.1]               
   def up                                                                     
