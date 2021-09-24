@@ -28,6 +28,7 @@ fuentes  (por ejemplo para autenticación se emplea `Devise` con modelo
   * Modelos
     * [Tablas incluidas y modelo entidad-asociación](https://github.com/pasosdeJesus/sip/blob/master/doc/modelo-entidad-asociacion.md)
     * [Tablas Básicas](https://github.com/pasosdeJesus/sip/blob/master/doc/tablas-basicas.md)
+    * [Tablas Asociativas](https://github.com/pasosdeJesus/sip/blob/master/doc/tablas-asociativas.md)
     * [Uso y personalización del modelo usuario](https://github.com/pasosdeJesus/sip/blob/master/doc/modelo-usuario.md)
     * [Personalización de modelos](https://github.com/pasosdeJesus/sip/blob/master/doc/personalizacion-de-modelos.md)
   * Controladores
