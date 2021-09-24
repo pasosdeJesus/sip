@@ -322,10 +322,17 @@ end
 ```
 Verifica la sintaxis tras cada modificación con:
 ```
-ruby -c config/application.rb
+% ruby -c config/application.rb
+```
+y verifica que carga correctamente con:
+```
+% bin/rails console
+Loading development environment (Rails 6.1.4.1)
+irb(main):001:0> Rails.configuration.x.formato_fecha
+=> "dd/M/yyyy"
 ```
 
-- Copia la estructura de la base de datos
+- Copia la estructura de la base de datos mínima
 ```sh
 $ ftp -o db/structure.sql https://raw.githubusercontent.com/pasosdeJesus/sip/master/test/dummy/db/structure.sql
 ```
