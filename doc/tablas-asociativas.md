@@ -1,9 +1,14 @@
 Una tabla asociativa (que tambien hemos llamado tabla combinada o tabla unión) permite asociar dos o más tablas en una relación muchos a muchos. 
 
+Si la tabla asociativa no va a tener información adicional a las llaves foráneas de las tablas que asocia y si en la vista se desea presentar como un
+cuadro de selección (o tal vez cajas de chequeo), lo más recomendable con rails sería crear una tabla sin campo `id` ni marcas de tiempo pero para evitar duplicaciones es importante agregarle como llave primaria la combinación de las llaves foráneas.
+
+Si la tabla asociativa va a tener información adicional, lo recomendable es que tenga un campo id y puede emplearse cocoon para 
+hacer un formulario anidado que facilite diligenciarla.
+
+
 # 1. Tabla asociativa sólo con las llaves foráneas de las tablas que asocia
 
-Si la tabla asociativa no va a tener información adicional a las llaves foráneas de las tablas que asocia y si en la vista se desea presentar como un
-cuadro de selección (o tal vez cajas de chequeo), lo más recomendable con rails sería crear una tabla sin campo `id` ni marcas de tiempo pero para evitar duplicaciones es importante agregarle como llave primaria la combinación de las llaves foráneas.``
 
 El ejemplo de usuarios y permisos de https://es.wikipedia.org/wiki/Entidad_asociativa se podría implementar (agregando campo id a las tablas Usuarios y Permisos) con:
 ```
@@ -47,9 +52,46 @@ Indexes:
 [local:/var/www/var/run/postgresql] isa5417@minsip_des=#
 ```
 
-Y la tabla combinada que referenciaría los campos id de Usuarios y Permisos con:
+Lo análogo ocurre con `permisos`.
 
-bin/rails CreateJoinTableUsarioPermisos Usuarios Permisos
+La tabla combinada que referenciaría los campos id de Usuarios y Permisos, es recomendable que el 
+nombre sea el de las tablas que asocia (en orden lexicográfico) separadas por raya al piso y se haría con:
+```
+% bin/rails CreateJoinTablePermisoUsuario Permiso Usuario
+```
+que generaría la migración:
+```
+class CreateJoinTablePermisoUsuario < ActiveRecord::Migration[6.1]               
+  def change                                                                     
+    create_join_table :permisos, :usuarios do |t|                                
+      # t.index [:usuario_id, :permiso_id]                                       
+      # t.index [:permiso_id, :usuario_id]                                       
+    end                                                                          
+  end                                                                            
+end 
+```
+Y que recomendamos modificar para referenciar las tablas que asocia y definir la combianción de las llaves foraneas como llavea primaria:
+```
+class CreateJoinTablePermisoUsuario < ActiveRecord::Migration[6.1]               
+  def up                                                                     
+    create_join_table :permisos, :usuarios do |t|                                
+    end
+    add_foreign_key :permisos_usuarios, :permisos
+    add_foreign_key :permisos_usuarios, :usuarios
+    execute 'ALTER TABLE permisos_usuarios ADD CONSTRAINT "permisos_usuarios_pkey1" PRIMARY KEY(usuario_id, permiso_id)
+  end                                                                            
+  def down
+    drop_table :permisos
+  end
+end 
+```
 
-
+que al ejecutarse generaría la tabla `permisos_usuarios` (porque deja primero la tabla lexicograficamente menor)
+```
+Table "public.permisos_usuarios"
+   Column   |  Type  | Collation | Nullable | Default 
+------------+--------+-----------+----------+---------
+ usuario_id | bigint |           | not null | 
+ permiso_id | bigint |           | not null | 
+```
 Si la tabla asociativa va a tener información adicional es recomendable crearla como una tabla típica con llave primaria id, y referencias a las tablas que asocia.
