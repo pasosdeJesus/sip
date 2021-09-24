@@ -7,13 +7,13 @@ cuadro de selección (o tal vez cajas de chequeo), lo más recomendable con rail
 
 El ejemplo de usuarios y permisos de https://es.wikipedia.org/wiki/Entidad_asociativa se podría implementar (agregando campo id a las tablas Usuarios y Permisos) con:
 ```
-$ bin/rails g migration CreateUsuarios LoginUsuario:string:50 ContrasenaUsuario:string:50 NombreUsuario:string:50
-$ bin/rails g migration CreatePermisos LlavePermiso:string:50 DescripcionPermiso:string:500 NombreUsuario:string:50
+% bin/rails g migration CreateUsuario LoginUsuario:string:50 ContrasenaUsuario:string:50 NombreUsuario:string:50
+% bin/rails g migration CreatePermiso LlavePermiso:string:50 DescripcionPermiso:string:500 NombreUsuario:string:50
 ```
 
-Por ejemplo la primera crearía una migración con un nombre como `20210924144641_create_usuarios.rb`:
+Por ejemplo la primera crearía una migración con un nombre como `20210924144641_create_usuario.rb`:
 ```rb
-class CreateUsuarios < ActiveRecord::Migration[6.1]                         
+class CreateUsuario < ActiveRecord::Migration[6.1]                         
   def change                                                                     
     create_table :usuarios do |t|                                          
       t.string :LoginUsuario                                                     
@@ -25,11 +25,26 @@ class CreateUsuarios < ActiveRecord::Migration[6.1]
   end                                                                            
 end       
 ```
-Y al correrse la migración con `bin/rails db:migrate` crearía una tabla:
+Y al correrse la migración con `bin/rails db:migrate` crearía una tabla que podría examinarse desde la consola de `psql`:
 ```
-CREATE TABLE IF NOT EXISTS "usuarios" (
-  "id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, 
-  "LoginUsuario" varchar, "ContrasenaUsuario" varchar, "NombreUsuario" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL);
+% bin/rails dbconsole
+psql (13.4)
+Type "help" for help.
+
+[local:/var/www/var/run/postgresql] isa5417@minsip_des=# \d usuarios
+                                             Table "public.usuarios"
+      Column       |              Type              | Collation | Nullable |               Default                
+-------------------+--------------------------------+-----------+----------+--------------------------------------
+ id                | bigint                         |           | not null | nextval('usuarios_id_seq'::regclass)
+ LoginUsuario      | character varying              |           |          | 
+ ContrasenaUsuario | character varying              |           |          | 
+ NombreUsuario     | character varying              |           |          | 
+ created_at        | timestamp(6) without time zone |           | not null | 
+ updated_at        | timestamp(6) without time zone |           | not null | 
+Indexes:
+    "usuarios_pkey" PRIMARY KEY, btree (id)
+
+[local:/var/www/var/run/postgresql] isa5417@minsip_des=#
 ```
 
 Y la tabla combinada que referenciaría los campos id de Usuarios y Permisos con:
