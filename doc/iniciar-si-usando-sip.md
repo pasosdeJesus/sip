@@ -119,7 +119,9 @@ gem 'sip',                       # SI estilo Pasos de Jesús
 
 group :development, :test do                                                     
   #gem 'byebug'                 # Depura                                                
-                                                                                  
+   
+  gem 'colorize'
+  
   gem 'code-scanning-rubocop'   # Busca fallas de seguridad                                                    
                                                                                  
   gem 'rails-erd'               # Genera diagrama entidad asociación
