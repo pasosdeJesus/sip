@@ -78,7 +78,7 @@ class CreateJoinTablePermisoUsuario < ActiveRecord::Migration[6.1]
     end
     add_foreign_key :permisos_usuarios, :permisos
     add_foreign_key :permisos_usuarios, :usuarios
-    execute 'ALTER TABLE permisos_usuarios ADD CONSTRAINT "permisos_usuarios_pkey1" PRIMARY KEY(usuario_id, permiso_id)
+    execute 'ALTER TABLE permisos_usuarios ADD CONSTRAINT "permisos_usuarios_pkey1" PRIMARY KEY(usuario_id, permiso_id)'
   end                                                                            
   def down
     drop_table :permisos
@@ -87,10 +87,21 @@ end
 ```
 que al ejecutarse generaría la tabla `permisos_usuarios` (porque deja primero la tabla lexicograficamente menor)
 ```
-Table "public.permisos_usuarios"
+           Table "public.permisos_usuarios"
    Column   |  Type  | Collation | Nullable | Default 
 ------------+--------+-----------+----------+---------
- usuario_id | bigint |           | not null | 
  permiso_id | bigint |           | not null | 
+ usuario_id | bigint |           | not null | 
+Indexes:
+    "permisos_usuarios_pkey1" PRIMARY KEY, btree (usuario_id, permiso_id)
+Foreign-key constraints:
+    "fk_rails_9a877c317d" FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+    "fk_rails_e51795c582" FOREIGN KEY (permiso_id) REFERENCES permisos(id) 
 ```
-Si la tabla asociativa va a tener información adicional es recomendable crearla como una tabla típica con llave primaria id, y referencias a las tablas que asocia.
+
+2. Tabla asociativa con información además de llaves foráneas
+
+
+4. Referencias
+
+* https://dhobsd.pasosdejesus.org/formularios-anidados-en-rails-con-cocoon.html
