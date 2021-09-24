@@ -99,9 +99,11 @@ Foreign-key constraints:
     "fk_rails_e51795c582" FOREIGN KEY (permiso_id) REFERENCES permisos(id) 
 ```
 
-2. Tabla asociativa con información además de llaves foráneas
+# 2. Tabla asociativa con información además de llaves foráneas
 
+Aunque es posible usar una tabla asociativa sin campo `id` tendría que usarse código adicionale a la hora de actualizar y eliminar registros en el controlador
+de la vista donde se edite.  Por eso sugerimos agregar a la tabla el campo `id` como llave primaria y usar un formulario anidado con `cocoon` como se explica en {1}
 
-4. Referencias
+# 3. Referencias
 
-* https://dhobsd.pasosdejesus.org/formularios-anidados-en-rails-con-cocoon.html
+* {1} https://dhobsd.pasosdejesus.org/formularios-anidados-en-rails-con-cocoon.html
