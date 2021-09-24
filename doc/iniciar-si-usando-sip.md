@@ -13,11 +13,12 @@ BUNDLE_DISABLE_SHARED_GEMS: "true"
 EOF
 $ CXX=c++ rails new minsip --database=postgresql
 ```
-Es posible que el último paso genere algunos mensajes de error por gemas que no logra instalar porque requieren permisos de superusuario --entre otras esto ocurre con nokogiri-- en tal caso anota la versión por instalar --ejemplo 1.10.8-- y ejecuta algo como:
+  Es posible que el último paso genere algunos mensajes de error por gemas que no logra instalar porque 
+  requieren permisos de superusuario --entre otras esto ocurre con nokogiri-- en tal caso anota la versión por instalar --ejemplo 1.10.8-- y ejecuta algo como:
 ```
 doas gem install  nokogiri -v 1.10.8
 ```
-Y después desde el directorio `minsip` vuelve a ejecutar 
+  Y después desde el directorio `minsip` vuelve a ejecutar 
 ```sh
 $ bundle install
 ```
