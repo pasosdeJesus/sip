@@ -63,7 +63,7 @@ Para evitar que te solicite clave del usuario PostgreSQL en cada ingreso a `psql
 *:*:*:isa5417:aquilaclave
 ```
 
-- Instala globlamente dotenv con ```doas gem install dotenv`` e incluye otras gemas necesarias y ```sip``` en el archivo `Gemfile` que debe quedar al menos con:
+- Instala globlamente dotenv con `doas gem install dotenv` e incluye otras gemas necesarias y `sip` en el archivo `Gemfile` que debe quedar al menos con:
 ```
 gem 'bcrypt'                     # Condensando de claves con bcrypt
 
