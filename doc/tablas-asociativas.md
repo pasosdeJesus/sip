@@ -57,7 +57,7 @@ Lo análogo ocurre con `permisos`.
 La tabla combinada que referenciaría los campos id de Usuarios y Permisos, es recomendable que el 
 nombre sea el de las tablas que asocia (en orden lexicográfico) separadas por raya al piso y se haría con:
 ```
-% bin/rails g migration CreateJoinTablePermisoUsuario Permiso Usuario
+% bin/rails g migration CreateJoinTablePermisoUsuario permiso usuario
 ```
 que generaría la migración:
 ```
