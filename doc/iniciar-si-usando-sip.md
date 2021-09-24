@@ -23,8 +23,7 @@ $ bundle install
 ```
 - Instala `yarn`
 ```sh
-doas gem install bash
-curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+npm install --global yarn
 ```
 - Con esto ya deberías poder lanzar la aplicación en modo desarrollo (aunque no correrá mucho sin base de datos, así que detenla con Control-C después de lanzarla):
 ```sh
