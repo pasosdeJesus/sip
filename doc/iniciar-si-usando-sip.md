@@ -197,58 +197,7 @@ cp .env .env.plantilla
 git add .env.plantilla
 ```
 
-
--  Modifica el archivo `config/database.yml` empleando las variables de configuración que usaste en `.env`:
-```yml
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV.fetch("BD_USUARIO") %>
-  password: <%= ENV.fetch("BD_CLAVE") %>
-  host: <%= ENV.fetch("BD_SERVIDOR") %>
-
-development:
-  <<: *default
-  database: <%= ENV.fetch("BD_DES") %>
-
-test:
-  <<: *default
-  database: <%= ENV.fetch("BD_PRUEBA") %>
-
-production:
-  <<: *default
-  database: <%= ENV.fetch("BD_PRO") %>
-```
-A continuación prueba que puedes ingresar a la interfaz `psql` de la base de desarrollo pero mediante rails:
-```sh
-$ bin/rails dbconsole   
-psql (13.4)
-Type "help" for help.
-
-minsipdes_des=# \q
-```
-
-- Modifica la configuración de `config/application.rb` asegurando
-  emplear volcados SQL, estableciendo zona horaria, localización, formato de la fecha por ejemplo:
-```rb
-config.active_record.schema_format = :sql
-config.railties_order = [:main_app, Sip::Engine, :all]
-
-config.time_zone = 'America/Bogota'
-config.i18n.default_locale = :es
-
-config.x.formato_fecha = ENV.fetch('SIP_FORMATO_FECHA', 'dd/M/yyyy')
-config.hosts.concat(
-  ENV.fetch('CONFIG_HOSTS', '127.0.0.1').downcase.split(',')
-) 
-```
-Verifica la sintaxis tras cada modificación con:
-```
-ruby -c config/application.rb
-```
-
-- Crea el control de acceso en el archivo ```app/models/ability.rb``` inicialmente con:
+- Como incluiste la gema `sip` en tu Gemfile, debes crear el control de acceso en el archivo ```app/models/ability.rb``` inicialmente con:
 ```rb
 class Ability  < Sip::Ability
 
@@ -308,6 +257,62 @@ class Ability  < Sip::Ability
 
 end
 ```
+Verifica la sintaxis tras cada modificación con:
+```
+ruby -c app/models/ability.rb
+```
+
+
+-  Modifica el archivo `config/database.yml` empleando las variables de configuración que usaste en `.env`:
+```yml
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV.fetch("BD_USUARIO") %>
+  password: <%= ENV.fetch("BD_CLAVE") %>
+  host: <%= ENV.fetch("BD_SERVIDOR") %>
+
+development:
+  <<: *default
+  database: <%= ENV.fetch("BD_DES") %>
+
+test:
+  <<: *default
+  database: <%= ENV.fetch("BD_PRUEBA") %>
+
+production:
+  <<: *default
+  database: <%= ENV.fetch("BD_PRO") %>
+```
+A continuación prueba que puedes ingresar a la interfaz `psql` de la base de desarrollo pero mediante rails:
+```sh
+$ bin/rails dbconsole   
+psql (13.4)
+Type "help" for help.
+
+minsipdes_des=# \q
+```
+
+- Modifica la configuración de `config/application.rb` asegurando
+  emplear volcados SQL, estableciendo zona horaria, localización, formato de la fecha por ejemplo:
+```rb
+config.active_record.schema_format = :sql
+config.railties_order = [:main_app, Sip::Engine, :all]
+
+config.time_zone = 'America/Bogota'
+config.i18n.default_locale = :es
+
+config.x.formato_fecha = ENV.fetch('SIP_FORMATO_FECHA', 'dd/M/yyyy')
+config.hosts.concat(
+  ENV.fetch('CONFIG_HOSTS', '127.0.0.1').downcase.split(',')
+) 
+```
+Verifica la sintaxis tras cada modificación con:
+```
+ruby -c config/application.rb
+```
+
 - Copia la estructura de la base de datos
 ```sh
 $ ftp -o db/structure.sql https://raw.githubusercontent.com/pasosdeJesus/sip/master/test/dummy/db/structure.sql
