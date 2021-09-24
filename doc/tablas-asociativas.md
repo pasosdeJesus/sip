@@ -57,7 +57,7 @@ Lo análogo ocurre con `permisos`.
 La tabla combinada que referenciaría los campos id de Usuarios y Permisos, es recomendable que el 
 nombre sea el de las tablas que asocia (en orden lexicográfico) separadas por raya al piso y se haría con:
 ```
-% bin/rails CreateJoinTablePermisoUsuario Permiso Usuario
+% bin/rails g migration CreateJoinTablePermisoUsuario Permiso Usuario
 ```
 que generaría la migración:
 ```
@@ -85,7 +85,6 @@ class CreateJoinTablePermisoUsuario < ActiveRecord::Migration[6.1]
   end
 end 
 ```
-
 que al ejecutarse generaría la tabla `permisos_usuarios` (porque deja primero la tabla lexicograficamente menor)
 ```
 Table "public.permisos_usuarios"
