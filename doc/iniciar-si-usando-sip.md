@@ -297,16 +297,28 @@ minsipdes_des=# \q
 - Modifica la configuración de `config/application.rb` asegurando
   emplear volcados SQL, estableciendo zona horaria, localización, formato de la fecha por ejemplo:
 ```rb
-config.active_record.schema_format = :sql
-config.railties_order = [:main_app, Sip::Engine, :all]
+require_relative "boot"                                                          
+                                                                                 
+require "rails/all"                                                              
+                                                                                 
+Bundler.require(*Rails.groups)                                                   
+                                                                                 
+module Minsip                                                                    
+  class Application < Rails::Application                                         
+    config.load_defaults 6.1             
 
-config.time_zone = 'America/Bogota'
-config.i18n.default_locale = :es
+    config.active_record.schema_format = :sql
+    config.railties_order = [:main_app, Sip::Engine, :all]
 
-config.x.formato_fecha = ENV.fetch('SIP_FORMATO_FECHA', 'dd/M/yyyy')
-config.hosts.concat(
-  ENV.fetch('CONFIG_HOSTS', '127.0.0.1').downcase.split(',')
-) 
+    config.time_zone = 'America/Bogota'
+    config.i18n.default_locale = :es
+
+    config.x.formato_fecha = ENV.fetch('SIP_FORMATO_FECHA', 'dd/M/yyyy')
+    config.hosts.concat(
+      ENV.fetch('CONFIG_HOSTS', '127.0.0.1').downcase.split(',')
+    )
+  end
+end
 ```
 Verifica la sintaxis tras cada modificación con:
 ```
