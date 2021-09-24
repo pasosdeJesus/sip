@@ -408,7 +408,7 @@ irb(main):001:0> UsuariosController
 => UsuariosController
 ```
 - Para establecer rutas de anexos y de volcados crea dos directorio según hayas configurado en `.env` (ej.
-  `mkdir -p archivos/anexos/ archivos/volcados`) y crea el archivo 
+  `mkdir -p archivos/anexos/ archivos/bd`) y crea el archivo 
   `config/initializers/sip.rb` con algo como:
 ```rb
 Sip.setup do |config|
