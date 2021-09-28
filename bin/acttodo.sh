@@ -106,7 +106,7 @@ if (test "$SALTASIVEL2" != "1") then {
   echo "**** sivel"
   actuno sivel2_gen test/dummy; 
   actuno sivel2; 
-  actuno sivel2_somosdefensores
+  actuno siaddhh;
 } fi;
 
 if (test "$SALTAAPO214" != "1") then {
