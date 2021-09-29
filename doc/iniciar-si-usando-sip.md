@@ -134,15 +134,11 @@ end
 group :test do                                                                              
   gem 'minitest'                # Pruebas automáticas de regresión con minitest                                                 
   
-  gem 'capybara'                # Pruebas del sistema 
-  
-  gem 'selenium-webdriver'    
-  
+  gem 'rails-controller-testing'
+   
   gem 'simplecov', '~> 0.10', '< 0.18'                                           
                                                                                  
   gem 'spork' # Un proceso para cada prueba -- acelera                           
-                                                                                 
-  gem 'webdrivers'                                                               
 end      
 ```
 Y después instala las nuevas gemas con:
