@@ -7,17 +7,22 @@ module Sip
     include Devise::Test::IntegrationHelpers
 
     setup  do
+      if ENV['CONFIG_HOSTS'] != 'www.example.com'
+        raise 'CONFIG_HOSTS debe ser www.example.com'
+      end
       @current_usuario = ::Usuario.create(PRUEBA_USUARIO)
       sign_in @current_usuario
     end
 
     test "index: presenta plantilla de indice" do
       get admin_clases_url
-      assert_template "index"
+      assert_response :success
+      assert_template :index
     end
 
     test "presenta plantilla de indice filtradas por termino" do
       get admin_clases_url, params: {term: 'x'}
+      assert_response :success
       assert_template "index"
     end
 
@@ -30,17 +35,20 @@ module Sip
       clase = Sip::Clase.all.take
       get admin_clase_url(clase)
       assert_response :success
+      assert_template :show
     end
 
     test "new: formulario de nueva" do
       get new_admin_clase_url
       assert_response :success
+      assert_template :new
     end
 
     test "edit: formulario de edición" do
       clase = Sip::Clase.all.take
       get edit_admin_clase_url(clase)
       assert_response :success
+      assert_template :edit
     end
 
     test "post: crea una clase 1" do
@@ -48,6 +56,9 @@ module Sip
         post admin_clases_url, params: {clase: ClaseTest::PRUEBA_CLASE}
         #puts response.body
       end
+      assert_redirected_to sip.admin_clase_path(
+        assigns(:clase)
+      )
     end
 
     test "post: redirige a la clase creada" do
