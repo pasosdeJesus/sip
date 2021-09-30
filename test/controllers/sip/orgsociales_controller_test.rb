@@ -38,6 +38,12 @@ module Sip
       assert_template :new
     end
 
+    test "debe presentar formulario de edición" do
+      get sip.edit_orgsocial_path(@orgsocial)
+      assert_response :success
+      assert_template :edit
+    end
+
     test "debe crear nueva" do
       # Arreglamos indice
       Sip::Orgsocial.connection.execute <<-SQL
