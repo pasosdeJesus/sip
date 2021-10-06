@@ -104,8 +104,10 @@ if (test "$SALTACOR1440CINEP" != "1") then {
 
 if (test "$SALTASIVEL2" != "1") then {
   echo "**** sivel"
+  actuno sivel2.0_gen test/dummy; 
+  actuno sivel2.0; 
   actuno sivel2_gen test/dummy; 
-  actuno sivel2; 
+  actuno sivel2
   actuno siaddhh;
 } fi;
 
