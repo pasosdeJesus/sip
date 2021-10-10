@@ -47,7 +47,7 @@ cuyo contenido puede ser como el de <https://github.com/pasosdeJesus/cor1440_cin
 
 O si prefiere también puede incluirlos en la migración que crea la tabla, como se hace por ejemplo en <https://github.com/pasosdeJesus/cor1440_cinep/blob/master/db/migrate/20200805141624_create_acpactor1.rb>  (note que al final reserva 100 primeros identificadores con `SELECT setval('acpactor1_id_seq', 100);`)
 
-Esos datos iniciales y la reserva de identificaciones inciales también los debe agregar al archivo `db/datos-basicas.sql`
+Esos datos iniciales y la reserva de identificaciones inciales también los debe agregar al archivo `db/datos-basicas.sql` precediendo el nombre de la tabla con `public`
 
 Tras esto ejecute las migraciones:
 ```
@@ -87,7 +87,8 @@ Si deben hacerse cambios a datos de tablas básicas de motores que se carguen se
 
 En una aplicación los datos básicos de los motores que la aplicación use se cargarán desde ```db/seed.rb``` con la función ```Sip::carga_semillas_sql```
 
-Cuando modifique desde la aplicación los datos de tablas básicas, se recomienda generar nuevamente el archivo ```db/datos-basicas.sql``` ejecutando la tarea ```bin/rails sip:vuelcabasicas```
+Cuando modifique desde la aplicación los datos de tablas básicas, se recomienda generar nuevamente el archivo ```db/datos-basicas.sql``` ejecutando la tarea ```bin/rails sip:vuelcabasicas```  o editando ese archivo manualmente.
+
 
 # 4. Migraciones
 
