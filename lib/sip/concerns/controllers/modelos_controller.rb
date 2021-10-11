@@ -230,6 +230,9 @@ module Sip
           def filtra_contenido_params
           end
 
+          def nuevo_intermedio(registro)
+          end
+
           # Presenta formulario para crear nuevo registro
           def new_gen
             if cannot? :new, clase.constantize
@@ -243,6 +246,8 @@ module Sip
             if @registro.respond_to?(:fechacreacion)
               @registro.fechacreacion = DateTime.now.strftime('%Y-%m-%d')
             end
+
+            nuevo_intermedio(@registro)
 
             if registrar_en_bitacora
               Sip::Bitacora.a(request.remote_ip, current_usuario.id,

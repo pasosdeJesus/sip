@@ -2,6 +2,7 @@
   <%= f.input :id, as: :hidden %>
   <%= render partial: 'sip/gruposper/campo_nombre', locals: {f: f} %>
   <%= render partial: 'sip/gruposper/campo_anotaciones', locals: {f: f} %>
-  <%= render partial: 'sip/gruposper/grupoper_complemento1', locals: {f: f} %>
+  <%= render partial: 'sip/gruposper/grupoper_complemento1', 
+    locals: {f: f, forgsocial: forgsocial} %>
 </div>
 

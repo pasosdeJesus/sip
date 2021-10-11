@@ -11,6 +11,10 @@
   f no puede ser nil. Debe ser formulario.
   <% return %>
 <% end %>
+<% externo = {} %>
+<% if defined?(htmlexterno) %>
+  <% externo = htmlexterno %>
+<% end %>
 
 <% alf = @registro.class.asociacion_llave_foranea(atr) %>
 <% vatr = atr.to_s.gsub(/[^a-z_A-Z0-9]/, '') %>
@@ -25,7 +29,8 @@
     collection: col.order(nclase.send(:orden_presenta_nombre)),
     label_method: :presenta_nombre,
     value_method: :id,
-    input_html: { class: 'chosen-select' } 
+    input_html: { class: 'chosen-select' },
+    wrapper_html: externo
   } %>
   <% if @registro.respond_to?(n) && @registro.send(n) &&
     @registro.send(n).id %>
@@ -61,7 +66,9 @@
       collection: col.order(nclase.send(:orden_presenta_nombre)),
       label_method: lambda {|e| e.presenta_nombre }, #:nombre,
       value_method: :id ,
-      input_html: { class: 'chosen-select' } %>
+      input_html: { class: 'chosen-select' },
+      wrapper_html: externo
+    %>
   <% end %>
 <% elsif @registro.class && (
   @registro.class.columns_hash[atr.to_s] || 
@@ -72,7 +79,10 @@
   @registro.class.columns_hash[atr.to]  %>
   <% if col && col.type == :date then %>
     <% # fecha %> 
-    <%= f.input atr.to_sym, :input_html => { type: 'date'}, :as => :string %>
+    <%= f.input atr.to_sym, input_html:  { 
+      type: 'date'}, 
+      as: :string,
+      wrapper_html: externo %>
   <% elsif col && col.type == :integer %>
     <%= f.input atr.to_sym, as: :integer %>
   <% elsif col.limit && col.limit > 1000 %>
@@ -84,8 +94,9 @@
     <% if (atr.class == String || atr.class == Symbol) && 
         (atr.to_s[0, 5] == 'fecha' || atr.to_s[-11..-1] == '_localizada')  %>
       <%= f.input atr.to_sym,
-        :input_html => { "data-behaviour" => "datepicker"}, 
-        :as => :string %>
+        input_html:  { "data-behaviour" => "datepicker"}, 
+        wrapper_html: externo,
+        as:  :string %>
     <% elsif @registro.respond_to?(atr) then %>
       <%= f.input atr.to_sym %>
     <% else %>
