@@ -1,8 +1,13 @@
 <%- model_class = clase.constantize -%>
 <div class="page-header">
-  <h1><%=t '.title', 
-    :default => model_class.human_attribute_name(model_class.model_name.to_s.demodulize) 
-    %></h1>
+  <h1>
+    <% if defined?(@titulo) %>
+      <%= @titulo %>
+    <% else %>
+      <%=t '.title', :default => model_class.human_attribute_name(
+        model_class.model_name.to_s.demodulize) %>
+    <% end %>
+  </h1>
 </div>
 
 <dl class="dl-horizontal">

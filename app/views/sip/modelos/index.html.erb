@@ -136,6 +136,7 @@
     </tbody>
   </table>
 
+  <% #byebug %>
   <% rutaipt = clase.pluralize.underscore + '/index_post_tabla' %>
   <% if lookup_context.find_all(rutaipt, [], true).any? %>
     <% # Hay un parcial para final tabla %>

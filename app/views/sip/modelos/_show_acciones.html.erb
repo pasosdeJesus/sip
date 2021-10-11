@@ -1,5 +1,11 @@
-<%= link_to t('.back', :default => t("helpers.links.back")),
-  modelos_path(@registro), :class => 'btn'  %>
+<% rutareg = clase.pluralize.underscore + '/show_boton_regresar' %>
+<% if lookup_context.find_all( rutareg, [], true).any? %>
+  <%= render partial: rutareg %>
+<% else %>
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+    modelos_path(@registro), :class => 'btn'  %>
+<% end %>
+
 <% if can?(:edit, @registro) %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
     edit_modelo_path(@registro), :class => 'btn' %>

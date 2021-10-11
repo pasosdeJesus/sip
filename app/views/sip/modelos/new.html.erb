@@ -1,11 +1,16 @@
 <%- model_class = clase.constantize -%>
 <div class="page-header">
-	<% nuevo = !genclase.nil? && genclase == 'F' ?  'Nueva' : 'Nuevo' %>
+  <% nuevo = !genclase.nil? && genclase == 'F' ?  'Nueva' : 'Nuevo' %>
   <% modelo = model_class.human_attribute_name(
     model_class.model_name.to_s.demodulize)  %>
   <h1>
-    <%=t '.title', :default => [ "#{nuevo} #{modelo}", :'helpers.titles.new', 
-                                 "New #{modelo}"] %>
+    <% if defined?(@titulo) %>
+      <%= @titulo %>
+    <% else %>
+      <%=t '.title', :default => [ 
+        "#{nuevo} #{modelo}", :'helpers.titles.new', 
+        "New #{modelo}"] %>
+    <% end %>
   </h1>
 </div>
 <%= render :partial => 'form' %>

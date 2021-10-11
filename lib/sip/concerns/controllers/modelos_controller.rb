@@ -198,6 +198,8 @@ module Sip
           def show_plantillas
           end
 
+          def presentar_intermedio(registro, usuario_actual_id)
+          end
 
           # Despliega detalle de un registro
           def show
@@ -211,13 +213,13 @@ module Sip
             end
             c2 = clase.demodulize.underscore
             eval "@#{c2} = @registro" 
+            presentar_intermedio(@registro, current_usuario.id)
             show_plantillas
             if registrar_en_bitacora
               Sip::Bitacora.a(request.remote_ip, current_usuario.id,
                               request.url, params, @registro.class.to_s,
                               @registro.id,  'presentar', '')
             end
-
             render layout: 'application'
           end
 

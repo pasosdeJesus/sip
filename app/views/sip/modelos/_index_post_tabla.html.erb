@@ -6,12 +6,13 @@
     <% end %>
   </div>
   <div class="col-sm-2">
-    <% ng = (!genclase.nil? && genclase == 'F') ? 'Nueva' : 'Nuevo' %>
     <% if can?(:new, clase.constantize) && @registros %>
-      <%= link_to t('.new', default: [ng, t("helpers.links.new")]),
-        new_modelo_path(@registros), 
-        class: 'btn btn-primary',
-        data: { turbolinks: false } %>
+      <% rutaf = clase.pluralize.underscore + '/index_boton_nuevo' %>
+      <% if lookup_context.find_all(rutaf, [], true).any? %>
+        <%= render partial: rutaf, locals: {f: f} %>
+      <% else %>
+        <%= render partial: 'index_boton_nuevo', locals: {f: f} %>
+      <% end %>
     <% end %>
   </div>
 </div>
