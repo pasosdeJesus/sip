@@ -69,8 +69,8 @@ module Sip
       def genera_test
         template "tablabasica_test.rb.erb", 
           "test/models/#{nom_arch}_test.rb"
-        template "tablasbasicas_controller_test.rb.erb", 
-          "test/controllers/#{nom_arch_plural}_controller_test.rb"
+        template "tablasbasicas_controlador_pruebas.rb.erb", 
+          "test/controllers/#{nom_arch_plural}_controlador_pruebas.rb"
       end
 
       def genera_asociacion
