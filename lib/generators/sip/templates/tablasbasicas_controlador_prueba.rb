@@ -68,8 +68,9 @@ module Admin
     end
 
     test "debe eliminar" do
+      r = <%= nom_clase %>.create!(<%= nom_clase.upcase %>_NUEVO)
       assert_difference('<%= nom_clase %>.count', -1) do
-        delete admin_<%= nom_arch %>_url(<%= nom_clase %>.find(IDEX))
+        delete admin_<%= nom_arch %>_url(<%= nom_clase %>.find(r.id))
       end
 
       assert_redirected_to admin_<%= nom_arch_plural %>_path
