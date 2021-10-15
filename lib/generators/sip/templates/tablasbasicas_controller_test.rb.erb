@@ -15,6 +15,8 @@ module Admin
       updated_at: '<%= Date.today %>',
     }
 
+    IDEX = 10
+
     include Rails.application.routes.url_helpers
     include Devise::Test::IntegrationHelpers
 
@@ -35,7 +37,7 @@ module Admin
     end
 
     test "debe presentar resumen de existente" do
-      get admin_<%= nom_arch %>_url(<%= nom_clase %>.find(1))
+      get admin_<%= nom_arch %>_url(<%= nom_clase %>.find(IDEX))
       assert_response :success
       assert_template :show
     end
@@ -58,7 +60,7 @@ module Admin
     end
 
     test "debe actualizar existente" do
-      patch admin_<%= nom_arch %>_path(<%= nom_clase %>.find(1)),
+      patch admin_<%= nom_arch %>_path(<%= nom_clase %>.find(IDEX)),
         params: { <%= nom_arch %>: { nombre: 'YY'}}
 
       assert_redirected_to admin_<%= nom_arch %>_path(
@@ -67,7 +69,7 @@ module Admin
 
     test "debe eliminar" do
       assert_difference('<%= nom_clase %>.count', -1) do
-        delete admin_<%= nom_arch %>_url(<%= nom_clase %>.find(1))
+        delete admin_<%= nom_arch %>_url(<%= nom_clase %>.find(IDEX))
       end
 
       assert_redirected_to admin_<%= nom_arch_plural %>_path

@@ -15,6 +15,9 @@ module Sip
     test "Extensiones a String" do
       assert_equal '3.2'.a_decimal_localizado, '3,2'
       assert_equal '3,2'.a_decimal_nolocalizado, '3.2'
+      assert_equal ''.a_decimal_localizado, ''
+      assert_equal '-3.2'.a_decimal_localizado, '-3,2'
+      assert_equal 'altas y bajas'.altas_bajas, 'Altas Y Bajas'
     end
 
     test "Extensiones a Numeric" do
