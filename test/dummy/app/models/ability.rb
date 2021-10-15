@@ -52,6 +52,7 @@ class Ability  < Sip::Ability
         can :manage, Sip::Respaldo7z
         can :manage, Sip::Tema
         can :manage, Sip::Ubicacion
+        can :manage, Sip::Ubicacionpre
         can :manage, :tablasbasicas
         self.tablasbasicas.each do |t|
           c = Ability.tb_clase(t)

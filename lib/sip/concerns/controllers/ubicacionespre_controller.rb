@@ -32,13 +32,11 @@ module Sip
           end
 
           def atributos_show
-            atributos_index - [:habilitado] + 
-              [:fechadeshabilitacion_localizada]
+            atributos_index 
           end
 
           def atributos_form
             a = atributos_show - [:id]
-            a[a.index(:grupoper_id)] = :grupoper
             return a
           end
 
@@ -78,7 +76,7 @@ module Sip
               c = Sip::Ubicacionpre.all
             end
             if params[:term]
-              term = Sip::Ubicacion.connection.quote_string(params[:term])
+              term = Sip::Ubicacionpre.connection.quote_string(params[:term])
               consNomubi = term.downcase.strip #sin_tildes
               consNomubi.gsub!(/ +/, ":* & ")
               if consNomubi.length > 0

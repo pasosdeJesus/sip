@@ -6,6 +6,11 @@ module Sip
         extend ActiveSupport::Concern
 
         included do
+
+          include Sip::Modelo 
+          include Sip::Localizacion
+
+
           self.table_name = 'sip_ubicacionpre'
 
           belongs_to :pais, class_name: "Sip::Pais",

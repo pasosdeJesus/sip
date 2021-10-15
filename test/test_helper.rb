@@ -62,3 +62,14 @@ PRUEBA_ORGSOCIAL = {
   updated_at: '2021-08-27'
 }
 
+PRUEBA_UBICACIONPRE= {
+  pais_id: 100, # BULGARIA
+  departamento_id: 20,
+  municipio_id: nil,
+  clase_id: nil,
+  nombre: 'IMAGINA / BULGARIA',
+  latitud: 0.1,
+  longitud: 0.2,
+  nombre_sin_pais: 'IMAGINA'
+}
+
