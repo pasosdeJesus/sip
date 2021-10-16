@@ -5,7 +5,7 @@ require 'test_helper'
 # con id 1 en las mismas o en setup
 
 module Admin
-  class <%= nom_clase_plural %>ControladorPruebas < ActionDispatch::IntegrationTest
+  class <%= nom_clase_plural %>ControllerTest < ActionDispatch::IntegrationTest
     <%= nom_clase.upcase %>_NUEVA = {
       nombre: 'X',
       observaciones: 'y',
