@@ -102,6 +102,11 @@ if (test "$SALTACOR1440CINEP" != "1") then {
 #  actuno cor1440_cinep; 
 } fi;
 
+if (test "$SALTAAPO214" != "1") then {
+  echo "**** apo214"
+  actuno apo214 test/dummy; 
+} fi;
+
 if (test "$SALTASIVEL2" != "1") then {
   echo "**** sivel"
   actuno sivel2.0_gen test/dummy; 
@@ -109,11 +114,6 @@ if (test "$SALTASIVEL2" != "1") then {
   actuno sivel2_gen test/dummy; 
   actuno sivel2
   actuno siaddhh;
-} fi;
-
-if (test "$SALTAAPO214" != "1") then {
-  echo "**** apo214"
-  actuno apo214 test/dummy; 
 } fi;
 
 # Usan 3 o más motores
