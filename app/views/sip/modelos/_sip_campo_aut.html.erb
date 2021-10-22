@@ -96,6 +96,7 @@
       <%= f.input atr.to_sym,
         input_html:  { "data-behaviour" => "datepicker"}, 
         wrapper_html: externo,
+        autocomplete: "off",
         as:  :string %>
     <% elsif @registro.respond_to?(atr) then %>
       <%= f.input atr.to_sym %>
