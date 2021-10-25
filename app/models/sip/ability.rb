@@ -120,10 +120,11 @@ module Sip
       end
     end
 
-    # En motores y aplicaciones derivadas models/ability.rb debe
-    # tener un initializer que establezca habilidades de CanCanCan
-    #
     # Se definen habilidades con cancancan
+    # Util en motores y aplicaciones de prueba
+    # En aplicaciones es mejor escribir completo el modelo de autorización
+    # para facilitar su análisis y evitar cambios inesperados al actualizar
+    # motores
     # @usuario Usuario que hace petición
     def initialize_sip(usuario = nil)
       # El primer argumento para can es la acción a la que se da permiso, 
