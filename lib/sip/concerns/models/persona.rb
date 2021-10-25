@@ -51,8 +51,9 @@ module Sip
 
 
           # Bien sea o no con inverse_of aqui y/o en orgsocial_persona
-          #has_many :orgsocial_persona, foreign_key: "persona_id", 
-          #  class_name: "Sip::OrgsocialPersona", #inverse_of: :persona
+          has_many :orgsocial_persona, foreign_key: "persona_id", 
+            class_name: "Sip::OrgsocialPersona", validate: true 
+          #inverse_of: :persona
           belongs_to :clase, class_name: 'Sip::Clase',
             foreign_key: "id_clase", validate: true, optional: true
           belongs_to :nacional, class_name: "Sip::Pais",
