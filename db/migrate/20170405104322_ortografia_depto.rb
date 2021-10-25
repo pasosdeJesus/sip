@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class OrtografiaDepto < ActiveRecord::Migration[5.0]
   def up
     execute <<-SQL

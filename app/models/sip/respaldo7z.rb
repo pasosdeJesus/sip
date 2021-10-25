@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 module Sip
   class Respaldo7z
     include ActiveModel::Model

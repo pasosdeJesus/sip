@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 include Sip::MigracionHelper
 
 class CreaSipGrupoperCuandoFalta < ActiveRecord::Migration[5.2]

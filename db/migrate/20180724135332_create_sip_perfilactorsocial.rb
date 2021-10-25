@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class CreateSipPerfilactorsocial < ActiveRecord::Migration[5.2]
   def up
     create_table :sip_perfilactorsocial do |t|

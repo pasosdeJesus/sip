@@ -1,6 +1,8 @@
 module Sip
   class ApplicationController < ActionController::Base
 
+    # sin autorizacion porque es utilidad para otros controladores
+   
     before_action do
       resource = controller_name.singularize.to_sym
       method = "#{resource}_params"

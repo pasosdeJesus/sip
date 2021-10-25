@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class CreaActorsocialPersona < ActiveRecord::Migration[5.2]
   def change
     create_table :sip_actorsocial_persona do |t|
