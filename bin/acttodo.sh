@@ -94,12 +94,10 @@ if (test "$SALTASAL7711" != "1") then {
   actuno sal7711_web test/dummy; 
 } fi;
 
-if (test "$SALTASAL7711CINEP" != "1") then {
-#  actuno sal7711_cinep; 
-} fi;
-# Usan 2 motores
-if (test "$SALTACOR1440CINEP" != "1") then {
-#  actuno cor1440_cinep; 
+if (test "$SALTASIVEL2GEN" != "1") then {
+  echo "**** sivel"
+  actuno sivel2.0_gen test/dummy; 
+  actuno sivel2_gen test/dummy; 
 } fi;
 
 if (test "$SALTAAPO214" != "1") then {
@@ -109,9 +107,7 @@ if (test "$SALTAAPO214" != "1") then {
 
 if (test "$SALTASIVEL2" != "1") then {
   echo "**** sivel"
-  actuno sivel2.0_gen test/dummy; 
   actuno sivel2.0; 
-  actuno sivel2_gen test/dummy; 
   actuno sivel2
   actuno siaddhh;
 } fi;
