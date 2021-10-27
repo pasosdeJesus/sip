@@ -168,6 +168,16 @@ if (typeof String.prototype.endsWith != 'function')
 
 @sip_meses = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic']
 
+# Retorna una fecha localizada a partir de una fecha ISO
+@sip_retorna_fecha_localizada = (fecha, formato_fecha) ->
+  fecha_sep = sip_partes_fecha_localizada(fecha, formato_fecha)
+  mes_nom = @sip_meses[fecha_sep[1] - 1]
+  pc = mes_nom.substring( 0, 1 )
+  pcmayus = pc.toUpperCase()
+  resto = mes_nom.substring( 1 )
+  mes_nom_cap = pcmayus + resto
+  return fecha_sep[2].toString() + '/' + mes_nom_cap + '/' + fecha_sep[0].toString() 
+
 # Retornas partes de una fecha en un formato dado
 @sip_partes_fecha_localizada = (fecha, formato_fecha) ->
   if (formato_fecha == 'dd/M/yyyy' || formato_fecha == 'dd-M-yyyy')
