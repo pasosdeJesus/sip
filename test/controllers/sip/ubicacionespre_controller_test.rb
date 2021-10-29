@@ -69,8 +69,7 @@ module Sip
         params: { 
           ubicacionpre: { 
             id: @ubicacionpre.id,
-            nombre: 'IMAGINA3 / BULGARIA', 
-            nombre: 'IMAGINA3',
+            nombre: 'IMAGINA3 / BULGARIA'
           }
         }
 
