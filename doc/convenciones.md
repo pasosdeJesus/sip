@@ -17,7 +17,7 @@ Si algún componente resulta muy popular como para ser usado por hablantes de ot
 
 # Configuración con variables de ambiente
 
-Es un lineamiento de https://12factor.net/
+Es un lineamiento de <https://12factor.net/>
 La forma particular de lograrlo en cada lenguaje y ambiente varía.
 
 
@@ -48,6 +48,29 @@ Por ejemplo algunas de las aplicaciones en el repositorio de Pasos de Jesús en 
 ![Dependencias](https://github.com/pasosdeJesus/sip/raw/master/doc/dependencias.png)
 
 ## Fuentes
+
+* En formularios en general en vez de cadenas para las etiquetas de los campos
+  usamos el mecanismo de i18n de rails. Es decir en lugar de
+
+    Sector Social Principal:
+    <%= f.association :sectorsocial,
+        collection: Sivel2Gen::Sectorsocial.habilitados,
+        label: false,
+        include_blank: false,
+        label_method: :nombre,
+        value_method: :id,
+    } %>
+  usar 
+    <%= f.association :sectorsocial,
+        collection: Sivel2Gen::Sectorsocial.habilitados,
+        include_blank: false,
+        label_method: :nombre,
+        value_method: :id,
+    } %>
+  y definir en `config/locale/es.yml` en el modelo asociado al formulario:
+    "sivel2_gen/victima":
+      ...
+      sectorsocialsec: Sectores sociales secundarios
 
 * Usar en fuentes codificación UTF-8
 * Terminar líneas sólo con \n (como es típico en el mundo Unix).
