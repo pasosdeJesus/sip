@@ -3,14 +3,6 @@ require_relative '../../test_helper'
 module Sip
   class TdocumentoTest < ActiveSupport::TestCase
 
-    PRUEBA_TDOCUMENTO= {
-      id: 1000 ,
-      nombre: "Tdocumento",
-      formatoregex: "[0-9]*",
-      fechacreacion: "2014-09-22",
-      created_at: "2014-09-22"
-    }
-
     test "valido" do
       tdocumento = Tdocumento.create PRUEBA_TDOCUMENTO
       assert tdocumento.valid?

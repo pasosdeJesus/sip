@@ -4,12 +4,6 @@ require 'test_helper'
 module Sip
   class PerfilorgsocialTest < ActiveSupport::TestCase
 
-    PRUEBA_PERFILORGSOCIAL= {
-      id: 1000  ,
-      nombre: "PERFILORGSOCIAL1",
-      fechacreacion: "2018-07-24",
-    }
-
     test "nuevo valido" do
       perfilorgsocial = Perfilorgsocial.create PRUEBA_PERFILORGSOCIAL
       assert perfilorgsocial.valid?

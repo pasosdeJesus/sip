@@ -3,16 +3,6 @@ require_relative '../../test_helper'
 module Sip
   class DepartamentoTest < ActiveSupport::TestCase
 
-    PRUEBA_DEPARTAMENTO= {
-      id: 1000,
-      nombre: "DEPARTAMENTO1",
-      latitud: 1.5,
-      longitud: 1.5,
-      fechacreacion: "2014-08-04",
-      fechadeshabilitacion: nil,
-      id_pais: 862
-    }
-
     test "valido" do
       departamento = Departamento.create PRUEBA_DEPARTAMENTO
       assert departamento.valid?

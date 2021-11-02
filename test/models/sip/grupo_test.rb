@@ -3,12 +3,6 @@ require 'test_helper'
 module Sip
   class GrupoTest < ActiveSupport::TestCase
 
-    PRUEBA_GRUPO= {
-      id: 1000  ,
-      nombre: "GRUPO1",
-      fechacreacion: "2017-04-13",
-    }
-
     test "nuevo valido" do
       grupo = Grupo.create PRUEBA_GRUPO
       assert grupo.valid?

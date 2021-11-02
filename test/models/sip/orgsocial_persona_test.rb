@@ -1,26 +1,22 @@
 require_relative '../../test_helper'
-require_relative './grupoper_test'
-require_relative './orgsocial_test'
-require_relative './persona_test'
-require_relative './perfilorgsocial_test'
 
 module Sip
   class OrgsocialPersonaTest < ActiveSupport::TestCase
 
     test "valido" do
-      grupoper = Sip::Grupoper.create Sip::GrupoperTest::PRUEBA_GRUPOPER
+      grupoper = Sip::Grupoper.create PRUEBA_GRUPOPER
       assert grupoper.valid?
       grupoper.save!
-      orgsocial = Sip::Orgsocial.new Sip::OrgsocialTest::PRUEBA_ORGSOCIAL
+      orgsocial = Sip::Orgsocial.new PRUEBA_ORGSOCIAL
       orgsocial.grupoper = grupoper
       assert orgsocial.valid?
       orgsocial.save!
 
-      persona = Sip::Persona.create Sip::PersonaTest::PRUEBA_PERSONA
+      persona = Sip::Persona.create PRUEBA_PERSONA
       assert persona.valid?
       persona.save!
  
-      perfilorgsocial = Sip::Perfilorgsocial.create Sip::PerfilorgsocialTest::PRUEBA_PERFILORGSOCIAL
+      perfilorgsocial = Sip::Perfilorgsocial.create PRUEBA_PERFILORGSOCIAL
       assert perfilorgsocial.valid?
       perfilorgsocial.save!
 

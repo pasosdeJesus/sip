@@ -53,7 +53,7 @@ module Sip
 
     test "post: crea un registro" do
       assert_difference('Sip::Municipio.count') do
-        post admin_municipios_url, params: {municipio: MunicipioTest::PRUEBA_MUNICIPIO}
+        post admin_municipios_url, params: {municipio: PRUEBA_MUNICIPIO}
         #puts response.body
       end
       assert_redirected_to sip.admin_municipio_path(
@@ -62,19 +62,19 @@ module Sip
     end
 
     test "post: redirige al registro creado" do
-      post admin_municipios_url, params: { municipio: MunicipioTest::PRUEBA_MUNICIPIO}
+      post admin_municipios_url, params: { municipio: PRUEBA_MUNICIPIO}
       assert_response :found
     end
 
     test "vuelve a plantilla nueva cuando hay errores de validación" do
-      atc = MunicipioTest::PRUEBA_MUNICIPIO.clone
+      atc = PRUEBA_MUNICIPIO.clone
       atc[:nombre] = ''
       post admin_municipios_url, params: { municipio: atc }
       assert_template "new"
     end
 
     test "debe actualizar existente" do
-      nuevomunicipio = Sip::Municipio.create!(MunicipioTest::PRUEBA_MUNICIPIO)
+      nuevomunicipio = Sip::Municipio.create!(PRUEBA_MUNICIPIO)
       patch sip.admin_municipio_path(nuevomunicipio.id),
         params: { 
           municipio: { 

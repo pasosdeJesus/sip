@@ -3,12 +3,6 @@ require_relative '../../test_helper'
 module Sip
   class SectororgsocialTest < ActiveSupport::TestCase
 
-    PRUEBA_SECTORORGSOCIAL = {
-      nombre: "Nombre sector",
-      observaciones: "x",
-      fechacreacion: '2018-07-20'
-    }
-
     test "valido" do
       sectororgsocial = Sip::Sectororgsocial.create PRUEBA_SECTORORGSOCIAL
       assert sectororgsocial.valid?

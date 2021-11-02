@@ -3,13 +3,6 @@ require_relative '../../test_helper'
 module Sip
   class OficinaTest < ActiveSupport::TestCase
 
-    PRUEBA_OFICINA= {
-      id: 1000 ,
-      nombre: "Ofi",
-      observaciones: 'Ofi',
-      fechacreacion: "2015-04-16",
-      created_at: "2015-04-16",
-    }
     
     test "valido" do
       oficina = Oficina.create PRUEBA_OFICINA

@@ -3,11 +3,6 @@ require_relative '../../test_helper'
 module Sip
   class GrupoperTest < ActiveSupport::TestCase
 
-    PRUEBA_GRUPOPER = {
-      nombre: "Nombre grupo",
-      anotaciones: "x",
-    }
-
     test "valido" do
       grupoper = Sip::Grupoper.create PRUEBA_GRUPOPER
       assert grupoper.valid?

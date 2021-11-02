@@ -3,13 +3,6 @@ require_relative '../../test_helper'
 module Sip
   class TclaseTest < ActiveSupport::TestCase
 
-    PRUEBA_TCLASE= {
-      id: 'x' ,
-      nombre: "TX",
-      fechacreacion: "2014-09-09",
-      created_at: "2014-09-09",
-    }
-
     test "valido" do
       tclase = Tclase.create PRUEBA_TCLASE
       assert tclase.valid?

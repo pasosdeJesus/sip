@@ -8,13 +8,6 @@ module Sip
   # son responsables de borrarlos
   class PaisTest < ActiveSupport::TestCase
 
-    PRUEBA_PAIS= {
-      id: 1000  ,
-      nombre: "PASI1",
-      nombreiso: "PAIS1",
-      fechacreacion: "2014-08-04",
-    }
-
     test "nuevo valido" do
       pais = Pais.create PRUEBA_PAIS
       assert pais.valid?

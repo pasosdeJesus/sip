@@ -3,14 +3,6 @@ require_relative '../../test_helper'
 module Sip
   class EtiquetaTest < ActiveSupport::TestCase
 
-    PRUEBA_ETIQUETA= {
-      id: 1000,
-      nombre: "Eti",
-      observaciones: "O",
-      fechacreacion: "2014-09-04",
-      created_at: "2014-09-04"
-    }
-
     test "valido" do
       etiqueta = Etiqueta.create PRUEBA_ETIQUETA
       assert etiqueta.valid?

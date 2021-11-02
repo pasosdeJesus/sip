@@ -3,7 +3,7 @@
   <% atributos_index.each do |atr| %>
     <% #byebug %>
     <td>
-      <% cregistro = @registro.class.to_s.chomp("ActiveRecord_Relation").constantize %>
+      <% cregistro = @registro.class.to_s.chomp("::ActiveRecord_Relation").constantize %>
       <% alf = cregistro == NilClass ? nil : cregistro.asociacion_llave_foranea(atr) %>
       <% atrf = Sip::ModeloHelper.nom_filtro(atr) %>
       <% atrsl= atrf.chomp('_localizada').chomp('_localizado') %>

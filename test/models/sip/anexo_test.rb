@@ -3,12 +3,6 @@ require_relative '../../test_helper'
 module Sip
   class AnexoTest < ActiveSupport::TestCase
 
-    PRUEBA_ANEXO= {
-      descripcion: 'x',
-      fecha: "2014-11-11",
-      created_at: "2014-11-11"
-    }
-
     test "simple" do
       anexo = Anexo.new PRUEBA_ANEXO
       anexo.adjunto = File.new(Rails.root + 'db/seeds.rb')

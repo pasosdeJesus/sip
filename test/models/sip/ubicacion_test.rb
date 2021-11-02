@@ -3,15 +3,6 @@ require_relative '../../test_helper'
 module Sip
   class UbicacionTest < ActiveSupport::TestCase
 
-    PRUEBA_UBICACION= {
-      id_tsitio: 1,
-      id_pais: 862, # VENEZUELA
-      id_departamento: 1, # DISTRITO CAPITAL
-      id_municipio: 25, # BOLIVARIANO LIBERTADOR
-      id_clase: 217, # CARACAS
-      created_at: "2014-11-06",
-    }
-
     test "simple" do
       pais = Pais.find(862)
       ubicacion = Ubicacion.create PRUEBA_UBICACION

@@ -3,25 +3,6 @@ require_relative '../../test_helper'
 module Sip
   class PersonaTest < ActiveSupport::TestCase
 
-    PRUEBA_PERSONA= {
-      nombres: "Nombres",
-      apellidos: "Apellidos",
-
-      anionac: 1980,
-      mesnac: 2,
-      dianac: 2,
-      sexo: "M",
-      numerodocumento: "1061000000",
-    }
-
-    PRUEBA_TDOCUMENTO= {
-      id: 1000 ,
-      nombre: "Tdocumento",
-      formatoregex: "[0-9]*",
-      fechacreacion: "2014-09-22",
-      created_at: "2014-09-22"
-    }
-
     test "valido" do
       persona = Persona.create PRUEBA_PERSONA
       assert persona.valid?

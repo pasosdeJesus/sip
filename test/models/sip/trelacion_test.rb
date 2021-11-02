@@ -3,14 +3,6 @@ require_relative '../../test_helper'
 module Sip
   class TrelacionTest < ActiveSupport::TestCase
 
-    PRUEBA_TRELACION= {
-      id: 'NN' ,
-      nombre: "Trelacion",
-      inverso: 'NN',
-      fechacreacion: "2014-09-09",
-      created_at: "2014-09-09",
-    }
-
     test "valido" do
       trelacion = Trelacion.create PRUEBA_TRELACION
       assert trelacion.valid?

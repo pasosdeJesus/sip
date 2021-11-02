@@ -3,12 +3,6 @@ require 'test_helper'
 module Sip
   class TrivalenteTest < ActiveSupport::TestCase
 
-    PRUEBA_TRIVALENTE = {
-      nombre: "Trivalente",
-      fechacreacion: "2019-08-17",
-      created_at: "2019-08-17"
-    }
-
     test "valido" do
       trivalente = Trivalente.create(
         PRUEBA_TRIVALENTE)
