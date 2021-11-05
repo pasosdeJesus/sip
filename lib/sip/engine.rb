@@ -28,7 +28,7 @@ module Sip
 #        require_dependency(c)
 #      end
       Dir.glob(Rails.root + "app/decorators/**/*_decorator*.rb").each do |c|
-        require_dependency(c)
+        require c
       end
     end
 
