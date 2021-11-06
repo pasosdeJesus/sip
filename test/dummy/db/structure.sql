@@ -339,16 +339,6 @@ CREATE VIEW public.divipola_sip AS
 
 
 --
--- Name: permisos; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.permisos (
-    llavepermiso character varying(50) NOT NULL,
-    descripcionpermiso character varying(500) NOT NULL
-);
-
-
---
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1197,27 +1187,6 @@ CREATE TABLE public.usuario (
 
 
 --
--- Name: usuariopermisos; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.usuariopermisos (
-    loginusuario character varying(50) NOT NULL,
-    llavepermiso character varying(50) NOT NULL
-);
-
-
---
--- Name: usuarios; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.usuarios (
-    loginusuario character varying(50) NOT NULL,
-    contrasenausuario character varying(50) NOT NULL,
-    nombreusuario character varying(50) NOT NULL
-);
-
-
---
 -- Name: sip_bitacora id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1355,14 +1324,6 @@ ALTER TABLE ONLY public.sip_oficina
 
 ALTER TABLE ONLY public.sip_pais
     ADD CONSTRAINT pais_pkey PRIMARY KEY (id);
-
-
---
--- Name: permisos permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.permisos
-    ADD CONSTRAINT permisos_pkey PRIMARY KEY (llavepermiso);
 
 
 --
@@ -1563,22 +1524,6 @@ ALTER TABLE ONLY public.sip_ubicacion
 
 ALTER TABLE ONLY public.usuario
     ADD CONSTRAINT usuario_pkey PRIMARY KEY (id);
-
-
---
--- Name: usuariopermisos usuariopermisos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.usuariopermisos
-    ADD CONSTRAINT usuariopermisos_pkey PRIMARY KEY (loginusuario, llavepermiso);
-
-
---
--- Name: usuarios usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.usuarios
-    ADD CONSTRAINT usuarios_pkey PRIMARY KEY (loginusuario);
 
 
 --
@@ -1959,22 +1904,6 @@ ALTER TABLE ONLY public.sip_ubicacion
 
 ALTER TABLE ONLY public.sip_ubicacion
     ADD CONSTRAINT ubicacion_id_tsitio_fkey FOREIGN KEY (id_tsitio) REFERENCES public.sip_tsitio(id);
-
-
---
--- Name: usuariopermisos usuariopermisos_llavepermiso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.usuariopermisos
-    ADD CONSTRAINT usuariopermisos_llavepermiso_fkey FOREIGN KEY (llavepermiso) REFERENCES public.permisos(llavepermiso);
-
-
---
--- Name: usuariopermisos usuariopermisos_loginusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.usuariopermisos
-    ADD CONSTRAINT usuariopermisos_loginusuario_fkey FOREIGN KEY (loginusuario) REFERENCES public.usuarios(loginusuario);
 
 
 --
