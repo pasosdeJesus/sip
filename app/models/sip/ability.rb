@@ -160,6 +160,7 @@ module Sip
         when Ability::ROLANALI
           can [:new, :create, :read, :update], Sip::Orgsocial
           can [:new, :create, :read, :update], Sip::Persona
+          can [:new, :create, :read, :update], Sip::Grupoper
           can :read, Sip::Ubicacion
           can :new, Sip::Ubicacion
           can [:update, :create, :destroy], Sip::Ubicacion
