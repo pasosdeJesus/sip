@@ -158,7 +158,11 @@ module Sip
                 (i.respond_to?('presenta_nombre') ? i.presenta_nombre.to_s : i.to_s)
             }
           else
-            self.send(atr.to_s).to_s
+            r = self.send(atr.to_s)
+            if !r.is_a?(Numeric) && !r.is_a?(String)
+              r = r.to_s
+            end
+            r
           end
         elsif atr == 'fechacreacion'
           created_at
