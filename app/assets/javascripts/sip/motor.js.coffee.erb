@@ -43,6 +43,11 @@
     $('#' + idsel).trigger("chosen:updated");
   return
 
+# Escapa cadena por presentar para evitar HTML
+# De https://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript
+@sip_escapaHtml = (cadena) ->
+  cadena.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;")
+
 
 # Actualiza opciones de cuadros de selección que dependen de datos de un 
 # formulario anidado
