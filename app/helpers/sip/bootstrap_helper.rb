@@ -7,10 +7,11 @@ module Sip
 
     # Genera grupo de menus
     def grupo_menus(opciones={}, &bloque)
-      adclases = ['navbar-nav', 'mr-auto']
+      adclases = ['navbar-nav', 'ms-auto']
       if (opciones[:pull] && opciones[:pull] == :right) ||
         (opciones[:empujar] && opciones[:empujar] == :derecha)
-        adclases << 'navbar-right'
+        adclases << 'me-auto'
+        adclases.delete('ms-auto')
       end
       r = content_tag(:ul, class: adclases, &bloque)
       return r
