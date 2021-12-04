@@ -20,6 +20,8 @@ gem 'importmap-rails'
 
 gem 'jbuilder', '>= 2.7'        # Json
 
+gem 'jsbundling-rails'
+
 gem 'kt-paperclip',                 # Anexos
   git: 'https://github.com/kreeti/kt-paperclip.git'
   #git: 'https://github.com/vtamara/paperclip.git', branch: 'fix-ruby3'
@@ -50,9 +52,6 @@ gem 'turbo-rails'
 gem 'twitter_cldr'              # Localiación e internacionalización
 
 gem 'tzinfo'                    # Zonas horarias
-
-gem 'webpacker', '~> 6.0.0.rc.1'       # Traduce y compila modulos Javascript
-  #git: 'https://github.com/rails/webpacker'
 
 gem 'will_paginate'             # Pagina listados
 

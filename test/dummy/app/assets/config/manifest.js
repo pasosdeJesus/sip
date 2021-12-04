@@ -3,3 +3,4 @@
 //= link_directory ../stylesheets .css
 //= link_directory ../../../node_modules/chosen-js .png
 //= link application.css
+//= link_tree ../builds

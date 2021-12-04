@@ -7,15 +7,12 @@
     <meta name="formato_fecha" content="<%= Rails.configuration.x.formato_fecha  ? Rails.configuration.x.formato_fecha : 'yyyy-mm-dd' %>">
     <title><%= content_for?(:titulo) ? yield(:titulo) : Sip.titulo %></title>
     <%= csrf_meta_tags %>
+    <%= csp_meta_tags %>
 
     <%=  yield(:linkhref) if content_for?(:linkhref) %>
 
-    <%= stylesheet_link_tag "application", :media => "all", 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload',
-      defer: false %>
-    <!-- Seguimios usando sprockets mientras:
-      1. Pasamos javascript en assets/javascript a modulos
-      2. Publicamos partes de gemas como paquetes npm -->
+    <%= stylesheet_link_tag "application", :media => "all", 
+      'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag "application" %>
 
     <!-- ****** favicons e ideas de enlaces de  faviconit.com ****** -->
