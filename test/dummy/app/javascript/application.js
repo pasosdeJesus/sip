@@ -37,8 +37,5 @@ import * as bootstrap from 'bootstrap'              // Maquetacion y elementos d
 import 'chosen-js/chosen.jquery';       // Cuadros de seleccion potenciados
 import 'bootstrap-datepicker'
 import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js'
-//import './jquery-ui/ui/widgets/autocomplete'
-//import './jquery-ui/ui/focusable'
-//import './jquery-ui/ui/data'
 
 import '../assets/javascripts/recursos_globales'
