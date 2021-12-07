@@ -3,10 +3,9 @@
 # Podria ejecutar con
 # SALTASIP=1 SALTASIPD=1 SALTAJN316=1 SALTAMR519=1 SALTAHEB412=1 
 # SALTACOR1440=1 SALTASAL7711=1 
-# SALTACOR1440CINEP=1 
-# SALTASIVEL2=1 SALTAAPO214=1 
+# SALTASIVEL2GEN=1 SALTASIVEL2=1 SALTAAPO214=1 
 # SALTASIANZORC=1 SALTASIASOM=1 SALTASIIAP=1 
-# SALTASIVELSJR=1
+# SALTASIVELSJR=1 SALTAMIND=1 
 
 if [ -z "$SSH_AUTH_SOCK" ] ; then
   eval `ssh-agent -s`
@@ -128,6 +127,10 @@ if (test "$SALTASIIAP" != "1") then {
 if (test "$SALTASIVELSJR" != "1") then {
   echo "**** sivelsjr"
   actuno sivel2_sjr test/dummy; 
+} fi;
+
+if (test "$SALTAMIND" != "1") then {
+  echo "**** mind"
   actuno sivel2_mujeresindigenas;
 } fi;
 
