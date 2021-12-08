@@ -209,9 +209,9 @@ module Sip
       raise "No se encontro ruta para editar #{n}"
     end
 
-    def self.poromision(params, s)
+    def self.poromision(params, s, valorsp='')
       if params.nil? || params[:filtro].nil? || params[:filtro][s].nil?
-        ''
+        valorsp
       else
         Sip::Usuario.connection.quote_string(params[:filtro][s])
       end
