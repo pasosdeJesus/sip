@@ -153,6 +153,8 @@ module Sip
       can :lista, Sip::Ubicacion
       can :descarga_anexo, Sip::Anexo
       can :nuevo, Sip::Ubicacion
+      can :read, Sip::Ubicacionpre
+
       if usuario && usuario.rol then
 
         can :read, [Sip::Persona]
