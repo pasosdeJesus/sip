@@ -51,7 +51,7 @@ module Sip
             return a
           end
 
-          def index(c = nil)
+          def index_sip(c = nil)
             if c == nil
               c = Sip::Persona.all
             end
@@ -93,6 +93,10 @@ module Sip
             else
               super(c)
             end
+          end
+
+          def index(c = nil)
+            index_sip(c)
           end
 
           # Remplaza persona por la elegida por el usuario en autocompletación
