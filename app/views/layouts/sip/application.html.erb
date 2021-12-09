@@ -7,7 +7,7 @@
     <meta name="formato_fecha" content="<%= Rails.configuration.x.formato_fecha  ? Rails.configuration.x.formato_fecha : 'yyyy-mm-dd' %>">
     <title><%= content_for?(:titulo) ? yield(:titulo) : Sip.titulo %></title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tags %>
+    <%= csp_meta_tag %>
 
     <%=  yield(:linkhref) if content_for?(:linkhref) %>
 
