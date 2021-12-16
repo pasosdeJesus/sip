@@ -120,7 +120,6 @@ UPDATE sip_clase SET observaciones=completa_obs(observaciones, 'No está en DIVI
 
     execute <<-SQL
   INSERT INTO sip_clase (id, id_municipio, id_clalocal, nombre, observaciones, fechacreacion, created_at, updated_at)VALUES (15401, 972, 7, 'CERROPETRONA', 'Aparece en DIVIPOLA 2020', '2021-12-16', '2021-12-16', '2021-12-16');
-    INSERT INTO sip_clase (id, id_municipio, nombre, id_clalocal, observaciones, fechacreacion, created_at, updated_at)VALUES (15403, 51, 'LA CATALINA', 46, 'Aparece en DIVIPOLA 2020', '2021-12-16', '2021-12-16', '2021-12-16');
 
     UPDATE sip_clase SET nombre='LA PRIMAVERA SANTA CRUZ' WHERE id = 6721;
     UPDATE sip_clase SET nombre='SANTA CRUZ DE MOMPOX, DISTRITO ESPECIAL, TURÍSTICO, CULTURAL E HISTÓRICO' WHERE id = 633;
@@ -255,6 +254,7 @@ UPDATE sip_clase SET nombre='LA PRIMAVERA SANTA CRUZ' WHERE id = 6721;
     d.save!
 
     execute <<-SQL
+
 
 UPDATE sip_clase SET nombre='LA PRIMAVERA' WHERE id = 6721;
     UPDATE sip_clase SET nombre='SANTA CRUZ DE MOMPÓX, DISTRITO ESPECIAL, TURÍSTICO, CULTURAL E HISTÓRICO' WHERE id = 633;
