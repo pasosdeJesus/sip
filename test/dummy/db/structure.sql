@@ -222,6 +222,21 @@ CREATE TABLE public.divipola_oficial_2019_corregido (
 
 
 --
+-- Name: divipola_oficial_2020; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.divipola_oficial_2020 (
+    coddep integer,
+    departamento character varying(512) COLLATE public.es_co_utf_8,
+    codmun integer,
+    municipio character varying(512) COLLATE public.es_co_utf_8,
+    codcp integer,
+    centropoblado character varying(512) COLLATE public.es_co_utf_8,
+    tipocp character varying(6)
+);
+
+
+--
 -- Name: sip_clase_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1975,6 +1990,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20210616003251'),
 ('20210728214424'),
 ('20211024105450'),
-('20211117200456');
+('20211117200456'),
+('20211216125250');
 
 
