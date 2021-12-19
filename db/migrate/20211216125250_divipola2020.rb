@@ -1,4 +1,7 @@
 class Divipola2020 < ActiveRecord::Migration[6.1]
+
+  include Sip::MigracionHelper
+
   def up
     execute <<-SQL
 
@@ -107,9 +110,16 @@ UPDATE sip_clase SET observaciones=completa_obs(observaciones, 'No está en DIVI
  UPDATE sip_clase SET observaciones=completa_obs(observaciones, 'No está en DIVIPOLA 2020.'),  fechadeshabilitacion='2021-12-16'   WHERE id='13131'; -- 97001004 TRINIDAD DEL TIQUIÉ
 
  -- Nuevos centros poblados
- INSERT INTO sip_clase (id, id_municipio, nombre, id_clalocal, observaciones, fechacreacion, created_at, updated_at)VALUES (15400, 192, 'MORALES', 51, 'Aparece en DIVIPOLA 2020', '2021-12-16', '2021-12-16', '2021-12-16');
+    SQL
+
+    rehabilita_centropoblado(2197, 192, 51, 'MORALES', 
+                             'Vuelve a aparece en DIVIPOLA 2020', '2021-12-16')
+    rehabilita_centropoblado(8117, 383, 1, 'MACAS', 
+                             'Vuelve a aparece en DIVIPOLA 2020', '2021-12-16')
+
+
+    execute <<-SQL
   INSERT INTO sip_clase (id, id_municipio, id_clalocal, nombre, observaciones, fechacreacion, created_at, updated_at)VALUES (15401, 972, 7, 'CERROPETRONA', 'Aparece en DIVIPOLA 2020', '2021-12-16', '2021-12-16', '2021-12-16');
-   INSERT INTO sip_clase (id, id_municipio, nombre, id_clalocal, observaciones, fechacreacion, created_at, updated_at)VALUES (15402, 383, 'MACAS', 1, 'Aparece en DIVIPOLA 2020', '2021-12-16', '2021-12-16', '2021-12-16');
     INSERT INTO sip_clase (id, id_municipio, nombre, id_clalocal, observaciones, fechacreacion, created_at, updated_at)VALUES (15403, 51, 'LA CATALINA', 46, 'Aparece en DIVIPOLA 2020', '2021-12-16', '2021-12-16', '2021-12-16');
 
     UPDATE sip_clase SET nombre='LA PRIMAVERA SANTA CRUZ' WHERE id = 6721;
@@ -232,8 +242,19 @@ UPDATE sip_clase SET nombre='LA PRIMAVERA SANTA CRUZ' WHERE id = 6721;
     UPDATE sip_clase SET nombre='LIMONES' WHERE id = 11724;
     UPDATE sip_clase SET nombre='PUERTO ZANCUDO' WHERE id = 15306;
 
-
   DELETE FROM sip_clase WHERE id>=15400 AND id<=15403;
+    SQL
+
+    d = Sip::Clase.find(2197)
+    d.fechadeshabilitacion = '2019-03-31'
+    d.observaciones.sub!('Vuelve a aprecer en DIVIPOLA 2020', '')
+    d.save!
+    d = Sip::Clase.find(8117)
+    d.fechadeshabilitacion = '2019-03-31'
+    d.observaciones.sub!('Vuelve a aprecer en DIVIPOLA 2020', '')
+    d.save!
+
+    execute <<-SQL
 
 UPDATE sip_clase SET nombre='LA PRIMAVERA' WHERE id = 6721;
     UPDATE sip_clase SET nombre='SANTA CRUZ DE MOMPÓX, DISTRITO ESPECIAL, TURÍSTICO, CULTURAL E HISTÓRICO' WHERE id = 633;
