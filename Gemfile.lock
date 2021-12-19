@@ -124,7 +124,7 @@ GEM
       activesupport (>= 5.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.11.3)
+    jbuilder (2.11.4)
       activesupport (>= 5.0.0)
     json (2.6.1)
     loofah (2.13.0)
@@ -259,7 +259,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    twitter_cldr (6.9.0)
+    twitter_cldr (6.10.0)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
