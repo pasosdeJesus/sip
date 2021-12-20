@@ -52,6 +52,7 @@ function actuno {
 
 if (test "$SALTASIP" != "1") then {
   echo "**** sip"
+  actuno sip-2.0 test/dummy
   actuno sip test/dummy
 } fi;
 
@@ -69,11 +70,13 @@ if (test "$SALTAJN316" != "1") then {
 
 if (test "$SALTAMR519" != "1") then {
   echo "**** mr519"
+  actuno mr519_gen-2.0 test/dummy; 
   actuno mr519_gen test/dummy; 
 } fi;
 
 if (test "$SALTAHEB412" != "1") then {
   echo "**** heb412"
+  actuno heb412_gen-2.0 test/dummy; 
   actuno heb412_gen test/dummy; 
   actuno heb412
 } fi;
@@ -95,7 +98,7 @@ if (test "$SALTASAL7711" != "1") then {
 
 if (test "$SALTASIVEL2GEN" != "1") then {
   echo "**** sivel"
-  actuno sivel2.0_gen test/dummy; 
+  actuno sivel2_gen-2.0 test/dummy; 
   actuno sivel2_gen test/dummy; 
 } fi;
 
@@ -106,7 +109,7 @@ if (test "$SALTAAPO214" != "1") then {
 
 if (test "$SALTASIVEL2" != "1") then {
   echo "**** sivel"
-  actuno sivel2.0; 
+  actuno sivel2-2.0; 
   actuno sivel2
   actuno siaddhh;
 } fi;

@@ -94,7 +94,7 @@ module Sip
     module_function :cadena_escapa
 
     # Escapa el parámetro p (supone que es usable la variable global params)
-    def escapar_param(p)
+    def escapar_param(params, p, poromision = '')
       if (p.is_a? String) || (p.is_a? Symbol) then
         params[p] ? escapar(params[p]) : ''
       elsif (p.is_a? Array) && p.length == 1 then
@@ -113,10 +113,10 @@ module Sip
         if n[p[i]] then
           return escapar(n[p[i]])
         else
-          return ''
+          return poromision
         end
       else
-        return ''
+        return poromision
       end
     end
     module_function :escapar_param
