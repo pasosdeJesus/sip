@@ -1,6 +1,6 @@
 class Divipola2020 < ActiveRecord::Migration[6.1]
 
-  include Sip::MigracionHelper
+  include Sip::SqlHelper
 
   def up
     execute <<-SQL

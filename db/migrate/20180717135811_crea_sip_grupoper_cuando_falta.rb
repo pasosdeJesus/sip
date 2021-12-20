@@ -1,4 +1,4 @@
-include Sip::MigracionHelper
+include Sip::SqlHelper
 
 class CreaSipGrupoperCuandoFalta < ActiveRecord::Migration[5.2]
   def up

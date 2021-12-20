@@ -1,4 +1,4 @@
-include Sip::MigracionHelper
+include Sip::SqlHelper
 
 class CreaUbicacionpre < ActiveRecord::Migration[6.0]
   def up

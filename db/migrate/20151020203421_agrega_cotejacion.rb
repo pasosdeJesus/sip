@@ -1,4 +1,4 @@
-include Sip::MigracionHelper
+include Sip::SqlHelper
 
 class AgregaCotejacion < ActiveRecord::Migration[4.2]
 
