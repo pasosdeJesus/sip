@@ -69,13 +69,13 @@ de información como:
   `sip_orgsocial_persona` y
   `sip_perfilorgsocial`
 - Propuesta inicial para anexos con tabla `sip_anexo` y vistas
-  incrustables y gema `paperclip`
+  incrustables y gema `kt-paperclip`
 - Facilidades de configuración de aplicaciones que usen este motor mediante
   - Variables de ambiente en un archivo `.env` y la gema `dotenv`.  
   - Con variables de configuración de rails en el espacio de 
   nombres `config.x`, 
   - Con variables de configuración  en `config/initializers/sip.rb` (por 
-  ejemplo país por omisión en `Sip.paisomision`.
+  ejemplo país por omisión en `Sip.paisomision`).
   - La inicialización de este motor (`lib/sip/engine.rb`) incluye 
   automáticamente migraciones de motores en la aplicación final.
 - Propuesta de respaldo cifrado y comprimido con `7z` por parte de usuario
@@ -86,19 +86,19 @@ de información como:
   `config.x.formato_fecha`, así como ayudas para definir campos de fecha
   localizados en ese formato.
 - Vistas y formularios generados con las herramientas estándar de `rails`
-  y `simple_form` y `chosen-rails` para cuadros de selección simple y múltiple,
-  y `bootstrap-datepicker` para campos de fecha.
-  Listados paginados con `will_paginate`.
-- Tareas `rake` para actualizar indices y sacar copia de respaldo de base
-  de datos
+  y `simple_form`. Listados paginados con `will_paginate`.
 - Preparado para construir aplicaciones adaptables (_responsive_) con
-  `bootstrap`, `coffescript`, `jquery` y `jquery-ui`
+  `bootstrap`, `coffescript`, `jquery` y `jquery-ui`.   Se recomienda uso
+  de `chosen` para cuadros de selección simple y múltiple y 
+  `bootstrap-datepicker` para campos de fecha.
 - Incluye biblioteca para operaciones comunes con javascript, por ejemplo para
   facilitar actualización automática mediante AJAX (ver
   `sip_enviarautomatico_formulario` en
   `app/asset/javascript/sip/motor.js.coffee.erb` que enviará
   automáticamente formularios cuando cambien campos con clase
   `enviarautomatico` o se presionen enlaces a anclas con esa clase)
+- Tareas `rake` para actualizar indices y sacar copia de respaldo de base
+  de datos
 
 ## Requisitos
 
