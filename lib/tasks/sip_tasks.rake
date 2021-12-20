@@ -61,8 +61,9 @@ namespace :sip do
     archt = Tempfile.create(["vb", ".sql"], nil)
     filename = "db/datos-basicas.sql"
     modobj = '';
-    if Rails.application.class.respond_to?(:parent_name) && 
-        Rails.application.class.parent_name == 'Dummy'
+    if Rails.application.class.to_s == 'Dummy::Application' ||
+        (Rails.application.class.respond_to?(:parent_name) && 
+         Rails.application.class.parent_name == 'Dummy')
       # en aplicaciones de prueba de motor el modulo objetivo es el del motor
       modobj = Ability.superclass.name.deconstantize;
     end
