@@ -33,6 +33,7 @@ test/dummy/tmp/
 test/dummy/.sass-cache
 test/dummy/public/
 test/dummy/node_modules/
+test/dummy/app/assets/builds
 tmp/
 herram/
 .byebug_history

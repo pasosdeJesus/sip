@@ -13,7 +13,8 @@
 
     <%= stylesheet_link_tag "application", :media => "all", 
       'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "application", defer: true %>
+    <%= javascript_include_tag "recursos_globales", defer: true %>
 
     <!-- ****** favicons e ideas de enlaces de  faviconit.com ****** -->
     <%= favicon_link_tag 'favicon-16.png', :rel => 'icon', :type => 'image/png', :sizes => '16x16' %>
