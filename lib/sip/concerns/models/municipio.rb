@@ -18,7 +18,7 @@ module Sip
             class_name: 'Sip::Ubicacion'
 
           belongs_to :departamento, foreign_key: "id_departamento", 
-            validate: true, class_name: 'Sip::Departamento'
+            validate: true, class_name: 'Sip::Departamento', optional: false
           has_one :pais, through: :departamento,
             class_name: 'Sip::Pais', source: :pais
 

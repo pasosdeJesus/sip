@@ -9,9 +9,9 @@ module Sip
           self.table_name = 'sip_grupo_usuario'
 
           belongs_to :sip_grupo, class_name: 'Sip::Grupo',
-            foreign_key: 'sip_grupo_id', validate: true
+            foreign_key: 'sip_grupo_id', validate: true, optional: false
           belongs_to :usuario, class_name: '::Usuario',
-            foreign_key: 'usuario_id', validate: true
+            foreign_key: 'usuario_id', validate: true, optional: false
         end
 
       end

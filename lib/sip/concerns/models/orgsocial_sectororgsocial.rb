@@ -9,9 +9,9 @@ module Sip
           self.table_name = 'sip_orgsocial_sectororgsocial'
 
           belongs_to :orgsocial, class_name: 'Sip::Orgsocial', 
-            foreign_key: 'orgsocial_id'
+            foreign_key: 'orgsocial_id', optional: false
           belongs_to :sectororgsocial, class_name: 'Sip::Sectororgsocial',
-            foreign_key: 'sectororgsocial_id'
+            foreign_key: 'sectororgsocial_id', optional: false
 
         end # included
 

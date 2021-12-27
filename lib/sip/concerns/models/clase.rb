@@ -15,14 +15,14 @@ module Sip
             class_name: 'Sip::Ubicacion'
 
           belongs_to :municipio, foreign_key: "id_municipio", 
-            validate: true, class_name: 'Sip::Municipio'
+            validate: true, class_name: 'Sip::Municipio', optional: false
           has_one :departamento, through: :municipio,
             class_name: 'Sip::Departamento', source: :departamento
           has_one :pais, through: :departamento,
             class_name: 'Sip::Pais', source: :pais
 
           belongs_to :tclase, foreign_key: "id_tclase", validate: true,
-            class_name: 'Sip::Tclase'
+            class_name: 'Sip::Tclase', optional: false
 
           validates :id_municipio, presence:true
           validates :id_tclase, presence:true, length: { maximum: 10 } 

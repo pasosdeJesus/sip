@@ -15,7 +15,7 @@ module Sip
             foreign_key: 'orgsocial_id', inverse_of: :orgsocial_persona, 
             optional: true
           belongs_to :persona, class_name: 'Sip::Persona',
-            foreign_key: 'persona_id', validate: true
+            foreign_key: 'persona_id', validate: true, optional: false
 
           accepts_nested_attributes_for :persona, reject_if: :all_blank
 

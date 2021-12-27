@@ -8,7 +8,7 @@ module Sip
         included do
           self.table_name = 'sip_ubicacion'
           belongs_to :pais, foreign_key: "id_pais", validate: true, 
-            class_name: "Sip::Pais"
+            class_name: "Sip::Pais", optional: false
           belongs_to :departamento, foreign_key: "id_departamento", 
             validate: true, class_name: "Sip::Departamento", optional: true
           belongs_to :municipio, foreign_key: "id_municipio", validate: true, 
