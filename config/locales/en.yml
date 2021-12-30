@@ -1,4 +1,4 @@
-es:
+en:
   mes:
     one: '%{count} month'
     other: '%{count} months'
