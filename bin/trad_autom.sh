@@ -30,7 +30,11 @@ echo "Copie y pegue el resultado en /tmp/trad.txt"
 echo "Cuando lo haya hecho presione [ENTER]"
 read
 
-sed -e "s/% {/%{/g;s/& # \([0-9]*\);/\&#\1;/g;s/&\([a-z_]*\);/\&\1;/g;s/^es:$/en:/g" /tmp/trad.txt    > /tmp/trad2.txt
+sed -e "s/% {/%{/g" /tmp/trad.txt | \
+  sed -e "s/& # \([0-9]*\);/\&#\1;/g" | \
+  sed -e "s/& \([a-z_]*\);/\&\1;/g" > /tmp/trad2.txt
+
+sed -e "s/^es:$/en:/g"  /tmp/llaves.txt > /tmp/llaves2.txt
 
 l1=`wc -l /tmp/trad2.txt | sed -e "s/[^0-9]*\([0-9][0-9]*\).*/\1/g"`
 l2=`wc -l /tmp/textos.txt | sed -e "s/[^0-9]*\([0-9][0-9]*\).*/\1/g"`
@@ -42,4 +46,5 @@ while (test "$l1" -lt "$l2"); do
   l2=`wc -l /tmp/textos.txt | sed -e "s/[^0-9]*\([0-9][0-9]*\).*/\1/g"`
 done
 
-lam /tmp/llaves.txt /tmp/trad2.txt > $destino
+lam /tmp/llaves2.txt /tmp/trad2.txt > $destino
+echo "Escrito el resultado en $destino" 
