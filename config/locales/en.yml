@@ -1,0 +1,230 @@
+es:
+  mes:
+    one: '%{count} month'
+    other: '%{count} months'
+  dia:
+    one: '%{count} day'
+    other: '%{count} days'
+  attributes:
+    created_at: Creation date
+    created_at_localizada: Creation date
+    updated_at: Update date
+    updated_at_localizada: Update date
+    departamento: Department / State
+    descripcion: Description
+    fechacreacion: Creation date
+    fechadeshabilitacion: Disabling date
+    fechacreacion_localizada: Creation date
+    fechadeshabilitacion_localizada: Disabling date
+    formatoregex: Format (Reg. exp.)
+    limiteinferior: Lower limit
+    limitesuperior: Upper limit
+    municipio: Municipality
+    pais: Country
+    supracategoria: Supracategory
+    tviolencia: Type of violence
+  errors:
+    format: "%{message}"
+    messages:
+      accepted: "In '%{model}' must accept '%{attribute}'"
+      blank: "In '%{model}' a value is missing for '%{attribute}'"
+      present: "In '%{model}' must be blank '%{attribute}'"
+      confirmation: "In '%{model}' does not match confirmation '%{attribute}'"
+      empty: "In '%{model}' cannot be empty '%{attribute}'"
+      equal_to: "In '%{model}' the value of '%{attribute}' must be equal to%{count}"
+      even: "In '%{model}' the value of '%{attribute}' must be even"
+      exclusion: "In '%{model}' is reserved '%{attribute}'"
+      greater_than: "In '%{model}' the value of '%{attribute}' must be greater than%{count}"
+      greater_than_or_equal_to: "In '%{model}' the value of '%{attribute}' must be greater than or equal to %{count}"
+      inclusion: "In '%{model}' the value of '%{attribute}' is not included in the list"
+      invalid: "In '%{model}' is not valid '%{attribute}'"
+      less_than: "In '%{model}' the value of '%{attribute}' must be less than %{count}"
+      less_than_or_equal_to: "In '%{model}' the value of '%{attribute}' must be less than or equal to %{count}"
+      model_invalid: "Falló la validación para '%{model}': %{errors}"
+      not_a_number: "In '%{model}' the value of '%{attribute}' is not a number"
+      not_an_integer: "In '%{model}' the value of '%{attribute}' is not an integer"
+      odd: "In '%{model}' the value of '%{attribute}' must be odd"
+      required: "In '%{model}' there must be '%{attribute}'"
+      taken: "In '%{model}' repeats '%{attribute}' (the repeated value is '%{value}')"
+      too_long:
+        one: "In '%{model}' the value of '%{attribute}' is too long (maximum 1 character)"
+        other: "In '%{model}' the value of '%{attribute}' is too long (maximum %{count} characters)"
+      too_short:
+        one: "In '%{model}' the value of '%{attribute}' is too short (minimum 1 character)"
+        other: "In '%{model}' the value of '%{attribute}' is too short (minimum %{count} character)"
+      wrong_length:
+        one: "In '%{model}' the value of '%{attribute}' is not the correct length (exactly 1 character)"
+        other: "In '%{model}' the value of '%{attribute}' is not the correct length (exactly %{count} characters)"
+      other_than: must be different from%{count}
+      other_than: "In '%{model}' the value of '%{attribute}' must be different from %{count}"
+  will_paginate:
+    previous_label: "&#8592;"
+    next_label: "&#8594;"
+    page_gap: "&hellip;"
+  activerecord:
+    attributes:
+      "sip/orgsocial":
+        Orgsocial: Social organization
+        Orgsociales: Social organizations
+        orgsocial_persona: Contact(s)
+        "{:orgsocial_persona=>[]}": Contact(s)
+        direccion: Address
+        fechadeshabilitacion: Disabling date
+        fechadeshabilitacion_localizada: Disabling date
+        grupoper: Name
+        grupoper_id: Name
+        pais_id: Country
+        sectororgsocial: Sector(s)
+        sectororgsocial_ids: Sector(s)
+        telefono: Telephone
+        "{:sectororgsocial_ids=>[]}": Sector(s)
+      "sip/anexo":
+        descripcion: Description
+      "sip/bitacora":
+        Bitacora: Log in
+        Bitacoras: Log records
+        modelo_id: Id
+      "sip/clase":
+        Clase: Populated center
+        Clases: Population centers
+        id_municipio: Municipality
+        id_clalocal: Code within the country
+        id_tclase: Type of populated center
+        tclase: Type of populated center
+      "sip/departamento":
+        Departamento: Department / State
+        Departamentos: Departments / States
+        id_deplocal: Code within the country
+      "sip/fuenteprensa":
+        Fuenteprensa: Press source
+        Fuentesprensa: Press sources
+        tfuente: Source type
+      "sip/grupo":
+        "{:usuario_ids=>[]}": Members
+        "usuario": Members
+      "sip/municipio":
+        etiqueta_ids: Labels
+        id_munlocal: Code within department / state
+        id_pais: Country
+        id_departamento: Department
+        Municipio: Municipality
+        Municipios: Municipalities
+      "sip/orgsocial":
+        direccion: Address
+        fechadeshabilitacion: Disabling date
+        fechadeshabilitacion_localizada: Disabling date
+        grupoper: Name
+        grupoper_id: Name
+        Orgsocial: Social organization
+        Orgsociales: Social organizations
+        orgsocial_persona: Contact(s)
+        "{:orgsocial_persona=>[]}": Contact(s)
+        pais_id: Country
+        sectororgsocial: Sector(s)
+        sectororgsocial_ids: Sector(s)
+        telefono: Telephone
+        "{:sectororgsocial_ids=>[]}": Sector(s)
+      "sip/orgsocial_persona":
+        perfilorgsocial: Profile in social organization
+        orgsocial: Social organization to which it belongs
+      "sip/pais":
+        Pais: Country
+        Paises: Countries
+        nombre: Name
+        nombreiso: ISO name
+        alfa2: 2-letter ISO code
+        alfa3: 3-letter ISO code
+        codiso: Numeric ISO code
+        div1: First political division (e.g. Department or State)
+        div2: Second political division (e.g. Municipality or County)
+        div3: Third political division (e.g. town center)
+        latitud: Latitude
+        longitud: Length
+        fechacreacion: Date when added to sources
+        fechadeshabilitacion: Disabling date
+        created_at: Date it was created in the database
+        updated_at: Date in which the database was updated
+      "sip/perfilorgsocial":
+        Perfilorgsocial: Profile in social organization
+        Perfilesorgsocial: Profiles in social organization
+      "sip/orgsocial_persona":
+        perfilorgsocial: Profile in social organization
+        orgsocial: Social organization to which it belongs
+      "sip/persona":
+        anionac: Year of birth
+        clase: Town center birth
+        departamento: Birth department
+        dianac: Day of birth
+        fechanac: Date of birth
+        id_clase: Town center birth
+        id_departamento: Birth department
+        id_municipio: Municipality of birth
+        id_pais: Country of birth
+        mesnac: Birth month
+        municipio: Municipality of birth
+        nacionalde: National of
+        nacional: National of
+        numerodocumento: Document number
+        pais: Country of birth
+        tdocumento: Document type
+        tdocumento_id: Document type
+      "sip/respaldo7z":
+        clave7z: Encryption key
+        clave7z_confirmation: Encryption key confirmation
+      "sip/sectororgsocial":
+        Sectororgsocial: Social organization sector
+        Sectoresorgsocial: Sectors of social organizations
+      "sip/tclase":
+        Tclase: Type of populated center
+        Tclases: Types of populated centers
+        id_tclase: Type of populated center
+        id_clalocal: Code within the municipality
+      "sip/tdocumento":
+        Tdocumento: Type of document of identy
+        Tdocumentos: Types of identity documents
+      "sip/tema":
+        btn_primario_fondo_ini:  Left button background top color
+        btn_primario_fondo_fin:  Color of the bottom of the left button's background
+        btn_primario_fuente: Primary Button Font Color
+        btn_peligro_fondo_ini: Hazard Button Background Overhead Color
+        btn_peligro_fondo_fin: Hazard Button Bottom Color
+        btn_peligro_fuente: Danger button font color
+        btn_accion_fondo_ini: Other Actions Button Background Top Color
+        btn_accion_fondo_fin: Bottom color of the button background of other actions
+        btn_accion_fuente: Other Actions Button Font Color
+        nav_ini: Top color of navigation bar background
+        nav_fin: Bottom color of the navigation bar background
+        nav_fuente: Navigation bar font color
+        fondo_lista: Second color for alternate lists
+        fondo:  Bottom
+        color_flota_subitem_fuente: Menu option font color hovering over
+        color_flota_subitem_fondo: Background color of menu option hovering over
+        color_fuente: Font Color
+        alerta_exito_fondo: Success alert background
+        alerta_exito_fuente: Success alert font color
+        alerta_problema_fondo: Trouble alert background
+        alerta_problema_fuente: Trouble alert font color
+      "sip/trelacion": 
+        Trelacion: Type of family relationship
+        Trelaciones: Types of family relationships
+      "sip/tsitio": 
+        Tsitio: Type of sites
+        Tsitios: Types of sites
+      "sip/ubicacion":
+        Ubicacion: Location
+      "trivalente":
+        Trivalente: Trivalent
+        Trivalentes: Trivalents
+      "usuario":
+        created_at: Registration date
+        created_at_localizada: Registration date
+        descripcion: Description
+        email: Mail
+        encrypted_password: Key code
+        failed_attempts: Failed attempts
+        fechacreacion_localizada: Creation date
+        fechadeshabilitacion_localizada: Disabling date
+        locked_at: Lock time
+        nusuario: User
+        "sip_grupo": Groups
+        unlock_token: Unlock Token
