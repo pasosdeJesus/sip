@@ -292,7 +292,7 @@ if (typeof String.prototype.endsWith != 'function')
            format: root.formato_fecha,
            autoclose: true,
            todayHighlight: true,
-           language: 'es'
+           language: '<%= Rails.configuration.i18n.default_locale %>'
          })
 
       return
@@ -916,7 +916,7 @@ if (typeof String.prototype.endsWith != 'function')
     format: root.formato_fecha,
     autoclose: true,
     todayHighlight: true,
-    language: 'es'	
+    language: '<%= Rails.configuration.i18n.default_locale %>'	
   })
 
   $('[data-toggle="tooltip"]').tooltip()
@@ -925,7 +925,7 @@ if (typeof String.prototype.endsWith != 'function')
       format: root.formato_fecha
       autoclose: true
       todayHighlight: true
-      language: 'es'
+      language: '<%= Rails.configuration.i18n.default_locale %>'
     })
     $('[data-toggle="tooltip"]').tooltip()
   )
@@ -933,9 +933,9 @@ if (typeof String.prototype.endsWith != 'function')
   # Chosen-jquery 
   $('.chosen-select').chosen
     allow_single_deselect: true
-    no_results_text: 'No hay resultados',
-    placeholder_text_single: 'Seleccione una opción',
-    placeholder_text_multiple: 'Seleccione algunas opciones',
+    no_results_text: '<%= I18n.t('No hay resultados') %>',
+    placeholder_text_single: '<%= I18n.t('Seleccione una opción') %>',
+    placeholder_text_multiple: '<%= I18n.t('Seleccione algunas opciones') %>',
     width: '100%'
 
   # Tooltips con chosen  

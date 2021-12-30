@@ -7,7 +7,7 @@
       <% else %>
         <%=t '.title', 
           :default => [
-            "Edita " + model_class.human_attribute_name(
+            t("Edita") + " " + model_class.human_attribute_name(
               model_class.model_name.to_s.demodulize) 
           ] %>
       <% end %>

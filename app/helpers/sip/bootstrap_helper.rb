@@ -78,6 +78,75 @@ module Sip
     alias_method :drop_down, :despliega_abajo
     module_function :drop_down
 
+
+    def despliega_abajo_dk(opcionmenu, url, opciones={}, &bloque)
+      copiaop = opciones
+      opab = opcionmenu.gsub(' ', '_')
+      maticon = 'home'
+      if  opciones[:maticon]
+        maticon = opciones[:maticon]
+        copiaop.delete(:maticon)
+      end
+      claseli = 'pc-item'
+      flecha = ''
+      if  !opciones.keys.include?(:sinflecha)
+        flecha = content_tag(:span, class: 'pc-arrow') do
+          content_tag(:i, "data-feather" => 'chevron-right') do
+          end
+        end
+        claseli += ' pc-hasmenu'
+      else 
+        copiaop.delete(:sinflecha)
+      end
+      leyenda = false
+      if opciones[:leyenda]
+        leyenda = true
+        claseli += ' pc-caption'
+      end
+
+      r = content_tag(:li, class: claseli) do
+        if leyenda
+           #content_tag(:span, class: 'pc-micon') do
+            content_tag(:label) do
+              opcionmenu
+            end
+           #end
+
+        else
+
+          link_to(
+            url, copiaop.merge({class: 'pc-link',
+                                id: 'navbarDropdown' + opab})
+          ) do
+            s = ''
+            if !bloque.nil?
+            end
+
+            content_tag(:span, class: 'pc-micon') do
+              content_tag(:i, class: 'material-icons-two-tone') do
+                maticon
+              end
+            end + content_tag(:span, class: 'pc-mtext') do
+              opcionmenu
+            end + flecha
+          end + content_tag(:ul, class: 'pc-submenu', &bloque)
+        end
+      end
+      return r
+    end 
+    module_function :opcion_menu_dk
+
+
+    # Genera grupo de menus
+    def grupo_menus_dk(opciones={}, &bloque)
+      adclases = ['pc-navbar']
+      r = content_tag(:ul, class: adclases, &bloque)
+      return r
+    end 
+    module_function :grupo_menus_dk
+
+ 
+
     def barra_navegacion(opciones, &bloque)
       r = content_tag(:nav, 
                       class: 'navbar navbar-expand-lg navbar-light bg-light') do

@@ -1,4 +1,34 @@
 en:
+  Acciones: Actions
+  Anexos: Attachments
+  Archivo: File
+  Administrar: Manage
+  "Crear copia": Create copy
+  Configuraciones: Settings
+  Clave: Password
+  "Datos básicos": Basical information
+  Descripción: Description
+  Documentos: Documents
+  Edita: Edit
+  "El formulario tiene": The form has
+  Filtrar: Filter
+  Habilitado: Enabled
+  "Iniciar sesión": Login
+  Listado: List
+  Manual: User Guide
+  Nuevo: New
+  Nueva: New
+  "No hay resultados": There are no results
+  "Organizaciones sociales": Social organizations
+  Persona: Person
+  Recordarme: Remember me
+  "Seleccione algunas opciones": Select some options
+  "Seleccione una opción": Select one option
+  Tablas básicas: Basic tables
+  Tablero: Dashboard
+  Usuario: User
+  Usuarios: Users
+  Validar: Validate
   mes:
     one: '%{count} month'
     other: '%{count} months'
@@ -66,13 +96,15 @@ en:
       "sip/orgsocial":
         Orgsocial: Social organization
         Orgsociales: Social organizations
-        orgsocial_persona: Contact(s)
-        "{:orgsocial_persona=>[]}": Contact(s)
+        created_at_localizada: Created at
         direccion: Address
         fechadeshabilitacion: Disabling date
         fechadeshabilitacion_localizada: Disabling date
         grupoper: Name
         grupoper_id: Name
+        habiitado: enabled
+        orgsocial_persona: Contact(s)
+        "{:orgsocial_persona=>[]}": Contact(s)
         pais_id: Country
         sectororgsocial: Sector(s)
         sectororgsocial_ids: Sector(s)
