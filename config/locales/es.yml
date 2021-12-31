@@ -1,5 +1,7 @@
 es:
   fotojpgpngtiff:  "Foto (.jpg, .png, .tiff)"
+  Filtrar: Filtrar
+  Actualizar: Actualizar
   Habilitado: Enabled
   mes:
     one: '%{count} mes'
