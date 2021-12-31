@@ -1,4 +1,6 @@
 es:
+  fotojpgpngtiff:  "Foto (.jpg, .png, .tiff)"
+  Habilitado: Enabled
   mes:
     one: '%{count} mes'
     other: '%{count} meses'
@@ -73,6 +75,7 @@ es:
         direccion: Dirección
         fechadeshabilitacion: Fecha de deshabilitación
         fechadeshabilitacion_localizada: Fecha de deshabilitación
+        nombre: Nombre
         grupoper: Nombre
         grupoper_id: Nombre
         pais_id: País

@@ -1,29 +1,49 @@
 en:
   Acciones: Actions
+  Actualizar: Update
   Anexos: Attachments
+  "Añadir contacto": Add contact
   Archivo: File
   Administrar: Manage
+  Apellidos: Lastname
+  Buscar: Search
+  Cargo: Position
   "Crear copia": Create copy
+  Crear: Create
   Configuraciones: Settings
+  "Contactos en la organización social": Contacts in the social organization
+  Correo: Email
   Clave: Password
   "Datos básicos": Basical information
   Descripción: Description
   Documentos: Documents
   Edita: Edit
   "El formulario tiene": The form has
+  "Expandir / colapsar": "Expand / collapse"
+  Fecha: Date
   Filtrar: Filter
+  Foto: Picture
+  fotojpgpngtiff:  "Picture (.jpg, .png, .tiff)"
   Habilitado: Enabled
+  habilitado: Enabled
+  "Hora del bloqueo": Locked at
   "Iniciar sesión": Login
+  "Id Actividad": Id of Activity
   Listado: List
   Manual: User Guide
+  Nombre: Name
+  Nombres: Names
   Nuevo: New
   Nueva: New
   "No hay resultados": There are no results
   "Organizaciones sociales": Social organizations
+  Perfil: Profile
   Persona: Person
   Recordarme: Remember me
+  Rol: Role
   "Seleccione algunas opciones": Select some options
   "Seleccione una opción": Select one option
+  Sexo: Sex
   Tablas básicas: Basic tables
   Tablero: Dashboard
   Usuario: User
@@ -38,8 +58,6 @@ en:
   attributes:
     created_at: Creation date
     created_at_localizada: Creation date
-    updated_at: Update date
-    updated_at_localizada: Update date
     departamento: Department / State
     descripcion: Description
     fechacreacion: Creation date
@@ -47,11 +65,14 @@ en:
     fechacreacion_localizada: Creation date
     fechadeshabilitacion_localizada: Disabling date
     formatoregex: Format (Reg. exp.)
+    id_pais: Country
     limiteinferior: Lower limit
     limitesuperior: Upper limit
     municipio: Municipality
     pais: Country
     supracategoria: Supracategory
+    updated_at: Update date
+    updated_at_localizada: Update date
     tviolencia: Type of violence
   errors:
     format: "%{message}"
@@ -93,23 +114,6 @@ en:
     page_gap: "&hellip;"
   activerecord:
     attributes:
-      "sip/orgsocial":
-        Orgsocial: Social organization
-        Orgsociales: Social organizations
-        created_at_localizada: Created at
-        direccion: Address
-        fechadeshabilitacion: Disabling date
-        fechadeshabilitacion_localizada: Disabling date
-        grupoper: Name
-        grupoper_id: Name
-        habiitado: enabled
-        orgsocial_persona: Contact(s)
-        "{:orgsocial_persona=>[]}": Contact(s)
-        pais_id: Country
-        sectororgsocial: Sector(s)
-        sectororgsocial_ids: Sector(s)
-        telefono: Telephone
-        "{:sectororgsocial_ids=>[]}": Sector(s)
       "sip/anexo":
         descripcion: Description
       "sip/bitacora":
@@ -122,40 +126,67 @@ en:
         id_municipio: Municipality
         id_clalocal: Code within the country
         id_tclase: Type of populated center
+        latitud: Latitude
+        longitud: Longitude
+        municipio: Municipality
+        pais: Country
         tclase: Type of populated center
       "sip/departamento":
         Departamento: Department / State
         Departamentos: Departments / States
+        id_pais: Country
         id_deplocal: Code within the country
+        latitud: Latitude
+        longitud: Longitude
+      "sip/etiqueta":
+        Etiqueta: Label
+        Etiquetas: Labels
       "sip/fuenteprensa":
         Fuenteprensa: Press source
         Fuentesprensa: Press sources
         tfuente: Source type
       "sip/grupo":
+        Grupo: Group
+        Grupos: Groups
         "{:usuario_ids=>[]}": Members
         "usuario": Members
+        "usuario_ids": Members
+      "sip/grupoper":
+        anotaciones: Notes
+        nombre: Name
       "sip/municipio":
         etiqueta_ids: Labels
         id_munlocal: Code within department / state
         id_pais: Country
         id_departamento: Department
+        latitud: Latitude
+        longitud: Longitude
         Municipio: Municipality
         Municipios: Municipalities
       "sip/orgsocial":
+        Orgsocial: Social organization
+        Orgsociales: Social organizations
+        anotaciones: Notes
+        created_at_localizada: Created at
         direccion: Address
         fechadeshabilitacion: Disabling date
         fechadeshabilitacion_localizada: Disabling date
         grupoper: Name
         grupoper_id: Name
-        Orgsocial: Social organization
-        Orgsociales: Social organizations
+        habilitado: enabled
+        nombre: Name
         orgsocial_persona: Contact(s)
         "{:orgsocial_persona=>[]}": Contact(s)
         pais_id: Country
+        pais: Country
         sectororgsocial: Sector(s)
         sectororgsocial_ids: Sector(s)
         telefono: Telephone
         "{:sectororgsocial_ids=>[]}": Sector(s)
+        fechadeshabilitacion: Disabling date
+        fechadeshabilitacion_localizada: Disabling date
+        Orgsocial: Social organization
+        Orgsociales: Social organizations
       "sip/orgsocial_persona":
         perfilorgsocial: Profile in social organization
         orgsocial: Social organization to which it belongs
@@ -171,7 +202,7 @@ en:
         div2: Second political division (e.g. Municipality or County)
         div3: Third political division (e.g. town center)
         latitud: Latitude
-        longitud: Length
+        longitud: Longitude
         fechacreacion: Date when added to sources
         fechadeshabilitacion: Disabling date
         created_at: Date it was created in the database
@@ -183,7 +214,10 @@ en:
         perfilorgsocial: Profile in social organization
         orgsocial: Social organization to which it belongs
       "sip/persona":
+        Personas: Beneficiaries
+        Persona: Beneficiary
         anionac: Year of birth
+        apellidos: Lastname
         clase: Town center birth
         departamento: Birth department
         dianac: Day of birth
@@ -194,10 +228,12 @@ en:
         id_pais: Country of birth
         mesnac: Birth month
         municipio: Municipality of birth
+        nombres: Name
         nacionalde: National of
         nacional: National of
         numerodocumento: Document number
         pais: Country of birth
+        sexo: Sex
         tdocumento: Document type
         tdocumento_id: Document type
       "sip/respaldo7z":
@@ -214,7 +250,11 @@ en:
       "sip/tdocumento":
         Tdocumento: Type of document of identy
         Tdocumentos: Types of identity documents
+        sigla: Initials
+        formatoregex: Format as RegEx
       "sip/tema":
+        Tema: Theme
+        Temas: Themes
         btn_primario_fondo_ini:  Left button background top color
         btn_primario_fondo_fin:  Color of the bottom of the left button's background
         btn_primario_fuente: Primary Button Font Color
@@ -239,6 +279,9 @@ en:
       "sip/trelacion": 
         Trelacion: Type of family relationship
         Trelaciones: Types of family relationships
+      "sip/trivalente":
+        Trivalente: Trivalent
+        Trivalentes: Trivalents
       "sip/tsitio": 
         Tsitio: Type of sites
         Tsitios: Types of sites
@@ -248,15 +291,25 @@ en:
         Trivalente: Trivalent
         Trivalentes: Trivalents
       "usuario":
+        Usuario: User
+        Usuarios: Users
         created_at: Registration date
         created_at_localizada: Registration date
         descripcion: Description
-        email: Mail
-        encrypted_password: Key code
+        email: Email
+        encrypted_password: Hash of password
         failed_attempts: Failed attempts
         fechacreacion_localizada: Creation date
         fechadeshabilitacion_localizada: Disabling date
+        foto: Picture
+        habilitado: Active
+        idioma: Language
         locked_at: Lock time
         nusuario: User
+        nombre: Name
+        rol: Role
+        rol_id: Role
         "sip_grupo": Groups
+        sip_grupo_ids: Groups
+        tema: Theme
         unlock_token: Unlock Token

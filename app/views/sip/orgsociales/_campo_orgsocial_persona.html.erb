@@ -1,17 +1,17 @@
 <% ao = f.object ? f.object : @orgsocial %>
 <% div_id = "orgsocial_persona_#{ao.id}" %>
 <div id="<%= div_id %>" class="orgsocial_persona">
-  <label class="string optional control-label" for="tabla_<%= div_id %>">Contactos en la organización social</label>
+  <label class="string optional control-label" for="tabla_<%= div_id %>"><%= t('Contactos en la organización social') %></label>
   <table id="tabla_<%= div_id %>" class="table table-bordered">
     <thead>
       <tr>
-        <th scope="col">Nombres</th>
-        <th scope="col">Apellidos</th>
-        <th scope="col">Sexo</th>
-        <th scope="col">Perfil</th>
-        <th scope="col">Cargo</th>
-        <th scope="col">Correo</th>
-        <th scope="col">Acciones</th>
+        <th scope="col"><%= t('Nombres') %></th>
+        <th scope="col"><%= t('Apellidos') %></th>
+        <th scope="col"><%= t('Sexo') %></th>
+        <th scope="col"><%= t('Perfil') %></th>
+        <th scope="col"><%= t('Cargo') %></th>
+        <th scope="col"><%= t('Correo') %></th>
+        <th scope="col"><%= t('Acciones') %></th>
       </tr>
     </thead>
     <tbody id='orgsocial_persona'>
@@ -23,7 +23,7 @@
   </table>
 
   <div class="links">
-    <%= link_to_add_association 'Añadir Contacto', f, 
+    <%= link_to_add_association t('Añadir contacto'), f, 
       :orgsocial_persona,
       :"data-association-insertion-node" => "tbody#orgsocial_persona", 
       :"data-association-insertion-method" => "append", 

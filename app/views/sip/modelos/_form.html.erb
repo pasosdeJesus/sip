@@ -36,7 +36,7 @@
       <input class='bitacora_cambio' id='<%= regcorto %>_bictacora_cambio' 
              name='<%= regcorto %>[bitacora_cambio]' type='hidden'>
     <% end %>
-    <%= f.button :submit, (f.object.new_record? ? 'Crear' : 'Actualizar'), 
+    <%= f.button :submit, (f.object.new_record? ? t('Crear') : t('Actualizar')), 
       :class => 'btn-primary' 
     %>
     <%= render partial: 'form_btncancelar' %>
