@@ -34,7 +34,7 @@ module Sip
       motor = "" # Aplicacion
     end
     n = "#{motor}db/#{tipoarchivo.to_s}-basicas.sql"
-    if File.exists?(n) then
+    if File.exist?(n) then
       l = File.readlines(n)
       if (patexcluye) 
         l = l.select { |u| !u[patexcluye] }
