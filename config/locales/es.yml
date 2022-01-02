@@ -1,8 +1,10 @@
 es:
+  Actualizar: Actualizar
   fotojpgpngtiff:  "Foto (.jpg, .png, .tiff)"
   Filtrar: Filtrar
-  Actualizar: Actualizar
   Habilitado: Enabled
+  Nuevo: Nuevo
+  Nueva: Nueva
   mes:
     one: '%{count} mes'
     other: '%{count} meses'

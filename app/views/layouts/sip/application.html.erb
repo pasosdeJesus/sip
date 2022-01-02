@@ -51,7 +51,13 @@
       <%= yield :menu %>
     <% end %>
 
-    <div class="container master-container">
+    <% if !defined?(@clase_divcontenido) %>
+      <% @clase_divcontenido = 'container master-container' %>
+    <% end %>
+    <% if !defined?(@margensup_divcontenido) %>
+      <% @margensup_divcontenido= '40px' %>
+    <% end %>
+    <div id="div_contenido" class="<%= @clase_divcontenido %>" style="margin-top: <%= @margensup_divcontenido %>;" >
       <% if content_for?(:breadcrumb) %>
         <ul class="breadcrumb">
           <%= yield :breadcrumb %>
@@ -61,7 +67,6 @@
       <%= anuncios_bootstrap %>
 
       <%= yield %>
-
     </div>
 
     <% if content_for?(:piedepagina) %>
