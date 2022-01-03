@@ -1,10 +1,54 @@
 es:
+  Acciones: Acciones
   Actualizar: Actualizar
-  fotojpgpngtiff:  "Foto (.jpg, .png, .tiff)"
+  Anexos: Anexos
+  "Añadir contacto": Añadir contacto
+  Archivo: Archivo
+  Administrar: Administrar
+  Apellidos: Apellidos
+  Buscar: Buscar
+  Cargo: Cargo
+  "Crear copia": Crear copia
+  Crear: Crear
+  Configuraciones: Configuraciones
+  "Contactos en la organización social": Contactos en la organización social
+  Correo: Correo
+  Clave: Clave
+  "Datos básicos": Datos básicos
+  Descripción: Descripción
+  Documentos: Documentos
+  Edita: Edita
+  "El formulario tiene": El formulario tiene
+  "Expandir / colapsar": Expandir / colapsar
+  Fecha: Fecha
   Filtrar: Filtrar
-  Habilitado: Enabled
+  Foto: Foto
+  fotojpgpngtiff:  Foto (.jpg, .png, .tiff)
+  Habilitado: Habilitado
+  habilitado: habilitado
+  "Hora del bloqueo": Hora del bloqueo
+  "Iniciar sesión": Iniciar sesión
+  "Id Actividad": Id. Actividad
+  Listado: Listado
+  Manual: Manual
+  Nombre: Nombre
+  Nombres: Nombres
   Nuevo: Nuevo
   Nueva: Nueva
+  "No hay resultados": No hay resultados
+  "Organizaciones sociales": Organizaciones sociales
+  Perfil: Perfil
+  Persona: Persona
+  Recordarme: Recordarme
+  Rol: Rol
+  "Seleccione algunas opciones": Seleccione algunas opciones
+  "Seleccione una opción": Seleccione una opción
+  Sexo: Sexo
+  "Tablas básicas": Tablas básicas
+  Tablero: Tablero
+  Usuario: Usuario
+  Usuarios: Usuarios
+  Validar: Validar
   mes:
     one: '%{count} mes'
     other: '%{count} meses'
