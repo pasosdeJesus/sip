@@ -59,7 +59,6 @@ module Sip
     end 
     module_function :opcion_menu_dk
 
-
     # Genera grupo de menus
     def despliega_abajo(opcionmenu, &bloque)
       opab = opcionmenu.gsub(' ', '_')

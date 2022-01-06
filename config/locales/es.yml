@@ -6,6 +6,8 @@ es:
     one: '%{count} día'
     other: '%{count} días'
   attributes:
+    clase: Centro poblado
+    clases: Centros poblados
     created_at: Fecha de creacíon
     created_at_localizada: Fecha de creacíon
     updated_at: Fecha de actualizacíon
