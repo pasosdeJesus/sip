@@ -50,6 +50,7 @@ es:
   Usuario: Usuario
   Usuarios: Usuarios
   Validar: Validar
+  "Validar y Guardar": Validar y Guardar
   mes:
     one: '%{count} mes'
     other: '%{count} meses'
