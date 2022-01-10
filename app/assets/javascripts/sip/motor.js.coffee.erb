@@ -8,6 +8,7 @@
 #//= require cocoon
 #//= require sip/geo
 #//= require sip/ubicacionpre
+#//= require sip/motor_es5
 
 
 # HTML
@@ -371,7 +372,7 @@ if (typeof String.prototype.endsWith != 'function')
 # @param vcommit Valor para commit
 #
 @sip_enviarautomatico_formulario = (f, metodo='GET', tipo='script', 
-  alertaerror=true, vcommit='Enviar') ->
+  alertaerror=true, vcommit='Enviar', agenviarautom = true) ->
   root =  window
   t = Date.now()
   d = -1
@@ -383,7 +384,8 @@ if (typeof String.prototype.endsWith != 'function')
     a = f.attr('action')
     vd = f.serializeArray()
     vd.push({name: 'commit', value: vcommit})
-    vd.push({name: '_sip_enviarautomatico', value: 1})
+    if agenviarautom
+      vd.push({name: '_sip_enviarautomatico', value: 1})
     dat = $.param(vd)
     # En ocasiones lanza 2 veces seguidas el mismo evento. 
     # Evitamos enviar lo mismo.
