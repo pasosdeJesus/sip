@@ -20,6 +20,8 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency "rails"
   s.add_runtime_dependency "rails-i18n"
+  s.add_runtime_dependency "coffee-rails"
+  s.add_runtime_dependency "sassc-rails"
   s.add_runtime_dependency "devise"
   s.add_runtime_dependency "devise-i18n"
   s.add_runtime_dependency "kt-paperclip"
