@@ -1021,7 +1021,7 @@ if (typeof String.prototype.endsWith != 'function')
     $("html").css "cursor", "auto"
     return
 
-  $(document).on('turbolinks:click', (event) ->
+  $(document).on('turbo:click', (event) ->
     if event.target.getAttribute('href').charAt(0) == '#'
       return event.preventDefault()
   )

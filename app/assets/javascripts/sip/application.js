@@ -13,7 +13,7 @@
 //= require sip/motor
 //= require_tree .
 
-document.addEventListener("turbolinks:load", function() {
+document.addEventListener("turbo:load", function() {
   var root;
   root = window;
   sip_prepara_eventos_comunes(root);

@@ -103,7 +103,11 @@ gem 'rails-i18n'                 # Localización e Internacionalización
 
 gem 'simple_form'                # Formularios
 
-gem 'turbolinks'                 # Acelera HTML
+gem 'sprockets-rails'            # Tuberia de recursos
+
+gem 'stimulus-rails'             # Libreria javascript
+
+gem 'turbo-rails'                # Acelera HTML
 
 gem 'twitter_cldr'               # Localiación e internacionalización 
 
@@ -475,7 +479,7 @@ ln -s ../packs .
 ```
 - Para preparar experiencia de usuario con Bootstrap 5, Javascript con módulos y Jquery debes instalar paquetes `npm` mínimos: 
 ```sh
-yarn add @rails/webpacker@6.0.0-rc.1 @rails/ujs @popperjs/core babel-plugin-macros bootstrap bootstrap-datepicker chosen-js expose-loader @fortawesome/fontawesome-free jquery jquery-ui popper.js@2.0.0-next.4 turbolinks 
+yarn add @rails/webpacker@6.0.0-rc.1 @rails/ujs @popperjs/core babel-plugin-macros bootstrap bootstrap-datepicker chosen-js expose-loader @fortawesome/fontawesome-free jquery jquery-ui popper.js@2.0.0-next.4 @hotwired/turbo-rails mrujs
 CXX=c++ yarn install
 ```
 prepara la estructura de directorios para webpack saque javascript con módulos de `app/packs` con:
@@ -487,22 +491,19 @@ bin/rails webpacker:install
 ```
 en `app/packs/entrypoints/application.js` debes configurar como cargar los módulos javascript, dejando jQuery de manera global (mientras ̣`sip` deja de depender de ese paquete):
 ```js
-console.log('Hola Mundo desde Webpacker')
+console.log('Hola Mundo desde ESM')
 
-import Rails from "@rails/ujs"                                                   
-Rails.start()                                                                    
-import Turbolinks from "turbolinks"                                              
-Turbolinks.start()                                                               
-                                                                                 
-import $ from "expose-loader?exposes=$,jQuery!jquery"
+import mrujs from "mrujs";
+import "@hotwired/turbo-rails"
+mrujs.start();
+
+import './jquery'
 
 import 'popper.js'              // Dialogos emergentes usados por bootstrap
 import * as bootstrap from 'bootstrap'              // Maquetacion y elementos de diseño
 import 'chosen-js/chosen.jquery';       // Cuadros de seleccion potenciados
 import 'bootstrap-datepicker'
 import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js'
-import 'jquery-ui'
-import 'jquery-ui/ui/widgets/autocomplete'
 ```
 Asegurar que se podrán usar funciones auxiliares relacionadas con Bootstrap, dejando `app/helpers/application_helper.rb` con el siguiente contenido:
 ```rb

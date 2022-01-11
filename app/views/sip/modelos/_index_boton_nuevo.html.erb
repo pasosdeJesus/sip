@@ -1,4 +1,4 @@
 <% ng = (!genclase.nil? && genclase == 'F') ? I18n.t('Nueva') : I18n.t('Nuevo') %>
 <%= link_to t('.new', default: [ng, t("helpers.links.new")]),
   new_modelo_path(@registros), class: 'btn btn-primary',
-  data: { turbolinks: false } %>
+  data: { turbo: false } %>

@@ -345,7 +345,7 @@ con un contenido que utiliza la variable `registro`:
     <%= link_to(
       image_tag("cor1440_gen/clip.svg", size: "16"),
       sip.descarga_anexo_path(i.id),
-      {"data-turbolinks" => false }
+      {"data-turbo" => false }
     ) %>
   <% end %>
 <% end %>

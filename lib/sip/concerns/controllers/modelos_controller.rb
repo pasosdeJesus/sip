@@ -396,7 +396,7 @@ module Sip
                 format.html { 
                   if params[:_sip_enviarautomatico_y_repinta]
                     redirect_to edit_modelo_path(@registro), 
-                      turbolinks: false
+                      turbo: false
                   else
                     actualizada = genclase == 'M' ? 'actualizado' : 
                       'actualizada';

@@ -18,17 +18,10 @@
 
 console.log('Hola Mundo desde Webpacker')
 
-import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
-// import * as ActiveStorage from "@rails/activestorage"
-// import "channels"
+import mrujs from "mrujs";
+import "@hotwired/turbo-rails"
 
-Rails.start()
-//require('@rails/ujs').start()   // Javascript no intrusivo segun rails
-Turbolinks.start()
-//require('turbolinks').start()   // Acelera carga de paginas
-
-//ActiveStorage.start()
+mrujs.start();
 
 import "./jquery"
 import './jquery-ui'
@@ -38,4 +31,3 @@ import 'chosen-js/chosen.jquery';       // Cuadros de seleccion potenciados
 import 'bootstrap-datepicker'
 import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js'
 
-import '../assets/javascripts/recursos_globales'

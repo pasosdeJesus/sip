@@ -151,3 +151,10 @@ function SipEnviarFormularioAjax(f, metodo='GET', tipo='script',
   SipEnviarAjax(a, datosFormulario, metodo, tipo, alertaerror)
 }
 
+
+// MACHETE PARA MEDIO SOPORTAR PAQUETES ESTILO COMMONJS EN NAVEGADOR
+// REQUIRE CAMBIAR USOS QUE SE HACIAN DE root = exports PARA QUE SEAN root =
+// window
+exports = {}
+module = { exports: exports}
+
