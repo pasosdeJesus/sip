@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.2"
 
+gem 'babel-transpiler'
+
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'cancancan'                 # Control de acceso
@@ -44,6 +46,8 @@ gem 'redis'
 gem 'sassc-rails'#, '2.1.0'      # Conversión a CSS
 
 gem 'simple_form'               # Formularios
+
+gem 'sprockets-rails'
 
 gem 'stimulus-rails'               # Formularios
 
