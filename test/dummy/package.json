@@ -27,8 +27,7 @@
     "postcss": "^8.2.10"
   },
   "babel": {
-    "presets": [
-    ]
+    "presets": []
   },
   "browserslist": [
     "defaults"
