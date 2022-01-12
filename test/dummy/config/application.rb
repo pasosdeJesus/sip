@@ -13,6 +13,8 @@ module Dummy
 
     config.load_defaults 7.0
 
+    config.action_view.form_with_generates_remote_forms = false
+
     # Las configuraciones en config/environments/* tiene precedencia sobre
     # las especificadas aquí.
     # La configuración de la aplicación puede ir en archivos en
