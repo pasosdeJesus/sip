@@ -3,14 +3,8 @@ require "application_system_test_case"
 class SectoresorgsocialTest < ApplicationSystemTestCase
 
   test "Agregar buscar y eliminar sectores" do
-    visit root_url
-    assert_content 'Pasos de Jesús'
-    click_link 'Iniciar Sesión'
-    assert_content 'Usuario'
-    fill_in('Usuario', with: 'sip')
-    fill_in('Clave', with: 'sip')
-    find_button('Iniciar Sesión').click
-    assert_content 'Sesión iniciada.'
+
+    Sip::CapybaraHelper.iniciar_sesion(self, root_path, 'sip', 'sip')
 
     click_link 'Administrar'
     click_link 'Tablas básicas'
