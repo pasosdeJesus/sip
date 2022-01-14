@@ -20,14 +20,14 @@
 <% if can?(:destroy, @registro) %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
     modelo_path(@registro),
-    :method => 'delete',
     :data => { 
       :confirm => 
-      t('.confirm', :default => 
-        t("helpers.links.confirm", 
-          :default => 'Are you sure?'
-         )
-       )
+      t('.confirm', 
+        :default => t("helpers.links.confirm", 
+                      :default => 'Are you sure?'
+                     )
+       ),
+       'turbo-method' => 'delete'
     },
     :class => 'btn btn-danger' %>
 <% end %>

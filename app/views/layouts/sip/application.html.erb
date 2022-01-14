@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="formato_fecha" content="<%= Rails.configuration.x.formato_fecha  ? Rails.configuration.x.formato_fecha : 'yyyy-mm-dd' %>">
+    <meta name="turbo-cache-control" content="no-cache">
     <title><%= content_for?(:titulo) ? yield(:titulo) : Sip.titulo %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
