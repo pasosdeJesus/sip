@@ -13,8 +13,7 @@ gem 'cocoon', git: 'https://github.com/vtamara/cocoon.git', branch: 'new_id_with
 
 gem 'coffee-rails'              # CoffeeScript para recursos .js.coffee
 
-gem 'devise',                    # Autenticación
-  git: 'https://github.com/heartcombo/devise.git'
+gem 'devise'                    # Autenticación
 
 gem 'devise-i18n'               # Localización e Internacionalización
 
