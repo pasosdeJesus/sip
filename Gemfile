@@ -64,8 +64,6 @@ group :development, :test do
 
   gem 'code-scanning-rubocop'
  
-  gem 'cuprite' 
-
   gem 'debug', ">= 1.0.0", platforms: %i[ mri mingw x64_mingw ]
 
   gem 'dotenv-rails'
@@ -80,6 +78,8 @@ end
 group :test do
 
   gem "connection_pool"
+  
+  gem 'cuprite' 
 
   gem "minitest"
 
