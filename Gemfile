@@ -64,7 +64,9 @@ group :development, :test do
   gem 'colorize'
 
   gem 'code-scanning-rubocop'
-  
+ 
+  gem 'cuprite' 
+
   gem 'debug', ">= 1.0.0", platforms: %i[ mri mingw x64_mingw ]
 
   gem 'dotenv-rails'

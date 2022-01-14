@@ -63,6 +63,11 @@
   resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-7.0.1.tgz#cb515d52c85be107908dd00822042f04e52cdea7"
   integrity sha512-ZUkgsbz5KFLfBwjIQ2D/kvyq+2w5BuNnkUJf3940VVJxov9GECu6n2BSXUTmyNAx+R6JQdibzXBuR7nz3crZYw==
 
+"@rails/ujs@^7.0.1":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-7.0.1.tgz#cb515d52c85be107908dd00822042f04e52cdea7"
+  integrity sha512-ZUkgsbz5KFLfBwjIQ2D/kvyq+2w5BuNnkUJf3940VVJxov9GECu6n2BSXUTmyNAx+R6JQdibzXBuR7nz3crZYw==
+
 "@types/parse-json@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
