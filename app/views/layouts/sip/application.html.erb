@@ -48,7 +48,7 @@
 
     <%= barra_navegacion(
       marca: content_for?(:titulo) ? yield(:titulo) : Sip.titulo,
-      enlace_marca: main_app.root_path) do %>
+      enlace_marca: content_for?(:enlace_marca) ? yield(:enlace_marca) : main_app.root_path) do %>
       <%= yield :menu %>
     <% end %>
 
