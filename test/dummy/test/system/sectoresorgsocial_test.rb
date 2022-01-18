@@ -7,6 +7,8 @@ class SectoresorgsocialTest < ApplicationSystemTestCase
     Sip::CapybaraHelper.iniciar_sesion(self, root_path, 'sip', 'sip')
 
     click_link 'Administrar'
+    assert_content 'Tablas básicas'
+    skip
     click_link 'Tablas básicas'
     click_link 'Sectores de organizaciones sociales'
     assert_content 'Sectores de organizaciones sociales'
