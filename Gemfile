@@ -17,8 +17,6 @@ gem 'devise'                    # Autenticación
 
 gem 'devise-i18n'               # Localización e Internacionalización
 
-gem 'importmap-rails'
-
 gem 'jbuilder', '>= 2.7'        # Json
 
 gem 'jsbundling-rails'
