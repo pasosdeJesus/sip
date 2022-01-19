@@ -50,14 +50,13 @@ namespace :sip do
   desc "Vuelca tablas básicas de aplicación en orden"
   task vuelcabasicas: :environment do
     puts "sip - vuelcabasicas"
-    abcs = ActiveRecord::Base.configurations
-    set_psql_env(abcs)
+    Sip::TareasrakeHelper::asegura_varambiente_bd
     connection = ActiveRecord::Base.connection()
     ab = ::Ability.new
     # Volcar primero superbasicas y otras en orden correcto
     tb = ab.tablasbasicas_prio + 
       (ab.tablasbasicas - ab.tablasbasicas_prio);
-    maq = '-h ' + ENV['PGHOST'] + ' -U ' + ENV['PGUSER']
+    maq = '-h ' + ENV.fetch('BD_SERVIDOR') + ' -U ' + ENV.fetch('BD_USUARIO')
     archt = Tempfile.create(["vb", ".sql"], nil)
     filename = "db/datos-basicas.sql"
     modobj = '';
@@ -74,7 +73,7 @@ namespace :sip do
         if t[0] == modobj
           command = "pg_dump --inserts --data-only --no-privileges " +
             "--no-owner --column-inserts --table=#{Ability::tb_modelo t} " +
-            "#{maq} #{Shellwords.escape(ENV['PGDB'])} " +
+            "#{maq} #{Shellwords.escape(ENV.fetch('BD_NOMBRE'))} " +
             "| sed -e \"s/SET lock_timeout = 0;//g\" > #{archt.to_path}"
           puts command.green
           raise "Error al volcar tabla #{Ability::tb_modelo t}" unless Kernel.system(command)
@@ -126,15 +125,14 @@ EOF
   desc "Vuelca base de datos completa"
   task vuelca: :environment do
     puts "sip - vuelca"
-    abcs = ActiveRecord::Base.configurations
-    set_psql_env(abcs)
+    Sip::TareasrakeHelper::asegura_varambiente_bd
     fecha = DateTime.now.strftime('%Y-%m-%d') 
     archcopia = Sip::TareasrakeHelper::nombre_volcado(Sip.ruta_volcados)
     File.open(archcopia, "w") { |f| f << "-- Volcado del #{fecha}\n\n" }
-    maq = '-h ' + ENV['PGHOST'] + ' -U ' + ENV['PGUSER']
+    maq = '-h ' + ENV.fetch('BD_SERVIDOR') + ' -U ' + ENV.fetch('BD_USUARIO')
     command = "pg_dump --encoding=UTF8 -cO --column-inserts " +
       "#{maq} " +
-      "#{Shellwords.escape(ENV['PGDB'])} " +
+      "#{Shellwords.escape(ENV.fetch('BD_NOMBRE'))} " +
       " > #{Shellwords.escape(archcopia)}"
     puts command
     raise "Error al volcar" unless Kernel.system(command)
@@ -142,13 +140,12 @@ EOF
 
   desc "Restaura volcado"
   task restaura: :environment do |t|
-    arch=ENV['ARCH']
+    arch=ENV.fetch('ARCH')
     puts "Restaurar #{arch} en ambiente"
-    abcs = ActiveRecord::Base.configurations
-    set_psql_env(abcs)
-    maq = '-h ' + ENV['PGHOST'] + ' -U ' + ENV['PGUSER']
+    Sip::TareasrakeHelper::asegura_varambiente_bd
+    maq = '-h ' + ENV.fetch('BD_SERVIDOR') + ' -U ' + ENV.fetch('BD_USUARIO')
     command = "psql " +
-      "#{maq} #{Shellwords.escape(ENV['PGDB'])} " +
+      "#{maq} #{Shellwords.escape(ENV.fetch('BD_NOMBRE'))} " +
       " -f #{Shellwords.escape(arch)}"
     puts command
     raise "Error al restaurar #{arch}" unless Kernel.system(command)
@@ -156,12 +153,3 @@ EOF
 
 end
 
-# de https://github.com/opdemand/puppet-modules/blob/master/rails/files/databases.rake
-def set_psql_env(abcs)
-  confbd = abcs.configurations.select{|c| c.env_name == Rails.env}.first
-  ENV['PGHOST'] = confbd.configuration_hash[:host] if confbd.configuration_hash[:host]
-  ENV['PGPORT'] = confbd.configuration_hash[:port].to_s if confbd.configuration_hash['port']
-  ENV['PGPASSWORD'] = confbd.configuration_hash[:password].to_s if confbd.configuration_hash[:password]
-  ENV['PGUSER'] = confbd.configuration_hash[:username].to_s if confbd.configuration_hash[:username]
-  ENV['PGDB'] = confbd.configuration_hash[:database].to_s if confbd.configuration_hash[:database]
-end
