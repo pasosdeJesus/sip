@@ -1034,6 +1034,52 @@ window.puntomontaje = "<%= Rails.configuration.relative_url_root %>"
 
   return
 
+  
+@sip_ejecutarAlCargarPagina = (root) ->
+  console.log('Sip: Ejecutando al cargar pagina')
+  $('[data-behaviour~=datepicker]').datepicker({
+    format: root.formato_fecha,
+    autoclose: true,
+    todayHighlight: true,
+    language: '<%= Rails.configuration.i18n.default_locale %>'	
+  })
+
+  $('[data-toggle="tooltip"]').tooltip()
+  $(document).on('cocoon:after-insert', (e) ->
+    $('[data-behaviour~=datepicker]').datepicker({
+      format: root.formato_fecha
+      autoclose: true
+      todayHighlight: true
+      language: '<%= Rails.configuration.i18n.default_locale %>'
+    })
+    $('[data-toggle="tooltip"]').tooltip()
+  )
+
+  # Chosen-jquery 
+  $('.chosen-select').chosen
+    allow_single_deselect: true
+    no_results_text: '<%= I18n.t('No hay resultados') %>',
+    placeholder_text_single: '<%= I18n.t('Seleccione una opción') %>',
+    placeholder_text_multiple: '<%= I18n.t('Seleccione algunas opciones') %>',
+    width: '100%'
+
+  # Caso especial de tooltips para campos con chosen  
+  $('select[data-toggle="tooltip"]').each( (v, e) ->
+    ej = $(e)
+    t = ej.attr('data-original-title')
+    id = ej.attr('id')  
+    ns = '#' + id+'_chosen .chosen-choices'
+    $(ns).attr('title', t)
+    $(ns).attr('data-toggle', 'tooltip')
+  )
+
+  # Pone colores de acuerdo al tema
+  sip_ajax_recibe_json(root, 'temausuario', {}, sip_pone_tema)
+
+  jQuery ->
+    $("a[rel~=popover], .has-popover").popover()
+    $("a[rel~=tooltip], .has-tooltip").tooltip()
+
 
 
 @sip_edadDeFechaNacFechaRef = (anionac, mesnac, dianac, anioref, mesref, diaref) ->

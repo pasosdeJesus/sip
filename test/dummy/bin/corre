@@ -93,6 +93,9 @@ FileUtils.chdir RAIZ_AP do
     ord += "-b '#{ENV['IPDES']}' "
     puts "#{ord}"
   elsif ENV['RAILS_ENV'] == 'production'
+    if File.exists?('bin/corre-local')
+      system!('bin/corre-local')
+    end
     if !File.exists?("/etc/rc.d/#{ENV['RC']}")
       puts "\nFalta script /etc/rc.d/#{ENV['RC']}"
       exit 1

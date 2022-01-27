@@ -45,6 +45,7 @@ class SectoresorgsocialTest < ApplicationSystemTestCase
     click_link 'Editar'
     if has_css?('.search-choice-close') then
       # Chosen cargado y operando
+      debugger
       within '.orgsocial_sectororgsocial' do
         find('.search-choice-close').click
       end
