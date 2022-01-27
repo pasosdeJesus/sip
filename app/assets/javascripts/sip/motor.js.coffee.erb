@@ -942,7 +942,7 @@ window.puntomontaje = "<%= Rails.configuration.relative_url_root %>"
     placeholder_text_multiple: '<%= I18n.t('Seleccione algunas opciones') %>',
     width: '100%'
 
-  # Tooltips con chosen  
+  # Caso especial de tooltips para campos con chosen  
   $('select[data-toggle="tooltip"]').each( (v, e) ->
     ej = $(e)
     t = ej.attr('data-original-title')

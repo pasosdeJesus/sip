@@ -15,21 +15,24 @@ import 'chosen-js/chosen.jquery';       // Cuadros de seleccion potenciados
 import 'bootstrap-datepicker'
 import 'bootstrap-datepicker/dist/locales/bootstrap-datepicker.es.min.js'
 
-let esperarRecursosSprockets = function (resolver) {
+let esperarRecursosSprocketsYDocumento = function (resolver) {
   if (typeof window.puntomontaje == 'undefined') {
-    setTimeout(esperarRecursosSprockets, 250, resolver)
+    setTimeout(esperarRecursosSprocketsYDocumento, 250, resolver)
     return false
   }
-  resolver("otros recursos manejados con sprockets")
+  if (document.readyState !== 'complete') {
+    setTimeout(esperarRecursosSprocketsYDocumento, 250, resolver)
+    return false
+  }
+  resolver("otros recursos manejados con sprockets cargados y documento presentado en navegador")
   return true
 }
 
-let promesaRecursosSprockets = new Promise((resolver, rechazar) => {
-  esperarRecursosSprockets(resolver)
+let promesaRecursosSprocketsYDocumento = new Promise((resolver, rechazar) => {
+  esperarRecursosSprocketsYDocumento(resolver)
 })
 
-promesaRecursosSprockets.then((mensaje) => {
-
+promesaRecursosSprocketsYDocumento.then((mensaje) => {
   console.log('Cargando recursos sprockets')
   var root;
   root = window;

@@ -43,10 +43,14 @@ class SectoresorgsocialTest < ApplicationSystemTestCase
     click_link 'Organizaciones sociales'
     assert_content 'Organizaciones sociales: 1'
     click_link 'Editar'
-    # unselect 'INDÍGENAS', from: 'Sector(es)'
-    # no opera segundo intento de quitar chosen
-    within '.orgsocial_sectororgsocial' do
-      find('.search-choice-close').click
+    if has_css?('.search-choice-close') then
+      # Chosen cargado y operando
+      within '.orgsocial_sectororgsocial' do
+        find('.search-choice-close').click
+      end
+    else 
+      # Chosen no operando aún(?)
+      unselect 'INDÍGENAS', from: 'Sector(es)'
     end
     click_link 'Eliminar'
     find_button('Actualizar').click
