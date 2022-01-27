@@ -13,11 +13,8 @@
 //= require sip/motor
 //= require_tree .
 
-document.addEventListener("turbo:load", function() {
-  var root;
-  root = window;
-  sip_prepara_eventos_comunes(root);
-});
+// La inicialización ahora debe hacerse en la aplicacíon principal en
+// app/javascript/application.js
 
 
 
