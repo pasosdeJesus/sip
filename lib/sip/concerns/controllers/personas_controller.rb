@@ -83,7 +83,7 @@ module Sip
               end
               qstring = "SELECT TRIM(#{s}) AS value, #{l} AS id 
               FROM public.sip_persona AS persona
-              WHERE #{where} ORDER BY 1";
+              WHERE #{where} ORDER BY 1 LIMIT 10";
 
               r = ActiveRecord::Base.connection.select_all qstring
               respond_to do |format|

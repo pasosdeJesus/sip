@@ -40,7 +40,7 @@ module Sip
               end
               qstring = "SELECT TRIM(nombre) AS value, grupoper.id AS id 
                 FROM public.sip_grupoper AS grupoper
-                WHERE #{where} ORDER BY 1";
+                WHERE #{where} ORDER BY 1 LIMIT 10";
                 r = ActiveRecord::Base.connection.select_all qstring
                 respond_to do |format|
                   format.json { render :json, inline: r.to_json }
