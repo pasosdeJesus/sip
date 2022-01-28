@@ -56,6 +56,7 @@ module Sip
               c = Sip::Persona.all
             end
             if params[:term]
+              # usado en autocompletación limitado a 10
               term = Sip::Ubicacion.connection.quote_string(params[:term])
               consNomvic = term.downcase.strip #sin_tildes
               consNomvic.gsub!(/ +/, ":* & ")
@@ -83,7 +84,7 @@ module Sip
               end
               qstring = "SELECT TRIM(#{s}) AS value, #{l} AS id 
               FROM public.sip_persona AS persona
-              WHERE #{where} ORDER BY 1";
+              WHERE #{where} ORDER BY 1 LIMIT 10";
 
               r = ActiveRecord::Base.connection.select_all qstring
               respond_to do |format|

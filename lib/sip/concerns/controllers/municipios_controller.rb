@@ -80,7 +80,8 @@ module Sip
               consc = ActiveRecord::Base.send(:sanitize_sql_array, [
                 "SELECT nombre as label, idlocal as value
                 FROM public.sip_mundep 
-                WHERE mundep  @@ to_tsquery('spanish', ?) ORDER BY 1;",
+                WHERE mundep  @@ to_tsquery('spanish', ?)
+                ORDER BY 1 LIMIT 10;",
                 consNom])
               r = ActiveRecord::Base.connection.select_all consc
               respond_to do |format|

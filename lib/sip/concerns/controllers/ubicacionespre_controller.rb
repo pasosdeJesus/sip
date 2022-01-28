@@ -61,7 +61,7 @@ module Sip
                 "AND departamento_id IS NOT NULL " +
                 "AND lugar IS NULL " +
                 "AND sitio IS NULL " +
-                " ORDER BY 1";
+                " ORDER BY 1 LIMIT 10";
       
               r = ActiveRecord::Base.connection.select_all cons
               respond_to do |format|
@@ -89,7 +89,7 @@ module Sip
       
               cons = "SELECT TRIM(nombre) AS value, id AS id " +
                 "FROM public.sip_ubicacionpre AS ubicacionpre " +
-                "WHERE #{where} ORDER BY 1";
+                "WHERE #{where} ORDER BY 1 LIMIT 10";
       
               r = ActiveRecord::Base.connection.select_all cons
               respond_to do |format|
