@@ -54,11 +54,26 @@ function sip_ubicacionpre_expandible_busca_lugar(s, ubi) {
       return
     }
     if ($(ubipre).find("[id$='_lugar']").length != 1) {
-      alert('Dentro de .div_ubicacionpre no se ubicó ubicacionpre_texto')
+      alert('Dentro de .div_ubicacionpre no se ubicó _lugar')
       return
     }
-    $("#" + cnom).autocomplete({
-      source: root.puntomontaje + "ubicacionespre_lugar.json" + '?pais=' + ubi[0]+ '&dep=' + ubi[1] + '&mun=' + ubi[2] + '&clas=' + ubi[3],
+    var campo = document.querySelector("#" + cnom)
+    // Cada vez que llegue quitar eventlistener si ya fue inicializado
+    var n = new AutocompletaAjaxCampotexto(campo, root.puntomontaje + 
+      "ubicacionespre_lugar.json" + '?pais=' + ubi[0] + 
+      '&dep=' + ubi[1] + '&mun=' + ubi[2] + '&clas=' + ubi[3] + '&', 
+      'fuente-lugar', function (event, nomop, idop, otrosop) { 
+        sip_ubicacionpre_expandible_autocompleta_lugar(otrosop['clase_id'],
+          otrosop['tsitio_id'], otrosop['lugar'], 
+          otrosop['sitio'], otrosop['latitud'], otrosop['longitud'], 
+          ubipre, window)
+        event.stopPropagation()
+        event.preventDefault()
+      }.bind(n)
+    )
+    n.iniciar()
+/*    $("#" + cnom).autocomplete({
+      source: 
       cacheLength: 0,
       minLength: 2,
       select: function( event, ui ){ 
@@ -68,7 +83,7 @@ function sip_ubicacionpre_expandible_busca_lugar(s, ubi) {
           event.preventDefault()
         }
       }
-    })
+    }) */
   }
   return
 }

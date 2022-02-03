@@ -2,7 +2,10 @@
 valida: valida-js valida-ruby
 
 valida-js:
-	for i in `find app/assets/javascripts/ -name "*coffee" -or -name "*coffee.erb"`; do \
+	for i in `find app/assets/javascripts/ -name "*js" -or -name "*es6"`; do \
+	node -c $$i; \
+	done
+	for i in `find app/assets/javascripts/ -name "*coffee"`; do \
 	coffee -o /tmp/ $$i; \
 	done
 

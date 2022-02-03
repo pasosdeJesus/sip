@@ -93,12 +93,13 @@
       <% ph = campolugar_etiqueta #'Barrio o vereda de Salida' %>
       <% ac = {
         #'data-autocompleta' => 'no',
-        "data-toggle" => 'tooltip'} %>
+        "data-toggle" => 'tooltip',
+         list: 'fuente-lugar'
+      } %>
       <% if (!f.object.send(campolugar) || 
           f.object.send(campolugar) == '') %>
         <% ph = "#{campolugar_etiqueta}... (Buscar)" %>
         <% #'Barrio o vereda salida... (Buscar)' %>
-        <% ac = {"data-toggle" => 'tooltip'} %>
       <% end %>
       <div class="col-md-3">
         <%= f.input campolugar, #:salida_lugar,
