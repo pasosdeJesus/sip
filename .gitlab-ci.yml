@@ -8,12 +8,12 @@ services:
 
 variables:
   RAILS_ENV: test
-  POSTGRES_ENABLED: "true"
+  POSTGRES_ENABLED: 'true'
   POSTGRES_USER: runner
-  POSTGRES_PASSWORD: ""
+  POSTGRES_PASSWORD: ''
   POSTGRES_DB: sipdes_pru
   POSTGRES_HOST_AUTH_METHOD: trust
-  NOKOGIRI_USE_SYSTEM_LIBRARIES: "true"
+  NOKOGIRI_USE_SYSTEM_LIBRARIES: 'true'
 
 
 stages:
@@ -52,4 +52,7 @@ test:
   script:
     - CONFIG_HOSTS=www.example.com bin/rails test
 
-
+sast:
+    stage: test
+include:
+- template: Security/SAST.gitlab-ci.yml
