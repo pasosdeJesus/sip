@@ -1,5 +1,8 @@
 # Motor para Sistemas de Información estilo Pasos de Jesús - sip
-[![Revisado por Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) [![Estado Construcción](https://gitlab.com/pasosdeJesus/sip/badges/main/pipeline.svg)](https://gitlab.com/pasosdeJesus/sip/-/pipelines) [![Mantenibilidad](https://api.codeclimate.com/v1/badges/fa979bbb3fc3d52a9d6f/maintainability)](https://codeclimate.com/github/pasosdeJesus/sip/maintainability) [![Cobertura de Pruebas](https://api.codeclimate.com/v1/badges/fa979bbb3fc3d52a9d6f/test_coverage)](https://codeclimate.com/github/pasosdeJesus/sip/test_coverage) [![security](https://hakiri.io/github/pasosdeJesus/sip/master.svg)](https://hakiri.io/github/pasosdeJesus/sip/master)
+
+
+
+[![Revisado por Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) Pruebas y Seguridad:[![Estado Construcción](https://gitlab.com/pasosdeJesus/sip/badges/main/pipeline.svg)](https://gitlab.com/pasosdeJesus/sip/-/pipelines?page=1&scope=all&ref=main) [![Mantenibilidad](https://api.codeclimate.com/v1/badges/fa979bbb3fc3d52a9d6f/maintainability)](https://codeclimate.com/github/pasosdeJesus/sip/maintainability) [![Cobertura de Pruebas](https://api.codeclimate.com/v1/badges/fa979bbb3fc3d52a9d6f/test_coverage)](https://codeclimate.com/github/pasosdeJesus/sip/test_coverage) 
 
 
 ![Logo de sip](https://raw.githubusercontent.com/pasosdeJesus/sip/master/test/dummy/app/assets/images/logo.jpg)
