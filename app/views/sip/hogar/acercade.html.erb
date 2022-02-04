@@ -97,7 +97,9 @@ por este motor:
     <div class="string optional f_fecha_localizada form-group-valid">
       <label class="string optional" for="f_fecha_localizada">Fecha</label>
       <input class="form-control string optional sip-sf-bs-input span10" 
-             data-behaviour="datepicker" type="text" value="07/ene/2013" 
+             data-behaviour="datepicker"
+             type="text"
+             value="<%= Sip::FormatoFechaHelper.fecha_estandar_local '2013-01-07' %>" 
              name="f[fecha_localizada]" id="f_fecha_localizada">
     </div>
   </li>

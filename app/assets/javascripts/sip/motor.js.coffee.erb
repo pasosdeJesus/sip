@@ -898,23 +898,27 @@ if (typeof String.prototype.endsWith != 'function')
   return parseFloat(r)
 
 
-window.puntomontaje = "<%= Rails.configuration.relative_url_root %>"
+@sip_inicializaMotor = (conenv = true) ->
+  window.puntomontaje = "<%= Rails.configuration.relative_url_root %>"
+  if conenv && <%= !ENV['RAILS_RELATIVE_URL_ROOT'] || ENV['RAILS_RELATIVE_URL_ROOT'] == "" ? "false" : "true" %>
+    window.puntomontaje = "<%= ENV['RAILS_RELATIVE_URL_ROOT'] %>"
+  sip_arregla_puntomontaje(window)
+  # Formularios con departamento/municipio sin llenar autom. coordenadas
+  window.sip_sincoord = false;
+  #<% puts  "formato_fecha: ", Rails.configuration.x.formato_fecha %>
+  #<% puts  "relative_url_root: ", Rails.configuration.relative_url_root %>
+  # Formato de campos de fecha con datepicker
+  window.formato_fecha = '<%= Rails.configuration.x.formato_fecha && Rails.configuration.x.formato_fecha.to_s != "{}"  ? Rails.configuration.x.formato_fecha.to_s : "yyyy-mm-dd" %>'
+  window.sip_idioma_predet = '<%= Rails.configuration.i18n.default_locale %>'
+
+
+
 
 # Prepara eventos comunes al usar sip
 # @param root espacio para poner variables globales
 @sip_prepara_eventos_comunes = (root, sincoord = false, conenv = true) ->
-  # Arreglar punto de montaje de la aplicacion
-  root.puntomontaje = "<%= Rails.configuration.relative_url_root %>"
-  if conenv && <%= !ENV['RAILS_RELATIVE_URL_ROOT'] || ENV['RAILS_RELATIVE_URL_ROOT'] == "" ? "false" : "true" %>
-    root.puntomontaje = "<%= ENV['RAILS_RELATIVE_URL_ROOT'] %>"
-  sip_arregla_puntomontaje(root)
-  # Formularios con departamento/municipio sin llenar autom. coordenadas
-  root.sip_sincoord = false;
-
-  #<% puts  "formato_fecha: ", Rails.configuration.x.formato_fecha %>
-  #<% puts  "relative_url_root: ", Rails.configuration.relative_url_root %>
-  # Formato de campos de fecha con datepicker
-  root.formato_fecha = '<%= Rails.configuration.x.formato_fecha && Rails.configuration.x.formato_fecha.to_s != "{}"  ? Rails.configuration.x.formato_fecha.to_s : "yyyy-mm-dd" %>'
+  if typeof(window.puntomontaje) == 'undefined'
+    sip_inicializaMotor(conenv)
 
   $('[data-behaviour~=datepicker]').datepicker({
     format: root.formato_fecha,
@@ -1037,6 +1041,10 @@ window.puntomontaje = "<%= Rails.configuration.relative_url_root %>"
   
 @sip_ejecutarAlCargarPagina = (root) ->
   console.log('Sip: Ejecutando al cargar pagina')
+  if typeof(window.puntomontaje) == 'undefined'
+    sip_inicializaMotor()
+
+
   $('[data-behaviour~=datepicker]').datepicker({
     format: root.formato_fecha,
     autoclose: true,

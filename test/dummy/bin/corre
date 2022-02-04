@@ -70,9 +70,9 @@ FileUtils.chdir RAIZ_AP do
   end
 
   if !ENV['R'] || ENV['R'] == '' || ENV['R'] == 'r'
-    puts "\n== Eliminando recursos =="
-    system! 'rm -rf public/packs/*'
-    system! "rm -rf public/#{ENV['RAILS_RELATIVE_URL_ROOT']}/assets/*"
+    puts "\n== Eliminando recursos public/packs* y public/#{ENV['RUTA_RELATIVA']}/assets/* =="
+    system! 'rm -rf public/packs*'
+    system! "rm -rf public/#{ENV['RUTA_RELATIVA']}/assets/*"
 
     puts "\n== Crea recursos CSS y Javascript =="
     system! "RAILS_ENV=#{ENV['RAILS_ENV']} bin/rails assets:precompile --trace"
