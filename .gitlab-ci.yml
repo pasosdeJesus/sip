@@ -14,6 +14,7 @@ variables:
   POSTGRES_DB: sipdes_pru
   POSTGRES_HOST_AUTH_METHOD: trust
   NOKOGIRI_USE_SYSTEM_LIBRARIES: 'true'
+  CC_TEST_REPORTER_ID: "e83ead47cfc0912ab49acb6658bf8a22bd4257d73c5ddcd8eebfb450efd51640"
 
 
 stages:
@@ -41,6 +42,9 @@ test:
     - apt-get update -qq && apt-get -o dir::cache::archives="$APT_CACHE_DIR" install -yqq yarn
     - gem install bundler --no-document
     - bundle install --jobs $(nproc) "${FLAGS[@]}"
+    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+    - chmod +x ./cc-test-reporter
+    - ./cc-test-reporter before-build
     - cd test/dummy
     - cp .env.gitlab .env
     - cp db/structure.sql db/structure.sql.copia 
@@ -52,6 +56,7 @@ test:
     - cd ../..
   script:
     - CONFIG_HOSTS=www.example.com bin/rails test
+    - ./cc-test-reporter after-build -t simplecov --exit-code $?
 
 sast:
     stage: test
