@@ -70,12 +70,22 @@ class Divipola2021 < ActiveRecord::Migration[6.1]
         observaciones=completa_obs(observaciones, 'Vuelto a habilitar por DIVIPOLA 2021'),
         id_tclase='CP'
         WHERE id='1872'; -- CAQUETÁ | SAN VICENTE DEL CAGUÁN | LOS POZOS
-        
+
+        UPDATE sip_clase SET fechadeshabilitacion=NULL,
+        observaciones=completa_obs(observaciones, 'Vuelto a habilitar por DIVIPOLA 2021'),
+        id_tclase='CP',
+        nombre='LA TUNIA'
+        WHERE id='1877'; -- CAQUETÁ | SAN VICENTE DEL CAGUÁN | LA TUNIA
+
+        UPDATE sip_clase SET fechadeshabilitacion=NULL,
+        observaciones=completa_obs(observaciones, 'Vuelto a habilitar por DIVIPOLA 2021'),
+        id_tclase='CP',
+        nombre='BOCAS DE CURAY'
+        WHERE id='8518'; -- NARIÑO | FRANCISO PIZARRO | BOCAS DE CURAY
+
 
         INSERT INTO sip_clase (id, nombre, id_municipio, id_clalocal, observaciones, fechacreacion, created_at, updated_at)  
           VALUES (15404, 'BALSILLA', 1069, 6, 'Agregado en DIVIPOLA 2021', '2021-02-13', '2021-02-13', '2021-02-13');
-        INSERT INTO sip_clase (id, nombre, id_municipio, id_clalocal, observaciones, fechacreacion, created_at, updated_at)  
-          VALUES (15405, 'LA TUNIA', 1214, 23, 'Agregado en DIVIPOLA 2021', '2021-02-13', '2021-02-13', '2021-02-13');
         INSERT INTO sip_clase (id, nombre, id_municipio, id_clalocal, observaciones, fechacreacion, created_at, updated_at)  
           VALUES (15406, 'VILLA CARMONA', 1214, 34, 'Agregado en DIVIPOLA 2021', '2021-02-13', '2021-02-13', '2021-02-13');
         INSERT INTO sip_clase (id, nombre, id_municipio, id_clalocal, observaciones, fechacreacion, created_at, updated_at)  
@@ -88,8 +98,6 @@ class Divipola2021 < ActiveRecord::Migration[6.1]
           VALUES (15410, 'PUEBLO NUEVO - GETSEMANÍ', 954, 15, 'Agregado en DIVIPOLA 2021', '2021-02-13', '2021-02-13', '2021-02-13');
         INSERT INTO sip_clase (id, nombre, id_municipio, id_clalocal, observaciones, fechacreacion, created_at, updated_at)  
           VALUES (15411, 'SAN JOSÉ', 1130, 3, 'Agregado en DIVIPOLA 2021. En DIVIPOLA 2021 erradamente estaba en SAN JUAN DE ARAMA pero es en SAN JUANITO.', '2021-02-13', '2021-02-13', '2021-02-13');
-        INSERT INTO sip_clase (id, nombre, id_municipio, id_clalocal, observaciones, fechacreacion, created_at, updated_at)  
-          VALUES (15412, 'BOCAS DE CURAY', 879, 7, 'Agregado en DIVIPOLA 2021', '2021-02-13', '2021-02-13', '2021-02-13');
         INSERT INTO sip_clase (id, nombre, id_municipio, id_clalocal, observaciones, fechacreacion, created_at, updated_at)  
           VALUES (15413, 'OLIVO CURAY', 879, 15, 'Agregado en DIVIPOLA 2021', '2021-02-13', '2021-02-13', '2021-02-13');
         INSERT INTO sip_clase (id, nombre, id_municipio, id_clalocal, observaciones, fechacreacion, created_at, updated_at)  
@@ -184,6 +192,14 @@ class Divipola2021 < ActiveRecord::Migration[6.1]
         id_tclase='IP'
         WHERE id='1872'; -- CAQUETÁ | SAN VICENTE DEL CAGUÁN | LOS POZOS
  
+        UPDATE sip_clase SET fechadeshabilitacion='2019-03-15',
+        nombre='LA TUNIA (CAQUETANIA)'
+        WHERE id='1877'; -- CAQUETÁ | SAN VICENTE DEL CAGUÁN | LA TUNIA
+
+        UPDATE sip_clase SET fechadeshabilitacion='2019-03-15',
+        nombre='BOCA DE CURAY'
+        WHERE id='8518'; -- NARIÑO | FRANCISO PIZARRO | BOCAS DE CURAY
+
     SQL
   end
 
