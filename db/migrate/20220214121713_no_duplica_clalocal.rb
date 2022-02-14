@@ -29,16 +29,16 @@ class NoDuplicaClalocal < ActiveRecord::Migration[6.1]
   def down
     execute <<-SQL
       ALTER TABLE ONLY public.sip_clase
-        DROP CONSTRAINT sip_clase_id_municipio_id_clalocal_unico;
+        DROP CONSTRAINT IF EXISTS sip_clase_id_municipio_id_clalocal_unico;
 
       ALTER TABLE ONLY public.sip_municipio
-        DROP CONSTRAINT sip_municipio_id_departamento_id_munlocal_unico;
+        DROP CONSTRAINT IF EXISTS sip_municipio_id_departamento_id_munlocal_unico;
 
       ALTER TABLE ONLY public.sip_departamento
         DROP CONSTRAINT IF EXISTS sip_departamento_id_pais_id_deplocal_unico;
 
       ALTER TABLE ONLY public.sip_pais
-        DROP CONSTRAINT sip_pais_codiso_unico;
+        DROP CONSTRAINT IF EXISTS sip_pais_codiso_unico;
  
     SQL
   end
