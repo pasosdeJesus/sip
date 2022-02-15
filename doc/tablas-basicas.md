@@ -38,6 +38,8 @@ Además debe editar otros archivos ya existentes para realizar los siguientes ca
    Acpcatmotivo: Categoria de motivos
    Acpcatsmotivo: Categorias de motivos
 ```
+| Archivo | Edición que requiere |
+| --- | --- |
 | `config/locales/en.yml` | En `en:` -> `activerecord:` -> `attributes:` añada líneas como las que se ven a continuación |
   
 ```yaml
