@@ -36,7 +36,7 @@ module Sip
               :nombre,
               :pais,
               :departamento,
-              :municipio_id,
+              :municipio, # belongs_to
               :verlocal_id,
               :latitud,
               :longitud,

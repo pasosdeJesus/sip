@@ -1,7 +1,7 @@
 
 <tr>
   <% atributos_index.each do |atr| %>
-    <% #byebug %>
+    <% #debugger %>
     <td>
       <% cregistro = @registro.class.to_s.chomp("::ActiveRecord_Relation").constantize %>
       <% alf = cregistro == NilClass ? nil : cregistro.asociacion_llave_foranea(atr) %>
