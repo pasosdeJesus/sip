@@ -267,6 +267,12 @@ es:
         Tsitios: Tipos de sitios
       "sip/ubicacion":
         Ubicacion: Ubicación
+      "sip/vereda":
+        id_verlocal: Código dentro del municipio
+        id_municipio: Municipio
+        id_departamento: Departamento
+        Vereda: Vereda
+        Veredas: Veredas
       "trivalente":
         Trivalente: Trivalente
         Trivalentes: Trivalentes
