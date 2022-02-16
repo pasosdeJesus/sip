@@ -1,14 +1,18 @@
-require 'test_helper'
+require_relative '../../../test_helper'
 
 # Esta prueba supone que en la tabla básica hay un registro con id 1
 # Si no lo hay agregar skip a pruebas que lo suponen o crear registro
 # con id 1 en las mismas o en setup
 
-module Admin
+module Sip
   class VeredasControllerTest < ActionDispatch::IntegrationTest
+    include Engine.routes.url_helpers
+    include Devise::Test::IntegrationHelpers
+
     VEREDA_NUEVA = {
       nombre: 'X',
       observaciones: 'y',
+      municipio_id: 1,
       fechacreacion: '2022-02-14',
       fechadeshabilitacion: nil,
       created_at: '2022-02-14',
@@ -17,11 +21,11 @@ module Admin
 
     IDEX = 10
 
-    include Rails.application.routes.url_helpers
-    include Devise::Test::IntegrationHelpers
-
     setup do
-      @current_usuario = ::Usuario.find(1)
+      if ENV['CONFIG_HOSTS'] != 'www.example.com'
+        raise 'CONFIG_HOSTS debe ser www.example.com'
+      end
+      @current_usuario = ::Usuario.create(PRUEBA_USUARIO)
       sign_in @current_usuario
     end
 
@@ -37,7 +41,7 @@ module Admin
     end
 
     test "debe presentar resumen de existente" do
-      get admin_vereda_url(Vereda.find(IDEX))
+      get admin_vereda_url(::Sip::Vereda.find(IDEX))
       assert_response :success
       assert_template :show
     end
@@ -49,7 +53,7 @@ module Admin
     end
 
     test "debe crear nueva" do
-      assert_difference('Vereda.count') do
+      assert_difference('Sip::Vereda.count') do
         post admin_veredas_path, params: { 
           vereda: VEREDA_NUEVA
         }
@@ -60,7 +64,7 @@ module Admin
     end
 
     test "debe actualizar existente" do
-      patch admin_vereda_path(Vereda.find(IDEX)),
+      patch admin_vereda_path(::Sip::Vereda.find(IDEX)),
         params: { vereda: { nombre: 'YY'}}
 
       assert_redirected_to admin_vereda_path(
@@ -68,9 +72,9 @@ module Admin
     end
 
     test "debe eliminar" do
-      r = Vereda.create!(VEREDA_NUEVO)
-      assert_difference('Vereda.count', -1) do
-        delete admin_vereda_url(Vereda.find(r.id))
+      r = ::Sip::Vereda.create!(VEREDA_NUEVA)
+      assert_difference('Sip::Vereda.count', -1) do
+        delete admin_vereda_url(::Sip::Vereda.find(r.id))
       end
 
       assert_redirected_to admin_veredas_path
