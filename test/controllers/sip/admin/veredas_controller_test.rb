@@ -41,7 +41,7 @@ module Sip
     end
 
     test "debe presentar resumen de existente" do
-      get admin_vereda_url(::Sip::Vereda.find(IDEX))
+      get admin_vereda_url(Vereda.find(IDEX))
       assert_response :success
       assert_template :show
     end
