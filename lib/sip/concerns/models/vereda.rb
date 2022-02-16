@@ -29,8 +29,19 @@ module Sip
 #            message: "debe ser único en el municpio"
 
           scope :filtro_pais, lambda {|p|
+            debugger
+            joins(:municipio).joins(:departamento).joins(:pais)
+              where('sip_pais.nombre ILIKE (\'%\' || ? || \'%\')', p)
+          }
+
+          scope :filtro_departamento, lambda {|d|
             joins(:municipio).joins(:departamento).
-              where('sip_departamento.id_pais=?', p)
+              where('sip_departamento.nombre ILIKE ('%' || ? || '%')', d)
+          }
+
+          scope :filtro_municipio, lambda {|m|
+            joins(:municipio).
+              where('sip_municipio.nombre ILIKE ('%' || ? || '%')', m)
           }
 
           @@conf_presenta_nombre_con_origen = false
