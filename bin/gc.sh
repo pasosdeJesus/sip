@@ -46,7 +46,7 @@ if (test "$SININS" != "1") then {
 	if (test "$?" != "0") then {
 		exit 1;
 	} fi;
-	(cd $rutaap; CXX=c++ yarn install)
+	(cd $rutaap; CXX=c++ yarn install; bin/rails assets:precompile)
 	if (test "$?" != "0") then {
 		exit 1;
 	} fi;
