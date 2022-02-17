@@ -38,7 +38,7 @@ module Sip
               where("unaccent(sip_departamento.nombre) ILIKE '%' || unaccent(?) || '%'", d)
           }
 
-          scope :filtro_municipio, lambda {|m|
+          scope :filtro_municipio_id, lambda {|m|
             joins(:municipio).
               where("unaccent(sip_municipio.nombre) ILIKE '%' || unaccent(?) || '%'", m)
           }
