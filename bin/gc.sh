@@ -1,6 +1,17 @@
 #!/bin/sh
-# Revisa errore comunes, ejecuta pruebas de regresión y del sistema y envia a github 
+# Actualiza dependencias, revisa errores comunes, 
+# ejecuta pruebas y envía a repositorio
 
+if (test -f ".env") then {
+  rutaap="./"
+} elif (test -f "test/dummy/.env") then {
+  rutaap="test/dummy"
+} else {
+  echo "No se determino ruta de aplicación. Falta archivo .env"
+  exit 1;
+} fi;
+
+echo "Ruta de la aplicación: $rutaap"
 
 s=`grep -B 1 "^ *path" Gemfile 2> /dev/null`
 if (test "$?" = "0") then {
@@ -24,7 +35,7 @@ if (test "$SINAC" != "1") then {
 	if (test "$?" != "0") then {
 		exit 1;
 	} fi;
-	(cd test/dummy; CXX=c++ yarn upgrade)
+	(cd $rutaap; CXX=c++ yarn upgrade)
 	if (test "$?" != "0") then {
 		exit 1;
 	} fi;
@@ -35,20 +46,20 @@ if (test "$SININS" != "1") then {
 	if (test "$?" != "0") then {
 		exit 1;
 	} fi;
-	(cd test/dummy; CXX=c++ yarn install)
+	(cd $rutaap; CXX=c++ yarn install)
 	if (test "$?" != "0") then {
 		exit 1;
 	} fi;
 } fi;
 
 if (test "$SINMIG" != "1") then {
-	(cd test/dummy; bin/rails db:migrate sip:indices db:schema:dump)
+	(cd $rutaap; bin/rails db:migrate sip:indices db:schema:dump)
 	if (test "$?" != "0") then {
 		exit 1;
 	} fi;
 } fi;
 
-(cd test/dummy; RAILS_ENV=test bin/rails db:drop db:setup; RAILS_ENV=test bin/rails db:migrate sip:indices)
+(cd $rutaap; RAILS_ENV=test bin/rails db:drop db:setup; RAILS_ENV=test bin/rails db:migrate sip:indices)
 if (test "$?" != "0") then {
 	echo "No puede preparse base de prueba";
 	exit 1;
@@ -60,14 +71,14 @@ if (test "$?" != "0") then {
 	exit 1;
 } fi;
 
-(cd test/dummy; CONFIG_HOSTS=127.0.0.1 bin/rails test:system)
+(cd $rutaap; CONFIG_HOSTS=127.0.0.1 bin/rails test:system)
 if (test "$?" != "0") then {
 	echo "No pasaron pruebas del sistema";
 	exit 1;
 } fi;
 
 
-(cd test/dummy; RAILS_ENV=test bin/rails db:schema:dump)
+(cd $rutaap; RAILS_ENV=test bin/rails db:schema:dump)
 
 b=`git branch | grep "^*" | sed -e  "s/^* //g"`
 git status -s
