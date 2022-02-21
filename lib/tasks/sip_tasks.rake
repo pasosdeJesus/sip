@@ -151,7 +151,7 @@ EOF
     raise "Error al restaurar #{arch}" unless Kernel.system(command)
   end # restaura
 
-  desc "En app/javascript/controllers crea enlaces a los app/javascript/controllers de motores y actualiza index.js"
+  desc "Enlaza controladores de motores en app/javascript/controllers y actualiza index.js"
   task stimulus_motores: :environment do
     # No funciona desde la aplicación hacer `import` de controladores que
     # están en motores especificando la ruta del motor
