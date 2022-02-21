@@ -151,5 +151,51 @@ EOF
     raise "Error al restaurar #{arch}" unless Kernel.system(command)
   end # restaura
 
+  desc "En app/javascript/controllers crea enlaces a los app/javascript/controllers de motores y actualiza index.js"
+  task stimulus_motores: :environment do
+    # No funciona desde la aplicación hacer `import` de controladores que
+    # están en motores especificando la ruta del motor
+    # porque intenta cargar dependencias desde la ruta del motor.
+    # Nos ha funcionado con enlaces y usando `esbuild` con `--preserve-symlinks`
+    # Si el motor `mi_motor` define el controlador `miControlador` en su
+    # directorio `app/javascript/controllers`, al enlazarlo con esta tarea a una
+    # aplicación, desde la aplicación se podrá referencia con
+    # `mi-motor--mi-controlador`
+    # Agregue a su `.gitignore` las rutas de los motores e.g
+    # `app/javascript/controllers/mi_motor`
+    cgitignore = []
+    if File.exist?('.gitignore')
+      cgitignore = file_data = File.read(".gitignore").split
+    end
+    pora = []
+    Gem::Specification.find_all.each do |s|
+      rcon = File.join(s.gem_dir, '/app/javascript/controllers')
+      if Dir.exist?(rcon)
+        puts "Enlazando controladores de #{s.name}"
+        rr = "app/javascript/controllers/#{s.name}"
+        nr=File.join(FileUtils.pwd, rr)
+        if File.exist?(nr) 
+          if File.symlink?(nr)
+            FileUtils.rm(nr)
+          else
+            puts "** Ya existe directorio #{nr}. No se crea enlace a #{rcon}"
+            next
+          end
+        end
+        FileUtils.ln_sf(rcon, nr) 
+        if cgitignore != [] && !cgitignore.include?(rr)
+          pora << rr
+        end
+      end
+    end
+    puts "Ejecutando stimulus:manifest:update"
+    Rake::Task["stimulus:manifest:update"].invoke
+    if pora.length > 0
+      puts "\n===================================="
+      puts "Se recomienda añadir a su .gitignore:"
+      puts pora.join('\n')
+    end
+  end
+
 end
 
