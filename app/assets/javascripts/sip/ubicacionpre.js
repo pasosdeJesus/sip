@@ -150,7 +150,7 @@ function sip_ubicacionpre_fija_coordenadas(e, campoubi, elemento, ubi_plural){
   latitud = ubp.find('[id$='+campoubi+'_latitud]')
   longitud = ubp.find('[id$='+campoubi+'_longitud]')
 
-  id = $(elemento).val()
+  id = Number.parseInt($(elemento).val(), 10) # evita eventual XSS
   root = window
   $.getJSON(root.puntomontaje + "admin/" + ubi_plural +".json", function(o){
     ubi = o.filter(function(item){
