@@ -313,7 +313,11 @@ module Sip
           ids2 = []
         end
       end
-      return clase.where(id: ids1 | ids2).order(:nombre)
+      res = clase.where(id: ids1 | ids2)
+      if clase.has_attribute?(:nombre)
+        res = res.order(:nombre) 
+      end
+      return res
     end
     module_function :opciones_tabla_basica
 
