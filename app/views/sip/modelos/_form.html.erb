@@ -2,8 +2,9 @@
   <% return %>
 <% end %>
 <%= simple_form_for @registro, 
-    url: modelo_path(@registro),
-    defaults: { input_html: { class: 'span10' } } do |f| 
+  url: modelo_path(@registro),
+  html: @encform_html.nil? ? {} : @encform_html,
+  defaults: { input_html: { class: 'span10' } } do |f| 
 %>
   <%= render partial: 'sip/hogar/errores', locals: { f: f } %> 
 
