@@ -47,12 +47,6 @@ if (test "$SININS" != "1") then {
     exit 1;
   } fi;
 
-  puts "\n== Enlaza controladores stimulus de motores =="
-  (cd $rutaap; bin/rails sip:stimulus_motores)
-  if (test "$?" != "0") then {
-    exit 1;
-  } fi;
-
   (cd $rutaap; CXX=c++ yarn install; bin/rails assets:precompile)
   if (test "$?" != "0") then {
     exit 1;
@@ -77,6 +71,7 @@ if (test "$?" != "0") then {
   echo "No pasaron pruebas de regresion";
   exit 1;
 } fi;
+
 
 (cd $rutaap; RAILS_ENV=test bin/rails db:schema:dump)
 
