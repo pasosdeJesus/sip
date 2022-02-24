@@ -19,6 +19,8 @@ gem 'jbuilder', '>= 2.7'        # Json
 
 gem 'nokogiri', '>=1.11.1'
 
+gem 'net-smtp'
+
 gem 'kt-paperclip',                 # Anexos
   git: 'https://github.com/kreeti/kt-paperclip.git'
   #git: 'https://github.com/vtamara/paperclip.git', branch: 'fix-ruby3'
