@@ -158,7 +158,7 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   Haga clic sobre la flecha en la parte superior izquierda del repositorio, debajo de la palabra Code
   a la derecha de master para escoger y cambiar la rama espera-asercion.
     
-  ![sosX5dn - Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/sosX5dn%20-%20Imgur.png)
+  ![doc/img/sosX5dn%20-%20Imgur.png]
   
 * Haga clic en la parte superior derecha sobre Code y vera Download ZIP para descargar el sideex.
 
