@@ -403,21 +403,21 @@ Sideex cuando se da el foco a la orden en un caso de prueba.
   del registro creado usar un selector para la identificación 
   (por ejemplo si la identificación estuviera en el primer elemento `dd`
   puede ser `document.querySelector('dd').innerText`)
-  y asignarla a un variable de localStorage que resulte única, por ejemplo 
-  `pchr_id` en una orden `runScript` con valor 
+  y asignarla a un variable de `localStorage` que resulte única, por ejemplo 
+  `pchr_id` en una orden `runScript` para Sideex con valor 
   `localStorage.setItem('pchr_id', +document.querySelector('dd').innerText)` 
 
-  Después en el paso 2 cuando este búscan por identificación usar 
+  Después en el paso 2 cuando este buscando por identificación usar 
   un selector para el filtro de la identificación y poner allí
   la identificación almacenada por ejemplo, si el selector para
-  el filtro por identifiacíon es `filtro_busid` la orden runScript en
+  el filtro por identifiación es `filtro_busid` la orden `runScript` en
   Sideex tendría: `document.querySelector('#filtro_busid').value =
-  localStorage.getItem('pchr_id')`   Tras ejecutar la consulta vale
+  localStorage.getItem('pchr_id')`.   Tras ejecutar la consulta vale
   la pena asegurar con `assertText` que el número de resultados
   es exactamente 1.
 
   Finalmente en el paso 3 podría buscar el registro agregado por identificación
-  como en el paso 2 y elinarlo.
+  como en el paso 2 y eliminarlo.
 
 
 #### 3.3.6 Como correr una suit ya creada
