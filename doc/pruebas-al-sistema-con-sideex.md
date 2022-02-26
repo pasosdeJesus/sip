@@ -378,18 +378,47 @@ Sideex cuando se da el foco a la orden en un caso de prueba.
   crearon los iniciales --digamos un usuario)
   
 * Para sobrellevar problemas de velocidad de Internet o de la aplicación y para 
-  verificar que la aplicación está en el estado que se espera al comienzo, durante y 
-  al final de una prueba debe emplearse assert (el más típico es ```assertText```). 
+  verificar que la aplicación está en el estado que se espera al comienzo, 
+  durante y al final de una prueba debe emplearse assert (el más típico 
+  es ```assertText```). 
 
-* ```ChooseOkOnNextConfirmation``` es un comando que se utiliza antes de 
+* ```ChooseOkOnNextConfirmation``` es una orden que se utiliza antes de 
   eliminar y evita tener que ayudarle manualmente en confirmar si 
   quiere eliminar 
   
-* Evitar selectores que tengan códigos (pues cambian de una ejecución a otra) por ejemplo
-  `//select[@id='caso_ubicacion_attributes_9_id_pais']` tipicamente puede elegirse otro
-  con la flecha del campo `Target`, digamos  `//div[@id='ubicacion']/div/div/div/select`
-  o de requerirse puede examinarse el HTML y/o el CSS para emplear un mejor selector que
+* Evitar selectores que tengan códigos (pues cambian de una ejecución a otra) 
+  por ejemplo `//select[@id='caso_ubicacion_attributes_9_id_pais']` 
+  tipicamente puede elegirse otro con la flecha del campo `Target`, 
+  digamos  `//div[@id='ubicacion']/div/div/div/select` o de requerirse 
+  puede examinarse el HTML y/o el CSS para emplear un mejor selector que
   los propuestos por Sideex.
+
+* En un grupo de pruebas es lógico hacer pruebas para 1) crear registros, 
+  2) buscar el registro creado y 3) eliminar el registro creado.
+  Para lograr esto en es útil almacenar la identificación del regisstro 
+  creado en el paso 1 por ejemplo mediante la API de `localStorage` de 
+  Javascript.
+
+  Así en el paso 1 después de crear el registro y estando en el resumen
+  del registro creado usar un selector para la identificación 
+  (por ejemplo si la identificación estuviera en el primer elemento `dd`
+  puede ser `document.querySelector('dd').innerText`)
+  y asignarla a un variable de localStorage que resulte única, por ejemplo 
+  `pchr_id` en una orden `runScript` con valor 
+  `localStorage.setItem('pchr_id', +document.querySelector('dd').innerText)` 
+
+  Después en el paso 2 cuando este búscan por identificación usar 
+  un selector para el filtro de la identificación y poner allí
+  la identificación almacenada por ejemplo, si el selector para
+  el filtro por identifiacíon es `filtro_busid` la orden runScript en
+  Sideex tendría: `document.querySelector('#filtro_busid').value =
+  localStorage.getItem('pchr_id')`   Tras ejecutar la consulta vale
+  la pena asegurar con `assertText` que el número de resultados
+  es exactamente 1.
+
+  Finalmente en el paso 3 podría buscar el registro agregado por identificación
+  como en el paso 2 y elinarlo.
+
 
 #### 3.3.6 Como correr una suit ya creada
 
@@ -450,7 +479,7 @@ Sideex cuando se da el foco a la orden en un caso de prueba.
   . *Ctrl + B*:          Alternar un punto de interrupción
 
 
-#### 3.3.7 Sobrellevar fallas de Sideex 2
+#### 3.3.9 Sobrellevar fallas de Sideex 2
 
 * Sideex 2 no logra elegir opciones en cuadros de selección que emplean el plugin chosen.  chosen es un plugin para jquery que mejora la apariencia y usabilidad de los cuadros de selección.  Para que sideex pueda elegir opciones de este tipo de cuadroes es encesario primero quitar el plugin chosen de los cuadros de selección donde esté.  Se hace con la orden runScript y 
 como target usar:
