@@ -160,19 +160,17 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
   para descargar el sideex.
 
   ![descarga](/doc/img/kF0Hu9w%20-%20Imgur.png)
-  
-* En la parte inferior de la pagina se vera el archivo y se debe abrir con Gestor de archivadores y Extraer.
-  
-   ![]() extraer con gestor de archivos
-   
-* Ahora en la página de Google en la parte superior derecha se ven 3 punticos de forma vertical
 
-![]() 3 puntos
-* Haga clic sobre los 3 puntos y vera Personaliza y controla Google Chrome.
+* En la parte inferior de la pagina verá el archivo que deberá descomprimir
+  en su computador.
+
+* Ahora en la página de Google en la parte superior derecha se ven 
+  3 punticos de forma vertical. Haga clic sobre los 3 puntos y vera 
+  Personaliza y controla Google Chrome.
   Escoja Más herramientas y luego Extensiones. 
-   
-  ![qGu3pjp%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/img/qGu3pjp%20-%20Imgur.png)
-   
+
+  ![extensiones](/doc/img/qGu3pjp%20-%20Imgur.png)
+
 * Activa el modo de desarrollador en Extensiones
 
   Haga Clic en Cargar extensión sin empaquetar y busca el sideex-2.3.4 que acabas de descargar
