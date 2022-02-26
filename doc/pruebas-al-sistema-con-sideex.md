@@ -59,10 +59,10 @@ Cada vez que el equipo de desarrollo anuncia cambios, el equipo de pruebas:
   y registra en una hoja de cálculo los resultados (particularmente las que fallan), dejando 
   como comentario en la celda de la que falla el error producido. 
 - De las pruebas que fallan identifica si se trata de (1) un problema en la prueba, o (2) 
-  que un cambio en la aplicación exije un cambio en la prueba o (3) una falla en la aplicación 
+  que un cambio en la aplicación exige un cambio en la prueba o (3) una falla en la aplicación 
   en cuyo caso debe reportarse al equipo de desarrollo.
 - Prueba las novedades buscando hacer fallar la aplicación.  Esto implica entender bien los 
-  cambios implementados (o pedir retroalimentacion al equipo de desarrollo hasta entender y 
+  cambios implementados (o pedir retroalimentación al equipo de desarrollo hasta entender y 
   poder realizar las pruebas).
 - Reporta en Trello las fallas que encuentre (a más tardar  5 días después del anuncio
   del equipo de desarrollo, si los anuncios de desarrollo son semanales
@@ -144,25 +144,22 @@ Por cada novedad o falla resuelta que reporte el equipo de desarrollo:
 
 #### 3.3.1 Descarga e instalación de sideex2
 
-*  Para correr las pruebas de sideex2 se hacen con un navegador que soporte Javascript.  
-   Al momento  del escrito no solo por economia, sino tambien por  seguridad  velocidad, sugerimos Chromium. 
-   En cuanto al sistema operativo y teniendo en cuenta que los virus evidencian huecos de segurida que pueden  
-   hacer perder los esfuerzos de seguridad, recomendamos usar desde computadores con OpenBSD / adJ o en su defecto Linux.
+*  Para correr las pruebas de sideex2 se hacen con un navegador que soporte 
+   Javascript.  
+   Al momento  del escrito no solo por economia, sino tambien por  seguridad y
+   velocidad, sugerimos Chromium. 
+   En cuanto al sistema operativo y teniendo en cuenta que los virus 
+   evidencian huecos de segurida que pueden  hacer perder los esfuerzos 
+   de seguridad, recomendamos usar desde computadores con OpenBSD / adJ 
+   o en su defecto Linux.
 
-* Sideex2 se ejecuta como una extensión para Chrome, para Firefox para Brave, para Chromium. 
-  Está disponible para descargar de uso gratuito en el repositorio https://github.com/vtamara/sideex
-  Ya en el repositorio que abre por omision en la rama master.
-  
-  ![]()sideex40
-  
-  Haga clic sobre la flecha en la parte superior izquierda del repositorio, debajo de la palabra Code
-  a la derecha de master para escoger y cambiar la rama espera-asercion.
-    
-  ![doc/img/sosX5dn%20-%20Imgur.png]
-  
-* Haga clic en la parte superior derecha sobre Code y vera Download ZIP para descargar el sideex.
+* Sideex2 se ejecuta como una extensión para Chrome, para Firefox para Brave, 
+  para Chromium. Está disponible para descargar de uso gratuito en el 
+  repositorio https://github.com/sideex/sideex
+  Haga clic en la parte superior derecha sobre Code y vera Download ZIP 
+  para descargar el sideex.
 
-  ![kF0Hu9w%20-%20Imgur.png](https://github.com/pasosdeJesus/sip/blob/master/doc/sideex.img/kF0Hu9w%20-%20Imgur.png)
+  ![descarga](/doc/sideex.img/kF0Hu9w%20-%20Imgur.png)
   
 * En la parte inferior de la pagina se vera el archivo y se debe abrir con Gestor de archivadores y Extraer.
   
