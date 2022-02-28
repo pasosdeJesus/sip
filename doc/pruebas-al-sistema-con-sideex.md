@@ -364,7 +364,84 @@ así como la especificación de cada orden disponible en la pestaña Reference d
 Sideex cuando se da el foco a la orden en un caso de prueba.
 
 
-#### 3.3.5 Pautas para crear casos de prueba
+
+#### 3.3.5 Como correr una suit ya creada
+
+* Para correr una suit ya creada, debemos tenerla guardada en el computador.
+* Pulse en el icono de archivo y busquelo en los archivos en el computador.
+
+   ![px1yokA%20-%20Imgur.png](/doc/img/px1yokA%20-%20Imgur.png)
+
+* Escoja un archivo y lo abre. 
+
+  ![H1VJZ0D%20-%20Imgur.png](/doc/img/H1VJZ0D%20-%20Imgur.png)
+   
+* Puede correr toda la suit pulsando sobre PlayThisSuite.
+
+   ![s8MipPe%20-%20Imgur.png](/doc/img/s8MipPe%20-%20Imgur.png)
+   
+* Tambien puede correr un solo caso de la suite pulsando sobre el caso que va a correr y luego sobre PlayThisCase.
+
+   ![bjAgimK%20-%20Imgur.png](/doc/img/bjAgimK%20-%20Imgur.png)
+   
+#### 3.3.6 Pruebas con error y sin error
+
+* Cuando se corre una prueba y no tiene errores se ve el panel en verde, al lado del nombre de la prueba un visto bueno
+  y aumenta el numero en RUNS 
+
+![vliRAtI%20-%20Imgur.png](/doc/img/vliRAtI%20-%20Imgur.png)
+
+* Y cuando tiene error, se ve roja la linea que tiene el error, al lado del nombre de la prueba una X en rojo
+  y se aumenta el numero en FAILURES  
+
+![]()
+
+* En la parte inferior se van viendo todos y cada uno de los comando que se estan ejecutando y cuando se genera 
+  error tambien se ve la linea del error en rojo.
+  
+  ![i0s8RRi%20-%20Imgur.png](/doc/img/i0s8RRi%20-%20Imgur.png)
+  
+#### 3.3.7 Teclas de acceso rápido
+  
+  . *Ctrl + S*:          Guardar una suite de prueba
+  
+  . *Ctrl + O*:          Abrir un archivo de suite de prueba
+  
+  . *Ctrl + P*:          Correr este caso de prueba
+  
+  . *Ctrl + I*:          Insertar un nuevo comando
+  
+  . *Ctrl + A*:          Seleccionar todos los comandos
+  
+  . *Ctrl + X*:          Cortar comandos
+  
+  . *Ctrl + C*:          Copiar comandos
+  
+  . *Ctrl + V*:          Pegar comandos
+  
+  . *Del*:               Eliminar los comandos seleccionados
+  
+  . *Ctrl + B*:          Alternar un punto de interrupción
+
+
+#### 3.3.8 Sobrellevar fallas de Sideex 2
+
+* Sideex 2 no logra elegir opciones en cuadros de selección que emplean el plugin chosen.  chosen es un plugin para jquery que mejora la apariencia y usabilidad de los cuadros de selección.  Para que sideex pueda elegir opciones de este tipo de cuadroes es encesario primero quitar el plugin chosen de los cuadros de selección donde esté.  Se hace con la orden runScript y 
+como target usar:
+```
+$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')
+```
+* Sideex 2 no logra escribir en campos abiertos de tipo numérico o de tipo email.  En pruebas Sideex esto se evidencia cuando al digitar (type) en un campo abierto sale el error `Cannot set selection end` y puede confirmarse examinando el HTML y revisando si el elemento `input` tiene un atributo `type=number` o `type=email`. Para lograr que Sideex-2 escriba en estos campos, primero debe eliminarse el tipo con runScript y un target como:
+```
+$('[type=number]').removeAttr('type')
+```
+o como
+```
+$('[type=email]').removeAttr('type')
+```
+Hemos notado que esta orden puede entrar en conflicto con la que quita el estilo de chosen a campos de selección para evitarlo, hemos notado que es mejor correr primero la que quitar el atributo type, digamos recién se despliega el formulario. 
+
+#### 3.3.9 Pautas y técnicas para crear casos de prueba
 
 * En general suponer que ya se ha iniciado sesión en la aplicación con la cuenta
   administrativa de prueba y que está en la pantalla inicial de la aplicación. 
@@ -419,80 +496,4 @@ Sideex cuando se da el foco a la orden en un caso de prueba.
   Finalmente en el paso 3 podría buscar el registro agregado por identificación
   como en el paso 2 y eliminarlo.
 
-
-#### 3.3.6 Como correr una suit ya creada
-
-* Para correr una suit ya creada, debemos tenerla guardada en el computador.
-* Pulse en el icono de archivo y busquelo en los archivos en el computador.
-
-   ![px1yokA%20-%20Imgur.png](/doc/img/px1yokA%20-%20Imgur.png)
-
-* Escoja un archivo y lo abre. 
-
-  ![H1VJZ0D%20-%20Imgur.png](/doc/img/H1VJZ0D%20-%20Imgur.png)
-   
-* Puede correr toda la suit pulsando sobre PlayThisSuite.
-
-   ![s8MipPe%20-%20Imgur.png](/doc/img/s8MipPe%20-%20Imgur.png)
-   
-* Tambien puede correr un solo caso de la suite pulsando sobre el caso que va a correr y luego sobre PlayThisCase.
-
-   ![bjAgimK%20-%20Imgur.png](/doc/img/bjAgimK%20-%20Imgur.png)
-   
-#### 3.3.7 Pruebas con error y sin error
-
-* Cuando se corre una prueba y no tiene errores se ve el panel en verde, al lado del nombre de la prueba un visto bueno
-  y aumenta el numero en RUNS 
-
-![vliRAtI%20-%20Imgur.png](/doc/img/vliRAtI%20-%20Imgur.png)
-
-* Y cuando tiene error, se ve roja la linea que tiene el error, al lado del nombre de la prueba una X en rojo
-  y se aumenta el numero en FAILURES  
-
-![]()
-
-* En la parte inferior se van viendo todos y cada uno de los comando que se estan ejecutando y cuando se genera 
-  error tambien se ve la linea del error en rojo.
-  
-  ![i0s8RRi%20-%20Imgur.png](/doc/img/i0s8RRi%20-%20Imgur.png)
-  
-#### 3.3.8 Teclas de acceso rápido
-  
-  . *Ctrl + S*:          Guardar una suite de prueba
-  
-  . *Ctrl + O*:          Abrir un archivo de suite de prueba
-  
-  . *Ctrl + P*:          Correr este caso de prueba
-  
-  . *Ctrl + I*:          Insertar un nuevo comando
-  
-  . *Ctrl + A*:          Seleccionar todos los comandos
-  
-  . *Ctrl + X*:          Cortar comandos
-  
-  . *Ctrl + C*:          Copiar comandos
-  
-  . *Ctrl + V*:          Pegar comandos
-  
-  . *Del*:               Eliminar los comandos seleccionados
-  
-  . *Ctrl + B*:          Alternar un punto de interrupción
-
-
-#### 3.3.9 Sobrellevar fallas de Sideex 2
-
-* Sideex 2 no logra elegir opciones en cuadros de selección que emplean el plugin chosen.  chosen es un plugin para jquery que mejora la apariencia y usabilidad de los cuadros de selección.  Para que sideex pueda elegir opciones de este tipo de cuadroes es encesario primero quitar el plugin chosen de los cuadros de selección donde esté.  Se hace con la orden runScript y 
-como target usar:
-```
-$('.chosen-select').removeAttr('style'); $('.chosen-container').remove(); $('.chosen-select').removeClass('chosen-select')
-```
-* Sideex 2 no logra escribir en campos abiertos de tipo numérico o de tipo email.  En pruebas Sideex esto se evidencia cuando al digitar (type) en un campo abierto sale el error `Cannot set selection end` y puede confirmarse examinando el HTML y revisando si el elemento `input` tiene un atributo `type=number` o `type=email`. Para lograr que Sideex-2 escriba en estos campos, primero debe eliminarse el tipo con runScript y un target como:
-```
-$('[type=number]').removeAttr('type')
-```
-o como
-```
-$('[type=email]').removeAttr('type')
-```
-Hemos notado que esta orden puede entrar en conflicto con la que quita el estilo de chosen a campos de selección para evitarlo, hemos notado que es mejor correr primero la que quitar el atributo type, digamos recién se despliega el formulario. 
 
