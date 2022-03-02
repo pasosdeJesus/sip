@@ -472,11 +472,11 @@ Hemos notado que esta orden puede entrar en conflicto con la que quita el estilo
 
 * En un grupo de pruebas es lógico hacer pruebas para 1) crear registros, 
   2) buscar el registro creado y 3) eliminar el registro creado.
-  Para lograr esto en es útil almacenar la identificación del regisstro 
+  Para lograr esto es útil almacenar la identificación del registro 
   creado en el paso 1 por ejemplo mediante la API de `localStorage` de 
   Javascript.
 
-  Así en el paso 1 después de crear el registro y estando en el resumen
+  Así en el paso 1 después de guardar un nuevo registro y estando en el resumen
   del registro creado usar un selector para la identificación 
   (por ejemplo si la identificación estuviera en el primer elemento `dd`
   puede ser `document.querySelector('dd').innerText`)
