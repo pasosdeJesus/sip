@@ -45,7 +45,17 @@ la convención de controladores y vistas en plural.
 En nuevos sistemas de información emplear motores tanto como sea posible. Se recomienda que sean descendientes de sip, que da unidad en manejo de tablas básicas, usuarios y autenticación.
 
 Por ejemplo algunas de las aplicaciones en el repositorio de Pasos de Jesús en github dependen de sip así:
-![Dependencias](https://github.com/pasosdeJesus/sip/raw/master/doc/dependencias.png)
+![Dependencias](https://github.com/pasosdeJesus/sip/raw/main/doc/dependencias.png)
+
+## Control de acceso
+
+En los motores y aplicaciones genéricas se especifica con brevedad el control de acceso 
+llamando métodos de motores en la función initialize de `app/modles/ability.rb` 
+(e.g `initialize_sip`, `initialize_mr519_gen`, `initialize_heb412_gen` e `initialize_sivel2_gen`). 
+En aplicaciones finales con exactamente el mismo control de acceso de las aplicaciones genéricas 
+pueden llamarse esas funciones. Pero en aplicaciones que mezclen varios motoros se recomienda
+escribir completas las reglas en el archivo `app/models/ability.rb` para facilitar auditoria
+y evitar cambios inesperados al actualizar motores.
 
 ## Fuentes
 
