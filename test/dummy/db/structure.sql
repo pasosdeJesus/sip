@@ -17,6 +17,13 @@ CREATE COLLATION public.es_co_utf_8 (provider = libc, locale = 'es_CO.UTF-8');
 
 
 --
+-- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
+
+
+--
 -- Name: unaccent; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -200,10 +207,53 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: dane_veredal_2020; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.dane_veredal_2020 (
+    id integer NOT NULL,
+    nombre character varying(512) COLLATE public.es_co_utf_8,
+    verlocal_id integer,
+    departamento character varying(512) COLLATE public.es_co_utf_8,
+    municipio character varying(512) COLLATE public.es_co_utf_8
+);
+
+
+--
 -- Name: divipola_oficial_2019_corregido; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.divipola_oficial_2019_corregido (
+    coddep integer,
+    departamento character varying(512) COLLATE public.es_co_utf_8,
+    codmun integer,
+    municipio character varying(512) COLLATE public.es_co_utf_8,
+    codcp integer,
+    centropoblado character varying(512) COLLATE public.es_co_utf_8,
+    tipocp character varying(6)
+);
+
+
+--
+-- Name: divipola_oficial_2020; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.divipola_oficial_2020 (
+    coddep integer,
+    departamento character varying(512) COLLATE public.es_co_utf_8,
+    codmun integer,
+    municipio character varying(512) COLLATE public.es_co_utf_8,
+    codcp integer,
+    centropoblado character varying(512) COLLATE public.es_co_utf_8,
+    tipocp character varying(6)
+);
+
+
+--
+-- Name: divipola_oficial_2021_corregido; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.divipola_oficial_2021_corregido (
     coddep integer,
     departamento character varying(512) COLLATE public.es_co_utf_8,
     codmun integer,
@@ -1125,6 +1175,44 @@ ALTER SEQUENCE public.sip_ubicacionpre_id_seq OWNED BY public.sip_ubicacionpre.i
 
 
 --
+-- Name: sip_vereda; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_vereda (
+    id bigint NOT NULL,
+    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
+    municipio_id integer,
+    verlocal_id integer,
+    observaciones character varying(5000),
+    latitud double precision,
+    longitud double precision,
+    fechacreacion date NOT NULL,
+    fechadeshabilitacion date,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: sip_vereda_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.sip_vereda_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sip_vereda_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.sip_vereda_id_seq OWNED BY public.sip_vereda.id;
+
+
+--
 -- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1170,6 +1258,42 @@ CREATE TABLE public.usuario (
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
+
+
+--
+-- Name: veredas_dane_2020; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.veredas_dane_2020 (
+    ogc_fid integer NOT NULL,
+    wkb_geometry public.geometry(MultiPolygon,4326),
+    dptompio character varying(5),
+    codigo_ver character varying(11),
+    nom_dep character varying(50),
+    nomb_mpio character varying(50),
+    nombre_ver character varying(50),
+    cod_dpto character varying(2)
+);
+
+
+--
+-- Name: veredas_dane_2020_ogc_fid_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.veredas_dane_2020_ogc_fid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: veredas_dane_2020_ogc_fid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.veredas_dane_2020_ogc_fid_seq OWNED BY public.veredas_dane_2020.ogc_fid;
 
 
 --
@@ -1254,6 +1378,20 @@ ALTER TABLE ONLY public.sip_trivalente ALTER COLUMN id SET DEFAULT nextval('publ
 --
 
 ALTER TABLE ONLY public.sip_ubicacionpre ALTER COLUMN id SET DEFAULT nextval('public.sip_ubicacionpre_id_seq'::regclass);
+
+
+--
+-- Name: sip_vereda id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_vereda ALTER COLUMN id SET DEFAULT nextval('public.sip_vereda_id_seq'::regclass);
+
+
+--
+-- Name: veredas_dane_2020 ogc_fid; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.veredas_dane_2020 ALTER COLUMN ogc_fid SET DEFAULT nextval('public.veredas_dane_2020_ogc_fid_seq'::regclass);
 
 
 --
@@ -1489,6 +1627,14 @@ ALTER TABLE ONLY public.sip_ubicacionpre
 
 
 --
+-- Name: sip_vereda sip_vereda_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_vereda
+    ADD CONSTRAINT sip_vereda_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sip_tclase tclase_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1534,6 +1680,14 @@ ALTER TABLE ONLY public.sip_ubicacion
 
 ALTER TABLE ONLY public.usuario
     ADD CONSTRAINT usuario_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: veredas_dane_2020 veredas_dane_2020_pk; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.veredas_dane_2020
+    ADD CONSTRAINT veredas_dane_2020_pk PRIMARY KEY (ogc_fid);
 
 
 --
@@ -1618,6 +1772,13 @@ CREATE INDEX sip_persona_sexo_ind ON public.sip_persona USING btree (sexo);
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON public.schema_migrations USING btree (version);
+
+
+--
+-- Name: veredas_dane_2020_wkb_geometry_geom_idx; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX veredas_dane_2020_wkb_geometry_geom_idx ON public.veredas_dane_2020 USING gist (wkb_geometry);
 
 
 --
@@ -1988,6 +2149,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20211117200456'),
 ('20211216125250'),
 ('20220213031520'),
-('20220214121713');
+('20220214121713'),
+('20220214232150'),
+('20220215095957');
 
 
