@@ -17,20 +17,6 @@ CREATE COLLATION public.es_co_utf_8 (provider = libc, locale = 'es_CO.UTF-8');
 
 
 --
--- Name: postgis; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS postgis WITH SCHEMA public;
-
-
---
--- Name: EXTENSION postgis; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION postgis IS 'PostGIS geometry and geography spatial types and functions';
-
-
---
 -- Name: unaccent; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -1282,22 +1268,6 @@ CREATE TABLE public.usuario (
 
 
 --
--- Name: veredas_dane_2020; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.veredas_dane_2020 (
-    ogc_fid integer NOT NULL,
-    wkb_geometry public.geometry(MultiPolygon,4326),
-    dptompio character varying(5),
-    codigo_ver character varying(11),
-    nom_dep character varying(50),
-    nomb_mpio character varying(50),
-    nombre_ver character varying(50),
-    cod_dpto character varying(2)
-);
-
-
---
 -- Name: veredas_dane_2020_ogc_fid_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1308,13 +1278,6 @@ CREATE SEQUENCE public.veredas_dane_2020_ogc_fid_seq
     NO MINVALUE
     NO MAXVALUE
     CACHE 1;
-
-
---
--- Name: veredas_dane_2020_ogc_fid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.veredas_dane_2020_ogc_fid_seq OWNED BY public.veredas_dane_2020.ogc_fid;
 
 
 --
@@ -1406,13 +1369,6 @@ ALTER TABLE ONLY public.sip_ubicacionpre ALTER COLUMN id SET DEFAULT nextval('pu
 --
 
 ALTER TABLE ONLY public.sip_vereda ALTER COLUMN id SET DEFAULT nextval('public.sip_vereda_id_seq'::regclass);
-
-
---
--- Name: veredas_dane_2020 ogc_fid; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.veredas_dane_2020 ALTER COLUMN ogc_fid SET DEFAULT nextval('public.veredas_dane_2020_ogc_fid_seq'::regclass);
 
 
 --
@@ -1704,14 +1660,6 @@ ALTER TABLE ONLY public.usuario
 
 
 --
--- Name: veredas_dane_2020 veredas_dane_2020_pk; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.veredas_dane_2020
-    ADD CONSTRAINT veredas_dane_2020_pk PRIMARY KEY (ogc_fid);
-
-
---
 -- Name: index_sip_orgsocial_on_grupoper_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1793,13 +1741,6 @@ CREATE INDEX sip_persona_sexo_ind ON public.sip_persona USING btree (sexo);
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON public.schema_migrations USING btree (version);
-
-
---
--- Name: veredas_dane_2020_wkb_geometry_geom_idx; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX veredas_dane_2020_wkb_geometry_geom_idx ON public.veredas_dane_2020 USING gist (wkb_geometry);
 
 
 --
