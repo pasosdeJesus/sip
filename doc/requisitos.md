@@ -28,6 +28,7 @@ curl -o- -L https://yarnpkg.com/install.sh | bash
 ```
 * Gema `dotenv` instalada globalmente i.e `doas gem install dotenv`
 * Gema `foreman` instalada globalmente i.e `doas gem install foreman`
+* Gema `rails` instalada globalmente i.e `doas gem install rails`
 * Recomendado usar `bundler` para mantener gemas en un
   directorio de la forma `/var/www/bundler-miusuario`, ejecutando:
 ```
