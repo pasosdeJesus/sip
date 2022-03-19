@@ -141,7 +141,7 @@ module Sip
             @registro = @persona
           end
 
-          def listaparams
+          def lista_params_sip
             atributos_form + [
               :id_pais,
               :id_departamento,
@@ -151,8 +151,12 @@ module Sip
             ]
           end
 
+          def lista_params
+            lista_params_sip
+          end
+
           def persona_params
-            params.require(:persona).permit(listaparams)
+            params.require(:persona).permit(lista_params)
           end
 
 

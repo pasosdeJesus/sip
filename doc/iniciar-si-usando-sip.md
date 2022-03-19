@@ -350,6 +350,11 @@ Verifica la sintaxis tras cada modificación con:
 ```
 % ruby -c config/application.rb
 ```
+usa la convención de sip de dejar nombres de tablas en singular agregando
+a `config/environment.rb`:
+```
+ActiveRecord::Base.pluralize_table_names=false
+```
 y verifica que carga correctamente con:
 ```
 % bin/rails console
