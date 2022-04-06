@@ -185,7 +185,7 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
-    msgpack (1.4.5)
+    msgpack (1.5.0)
     net-imap (0.2.3)
       digest
       net-protocol
