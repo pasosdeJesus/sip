@@ -196,7 +196,7 @@ en:
         Pais: Country
         Paises: Countries
         nombre: Name
-        nombreiso: ISO name
+        nombreosm: OSM name
         alfa2: 2-letter ISO code
         alfa3: 3-letter ISO code
         codiso: Numeric ISO code

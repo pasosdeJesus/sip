@@ -15,7 +15,7 @@ module Sip
       def atributos_index
         [ :id, 
           :nombre, 
-          :nombreiso, 
+          :nombreosm, 
           :latitud, 
           :longitud, 
           :alfa2, 
