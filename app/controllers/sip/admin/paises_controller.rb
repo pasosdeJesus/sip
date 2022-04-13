@@ -21,6 +21,8 @@ module Sip
           :alfa2, 
           :alfa3, 
           :codiso, 
+          :nombreiso_ingles,
+          :nombreiso_frances,
           :div1, 
           :div2, 
           :div3, 

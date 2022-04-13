@@ -183,21 +183,23 @@ es:
         perfilorgsocial: Perfil en organización social
         orgsocial: Organización social a la que pertenece
       "sip/pais":
-        Pais: País
-        Paises: Países
-        nombre: Nombre
-        nombreiso: Nombre ISO
         alfa2: Código ISO de 2 letras
         alfa3: Código ISO de 3 letras
         codiso: Código ISO numérico
+        created_at: Fecha en la que se creó en base de datos
         div1: Primera división política (e.g Departamento o Estado)
         div2: Segunda división política (e.g Municipio o Condado)
         div3: Tercer división política (e.g Centro poblado)
-        latitud: Latitud
-        longitud: Longitud
         fechacreacion: Fecha cuando se agregó a fuentes
         fechadeshabilitacion: Fecha de deshabilitacion
-        created_at: Fecha en la que se creó en base de datos
+        latitud: Latitud
+        longitud: Longitud
+        nombre: Nombre
+        nombreiso_ingles: Nombre ISO en inglés
+        nombreiso_frances: Nombre ISO en francés
+        nombreosm: Nombre OSM
+        Pais: País
+        Paises: Países
         updated_at: Fecha en la que se actualizó en base de datos
       "sip/perfilorgsocial":
         Perfilorgsocial: Perfil en organización social
