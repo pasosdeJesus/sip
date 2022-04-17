@@ -40,6 +40,10 @@ module Sip
       end
 
       # Por defecto tablas básicas con datos en mayúsculas y sin espacios redundantes
+      # Para cambiarlo en una tabla básica definir por ejemplo:
+      # def nombre=(val)
+      #   self[:nombre] = val.squish
+      # end
       def nombre=(val)
         self[:nombre] = val.upcase.squish if val
       end

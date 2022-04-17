@@ -195,12 +195,14 @@ es:
         latitud: Latitud
         longitud: Longitud
         nombre: Nombre
+        nombreiso_espanol: Nombre ISO en español
         nombreiso_ingles: Nombre ISO en inglés
         nombreiso_frances: Nombre ISO en francés
-        nombreosm: Nombre OSM
         Pais: País
         Paises: Países
         updated_at: Fecha en la que se actualizó en base de datos
+        ultvigenciaini: Fecha de inicio de la vigencia más reciente
+        ultvigenciafin: Fecha de finalización de la vigencia más reciente
       "sip/perfilorgsocial":
         Perfilorgsocial: Perfil en organización social
         Perfilesorgsocial: Perfiles en organización social

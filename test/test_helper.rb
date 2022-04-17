@@ -154,7 +154,7 @@ PRUEBA_OFICINA= {
 PRUEBA_PAIS= {
   id: 1000  ,
   nombre: "PASI1",
-  nombreosm: "PAIS1",
+  nombreiso_espanol: "PAIS1",
   fechacreacion: "2014-08-04",
 }
 

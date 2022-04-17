@@ -15,7 +15,7 @@ module Sip
       def atributos_index
         [ :id, 
           :nombre, 
-          :nombreosm, 
+          :nombreiso_espanol, 
           :latitud, 
           :longitud, 
           :alfa2, 
@@ -27,6 +27,8 @@ module Sip
           :div2, 
           :div3, 
           :observaciones,
+          :ultvigenciaini,
+          :ultvigenciafin,
           :fechacreacion_localizada, 
           :habilitado
         ]

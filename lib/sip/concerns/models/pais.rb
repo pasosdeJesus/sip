@@ -18,7 +18,7 @@ module Sip
             class_name: 'Sip::Ubicacion' 
 
           validates :id, presence: true, uniqueness: true
-          validates :nombreosm, presence: true, allow_blank: false, 
+          validates :nombreiso_espanol, presence: true, allow_blank: false, 
             length: { maximum: 200 }, 
             uniqueness: { case_sensitive: false, allow_blank: true}
           validates :nombre, presence: true, allow_blank: false, 
@@ -32,10 +32,10 @@ module Sip
           validates :div2, length: { maximum: 100 } 
           validates :div3, length: { maximum: 100 } 
 
-          def nombreosm=(val)
-            self[:nombreosm] = val.upcase.squish if val
+          # Nombres no se convierten a mayúscula
+          def nombre=(val)
+            self[:nombre] = val.squish if val
           end
-
         end
 
       end

@@ -193,12 +193,9 @@ en:
         perfilorgsocial: Profile in social organization
         orgsocial: Social organization to which it belongs
       "sip/pais":
-        Pais: Country
-        Paises: Countries
-        nombre: Name
-        nombreosm: OSM name
         alfa2: 2-letter ISO code
         alfa3: 3-letter ISO code
+        created_at: Date it was created in the database
         codiso: Numeric ISO code
         div1: First political division (e.g. Department or State)
         div2: Second political division (e.g. Municipality or County)
@@ -207,7 +204,12 @@ en:
         longitud: Longitude
         fechacreacion: Date when added to sources
         fechadeshabilitacion: Disabling date
-        created_at: Date it was created in the database
+        nombre: Name
+        nombreiso_espanol: ISO name in Spanish
+        nombreiso_frances: ISO name in French
+        nombreiso_ingles: ISO name in English
+        Pais: Country
+        Paises: Countries
         updated_at: Date in which the database was updated
       "sip/perfilorgsocial":
         Perfilorgsocial: Profile in social organization
