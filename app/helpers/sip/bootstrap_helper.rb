@@ -372,5 +372,67 @@ module Sip
     end
     module_function :caja_de_verificacion_bs
 
+
+    # Genera grupo de menus prosidebar
+    def grupo_menus_prosidebar(opciones={}, &bloque)
+      return content_tag(
+        :div,
+        class: "sidebar-content"
+      ) do
+        content_tag(
+          :nav,
+          class: "menu open-current-submenu"
+        ) do
+          content_tag(:ul, &bloque)
+        end
+      end
+    end 
+    module_function :grupo_menus_prosidebar
+
+
+    # Genera grupo de menus
+    def despliega_abajo_prosidebar(
+      opcionmenu, iconomenu=nil, iconoexp=nil, &bloque)
+      ia = ''.html_safe
+      if iconomenu
+        ia = content_tag(:span, class: 'menu-icon') do
+          content_tag(:i, class: iconomenu.to_s) do
+          end
+        end
+      end
+      return content_tag(:li, class: 'menu-item sub-menu') do
+        link_to('#') do
+          ia + content_tag(:span, class: 'menu-title') do
+            opcionmenu
+          end + content_tag(:span, class: 'menu-suffix') do
+            if iconoexp
+              iconoexp.html_safe
+            else
+              ''.html_safe
+            end
+          end
+        end +
+        content_tag(:div, class: 'sub-menu-list') do 
+          content_tag(:ul,&bloque)
+        end
+      end
+    end 
+    module_function :despliega_abajo_prosidebar
+
+
+    # Genera opcion menú
+    def opcion_menu_prosidebar(opcionmenu, url, opciones={})
+      return content_tag(:li, class: 'menu-item') do
+        link_to(url) do
+          content_tag(:span, class: 'menu-title') do
+            opcionmenu
+          end
+        end
+      end
+    end 
+    module_function :opcion_menu_prosidebar
+
+
+
   end
 end
