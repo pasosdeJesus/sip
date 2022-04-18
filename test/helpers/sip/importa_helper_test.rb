@@ -8,8 +8,8 @@ module Sip
 
     test "nombre_en_tabla_basica" do
       menserror = ''
-      assert_equal 'COLOMBIA', nombre_en_tabla_basica(
-        Sip::Pais, 'COLOMBIA', menserror).nombre
+      assert_equal 'Colombia', nombre_en_tabla_basica(
+        Sip::Pais, 'Colombia', menserror).nombre
       assert_nil nombre_en_tabla_basica(Sip::Pais, 'LOCOMBIA', menserror)
     end
 

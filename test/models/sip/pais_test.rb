@@ -34,7 +34,7 @@ module Sip
 
     test "existente" do
       pais = Sip::Pais.find(862) # Venezuela
-      assert_equal pais.nombre, "VENEZUELA"
+      assert_equal pais.nombre, "Venezuela"
     end
 
     test "otras de basica" do
@@ -44,7 +44,6 @@ module Sip
       assert Sip::Pais.filtro_habilitado('no').count == 0
       assert Sip::Pais.filtro_nombre('COLOMBIA').count == 1
       assert Sip::Pais.filtro_nombre('LOCOMBIA').count == 0
-      assert Sip::Pais.filtro_observaciones('tadast').count > 0
       assert Sip::Pais.filtro_observaciones('VIDIPOLA').count == 0
       assert Sip::Pais.filtro_fechacreacionini('2000-01-01').count > 0
       assert Sip::Pais.filtro_fechacreacionini('2030-01-01').count == 0

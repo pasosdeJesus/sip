@@ -20,7 +20,7 @@ module Sip
 
     test "nombre con sólo país" do
       contexto_p
-      assert_equal formato_ubicacion(@ubicacion), "VENEZUELA"
+      assert_equal formato_ubicacion(@ubicacion), "Venezuela"
     end
 
     def contexto_d
@@ -32,7 +32,7 @@ module Sip
     test "nombre con pais y departamento" do
       contexto_d
       assert_equal formato_ubicacion(@ubicacion), 
-        "VENEZUELA / DISTRITO CAPITAL"
+        "Venezuela / DISTRITO CAPITAL"
     end
 
     def contexto_m
@@ -44,7 +44,7 @@ module Sip
     test "nombre con municipio" do
       contexto_m
       assert_equal formato_ubicacion(@ubicacion),
-        "VENEZUELA / DISTRITO CAPITAL / BOLIVARIANO LIBERTADOR"
+        "Venezuela / DISTRITO CAPITAL / BOLIVARIANO LIBERTADOR"
     end
 
     def contexto_c
@@ -56,13 +56,13 @@ module Sip
     test "no incluye clase" do
       contexto_c
       assert_equal formato_ubicacion(@ubicacion, false),
-        "VENEZUELA / DISTRITO CAPITAL / BOLIVARIANO LIBERTADOR"
+        "Venezuela / DISTRITO CAPITAL / BOLIVARIANO LIBERTADOR"
     end
 
     test "incluye clase" do
       contexto_c
       assert_equal formato_ubicacion(@ubicacion),
-        "VENEZUELA / DISTRITO CAPITAL / BOLIVARIANO LIBERTADOR / CARACAS"
+        "Venezuela / DISTRITO CAPITAL / BOLIVARIANO LIBERTADOR / CARACAS"
     end
 
   end  # class
