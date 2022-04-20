@@ -213,6 +213,20 @@ CREATE TABLE public.dane_veredal_2020 (
 
 
 --
+-- Name: depiso; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.depiso (
+    categoria character varying(20),
+    codiso character varying(10),
+    nombre character varying(128),
+    nomalt character varying(128),
+    idioma character varying(2),
+    sipid integer
+);
+
+
+--
 -- Name: divipola_oficial_2019_corregido; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -318,6 +332,8 @@ CREATE TABLE public.sip_departamento (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     observaciones character varying(5000) COLLATE public.es_co_utf_8,
+    codiso character varying(6),
+    catiso character varying(64),
     CONSTRAINT departamento_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -2184,6 +2200,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220413123127'),
 ('20220417203841'),
 ('20220417220914'),
-('20220417221010');
+('20220417221010'),
+('20220420143020');
 
 
