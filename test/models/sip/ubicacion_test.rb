@@ -24,11 +24,11 @@ module Sip
 
     test "presenta_nombre" do 
       u = Ubicacion.create PRUEBA_UBICACION
-      assert_equal 'Venezuela / DISTRITO CAPITAL / BOLIVARIANO LIBERTADOR / CARACAS', 
+      assert_equal 'Venezuela / Distrito Capital / BOLIVARIANO LIBERTADOR / CARACAS', 
         u.presenta_nombre
-      assert_equal 'Venezuela / DISTRITO CAPITAL / BOLIVARIANO LIBERTADOR', 
+      assert_equal 'Venezuela / Distrito Capital / BOLIVARIANO LIBERTADOR', 
         u.presenta_nombre({sin_clase: 1})
-      assert_equal 'Venezuela / DISTRITO CAPITAL', 
+      assert_equal 'Venezuela / Distrito Capital', 
         u.presenta_nombre({sin_clase: 1, sin_municipio: 1})
       assert_equal 'Venezuela', 
         u.presenta_nombre({sin_clase: 1, sin_municipio: 1, sin_departamento: 1})
