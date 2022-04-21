@@ -1,4 +1,4 @@
-class ArreglaFalcon < ActiveRecord::Migration[7.0]
+class ArreglaFalcon < ActiveRecord::Migration[6.1]
   def up
     execute <<-SQL
       UPDATE sip_departamento SET nombre = 'FALCÓN', observaciones=NULL WHERE id=5;
