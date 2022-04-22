@@ -11,12 +11,16 @@ module Sip
 
           self.table_name = 'sip_persona'
 
+          SEXO_FEMENINO = :F
+          SEXO_MASCULINO = :M
+          SEXO_SININFO = :S
+
           # Opciones para sexo biológico,
           # cada par se compone de (cadena larga, letra que representa en base)
           SEXO_OPCIONES = [
-            ['SIN INFORMACIÓN', :S], 
-            ['FEMENINO', :F], 
-            ['MASCULINO', :M]
+            ['SIN INFORMACIÓN', SEXO_SININFO], 
+            ['FEMENINO', SEXO_FEMENINO], 
+            ['MASCULINO', SEXO_MASCULINO]
           ]
 
           def self.sexo_opciones_diccionario
