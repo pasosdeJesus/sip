@@ -479,13 +479,20 @@ module Sip
 
             eliminada = genclase == 'M' ? 'eliminado' : 'eliminada';
             respond_to do |format|
-              format.html { redirect_to modelos_url(@registro),
-                            notice: clase + " #{eliminada}." }
-              format.json { head :no_content }
+              format.html { 
+                redirect_to modelos_url(@registro), 
+                status: :see_other,  # Avoids double DELETE, that happens sometimes, solution from https://api.rubyonrails.org/classes/ActionController/Redirecting.html#method-i-redirect_to
+                  notice: clase + " #{eliminada}."
+                return
+              }
+              format.json { 
+                head :no_content 
+                return
+              }
             end
           end
 
-         
+
           # Elimina 
           def destroy(mens = "", verifica_tablas_union=true)
             destroy_gen(mens, verifica_tablas_union)
