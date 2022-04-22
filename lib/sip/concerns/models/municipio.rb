@@ -40,6 +40,11 @@ module Sip
             message: "debe ser único en el departamento/estado",
             allow_blank: false
 
+          # A nombre se le quitan espacios de sobra
+          def nombre=(val)
+            self[:nombre] = val.squish if val
+          end
+
           scope :filtro_pais, lambda {|p|
             joins(:departamento).where('sip_departamento.id_pais=?', p)
           }

@@ -32,7 +32,7 @@ module Sip
           validates :div2, length: { maximum: 100 } 
           validates :div3, length: { maximum: 100 } 
 
-          # Nombres no se convierten a mayúscula
+          # A nombre se le quitan espacios de sobra
           def nombre=(val)
             self[:nombre] = val.squish if val
           end
