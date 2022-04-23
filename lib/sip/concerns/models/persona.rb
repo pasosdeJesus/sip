@@ -18,15 +18,15 @@ module Sip
           # cada par se compone de (cadena larga, letra que representa en base)
           SEXO_OPCIONES = [
             [
-              ENV.fetch('SIP_NOMBRE_SININFO', 'SIN INFORMACIÓN'),
+              (+ENV.fetch('SIP_NOMBRE_SININFO', 'SIN INFORMACIÓN')).force_encoding("utf-8"),
               SEXO_SININFO
             ], 
             [
-              ENV.fetch('SIP_NOMBRE_FEMENINO', 'FEMENINO'),
+              (+ENV.fetch('SIP_NOMBRE_FEMENINO', 'FEMENINO')).force_encoding("utf-8"),
               SEXO_FEMENINO
             ], 
             [
-              ENV.fetch('SIP_NOMBRE_MASCULINO', 'MASCULINO'),
+              (+ENV.fetch('SIP_NOMBRE_MASCULINO', 'MASCULINO')).force_encoding("utf-8"),
               SEXO_MASCULINO
             ]
           ]
