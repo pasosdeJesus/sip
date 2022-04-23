@@ -1,4 +1,3 @@
-
 module Sip
   module Concerns
     module Models
@@ -11,16 +10,25 @@ module Sip
 
           self.table_name = 'sip_persona'
 
-          SEXO_FEMENINO = :F
-          SEXO_MASCULINO = :M
-          SEXO_SININFO = :S
+          SEXO_FEMENINO = ENV.fetch('SIP_LETRA_FEMENINO', 'F')[0].to_sym
+          SEXO_MASCULINO = ENV.fetch('SIP_LETRA_MASCULINO', 'M')[0].to_sym
+          SEXO_SININFO = ENV.fetch('SIP_LETRA_SININFO', 'S')[0].to_sym
 
           # Opciones para sexo biológico,
           # cada par se compone de (cadena larga, letra que representa en base)
           SEXO_OPCIONES = [
-            ['SIN INFORMACIÓN', SEXO_SININFO], 
-            ['FEMENINO', SEXO_FEMENINO], 
-            ['MASCULINO', SEXO_MASCULINO]
+            [
+              ENV.fetch('SIP_NOMBRE_SININFO', 'SIN INFORMACIÓN'),
+              SEXO_SININFO
+            ], 
+            [
+              ENV.fetch('SIP_NOMBRE_FEMENINO', 'FEMENINO'),
+              SEXO_FEMENINO
+            ], 
+            [
+              ENV.fetch('SIP_NOMBRE_MASCULINO', 'MASCULINO'),
+              SEXO_MASCULINO
+            ]
           ]
 
           def self.sexo_opciones_diccionario
@@ -30,9 +38,9 @@ module Sip
           # Opciones cortas para sexo biológico,
           # cada par se compone de (letra por presentar, letra en base)
           SEXO_OPCIONES_CORTAS = [
-            ['S', :S], 
-            ['F', :F], 
-            ['M', :M]
+            [SEXO_SININFO.to_s, SEXO_SININFO.to_sym], 
+            [SEXO_FEMENINO.to_s, SEXO_FEMENINO.to_sym], 
+            [SEXO_MASCULINO.to_s, SEXO_MASCULINO.to_sym], 
           ]
 
           def self.sexo_opciones_cortas_diccionario
@@ -131,6 +139,34 @@ module Sip
             end
           end
 
+          # En base se mantiene convención usada 
+          def sexo=(val)
+            if val ==  SEXO_FEMENINO.to_s || 
+              val ==  SEXO_MASCULINO.to_s || 
+              val ==  SEXO_SININFO.to_s 
+              case val 
+              when SEXO_FEMENINO.to_s
+                self[:sexo] ='F'
+              when SEXO_MASCULINO.to_s
+                self[:sexo] ='M'
+              else
+                self[:sexo] ='S'
+              end
+            end
+          end
+
+          # Saliendo de base pasamos a la preferida por la organización
+          def sexo
+            case self[:sexo]
+            when 'F'
+              return SEXO_FEMENINO.to_s
+            when 'M'
+              return SEXO_MASCULINO.to_s
+            else
+              return SEXO_SININFO.to_s
+            end
+          end
+ 
           def fechanac
             r = ""
             r += anionac.to_s if anionac
