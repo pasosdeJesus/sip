@@ -483,9 +483,16 @@ module Sip
 
     # Genera opcion menú
     def opcion_menu_prosidebar(opcionmenu, url, opciones={})
+      ia = ''.html_safe
+      if opciones[:icono]
+        ia = content_tag(:span, class: 'menu-icon') do
+          content_tag(:i, class: opciones[:icono].to_s) do
+          end
+        end
+      end
       return content_tag(:li, class: 'menu-item') do
         link_to(url) do
-          content_tag(:span, class: 'menu-title') do
+          ia + content_tag(:span, class: 'menu-title') do
             opcionmenu
           end
         end
