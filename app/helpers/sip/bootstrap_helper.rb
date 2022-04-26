@@ -417,17 +417,18 @@ module Sip
           r2 += content_tag(:div, class: 'sidebar-footer') do
             content_tag(:a, id: 'btn-collapse', href: '#') do
               "<i class='ri-swap-box-fill ri-xl'></i>".html_safe
-            end + 
-            content_tag(
-              :a, id: 'btn-toggle', href: '#',
-              class: 'sidebar-toggler break-point-lg'
-            ) do
-              "<i class='ri-swap-box-fill ri-xl'></i>".html_safe
-            end
+            end 
           end
           r2.html_safe
         end # sidebar-layout
-      end  # aside
+      end +  # aside
+      content_tag(
+        :a, id: 'btn-toggle', href: '#',
+        class: 'sidebar-toggler break-point-lg'
+      ) do
+        "<i class='ri-swap-box-fill ri-xl'></i>".html_safe
+      end
+
       r.html_safe
     end
     module_function :barra_navegacion_prosidebar
