@@ -373,6 +373,66 @@ module Sip
     module_function :caja_de_verificacion_bs
 
 
+    def barra_navegacion_prosidebar(opciones, &bloque)
+      fondo = ''.html_safe
+      if opciones[:imagen_barra_lateral]
+        fondo = content_tag(
+          :div, class: 'image-wrapper'
+        ) do 
+          content_tag(
+            :img, src: opciones[:imagen_barra_lateral], 
+            alt: 'sidebar background'
+          )
+        end
+      end
+
+      titulo = opciones[:titulo] ? opciones[:titulo] : Sip.titulo
+      spantitulo = content_tag(
+        :span, style: 'text-transform: uppercase;'\
+        ' font-size: 15px;'\
+        'letter-spacing: 3px; '\
+        'font-weight: bold;'
+      ) do
+        if opciones[:enlace_marca] then
+          link_to(titulo,
+                  opciones[:enlace_marca],
+                  class: 'navbar-brand')
+        else
+          titulo
+        end
+      end
+
+      r = content_tag(
+        :aside, id: 'sidebar', 
+        class: 'sidebar break-point-lg has-bg-image collapsed'
+      ) do
+        fondo +
+        content_tag(
+          :div, class: 'sidebar-layout'
+        ) do 
+          r2 = content_tag(:div, class: 'sidebar-header') do
+            spantitulo
+          end 
+          r2 += content_tag(:div, id: 'navbarSupportedContent', &bloque)
+          r2 += content_tag(:div, class: 'sidebar-footer') do
+            content_tag(:a, id: 'btn-collapse', href: '#') do
+              "<i class='ri-swap-box-fill ri-xl'></i>".html_safe
+            end + 
+            content_tag(
+              :a, id: 'btn-toggle', href: '#',
+              class: 'sidebar-toggler break-point-lg'
+            ) do
+              "<i class='ri-swap-box-fill ri-xl'></i>".html_safe
+            end
+          end
+          r2.html_safe
+        end # sidebar-layout
+      end  # aside
+      r.html_safe
+    end
+    module_function :barra_navegacion_prosidebar
+
+
     # Genera grupo de menus prosidebar
     def grupo_menus_prosidebar(opciones={}, &bloque)
       return content_tag(

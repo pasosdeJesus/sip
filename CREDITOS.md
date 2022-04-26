@@ -9,6 +9,9 @@ Logo de dominio público basado en:
 Tipo de letra de dominio público Tuffy 1.28 por Thatcher Ulrich y otros
 	http://tulrich.com/fonts/
 
+Incluye diseño de https://github.com/azouaoui-med/pro-sidebar-template/ de
+Mohamed Azouaoui
+
 Agradecimientos a Alejandro Cadena <sig@cinep.org.co> por identificar 
 actualización a DIVIPOLA 2015
 
