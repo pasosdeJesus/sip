@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 4d95c60665fbb5d453a3f710977a259760996cd9
+  revision: 7f73b7442743f57fb957b4bb54c1bca11ddd1c72
   specs:
     kt-paperclip (7.1.1)
       activemodel (>= 4.2.0)
@@ -211,12 +211,12 @@ GEM
       thor (~> 1.0)
     rainbow (3.1.1)
     rake (13.0.6)
-    regexp_parser (2.3.0)
+    regexp_parser (2.3.1)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
-    rubocop (1.28.1)
+    rubocop (1.28.2)
       parallel (~> 1.10)
       parser (>= 3.1.0.0)
       rainbow (>= 2.2.2, < 4.0)
