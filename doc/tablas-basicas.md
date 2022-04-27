@@ -20,7 +20,7 @@ Que generará varios archivos automáticamente, algunos de los cuales debe edita
 | Archivo | Descripción | Edición que requiere |
 | --- | --- | --- |
 | `app/models/acpcatmotivo.rb` | Modelo | |
-| `db/migrate/20200715103001_create_acpcatmotivo.rb` | Migración --el nombre incluirá la fecha de ejecución | Agregar `, null: false` en líneas `nombre`, `fechacreacion`, `created_at` y `updated_at`.  Agregar al comienzo `include Sip::MigracionHelper`. Cambiar `def change` por `def up` y agregar  `def down` que solo ejecute `drop_table :tabla`. En método up, después de la creación de tabla agregar `cambiaCotejacion('tabla', 'nombre', 500, 'es_co_utf_8').` |
+| `db/migrate/20200715103001_create_acpcatmotivo.rb` | Migración --el nombre incluirá la fecha de ejecución | Agregar `, null: false` en líneas `nombre`, `fechacreacion`, `created_at` y `updated_at`.  Agregar al comienzo `include Sip::SqlHelper`. Cambiar `def change` por `def up` y agregar  `def down` que solo ejecute `drop_table :tabla`. En método up, después de la creación de tabla agregar `cambiaCotejacion('tabla', 'nombre', 500, 'es_co_utf_8').` |
 | `app/controllers/admin/acpcatsmotivo_controller.rb` | Controlador | Cambiar sexo en función `genclase`. Por ejemplo como categoría es femenino debería quedar en 'F' |
 | `test/models/acpcatmotivo_test.rb` | Pruebas a modelo |  |
 | `test/controllers/acpcatsmotivo_controller_test.rb` | Borrador de pruebas a controlador | Requiere implementarlas |
