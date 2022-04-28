@@ -11,12 +11,17 @@ module Sip
 
           self.table_name = 'sip_orgsocial'
 
+          attr_accessor :bustipoorg_id
+
           belongs_to :grupoper, class_name: 'Sip::Grupoper',
             foreign_key: 'grupoper_id', validate: true, optional: false
           accepts_nested_attributes_for :grupoper, reject_if: :all_blank
 
           belongs_to :pais, class_name: 'Sip::Pais',
             foreign_key: "pais_id", validate: true, optional: true
+
+          belongs_to :tipoorg, class_name: 'Sip::Tipoorg',
+            foreign_key: 'tipoorg_id', optional: false
 
           has_many :orgsocial_persona, 
             class_name: 'Sip::OrgsocialPersona',

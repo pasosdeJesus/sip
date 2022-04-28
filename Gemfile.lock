@@ -166,7 +166,7 @@ GEM
     jsbundling-rails (1.0.2)
       railties (>= 6.0.0)
     json (2.6.1)
-    loofah (2.16.0)
+    loofah (2.17.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
