@@ -19,6 +19,10 @@ module Sip
       include Rails.application.routes.url_helpers
       include Devise::Test::IntegrationHelpers
 
+      def filtra_doble_ruta_relativa(s)
+        return s
+      end
+
       setup do
         @current_usuario = ::Usuario.find(1)
         sign_in @current_usuario
