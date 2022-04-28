@@ -18,7 +18,7 @@ module Sip
 
     test "existente" do
       municipio = Sip::Municipio.where(id:25).take
-      assert_equal municipio.nombre, "BOLIVARIANO LIBERTADOR"
+      assert_equal municipio.nombre, "Bolivariano Libertador"
     end
 
   end

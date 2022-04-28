@@ -44,7 +44,7 @@ module Sip
     test "nombre con municipio" do
       contexto_m
       assert_equal formato_ubicacion(@ubicacion),
-        "Venezuela / Distrito Capital / BOLIVARIANO LIBERTADOR"
+        "Venezuela / Distrito Capital / Bolivariano Libertador"
     end
 
     def contexto_c
@@ -56,13 +56,13 @@ module Sip
     test "no incluye clase" do
       contexto_c
       assert_equal formato_ubicacion(@ubicacion, false),
-        "Venezuela / Distrito Capital / BOLIVARIANO LIBERTADOR"
+        "Venezuela / Distrito Capital / Bolivariano Libertador"
     end
 
     test "incluye clase" do
       contexto_c
       assert_equal formato_ubicacion(@ubicacion),
-        "Venezuela / Distrito Capital / BOLIVARIANO LIBERTADOR / CARACAS"
+        "Venezuela / Distrito Capital / Bolivariano Libertador / Caracas"
     end
 
   end  # class
