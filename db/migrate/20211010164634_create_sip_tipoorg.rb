@@ -29,7 +29,7 @@ class CreateSipTipoorg < ActiveRecord::Migration[6.1]
         '2020-08-05', '2020-08-05', '2020-08-05');
       INSERT INTO sip_tipoorg (id, nombre, 
         fechacreacion, created_at, updated_at) VALUES (
-        20, 'ORGANIZACIÓN ARMADA',
+        20, 'GRUPO ARMADO',
         '2022-04-28', '2022-04-28', '2022-04-28');
 
       SELECT setval('sip_tipoorg_id_seq', 100);

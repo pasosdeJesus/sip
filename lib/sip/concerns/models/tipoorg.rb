@@ -13,7 +13,7 @@ module Sip
           ESTADO     = 3
           #ORGFP = 4     # Fuerza pública es parte de estado
           ORGINT     = 5 # Organismo internacional
-          ORGARMADA   = 20 # Que no es estatal
+          GRUPOARMADO   = 20 # Que no es estatal
 
           has_many :orgsocial, foreign_key: 'tipoorg_id', validate: true,
             class_name: 'Sip::Orgsocial'
