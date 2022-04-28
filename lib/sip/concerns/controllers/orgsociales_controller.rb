@@ -17,6 +17,7 @@ module Sip
           def atributos_index
             [ :id, 
               :grupoper_id,
+              :tipoorg_id,
               { :sectororgsocial_ids => [] },
               { :orgsocial_persona => [] },
               :web,
@@ -28,6 +29,7 @@ module Sip
           def atributos_show
             [ :id, 
               :grupoper_id,
+              :tipoorg_id,
               { :sectororgsocial_ids => [] },
               { :orgsocial_persona =>  [] },
               :web,
