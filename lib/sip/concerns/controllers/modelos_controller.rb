@@ -542,12 +542,12 @@ module Sip
           end
 
           helper_method :clase,
-            :atributos_index,
-            :atributos_filtro_antestabla,
-            :atributos_form,
-            :atributos_show,
-            :atributos_show_json,
-            :genclase
+                        :atributos_index,
+                        :atributos_filtro_antestabla,
+                        :atributos_form,
+                        :atributos_show,
+                        :atributos_show_json,
+                        :genclase
 
         end # included
 
