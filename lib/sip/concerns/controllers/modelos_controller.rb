@@ -31,10 +31,15 @@ module Sip
           def filtrar(reg, params_filtro)
             # Control para fecha podría no estar localizado aunque
             # campos por presentar si
-            latr = atributos_index.map {|a|
-              a.to_s.end_with?('_localizada') ? 
+            latr1 = atributos_index.map { |a|
+              a.to_s.end_with?("_localizada") ?
                 [a, a.to_s.chomp('_localizada')] : [a]
             }.flatten
+            latr2 = atributos_filtro_antestabla.map { |a|
+              a.to_s.end_with?("_localizada") ?
+                [a, a.to_s.chomp("_localizada")] : [a]
+            }.flatten
+            latr = latr1 + latr2
             quedan = params_filtro.keys
             for ai in latr do
               i = nom_filtro(ai)
@@ -516,6 +521,10 @@ module Sip
             ]
           end
 
+          def atributos_filtro_antestabla
+            []
+          end
+
           # Campos por mostrar en presentación de un registro
           def atributos_show
             atributos_index 
@@ -532,8 +541,13 @@ module Sip
             atributos_show
           end
 
-          helper_method :clase, :atributos_index, :atributos_form, 
-            :atributos_show, :atributos_show_json, :genclase
+          helper_method :clase,
+                        :atributos_index,
+                        :atributos_filtro_antestabla,
+                        :atributos_form,
+                        :atributos_show,
+                        :atributos_show_json,
+                        :genclase
 
         end # included
 
