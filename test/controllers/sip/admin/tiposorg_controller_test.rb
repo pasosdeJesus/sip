@@ -52,10 +52,14 @@ module Sip
       end
 
       test "debe crear nueva" do
+        if Sip::Tipoorg.where(nombre: 'X').count > 0
+          Sip::Tipoorg.where(nombre: 'X').destroy_all
+        end
         assert_difference('Tipoorg.count') do
           post filtra_doble_ruta_relativa(sip.admin_tiposorg_path), params: { 
             tipoorg: TIPOORG_NUEVA
           }
+          puts response.body
         end
 
         assert_redirected_to filtra_doble_ruta_relativa(sip.admin_tipoorg_path(
