@@ -24,6 +24,13 @@ CREATE EXTENSION IF NOT EXISTS unaccent WITH SCHEMA public;
 
 
 --
+-- Name: EXTENSION unaccent; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION unaccent IS 'text search dictionary that removes accents';
+
+
+--
 -- Name: completa_obs(character varying, character varying); Type: FUNCTION; Schema: public; Owner: -
 --
 
@@ -200,67 +207,10 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
--- Name: dane_veredal_2020; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.dane_veredal_2020 (
-    id integer NOT NULL,
-    nombre character varying(512) COLLATE public.es_co_utf_8,
-    verlocal_id integer,
-    departamento character varying(512) COLLATE public.es_co_utf_8,
-    municipio character varying(512) COLLATE public.es_co_utf_8
-);
-
-
---
--- Name: depiso; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.depiso (
-    categoria character varying(20),
-    codiso character varying(10),
-    nombre character varying(128),
-    nomalt character varying(128),
-    idioma character varying(2),
-    sipid integer
-);
-
-
---
 -- Name: divipola_oficial_2019_corregido; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.divipola_oficial_2019_corregido (
-    coddep integer,
-    departamento character varying(512) COLLATE public.es_co_utf_8,
-    codmun integer,
-    municipio character varying(512) COLLATE public.es_co_utf_8,
-    codcp integer,
-    centropoblado character varying(512) COLLATE public.es_co_utf_8,
-    tipocp character varying(6)
-);
-
-
---
--- Name: divipola_oficial_2020; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.divipola_oficial_2020 (
-    coddep integer,
-    departamento character varying(512) COLLATE public.es_co_utf_8,
-    codmun integer,
-    municipio character varying(512) COLLATE public.es_co_utf_8,
-    codcp integer,
-    centropoblado character varying(512) COLLATE public.es_co_utf_8,
-    tipocp character varying(6)
-);
-
-
---
--- Name: divipola_oficial_2021_corregido; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.divipola_oficial_2021_corregido (
     coddep integer,
     departamento character varying(512) COLLATE public.es_co_utf_8,
     codmun integer,
@@ -388,33 +338,6 @@ CREATE VIEW public.divipola_sip AS
      JOIN public.sip_clase ON ((sip_clase.id_municipio = sip_municipio.id)))
   WHERE ((sip_departamento.id_pais = 170) AND (sip_clase.fechadeshabilitacion IS NULL))
   ORDER BY sip_departamento.nombre, sip_municipio.nombre, sip_clase.nombre;
-
-
---
--- Name: iso2022; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.iso2022 (
-    ingles character varying(512),
-    frances character varying(512),
-    alpha2 character varying(2),
-    alpha3 character varying(3),
-    codiso integer
-);
-
-
---
--- Name: paiseswikiiso; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.paiseswikiiso (
-    nombrecomunesp character varying(128),
-    nombreisoesp character varying(128),
-    alfa2 character varying(2),
-    alfa3 character varying(3),
-    codiso integer,
-    observaciones text
-);
 
 
 --
@@ -620,6 +543,13 @@ CREATE TABLE public.sip_grupoper (
     nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     anotaciones character varying(1000)
 );
+
+
+--
+-- Name: TABLE sip_grupoper; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON TABLE public.sip_grupoper IS 'Creado por sip en sipdes_des';
 
 
 --
@@ -1285,44 +1215,6 @@ ALTER SEQUENCE public.sip_ubicacionpre_id_seq OWNED BY public.sip_ubicacionpre.i
 
 
 --
--- Name: sip_vereda; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.sip_vereda (
-    id bigint NOT NULL,
-    nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
-    municipio_id integer,
-    verlocal_id integer,
-    observaciones character varying(5000),
-    latitud double precision,
-    longitud double precision,
-    fechacreacion date NOT NULL,
-    fechadeshabilitacion date,
-    created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
-);
-
-
---
--- Name: sip_vereda_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.sip_vereda_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sip_vereda_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.sip_vereda_id_seq OWNED BY public.sip_vereda.id;
-
-
---
 -- Name: usuario_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -1368,19 +1260,6 @@ CREATE TABLE public.usuario (
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
-
-
---
--- Name: veredas_dane_2020_ogc_fid_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.veredas_dane_2020_ogc_fid_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
 
 
 --
@@ -1479,13 +1358,6 @@ ALTER TABLE ONLY public.sip_trivalente ALTER COLUMN id SET DEFAULT nextval('publ
 --
 
 ALTER TABLE ONLY public.sip_ubicacionpre ALTER COLUMN id SET DEFAULT nextval('public.sip_ubicacionpre_id_seq'::regclass);
-
-
---
--- Name: sip_vereda id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sip_vereda ALTER COLUMN id SET DEFAULT nextval('public.sip_vereda_id_seq'::regclass);
 
 
 --
@@ -1734,14 +1606,6 @@ ALTER TABLE ONLY public.sip_trivalente
 
 ALTER TABLE ONLY public.sip_ubicacionpre
     ADD CONSTRAINT sip_ubicacionpre_pkey PRIMARY KEY (id);
-
-
---
--- Name: sip_vereda sip_vereda_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.sip_vereda
-    ADD CONSTRAINT sip_vereda_pkey PRIMARY KEY (id);
 
 
 --
@@ -2246,8 +2110,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20211216125250'),
 ('20220213031520'),
 ('20220214121713'),
-('20220214232150'),
-('20220215095957'),
 ('20220413123127'),
 ('20220417203841'),
 ('20220417220914'),
