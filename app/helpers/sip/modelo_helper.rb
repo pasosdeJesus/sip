@@ -285,7 +285,7 @@ module Sip
     end
     module_function :lista_tablas_basicas
 
-    # Retorna opciones habilitadas de una talba básica
+    # Retorna opciones habilitadas de una tabla básica
     # mas la ya elegidas en un campo de un formulario
     def opciones_tabla_basica(clase, f, campo)
       col1 = clase.all 
