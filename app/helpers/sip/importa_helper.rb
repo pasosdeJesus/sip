@@ -58,10 +58,10 @@ module Sip
         apellidos = p[0] + ' ' + p[1]
         nombres = p[2] + ' ' + p[3]
       elsif p.count == 5
-        apellidos = p[0] + ' ' + p[1] + p[2]
+        apellidos = p[0] + ' ' + p[1] + ' ' + p[2]
         nombres = p[3] + ' ' + p[4]
      elsif p.count == 6
-        apellidos = p[0] + ' ' + p[1] + p[2]
+        apellidos = p[0] + ' ' + p[1] + ' ' + p[2]
         nombres = p[3] + ' ' + p[4] + ' ' + p[5]
       elsif p.count == 7
         apellidos = p[0] + ' ' + p[1] + ' ' + p[2] + ' ' + p[3]
