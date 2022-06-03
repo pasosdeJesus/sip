@@ -1,111 +1,33 @@
 <article>
 <h1>Acerca de</h1>
-<p>sip es un motor para construir sistemas de información.</p>
-<p>Este motor de
-<a href="http://www.pasosdeJesus.org/dominio_publico_colombia.html" target="_blank">dominio público de acuerdo a la legislación Colombiana</a>, 
-ha sido desarrollado por 
-<a href="http://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>.
+<p><%= Sip.titulo %>: <%= Sip.descripcion %>
+
+<p>El código fuente está en 
+<a href='<%= Sip.codigofuente %>'><%= Sip.codigofuente %></a>. 
+Se trata de código abierto 
+desarrollado y mantenido por 
+<a href="http://www.pasosdeJesus.org" target="_blank">Pasos de Jesús</a>
+con 
+<a href='https://github.com/pasosdeJesus/sip/blob/master/LICENCIA.md'>licencia ISC</a>. 
+Lo invitamos a ver <a href="<%= Sip.urlcontribuyentes %>">el listado de las personas que han contribuido en la implementación</a>.
 </p>
 <p>
-
-Agradecemos a diversas organizaciones que han apoyado a Pasos de Jesús en 
-el desarrollo de <strong>sip</strong> y de sistemas de información que se basan
-en este, favor ver:
-	<a href="https://github.com/pasosdeJesus/sivel2/blob/master/CREDITOS.md">https://github.com/pasosdeJesus/sivel2/blob/master/CREDITOS.md</a>
+Agradecemos a diversas organizaciones que han apoyado 
+el desarrollo de <strong><%= Sip.titulo %></strong> y de sistemas de 
+información que se basan en este, puede ver créditos en:
+<a href="<%= Sip.urlcreditos %>"><%= Sip.urlcreditos %></a>
 </p>
 <p>
-Logo de dominio público basado en:
-	<a href="https://openclipart.org/detail/141613/a-simple-representation-of-a-electric-3-phase-motor-by-eypros">https://openclipart.org/detail/141613/a-simple-representation-of-a-electric-3-phase-motor-by-eypros</a>
+<%= render 'acerca_pila_pdJ' %>
 </p>
 <p>
-Agradecemos a los autores de los siguientes componentes empleados 
-por este motor:
-<ul>
-  <li>PostgreSQL. 
-    <span id='ver_postgresql'>
-      <%= ActiveRecord::Base.connection.select_value('SELECT version()') %>
-    </span>
-  </li>
-
-  <li>Ruby 
-    <span id='ver_ruby'>
-      <%= RUBY_VERSION %>
-    </span>
-  </li>
-
-  <li>Ruby on Rails 
-    <span id='ver_rails'>
-      <%= Gem::Specification.find_by_name("rails").version.to_s %>
-    </span>
-  </li>
-
-  <li>jQuery 
-    <span id='ver_jquery'></span>
-    <script type="module">$('#ver_jquery').html($.fn.jquery)</script>
-  </li>
-
-  <li>jQuery-UI
-    <span id='ver_jquery-ui'></span>
-    <script type="module">$('#ver_jquery-ui').html($.ui.version)</script>
-  </li>
-
-  <li>
-    <div class='btn'>Bootstrap</div>  
-    <span id='ver_bootstrap'></span>
-    <script type="module"> setTimeout(() => {
-      $('#ver_bootstrap').html($.fn.tooltip.Constructor.VERSION)}, 2000);
-    </script>
-  </li>
-
-  <li>
-    <i class='fa fa-flag'>Font-awesome</i>
-    <span id='ver_fontawesome'></span>
-    <script type="module"> 
-      //https://stackoverflow.com/questions/3368837/list-every-font-a-users-browser-can-display
-      function verFontAwesome() {
-        let { fonts } = document;
-        const it = fonts.entries();
-
-        let arr = [];
-        let done = false;
-        let ver = '';
-
-        while (!done) {
-          const font = it.next();
-          if (!font.done && font.value[0].family.includes('Font Awesome')) {
-            ver = font.value[0].family;
-          } else {
-            done = font.done;
-          }
-        }
-        return ver
-      }
-      setTimeout(() => {$('#ver_fontawesome').html(verFontAwesome())}, 1000);
-    </script>
-
-  </li>
-
-  <li>
-    <select class="form-control select optional sip-sf-bs-input chosen-select" 
-            multiple="multiple" name="f[ejchosen_ids][]" 
-                                id="f_ejchosen_ids">
-      <option selected="selected" value="chosen">chosen</option>
-    </select>
-  </li>
-
-  <li>
-    <div class="string optional f_fecha_localizada form-group-valid">
-      <label class="string optional" for="f_fecha_localizada">Fecha</label>
-      <input class="form-control string optional sip-sf-bs-input span10" 
-             data-behaviour="datepicker"
-             type="text"
-             value="<%= Sip::FormatoFechaHelper.fecha_estandar_local '2013-01-07' %>" 
-             name="f[fecha_localizada]" id="f_fecha_localizada">
-    </div>
-  </li>
-
-</ul>
+<%= render partial: 'acerca_tecno' %>
 </p>
-<p>Sobre todo agradecemos a Dios, a Jesús que nos toca y sana, cuando 
-nadie más puede (ver Lucas 17:11-19)</p>
+<p>
+El sistema operativo de desarrollo y objetivo principal para producción
+ha sido <a href='https://aprendiendo.pasosdeJesus.org'>adJ/OpenBSD</a>.
+</p>
+<hr>
+  <%= Sip.agradecimientoDios %>
+<hr>
 </article>
