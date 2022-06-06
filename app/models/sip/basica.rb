@@ -11,6 +11,9 @@ module Sip
         where(fechadeshabilitacion: nil).order(campoord.to_sym)
       }
 
+      scope :filtro_permanente, -> () {
+      }
+
       campofecha_localizado :fechacreacion
       campofecha_localizado :fechadeshabilitacion
       validates :nombre, presence: true, allow_blank: false, 

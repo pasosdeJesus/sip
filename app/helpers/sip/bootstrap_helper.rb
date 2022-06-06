@@ -401,10 +401,13 @@ module Sip
           titulo
         end
       end
-
+      colapsada = ""
+      if Sip.prosidebar_colapsada
+        colapsada = "collapsed"
+      end
       r = content_tag(
         :aside, id: 'sidebar', 
-        class: 'sidebar break-point-lg has-bg-image collapsed'
+        class: "sidebar break-point-lg has-bg-image #{colapsada}"
       ) do
         fondo +
         content_tag(

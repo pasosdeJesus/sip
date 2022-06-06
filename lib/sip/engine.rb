@@ -70,6 +70,10 @@ module Sip
   self.mattr_accessor :colorom_color_flota_subitem_fondo
   self.mattr_accessor :colorom_color_flota_subitem_fuente
 
+  # Prosidebar
+  self.mattr_accessor :prosidebar_colapsada
+
+  # Valores iniciales
   self.longitud_nusuario = 15
   self.paginador = :will_paginate
   self.paisomision = 170
@@ -129,6 +133,8 @@ más puede.
   self.colorom_alerta_problema_fuente = '#721c24'
   self.colorom_color_flota_subitem_fondo = '#266dd3'
   self.colorom_color_flota_subitem_fuente = '#ffffff'
+
+  self.prosidebar_colapsada = false
 
   def self.setup(&block)
     yield self

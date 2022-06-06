@@ -292,6 +292,9 @@ module Sip
       if col1.respond_to?(:habilitados)
         col1 = col1.habilitados
       end 
+      if col1.respond_to?(:filtro_permanente)
+        col1 = col1.filtro_permanente
+      end
       ids1 = col1.pluck(:id)
       ids2 = []
       if f.object.respond_to?(campo) && !f.object.send(campo).nil?

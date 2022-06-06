@@ -49,8 +49,10 @@
     <div class="layout has-sidebar fixed-sidebar fixed-header">
       <%= barra_navegacion_prosidebar(
         titulo: content_for?(:titulo) ? yield(:titulo) : Sip.titulo,
-        enlace_marca: content_for?(:enlace_marca) ? yiled(:enlace_marca) :
-        main_app.root_path) do %>
+        enlace_marca: content_for?(:enlace_marca) ? 
+          yield(:enlace_marca) : main_app.root_path,
+        colapsada: @prosidebar_col.nil? ? true : @prosidebar_col
+      ) do %>
         <%= yield :menu %>
       <% end %>
 

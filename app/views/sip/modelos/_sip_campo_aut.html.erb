@@ -18,18 +18,33 @@
 
 <% alf = @registro.class.asociacion_llave_foranea(atr) %>
 <% vatr = atr.to_s.gsub(/[^a-z_A-Z0-9]/, '') %>
-<% rutavatr = clase.pluralize.underscore + "/campo_#{vatr}" %>
+<% rtavatr = clase.pluralize.underscore + "/campo_#{vatr}" %>
 <% (ri, rm, rd)=clase.pluralize.underscore.rpartition("/") %>
 <% #byebug %>
 <% if alf # Es llave Foranea   %>
   <% n = alf.name %>
   <% nclase = alf.class_name.constantize %>
   <% col = Sip::ModeloHelper.opciones_tabla_basica(nclase, f, n) %>
+  <% desh= false %>
+  <% nosel = {} %>
+  <% if defined?(opciones) && opciones.keys &&
+      opciones.keys.include?(:deshabilitar) && opciones[:deshabilitar] %>
+    <% desh = true %>
+    <% nosel = { 
+      onfocus: "this.defaultIndex=this.selectedIndex;",
+      onchange: "this.selectedIndex=this.defaultIndex;"
+    } %>
+    <% # Solución de https://github.com/heartcombo/simple_form/issues/1513 %>
+  <% end %>
   <% opassoc = {
     collection: col.order(nclase.send(:orden_presenta_nombre)),
     label_method: :presenta_nombre,
     value_method: :id,
-    input_html: { class: 'chosen-select' },
+    disabled: desh,
+    input_html: { 
+      class: desh ? '' : 'chosen-select',
+
+    }.merge(nosel),
     wrapper_html: externo
   } %>
   <% if @registro.respond_to?(n) && @registro.send(n) &&
@@ -84,7 +99,12 @@
       as: :string,
       wrapper_html: externo %>
   <% elsif col && col.type == :integer %>
-    <%= f.input atr.to_sym, as: :integer %>
+    <% if defined?(opciones) && opciones.keys && 
+        opciones.keys.include?(:etiqueta) && opciones[:etiqueta] == false %>
+      <%= f.input atr.to_sym, label: false, as: :integer %>
+    <% else %>
+      <%= f.input atr.to_sym, as: :integer %>
+    <% end %>
   <% elsif col.limit && col.limit > 1000 %>
     <%= f.input atr.to_sym, as: :text%>
   <% else %>
