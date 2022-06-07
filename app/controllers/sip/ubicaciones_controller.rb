@@ -23,10 +23,14 @@ module Sip
         return
       end
       @ubicacion = Ubicacion.new
-      @ubicacion.id_caso = params[:caso_id]
+      @ubicacion.id_caso = params[:caso_id].to_i
       @ubicacion.id_pais = 170
-      if !@ubicacion.save
-        return reterror
+      if !@ubicacion.save(validate: false)
+        puts "error: #{@ubicacion.errors.messages}"
+        respond_to do |format|
+          format.json { render inline: 'No se pudo crear ubicación' }
+        end
+        return
       end
       respond_to do |format|
         format.js { render text: @ubicacion.id.to_s }
