@@ -42,14 +42,16 @@
     value_method: :id,
     disabled: desh,
     input_html: { 
-      class: desh ? '' : 'chosen-select',
-
+      class: desh ? '' : 'chosen-select'
     }.merge(nosel),
     wrapper_html: externo
   } %>
   <% if @registro.respond_to?(n) && @registro.send(n) &&
     @registro.send(n).id %>
     <% opassoc[:selected] = @registro.send(n).id %>
+  <% else %>
+    <% valorp = Sip::ModeloHelper.poromision_sf(params, atr) %>
+    <% opassoc[:selected] = valorp %>
   <% end %>
   <%= f.association n, opassoc %>
 <% elsif @registro.class.asociacion_combinada(atr) %>
@@ -103,7 +105,11 @@
         opciones.keys.include?(:etiqueta) && opciones[:etiqueta] == false %>
       <%= f.input atr.to_sym, label: false, as: :integer %>
     <% else %>
-      <%= f.input atr.to_sym, as: :integer %>
+     
+      <% valorp = Sip::ModeloHelper.poromision_sf(
+        params, atr, @registro.send(atr)) %>
+      <%= f.input atr.to_sym, as: :integer,
+        input_html: { value: valorp } %>
     <% end %>
   <% elsif col.limit && col.limit > 1000 %>
     <%= f.input atr.to_sym, as: :text%>

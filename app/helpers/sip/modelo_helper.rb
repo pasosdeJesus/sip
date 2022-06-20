@@ -217,6 +217,15 @@ module Sip
       end
     end 
 
+    def self.poromision_sf(params, s, valorsp='')
+      if params.nil? || params[s].nil?
+        valorsp
+      else
+        Sip::Usuario.connection.quote_string(params[s])
+      end
+    end 
+
+
     # Convierte un atributo a nombre de filtro (dejando solo letras numeros y _)
     def self.nom_filtro(atr)
       return atr.to_s.gsub(/[^a-z_A-Z0-9]/, '')
