@@ -150,6 +150,9 @@ es:
         Departamento: Departamento/Estado
         Departamentos: Departamentos/Estados
         id_deplocal: Código dentro del país
+      "sip/estadosol":
+        Estadosol: Estado de solicitud
+        Estadossol: Estados de solicitudes
       "sip/fuenteprensa":
         Fuenteprensa: Fuente de prensa
         Fuentesprensa: Fuentes de prensa

@@ -26,6 +26,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.singular(/^(.*n)es$/i, '\1')
   inflect.irregular 'orgsocial', 'orgsociales'
   inflect.irregular 'clase', 'clases'
+  inflect.irregular 'estadosol', 'estadossol'
   inflect.irregular 'etiqueta', 'etiquetas'
   inflect.irregular 'error', 'errores'
   inflect.irregular 'fuenteprensa', 'fuentesprensa'

@@ -33,6 +33,7 @@ module Sip
     BASICAS_PROPIAS = [
       ['Sip', 'clase'], 
       ['Sip', 'departamento'], 
+      ['Sip', 'estadosol'], 
       ['Sip', 'etiqueta'], 
       ['Sip', 'fuenteprensa'], 
       ['Sip', 'grupo'], 
@@ -50,7 +51,20 @@ module Sip
       ['Sip', 'tsitio']
     ]
 
-    #@@tablasbasicas = BASICAS_PROPIAS 
+    INISEC_TB={
+      sip_clase: 1000000,
+      sip_departamento: 10000,
+      sip_municipio: 100000,
+      sip_pais: 1000,
+    }
+
+    # Retorna diccionario con inicialización para secuencia de ids de
+    # algunas tablas básicas que comienzan en valores mayor a 100.
+    # Las tablas básicas que no esten indexadas comienzan secuencia
+    # de ids en 100
+    def inisec_tb
+      return INISEC_TB
+    end
 
     # Retorna arreglo de tablas básicas
     # No conviene usar variables de clas @@tablasbasicas

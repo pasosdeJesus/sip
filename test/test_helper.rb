@@ -112,6 +112,14 @@ PRUEBA_DEPARTAMENTO= {
   id_pais: 862
 }
 
+PRUEBA_ESTADOSOL = {
+  id: 101,
+  nombre: 'estado1',
+  observaciones: 'detalle',
+  fechacreacion: "2022-06-22",
+  fechadeshabilitacion: nil,
+}
+
 PRUEBA_ETIQUETA= {
   id: 1000,
   nombre: "Eti",

@@ -103,6 +103,16 @@ namespace :sip do
               end
             }
           }
+          if !ab.basicas_id_noauto.include?(t)
+            nomt = Ability::tb_modelo t
+            maxv = 100
+            if ab.inisec_tb.keys.include?(nomt.to_sym)
+              maxv = ab.inisec_tb[nomt.to_sym]
+            end
+            q = "SELECT pg_catalog.setval('public.#{nomt}_id_seq', "\
+              "#{maxv}, true);\n"
+            f << q
+          end
         else
           puts "Saltando".red
         end
