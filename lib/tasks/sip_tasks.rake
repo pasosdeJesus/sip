@@ -20,11 +20,9 @@ namespace :sip do
     tbn.each do |t|
       #puts "OJO tbn, t=#{t}"
       nomt = Ability::tb_modelo t
-      case nomt
-      when 'sip_departamento', 'sip_municipio', 'sip_pais', 'sip_clase'
-        maxv = 100000
-      else  
-        maxv = 100
+      maxv = 100
+      if ab.inisec_tb.keys.include?(nomt.to_sym)
+        maxv = ab.inisec_tb[nomt.to_sym]
       end
       q = "SELECT setval('public.#{nomt}_id_seq', MAX(id)) FROM 
           (SELECT #{maxv} as id UNION 
