@@ -197,6 +197,16 @@ PRUEBA_SECTORORGSOCIAL = {
   fechacreacion: '2018-07-20'
 }
 
+PRUEBA_SOLICITUD = {
+  id: 1,
+  usuario_id: 1,
+  fecha: '2022-06-24',
+  solicitud: 'Especial',
+  estadosol_id: 1,
+  created_at: '2022-06-24',
+  updated_at: '2022-06-24',
+}
+
 PRUEBA_TCLASE= {
   id: 'x' ,
   nombre: "TX",

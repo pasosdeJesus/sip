@@ -175,24 +175,26 @@ module Sip
         can :read, [Sip::Persona]
         case usuario.rol 
         when Ability::ROLANALI
+          can [:new, :create, :read, :update], Sip::Grupoper
           can [:new, :create, :read, :update], Sip::Orgsocial
           can [:new, :create, :read, :update], Sip::Persona
-          can [:new, :create, :read, :update], Sip::Grupoper
+          can [:new, :create, :read, :update], Sip::Solicitud
           can :read, Sip::Ubicacion
           can :new, Sip::Ubicacion
           can [:update, :create, :destroy], Sip::Ubicacion
           can [:new,:index,:create,:show], ::Usuario, rol: 5
           can [:show,:destroy], ::Usuario, nusuario: usuario.nusuario
         when Ability::ROLADMIN
-          can :manage, ::Usuario
-          can :manage, Sip::Orgsocial
           can :manage, Sip::Bitacora
           can :manage, Sip::Grupoper
+          can :manage, Sip::Orgsocial
           can :manage, Sip::Persona
           can :manage, Sip::Respaldo7z
+          can :manage, Sip::Solicitud
           can :manage, Sip::Tema
           can :manage, Sip::Ubicacion
           can :manage, Sip::Ubicacionpre
+          can :manage, ::Usuario
           can :manage, :tablasbasicas
           self.tablasbasicas.each do |t|
             c = Ability.tb_clase(t)

@@ -1,0 +1,33 @@
+<% if !defined?(relacion) %>
+  Falta símbolo con relacíon en parametro <tt>relacion</tt>. e.g :proyectofinanciero_solicitud
+  <% return %>
+<% end %>
+<div id="solicitud" class="panel-body table-responsive" >
+  <table class="table table-bordered table-sm">
+    <thead class="thead-light">
+      <tr>
+        <th>Usuario</th>
+        <th>Fecha</th>
+        <th><%= Sip::Solicitud.human_attribute_name(:Solicitud) %></th>
+        <th>Estado</th>
+        <th>Usuarios por notificar</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="filas_solicitud">
+      <%= f.simple_fields_for relacion do |op| %>
+        <%= render partial: 'sip/solicitudes/solicitud_campos', 
+          locals: {f: op} %>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="links">
+    <%= link_to_add_association "Añadir #{Sip::Solicitud.human_attribute_name(:Solicitud)}", f,
+      relacion, 
+      partial: 'sip/solicitudes/solicitud_campos',
+      "data-association-insertion-node" => "tbody#filas_solicitud",
+      "data-association-insertion-method" => "append",
+      class: 'btn-primary' %>
+  </div>
+</div>
+

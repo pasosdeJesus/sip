@@ -983,6 +983,16 @@ ALTER SEQUENCE public.sip_solicitud_id_seq OWNED BY public.sip_solicitud.id;
 
 
 --
+-- Name: sip_solicitud_usuarionotificar; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.sip_solicitud_usuarionotificar (
+    usuarionotificar_id integer,
+    solicitud_id integer
+);
+
+
+--
 -- Name: sip_tclase; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1762,6 +1772,20 @@ CREATE INDEX index_sip_orgsocial_on_pais_id ON public.sip_orgsocial USING btree 
 
 
 --
+-- Name: index_sip_solicitud_usuarionotificar_on_solicitud_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sip_solicitud_usuarionotificar_on_solicitud_id ON public.sip_solicitud_usuarionotificar USING btree (solicitud_id);
+
+
+--
+-- Name: index_sip_solicitud_usuarionotificar_on_usuarionotificar_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sip_solicitud_usuarionotificar_on_usuarionotificar_id ON public.sip_solicitud_usuarionotificar USING btree (usuarionotificar_id);
+
+
+--
 -- Name: index_sip_ubicacion_on_id_clase; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1920,6 +1944,14 @@ ALTER TABLE ONLY public.sip_orgsocial
 
 
 --
+-- Name: sip_solicitud_usuarionotificar fk_rails_6296c40917; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_solicitud_usuarionotificar
+    ADD CONSTRAINT fk_rails_6296c40917 FOREIGN KEY (solicitud_id) REFERENCES public.sip_solicitud(id);
+
+
+--
 -- Name: sip_grupo_usuario fk_rails_734ee21e62; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1997,6 +2029,14 @@ ALTER TABLE ONLY public.sip_ubicacionpre
 
 ALTER TABLE ONLY public.usuario
     ADD CONSTRAINT fk_rails_cc636858ad FOREIGN KEY (tema_id) REFERENCES public.sip_tema(id);
+
+
+--
+-- Name: sip_solicitud_usuarionotificar fk_rails_db0f7c1dd6; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.sip_solicitud_usuarionotificar
+    ADD CONSTRAINT fk_rails_db0f7c1dd6 FOREIGN KEY (usuarionotificar_id) REFERENCES public.usuario(id);
 
 
 --
@@ -2208,6 +2248,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20201124035715'),
 ('20201124050637'),
 ('20201124142002'),
+('20201124145625'),
 ('20210401194637'),
 ('20210401210102'),
 ('20210414201956'),
