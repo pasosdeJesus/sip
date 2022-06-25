@@ -34,7 +34,11 @@
     <td>
       <% if autorizado %>
         <%= sol.input :solicitud,
-          label: false
+          as: :text,
+          label: false,
+          :input_html => { 
+            rows: 3
+          }
         %>
       <% else %>
         <%= sol.input :solicitud,
