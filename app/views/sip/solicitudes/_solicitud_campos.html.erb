@@ -23,10 +23,12 @@
     %>
     </td>
     <td>
-    <%= sol.input :fecha, 
+    <%= sol.input :fecha_localizada, 
       label: false,
-      :input_html => { "data-behaviour" => "datepicker", 
-                       value: Date.today, class: 'deshabilitado'},
+      :input_html => { 
+        "data-behaviour" => "datepicker", 
+        value: Sip::FormatoFechaHelper.fecha_estandar_local(Date.today), 
+        class: 'deshabilitado'},
       :as => :string %>
     </td>
     <td>
