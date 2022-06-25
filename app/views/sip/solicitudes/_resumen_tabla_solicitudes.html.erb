@@ -1,0 +1,27 @@
+<% if !defined?(objeto) %>
+  Falta parámetro <tt>objeto</tt>. e.g :caso
+  <% return %>
+<% end %>
+<table class="table table-bordered table-sm">
+  <thead class="thead-light">
+    <tr>
+      <th>Solicitante</th>
+      <th>Fecha</th>
+      <th><%= Sip::Solicitud.human_attribute_name(:Solicitud) %></th>
+      <th>Estado</th>
+      <th>Destinatario(s)</th>
+    </tr>
+  </thead>
+  <tbody id="filas_solicitud">
+    <% objeto.solicitud.each do |sol| %>
+      <tr>
+        <td><%= sol.usuario.nusuario %></td>
+        <td> <%= sol.fecha_localizada %> </td>
+        <td> <%= sol.solicitud %> </td>
+        <td> <%= sol.estadosol.nombre %> </td>
+        <td> <%= sol.usuarionotificar.pluck(:nusuario).join(', ') %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
