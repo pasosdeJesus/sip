@@ -1,9 +1,9 @@
 class MundepSinDeshabilitados < ActiveRecord::Migration[4.2]
   def up
     execute <<-SQL
-      DROP INDEX sip_busca_mundep;
-      DROP MATERIALIZED VIEW sip_mundep;
-      DROP VIEW sip_mundep_sinorden;
+      DROP INDEX IF EXISTS sip_busca_mundep;
+      DROP MATERIALIZED VIEW IF EXISTS sip_mundep;
+      DROP VIEW IF EXISTS sip_mundep_sinorden;
 
       CREATE VIEW sip_mundep_sinorden AS (
         SELECT sip_departamento.id_deplocal*1000 + 
