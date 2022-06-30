@@ -8,6 +8,9 @@ module Sip
           include Sip::Modelo 
           include Sip::Localizacion
 
+          PENDIENTE = 1
+          RESUELTA = 2
+
           self.table_name = 'sip_solicitud'
 
           belongs_to :usuario, foreign_key: 'usuario_id', dependent: :destroy,
