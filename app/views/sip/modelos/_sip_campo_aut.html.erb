@@ -20,6 +20,8 @@
 <% vatr = atr.to_s.gsub(/[^a-z_A-Z0-9]/, '') %>
 <% rtavatr = clase.pluralize.underscore + "/campo_#{vatr}" %>
 <% (ri, rm, rd)=clase.pluralize.underscore.rpartition("/") %>
+<% valorp = Sip::ModeloHelper.poromision_sf(
+    params, atr, @registro.send(atr)) %>
 <% #byebug %>
 <% if alf # Es llave Foranea   %>
   <% n = alf.name %>
@@ -27,6 +29,7 @@
   <% col = Sip::ModeloHelper.opciones_tabla_basica(nclase, f, n) %>
   <% desh= false %>
   <% nosel = {} %>
+  <% puts "OJO atr=#{atr}, valorp=#{valorp}" %>
   <% if defined?(opciones) && opciones.keys &&
       opciones.keys.include?(:deshabilitar) && opciones[:deshabilitar] %>
     <% desh = true %>
@@ -50,7 +53,7 @@
     @registro.send(n).id %>
     <% opassoc[:selected] = @registro.send(n).id %>
   <% else %>
-    <% valorp = Sip::ModeloHelper.poromision_sf(params, atr) %>
+    <!-% valorp = Sip::ModeloHelper.poromision_sf(params, atr) %-->
     <% opassoc[:selected] = valorp %>
   <% end %>
   <%= f.association n, opassoc %>
@@ -106,15 +109,15 @@
       <%= f.input atr.to_sym, label: false, as: :integer %>
     <% else %>
      
-      <% valorp = Sip::ModeloHelper.poromision_sf(
-        params, atr, @registro.send(atr)) %>
       <%= f.input atr.to_sym, as: :integer,
         input_html: { value: valorp } %>
     <% end %>
   <% elsif col.limit && col.limit > 1000 %>
-    <%= f.input atr.to_sym, as: :text%>
+    <%= f.input atr.to_sym, as: :text,
+      input_html: { value: valorp } %>
   <% else %>
-    <%= f.input atr.to_sym %>
+    <%= f.input atr.to_sym,
+      input_html: { value: valorp } %>
   <% end %>
 <% else %>
     <% if (atr.class == String || atr.class == Symbol) && 
@@ -125,7 +128,8 @@
         autocomplete: "off",
         as:  :string %>
     <% elsif @registro.respond_to?(atr) then %>
-      <%= f.input atr.to_sym %>
+      <%= f.input atr.to_sym,
+        input_html: { value: valorp } %>
     <% else %>
       <%= "Campo #{atr} sin control para editar"  %>
     <% end %>
