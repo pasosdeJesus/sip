@@ -20,8 +20,9 @@
 <% vatr = atr.to_s.gsub(/[^a-z_A-Z0-9]/, '') %>
 <% rtavatr = clase.pluralize.underscore + "/campo_#{vatr}" %>
 <% (ri, rm, rd)=clase.pluralize.underscore.rpartition("/") %>
+<% regatr = atr.class == Hash ? @registro.send(atr.keys.first) : @registro.send(atr) %>
 <% valorp = Sip::ModeloHelper.poromision_sf(
-    params, atr, @registro.send(atr)) %>
+    params, atr, regatr) %>
 <% #byebug %>
 <% if alf # Es llave Foranea   %>
   <% n = alf.name %>
