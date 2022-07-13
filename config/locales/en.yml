@@ -1,5 +1,11 @@
 en:
   Acciones: Actions
+  "Acerca de": About
+  acercade_apoyo: To support the development of this application, the creation of lessons and the operation we thank your work, donations and prayers.
+  acercade_invita_a_donar: We invite you to
+  Donar: Donate
+  acercade_resumen: Summary here
+  acercade_agradecimiento_Dios: "Start children off on the way they should go,<br> and even when they are old they will not turn from it.<br>Proverbs 22:6"
   Actualizar: Update
   Anexos: Attachments
   "Añadir": Add
@@ -29,6 +35,7 @@ en:
   habilitado: Enabled
   "Hora del bloqueo": Locked at
   "Iniciar sesión": Login
+  Inicio: Home
   "Id Actividad": Id of Activity
   Listado: List
   Manual: User Guide
