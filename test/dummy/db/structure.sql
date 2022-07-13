@@ -207,6 +207,33 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: divipola202207_dep; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.divipola202207_dep (
+    coddep integer,
+    departamento character varying(512) COLLATE public.es_co_utf_8,
+    latitud double precision,
+    longitud double precision
+);
+
+
+--
+-- Name: divipola202207_mun; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.divipola202207_mun (
+    coddep integer,
+    departamento character varying(512) COLLATE public.es_co_utf_8,
+    codmun integer,
+    municipio character varying(512) COLLATE public.es_co_utf_8,
+    tipomun character varying(512) COLLATE public.es_co_utf_8,
+    latitud double precision,
+    longitud double precision
+);
+
+
+--
 -- Name: divipola_oficial_2019_corregido; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -284,6 +311,7 @@ CREATE TABLE public.sip_departamento (
     observaciones character varying(5000) COLLATE public.es_co_utf_8,
     codiso character varying(6),
     catiso character varying(64),
+    codreg integer,
     CONSTRAINT departamento_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -316,6 +344,7 @@ CREATE TABLE public.sip_municipio (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     observaciones character varying(5000) COLLATE public.es_co_utf_8,
+    codreg integer,
     CONSTRAINT municipio_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -338,6 +367,16 @@ CREATE VIEW public.divipola_sip AS
      JOIN public.sip_clase ON ((sip_clase.id_municipio = sip_municipio.id)))
   WHERE ((sip_departamento.id_pais = 170) AND (sip_clase.fechadeshabilitacion IS NULL))
   ORDER BY sip_departamento.nombre, sip_municipio.nombre, sip_clase.nombre;
+
+
+--
+-- Name: permisos; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.permisos (
+    llavepermiso character varying(50) NOT NULL,
+    descripcionpermiso character varying(500) NOT NULL
+);
 
 
 --
@@ -577,6 +616,13 @@ CREATE TABLE public.sip_grupoper (
     nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     anotaciones character varying(1000)
 );
+
+
+--
+-- Name: TABLE sip_grupoper; Type: COMMENT; Schema: public; Owner: -
+--
+
+COMMENT ON TABLE public.sip_grupoper IS 'Creado por sip en sipdes_des';
 
 
 --
@@ -1334,6 +1380,27 @@ CREATE TABLE public.usuario (
 
 
 --
+-- Name: usuariopermisos; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.usuariopermisos (
+    loginusuario character varying(50) NOT NULL,
+    llavepermiso character varying(50) NOT NULL
+);
+
+
+--
+-- Name: usuarios; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.usuarios (
+    loginusuario character varying(50) NOT NULL,
+    contrasenausuario character varying(50) NOT NULL,
+    nombreusuario character varying(50) NOT NULL
+);
+
+
+--
 -- Name: sip_bitacora id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1499,6 +1566,14 @@ ALTER TABLE ONLY public.sip_oficina
 
 ALTER TABLE ONLY public.sip_pais
     ADD CONSTRAINT pais_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: permisos permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.permisos
+    ADD CONSTRAINT permisos_pkey PRIMARY KEY (llavepermiso);
 
 
 --
@@ -1755,6 +1830,22 @@ ALTER TABLE ONLY public.sip_ubicacion
 
 ALTER TABLE ONLY public.usuario
     ADD CONSTRAINT usuario_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: usuariopermisos usuariopermisos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.usuariopermisos
+    ADD CONSTRAINT usuariopermisos_pkey PRIMARY KEY (loginusuario, llavepermiso);
+
+
+--
+-- Name: usuarios usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.usuarios
+    ADD CONSTRAINT usuarios_pkey PRIMARY KEY (loginusuario);
 
 
 --
@@ -2184,6 +2275,22 @@ ALTER TABLE ONLY public.sip_ubicacion
 
 
 --
+-- Name: usuariopermisos usuariopermisos_llavepermiso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.usuariopermisos
+    ADD CONSTRAINT usuariopermisos_llavepermiso_fkey FOREIGN KEY (llavepermiso) REFERENCES public.permisos(llavepermiso);
+
+
+--
+-- Name: usuariopermisos usuariopermisos_loginusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.usuariopermisos
+    ADD CONSTRAINT usuariopermisos_loginusuario_fkey FOREIGN KEY (loginusuario) REFERENCES public.usuarios(loginusuario);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -2269,6 +2376,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220420154535'),
 ('20220422190546'),
 ('20220428145059'),
-('20220613224844');
+('20220613224844'),
+('20220713200101'),
+('20220713200444');
 
 
