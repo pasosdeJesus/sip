@@ -1,0 +1,12 @@
+Solicitud del usuario <%= @solicitante %>
+==========================================================================
+
+El usuario <%= @solicitante %> le ha hecho una
+solicitud a <%= @solicitado_a.join(', ') %>
+
+Se relaciona con <%= @objeto %> con identificación <%= @id %>:
+
+  <%= @solicitud %>
+
+La solicitud ha quedado en estado PENDIENTE, una vez la resuelva 
+pasará a estado RESUELTA.
