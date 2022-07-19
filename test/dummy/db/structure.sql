@@ -344,6 +344,7 @@ CREATE VIEW public.divipola_sip AS
   ORDER BY (upper((sd.nombre)::text)), (upper((sm.nombre)::text)), (upper((sc.nombre)::text));
 
 
+
 --
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
