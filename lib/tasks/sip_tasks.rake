@@ -146,6 +146,23 @@ EOF
     raise "Error al volcar" unless Kernel.system(command)
   end # vuelca
 
+  desc "Vuelca base de datos completa con un método rápido pero poco portable"
+  task vuelcarapido: :environment do
+    puts "sip - vuelcarapido"
+    Sip::TareasrakeHelper::asegura_varambiente_bd
+    fecha = DateTime.now.strftime('%Y-%m-%d') 
+    archcopia = Sip::TareasrakeHelper::nombre_volcado(Sip.ruta_volcados, true)
+    File.open(archcopia, "w") { |f| f << "-- Volcado rápido del #{fecha}\n\n" }
+    maq = '-h ' + ENV.fetch('BD_SERVIDOR') + ' -U ' + ENV.fetch('BD_USUARIO')
+    command = "pg_dump --encoding=UTF8 " +
+      "#{maq} " +
+      "#{Shellwords.escape(ENV.fetch('BD_NOMBRE'))} " +
+      " > #{Shellwords.escape(archcopia)}"
+    puts command
+    raise "Error al volcar" unless Kernel.system(command)
+  end # vuelcarapido
+
+
   desc "Restaura volcado"
   task restaura: :environment do |t|
     arch=ENV.fetch('ARCH')

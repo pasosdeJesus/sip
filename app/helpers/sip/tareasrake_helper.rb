@@ -36,11 +36,12 @@ module Sip
 
 
     # Nombre de archivo con copia de volcado de base de hoy
-    def nombre_volcado(ruta_volcados)
+    def nombre_volcado(ruta_volcados, rapido=false)
       dia = DateTime.now.strftime('%d') 
       asegura_varambiente_bd
+      crapido = rapido ? "-rapido" : ""
       return ruta_volcados + "/" + ENV.fetch('BD_NOMBRE') +
-        "-" + dia + ".sql"
+        "-" + dia + crapido +".sql"
     end
     module_function :nombre_volcado
 
