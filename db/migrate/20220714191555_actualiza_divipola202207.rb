@@ -41,6 +41,13 @@ class ActualizaDivipola202207 < ActiveRecord::Migration[7.0]
         observaciones = 'Nombre cambiando en DIVIPOLA 2022-07'
         WHERE id=1230; -- Era Sotará - Paispamba
 
+      INSERT INTO sip_municipio_histvigencia (
+      municipio_id, vigenciaini, vigenciafin, 
+      nombre, id_munlocal, observaciones)
+      VALUES (1230, '2021-01-01', '2021-12-31',
+      'Sotará - Paispamba', 760, 'Nombre cambiado en DIVIPOLA 2022');
+
+
       -- Ubicación de Municipios
       UPDATE sip_municipio SET latitud='-1.997234795', longitud='-72.72361566' WHERE id=459; -- El Encanto / Amazonas
       UPDATE sip_municipio SET latitud='-1.509799605', longitud='-72.44442966' WHERE id=703; -- La Chorrera / Amazonas
@@ -1165,11 +1172,330 @@ class ActualizaDivipola202207 < ActiveRecord::Migration[7.0]
       UPDATE sip_municipio SET latitud='4.968581012', longitud='-70.65997097' WHERE id=1042; -- Santa Rosalía / Vichada
 
 
+      -- Centros poblados que se deshabilitan
+
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='6913'; -- 5284012 JENGAMECODA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14093'; -- 5591010 EL ALTO DEL POLLO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14096'; -- 5604011 CHORRO DE LAGRIMAS
+      
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14126'; -- 5660015 MONTELORO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2018. Antes era IPM. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='7608'; -- 5893004 CUATRO BOCAS
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='12529'; -- 8560007 CASCAJAL
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14176'; -- 11001016 SANTO DOMINGO
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14177'; -- 11001017 TIERRA NUEVA
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14185'; -- 13052007 CONDOMINIO HACIENDA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='793'; -- 13688019 SANTA ISABEL
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14364'; -- 20517007 MATA DE BARRO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14380'; -- 23068016 SEHEVE
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='3602'; -- 23300002 LOS GÓMEZ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='3786'; -- 23555029 SAN JERÓNIMO (GOLERO)
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14421'; -- 23678017 CAROLINA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='4052'; -- 23807001 CALLEJAS
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='4807'; -- 25793002 ROMA (TAUSA VIEJO)
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='4968'; -- 27001036 GITRADO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='4957'; -- 27001037 MOJAUDO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5022'; -- 27025010 YUCAL
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5019'; -- 27025012 BELLA VISTA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5018'; -- 27025018 IRUTO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5034'; -- 27025025 NUNCIDÓ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5050'; -- 27025028 SANTA MARIA DE CONDOTO
+      
+      
+      
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5077'; -- 27073003 DABAIBE
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IPD. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5079'; -- 27073007 SAN MARINO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5097'; -- 27077022 PUNTA DE IGUA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5156'; -- 27150001 BRISAS
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14526'; -- 27150017 CHINTADO MEDIO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5163'; -- 27160001 LA TOMA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5166'; -- 27160003 PAREDES
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5173'; -- 27205006 MANDINGA
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14533'; -- 27245009 EL 21
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5222'; -- 27250004 CORRIENTE PALO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5223'; -- 27250007 CHARAMBIRÁ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5207'; -- 27250009 DESCOLGADERO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5195'; -- 27250023 PAPAYO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5220'; -- 27250025 CARRA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5206'; -- 27250028 QUEBRADA DE PICHIMÁ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5203'; -- 27250035 TROJITA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5226'; -- 27250036 VENADO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5294'; -- 27413004 LAS HAMACAS
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5284'; -- 27413009 NIPORDU
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14547'; -- 27413019 SAN JORGE
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5323'; -- 27430004 BELLA VISTA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5317'; -- 27430005 BERIGUADÓ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5308'; -- 27430007 PUERTO PLATANARES
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5328'; -- 27450002 BOCA DE SURUCO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5333'; -- 27450003 CHIQUICHOQUI
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5327'; -- 27450004 DIPURDÚ EL GUASIMO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5334'; -- 27450005 EL GUAMO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5330'; -- 27450012 SAN MIGUEL
+      
+      
+      
+      
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5360'; -- 27491003 IRABUBÚ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5349'; -- 27491008 URABARÁ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5359'; -- 27491009 CURUNDÓ
+      
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14562'; -- 27491018 TORRA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5375'; -- 27580001 ALTO CHATO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14566'; -- 27580007 CHARA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14568'; -- 27580009 LA GUAMA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14569'; -- 27580010 TODOSITICO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14570'; -- 27580011 VIRO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5395'; -- 27615012 TRUANDÓ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5402'; -- 27615019 LA RAYA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5406'; -- 27615024 LA ISLETA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5456'; -- 27745004 TAPARAL
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14577'; -- 27745016 BARRANCON
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14578'; -- 27745017 BARRANCONCITO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14579'; -- 27745018 CHARCO HONDO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14580'; -- 27745019 CHARCO LARGO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5497'; -- 27800012 EL ROTO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5997'; -- 44430013 YOTOJOROY
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='6017'; -- 44650015 LA PEÑA DE LOS INDIOS
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='6021'; -- 44650020 POTRERITO
+      
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IPD. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='7776'; -- 50330004 MIRADOR
+      
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IPD. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='8123'; -- 52227002 MAYASQUER
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2018. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='8521'; -- 52520014 VUELTA DEL GALLO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='8645'; -- 52683024 20 DE JULIO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='8906'; -- 52835189 EL PROGRESO - SANTO DOMINGO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='8808'; -- 52835199 LA BRAVA
+      
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IPD. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='9169'; -- 54206008 SOLEDAD
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IPD. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='9208'; -- 54245003 LA CULEBRITA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IPD. Nombre de DIVIPOLA 2019, el anterior era BELLA VISTA (NUEVA GRANADA). Nombre de DIVIPOLA 2019, el anterior era BELLA VISTA (NUEVA GRANADA). No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='9219'; -- 54250001 BELLA VISTA
+      
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14790'; -- 54250008 LA MOTILANDIA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='9422'; -- 54810001 BARCO LA SILLA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14856'; -- 66170025 GAITAN LA PLAYA
+      
+      
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14933'; -- 70001028 SANTA CRUZ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='10659'; -- 70110002 CALIFORNIA
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='14969'; -- 70429030 TOTUMAL
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='10906'; -- 70702002 HATO VIEJO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='11411'; -- 73555003 LA ESTRELLA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='11688'; -- 76109008 CISNEROS
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2018. Antes era IPM. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='11722'; -- 76109066 LA DELFINA
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='15049'; -- 76109117 BETANIA
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='15051'; -- 76109119 EL CREDO
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='15052'; -- 76109120 EL EDEN
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='15058'; -- 76109126 PLAYA LARGA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2018. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='11851'; -- 76126003 JIGUALES
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2018. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='11847'; -- 76126013 PUENTE TIERRA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2018. Antes era IPD. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='12022'; -- 76250005 LA CABAÑA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2018. Antes era IPD. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='12013'; -- 76250012 PLAYA RICA
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='15099'; -- 81300004 MATECAÑA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='12670'; -- 81736005 PUENTE DE BOJABÁ
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='15110'; -- 81736019 TINAJAS
+      
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='12739'; -- 85125001 CORRALITO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='12746'; -- 85125004 MANARE
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='12737'; -- 85125012 SANTA BÁRBARA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='12733'; -- 85125014 EL GUAFAL
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='12748'; -- 85125015 LAS CAMELIAS
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='12923'; -- 86573008 LA VICTORIA
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. Nombre de DIVIPOLA 2019, el anterior era MINITAS. Nombre de DIVIPOLA 2019, el anterior era MINITAS. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='15176'; -- 94343004 MINITAS
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='13070'; -- 94884001 SEJAL (MAHIMACHI)
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='13076'; -- 94887001 BOCAS DE YARI
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='15190'; -- 95015002 LA UNION
+      
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='15192'; -- 95025008 LA CRISTALINA
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='15193'; -- 95025009 LA NUEVA PRIMAVERA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='15201'; -- 97001007 MANDÍ
+      
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='13139'; -- 97889001 PAPURÍ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP. No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='13165'; -- 99773021 EL TUPARRO
+
+      UPDATE sip_clase SET observaciones='No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='7225'; -- 5631008 PAN DE AZÚCAR
+      UPDATE sip_clase SET observaciones='No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5041'; -- 27025032 GUINEO
+      UPDATE sip_clase SET observaciones='No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5015'; -- 27025034 PLAYITA
+      UPDATE sip_clase SET observaciones='No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5028'; -- 27025039 PUNTO CAIMINTO
+      UPDATE sip_clase SET observaciones='No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5335'; -- 27450014 ISLA DE CRUZ
+      UPDATE sip_clase SET observaciones='No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5342'; -- 27450016 MACEDONIA
+      UPDATE sip_clase SET observaciones='No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5341'; -- 27450018 SAN JERÓNIMO
+      UPDATE sip_clase SET observaciones='No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5332'; -- 27450019 UNIÓN WAUNAÁN
+      UPDATE sip_clase SET observaciones='No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='5357'; -- 27491013 CARMEN DE SURAMA
+      UPDATE sip_clase SET observaciones='No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='7693'; -- 50001025 CONDOMINIO SANTA BÁRBARA
+      UPDATE sip_clase SET observaciones='No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='7868'; -- 50711020 EL TRIUNFO
+      UPDATE sip_clase SET observaciones='No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='9163'; -- 54174008 CARRILLO
+      UPDATE sip_clase SET observaciones='No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='9222'; -- 54250006 LAS TORRES
+      UPDATE sip_clase SET observaciones='No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='10648'; -- 70001010 LAS HUERTAS
+      UPDATE sip_clase SET observaciones='No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='10647'; -- 70001018 LAS PALMAS
+      UPDATE sip_clase SET observaciones='No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='12674'; -- 81794023 LA ARENOSA
+      UPDATE sip_clase SET observaciones='No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='13112'; -- 95025007 MIROLINDO
+      UPDATE sip_clase SET observaciones='No está en DIVIPOLA 2022.',  fechadeshabilitacion='2022-07-21'   WHERE id='13135'; -- 97666001 COMUNIDAD DE CURUPIRA
+
     SQL
   end
 
   def down
     execute <<-SQL
+
+      -- Deshabilitados
+
+      UPDATE sip_clase SET observaciones=NULL,  fechadeshabilitacion=NULL   WHERE id='7225'; -- 5631008 PAN DE AZÚCAR                                      
+      UPDATE sip_clase SET observaciones=NULL,  fechadeshabilitacion=NULL   WHERE id='5041'; -- 27025032 GUINEO
+      UPDATE sip_clase SET observaciones=NULL,  fechadeshabilitacion=NULL   WHERE id='5015'; -- 27025034 PLAYITA
+      UPDATE sip_clase SET observaciones=NULL,  fechadeshabilitacion=NULL   WHERE id='5028'; -- 27025039 PUNTO CAIMINTO
+      UPDATE sip_clase SET observaciones=NULL,  fechadeshabilitacion=NULL   WHERE id='5335'; -- 27450014 ISLA DE CRUZ
+      UPDATE sip_clase SET observaciones=NULL,  fechadeshabilitacion=NULL   WHERE id='5342'; -- 27450016 MACEDONIA
+      UPDATE sip_clase SET observaciones=NULL,  fechadeshabilitacion=NULL   WHERE id='5341'; -- 27450018 SAN JERÓNIMO
+      UPDATE sip_clase SET observaciones=NULL,  fechadeshabilitacion=NULL   WHERE id='5332'; -- 27450019 UNIÓN WAUNAÁN
+      UPDATE sip_clase SET observaciones=NULL,  fechadeshabilitacion=NULL   WHERE id='5357'; -- 27491013 CARMEN DE SURAMA
+      UPDATE sip_clase SET observaciones=NULL,  fechadeshabilitacion=NULL   WHERE id='7693'; -- 50001025 CONDOMINIO SANTA BÁRBARA
+      UPDATE sip_clase SET observaciones=NULL,  fechadeshabilitacion=NULL   WHERE id='7868'; -- 50711020 EL TRIUNFO
+      UPDATE sip_clase SET observaciones=NULL,  fechadeshabilitacion=NULL   WHERE id='9163'; -- 54174008 CARRILLO
+      UPDATE sip_clase SET observaciones=NULL,  fechadeshabilitacion=NULL   WHERE id='9222'; -- 54250006 LAS TORRES
+      UPDATE sip_clase SET observaciones=NULL,  fechadeshabilitacion=NULL   WHERE id='10648'; -- 70001010 LAS HUERTAS
+      UPDATE sip_clase SET observaciones=NULL,  fechadeshabilitacion=NULL   WHERE id='10647'; -- 70001018 LAS PALMAS
+      UPDATE sip_clase SET observaciones=NULL,  fechadeshabilitacion=NULL   WHERE id='12674'; -- 81794023 LA ARENOSA
+      UPDATE sip_clase SET observaciones=NULL,  fechadeshabilitacion=NULL   WHERE id='13112'; -- 95025007 MIROLINDO
+      UPDATE sip_clase SET observaciones=NULL,  fechadeshabilitacion=NULL   WHERE id='13135'; -- 97666001 COMUNIDAD DE CURUPIRA
+
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='6913'; -- 5284012 JENGAMECODA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='14093'; -- 5591010 EL ALTO DEL POLLO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='14096'; -- 5604011 CHORRO DE LAGRIMAS
+      
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018.',  fechadeshabilitacion=NULL   WHERE id='14126'; -- 5660015 MONTELORO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2018. Antes era IPM.',  fechadeshabilitacion=NULL   WHERE id='7608'; -- 5893004 CUATRO BOCAS
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='12529'; -- 8560007 CASCAJAL
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018.',  fechadeshabilitacion=NULL   WHERE id='14176'; -- 11001016 SANTO DOMINGO
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018.',  fechadeshabilitacion=NULL   WHERE id='14177'; -- 11001017 TIERRA NUEVA
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018.',  fechadeshabilitacion=NULL   WHERE id='14185'; -- 13052007 CONDOMINIO HACIENDA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='793'; -- 13688019 SANTA ISABEL
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='14364'; -- 20517007 MATA DE BARRO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='14380'; -- 23068016 SEHEVE
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='3602'; -- 23300002 LOS GÓMEZ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='3786'; -- 23555029 SAN JERÓNIMO (GOLERO)
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='14421'; -- 23678017 CAROLINA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='4052'; -- 23807001 CALLEJAS
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='4807'; -- 25793002 ROMA (TAUSA VIEJO)
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='4968'; -- 27001036 GITRADO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='4957'; -- 27001037 MOJAUDO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5022'; -- 27025010 YUCAL
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='5019'; -- 27025012 BELLA VISTA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5018'; -- 27025018 IRUTO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5034'; -- 27025025 NUNCIDÓ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5050'; -- 27025028 SANTA MARIA DE CONDOTO
+      
+      
+      
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5077'; -- 27073003 DABAIBE
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IPD.',  fechadeshabilitacion=NULL   WHERE id='5079'; -- 27073007 SAN MARINO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='5097'; -- 27077022 PUNTA DE IGUA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5156'; -- 27150001 BRISAS
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018.',  fechadeshabilitacion=NULL   WHERE id='14526'; -- 27150017 CHINTADO MEDIO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5163'; -- 27160001 LA TOMA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5166'; -- 27160003 PAREDES
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='5173'; -- 27205006 MANDINGA
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018.',  fechadeshabilitacion=NULL   WHERE id='14533'; -- 27245009 EL 21
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='5222'; -- 27250004 CORRIENTE PALO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5223'; -- 27250007 CHARAMBIRÁ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='5207'; -- 27250009 DESCOLGADERO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='5195'; -- 27250023 PAPAYO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='5220'; -- 27250025 CARRA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5206'; -- 27250028 QUEBRADA DE PICHIMÁ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='5203'; -- 27250035 TROJITA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='5226'; -- 27250036 VENADO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5294'; -- 27413004 LAS HAMACAS
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='5284'; -- 27413009 NIPORDU
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='14547'; -- 27413019 SAN JORGE
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5323'; -- 27430004 BELLA VISTA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5317'; -- 27430005 BERIGUADÓ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5308'; -- 27430007 PUERTO PLATANARES
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5328'; -- 27450002 BOCA DE SURUCO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5333'; -- 27450003 CHIQUICHOQUI
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5327'; -- 27450004 DIPURDÚ EL GUASIMO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5334'; -- 27450005 EL GUAMO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5330'; -- 27450012 SAN MIGUEL
+      
+      
+      
+      
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5360'; -- 27491003 IRABUBÚ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5349'; -- 27491008 URABARÁ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5359'; -- 27491009 CURUNDÓ
+      
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='14562'; -- 27491018 TORRA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5375'; -- 27580001 ALTO CHATO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='14566'; -- 27580007 CHARA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='14568'; -- 27580009 LA GUAMA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='14569'; -- 27580010 TODOSITICO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='14570'; -- 27580011 VIRO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5395'; -- 27615012 TRUANDÓ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='5402'; -- 27615019 LA RAYA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='5406'; -- 27615024 LA ISLETA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='5456'; -- 27745004 TAPARAL
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='14577'; -- 27745016 BARRANCON
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='14578'; -- 27745017 BARRANCONCITO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='14579'; -- 27745018 CHARCO HONDO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='14580'; -- 27745019 CHARCO LARGO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='5497'; -- 27800012 EL ROTO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='5997'; -- 44430013 YOTOJOROY
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='6017'; -- 44650015 LA PEÑA DE LOS INDIOS
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='6021'; -- 44650020 POTRERITO
+      
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IPD.',  fechadeshabilitacion=NULL   WHERE id='7776'; -- 50330004 MIRADOR
+      
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IPD.',  fechadeshabilitacion=NULL   WHERE id='8123'; -- 52227002 MAYASQUER
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2018. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='8521'; -- 52520014 VUELTA DEL GALLO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='8645'; -- 52683024 20 DE JULIO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='8906'; -- 52835189 EL PROGRESO - SANTO DOMINGO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='8808'; -- 52835199 LA BRAVA
+      
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IPD.',  fechadeshabilitacion=NULL   WHERE id='9169'; -- 54206008 SOLEDAD
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IPD.',  fechadeshabilitacion=NULL   WHERE id='9208'; -- 54245003 LA CULEBRITA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IPD. Nombre de DIVIPOLA 2019, el anterior era BELLA VISTA (NUEVA GRANADA). Nombre de DIVIPOLA 2019, el anterior era BELLA VISTA (NUEVA GRANADA).',  fechadeshabilitacion=NULL   WHERE id='9219'; -- 54250001 BELLA VISTA
+      
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018.',  fechadeshabilitacion=NULL   WHERE id='14790'; -- 54250008 LA MOTILANDIA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='9422'; -- 54810001 BARCO LA SILLA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='14856'; -- 66170025 GAITAN LA PLAYA
+      
+      
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018.',  fechadeshabilitacion=NULL   WHERE id='14933'; -- 70001028 SANTA CRUZ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='10659'; -- 70110002 CALIFORNIA
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018.',  fechadeshabilitacion=NULL   WHERE id='14969'; -- 70429030 TOTUMAL
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='10906'; -- 70702002 HATO VIEJO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era CAS.',  fechadeshabilitacion=NULL   WHERE id='11411'; -- 73555003 LA ESTRELLA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='11688'; -- 76109008 CISNEROS
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2018. Antes era IPM.',  fechadeshabilitacion=NULL   WHERE id='11722'; -- 76109066 LA DELFINA
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018.',  fechadeshabilitacion=NULL   WHERE id='15049'; -- 76109117 BETANIA
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018.',  fechadeshabilitacion=NULL   WHERE id='15051'; -- 76109119 EL CREDO
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018.',  fechadeshabilitacion=NULL   WHERE id='15052'; -- 76109120 EL EDEN
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018.',  fechadeshabilitacion=NULL   WHERE id='15058'; -- 76109126 PLAYA LARGA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2018. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='11851'; -- 76126003 JIGUALES
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2018. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='11847'; -- 76126013 PUENTE TIERRA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2018. Antes era IPD.',  fechadeshabilitacion=NULL   WHERE id='12022'; -- 76250005 LA CABAÑA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2018. Antes era IPD.',  fechadeshabilitacion=NULL   WHERE id='12013'; -- 76250012 PLAYA RICA
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018.',  fechadeshabilitacion=NULL   WHERE id='15099'; -- 81300004 MATECAÑA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='12670'; -- 81736005 PUENTE DE BOJABÁ
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018.',  fechadeshabilitacion=NULL   WHERE id='15110'; -- 81736019 TINAJAS
+      
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era C.',  fechadeshabilitacion=NULL   WHERE id='12739'; -- 85125001 CORRALITO
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='12746'; -- 85125004 MANARE
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='12737'; -- 85125012 SANTA BÁRBARA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='12733'; -- 85125014 EL GUAFAL
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='12748'; -- 85125015 LAS CAMELIAS
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='12923'; -- 86573008 LA VICTORIA
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018. Nombre de DIVIPOLA 2019, el anterior era MINITAS. Nombre de DIVIPOLA 2019, el anterior era MINITAS.',  fechadeshabilitacion=NULL   WHERE id='15176'; -- 94343004 MINITAS
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='13070'; -- 94884001 SEJAL (MAHIMACHI)
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='13076'; -- 94887001 BOCAS DE YARI
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='15190'; -- 95015002 LA UNION
+      
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018.',  fechadeshabilitacion=NULL   WHERE id='15192'; -- 95025008 LA CRISTALINA
+      UPDATE sip_clase SET observaciones='Aparece en DIVIPOLA 2018.',  fechadeshabilitacion=NULL   WHERE id='15193'; -- 95025009 LA NUEVA PRIMAVERA
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='15201'; -- 97001007 MANDÍ
+      
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='13139'; -- 97889001 PAPURÍ
+      UPDATE sip_clase SET observaciones='Tipo de centro cambiado por DIVIPOLA 2019. Antes era IP.',  fechadeshabilitacion=NULL   WHERE id='13165'; -- 99773021 EL TUPARRO
+
+
+
       UPDATE sip_municipio SET latitud='-1.9963', longitud='-72.68959' WHERE id=459; -- El Encanto / Amazonas
       UPDATE sip_municipio SET latitud='-1.28237', longitud='-72.6390548' WHERE id=703; -- La Chorrera / Amazonas
       UPDATE sip_municipio SET latitud='-1.32238', longitud='-69.57839' WHERE id=707; -- La Pedrera / Amazonas
@@ -2293,8 +2619,17 @@ class ActualizaDivipola202207 < ActiveRecord::Migration[7.0]
       UPDATE sip_municipio SET latitud='5.1261111', longitud='-70.8758333' WHERE id=1042; -- Santa Rosalía / Vichada
 
       -- Nombre
-      UPDATE sip_municipio SET  nombre='Sotará - Paispamba' 
+
+      DELETE FROM sip_municipio_histvigencia WHERE 
+      municipio_id=1230 AND
+      vigenciaini='2021-01-01'
+      AND vigenciafin='2021-12-31';
+
+
+      UPDATE sip_municipio SET  nombre='Sotará - Paispamba',
+        observaciones = ''
         WHERE id=1230; 
+
 
       -- Latitud y Longitud de Departamentos
      UPDATE sip_departamento SET latitud='6.55021133387096', longitud='-75.554003442742' WHERE id=35; -- Antioquia
