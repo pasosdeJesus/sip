@@ -10,6 +10,9 @@ Tipo de letra de dominio público Tuffy 1.28 por Thatcher Ulrich y otros
 Incluye diseño de https://github.com/azouaoui-med/pro-sidebar-template/ de
 Mohamed Azouaoui
 
+Agradecimientos a Oslin George por gestionar División Política de 
+Honduras del Censo 2013 ante el Instituo Nacional de Estadística de Honduras.
+
 Agradecimientos a Alejandro Cadena <sig@cinep.org.co> por identificar 
 actualización a DIVIPOLA 2015
 
