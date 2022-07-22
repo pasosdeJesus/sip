@@ -53,6 +53,10 @@ module Sip
             joins(:etiqueta).where('sip_etiqueta.id = ?', e)
           }
 
+          scope :filtro_tipomun, lambda {|t|
+            where("unaccent(lower(tipomun)) ILIKE ?", "%#{t}%")
+          }
+
 
           @@conf_presenta_nombre_con_origen = false
           mattr_accessor :conf_presenta_nombre_con_origen

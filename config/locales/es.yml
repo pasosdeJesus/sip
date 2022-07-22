@@ -170,6 +170,7 @@ es:
         id_departamento: Departamento
         Municipio: Municipio
         Municipios: Municipios
+        tipomun: Tipo
       "sip/orgsocial":
         direccion: Dirección
         fechadeshabilitacion: Fecha de deshabilitación
