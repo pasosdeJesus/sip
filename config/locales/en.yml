@@ -298,6 +298,12 @@ en:
         Tsitios: Types of sites
       "sip/ubicacion":
         Ubicacion: Location
+      "sip/vereda":
+        id_verlocal: Code in municipality
+        id_municipio: Municipality
+        id_departamento: Department
+        Vereda: Rural district (Vereda)
+        Veredas: Rural districts (Veredas)
       "trivalente":
         Trivalente: Trivalent
         Trivalentes: Trivalents

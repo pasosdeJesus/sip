@@ -39,4 +39,5 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'trivalente', 'trivalentes'
   inflect.irregular 'ubicacion', 'ubicaciones'
   inflect.irregular 'ubicacionpre', 'ubicacionespre'
+  inflect.irregular 'vereda', 'veredas'
 end

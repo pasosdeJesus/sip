@@ -1,0 +1,7 @@
+<%= f.input :busmunicipio_id,
+  label: false,
+  input_html: {
+    'data-enviarautomatico' => '',
+    value: Sip::ModeloHelper.poromision(params, 'busmunicipio_id')
+  }
+%>

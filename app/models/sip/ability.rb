@@ -48,7 +48,8 @@ module Sip
       ['Sip', 'tipoorg'], 
       ['Sip', 'trelacion'], 
       ['Sip', 'trivalente'], 
-      ['Sip', 'tsitio']
+      ['Sip', 'tsitio'],
+      ['Sip', 'vereda']
     ]
 
     INISEC_TB={
@@ -159,7 +160,9 @@ module Sip
 
 
       # Sin autenticación puede consultarse DIVIPOLA
-      can :read, [Sip::Pais, Sip::Departamento, Sip::Municipio, Sip::Clase]
+      can :read, [
+        Sip::Pais, Sip::Departamento, Sip::Municipio, Sip::Clase, Sip::Vereda
+      ]
       if !usuario || usuario.fechadeshabilitacion
         return
       end
