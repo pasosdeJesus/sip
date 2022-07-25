@@ -11,33 +11,89 @@ module Sip
 
           self.table_name = 'sip_persona'
 
-          SEXO_FEMENINO = :F
-          SEXO_MASCULINO = :M
-          SEXO_SININFO = :S
+          CONVENCIONES_SEXO = {
+            'FMS' => {
+              sexo_femenino: :F,
+              nombre_femenino: 'FEMENINO',
+              sexo_masculino: :M,
+              nombre_masculino: 'MASCULINO',
+              sexo_sininformacion: :S,
+              nombre_sininformacion: 'SIN INFORMACIÓN',
+            },
+            'MHS' => {
+              sexo_femenino: :M,
+              nombre_femenino: 'MUJER',
+              sexo_masculino: :H,
+              nombre_masculino: 'HOMBRE',
+              sexo_sininformacion: :S,
+              nombre_sininformacion: 'SIN INFORMACIÓN'
+            }
+          }
 
-          # Opciones para sexo biológico,
-          # cada par se compone de (cadena larga, letra que representa en base)
-          SEXO_OPCIONES = [
-            ['SIN INFORMACIÓN', SEXO_SININFO], 
-            ['FEMENINO', SEXO_FEMENINO], 
-            ['MASCULINO', SEXO_MASCULINO]
-          ]
+          def self.convencion_sexo_abreviada
+            # La convención se almacena en base de datos en la constraint
+            # persona_sexo_check de tabla sip_persona
+            r=Sip::Persona.connection.execute(
+              "SELECT "\
+              "substring(pg_get_constraintdef(oid, TRUE) FROM 'AND ''(...)''') "\
+              "  FROM pg_constraint "\
+              "  WHERE conrelid='sip_persona'::regclass "\
+              "    AND conname='persona_sexo_check'; "
+            )[0]['substring']
 
+            if !CONVENCIONES_SEXO.keys.include?(r)
+              puts "** Convención para sexo desconocida: #{r}, usando FMS"
+              r = 'FMS'
+            end
+
+            return r
+          end
+
+          def self.convencion_sexo
+            r = self.convencion_sexo_abreviada
+            return CONVENCIONES_SEXO[r]
+          end
+
+          # Retorna arreglo con convenciones es de la forma
+          # [
+          #   ['SIN INFORMACIÓN', :S]
+          #   ['FEMENINO', :F]
+          #   ['MASCULINO', :M]
+          # ]
+          def self.sexo_opciones
+            dc = convencion_sexo
+            return [
+              [dc[:nombre_sininformacion], dc[:sexo_sininformacion].to_sym],
+              [dc[:nombre_femenino], dc[:sexo_femenino].to_sym],
+              [dc[:nombre_masculino], dc[:sexo_masculino].to_sym]
+            ]
+          end
+
+          def self.sexo_opciones_cortas
+            dc = convencion_sexo
+            return [
+              [dc[:sexo_sininformacion].to_s, dc[:sexo_sininformacion].to_sym],
+              [dc[:sexo_femenino].to_s, dc[:sexo_femenino].to_sym],
+              [dc[:sexo_masculino].to_s, dc[:sexo_masculino].to_sym]
+            ]
+          end
+
+
+          # Retorna diccionario con convenciones sobre sexo de la forma
+          # {
+          #   :S => 'SIN INFORMACIÓN',
+          #   :F => 'FEMENINO',
+          #   :M => 'MASCULINO'
+          # }
           def self.sexo_opciones_diccionario
-            Sip::Persona::SEXO_OPCIONES.map {|e| [e[1], e[0]]}.to_h
+            dc = convencion_sexo
+            return [
+              [dc[:sexo_sininformacion].to_sym, dc[:nombre_sininformacion]],
+              [dc[:sexo_femenino].to_sym, dc[:nombre_femenino]],
+              [dc[:sexo_masculino].to_sym, dc[:nombre_masculino]]
+            ].to_h
           end
 
-          # Opciones cortas para sexo biológico,
-          # cada par se compone de (letra por presentar, letra en base)
-          SEXO_OPCIONES_CORTAS = [
-            ['S', :S], 
-            ['F', :F], 
-            ['M', :M]
-          ]
-
-          def self.sexo_opciones_cortas_diccionario
-            Sip::Persona::SEXO_OPCIONES_CORTAS.map {|e| [e[1], e[0]]}.to_h
-          end
 
           ORIENTACION_OPCIONES = [
             ['SIN INFORMACIÓN', :S],
