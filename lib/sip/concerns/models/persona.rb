@@ -42,7 +42,7 @@ module Sip
             )[0]['substring']
 
             if !CONVENCIONES_SEXO.keys.include?(r)
-              puts "** Convención para sexo desconocida: #{r}, usando FMS"
+              puts "** Convención en base para sexo desconocida: #{r}, usando FMS"
               r = 'FMS'
             end
 
