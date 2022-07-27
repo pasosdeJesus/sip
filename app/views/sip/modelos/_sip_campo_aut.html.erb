@@ -16,6 +16,7 @@
   <% externo = htmlexterno %>
 <% end %>
 
+
 <% alf = @registro.class.asociacion_llave_foranea(atr) %>
 <% vatr = atr.to_s.gsub(/[^a-z_A-Z0-9]/, '') %>
 <% rtavatr = clase.pluralize.underscore + "/campo_#{vatr}" %>
@@ -48,7 +49,8 @@
     input_html: { 
       class: desh ? '' : 'chosen-select'
     }.merge(nosel),
-    wrapper_html: externo
+    wrapper_html: externo,
+    include_blank: true
   } %>
   <% if @registro.respond_to?(n) && @registro.send(n) &&
     @registro.send(n).id %>
@@ -88,6 +90,7 @@
       label_method: lambda {|e| e.presenta_nombre }, #:nombre,
       value_method: :id ,
       input_html: { class: 'chosen-select' },
+      include_blank: true,
       wrapper_html: externo
     %>
   <% end %>
