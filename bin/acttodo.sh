@@ -112,6 +112,7 @@ if (test "$SALTASIVEL2" != "1") then {
   actuno sivel2-2.0; 
   actuno sivel2
   actuno siaddhh;
+  actuno si_bdhn
 } fi;
 
 # Usan 3 o más motores
