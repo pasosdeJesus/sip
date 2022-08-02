@@ -118,7 +118,7 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
-    erubi (1.10.0)
+    erubi (1.11.0)
     execjs (2.8.1)
     ffi (1.15.5)
     globalid (1.0.0)
@@ -340,4 +340,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.3.14
+   2.3.19
