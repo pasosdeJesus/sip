@@ -21,7 +21,8 @@ class SolicitudMailer < ApplicationMailer
     puts "OJO cor_solicitado_a=#{@cor_solicitado_a}"
     @solicitud = params[:solicitud]
     puts "OJO solicitud=#{@solicitud}"
-    @para = @cor_solicitado_a
+    @para = @cor_solicitado_a.select {|c| !(c =~ /@localhost$/)}
+
     @para << 'vtamara@pasosdeJesus.org' # depuración
     puts "enviando con tema #{@que} a #{@para.count} receptores"
     mail(to: @para, 
