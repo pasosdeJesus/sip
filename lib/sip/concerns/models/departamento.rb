@@ -30,6 +30,11 @@ module Sip
             message: "debe ser único en el país", 
             allow_blank: false
 
+          # A nombre se le quitan espacios de sobra
+          def nombre=(val)
+            self[:nombre] = val.squish if val
+          end
+
           scope :filtro_id_pais, lambda {|p|
             where(id_pais: p)
           }

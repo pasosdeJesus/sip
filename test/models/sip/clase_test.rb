@@ -18,7 +18,7 @@ module Sip
 
     test "existente" do
       clase = Sip::Clase.where(id: 217).take
-      assert_equal clase.nombre, "CARACAS"
+      assert_equal clase.nombre, "Caracas"
     end
 
   end

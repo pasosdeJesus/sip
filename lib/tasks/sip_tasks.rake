@@ -20,11 +20,9 @@ namespace :sip do
     tbn.each do |t|
       #puts "OJO tbn, t=#{t}"
       nomt = Ability::tb_modelo t
-      case nomt
-      when 'sip_departamento', 'sip_municipio', 'sip_pais', 'sip_clase'
-        maxv = 100000
-      else  
-        maxv = 100
+      maxv = 100
+      if ab.inisec_tb.keys.include?(nomt.to_sym)
+        maxv = ab.inisec_tb[nomt.to_sym]
       end
       q = "SELECT setval('public.#{nomt}_id_seq', MAX(id)) FROM 
           (SELECT #{maxv} as id UNION 
@@ -103,6 +101,16 @@ namespace :sip do
               end
             }
           }
+          if !ab.basicas_id_noauto.include?(t)
+            nomt = Ability::tb_modelo t
+            maxv = 100
+            if ab.inisec_tb.keys.include?(nomt.to_sym)
+              maxv = ab.inisec_tb[nomt.to_sym]
+            end
+            q = "SELECT pg_catalog.setval('public.#{nomt}_id_seq', "\
+              "#{maxv}, true);\n"
+            f << q
+          end
         else
           puts "Saltando".red
         end
@@ -137,6 +145,23 @@ EOF
     puts command
     raise "Error al volcar" unless Kernel.system(command)
   end # vuelca
+
+  desc "Vuelca base de datos completa con un método rápido pero poco portable"
+  task vuelcarapido: :environment do
+    puts "sip - vuelcarapido"
+    Sip::TareasrakeHelper::asegura_varambiente_bd
+    fecha = DateTime.now.strftime('%Y-%m-%d') 
+    archcopia = Sip::TareasrakeHelper::nombre_volcado(Sip.ruta_volcados, true)
+    File.open(archcopia, "w") { |f| f << "-- Volcado rápido del #{fecha}\n\n" }
+    maq = '-h ' + ENV.fetch('BD_SERVIDOR') + ' -U ' + ENV.fetch('BD_USUARIO')
+    command = "pg_dump --encoding=UTF8 " +
+      "#{maq} " +
+      "#{Shellwords.escape(ENV.fetch('BD_NOMBRE'))} " +
+      " > #{Shellwords.escape(archcopia)}"
+    puts command
+    raise "Error al volcar" unless Kernel.system(command)
+  end # vuelcarapido
+
 
   desc "Restaura volcado"
   task restaura: :environment do |t|

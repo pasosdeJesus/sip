@@ -40,7 +40,13 @@ module Sip
   self.mattr_accessor :ruta_anexos
   self.mattr_accessor :ruta_volcados
   self.mattr_accessor :titulo
-  
+  self.mattr_accessor :descripcion
+  self.mattr_accessor :codigofuente
+  self.mattr_accessor :urllogo
+  self.mattr_accessor :urlcontribuyentes
+  self.mattr_accessor :urlcreditos
+  self.mattr_accessor :agradecimientoDios
+
   # Tema
   self.mattr_accessor :colorom_nav_ini
   self.mattr_accessor :colorom_nav_fin
@@ -64,12 +70,47 @@ module Sip
   self.mattr_accessor :colorom_color_flota_subitem_fondo
   self.mattr_accessor :colorom_color_flota_subitem_fuente
 
+  # Prosidebar
+  self.mattr_accessor :prosidebar_colapsada
+
+  # Valores iniciales
   self.longitud_nusuario = 15
   self.paginador = :will_paginate
   self.paisomision = 170
   self.ruta_anexos = "#{Rails.root}/archivos/anexos"
   self.ruta_volcados = "#{Rails.root}/archivos/bd"
-  self.titulo = "Motor para Sistemas de Información estilo Pasos de Jesús" 
+  self.titulo = "sip"
+  self.descripcion = "Motor para Sistemas de Información estilo Pasos de Jesús"
+  self.codigofuente = "https://github.com/pasosdeJesus/sip"
+  self.urllogo = "https://openclipart.org/detail/141613/a-simple-representation-of-a-electric-3-phase-motor-by-eypros"
+  self.urlcontribuyentes = "https://github.com/pasosdeJesus/sip/graphs/contributors"
+  self.urlcreditos = "https://github.com/pasosdeJesus/sip/blob/master/CREDITOS.md"
+  self.agradecimientoDios= "<p>
+Sobre todo agradecemos a Dios, a Jesús que nos toca y sana, cuando nadie 
+más puede.
+</p>
+<blockquote>
+  <p>
+  Yendo Jesús a Jerusalén, pasaba entre Samaria y Galilea. 
+  Y al entrar en una aldea, le salieron al encuentro diez hombres leprosos, 
+  los cuales se pararon de lejos y alzaron la voz, diciendo: 
+  ¡Jesús, Maestro, ten misericordia de nosotros! 
+  <br>
+  Cuando él los vio, les dijo: Id, mostraos a los sacerdotes. 
+  Y aconteció que mientras iban, fueron limpiados. 
+  <br>
+  Entonces uno de ellos, viendo que había sido sanado, volvió, glorificando 
+  a Dios a gran voz, y se postró rostro en tierra a sus pies, dándole gracias; 
+  y este era samaritano. 
+  <br>
+  Respondiendo Jesús, dijo: ¿No son diez los que fueron limpiados? 
+  Y los nueve, ¿dónde están? ¿No hubo quien volviese y diese gloria a 
+  Dios sino este extranjero? 
+  Y le dijo: Levántate, vete; tu fe te ha salvado. 
+  </p>
+  <p>
+  Lucas 17:11-19. Traducción Reina Valera 1960
+  </p>".html_safe
 
   self.colorom_fondo = '#ffffff'
   self.colorom_color_fuente = '#000000'
@@ -92,6 +133,8 @@ module Sip
   self.colorom_alerta_problema_fuente = '#721c24'
   self.colorom_color_flota_subitem_fondo = '#266dd3'
   self.colorom_color_flota_subitem_fuente = '#ffffff'
+
+  self.prosidebar_colapsada = false
 
   def self.setup(&block)
     yield self

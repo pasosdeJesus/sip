@@ -11,6 +11,9 @@ module Sip
         where(fechadeshabilitacion: nil).order(campoord.to_sym)
       }
 
+      scope :filtro_permanente, -> () {
+      }
+
       campofecha_localizado :fechacreacion
       campofecha_localizado :fechadeshabilitacion
       validates :nombre, presence: true, allow_blank: false, 
@@ -40,6 +43,10 @@ module Sip
       end
 
       # Por defecto tablas básicas con datos en mayúsculas y sin espacios redundantes
+      # Para cambiarlo en una tabla básica definir por ejemplo:
+      # def nombre=(val)
+      #   self[:nombre] = val.squish
+      # end
       def nombre=(val)
         self[:nombre] = val.upcase.squish if val
       end

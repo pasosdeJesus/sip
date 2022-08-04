@@ -372,5 +372,138 @@ module Sip
     end
     module_function :caja_de_verificacion_bs
 
+
+    def barra_navegacion_prosidebar(opciones, &bloque)
+      fondo = ''.html_safe
+      if opciones[:imagen_barra_lateral]
+        fondo = content_tag(
+          :div, class: 'image-wrapper'
+        ) do 
+          content_tag(
+            :img, src: opciones[:imagen_barra_lateral], 
+            alt: 'sidebar background'
+          )
+        end
+      end
+
+      titulo = opciones[:titulo] ? opciones[:titulo] : Sip.titulo
+      spantitulo = content_tag(
+        :span, style: 'text-transform: uppercase;'\
+        ' font-size: 15px;'\
+        'letter-spacing: 3px; '\
+        'font-weight: bold;'
+      ) do
+        if opciones[:enlace_marca] then
+          link_to(titulo,
+                  opciones[:enlace_marca],
+                  class: 'navbar-brand')
+        else
+          titulo
+        end
+      end
+      colapsada = ""
+      if Sip.prosidebar_colapsada
+        colapsada = "collapsed"
+      end
+      r = content_tag(
+        :aside, id: 'sidebar', 
+        class: "sidebar break-point-lg has-bg-image #{colapsada}"
+      ) do
+        fondo +
+        content_tag(
+          :div, class: 'sidebar-layout'
+        ) do 
+          r2 = content_tag(:div, class: 'sidebar-header') do
+            spantitulo
+          end 
+          r2 += content_tag(:div, id: 'navbarSupportedContent', &bloque)
+          r2 += content_tag(:div, class: 'sidebar-footer') do
+            content_tag(:a, id: 'btn-collapse', href: '#') do
+              "<i class='ri-swap-box-fill ri-xl'></i>".html_safe
+            end 
+          end
+          r2.html_safe
+        end # sidebar-layout
+      end +  # aside
+      content_tag(
+        :a, id: 'btn-toggle', href: '#',
+        class: 'sidebar-toggler break-point-lg'
+      ) do
+        "<i class='ri-swap-box-fill ri-xl'></i>".html_safe
+      end
+
+      r.html_safe
+    end
+    module_function :barra_navegacion_prosidebar
+
+
+    # Genera grupo de menus prosidebar
+    def grupo_menus_prosidebar(opciones={}, &bloque)
+      return content_tag(
+        :div,
+        class: "sidebar-content"
+      ) do
+        content_tag(
+          :nav,
+          class: "menu open-current-submenu"
+        ) do
+          content_tag(:ul, &bloque)
+        end
+      end
+    end 
+    module_function :grupo_menus_prosidebar
+
+
+    # Genera grupo de menus
+    def despliega_abajo_prosidebar(
+      opcionmenu, iconomenu=nil, iconoexp=nil, &bloque)
+      ia = ''.html_safe
+      if iconomenu
+        ia = content_tag(:span, class: 'menu-icon') do
+          content_tag(:i, class: iconomenu.to_s) do
+          end
+        end
+      end
+      return content_tag(:li, class: 'menu-item sub-menu') do
+        link_to('#') do
+          ia + content_tag(:span, class: 'menu-title') do
+            opcionmenu
+          end + content_tag(:span, class: 'menu-suffix') do
+            if iconoexp
+              iconoexp.html_safe
+            else
+              ''.html_safe
+            end
+          end
+        end +
+        content_tag(:div, class: 'sub-menu-list') do 
+          content_tag(:ul,&bloque)
+        end
+      end
+    end 
+    module_function :despliega_abajo_prosidebar
+
+
+    # Genera opcion menú
+    def opcion_menu_prosidebar(opcionmenu, url, opciones={})
+      ia = ''.html_safe
+      if opciones[:icono]
+        ia = content_tag(:span, class: 'menu-icon') do
+          content_tag(:i, class: opciones[:icono].to_s) do
+          end
+        end
+      end
+      return content_tag(:li, class: 'menu-item') do
+        link_to(url) do
+          ia + content_tag(:span, class: 'menu-title') do
+            opcionmenu
+          end
+        end
+      end
+    end 
+    module_function :opcion_menu_prosidebar
+
+
+
   end
 end

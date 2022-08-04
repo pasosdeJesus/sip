@@ -40,12 +40,21 @@ module Sip
             message: "debe ser único en el departamento/estado",
             allow_blank: false
 
+          # A nombre se le quitan espacios de sobra
+          def nombre=(val)
+            self[:nombre] = val.squish if val
+          end
+
           scope :filtro_pais, lambda {|p|
             joins(:departamento).where('sip_departamento.id_pais=?', p)
           }
 
           scope :filtro_etiqueta_ids, lambda {|e|
             joins(:etiqueta).where('sip_etiqueta.id = ?', e)
+          }
+
+          scope :filtro_tipomun, lambda {|t|
+            where("unaccent(lower(tipomun)) ILIKE ?", "%#{t}%")
           }
 
 

@@ -1,4 +1,3 @@
-
 require 'sip/concerns/models/orgsocial'
 
 module Sip

@@ -112,6 +112,14 @@ PRUEBA_DEPARTAMENTO= {
   id_pais: 862
 }
 
+PRUEBA_ESTADOSOL = {
+  id: 101,
+  nombre: 'estado1',
+  observaciones: 'detalle',
+  fechacreacion: "2022-06-22",
+  fechadeshabilitacion: nil,
+}
+
 PRUEBA_ETIQUETA= {
   id: 1000,
   nombre: "Eti",
@@ -154,7 +162,7 @@ PRUEBA_OFICINA= {
 PRUEBA_PAIS= {
   id: 1000  ,
   nombre: "PASI1",
-  nombreiso: "PAIS1",
+  nombreiso_espanol: "PAIS1",
   fechacreacion: "2014-08-04",
 }
 
@@ -187,6 +195,16 @@ PRUEBA_SECTORORGSOCIAL = {
   nombre: "Nombre sector",
   observaciones: "x",
   fechacreacion: '2018-07-20'
+}
+
+PRUEBA_SOLICITUD = {
+  id: 1,
+  usuario_id: 1,
+  fecha: '2022-06-24',
+  solicitud: 'Especial',
+  estadosol_id: 1,
+  created_at: '2022-06-24',
+  updated_at: '2022-06-24',
 }
 
 PRUEBA_TCLASE= {

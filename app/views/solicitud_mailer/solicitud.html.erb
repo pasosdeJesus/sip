@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+      .resaltaci {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Solicitud del usuario <%= @solicitante %></h1>
+    <p>
+    El usuario <%= @solicitante %> le ha hecho una
+    solicitud a <%= @solicitado_a.join(', ') %>
+  </p>
+  <p>
+    Se relaciona con <%= @objeto %> con identificación <%= @id %>:
+    <br>
+    <blockquote>
+      <%= @solicitud %>
+    </blockquote>
+  </p>
+  <p>
+  La solicitud ha quedado en estado PENDIENTE, una vez la resuelva 
+  pasará a estado RESUELTA.
+  </p>
+  </body>
+</html>

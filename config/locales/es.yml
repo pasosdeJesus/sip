@@ -1,5 +1,8 @@
 es:
   Acciones: Acciones
+  acercade_apoyo: Para apoyar el desarrollo de esta aplicación, la creación de cursos y la operación agradecemos su trabajo, donaciones y oraciones.
+  acercade_invita_a_donar: Lo invitamos a 
+  acercade_resumen: Dada la importancia de la educación y que todos podemos ayudar a mejorarla, este prototipo de aplicación web busca ser un Sistema para Administración de Aprendizaje que facilite tanto tomar cursos como crear nuevos cursos y/o currículos y publicitar un curso o currículo de manera independiente de otros si se desea con un tema visual e interfaz de usuario única.
   Actualizar: Actualizar
   Anexos: Anexos
   "Añadir": Añadir
@@ -150,6 +153,9 @@ es:
         Departamento: Departamento/Estado
         Departamentos: Departamentos/Estados
         id_deplocal: Código dentro del país
+      "sip/estadosol":
+        Estadosol: Estado de solicitud
+        Estadossol: Estados de solicitudes
       "sip/fuenteprensa":
         Fuenteprensa: Fuente de prensa
         Fuentesprensa: Fuentes de prensa
@@ -164,6 +170,7 @@ es:
         id_departamento: Departamento
         Municipio: Municipio
         Municipios: Municipios
+        tipomun: Tipo
       "sip/orgsocial":
         direccion: Dirección
         fechadeshabilitacion: Fecha de deshabilitación
@@ -183,22 +190,26 @@ es:
         perfilorgsocial: Perfil en organización social
         orgsocial: Organización social a la que pertenece
       "sip/pais":
-        Pais: País
-        Paises: Países
-        nombre: Nombre
-        nombreiso: Nombre ISO
         alfa2: Código ISO de 2 letras
         alfa3: Código ISO de 3 letras
         codiso: Código ISO numérico
+        created_at: Fecha en la que se creó en base de datos
         div1: Primera división política (e.g Departamento o Estado)
         div2: Segunda división política (e.g Municipio o Condado)
         div3: Tercer división política (e.g Centro poblado)
-        latitud: Latitud
-        longitud: Longitud
         fechacreacion: Fecha cuando se agregó a fuentes
         fechadeshabilitacion: Fecha de deshabilitacion
-        created_at: Fecha en la que se creó en base de datos
+        latitud: Latitud
+        longitud: Longitud
+        nombre: Nombre
+        nombreiso_espanol: Nombre ISO en español
+        nombreiso_ingles: Nombre ISO en inglés
+        nombreiso_frances: Nombre ISO en francés
+        Pais: País
+        Paises: Países
         updated_at: Fecha en la que se actualizó en base de datos
+        ultvigenciaini: Fecha de inicio de la vigencia más reciente
+        ultvigenciafin: Fecha de finalización de la vigencia más reciente
       "sip/perfilorgsocial":
         Perfilorgsocial: Perfil en organización social
         Perfilesorgsocial: Perfiles en organización social
@@ -267,6 +278,13 @@ es:
         Tsitios: Tipos de sitios
       "sip/ubicacion":
         Ubicacion: Ubicación
+      "sip/vereda":
+        id_verlocal: Código en municipio
+        verlocal: Código en municipio
+        id_municipio: Municipio
+        id_departamento: Departamento
+        Vereda: Vereda
+        Veredas: Veredas
       "trivalente":
         Trivalente: Trivalente
         Trivalentes: Trivalentes
@@ -283,3 +301,4 @@ es:
         nusuario: Usuario
         "sip_grupo": Grupos
         unlock_token: Testigo para desbloquear
+

@@ -1,5 +1,11 @@
 en:
   Acciones: Actions
+  "Acerca de": About
+  acercade_apoyo: To support the development of this application, the creation of lessons and the operation we thank your work, donations and prayers.
+  acercade_invita_a_donar: We invite you to
+  Donar: Donate
+  acercade_resumen: Summary here
+  acercade_agradecimiento_Dios: "Start children off on the way they should go,<br> and even when they are old they will not turn from it.<br>Proverbs 22:6"
   Actualizar: Update
   Anexos: Attachments
   "Añadir": Add
@@ -29,6 +35,7 @@ en:
   habilitado: Enabled
   "Hora del bloqueo": Locked at
   "Iniciar sesión": Login
+  Inicio: Home
   "Id Actividad": Id of Activity
   Listado: List
   Manual: User Guide
@@ -193,12 +200,9 @@ en:
         perfilorgsocial: Profile in social organization
         orgsocial: Social organization to which it belongs
       "sip/pais":
-        Pais: Country
-        Paises: Countries
-        nombre: Name
-        nombreiso: ISO name
         alfa2: 2-letter ISO code
         alfa3: 3-letter ISO code
+        created_at: Date it was created in the database
         codiso: Numeric ISO code
         div1: First political division (e.g. Department or State)
         div2: Second political division (e.g. Municipality or County)
@@ -207,7 +211,12 @@ en:
         longitud: Longitude
         fechacreacion: Date when added to sources
         fechadeshabilitacion: Disabling date
-        created_at: Date it was created in the database
+        nombre: Name
+        nombreiso_espanol: ISO name in Spanish
+        nombreiso_frances: ISO name in French
+        nombreiso_ingles: ISO name in English
+        Pais: Country
+        Paises: Countries
         updated_at: Date in which the database was updated
       "sip/perfilorgsocial":
         Perfilorgsocial: Profile in social organization
@@ -289,6 +298,12 @@ en:
         Tsitios: Types of sites
       "sip/ubicacion":
         Ubicacion: Location
+      "sip/vereda":
+        id_verlocal: Code in municipality
+        id_municipio: Municipality
+        id_departamento: Department
+        Vereda: Rural district (Vereda)
+        Veredas: Rural districts (Veredas)
       "trivalente":
         Trivalente: Trivalent
         Trivalentes: Trivalents

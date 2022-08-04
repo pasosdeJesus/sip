@@ -18,7 +18,7 @@ module Sip
 
     test "existente" do
       departamento = Sip::Departamento.where(id_pais: 862, id:1).take
-      assert_equal departamento.nombre, "DISTRITO CAPITAL"
+      assert_equal departamento.nombre, "Distrito Capital"
     end
   end
 end

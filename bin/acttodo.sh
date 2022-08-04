@@ -112,6 +112,7 @@ if (test "$SALTASIVEL2" != "1") then {
   actuno sivel2-2.0; 
   actuno sivel2
   actuno siaddhh;
+  actuno si_bdhn
 } fi;
 
 # Usan 3 o más motores
@@ -126,6 +127,11 @@ if (test "$SALTASIASOM" != "1") then {
 if (test "$SALTASIIAP" != "1") then {
   actuno si_iap; 
 } fi;
+
+if (test "$SALTASIFASOL" != "1") then {
+  actuno si_fasol; 
+} fi;
+
 
 if (test "$SALTASIVELSJR" != "1") then {
   echo "**** sivelsjr"

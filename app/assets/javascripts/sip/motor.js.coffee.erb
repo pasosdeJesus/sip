@@ -194,10 +194,14 @@ if (typeof String.prototype.endsWith != 'function')
       mes = @sip_meses.indexOf(nmes.toLowerCase()) + 1
     else
       mes = 6
-  else
+  else if typeof fecha == 'string'
     anio = +fecha.slice(0,4) 
     mes = +fecha.slice(5,7) 
     dia = +fecha.slice(8,10) 
+  else
+    anio = 1900 
+    mes = 1
+    dia = 1
   return [anio, mes, dia]
   
 # Verifica que una fecha sea válida
@@ -1087,6 +1091,9 @@ if (typeof String.prototype.endsWith != 'function')
   jQuery ->
     $("a[rel~=popover], .has-popover").popover()
     $("a[rel~=tooltip], .has-tooltip").tooltip()
+
+  evento = new Event('sip:cargado');
+  document.dispatchEvent(evento);  
 
 
 

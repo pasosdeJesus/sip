@@ -25,7 +25,7 @@ module Sip
       @ubicacion = Ubicacion.new
       @ubicacion.id_caso = params[:caso_id]
       @ubicacion.id_pais = 170
-      if !@ubicacion.save
+      if !@ubicacion.save(validate: false)
         return reterror
       end
       respond_to do |format|

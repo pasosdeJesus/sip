@@ -26,6 +26,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.singular(/^(.*n)es$/i, '\1')
   inflect.irregular 'orgsocial', 'orgsociales'
   inflect.irregular 'clase', 'clases'
+  inflect.irregular 'estadosol', 'estadossol'
   inflect.irregular 'etiqueta', 'etiquetas'
   inflect.irregular 'error', 'errores'
   inflect.irregular 'fuenteprensa', 'fuentesprensa'
@@ -33,8 +34,10 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'pais', 'paises'
   inflect.irregular 'perfilorgsocial', 'perfilesorgsocial'
   inflect.irregular 'sectororgsocial', 'sectoresorgsocial'
+  inflect.irregular 'tipoorg', 'tiposorg'
   inflect.irregular 'trelacion', 'trelaciones'
   inflect.irregular 'trivalente', 'trivalentes'
   inflect.irregular 'ubicacion', 'ubicaciones'
   inflect.irregular 'ubicacionpre', 'ubicacionespre'
+  inflect.irregular 'vereda', 'veredas'
 end

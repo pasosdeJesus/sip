@@ -1,0 +1,59 @@
+<tr class='nested-fields'>
+  <% if f.object.solicitud.nil? %>
+    <% f.object.solicitud = Sip::Solicitud.new %>
+  <% end %>
+  <%= f.simple_fields_for :solicitud do |sol| %>
+    <% if sol.object.usuario == current_usuario || current_usuario.rol == 1 || sol.object.usuario.nil?%>
+      <% autorizado = true %>
+    <% else %>
+      <% autorizado = false %>
+    <% end%>
+    <td>
+    <%= sol.association :usuario,
+      collection: Usuario.habilitados,
+      label_method: :nusuario,
+      value_method: :id,
+      readonly: true,
+      selected:  sol.object.usuario_id || current_usuario.id,
+      wrapper_html: {style: "width: 12em"},
+      label: false,
+      input_html: {
+        class: 'deshabilitado'
+      }
+    %>
+    </td>
+    <td>
+    <%= sol.input :fecha_localizada, 
+      label: false,
+      :input_html => { 
+        "data-behaviour" => "datepicker", 
+        value: Sip::FormatoFechaHelper.fecha_estandar_local(Date.today), 
+        class: 'deshabilitado'},
+      :as => :string %>
+    </td>
+    <td>
+      <% if autorizado %>
+        <%= sol.input :solicitud,
+          as: :text,
+          label: false,
+          :input_html => { 
+            rows: 3
+          }
+        %>
+      <% else %>
+        <%= sol.input :solicitud,
+          label: false,
+          :input_html => { class: 'deshabilitado'}
+        %>
+      <% end %>
+    </td>
+    <% if sol.object.usuario == current_usuario || sol.object.usuario.nil? || current_usuario.rol == 1 %>
+    <td>
+      <%= link_to_remove_association "Eliminar", f, 
+        :class => 'btn-danger',
+        :'data-existing' => true
+      %>
+    </td>
+    <% end %>
+  <% end %>
+</tr>

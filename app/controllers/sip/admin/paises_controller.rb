@@ -15,16 +15,20 @@ module Sip
       def atributos_index
         [ :id, 
           :nombre, 
-          :nombreiso, 
+          :nombreiso_espanol, 
           :latitud, 
           :longitud, 
           :alfa2, 
           :alfa3, 
           :codiso, 
+          :nombreiso_ingles,
+          :nombreiso_frances,
           :div1, 
           :div2, 
           :div3, 
           :observaciones,
+          :ultvigenciaini,
+          :ultvigenciafin,
           :fechacreacion_localizada, 
           :habilitado
         ]

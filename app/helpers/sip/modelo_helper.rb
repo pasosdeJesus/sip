@@ -217,6 +217,15 @@ module Sip
       end
     end 
 
+    def self.poromision_sf(params, s, valorsp='')
+      if params.nil? || params[s].nil?
+        valorsp
+      else
+        Sip::Usuario.connection.quote_string(params[s])
+      end
+    end 
+
+
     # Convierte un atributo a nombre de filtro (dejando solo letras numeros y _)
     def self.nom_filtro(atr)
       return atr.to_s.gsub(/[^a-z_A-Z0-9]/, '')
@@ -285,13 +294,16 @@ module Sip
     end
     module_function :lista_tablas_basicas
 
-    # Retorna opciones habilitadas de una talba básica
+    # Retorna opciones habilitadas de una tabla básica
     # mas la ya elegidas en un campo de un formulario
     def opciones_tabla_basica(clase, f, campo)
       col1 = clase.all 
       if col1.respond_to?(:habilitados)
         col1 = col1.habilitados
       end 
+      if col1.respond_to?(:filtro_permanente)
+        col1 = col1.filtro_permanente
+      end
       ids1 = col1.pluck(:id)
       ids2 = []
       if f.object.respond_to?(campo) && !f.object.send(campo).nil?

@@ -24,6 +24,11 @@ module Sip
           belongs_to :tclase, foreign_key: "id_tclase", validate: true,
             class_name: 'Sip::Tclase', optional: false
 
+          # A nombre se le quitan espacios de sobra
+          def nombre=(val)
+            self[:nombre] = val.squish if val
+          end
+
           validates :id_municipio, presence:true
           validates :id_tclase, presence:true, length: { maximum: 10 } 
 

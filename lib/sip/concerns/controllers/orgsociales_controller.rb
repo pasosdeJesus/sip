@@ -17,6 +17,7 @@ module Sip
           def atributos_index
             [ :id, 
               :grupoper_id,
+              :tipoorg_id,
               { :sectororgsocial_ids => [] },
               { :orgsocial_persona => [] },
               :web,
@@ -28,6 +29,7 @@ module Sip
           def atributos_show
             [ :id, 
               :grupoper_id,
+              :tipoorg_id,
               { :sectororgsocial_ids => [] },
               { :orgsocial_persona =>  [] },
               :web,
@@ -79,8 +81,7 @@ module Sip
             update_gen(@registro)
           end
 
-          def orgsocial_params
-            params.require(:orgsocial).permit(
+          def lista_params_sip
               atributos_form - [:grupoper] +
               [ :pais_id,
                 :grupoper_attributes => 
@@ -104,7 +105,11 @@ module Sip
                     :sexo
                   ]
                 ]
-              ]) 
+              ]
+          end
+
+          def orgsocial_params
+            params.require(:orgsocial).permit(lista_params_sip)
           end
 
         end #included

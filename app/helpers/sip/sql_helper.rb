@@ -15,6 +15,59 @@ module Sip
     alias_method :cambiaCotejacion, :cambiar_cotejacion
     module_function :cambiaCotejacion
 
+
+    def ejecuta_sql(sql, eco = false)
+      if eco 
+        puts "ejecuta_sql: #{sql}"
+      end
+      Sip::Persona.connection.execute <<-SQL
+      #{sql}
+      SQL
+    end
+    module_function :ejecuta_sql
+
+
+    # Cambia convención para sexo 
+    def cambiar_convencion_sexo(convencion_final)
+      if !Sip::Persona::CONVENCIONES_SEXO.keys.include?(convencion_final)
+        puts "Conveción desconocida: #{convecion_final}"
+        exit 1
+      end
+      convencion_inicial = Sip::Persona::convencion_sexo_abreviada
+      if convencion_inicial == convencion_final
+        return
+      end
+      if convencion_final != 'FMS' && convencion_final != 'MHS'
+        puts "Se espera cambio  a convencion desconocida #{convencion_final}"
+        return
+      end
+      ejecuta_sql("ALTER TABLE sip_persona DROP CONSTRAINT persona_sexo_check",
+                  true);
+
+      # Orden importa por ahora soporta bien FMS -> MHS y MHS->FMS
+      if convencion_inicial=='FMS' && convencion_final == 'MHS'
+        ejecuta_sql("UPDATE sip_persona SET sexo='H'"\
+                   " WHERE sexo='M';", true)
+        ejecuta_sql("UPDATE sip_persona SET sexo='M'"\
+                   " WHERE sexo='F';", true)
+        ejecuta_sql("UPDATE sip_persona SET sexo='S'"\
+                   " WHERE sexo='S';", true)
+      elsif convencion_inicial=='MHS' && convencion_final == 'FMS'
+        ejecuta_sql("UPDATE sip_persona SET sexo='F'"\
+                   " WHERE sexo='M';", true)
+        ejecuta_sql("UPDATE sip_persona SET sexo='M'"\
+                   " WHERE sexo='H';", true)
+        ejecuta_sql("UPDATE sip_persona SET sexo='S'"\
+                   " WHERE sexo='S';", true)
+      end
+
+      ejecuta_sql("ALTER TABLE sip_persona ADD CONSTRAINT persona_sexo_check "\
+                  " CHECK (LENGTH(sexo)=1 "\
+                  " AND '#{convencion_final}' LIKE '%' || sexo || '%');", true)
+    end
+    module_function :cambiar_convencion_sexo
+
+
     ##
     # Agrega una nueva tabla al listado $t
     #

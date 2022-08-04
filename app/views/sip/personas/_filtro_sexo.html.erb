@@ -1,5 +1,5 @@
 <%= f.input :bussexo, 
-  collection: ::Sip::Persona::SEXO_OPCIONES,
+  collection: ::Sip::Persona::sexo_opciones,
   label: false,
   include_blank: true,
   selected: Sip::ModeloHelper.poromision(params, :bussexo),

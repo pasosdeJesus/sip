@@ -16,25 +16,48 @@
   <% externo = htmlexterno %>
 <% end %>
 
+
 <% alf = @registro.class.asociacion_llave_foranea(atr) %>
 <% vatr = atr.to_s.gsub(/[^a-z_A-Z0-9]/, '') %>
-<% rutavatr = clase.pluralize.underscore + "/campo_#{vatr}" %>
+<% rtavatr = clase.pluralize.underscore + "/campo_#{vatr}" %>
 <% (ri, rm, rd)=clase.pluralize.underscore.rpartition("/") %>
+<% regatr = atr.class == Hash ? @registro.send(atr.keys.first) : @registro.send(atr) %>
+<% valorp = Sip::ModeloHelper.poromision_sf(
+    params, atr, regatr) %>
 <% #byebug %>
 <% if alf # Es llave Foranea   %>
   <% n = alf.name %>
   <% nclase = alf.class_name.constantize %>
   <% col = Sip::ModeloHelper.opciones_tabla_basica(nclase, f, n) %>
+  <% desh= false %>
+  <% nosel = {} %>
+  <% puts "OJO atr=#{atr}, valorp=#{valorp}" %>
+  <% if defined?(opciones) && opciones.keys &&
+      opciones.keys.include?(:deshabilitar) && opciones[:deshabilitar] %>
+    <% desh = true %>
+    <% nosel = { 
+      onfocus: "this.defaultIndex=this.selectedIndex;",
+      onchange: "this.selectedIndex=this.defaultIndex;"
+    } %>
+    <% # Solución de https://github.com/heartcombo/simple_form/issues/1513 %>
+  <% end %>
   <% opassoc = {
     collection: col.order(nclase.send(:orden_presenta_nombre)),
     label_method: :presenta_nombre,
     value_method: :id,
-    input_html: { class: 'chosen-select' },
-    wrapper_html: externo
+    disabled: desh,
+    input_html: { 
+      class: desh ? '' : 'chosen-select'
+    }.merge(nosel),
+    wrapper_html: externo,
+    include_blank: true
   } %>
   <% if @registro.respond_to?(n) && @registro.send(n) &&
     @registro.send(n).id %>
     <% opassoc[:selected] = @registro.send(n).id %>
+  <% else %>
+    <!-% valorp = Sip::ModeloHelper.poromision_sf(params, atr) %-->
+    <% opassoc[:selected] = valorp %>
   <% end %>
   <%= f.association n, opassoc %>
 <% elsif @registro.class.asociacion_combinada(atr) %>
@@ -67,6 +90,7 @@
       label_method: lambda {|e| e.presenta_nombre }, #:nombre,
       value_method: :id ,
       input_html: { class: 'chosen-select' },
+      include_blank: true,
       wrapper_html: externo
     %>
   <% end %>
@@ -84,11 +108,20 @@
       as: :string,
       wrapper_html: externo %>
   <% elsif col && col.type == :integer %>
-    <%= f.input atr.to_sym, as: :integer %>
+    <% if defined?(opciones) && opciones.keys && 
+        opciones.keys.include?(:etiqueta) && opciones[:etiqueta] == false %>
+      <%= f.input atr.to_sym, label: false, as: :integer %>
+    <% else %>
+     
+      <%= f.input atr.to_sym, as: :integer,
+        input_html: { value: valorp } %>
+    <% end %>
   <% elsif col.limit && col.limit > 1000 %>
-    <%= f.input atr.to_sym, as: :text%>
+    <%= f.input atr.to_sym, as: :text,
+      input_html: { value: valorp } %>
   <% else %>
-    <%= f.input atr.to_sym %>
+    <%= f.input atr.to_sym,
+      input_html: { value: valorp } %>
   <% end %>
 <% else %>
     <% if (atr.class == String || atr.class == Symbol) && 
@@ -99,7 +132,8 @@
         autocomplete: "off",
         as:  :string %>
     <% elsif @registro.respond_to?(atr) then %>
-      <%= f.input atr.to_sym %>
+      <%= f.input atr.to_sym,
+        input_html: { value: valorp } %>
     <% else %>
       <%= "Campo #{atr} sin control para editar"  %>
     <% end %>

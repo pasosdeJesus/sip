@@ -1,4 +1,5 @@
+<% col = ::Sip::Persona::sexo_opciones %>
 <%= f.input :sexo, 
-  collection: ::Sip::Persona::SEXO_OPCIONES,
+  collection: col,
   include_blank: false 
 %>

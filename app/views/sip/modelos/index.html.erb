@@ -17,8 +17,10 @@
 <%= simple_form_for :filtro,
   { url: url_formulario,
     method: "get"} do |f| %>
- 
+
   <%= render partial: 'index_encabezado', locals: {titulo: titulo, f: f} %>
+
+  <%= render partial: 'index_filtro_antestabla', locals: {f: f} %>
 
   <table class="table table-striped">
     <thead>

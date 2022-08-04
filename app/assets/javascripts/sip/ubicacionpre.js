@@ -25,10 +25,11 @@ function sip_ubicacionpre_expandible_maneja_evento_busca_lugar(e) {
       $(this).attr('id'))
   }
 
-  pais = ubicacionpre.find('[id$=pais_id]').val()
-  dep = ubicacionpre.find('[id$=departamento_id]').val()
-  mun = ubicacionpre.find('[id$=municipio_id]').val()
-  clas = ubicacionpre.find('[id$=clase_id]').val()
+  epais = ubicacionpre.find('[id$=pais_id]')
+  pais = +epais.val()
+  dep = +ubicacionpre.find('[id$=departamento_id]').val()
+  mun = +ubicacionpre.find('[id$=municipio_id]').val()
+  clas = +ubicacionpre.find('[id$=clase_id]').val()
   ubi = [pais, dep, mun, clas]
   sip_ubicacionpre_expandible_busca_lugar($(this), ubi)
 }
@@ -72,18 +73,6 @@ function sip_ubicacionpre_expandible_busca_lugar(s, ubi) {
       }.bind(n)
     )
     n.iniciar()
-/*    $("#" + cnom).autocomplete({
-      source: 
-      cacheLength: 0,
-      minLength: 2,
-      select: function( event, ui ){ 
-        if (ui.item){ 
-          sip_ubicacionpre_expandible_autocompleta_lugar(ui.item.clase_id, ui.item.tsitio_id, ui.item.lugar, ui.item.sitio, ui.item.latitud, ui.item.longitud, ubipre, root)
-          event.stopPropagation()
-          event.preventDefault()
-        }
-      }
-    }) */
   }
   return
 }
@@ -200,8 +189,8 @@ function sip_ubicacionpre_expandible_registra(iniid, campoubi, root,
     function (evento) {
       if($(this).val() == "") {
         ubp = $(evento.target).closest('.ubicacionpre')
-        pais = ubp.find('[id$='+campoubi+'_pais_id]')
-        sip_ubicacionpre_fija_coordenadas(evento, campoubi, pais, "paises")
+        let epais = ubp.find('[id$='+campoubi+'_pais_id]')
+        sip_ubicacionpre_fija_coordenadas(evento, campoubi, epais, "paises")
       } else {
         sip_ubicacionpre_fija_coordenadas(evento, campoubi, $(this), "departamentos")
       }

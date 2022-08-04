@@ -20,7 +20,7 @@ Que generará varios archivos automáticamente, algunos de los cuales debe edita
 | Archivo | Descripción | Edición que requiere |
 | --- | --- | --- |
 | `app/models/acpcatmotivo.rb` | Modelo | |
-| `db/migrate/20200715103001_create_acpcatmotivo.rb` | Migración --el nombre incluirá la fecha de ejecución | Agregar `, null: false` en líneas `nombre`, `fechacreacion`, `created_at` y `updated_at`.  Agregar al comienzo `include Sip::MigracionHelper`. Cambiar `def change` por `def up` y agregar  `def down` que solo ejecute `drop_table :tabla`. En método up, después de la creación de tabla agregar `cambiaCotejacion('tabla', 'nombre', 500, 'es_co_utf_8').` |
+| `db/migrate/20200715103001_create_acpcatmotivo.rb` | Migración --el nombre incluirá la fecha de ejecución | Agregar `, null: false` en líneas `nombre`, `fechacreacion`, `created_at` y `updated_at`.  Agregar al comienzo `include Sip::SqlHelper`. Cambiar `def change` por `def up` y agregar  `def down` que solo ejecute `drop_table :tabla`. En método up, después de la creación de tabla agregar `cambiaCotejacion('tabla', 'nombre', 500, 'es_co_utf_8')` |
 | `app/controllers/admin/acpcatsmotivo_controller.rb` | Controlador | Cambiar sexo en función `genclase`. Por ejemplo como categoría es femenino debería quedar en 'F' |
 | `test/models/acpcatmotivo_test.rb` | Pruebas a modelo |  |
 | `test/controllers/acpcatsmotivo_controller_test.rb` | Borrador de pruebas a controlador | Requiere implementarlas |
@@ -29,7 +29,7 @@ Además debe editar otros archivos ya existentes para realizar los siguientes ca
 
 | Archivo | Edición que requiere |
 | --- | --- |
-| `app/models/ability.rb` | En la función tablas básicas (o en la constante apropiada) agregar la nueva tabla básica de la forma `['', 'acpcatmotivo']` y en la función initialize definir el control de acceso, por ejemplo si un rol o grupo puede administrarla ponerle `can :manage, ::Acpcatmotivo`.  Ver ejemplo completo en <https://github.com/pasosdeJesus/cor1440_cinep/blob/master/app/models/ability.rb> |
+| `app/models/ability.rb` | En la función tablas básicas (o en la constante apropiada) agregue la nueva tabla básica, con algo como `['', 'acpcatmotivo']` y en la función `initialize` defina el control de acceso, por ejemplo si un rol o grupo puede administrarla ponerle `can :manage, ::Acpcatmotivo`.  Ver ejemplo completo en <https://github.com/pasosdeJesus/cor1440_cinep/blob/master/app/models/ability.rb> |
 | `config/initializers/inflections.rb` | Añadir en orden alfabético o en un orden que asegure que se carga correctamente, una línea de la forma `inflect.irregular 'acpcatmotivo', 'acpcatsmotivo'` |
 | `config/locales/es.yml` | En `es:` -> `activerecord:` -> `attributes:` añada líneas como las que se ven a continuación |
   
