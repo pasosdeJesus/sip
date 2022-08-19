@@ -6,6 +6,9 @@ module Sip
         extend ActiveSupport::Concern
 
         included do
+
+          include Sip::Modelo
+
           self.table_name = 'sip_ubicacion'
           belongs_to :pais, foreign_key: "id_pais", validate: true, 
             class_name: "Sip::Pais", optional: false
