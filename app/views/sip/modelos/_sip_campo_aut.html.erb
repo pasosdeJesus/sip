@@ -31,7 +31,7 @@
   <% col = Sip::ModeloHelper.opciones_tabla_basica(nclase, f, n) %>
   <% desh= false %>
   <% nosel = {} %>
-  <% puts "OJO atr=#{atr}, valorp=#{valorp}" %>
+  <% #puts "OJO atr=#{atr}, valorp=#{valorp}" %>
   <% if defined?(opciones) && opciones.keys &&
       opciones.keys.include?(:deshabilitar) && opciones[:deshabilitar] %>
     <% desh = true %>
