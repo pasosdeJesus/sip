@@ -112,7 +112,7 @@ CREATE FUNCTION public.soundexesp(entrada text) RETURNS text
       		entrada=translate(ltrim(trim(upper(entrada)),'H'),'ÑÁÉÍÓÚÀÈÌÒÙÜ','NAEIOUAEIOUU');
 
         IF array_upper(regexp_split_to_array(entrada, '[^a-zA-Z]'), 1) > 1 THEN
-          RAISE NOTICE 'Esta función sólo maneja una palabra y no ''%''. Use más bien soundexespm', entrada;
+          RAISE NOTICE 'Esta función sólo maneja una palabra. Usar soundexesp_multi para cadenas con varias palabras';
       		RETURN NULL;
         END IF;
 
@@ -195,29 +195,24 @@ CREATE FUNCTION public.soundexesp(entrada text) RETURNS text
 
 
 --
--- Name: soundexespm(text); Type: FUNCTION; Schema: public; Owner: -
+-- Name: soundexesp_multi(text); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION public.soundexespm(entrada text) RETURNS text
+CREATE FUNCTION public.soundexesp_multi(entrada text) RETURNS text
     LANGUAGE plpgsql IMMUTABLE STRICT COST 500
     AS $$
       DECLARE
         soundex text = '' ;
         partes text[];
         sep text = '';
-        se text = '';
       BEGIN
         entrada=translate(ltrim(trim(upper(entrada)),'H'),'ÑÁÉÍÓÚÀÈÌÒÙÜ','NAEIOUAEIOUU');
         partes=regexp_split_to_array(entrada, '[^a-zA-Z]');
 
         --raise notice 'partes=%', partes;
         FOR i IN 1 .. array_upper(partes, 1) LOOP
-          se = soundexesp(partes[i]);
-          IF length(se) > 0 THEN
-            soundex = soundex || sep || se;
-            sep = ' ';
-            --raise notice 'i=% . soundexesp=%', i, se;
-          END IF;
+          soundex = soundex || sep || soundexesp(partes[i]);
+          sep = ' ';
         END LOOP;
 
       	RETURN soundex;	
@@ -242,71 +237,29 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
--- Name: divhonduras2013; Type: TABLE; Schema: public; Owner: -
+-- Name: dane_veredal_2020; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.divhonduras2013 (
-    coddep integer,
+CREATE TABLE public.dane_veredal_2020 (
+    id integer NOT NULL,
+    nombre character varying(512) COLLATE public.es_co_utf_8,
+    verlocal_id integer,
     departamento character varying(512) COLLATE public.es_co_utf_8,
-    codmun integer,
-    municipio character varying(512) COLLATE public.es_co_utf_8,
-    codaldea integer,
-    aldea character varying(512) COLLATE public.es_co_utf_8,
-    codcaserio integer,
-    caserio character varying(512) COLLATE public.es_co_utf_8,
-    codbarrio integer,
-    barrio character varying(512) COLLATE public.es_co_utf_8,
-    totviviendas integer,
-    vivpart integer,
-    vivpartoc integer,
-    vivpartdes integer,
-    vivcol integer,
-    hogares integer,
-    poblacion integer
+    municipio character varying(512) COLLATE public.es_co_utf_8
 );
 
 
 --
--- Name: divipola202207_cp; Type: TABLE; Schema: public; Owner: -
+-- Name: depiso; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.divipola202207_cp (
-    coddep integer,
-    departamento character varying(512) COLLATE public.es_co_utf_8,
-    codmun integer,
-    municipio character varying(512) COLLATE public.es_co_utf_8,
-    codcp integer,
-    centropoblado character varying(512) COLLATE public.es_co_utf_8,
-    tipocp character varying(16),
-    latitud double precision,
-    longitud double precision
-);
-
-
---
--- Name: divipola202207_dep; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.divipola202207_dep (
-    coddep integer,
-    departamento character varying(512) COLLATE public.es_co_utf_8,
-    latitud double precision,
-    longitud double precision
-);
-
-
---
--- Name: divipola202207_mun; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.divipola202207_mun (
-    coddep integer,
-    departamento character varying(512) COLLATE public.es_co_utf_8,
-    codmun integer,
-    municipio character varying(512) COLLATE public.es_co_utf_8,
-    tipomun character varying(512) COLLATE public.es_co_utf_8,
-    latitud double precision,
-    longitud double precision
+CREATE TABLE public.depiso (
+    categoria character varying(20),
+    codiso character varying(10),
+    nombre character varying(128),
+    nomalt character varying(128),
+    idioma character varying(2),
+    sipid integer
 );
 
 
@@ -315,6 +268,36 @@ CREATE TABLE public.divipola202207_mun (
 --
 
 CREATE TABLE public.divipola_oficial_2019_corregido (
+    coddep integer,
+    departamento character varying(512) COLLATE public.es_co_utf_8,
+    codmun integer,
+    municipio character varying(512) COLLATE public.es_co_utf_8,
+    codcp integer,
+    centropoblado character varying(512) COLLATE public.es_co_utf_8,
+    tipocp character varying(6)
+);
+
+
+--
+-- Name: divipola_oficial_2020; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.divipola_oficial_2020 (
+    coddep integer,
+    departamento character varying(512) COLLATE public.es_co_utf_8,
+    codmun integer,
+    municipio character varying(512) COLLATE public.es_co_utf_8,
+    codcp integer,
+    centropoblado character varying(512) COLLATE public.es_co_utf_8,
+    tipocp character varying(6)
+);
+
+
+--
+-- Name: divipola_oficial_2021_corregido; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.divipola_oficial_2021_corregido (
     coddep integer,
     departamento character varying(512) COLLATE public.es_co_utf_8,
     codmun integer,
@@ -438,33 +421,45 @@ CREATE TABLE public.sip_municipio (
 --
 
 CREATE VIEW public.divipola_sip AS
- SELECT sd.id_deplocal AS coddep,
-    upper((sd.nombre)::text) AS departamento,
-    ((sd.id_deplocal * 1000) + sm.id_munlocal) AS codmun,
-    upper((sm.nombre)::text) AS municipio,
-    (((sd.id_deplocal * 1000000) + (sm.id_munlocal * 1000)) + sc.id_clalocal) AS codcp,
-    upper((sc.nombre)::text) AS centropoblado,
-    sc.id_tclase AS tipocp,
-    sc.latitud,
-    sc.longitud,
-    sc.observaciones,
-    sc.id AS sip_idcp,
-    sm.id AS sip_idm,
-    sd.id AS sip_idd
-   FROM ((public.sip_clase sc
-     JOIN public.sip_municipio sm ON (((sc.fechadeshabilitacion IS NULL) AND (sm.fechadeshabilitacion IS NULL) AND (sc.id_municipio = sm.id))))
-     JOIN public.sip_departamento sd ON (((sd.fechadeshabilitacion IS NULL) AND ((sd.nombre)::text <> 'EXTERIOR'::text) AND (sd.id_pais = 170) AND (sm.id_departamento = sd.id))))
-  WHERE (sc.id < 100000)
-  ORDER BY (upper((sd.nombre)::text)), (upper((sm.nombre)::text)), (upper((sc.nombre)::text));
+ SELECT sip_departamento.id_deplocal AS coddep,
+    sip_departamento.nombre AS departamento,
+    ((sip_departamento.id_deplocal * 1000) + sip_municipio.id_munlocal) AS codmun,
+    sip_municipio.nombre AS municipio,
+    (((sip_departamento.id_deplocal * 1000000) + (sip_municipio.id_munlocal * 1000)) + sip_clase.id_clalocal) AS codcp,
+    sip_clase.nombre AS centropoblado,
+    sip_clase.id_tclase AS tipocp,
+    sip_clase.id AS sip_idcp
+   FROM ((public.sip_departamento
+     JOIN public.sip_municipio ON ((sip_municipio.id_departamento = sip_departamento.id)))
+     JOIN public.sip_clase ON ((sip_clase.id_municipio = sip_municipio.id)))
+  WHERE ((sip_departamento.id_pais = 170) AND (sip_clase.fechadeshabilitacion IS NULL))
+  ORDER BY sip_departamento.nombre, sip_municipio.nombre, sip_clase.nombre;
 
 
 --
--- Name: permisos; Type: TABLE; Schema: public; Owner: -
+-- Name: iso2022; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.permisos (
-    llavepermiso character varying(50) NOT NULL,
-    descripcionpermiso character varying(500) NOT NULL
+CREATE TABLE public.iso2022 (
+    ingles character varying(512),
+    frances character varying(512),
+    alpha2 character varying(2),
+    alpha3 character varying(3),
+    codiso integer
+);
+
+
+--
+-- Name: paiseswikiiso; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.paiseswikiiso (
+    nombrecomunesp character varying(128),
+    nombreisoesp character varying(128),
+    alfa2 character varying(2),
+    alfa3 character varying(3),
+    codiso integer,
+    observaciones text
 );
 
 
@@ -557,8 +552,8 @@ CREATE TABLE public.sip_clase_histvigencia (
     vigenciafin date NOT NULL,
     nombre character varying(256),
     id_clalocal integer,
-    observaciones character varying(5000),
-    id_tclase character varying(10)
+    id_tclase character varying,
+    observaciones character varying(5000)
 );
 
 
@@ -1614,24 +1609,16 @@ CREATE TABLE public.usuario (
 
 
 --
--- Name: usuariopermisos; Type: TABLE; Schema: public; Owner: -
+-- Name: veredas_dane_2020_ogc_fid_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.usuariopermisos (
-    loginusuario character varying(50) NOT NULL,
-    llavepermiso character varying(50) NOT NULL
-);
-
-
---
--- Name: usuarios; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.usuarios (
-    loginusuario character varying(50) NOT NULL,
-    contrasenausuario character varying(50) NOT NULL,
-    nombreusuario character varying(50) NOT NULL
-);
+CREATE SEQUENCE public.veredas_dane_2020_ogc_fid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
 
 
 --
@@ -1828,14 +1815,6 @@ ALTER TABLE ONLY public.sip_oficina
 
 ALTER TABLE ONLY public.sip_pais
     ADD CONSTRAINT pais_pkey PRIMARY KEY (id);
-
-
---
--- Name: permisos permisos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.permisos
-    ADD CONSTRAINT permisos_pkey PRIMARY KEY (llavepermiso);
 
 
 --
@@ -2124,22 +2103,6 @@ ALTER TABLE ONLY public.sip_ubicacion
 
 ALTER TABLE ONLY public.usuario
     ADD CONSTRAINT usuario_pkey PRIMARY KEY (id);
-
-
---
--- Name: usuariopermisos usuariopermisos_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.usuariopermisos
-    ADD CONSTRAINT usuariopermisos_pkey PRIMARY KEY (loginusuario, llavepermiso);
-
-
---
--- Name: usuarios usuarios_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.usuarios
-    ADD CONSTRAINT usuarios_pkey PRIMARY KEY (loginusuario);
 
 
 --
@@ -2566,22 +2529,6 @@ ALTER TABLE ONLY public.sip_ubicacion
 
 ALTER TABLE ONLY public.sip_ubicacion
     ADD CONSTRAINT ubicacion_id_tsitio_fkey FOREIGN KEY (id_tsitio) REFERENCES public.sip_tsitio(id);
-
-
---
--- Name: usuariopermisos usuariopermisos_llavepermiso_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.usuariopermisos
-    ADD CONSTRAINT usuariopermisos_llavepermiso_fkey FOREIGN KEY (llavepermiso) REFERENCES public.permisos(llavepermiso);
-
-
---
--- Name: usuariopermisos usuariopermisos_loginusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.usuariopermisos
-    ADD CONSTRAINT usuariopermisos_loginusuario_fkey FOREIGN KEY (loginusuario) REFERENCES public.usuarios(loginusuario);
 
 
 --
