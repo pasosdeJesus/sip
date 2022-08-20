@@ -6,6 +6,9 @@ module Sip
         extend ActiveSupport::Concern
 
         included do
+
+          include Sip::Modelo
+
           self.table_name = 'sip_anexo'
           has_attached_file :adjunto, 
             :path => Sip.ruta_anexos.to_s + "/:id_:filename"
