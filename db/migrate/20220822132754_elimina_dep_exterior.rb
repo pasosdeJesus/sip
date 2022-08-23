@@ -14,12 +14,6 @@ class EliminaDepExterior < ActiveRecord::Migration[7.0]
       puts "Hay ubicaciones en EXTERIOR sin pais"
       exit 1
     end
-    if Sip::Ubicacionpre.
-        where(municipio_id: nil).
-        where(departamento_id: 3).count > 0
-      puts "Hay ubicacionespre en EXTERIOR sin pais"
-      exit 1
-    end
     if Sip::Persona.
         where(id_municipio: nil).
         where(id_departamento: 3).count > 0
@@ -27,6 +21,11 @@ class EliminaDepExterior < ActiveRecord::Migration[7.0]
       exit 1
     end
 
+    execute <<-SQL
+      DELETE FROM sip_ubicacionpre WHERE pais_id=170
+        AND departamento_id=3
+        AND municipio_id IS NULL;
+    SQL
 
     execute <<-SQL
       UPDATE sip_ubicacion
