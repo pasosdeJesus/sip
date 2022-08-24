@@ -27,6 +27,7 @@ function actuno {
   if (test "$?" != 0) then {
     exit 1;
   } fi;
+  bundle update --bundler
   bundle update
   if (test "$?" != 0) then {
     exit 1;
