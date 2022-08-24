@@ -11,13 +11,13 @@ class EliminaDepExterior < ActiveRecord::Migration[7.0]
     if Sip::Ubicacion.
         where(id_municipio: nil).
         where(id_departamento: 3).count > 0
-      puts "Hay ubicaciones en EXTERIOR sin pais"
+      puts "Hay ubicaciones en EXTERIOR sin municipio"
       exit 1
     end
     if Sip::Persona.
         where(id_municipio: nil).
         where(id_departamento: 3).count > 0
-      puts "Hay ubicacionespre en EXTERIOR sin pais"
+      puts "Hay personas en EXTERIOR sin municipio"
       exit 1
     end
 
