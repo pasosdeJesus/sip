@@ -367,6 +367,10 @@ module Sip
                   "unaccent(?) || '%'", n)
           }
 
+          scope :filtro_tdocumento, lambda {|tid|
+            where(tdocumento_id: tid.to_i)
+          }
+
           scope :filtro_sexo, lambda { |s|
             where(sexo: s)
           }
