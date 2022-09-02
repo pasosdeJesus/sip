@@ -165,8 +165,6 @@ module Sip
         class_methods do
         end
 
-
-
       end
     end
   end
