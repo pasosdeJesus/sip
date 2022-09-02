@@ -276,7 +276,7 @@ module Sip
 
 
           # Despliega formulario para editar un registro
-          def editar_gen
+          def edit_gen
             @registro = clase.constantize.find(params[:id])
             if @registro.respond_to?('current_usuario=')
               @registro.current_usuario = current_usuario
@@ -296,7 +296,7 @@ module Sip
           end
 
           def edit
-            editar_gen
+            edit_gen
           end
 
           # Validaciones adicionales a las del modelo que 
