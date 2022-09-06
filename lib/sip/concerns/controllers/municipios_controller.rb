@@ -37,6 +37,7 @@ module Sip
               :pais, 
               :id_departamento, 
               :id_munlocal, 
+              :codreg,
               :tipomun,
               :latitud, 
               :longitud, 

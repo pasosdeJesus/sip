@@ -150,6 +150,7 @@ es:
         id_tclase: Tipo de centro poblado
         tclase: Tipo de centro poblado
       "sip/departamento":
+        codreg: Código secundario del país
         Departamento: Departamento/Estado
         Departamentos: Departamentos/Estados
         id_deplocal: Código dentro del país
@@ -164,6 +165,7 @@ es:
         "{:usuario_ids=>[]}": Miembros
         "usuario": Miembros
       "sip/municipio":
+        codreg: Código secundario del país
         etiqueta_ids: Etiquetas
         id_munlocal: Código dentro del departamento/estado
         id_pais: País

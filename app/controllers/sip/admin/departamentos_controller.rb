@@ -28,6 +28,7 @@ module Sip
           :nombre, 
           :id_pais, 
           :id_deplocal, 
+          :codreg,
           :latitud, 
           :longitud, 
           :observaciones, 
