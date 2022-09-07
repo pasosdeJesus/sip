@@ -14,7 +14,7 @@ directorio `app/javascript/controllers`, al ejecutar
 ```
 bin/rails sip:stimulus_motores
 ``` 
-en una aplicación (o en la aplicación de prueba del motor) en la aplicación
+en una aplicación (o en la aplicación de prueba del motor) la ruta
 `app/javascript/controllers/mi_motor` será un enlace
 al directorio `app/javascript/controllers` de `mi_motor`, por esto
 desde la aplicación se podrá referenciar con
@@ -34,4 +34,4 @@ data-controller="sip--cancelar-vacio-es-eliminar"
 ```
 Hay otros elementos HTML que deberán marcarse para que ese controlador opere
 bien como puede verse en sus fuentes, pero todos son de la forma 
-`data-sip--cancelar-vacio-es-eliminar...=...`).
+`data-sip--cancelar-vacio-es-eliminar...=...`.
