@@ -39,6 +39,7 @@ fuentes  (por ejemplo para autenticación se emplea `Devise` con modelo
     * [Personalización del punto de montaje](https://github.com/pasosdeJesus/sip/blob/master/doc/punto-de-montaje.md)
     * [Personalización de recursos javascript y css](https://github.com/pasosdeJesus/sip/blob/master/doc/recursos-javascript-y-css.md)
     * [Personalización de diseño visual, logo y favicon](https://github.com/pasosdeJesus/sip/blob/master/doc/diseño-visual-logo-y-favicon.md)
+    * [Uso de controladores stimulus de motores rails](stimulus.md)
   * Internacionalización
     * [Inflecciones en español]()
     * [Internacionalización y personalización de nombres de campos y tablas](https://github.com/pasosdeJesus/sip/blob/master/doc/internacionalizacion-nombres-campos-y-tablas.md)

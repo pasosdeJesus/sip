@@ -8,7 +8,7 @@ export default class extends Controller {
  * 1. Conecte el formulario con este controlador con:
  *    data-controller="sip--cancelar-vacio-es-eliminar"
  * 2. Marque uno a uno los campos determinadores con
- *    data-sip-cancelar-vacio-es-eliminar-target='determinador'
+ *    data-sip--cancelar-vacio-es-eliminar-target='determinador'
  * 3. Cambie el botón cancelar para agregarle:
  *    'data-sip--cancelar-vacio-es-eliminar-target' => 'boton',
  *    'data-sip--cancelar-vacio-es-eliminar-id-param' => @registro.nil? ? '' :
