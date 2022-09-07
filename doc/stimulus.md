@@ -1,3 +1,4 @@
+# Uso de controladores Stimulus de motores rails
 
 En aplicaciones es típico que los controladores stimulus se ubiquen
 en `app/javascript/controllers` pero en motores no hay una sugerencia
