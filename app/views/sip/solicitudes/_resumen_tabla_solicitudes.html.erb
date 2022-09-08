@@ -18,7 +18,7 @@
         <td><%= sol.usuario.nusuario %></td>
         <td> <%= sol.fecha_localizada %> </td>
         <td> <%= sol.solicitud %> </td>
-        <td> <%= sol.estadosol.nombre %> </td>
+        <td> <%= sol.estadosol.nombre if sol.estadosol %> </td>
         <td> <%= sol.usuarionotificar.pluck(:nusuario).join(', ') %> </td>
       </tr>
     <% end %>

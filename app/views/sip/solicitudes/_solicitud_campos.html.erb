@@ -83,15 +83,14 @@
           disabled: !autorizado
         }
       %>
-
+      <%= sol.input :id, as: :hidden %>
     </td>
     <% if sol.object.usuario == current_usuario || sol.object.usuario.nil? || current_usuario.rol == 1 %>
-    <td>
-      <%= link_to_remove_association "Eliminar", f, 
-        :class => 'btn-danger',
-        :'data-existing' => true
-      %>
-    </td>
+      <td>
+        <%= link_to_remove_association "Eliminar", f, 
+          :class => 'btn-danger',
+          :'data-existing' => true %>
+      </td>
     <% end %>
   <% end %>
 </tr>
