@@ -381,6 +381,10 @@ module Sip
             if @registro.respond_to?('current_usuario=')
               @registro.current_usuario = current_usuario
             end
+            if @registro.respond_to?('controlador=')
+              @registro.controlador = self
+            end
+
             authorize! :update, @registro
             filtra_contenido_params
             c2 = clase.demodulize.underscore
