@@ -112,7 +112,7 @@ CREATE FUNCTION public.soundexesp(entrada text) RETURNS text
       		entrada=translate(ltrim(trim(upper(entrada)),'H'),'ÑÁÉÍÓÚÀÈÌÒÙÜ','NAEIOUAEIOUU');
 
         IF array_upper(regexp_split_to_array(entrada, '[^a-zA-Z]'), 1) > 1 THEN
-          RAISE NOTICE 'Esta función sólo maneja una palabra. Usar soundexesp_multi para cadenas con varias palabras';
+          RAISE NOTICE 'Esta función sólo maneja una palabra y no ''%''. Use más bien soundexespm', entrada;
       		RETURN NULL;
         END IF;
 
@@ -195,24 +195,29 @@ CREATE FUNCTION public.soundexesp(entrada text) RETURNS text
 
 
 --
--- Name: soundexesp_multi(text); Type: FUNCTION; Schema: public; Owner: -
+-- Name: soundexespm(text); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION public.soundexesp_multi(entrada text) RETURNS text
+CREATE FUNCTION public.soundexespm(entrada text) RETURNS text
     LANGUAGE plpgsql IMMUTABLE STRICT COST 500
     AS $$
       DECLARE
         soundex text = '' ;
         partes text[];
         sep text = '';
+        se text = '';
       BEGIN
         entrada=translate(ltrim(trim(upper(entrada)),'H'),'ÑÁÉÍÓÚÀÈÌÒÙÜ','NAEIOUAEIOUU');
         partes=regexp_split_to_array(entrada, '[^a-zA-Z]');
 
         --raise notice 'partes=%', partes;
         FOR i IN 1 .. array_upper(partes, 1) LOOP
-          soundex = soundex || sep || soundexesp(partes[i]);
-          sep = ' ';
+          se = soundexesp(partes[i]);
+          IF length(se) > 0 THEN
+            soundex = soundex || sep || se;
+            sep = ' ';
+            --raise notice 'i=% . soundexesp=%', i, se;
+          END IF;
         END LOOP;
 
       	RETURN soundex;	
@@ -237,67 +242,10 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
--- Name: dane_veredal_2020; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.dane_veredal_2020 (
-    id integer NOT NULL,
-    nombre character varying(512) COLLATE public.es_co_utf_8,
-    verlocal_id integer,
-    departamento character varying(512) COLLATE public.es_co_utf_8,
-    municipio character varying(512) COLLATE public.es_co_utf_8
-);
-
-
---
--- Name: depiso; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.depiso (
-    categoria character varying(20),
-    codiso character varying(10),
-    nombre character varying(128),
-    nomalt character varying(128),
-    idioma character varying(2),
-    sipid integer
-);
-
-
---
 -- Name: divipola_oficial_2019_corregido; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.divipola_oficial_2019_corregido (
-    coddep integer,
-    departamento character varying(512) COLLATE public.es_co_utf_8,
-    codmun integer,
-    municipio character varying(512) COLLATE public.es_co_utf_8,
-    codcp integer,
-    centropoblado character varying(512) COLLATE public.es_co_utf_8,
-    tipocp character varying(6)
-);
-
-
---
--- Name: divipola_oficial_2020; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.divipola_oficial_2020 (
-    coddep integer,
-    departamento character varying(512) COLLATE public.es_co_utf_8,
-    codmun integer,
-    municipio character varying(512) COLLATE public.es_co_utf_8,
-    codcp integer,
-    centropoblado character varying(512) COLLATE public.es_co_utf_8,
-    tipocp character varying(6)
-);
-
-
---
--- Name: divipola_oficial_2021_corregido; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.divipola_oficial_2021_corregido (
     coddep integer,
     departamento character varying(512) COLLATE public.es_co_utf_8,
     codmun integer,
@@ -421,46 +369,21 @@ CREATE TABLE public.sip_municipio (
 --
 
 CREATE VIEW public.divipola_sip AS
- SELECT sip_departamento.id_deplocal AS coddep,
-    sip_departamento.nombre AS departamento,
-    ((sip_departamento.id_deplocal * 1000) + sip_municipio.id_munlocal) AS codmun,
-    sip_municipio.nombre AS municipio,
-    (((sip_departamento.id_deplocal * 1000000) + (sip_municipio.id_munlocal * 1000)) + sip_clase.id_clalocal) AS codcp,
-    sip_clase.nombre AS centropoblado,
-    sip_clase.id_tclase AS tipocp,
-    sip_clase.id AS sip_idcp
-   FROM ((public.sip_departamento
-     JOIN public.sip_municipio ON ((sip_municipio.id_departamento = sip_departamento.id)))
-     JOIN public.sip_clase ON ((sip_clase.id_municipio = sip_municipio.id)))
-  WHERE ((sip_departamento.id_pais = 170) AND (sip_clase.fechadeshabilitacion IS NULL))
-  ORDER BY sip_departamento.nombre, sip_municipio.nombre, sip_clase.nombre;
-
-
---
--- Name: iso2022; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.iso2022 (
-    ingles character varying(512),
-    frances character varying(512),
-    alpha2 character varying(2),
-    alpha3 character varying(3),
-    codiso integer
-);
-
-
---
--- Name: paiseswikiiso; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.paiseswikiiso (
-    nombrecomunesp character varying(128),
-    nombreisoesp character varying(128),
-    alfa2 character varying(2),
-    alfa3 character varying(3),
-    codiso integer,
-    observaciones text
-);
+ SELECT sd.id_deplocal AS coddep,
+    upper((sd.nombre)::text) AS departamento,
+    ((sd.id_deplocal * 1000) + sm.id_munlocal) AS codmun,
+    upper((sm.nombre)::text) AS municipio,
+    (((sd.id_deplocal * 1000000) + (sm.id_munlocal * 1000)) + sc.id_clalocal) AS codcp,
+    upper((sc.nombre)::text) AS centropoblado,
+    sc.id_tclase AS tipocp,
+    sc.latitud,
+    sc.longitud,
+    sc.id AS sip_idcp
+   FROM ((public.sip_clase sc
+     JOIN public.sip_municipio sm ON (((sc.fechadeshabilitacion IS NULL) AND (sm.fechadeshabilitacion IS NULL) AND (sc.id_municipio = sm.id))))
+     JOIN public.sip_departamento sd ON (((sd.fechadeshabilitacion IS NULL) AND ((sd.nombre)::text <> 'EXTERIOR'::text) AND (sd.id_pais = 170) AND (sm.id_departamento = sd.id))))
+  WHERE (sc.id < 100000)
+  ORDER BY (upper((sd.nombre)::text)), (upper((sm.nombre)::text)), (upper((sc.nombre)::text));
 
 
 --
@@ -772,13 +695,6 @@ CREATE TABLE public.sip_grupoper (
     nombre character varying(500) NOT NULL COLLATE public.es_co_utf_8,
     anotaciones character varying(1000)
 );
-
-
---
--- Name: TABLE sip_grupoper; Type: COMMENT; Schema: public; Owner: -
---
-
-COMMENT ON TABLE public.sip_grupoper IS 'Creado por sip en sipdes_des';
 
 
 --
@@ -1120,7 +1036,7 @@ CREATE TABLE public.sip_persona (
     tdocumento_id integer,
     CONSTRAINT persona_check CHECK (((dianac IS NULL) OR (((dianac >= 1) AND (((mesnac = 1) OR (mesnac = 3) OR (mesnac = 5) OR (mesnac = 7) OR (mesnac = 8) OR (mesnac = 10) OR (mesnac = 12)) AND (dianac <= 31))) OR (((mesnac = 4) OR (mesnac = 6) OR (mesnac = 9) OR (mesnac = 11)) AND (dianac <= 30)) OR ((mesnac = 2) AND (dianac <= 29))))),
     CONSTRAINT persona_mesnac_check CHECK (((mesnac IS NULL) OR ((mesnac >= 1) AND (mesnac <= 12)))),
-    CONSTRAINT persona_sexo_check CHECK (((sexo = 'S'::bpchar) OR (sexo = 'F'::bpchar) OR (sexo = 'M'::bpchar)))
+    CONSTRAINT persona_sexo_check CHECK (((length(sexo) = 1) AND ('FMS'::text ~~ (('%'::text || (sexo)::text) || '%'::text))))
 );
 
 
@@ -1606,19 +1522,6 @@ CREATE TABLE public.usuario (
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
-
-
---
--- Name: veredas_dane_2020_ogc_fid_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.veredas_dane_2020_ogc_fid_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
 
 
 --
