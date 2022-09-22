@@ -370,6 +370,8 @@ CREATE TABLE public.sip_clase (
     observaciones character varying(5000) COLLATE public.es_co_utf_8,
     ultvigenciaini date,
     ultvigenciafin date,
+    osm_id integer,
+    osm_frontera public.geography(Polygon,4326),
     CONSTRAINT clase_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -445,6 +447,8 @@ CREATE TABLE public.sip_municipio (
     ultvigenciaini date,
     ultvigenciafin date,
     tipomun character varying(32),
+    osm_id integer,
+    osm_frontera public.geography(Polygon,4326),
     CONSTRAINT municipio_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1033,7 +1037,9 @@ CREATE TABLE public.sip_pais (
     nombreiso_ingles character varying(512),
     nombreiso_frances character varying(512),
     ultvigenciaini date,
-    ultvigenciafin date
+    ultvigenciafin date,
+    osm_id integer,
+    osm_frontera public.geography(Polygon,4326)
 );
 
 
