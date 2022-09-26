@@ -371,7 +371,7 @@ CREATE TABLE public.sip_clase (
     ultvigenciaini date,
     ultvigenciafin date,
     osm_id integer,
-    osm_frontera public.geography(Polygon,4326),
+    osm_frontera public.geography(MultiPolygon,4326),
     CONSTRAINT clase_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -410,7 +410,7 @@ CREATE TABLE public.sip_departamento (
     ultvigenciaini date,
     ultvigenciafin date,
     osm_id integer,
-    osm_frontera public.geography(Polygon,4326),
+    osm_frontera public.geography(MultiPolygon,4326),
     CONSTRAINT departamento_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -448,7 +448,7 @@ CREATE TABLE public.sip_municipio (
     ultvigenciafin date,
     tipomun character varying(32),
     osm_id integer,
-    osm_frontera public.geography(Polygon,4326),
+    osm_frontera public.geography(MultiPolygon,4326),
     CONSTRAINT municipio_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1039,7 +1039,7 @@ CREATE TABLE public.sip_pais (
     ultvigenciaini date,
     ultvigenciafin date,
     osm_id integer,
-    osm_frontera public.geography(Polygon,4326)
+    osm_frontera public.geography(MultiPolygon,4326)
 );
 
 

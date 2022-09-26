@@ -4,16 +4,16 @@ class Postgis < ActiveRecord::Migration[7.0]
       CREATE EXTENSION IF NOT EXISTS postgis; 
 
       ALTER TABLE sip_pais ADD osm_id INTEGER;
-      ALTER TABLE sip_pais ADD osm_frontera geography(POLYGON);
+      ALTER TABLE sip_pais ADD osm_frontera geography(MULTIPOLYGON, 4326); 
 
       ALTER TABLE sip_departamento ADD osm_id INTEGER;
-      ALTER TABLE sip_departamento ADD osm_frontera geography(POLYGON);
+      ALTER TABLE sip_departamento ADD osm_frontera geography(MULTIPOLYGON, 4326);
 
       ALTER TABLE sip_municipio ADD osm_id INTEGER;
-      ALTER TABLE sip_municipio ADD osm_frontera geography(POLYGON);
+      ALTER TABLE sip_municipio ADD osm_frontera geography(MULTIPOLYGON, 4326);
 
       ALTER TABLE sip_clase ADD osm_id INTEGER;
-      ALTER TABLE sip_clase ADD osm_frontera geography(POLYGON);
+      ALTER TABLE sip_clase ADD osm_frontera geography(MULTIPOLYGON, 4326);
     SQL
   end
 
