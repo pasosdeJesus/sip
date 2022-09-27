@@ -36,7 +36,15 @@ module Sip
           :habilitado
         ]
       end
-  
+
+      def atributos_show
+        return atributos_index + [
+          :osm_id,
+          :osm_fecha,
+          :osm_frontera
+        ]
+      end
+
       def genclase
         return 'M';
       end

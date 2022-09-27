@@ -256,6 +256,45 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: colombia_mgn_2021; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.colombia_mgn_2021 (
+    gid integer NOT NULL,
+    dpto_ccdgo character varying(2),
+    dpto_cnmbr character varying(250),
+    dpto_ano_c integer,
+    dpto_act_a character varying(100),
+    dpto_narea numeric,
+    dpto_csmbl character varying(3),
+    dpto_vgnc integer,
+    shape_leng numeric,
+    shape_area numeric,
+    geom public.geometry(MultiPolygon,4326)
+);
+
+
+--
+-- Name: colombia_mgn_2021_gid_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.colombia_mgn_2021_gid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: colombia_mgn_2021_gid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.colombia_mgn_2021_gid_seq OWNED BY public.colombia_mgn_2021.gid;
+
+
+--
 -- Name: divhonduras2013; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -372,6 +411,7 @@ CREATE TABLE public.sip_clase (
     ultvigenciafin date,
     osm_id integer,
     osm_frontera public.geography(MultiPolygon,4326),
+    osm_fecha date,
     CONSTRAINT clase_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -411,6 +451,7 @@ CREATE TABLE public.sip_departamento (
     ultvigenciafin date,
     osm_id integer,
     osm_frontera public.geography(MultiPolygon,4326),
+    osm_fecha date,
     CONSTRAINT departamento_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -449,6 +490,7 @@ CREATE TABLE public.sip_municipio (
     tipomun character varying(32),
     osm_id integer,
     osm_frontera public.geography(MultiPolygon,4326),
+    osm_fecha date,
     CONSTRAINT municipio_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion)))
 );
 
@@ -1039,7 +1081,8 @@ CREATE TABLE public.sip_pais (
     ultvigenciaini date,
     ultvigenciafin date,
     osm_id integer,
-    osm_frontera public.geography(MultiPolygon,4326)
+    osm_frontera public.geography(MultiPolygon,4326),
+    osm_fecha date
 );
 
 
@@ -1657,6 +1700,13 @@ CREATE TABLE public.usuarios (
 
 
 --
+-- Name: colombia_mgn_2021 gid; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.colombia_mgn_2021 ALTER COLUMN gid SET DEFAULT nextval('public.colombia_mgn_2021_gid_seq'::regclass);
+
+
+--
 -- Name: sip_bitacora id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1818,6 +1868,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 ALTER TABLE ONLY public.sip_clase
     ADD CONSTRAINT clase_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: colombia_mgn_2021 colombia_mgn_2021_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.colombia_mgn_2021
+    ADD CONSTRAINT colombia_mgn_2021_pkey PRIMARY KEY (gid);
 
 
 --
@@ -2709,6 +2767,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220805181901'),
 ('20220822132754'),
 ('20220921110923'),
-('20220922154705');
+('20220922154705'),
+('20220927112516');
 
 

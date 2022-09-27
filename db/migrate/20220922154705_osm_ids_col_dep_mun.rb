@@ -34,8 +34,10 @@ class OsmIdsColDepMun < ActiveRecord::Migration[7.0]
       UPDATE sip_departamento SET osm_id=1320759 WHERE id_pais=170 AND id_deplocal=70; -- Sucre
       UPDATE sip_departamento SET osm_id=1309495 WHERE id_pais=170 AND id_deplocal=73; -- Tolima
       UPDATE sip_departamento SET osm_id=1322825 WHERE id_pais=170 AND id_deplocal=76; -- Valle del Cauca
-      UPDATE sip_departamento SET osm_id=1359366 WHERE id_pais=170 AND id_deplocal=95; -- Vaupés
-      UPDATE sip_departamento SET osm_id=1357098 WHERE id_pais=170 AND id_deplocal=97; -- Vichada
+      UPDATE sip_departamento SET osm_id=1359366 WHERE id_pais=170 AND id_deplocal=97; -- Vaupés
+      UPDATE sip_departamento SET osm_id=1357098 WHERE id_pais=170 AND id_deplocal=99; -- Vichada
+
+      UPDATE sip_departamento SET osm_id=12893646 WHERE id_pais=170 AND id_deplocal=11; -- Bogotá
     SQL
   end
 
@@ -73,8 +75,10 @@ class OsmIdsColDepMun < ActiveRecord::Migration[7.0]
       UPDATE sip_departamento SET osm_id=NULL WHERE id_pais=170 AND id_deplocal=70; -- Sucre
       UPDATE sip_departamento SET osm_id=NULL WHERE id_pais=170 AND id_deplocal=73; -- Tolima
       UPDATE sip_departamento SET osm_id=NULL WHERE id_pais=170 AND id_deplocal=76; -- Valle del Cauca
-      UPDATE sip_departamento SET osm_id=NULL WHERE id_pais=170 AND id_deplocal=95; -- Vaupés
-      UPDATE sip_departamento SET osm_id=NULL WHERE id_pais=170 AND id_deplocal=97; -- Vichada
+      UPDATE sip_departamento SET osm_id=NULL WHERE id_pais=170 AND id_deplocal=97; -- Vaupés
+      UPDATE sip_departamento SET osm_id=NULL WHERE id_pais=170 AND id_deplocal=99; -- Vichada
+
+      UPDATE sip_departamento SET osm_id=NULL WHERE id_pais=170 AND id_deplocal=11; -- Bogotá
     SQL
   end
 end

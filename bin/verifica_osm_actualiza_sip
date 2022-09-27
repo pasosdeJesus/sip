@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if (test -f ".env") then {
+  . .env
+} fi;
+f=`date +%Y-%m-%d`
+fecharep=$f 
+guion="lib/guiones/verifica_osm_actualiza_sip.rb"
+if (test "$RAILS_ENV" = "production") then {
+	bin/railsp runner -e production $guion
+} else {
+	bin/rails runner -e development $guion
+} fi;
