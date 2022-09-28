@@ -39,7 +39,7 @@ module Dummy
 
     config.active_record.schema_format = :sql
 
-    puts "CONFIG_HOSTS="+ENV.fetch('CONFIG_HOSTS', 'defensor.info').to_s
+    STDERR.puts "CONFIG_HOSTS="+ENV.fetch('CONFIG_HOSTS', 'defensor.info').to_s
     config.hosts.concat(
       ENV.fetch('CONFIG_HOSTS', 'defensor.info').downcase.split(";"))
 
