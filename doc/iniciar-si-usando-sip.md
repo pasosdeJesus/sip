@@ -20,7 +20,7 @@ $ CXX=c++ rails new minsip --database=postgresql --javascript=esbuild
   esto ocurre con nokogiri-- en tal caso anota la versión por 
   instalar --ejemplo 1.13.3-- y ejecuta algo como:
 ```
-doas gem install  nokogiri -v 1.13.3
+doas gem install --install-dir /var/www/bundler/ruby/3.1 nokogiri -v 1.13.3
 ```
   Y después desde el directorio `minsip` vuelve a ejecutar
 ```sh
@@ -36,7 +36,7 @@ npm install --global yarn
 ```sh
 $ bin/rails s
 => Booting Puma
-=> Rails 7.0.2.3 application starting in development
+=> Rails 7.0.4 application starting in development
 => Run `rails server --help` for more startup options
 Puma starting in single mode...
 * Version 5.6.2 (ruby 3.1.1-p18) ("Birdie's Version")
@@ -64,7 +64,7 @@ Puedes probar el ingreso con la interfaz de línea de ordenes psql con:
 ```
 $ psql -h/var/www/var/run/postgresql/ -Uisa5417 minsip_des
 Password for user isa5417:
-psql (14.2)
+psql (14.5)
 Type "help" for help.
 [local:/var/www/var/run/postgresql/] sipdes@minsip_des=#
 ```
@@ -82,6 +82,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '>=3.1.1'
+
+gem 'babel-transpiler'           # Permite tener módulos ES6
 
 gem 'bcrypt'                     # Condensando de claves con bcrypt
 
@@ -116,6 +118,8 @@ gem 'rails'
 
 gem 'rails-i18n'                 # Localización e Internacionalización
 
+gem 'sassc-rails'                # Conversión a CSS
+
 gem 'simple_form'                # Formularios
 
 gem 'sprockets-rails'            # Tuberia de recursos
@@ -135,11 +139,11 @@ gem 'sip',                       # SI estilo Pasos de Jesús
 
 
 group :development, :test do
-  gem 'debug'                 # Depura
+  gem 'code-scanning-rubocop'   # Busca fallas de seguridad
 
   gem 'colorize'
 
-  gem 'code-scanning-rubocop'   # Busca fallas de seguridad
+  gem 'debug'                 # Depura
 
   gem 'rails-erd'               # Genera diagrama entidad asociación
 end
@@ -243,7 +247,6 @@ class Ability  < Sip::Ability
     # Detalles en el wiki de cancan:
     #   https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
-
     # Sin autenticación puede consultarse información geográfica
     can :read, [Sip::Pais, Sip::Departamento, Sip::Municipio, Sip::Clase]
     # No se autorizan usuarios con fecha de deshabilitación
@@ -313,7 +316,7 @@ A continuación prueba que puedes ingresar a la interfaz `psql` de la base de
 desarrollo pero mediante rails:
 ```sh
 $ bin/rails dbconsole
-psql (14.2)
+psql (14.5)
 Type "help" for help.
 
 minsip_des=# \q
@@ -358,7 +361,7 @@ ActiveRecord::Base.pluralize_table_names=false
 y verifica que carga correctamente con:
 ```
 % bin/rails console
-Loading development environment (Rails 7.0.2.3)
+Loading development environment (Rails 7.0.4)
 irb(main):001:0> Rails.configuration.x.formato_fecha
 => "dd/M/yyyy"
 ```
@@ -380,16 +383,17 @@ conexion.execute("INSERT INTO public.usuario
     fechacreacion, created_at, updated_at, rol)
   VALUES (1, 'sip', 'sip@localhost',
     '$2a$10$YQY.luWpKWwNWIlfAQ.dhupblCP23raR35oIfeX1Cnm9mCYzmQvqm',
-    '', '2014-08-14', '2014-08-14', '2014-08-14', 1);")
+    '', '2022-09-30', '2022-09-30', '2022-09-30', 1);")
 ```
 - Ahora borra base, inicializala, carga semillas y prepara índices con:
 ```sh
-$ bin/rails db:drop db:setup sip:indices
+$ bin/rails db:drop db:setup db:seed sip:indices
 ```
-Prueba lo que llevas en la base de datos iniciando consola interactiva de PostgreSQL y realizando una consulta:
+Prueba lo que llevas en la base de datos iniciando consola interactiva de 
+PostgreSQL y realizando una consulta:
 ```$
 $ bin/rails dbconsole
-psql (14.2)
+psql (14.5)
 Type "help" for help.
 
 minsip_des=# select count(*) from sip_clase;
@@ -408,7 +412,8 @@ class Usuario < ActiveRecord::Base
   include Sip::Concerns::Models::Usuario
 end
 ```
-Puedes probar que el modelo opera en una consola irb, por ejemplo:
+Puedes probar que el modelo y revisar que se haya creado el usuario
+especificado en db/seed.rb` en una consola irb, por ejemplo:
 ```sh
 $ bin/rails console
 irb(main):001:0> Usuario.all.count
@@ -441,7 +446,7 @@ irb(main):001:0> UsuariosController
   del usuario en 
   <https://github.com/pasosdeJesus/sip/blob/main/doc/modelo-usuario.md>.
 - Para establecer rutas de anexos y de volcados crea dos directorio según 
-  hayas configurado en `.env` (ej. `mkdir -p archivos/anexos/ archivos/bd`) 
+  hayas configurado en `.env` (ej. `mkdir -p archivos/{anexos,bd}`) 
   y crea el archivo `config/initializers/sip.rb` con algo como:
 ```rb
 Sip.setup do |config|
@@ -468,7 +473,7 @@ $ bin/rails s -p 3000 -b 127.0.0.1
 ```
  y verla operando en un navegador en la dirección http://localhost:3000 
  presentando la página por omisión de rails.
- Deten la aplicación con Control-C para continuar configurando.
+ Detén la aplicación con Control-C para continuar configurando.
 - Para ver el pantallazo inicial en en la ruta (o punto de montaje) `/minsip/` 
   (sin menús, ni una maquetación con bootstrap) debes configurar rutas en 
   `config/routes.rb`
@@ -529,7 +534,7 @@ depender de ese paquete), inicialmente puedes copiar el de la aplicación
 de ejemplo de sip:
 
 ```
-$ ftp -o app/javascript/application.rb https://raw.githubusercontent.com/pasosdeJesus/sip/main/test/dummy/app/javascript/{application.js,jquery.js,jquery-ui.js}
+$ (cd app/javascript && ftp https://raw.githubusercontent.com/pasosdeJesus/sip/main/test/dummy/app/javascript/{application.js,jquery.js,jquery-ui.js})
 ```
 Asegura que se podrán usar funciones auxiliares relacionadas con Bootstrap, 
 dejando `app/helpers/application_helper.rb` con el siguiente contenido:
@@ -540,7 +545,7 @@ module ApplicationHelper
 
 end
 ```
-Para empaquetar Javascript con esbuild agrega al archivo `package.json`:
+Para empaquetar Javascript con esbuild agrega al comienzo de `package.json`:
 ```
   "scripts": {
     "build": "esbuild app/javascript/*.* --preserve-symlinks --bundle --sourcemap --outdir=app/assets/builds",
@@ -548,11 +553,29 @@ Para empaquetar Javascript con esbuild agrega al archivo `package.json`:
   },
 ```
 
+- Emplea los controladores stimulus de sip con:
+```
+  mkdir app/javascript/controllers
+  bin/rails sip:stimulus_motores
+```
+  y crea el archivo `app/javascript/controllers/application.js` con:
+  ```
+
+  import { Application } from "@hotwired/stimulus"
+  
+  const application = Application.start()
+  
+  application.debug = false
+  window.Stimulus   = application
+  
+  export { application }
+  ```
+
   Y verifica que la configuración de javascript con módulos y esbuild es 
   correcta empaquetando en `app/assets/builds/application.js` con:
-```
-yarn build
-```
+  ```
+  yarn build
+  ```
 - La tubería de recursos (i.e sprockets) se encargará de ubicar en un directorio 
   `public/minsip/assets/images` el logo (`logo.jpg`) y los favicons que pongas 
   en la ruta `app/assets/images`. Inicialmente puedes copiar allí 
@@ -564,7 +587,7 @@ ftp https://raw.githubusercontent.com/pasosdeJesus/sip/main/test/dummy/app/asset
 cd ../../..
 ```
   Sprockets también servirá los javascript que pongas en app/assets/javascripts
-  y el javascript modular empaqueta por esbuild en app/assets/build.
+  y el javascript modular empaquetado por esbuild en app/assets/build.
 
   Puedes usar sprockets para transmitir hojas de estilo preconfiguradas de sip 
   y sobrecargables en `app/assets/stylesheets/` dejando en 
@@ -584,7 +607,7 @@ contenido (creando antes el directorio `app/assets/javascripts`):
 //= require_tree .
 ```
 En `app/assets/config/manifest.js` indica recursos por incluir. 
-Por ejemplo javascript en espacio globall manejado por sprockets
+Por ejemplo javascript en espacio global manejado por sprockets
 (incluyendo los de motores) y el modular empaquetado con esbuild.
 ```
 //= link_tree ../images
@@ -657,27 +680,27 @@ recuerda que el usuario inicial es `sip` con clave `sip`.
   `sip/test/dummy/bin` en el directorio `bin` de tu aplicación los guiones 
   `corre`, `detiene` y `migra`. Así podrás configurar puerto e IP en .env 
   e iniciar con:
-```
-bin/corre
-```
-o sin precompilar recursos (rápido) con:
-```
-R=1 bin/corre
-```
-Este script además ejecutará la tarea rake `sip:stimulus_motores` que
-enlaza controladores stimulus de motores en subdirectorios
-de su directorio `app/javascript/controllers`.
+  ```
+  bin/corre
+  ```
+  o sin precompilar recursos (rápido) con:
+  ```
+  R=1 bin/corre
+  ```
+  Este script `bin/corre` además ejecutará la tarea rake 
+  `sip:stimulus_motores` que enlaza controladores stimulus de motores 
+  en subdirectorios de tu directorio `app/javascript/controllers`.
 
-Por otra parte si crea el archivo `Procfile` con:
-```
-rails: R=f bin/corre
-js: yarn start --watch
-```
-y copia el archivo `esbuild-des.config.js` de `sip/test/dummy`,
-al ejecutar `bin/corre` se usará `foreman` para lanzar dos procesos: uno
-para la ejecución de rails y otro para realizar recargas vivas
-de sus modificaciones a `app/javascript` (es decir no tendrá que detener la 
-aplicación, reempaqueta con esbuild y recargar en el navegador porque
-todo esto se hará automáticamente cada vez que modifique una fuente
-en `app/javascript`).
+  Por otra parte si creas el archivo `Procfile` con:
+  ```
+  rails: R=f bin/corre
+  js: yarn start --watch
+  ```
+  y copias el archivo `esbuild-des.config.js` de `sip/test/dummy`,
+  al ejecutar `bin/corre` se usará `foreman` para lanzar dos procesos: uno
+  para la ejecución de rails y otro para realizar recargas vivas
+  de sus modificaciones a `app/javascript` (es decir no tendrá que detener la 
+  aplicación, reempaquetarla con esbuild y recargarla en el navegador porque
+  todo esto se hará automáticamente cada vez que modifique una fuente
+  en `app/javascript`).
 

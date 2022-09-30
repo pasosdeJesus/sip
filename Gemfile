@@ -58,9 +58,9 @@ gem 'will_paginate'             # Pagina listados
 
 
 group :development, :test do
-  gem 'colorize'
-
   gem 'code-scanning-rubocop'
+  
+  gem 'colorize'
  
   gem 'debug', ">= 1.0.0", platforms: %i[ mri mingw x64_mingw ]
 

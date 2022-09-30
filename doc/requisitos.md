@@ -7,7 +7,7 @@
   <http://pasosdejesus.github.io/usuario_adJ/conf-programas.html#ruby>
 * Ruby versión >= 3.1
 * Ruby on Rails >= 7.0.2 (la instalas con `gem install rails`)
-* PostgreSQL >= 14.2 con extensión `unaccent` disponible y posibilidad
+* PostgreSQL >= 14.5 con extensión `unaccent` disponible y posibilidad
   de crearle un usuario con permisos para crear bases de datos
 * `node.js` >= 12.22.9 y `coffescript` instalado globalmente 
   (i.e.  `npm install -g coffee-script`)
