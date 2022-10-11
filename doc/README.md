@@ -22,36 +22,37 @@ fuentes  (por ejemplo para autenticación se emplea `Devise` con modelo
 ## Contenido
 
 * Implementación
-  * [Requisitos](https://github.com/pasosdeJesus/sip/blob/master/doc/requisitos.md)
-  * [Iniciar un sistema de información usando Sip](https://github.com/pasosdeJesus/sip/blob/master/doc/iniciar-si-usando-sip.md)
-  * [Ejemplo de creación de tabla, modelo y controlador con vistas automáticas](https://github.com/pasosdeJesus/sip/blob/master/doc/ejemplo-con-vistas-automaticas.md)
+  * [Requisitos](requisitos.md)
+  * [Iniciar un sistema de información usando Sip](iniciar-si-usando-sip.md)
+  * [Ejemplo de creación de tabla, modelo y controlador con vistas automáticas](ejemplo-con-vistas-automaticas.md)
   * Modelos
-    * [Tablas incluidas y modelo entidad-asociación](https://github.com/pasosdeJesus/sip/blob/master/doc/modelo-entidad-asociacion.md)
-    * [Tablas Básicas](https://github.com/pasosdeJesus/sip/blob/master/doc/tablas-basicas.md)
-    * [Tablas Asociativas](https://github.com/pasosdeJesus/sip/blob/master/doc/tablas-asociativas.md)
-    * [Uso y personalización del modelo usuario](https://github.com/pasosdeJesus/sip/blob/master/doc/modelo-usuario.md)
-    * [Personalización de modelos](https://github.com/pasosdeJesus/sip/blob/master/doc/personalizacion-de-modelos.md)
+    * [Tablas incluidas y modelo entidad-asociación](modelo-entidad-asociacion.md)
+    * [Tablas Básicas](tablas-basicas.md)
+    * [Tablas Asociativas](tablas-asociativas.md)
+    * [Uso y personalización del modelo usuario](modelo-usuario.md)
+    * [Personalización de modelos](personalizacion-de-modelos.md)
   * Controladores
-    * [Facilidades con controladores descendientes de Sip::ModelosController](https://github.com/pasosdeJesus/sip/blob/master/doc/facilidades-controlador.md)
+    * [Facilidades con controladores descendientes de Sip::ModelosController](facilidades-controlador.md)
   * Rutas y vistas
-    * [Vistas automáticas con Sip::Modelo y Sip::ModelosController](https://github.com/pasosdeJesus/sip/blob/master/doc/vistas-automaticas.md)
-    * [Personalización de rutas, controladores y vistas](https://github.com/pasosdeJesus/sip/blob/master/doc/rutas-controladores-vistas.md)
-    * [Personalización del punto de montaje](https://github.com/pasosdeJesus/sip/blob/master/doc/punto-de-montaje.md)
-    * [Personalización de recursos javascript y css](https://github.com/pasosdeJesus/sip/blob/master/doc/recursos-javascript-y-css.md)
-    * [Personalización de diseño visual, logo y favicon](https://github.com/pasosdeJesus/sip/blob/master/doc/diseño-visual-logo-y-favicon.md)
+    * [Vistas automáticas con Sip::Modelo y Sip::ModelosController](vistas-automaticas.md)
+    * [Personalización de rutas, controladores y vistas](rutas-controladores-vistas.md)
+    * [Personalización del punto de montaje](punto-de-montaje.md)
+    * [Personalización de recursos javascript y css](recursos-javascript-y-css.md)
+    * [Personalización de diseño visual, logo y favicon](diseño-visual-logo-y-favicon.md)
     * [Uso de controladores stimulus de motores rails](stimulus.md)
-  * Internacionalización
-    * [Inflecciones en español]()
-    * [Internacionalización y personalización de nombres de campos y tablas](https://github.com/pasosdeJesus/sip/blob/master/doc/internacionalizacion-nombres-campos-y-tablas.md)
-    * [Localización de cantidades numéricas y fechas](https://github.com/pasosdeJesus/sip/blob/master/doc/localizacion-numeros-y-fechas.md)
+  * Internacionalización y personalización
+    * [Inflecciones en español](inflecciones_espanol.md)
+    * [Internacionalización y personalización de nombres de campos y tablas](internacionalizacion-nombres-campos-y-tablas.md)
+    * [Localización de cantidades numéricas y fechas](localizacion-numeros-y-fechas.md)
+    * [Personalizaciones que pueden hacer los desarrolladores](personalizaciones_desarrolladores.md)
 * Pruebas
-  * [Aplicación de prueba](https://github.com/pasosdeJesus/sip/blob/master/doc/aplicacion-de-prueba.md)
-  * [Pruebas con minitest](https://github.com/pasosdeJesus/sip/blob/master/doc/pruebas-con-minitest.md)
-  * [Pruebas del sistema con sideex](https://github.com/pasosdeJesus/sip/blob/master/doc/pruebas-al-sistema-con-sideex.md)
+  * [Aplicación de prueba](aplicacion-de-prueba.md)
+  * [Pruebas con minitest](pruebas-con-minitest.md)
+  * [Pruebas del sistema con sideex](pruebas-al-sistema-con-sideex.md)
 * Mantenimiento 
-  * [Configurar copia de respaldo cifrada](https://github.com/pasosdeJesus/sip/blob/master/doc/respaldo-cifrado.md)
+  * [Configurar copia de respaldo cifrada](respaldo-cifrado.md)
   * Vea ayudas para actualizaciones en el wiki de sip: [https://github.com/pasosdeJesus/sip/wiki]
 * Convenciones, modularidad
-  * [Convenciones respecto al código fuente](https://github.com/pasosdeJesus/sip/blob/master/doc/convenciones.md)
-  * [Iniciar un motor que use sip](https://github.com/pasosdeJesus/sip/blob/master/doc/iniciar-motor-con-sip.md)
+  * [Convenciones respecto al código fuente](convenciones.md)
+  * [Iniciar un motor que use sip](iniciar-motor-con-sip.md)
 
