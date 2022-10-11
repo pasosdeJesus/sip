@@ -111,7 +111,6 @@ GEM
     choice (0.2.0)
     cldr-plurals-runtime-rb (1.1.0)
     climate_control (0.2.0)
-    cliver (0.3.2)
     code-scanning-rubocop (0.6.1)
       rubocop (~> 1.0)
     coffee-rails (5.0.0)
@@ -125,9 +124,9 @@ GEM
     concurrent-ruby (1.1.10)
     connection_pool (2.3.0)
     crass (1.0.6)
-    cuprite (0.13)
-      capybara (>= 2.1, < 4)
-      ferrum (~> 0.11.0)
+    cuprite (0.14.2)
+      capybara (~> 3.0)
+      ferrum (~> 0.12.0)
     debug (1.6.2)
       irb (>= 1.3.6)
       reline (>= 0.3.1)
@@ -146,10 +145,10 @@ GEM
       railties (>= 3.2)
     erubi (1.11.0)
     execjs (2.8.1)
-    ferrum (0.11)
+    ferrum (0.12)
       addressable (~> 2.5)
-      cliver (~> 0.3)
       concurrent-ruby (~> 1.1)
+      webrick (~> 1.7)
       websocket-driver (>= 0.6, < 0.8)
     ffi (1.15.5)
     globalid (1.0.0)
@@ -157,7 +156,7 @@ GEM
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
-    irb (1.4.1)
+    irb (1.4.2)
       reline (>= 0.3.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
@@ -184,7 +183,7 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
-    msgpack (1.5.6)
+    msgpack (1.6.0)
     net-imap (0.3.1)
       net-protocol
     net-pop (0.1.2)
@@ -251,7 +250,7 @@ GEM
     rake (13.0.6)
     redis (5.0.5)
       redis-client (>= 0.9.0)
-    redis-client (0.9.0)
+    redis-client (0.10.0)
       connection_pool
     regexp_parser (2.6.0)
     reline (0.3.1)
@@ -324,13 +323,14 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webrick (1.7.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     will_paginate (3.3.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.0)
+    zeitwerk (2.6.1)
 
 PLATFORMS
   x86_64-openbsd
@@ -378,4 +378,4 @@ RUBY VERSION
    ruby 3.1.2p20
 
 BUNDLED WITH
-   2.3.22
+   2.3.23
