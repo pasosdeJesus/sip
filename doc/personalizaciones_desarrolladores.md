@@ -8,7 +8,7 @@ hacer un desarrollador, típicamente al momento de la instalación son:
   son:
 
 | Valor de FORMATO_FECHA | Representa | Ejemplo |
-|---|---|
+|---|---|---|
 | `dd/M/yyyy`  | Formato colombiano | `26/Ene/2022` | 
 | `yyyy-mm-dd` | Formato ISO | '2022-01-26' | 
 
