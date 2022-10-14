@@ -71,6 +71,10 @@ module Sip
             'M'
           end
 
+          def editar_intermedio(registro, usuario_actual_id)
+            registro.encrypted_password = ''  # Si es vacía no se cambiará
+          end
+
           def sip_pre_create
             params[:usuario][:encrypted_password] = BCrypt::Password.
               create(params[:usuario][:encrypted_password],
