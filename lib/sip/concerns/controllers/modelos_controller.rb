@@ -302,7 +302,9 @@ module Sip
           # Validaciones adicionales a las del modelo que 
           # requieren current_usuario y current_ability y que
           # bien no se desean que generen una excepción o bien
-          # que no se pudieron realizar con cancancan
+          # que no se pudieron realizar con cancancan.
+          # @return true si pasan validaciones o false y deja detalle en
+          # @validaciones_error
           def validaciones(registro)
             @validaciones_error = ''
             return true
