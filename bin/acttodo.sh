@@ -133,11 +133,6 @@ if (test "$SALTASIFASOL" != "1") then {
   actuno si_fasol; 
 } fi;
 
-if (test "$SALTASIBDHN" != "1") then {
-  actuno si_bdhn; 
-} fi;
-
-
 if (test "$SALTASIVELSJR" != "1") then {
   echo "**** sivelsjr"
   actuno sivel2_sjr test/dummy; 

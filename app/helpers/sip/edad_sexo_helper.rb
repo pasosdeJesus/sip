@@ -44,7 +44,7 @@ module Sip
         return -1
       end
       t = modelorango.constantize.habilitados
-      idsin = t.where(nombre: 'SIN INFORMACIÓN')
+      idsin = t.where("unaccent(nombre) ILIKE unaccent('SIN INFORMACIÓN')")
       if idsin.count == 1
         idsin = idsin.take.id
       else
