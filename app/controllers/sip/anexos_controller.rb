@@ -33,5 +33,19 @@ module Sip
         end
       end
     end
+
+    def mostrar_portada
+      if !params[:id].nil?
+        @anexo = Anexo.find(params[:id].to_i)
+        ruta = @anexo.adjunto_file_name
+        pdfp=sprintf(Sip.ruta_anexos.to_s + "/%d_%s", @anexo.id.to_i, 
+                  File.basename(ruta))
+        p `pdftoppm -png -f 1 -l 1 "#{pdfp}" "#{pdfp[..-5]}"`
+        ruta_im = pdfp[..-5] + "-1.png"
+        logger.debug "Descargando #{ruta_im}"
+        send_file ruta_im, x_sendfile: true
+      end
+    end
+
   end
 end
