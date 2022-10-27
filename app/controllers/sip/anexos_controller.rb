@@ -40,8 +40,11 @@ module Sip
         ruta = @anexo.adjunto_file_name
         pdfp=sprintf(Sip.ruta_anexos.to_s + "/%d_%s", @anexo.id.to_i, 
                   File.basename(ruta))
-        p `pdftoppm -png -f 1 -l 1 "#{pdfp}" "#{pdfp[..-5]}"`
-        ruta_im = pdfp[..-5] + "-1.png"
+        ruta_imd = ''
+        if ruta.length > 5 && ruta[-4..-1] == '.pdf'
+          p `pdftoppm -png -f 1 -l 1 "#{pdfp}" "#{pdfp[..-5]}"`
+          ruta_im = pdfp[..-5] + "-1.png"
+        end
         logger.debug "Descargando #{ruta_im}"
         send_file ruta_im, x_sendfile: true
       end
