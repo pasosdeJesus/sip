@@ -5,6 +5,8 @@ Sip::Engine.routes.draw do
     as: 'descarga_anexo'
   get '/anexos/abre_anexo/:id', to: 'anexos#abre_anexo',
     as: 'abre_anexo'
+  get '/anexos/mostrar_portada/:id', to: 'anexos#mostrar_portada',
+    as: 'mostrar_portada'
   get '/controldeacceso' => 'hogar#ayuda_controldeacceso',
     as: 'ayuda_controldeacceso'
   get "/gruposper" => 'gruposper#index'

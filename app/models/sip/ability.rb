@@ -170,6 +170,7 @@ module Sip
       can :buscar, Sip::Ubicacion
       can :lista, Sip::Ubicacion
       can :descarga_anexo, Sip::Anexo
+      can :mostrar_portada, Sip::Anexo
       can :abre_anexo, Sip::Anexo
       can :nuevo, Sip::Ubicacion
       can :read, Sip::Ubicacionpre
