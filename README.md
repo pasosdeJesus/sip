@@ -89,7 +89,7 @@ de información como:
 - Vistas y formularios generados con las herramientas estándar de `rails`
   y `simple_form`. Listados paginados con `will_paginate`.
 - Preparado para construir aplicaciones adaptables (_responsive_) con
-  `bootstrap`, `coffescript`, `jquery` y `jquery-ui`.   Se recomienda uso
+  `bootstrap`, `coffescript`, `jquery`.   Se recomienda uso
   de `chosen` para cuadros de selección simple y múltiple y 
   `bootstrap-datepicker` para campos de fecha.
 - Incluye biblioteca para operaciones comunes con javascript, por ejemplo para

@@ -534,7 +534,7 @@ depender de ese paquete), inicialmente puedes copiar el de la aplicación
 de ejemplo de sip:
 
 ```
-$ (cd app/javascript && ftp https://raw.githubusercontent.com/pasosdeJesus/sip/main/test/dummy/app/javascript/{application.js,jquery.js,jquery-ui.js})
+$ (cd app/javascript && ftp https://raw.githubusercontent.com/pasosdeJesus/sip/main/test/dummy/app/javascript/{application.js,jquery.js})
 ```
 Asegura que se podrán usar funciones auxiliares relacionadas con Bootstrap, 
 dejando `app/helpers/application_helper.rb` con el siguiente contenido:
