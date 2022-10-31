@@ -151,9 +151,8 @@ module Sip
           validates :anionac, :numericality => {:allow_blank => true}
           validates :mesnac, :numericality => {:allow_blank => true}
           validates :dianac, :numericality => {:allow_blank => true}
-          validate :vfechanac
-          validate :vformatonumdoc
 
+          validate :vformatonumdoc
           def vformatonumdoc
             if (tdocumento && tdocumento.formatoregex != '' && 
                 !(numerodocumento =~ Regexp.new("^#{tdocumento.formatoregex}$")))
@@ -162,6 +161,7 @@ module Sip
             end
           end
 
+          validate :vfechanac
           def vfechanac
             anioactual= Time.now.strftime("%Y").to_i	  
             if (anionac && anionac>anioactual)
