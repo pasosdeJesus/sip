@@ -304,6 +304,62 @@ if (typeof String.prototype.endsWith != 'function')
     )
   return
   
+
+@sip_enviarautomatico_formulario_y_repinta_retrollamada3 = (idf, listaidsrempl, retrollamada, params, metodo='GET', alertaerror=true, vcommit='Enviar') ->
+  root =  window
+  t = Date.now()
+  d = -1
+  if (root.sip_enviarautomatico_t)
+    d = (t - root.sip_enviarautomatico_t)/1000
+  root.sip_enviarautomatico_t = t
+  f = $('form[id=' + idf + ']')
+  root.sip_enviarautomatico_idf = idf
+  root.sip_enviarautomatico_l = listaidsrempl
+  # NO se permite mas de un envio en 2 segundos 
+  if (f.length ==1 && (d == -1 || d > 2))
+    a = f.attr('action')
+    vd = f.serializeArray()
+    vd.push({name: 'commit', value: vcommit})
+    vd.push({name: '_sip_enviarautomatico', value: 1})
+    vd.push({name: '_sip_enviarautomatico_y_repinta', value: 1})
+    dat = $.param(vd)
+    # En ocasiones lanza 2 veces seguidas el mismo evento. 
+    # Evitamos enviar lo mismo.
+    if (!root.dant || root.dant != d)
+      root.dant = d 
+      $.ajax({
+        url: a, 
+        data: dat,
+        method: metodo,
+        dataType: 'html',
+        beforeSend: ((xhr) -> 
+          # Asegurar envio de Token CSRF
+          xhr.setRequestHeader('X-CSRF-Token', 
+            $('meta[name="csrf-token"]').attr('content'))
+        ),
+        error: ((response) ->
+          if alertaerror && response.status != 0 && response.responseText != ''
+            alert('Error: el servicio respondió: ' + 
+              response.status + '\n' + response.responseText) 
+        ),
+        success: ( (e, r, j) ->
+          listaidsremp = root.sip_enviarautomatico_l
+          numremp = 0
+          listaidsremp.forEach((idf) ->
+            le = $(e).find('#' + idf)
+            if le.length > 0
+              numremp++
+              t = $(e).find('#' + idf)[0]
+              $('#' + idf).html(t.innerHTML)
+          )
+          retrollamada(numremp, params[0], params[1], params[2])
+          return
+    )
+
+      })
+  return
+
+ 
 # Envia con AJAX datos del formulario, junto con el botón submit,
 # evitando duplicaciones y volviendo a pintar el formulario.
 # @param idf      Id de formulario 
