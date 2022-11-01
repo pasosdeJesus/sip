@@ -213,7 +213,7 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
-    rubocop (1.37.1)
+    rubocop (1.38.0)
       json (~> 2.3)
       parallel (~> 1.10)
       parser (>= 3.1.2.1)
@@ -295,7 +295,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     will_paginate (3.3.1)
-    zeitwerk (2.6.1)
+    zeitwerk (2.6.3)
 
 PLATFORMS
   x86_64-openbsd
