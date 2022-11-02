@@ -44,7 +44,7 @@
     <meta name="msapplication-config" content="/assets/browserconfig.xml">
 
   </head>
-  <body>
+  <body data-controller='inicializa'>
 
     <%= barra_navegacion(
       marca: content_for?(:titulo) ? yield(:titulo) : Sip.titulo,
