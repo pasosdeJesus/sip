@@ -47,8 +47,24 @@ module Sip
           end
 
           def atributos_form
-            a = atributos_show - [:id]
+            a = atributos_show 
             return a
+          end
+
+
+          def new
+            @encform_html = {
+              'data-controller': 'sip--sindocaut'
+            }
+            new_gen
+            render layout: 'application'
+          end
+
+          def edit
+            @encform_html = {
+              'data-controller': 'sip--sindocaut'
+            }
+            edit_gen
           end
 
           def index_sip(c = nil)
@@ -135,6 +151,77 @@ module Sip
               format.html { render inilne: oj.to_s, status: :ok }
             end
           end
+
+          # Retorna una identificación para tipo de documento SIN DOCUMENTO
+          # para una persona en base
+          def identificacionsd
+            pid = nil
+            if params && params[:persona_id] && params[:persona_id] != ''
+              pid = params[:persona_id].to_i
+            end
+            ndoc = Sip::PersonasController.
+              nueva_persona_sd_posible_numerodocumento(pid)
+            puts "OJO ndoc=#{ndoc}"
+            respond_to do |format|
+              format.json {
+                render inline: ndoc
+                return
+              }
+              format.html {
+                render inline: ndoc
+                return
+              }
+            end
+          end
+
+          # Retorna una propuesta para número de documento con base
+          # en la id de la persona (no nil)
+          def self.mejora_nuevo_numerodocumento_sindoc(persona_id)
+            numerodocumento = persona_id
+            while Sip::Persona.where(
+                tdocumento_id: 11, numerodocumento: numerodocumento
+            ).where('id<>?', persona_id).count > 0 do
+              numerodocumento = numerodocumento.to_s
+              if numerodocumento.length > 0 && numerodocumento[-1] >= 'A' && 
+                  numerodocumento[-1] < 'Z'
+                ul = numerodocumento[-1].ord + 1
+                numerodocumento = numerodocumento[0..-2] + ul.chr(Encoding::UTF_8)
+              else
+                numerodocumento += 'A'
+              end
+            end
+            return numerodocumento
+            end
+
+            def self.nueva_persona_sd_posible_numerodocumento(persona_id)
+              if persona_id.nil?
+                ruid = Sip::Persona.connection.execute <<-SQL
+                  SELECT last_value FROM sip_persona_id_seq;
+                SQL
+                persona_id = ruid[0]['last_value'] + 1
+              end
+              numerodocumento = self.mejora_nuevo_numerodocumento_sindoc(
+                persona_id)
+              return numerodocumento
+            end
+
+            def self.nueva_persona_valores_predeterminados(menserror)
+              numerodocumento = self.nueva_persona_sd_posible_numerodocumento(
+                nil)
+              persona = Sip::Persona.create(
+                nombres: 'N',
+                apellidos: 'N',
+                sexo: 'S',
+                tdocumento_id: 11, # SIN DOCUMENTO
+                numerodocumento: numerodocumento
+              )
+              if !persona.save(validate: false)
+                menserror << 'No pudo crear persona'
+                return nil
+              end
+              return persona
+            end
+
 
           def set_persona
             @persona = Sip::Persona.find(params[:id])

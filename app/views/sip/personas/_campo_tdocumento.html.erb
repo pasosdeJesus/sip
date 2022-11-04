@@ -1,5 +1,6 @@
 <%= f.input :tdocumento_id,
   collection: Sip::Tdocumento.habilitados,
   label_method: :nombre,
-  value_method: :id 
+  value_method: :id,
+  input_html: { "data-action": "change->sip--sindocaut#cambia_tdocumento"}
 %>

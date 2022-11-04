@@ -188,29 +188,47 @@ EOF
     # `mi-motor--mi-controlador`
     # Agregue a su `.gitignore` las rutas de los motores e.g
     # `app/javascript/controllers/mi_motor`
+
+    # @param motor identificación del motor e.g sip
+    # @param rutac ruta con controlador stimulus por enlazar  e.g
+    # ../../app/javascript/controllers
+    # @param cgitignore  líneas de .gitignore
+    # @param pora lista de rutas por agregar a .gitignore
+    def enlaza(motor, rutac, cgitignore, pora)
+      puts "Enlazando controladores de #{motor}"
+      rr = "app/javascript/controllers/#{motor}"
+      nr=File.join(FileUtils.pwd, rr)
+      if File.exist?(nr) 
+        if File.symlink?(nr)
+          FileUtils.rm(nr)
+        else
+          puts "** Ya existe directorio #{nr}. No se crea enlace a #{rutac}"
+          return
+        end
+      end
+      FileUtils.ln_sf(rutac, nr) 
+      if cgitignore != [] && !cgitignore.include?(rr)
+        pora << rr
+      end
+    end
+
     cgitignore = []
     if File.exist?('.gitignore')
       cgitignore = file_data = File.read(".gitignore").split
     end
     pora = []
+    # Si es aplicacíon de prueba de un motor enlazar los del motor
+    rutac = '../../app/javascript/controllers'
+    if Dir.exists?(rutac)
+      if Dir['../../*gemspec'].count == 1
+        enlaza(Dir['../../*gemspec'][0][6..-9], "../../../#{rutac}", 
+               cgitignore, pora)
+      end
+    end
     Gem::Specification.find_all.each do |s|
-      rcon = File.join(s.gem_dir, '/app/javascript/controllers')
-      if Dir.exist?(rcon)
-        puts "Enlazando controladores de #{s.name}"
-        rr = "app/javascript/controllers/#{s.name}"
-        nr=File.join(FileUtils.pwd, rr)
-        if File.exist?(nr) 
-          if File.symlink?(nr)
-            FileUtils.rm(nr)
-          else
-            puts "** Ya existe directorio #{nr}. No se crea enlace a #{rcon}"
-            next
-          end
-        end
-        FileUtils.ln_sf(rcon, nr) 
-        if cgitignore != [] && !cgitignore.include?(rr)
-          pora << rr
-        end
+      rutac = File.join(s.gem_dir, '/app/javascript/controllers')
+      if Dir.exist?(rutac)
+        enlaza(s.name, rutac, cgitignore, pora)
       end
     end
     puts "Ejecutando stimulus:manifest:update"

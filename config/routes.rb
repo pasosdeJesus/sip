@@ -16,6 +16,10 @@ Sip::Engine.routes.draw do
   get "/personas" => 'personas#index'
   get "/personas/datos" => 'personas#datos'
   get "/personas/remplazar" => 'personas#remplazar'
+
+  get '/personas/identificacionsd' => 'personas#identificacionsd',
+    as: :personas_identificacionsd
+
   get "/respaldo7z" => 'respaldo7z#new', as: 'respaldo7z'
   post "/respaldo7z" => 'respaldo7z#create'
   get "/tablasbasicas" => 'hogar#tablasbasicas'
