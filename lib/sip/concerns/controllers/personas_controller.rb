@@ -33,7 +33,7 @@ module Sip
               :municipio,
               :clase,
               :nacionalde,
-              :tdocumento,
+              :tdocumento_id,
               :numerodocumento
             ]
           end
