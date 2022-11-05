@@ -237,7 +237,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.5.0)
+    selenium-webdriver (4.6.1)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -267,7 +267,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    twitter_cldr (6.11.3)
+    twitter_cldr (6.11.4)
       camertron-eprun
       cldr-plurals-runtime-rb (~> 1.1)
       tzinfo
@@ -295,7 +295,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     will_paginate (3.3.1)
-    zeitwerk (2.6.3)
+    zeitwerk (2.6.4)
 
 PLATFORMS
   x86_64-openbsd
@@ -337,4 +337,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.3.24
+   2.3.25
