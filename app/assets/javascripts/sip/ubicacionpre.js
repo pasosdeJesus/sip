@@ -107,7 +107,7 @@ function deshabilita_otros_sinohaymun(e, campoubi){
   lugar.attr('disabled', true).trigger('chosen:updated')
   sitio.val(null)
   sitio.attr('disabled', true).trigger('chosen:updated')
-  tsitio.val(1)
+  tsitio.val(3)
   tsitio.attr('disabled', true).trigger('chosen:updated')
   latitud.val("")
   latitud.attr('disabled', true).trigger('chosen:updated')
