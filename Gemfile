@@ -75,8 +75,8 @@ end
 
 group :test do
 
-  gem 'capybara',
-    git: 'https://github.com/teamcapybara/capybara.git', branch: :master
+  gem 'capybara'#,
+    #git: 'https://github.com/teamcapybara/capybara.git', branch: :master
 
   gem "connection_pool"
   
