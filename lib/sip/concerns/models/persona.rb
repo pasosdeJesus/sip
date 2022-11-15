@@ -178,6 +178,11 @@ module Sip
             end
             if (dianac && mesnac && mesnac == 2 && dianac > 29)
               errors.add(:dianac, "Dia debe ser menor o igual a 29")
+            elsif (anionac && mesnac && dianac && mesnac == 2 && dianac == 29)
+              ud = Date.civil(anionac, mesnac, -1)
+              if (dianac > ud.day)
+                errors.add(:dianac, "Dia debe ser menor o igual a #{ud.day}")
+              end
             elsif (dianac && mesnac && (mesnac == 4 || mesnac == 6 || 
                                         mesnac == 9 || mesnac == 11) && 
                                         dianac > 30)
