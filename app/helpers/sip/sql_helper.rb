@@ -210,5 +210,16 @@ module Sip
     end
     module_function :rehabilita_centropoblado
 
+
+    # Decide si existe una restricción r en base PostgreSQL
+    def existe_restricción_pg?(r)
+      c = "SELECT EXISTS("\
+        "SELECT * FROM pg_constraint WHERE conname = '#{r}'"\
+        ");"
+      r=execute(c)
+      return r[0]['exists']
+    end
+    module_function :existe_restricción_pg?
+
   end
 end
