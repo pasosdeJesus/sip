@@ -25,12 +25,13 @@ export default class extends Controller {
   cambia_tdocumento(e) {
 
     console.log("numerodocumento ahora es", this.numerodocumentoTarget.value)
+    var purl = window.puntomontaje;
+    if (purl == "/") {
+      purl = "";
+    }
     if (e.target.value == '11' && 
       this.numerodocumentoTarget.value == '') { // SIN DOCUMENTO
-      var purl = window.puntomontaje;
-      if (purl == "/") {
-        purl = "";
-      }
+      console.log("sin documento")
       window.Rails.ajax({
         type: 'GET',
         url: purl + '/personas/identificacionsd?persona_id=' + 
@@ -43,6 +44,10 @@ export default class extends Controller {
           window.alert('No pudo consultar identificación.')
         }
       })
+    }
+    else {
+      console.log("con documento")
+      this.numerodocumentoTarget.value = null;
     }
 
   }
