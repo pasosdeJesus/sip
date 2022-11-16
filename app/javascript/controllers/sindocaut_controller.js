@@ -31,7 +31,6 @@ export default class extends Controller {
     }
     if (e.target.value == '11' && 
       this.numerodocumentoTarget.value == '') { // SIN DOCUMENTO
-      console.log("sin documento")
       window.Rails.ajax({
         type: 'GET',
         url: purl + '/personas/identificacionsd?persona_id=' + 
@@ -46,7 +45,6 @@ export default class extends Controller {
       })
     }
     else {
-      console.log("con documento")
       this.numerodocumentoTarget.value = null;
     }
 
