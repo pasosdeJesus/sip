@@ -24,7 +24,9 @@
             operacion: ['actualizar', 'importar', 'iniciar', 'tocar']).order('fecha DESC').each do |r| %>
             <tr>
               <th scope="row"><%= r.fecha %></th>
-              <td><%= r.usuario_id ? Usuario.find(r.usuario_id).nusuario : ''  %></td>
+              <td><%= r.usuario_id && 
+                Usuario.where(id: r.usuario_id).count > 0 ? 
+                Usuario.find(r.usuario_id).nusuario : ''  %></td>
               <td><%= r.ip %></td>
               <td><%= r.operacion %></td>
               <td><%= r.detalle %></td>
