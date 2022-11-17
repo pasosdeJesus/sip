@@ -16,6 +16,22 @@ GIT
   specs:
     cocoon (1.2.11)
 
+PATH
+  remote: .
+  specs:
+    sip (2.1.0.beta1)
+      cancancan
+      coffee-rails
+      devise
+      devise-i18n
+      kt-paperclip
+      minitest
+      rails
+      rails-i18n
+      sassc-rails
+      simple_form
+      twitter_cldr
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -96,7 +112,11 @@ GEM
     bindex (0.8.1)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
+    brakeman (5.3.1)
     builder (3.2.4)
+    bundler-audit (0.9.1)
+      bundler (>= 1.2.0, < 3)
+      thor (~> 1.0)
     camertron-eprun (1.1.1)
     cancancan (3.4.0)
     capybara (3.38.0)
@@ -338,6 +358,8 @@ PLATFORMS
 DEPENDENCIES
   babel-transpiler
   bootsnap (>= 1.4.4)
+  brakeman
+  bundler-audit
   cancancan
   capybara
   cocoon!
@@ -366,6 +388,7 @@ DEPENDENCIES
   sassc-rails
   simple_form
   simplecov (~> 0.10, < 0.18)
+  sip!
   spork
   sprockets-rails
   stimulus-rails
@@ -374,9 +397,6 @@ DEPENDENCIES
   tzinfo
   web-console (>= 3.3.0)
   will_paginate
-
-RUBY VERSION
-   ruby 3.1.2p20
 
 BUNDLED WITH
    2.3.25
