@@ -50,7 +50,7 @@
     <% if sol.object.usuario == current_usuario || sol.object.usuario.nil? || current_usuario.rol == 1 %>
     <td>
       <%= link_to_remove_association "Eliminar", f, 
-        :class => 'btn-danger',
+        :class => 'btn btn-sm btn-danger',
         :'data-existing' => true
       %>
     </td>

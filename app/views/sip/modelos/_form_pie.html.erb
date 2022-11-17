@@ -6,7 +6,7 @@
     <% end %>
     <%= f.button :submit, 
       (f.object.new_record? ? t('Crear') : t('Actualizar')), 
-      class: 'btn-primary',
+      class: 'btn btn-sm btn-primary',
       'data-turbo' => false # Permite presentar errores de validación
     %>
     <%= render partial: 'form_btncancelar' %>
