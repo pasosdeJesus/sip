@@ -1,0 +1,7 @@
+require:
+  - rubocop-minitest
+  - rubocop-rails
+
+inherit_gem:
+    rubocop-shopify: rubocop.yml
+

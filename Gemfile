@@ -72,6 +72,12 @@ group :development, :test do
   gem "dotenv-rails"
 
   gem "rails-erd"
+
+  gem "rubocop-minitest"
+
+  gem "rubocop-rails"
+
+  gem "rubocop-shopify"
 end
 
 group :development do

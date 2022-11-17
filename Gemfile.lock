@@ -291,6 +291,14 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.23.0)
       parser (>= 3.1.1.0)
+    rubocop-minitest (0.23.2)
+      rubocop (>= 0.90, < 2.0)
+    rubocop-rails (2.17.2)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 1.33.0, < 2.0)
+    rubocop-shopify (2.10.1)
+      rubocop (~> 1.35)
     ruby-graphviz (1.2.5)
       rexml
     ruby-progressbar (1.11.0)
@@ -385,6 +393,9 @@ DEPENDENCIES
   rails-erd
   rails-i18n
   redis
+  rubocop-minitest
+  rubocop-rails
+  rubocop-shopify
   sassc-rails
   simple_form
   simplecov (~> 0.10, < 0.18)
