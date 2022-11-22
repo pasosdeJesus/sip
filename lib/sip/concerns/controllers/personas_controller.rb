@@ -51,20 +51,8 @@ module Sip
             return a
           end
 
-
-          def new
-            @encform_html = {
-              'data-controller': 'sip--sindocaut'
-            }
-            new_gen
-            render layout: 'application'
-          end
-
-          def edit
-            @encform_html = {
-              'data-controller': 'sip--sindocaut'
-            }
-            edit_gen
+          def atributos_html_encabezado_formulario
+            { 'data-controller': 'sip--sindocaut' }
           end
 
           def index_sip(c = nil)

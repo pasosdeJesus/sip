@@ -15,6 +15,13 @@ module Sip
             return false
           end
 
+          # Permite especificar atributos por agregar al `<form>` generado
+          # @return un diccionario de atributos por agregar, por ejemplo
+          #         { 'data-controller': 'sip--sindocaut' }
+          def atributos_html_encabezado_formulario
+            {}
+          end
+
           # Permite modificar params
           def prefiltrar()
           end

@@ -18,6 +18,10 @@ export default class extends Controller {
     "id" 
   ]
 
+  initialize() {
+    console.log('inicializa controlador sindocaut')
+  }
+
   connect() {
     console.log('conectado controlador sindocaut')
   }

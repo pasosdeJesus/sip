@@ -11,10 +11,19 @@
   f no puede ser nil. Debe ser formulario.
   <% return %>
 <% end %>
-<% externo = {} %>
+<% atexternos = {} %>
 <% if defined?(htmlexterno) %>
-  <% externo = htmlexterno %>
+  <% atexternos.merge!(htmlexterno) %>
 <% end %>
+<% if defined?(atributos_externos) %>
+  <% atexternos.merge!(atributos_externos) %>
+<% end %>
+<% atinternos = {} %>
+<% if defined?(atributos_internos) %>
+  <% atinternos = atributos_internos %>
+<% end %>
+
+
 
 
 <% alf = @registro.class.asociacion_llave_foranea(atr) %>
@@ -23,7 +32,7 @@
 <% (ri, rm, rd)=clase.pluralize.underscore.rpartition("/") %>
 <% regatr = atr.class == Hash ? @registro.send(atr.keys.first) : @registro.send(atr) %>
 <% valorp = Sip::ModeloHelper.poromision_sf(
-    params, atr, regatr) %>
+  params, atr, regatr) %>
 <% #byebug %>
 <% if alf # Es llave Foranea   %>
   <% n = alf.name %>
@@ -41,16 +50,18 @@
     } %>
     <% # Solución de https://github.com/heartcombo/simple_form/issues/1513 %>
   <% end %>
+  <% if !defined?(opciones) || !opciones.keys.include?(:chosen) || opciones[:chosen] %>
+    <% atinternos.merge!({ class: desh ? '' : 'chosen-select' }) %>
+  <% end %>
+  <% atinternos.merge!(nosel) %>
   <% opassoc = {
     collection: col.order(nclase.send(:orden_presenta_nombre)),
     label_method: :presenta_nombre,
     value_method: :id,
     disabled: desh,
-    input_html: { 
-      class: desh ? '' : 'chosen-select'
-    }.merge(nosel),
-    wrapper_html: externo,
-    include_blank: true
+    include_blank: true,
+    input_html: atinternos,
+    wrapper_html: atexternos,
   } %>
   <% if @registro.respond_to?(n) && @registro.send(n) &&
     @registro.send(n).id %>
@@ -85,13 +96,14 @@
     <% n = r.name %>
     <% nclase = r.class_name.constantize %>
     <% col = Sip::ModeloHelper.opciones_tabla_basica(nclase, f, n) %>
+    <% atinternos.merge!({ class: 'chosen-select' }) %>
     <%= f.association n,
       collection: col.order(nclase.send(:orden_presenta_nombre)),
       label_method: lambda {|e| e.presenta_nombre }, #:nombre,
       value_method: :id ,
-      input_html: { class: 'chosen-select' },
       include_blank: true,
-      wrapper_html: externo
+      input_html: atinternos,
+      wrapper_html: atexternos
     %>
   <% end %>
 <% elsif @registro.class && (
@@ -103,37 +115,51 @@
   @registro.class.columns_hash[atr.to]  %>
   <% if col && col.type == :date then %>
     <% # fecha %> 
-    <%= f.input atr.to_sym, input_html:  { 
-      type: 'date'}, 
+    <% atinternos.merge!({ type: 'date' }) %>
+    <%= f.input atr.to_sym, 
       as: :string,
-      wrapper_html: externo %>
+      input_html: atinternos,
+      wrapper_html: atexternos %>
   <% elsif col && col.type == :integer %>
     <% if defined?(opciones) && opciones.keys && 
         opciones.keys.include?(:etiqueta) && opciones[:etiqueta] == false %>
-      <%= f.input atr.to_sym, label: false, as: :integer %>
+      <%= f.input atr.to_sym, 
+        as: :integer,
+        label: false, 
+        input_html: atinternos,
+        wrapper_html: atexternos %>
     <% else %>
-     
+      <% atinternos.merge!({ value: valorp }) %>
       <%= f.input atr.to_sym, as: :integer,
-        input_html: { value: valorp } %>
+        input_html: atinternos, 
+        wrapper_html: atexternos %>
     <% end %>
   <% elsif col.limit && col.limit > 1000 %>
-    <%= f.input atr.to_sym, as: :text,
-      input_html: { value: valorp } %>
+    <% atinternos.merge!({ value: valorp }) %>
+    <%= f.input atr.to_sym, 
+      as: :text,
+      input_html: atinternos,
+      wrapper_html: atexternos %>
   <% else %>
+    <% atinternos.merge!({ value: valorp }) %>
     <%= f.input atr.to_sym,
-      input_html: { value: valorp } %>
+      input_html: atinternos,
+      wrapper_html: atexternos %>
   <% end %>
 <% else %>
     <% if (atr.class == String || atr.class == Symbol) && 
         (atr.to_s[0, 5] == 'fecha' || atr.to_s[-11..-1] == '_localizada')  %>
+      <% atinternos.merge!({ "data-behaviour" => "datepicker"}) %>
       <%= f.input atr.to_sym,
-        input_html:  { "data-behaviour" => "datepicker"}, 
-        wrapper_html: externo,
+        as:  :string,
         autocomplete: "off",
-        as:  :string %>
+        input_html:  atinternos,
+        wrapper_html: atexternos %>
     <% elsif @registro.respond_to?(atr) then %>
+      <% atinternos.merge!({ value: valorp }) %>
       <%= f.input atr.to_sym,
-        input_html: { value: valorp } %>
+        input_html: atinternos,
+        wrapper_html: atexternos %>
     <% else %>
       <%= "Campo #{atr} sin control para editar"  %>
     <% end %>

@@ -1,10 +1,11 @@
 <% if @registro.nil? %>
   <% return %>
 <% end %>
-<%= simple_form_for @registro, 
+<% atributos_html = controller.atributos_html_encabezado_formulario() %>
+<%= simple_form_for(
+  @registro, 
   url: modelo_path(@registro),
-  html: @encform_html.nil? ? {} : @encform_html,
-  defaults: { input_html: { class: 'span10' } } do |f| 
+  html: atributos_html) do |f| 
 %>
   <%= render partial: 'sip/hogar/errores', locals: { f: f } %> 
 
