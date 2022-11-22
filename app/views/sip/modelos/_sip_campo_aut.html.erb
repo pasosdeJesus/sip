@@ -1,4 +1,23 @@
-
+<%
+  # Este parcial genera un control para un campo de un registro.
+  # Supone que se ha definido:
+  #   @registro con el registro que se edita
+  # Recibe los siguientes parámetros obligatorios:
+  #   f   Formulario 
+  #   atr Campo del registro cuyo control será generado
+  # Y los siguientes opcionales
+  #   atributos_externos Diccionario con atributos HTML para la envoltura 
+  #                      div del control
+  #   atributos_internos Diccionario con atributos HTML para el control
+  #   opciones  Diccionario con opciones sus claves posibles son:
+  #             chosen       Por omisión se usa chosen en campos de selección, 
+  #                          pero si es falso no se emplea chosen.
+  #             habilitar    Por omisión el campo está habilitado. Si esta
+  #                          opción es false se presenta deshabilitado.
+  #             etiqueta     Por omisión se presenta etiqueta. Si esta opción
+  #                          es false no se presenta.
+  #
+%>
 <% if @registro.nil? %>
   @registro no puede ser nil. Debe ser objeto que se edita.
   <% return %>
@@ -42,7 +61,7 @@
   <% nosel = {} %>
   <% #puts "OJO atr=#{atr}, valorp=#{valorp}" %>
   <% if defined?(opciones) && opciones.keys &&
-      opciones.keys.include?(:deshabilitar) && opciones[:deshabilitar] %>
+      opciones.keys.include?(:habilitar) && opciones[:habilitar] === false %>
     <% desh = true %>
     <% nosel = { 
       onfocus: "this.defaultIndex=this.selectedIndex;",
@@ -122,7 +141,7 @@
       wrapper_html: atexternos %>
   <% elsif col && col.type == :integer %>
     <% if defined?(opciones) && opciones.keys && 
-        opciones.keys.include?(:etiqueta) && opciones[:etiqueta] == false %>
+        opciones.keys.include?(:etiqueta) && opciones[:etiqueta] === false %>
       <%= f.input atr.to_sym, 
         as: :integer,
         label: false, 
