@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 705092aa709076fc2d8d066f23e678f4d9323bc4
+  revision: 11abf222dc31bff71160a1d138b445214f434b2b
   specs:
     kt-paperclip (7.1.1)
       activemodel (>= 4.2.0)
@@ -176,7 +176,7 @@ GEM
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
-    irb (1.4.3)
+    irb (1.5.0)
       reline (>= 0.3.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
@@ -293,7 +293,7 @@ GEM
       parser (>= 3.1.1.0)
     rubocop-minitest (0.23.2)
       rubocop (>= 0.90, < 2.0)
-    rubocop-rails (2.17.2)
+    rubocop-rails (2.17.3)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)

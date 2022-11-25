@@ -126,7 +126,7 @@ module Sip
               anionac: @persona.anionac 
             }
             ## Si está autocompletando una persona de orgsocial persona
-            # entonces autcompletar cargo y correo
+            # entonces autocompletar cargo y correo
             if params[:ac_orgsocial_persona]
               orgsocial_persona = Sip::OrgsocialPersona.find_by(persona_id: @persona.id)
               if orgsocial_persona
