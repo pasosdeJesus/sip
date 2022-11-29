@@ -416,16 +416,30 @@ module Sip
                 end
 
                 format.html { 
-                  if params[:_sip_enviarautomatico_y_repinta]
-                    redirect_to edit_modelo_path(@registro), 
-                      turbo: false
+                  if request.method == "PATCH"
+                    if params[:_sip_enviarautomatico_y_repinta] || 
+                        request.params[:_sip_enviarautomatico_y_repinta]
+                      render(action: 'edit', 
+                             layout: 'application', 
+                             notice: 'Registro actualizado.')
+                    else
+                      render(action: 'show', 
+                             layout: 'application', 
+                             notice: 'Registro actualizado.')
+                    end
                   else
-                    actualizada = genclase == 'M' ? 'actualizado' : 
-                      'actualizada';
-                    redirect_to modelo_path(@registro), 
+                    if params[:_sip_enviarautomatico_y_repinta] || 
+                        request.params[:_sip_enviarautomatico_y_repinta]
+                      redirect_to edit_modelo_path(@registro), 
+                        turbo: false
+                    else
+                      actualizada = genclase == 'M' ? 'actualizado' : 
+                        'actualizada';
+                      redirect_to modelo_path(@registro), 
                       notice: clase + " #{actualizada}." 
-		    return
+                    end
                   end
+                  return
                 }
                 format.json { 
                   head :no_content 

@@ -152,6 +152,86 @@ function SipEnviarFormularioAjax(f, metodo='GET', tipo='script',
 }
 
 
+/*
+ * Con AJAX actualiza formulario, espera recibir formulario guardado
+ * para repintar áreas identificadas con listaIdsRepintar y llamar
+ * la retrollamada.
+ *
+ * Se espera que en rails la función update, maneje PATCH y request.xhr?
+ * para no ir a hacer redirect_to con lo proveniente de un XHR 
+ * (ver ejemplo en lib/sip/concerns/controllers/modelos_controller.rb)
+ *
+ * @param listaIdsRepintar Lista de ids de elementos por repintar
+ *   Si hay uno llamado errores no vacio después de pintar detiene
+ *   con mensaje de error.
+ * @param retrollamada_exito Función por llamar en caso de éxito
+ * @parama argumentos_exito Por pasar a la función retrollamada_exito (se 
+ * sugiere que sea un registro).
+ * @param retrollamada_falla Función por llamar en caso de falla
+ * @parama argumentos_falla Por pasar a la función retrollamada_falla (se 
+ *  sugiere que sea un registro).
+ */
+function SipGuardarFormularioYRepintar(listaIdsRepintar, retrollamada_exito, 
+  argumentos_exito, retrollamada_falla = null, argumentos_falla = null) {
+  if (document.body.style.cursor == 'wait') {
+    alert('Hay un procedimiento en curso, por favor espere a que termine')
+    return
+  }
+  document.body.style.cursor = 'wait'
+  let formulario = document.querySelector('form')
+  if (formulario == null) {
+    document.body.style.cursor = 'default'
+    alert('** SipGuardarFormularioYRepintar: No se encontró formulario')
+    if (retrollamada_falla != null) {
+      retrollamada_falla(argumentos_falla)
+    }
+    return
+  }
+  let datos = new FormData(formulario);
+  datos.set('commit', 'Enviar')
+  datos.set('siguiente', 'editar')
+  datos.set('_sip_enviarautomatico_y_repinta', 'editar')
+  let paramUrl = new URLSearchParams(datos).toString()
+  document.getElementById('errores').innerText=''
+  window.Rails.ajax({
+    type: 'PATCH',
+    url: formulario.getAttribute('action'),
+    data: datos,
+    success: (resp, estado, xhr) => {
+      document.body.style.cursor = 'default'
+      let hayErrores = false
+      listaIdsRepintar.forEach((idfrag) => {
+        let f = document.getElementById(idfrag)
+        let nf = resp.getElementById(idfrag)
+        if (nf) {
+          f.innerHTML = nf.innerHTML
+          if (idfrag === 'errores' && nf.innerHTML.trim() !== '') {
+            hayErrores = true
+          }
+        }
+      })
+      if (hayErrores) {
+        document.body.style.cursor = 'default'
+        alert('Hay errores que no permiten guardar y continuar')
+        if (retrollamada_falla != null) {
+          retrollamada_falla(argumentos_falla)
+        }
+        return
+      }
+      retrollamada_exito(argumentos_exito)
+    },
+    error: (req, estado, xhr) => {
+      document.body.style.cursor = 'default'
+      window.alert('No se pudo guardar formulario.')
+      if (retrollamada_falla != null) {
+        retrollamada_falla(argumentos_falla)
+      }
+      return
+    }
+  })
+}
+
+
 // MACHETE PARA MEDIO SOPORTAR PAQUETES ESTILO COMMONJS EN NAVEGADOR
 // REQUIRE CAMBIAR USOS QUE SE HACIAN DE root = exports PARA QUE SEAN root =
 // window
