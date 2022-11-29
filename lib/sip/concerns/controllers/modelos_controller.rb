@@ -416,7 +416,7 @@ module Sip
                 end
 
                 format.html { 
-                  if request.method == "PATCH"
+                  if request.method == "PATCH" && request.xhr?
                     if params[:_sip_enviarautomatico_y_repinta] || 
                         request.params[:_sip_enviarautomatico_y_repinta]
                       render(action: 'edit', 
@@ -436,7 +436,7 @@ module Sip
                       actualizada = genclase == 'M' ? 'actualizado' : 
                         'actualizada';
                       redirect_to modelo_path(@registro), 
-                      notice: clase + " #{actualizada}." 
+                        notice: clase + " #{actualizada}." 
                     end
                   end
                   return
