@@ -1,13 +1,24 @@
 <div id="errores">
   <% if f.object.errors.any? %>
+    <% # Dejamos mensajes interesantes y no repetidos %>
+    <% presenta = [] %>
+    <% f.object.errors.full_messages.each do |mens| %>
+      <% if !mens.match(/'[A-Za-z0-9]*' no válido/)
+           !presenta.include?(mens)
+         %>
+       <% presenta << mens %>
+     <% end %>
+   <% end %>
+
     <div id="error_explanation">
       <div class="alert alert-error">
         La ficha tiene 
-        <%= pluralize(f.object.errors.count, 'error', plural: 'errores') %>.
+        <% num = presenta.count == 0 ? f.object.errors.count : presenta.count %>
+        <%= pluralize(num, 'error', plural: 'errores') %>.
       </div>
       <ul>
-        <% f.object.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+        <% presenta.each do |mens| %>
+          <li><%= mens %></li>
         <% end %>
       </ul>
       <%= f.error_notification %>

@@ -158,8 +158,11 @@ module Sip
           def vformatonumdoc
             if (tdocumento && tdocumento.formatoregex != '' && 
                 !(numerodocumento =~ Regexp.new("^#{tdocumento.formatoregex}$")))
-              errors.add(:numerodocumento, 
-                         "No cumple exp. regular: #{tdocumento.formatoregex}")
+              menserr = "Número de documento con formato errado."
+              if tdocumento.ayuda
+                menserr += " #{tdocumento.ayuda}"
+              end
+              errors.add(:numerodocumento, menserr)
             end
           end
 
