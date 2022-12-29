@@ -24,6 +24,17 @@ module Sip
       assert_template :index
     end
 
+    test "listado json" do
+      get sip.ubicacionespre_path+ '?ubicacionpre', as: :json
+      assert_response :success
+    end
+
+    test "listado json con term" do
+      get sip.ubicacionespre_path+'?ubicacionpre[term]=buen', as: :json
+      assert_response :success
+    end
+
+
     test "debe presentar resumen de existente" do
       get sip.ubicacionpre_path(@ubicacionpre.id)
       assert_response :success
