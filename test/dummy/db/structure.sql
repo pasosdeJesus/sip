@@ -116,7 +116,7 @@ CREATE FUNCTION public.soundexesp(entrada text) RETURNS text
       		entrada=translate(ltrim(trim(upper(entrada)),'H'),'ÑÁÉÍÓÚÀÈÌÒÙÜ','NAEIOUAEIOUU');
 
         IF array_upper(regexp_split_to_array(entrada, '[^a-zA-Z]'), 1) > 1 THEN
-          RAISE NOTICE 'Esta función sólo maneja una palabra. Usar soundexesp_multi para cadenas con varias palabras';
+          RAISE NOTICE 'Esta función sólo maneja una palabra y no ''%''. Use más bien soundexespm', entrada;
       		RETURN NULL;
         END IF;
 
@@ -199,24 +199,29 @@ CREATE FUNCTION public.soundexesp(entrada text) RETURNS text
 
 
 --
--- Name: soundexesp_multi(text); Type: FUNCTION; Schema: public; Owner: -
+-- Name: soundexespm(text); Type: FUNCTION; Schema: public; Owner: -
 --
 
-CREATE FUNCTION public.soundexesp_multi(entrada text) RETURNS text
+CREATE FUNCTION public.soundexespm(entrada text) RETURNS text
     LANGUAGE plpgsql IMMUTABLE STRICT COST 500
     AS $$
       DECLARE
         soundex text = '' ;
         partes text[];
         sep text = '';
+        se text = '';
       BEGIN
         entrada=translate(ltrim(trim(upper(entrada)),'H'),'ÑÁÉÍÓÚÀÈÌÒÙÜ','NAEIOUAEIOUU');
         partes=regexp_split_to_array(entrada, '[^a-zA-Z]');
 
         --raise notice 'partes=%', partes;
         FOR i IN 1 .. array_upper(partes, 1) LOOP
-          soundex = soundex || sep || soundexesp(partes[i]);
-          sep = ' ';
+          se = soundexesp(partes[i]);
+          IF length(se) > 0 THEN
+            soundex = soundex || sep || se;
+            sep = ' ';
+            --raise notice 'i=% . soundexesp=%', i, se;
+          END IF;
         END LOOP;
 
       	RETURN soundex;	
@@ -241,67 +246,10 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
--- Name: dane_veredal_2020; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.dane_veredal_2020 (
-    id integer NOT NULL,
-    nombre character varying(512) COLLATE public.es_co_utf_8,
-    verlocal_id integer,
-    departamento character varying(512) COLLATE public.es_co_utf_8,
-    municipio character varying(512) COLLATE public.es_co_utf_8
-);
-
-
---
--- Name: depiso; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.depiso (
-    categoria character varying(20),
-    codiso character varying(10),
-    nombre character varying(128),
-    nomalt character varying(128),
-    idioma character varying(2),
-    sipid integer
-);
-
-
---
 -- Name: divipola_oficial_2019_corregido; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.divipola_oficial_2019_corregido (
-    coddep integer,
-    departamento character varying(512) COLLATE public.es_co_utf_8,
-    codmun integer,
-    municipio character varying(512) COLLATE public.es_co_utf_8,
-    codcp integer,
-    centropoblado character varying(512) COLLATE public.es_co_utf_8,
-    tipocp character varying(6)
-);
-
-
---
--- Name: divipola_oficial_2020; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.divipola_oficial_2020 (
-    coddep integer,
-    departamento character varying(512) COLLATE public.es_co_utf_8,
-    codmun integer,
-    municipio character varying(512) COLLATE public.es_co_utf_8,
-    codcp integer,
-    centropoblado character varying(512) COLLATE public.es_co_utf_8,
-    tipocp character varying(6)
-);
-
-
---
--- Name: divipola_oficial_2021_corregido; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.divipola_oficial_2021_corregido (
     coddep integer,
     departamento character varying(512) COLLATE public.es_co_utf_8,
     codmun integer,
@@ -438,33 +386,6 @@ CREATE VIEW public.divipola_sip AS
      JOIN public.sip_clase ON ((sip_clase.id_municipio = sip_municipio.id)))
   WHERE ((sip_departamento.id_pais = 170) AND (sip_clase.fechadeshabilitacion IS NULL))
   ORDER BY sip_departamento.nombre, sip_municipio.nombre, sip_clase.nombre;
-
-
---
--- Name: iso2022; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.iso2022 (
-    ingles character varying(512),
-    frances character varying(512),
-    alpha2 character varying(2),
-    alpha3 character varying(3),
-    codiso integer
-);
-
-
---
--- Name: paiseswikiiso; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.paiseswikiiso (
-    nombrecomunesp character varying(128),
-    nombreisoesp character varying(128),
-    alfa2 character varying(2),
-    alfa3 character varying(3),
-    codiso integer,
-    observaciones text
-);
 
 
 --
@@ -1611,19 +1532,6 @@ CREATE TABLE public.usuario (
     CONSTRAINT usuario_check CHECK (((fechadeshabilitacion IS NULL) OR (fechadeshabilitacion >= fechacreacion))),
     CONSTRAINT usuario_rol_check CHECK ((rol >= 1))
 );
-
-
---
--- Name: veredas_dane_2020_ogc_fid_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.veredas_dane_2020_ogc_fid_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
 
 
 --
