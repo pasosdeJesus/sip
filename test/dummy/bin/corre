@@ -24,7 +24,7 @@ end
 
 FileUtils.chdir RAIZ_AP do
 
-  if File.exists?('./.env')
+  if File.exist?('./.env')
     require 'dotenv'
     Dotenv.load
   end
@@ -38,7 +38,7 @@ FileUtils.chdir RAIZ_AP do
   end
   puts "\n== Ejecutando aplicacion #{ENV['RC']} =="
 
-  if !File.exists?('/tmp/node')
+  if !File.exist?('/tmp/node')
     puts "\n== Enlace a /usr/local/bin/node desde /tmp =="
     system! 'doas ln -s /usr/local/bin/node /tmp'
   end
@@ -95,7 +95,7 @@ FileUtils.chdir RAIZ_AP do
         ord += "CONFIG_HOSTS=\"#{ENV['CONFIG_HOSTS'].downcase}\" "
       end
       ord += "RAILS_RELATIVE_URL_ROOT='' "
-      ord += "bin/rails s "
+      ord += "ruby --jit bin/rails s "
       if ENV['PUERTODES'] != ''
         ord += "-p #{ENV['PUERTODES']} "
       end
@@ -103,16 +103,17 @@ FileUtils.chdir RAIZ_AP do
     end
     puts "#{ord}"
   elsif ENV['RAILS_ENV'] == 'production'
-    if File.exists?('bin/corre-local')
+    if File.exist?('bin/corre-local')
       system!('bin/corre-local')
     end
-    if !File.exists?("/etc/rc.d/#{ENV['RC']}")
+    if !File.exist?("/etc/rc.d/#{ENV['RC']}")
       puts "\nFalta script /etc/rc.d/#{ENV['RC']}"
       exit 1
     end
     puts "\n== Ejecutando en modo producción =="
     ord = "doas sh /etc/rc.d/#{ENV['RC']} -d start"
   end
+  puts ord
   system!(ord)
 
 end

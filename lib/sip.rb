@@ -23,7 +23,7 @@ module Sip
         motor = Gem.loaded_specs[motor.to_s].full_gem_path + "/" 
       else  # Ruta
         motor = motor.to_s + "/"
-        if !File.exists?("#{motor}db/#{tipoarchivo.to_s}-basicas.sql") && 
+        if !File.exist?("#{motor}db/#{tipoarchivo.to_s}-basicas.sql") && 
             motor == '../../' && ENV['RAILS_ENV'] == 'test'
           # En motores se ejecutan pruebas desde directorio del motor
           # y no desde test/dummy

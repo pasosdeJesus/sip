@@ -219,7 +219,7 @@ EOF
     pora = []
     # Si es aplicacíon de prueba de un motor enlazar los del motor
     rutac = '../../app/javascript/controllers'
-    if Dir.exists?(rutac)
+    if Dir.exist?(rutac)
       if Dir['../../*gemspec'].count == 1
         enlaza(Dir['../../*gemspec'][0][6..-9], "../../../#{rutac}", 
                cgitignore, pora)
