@@ -1,5 +1,4 @@
 require_relative "../../../test_helper"
-require_relative "../../../models/sip/tsitio_test"
 
 module Sip
   class TsitiosControllerTest < ActionDispatch::IntegrationTest

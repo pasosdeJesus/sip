@@ -1,5 +1,4 @@
 require_relative "../../../test_helper"
-require_relative "../../../models/sip/sectororgsocial_test"
 
 module Sip
   class SectoresorgsocialControllerTest < ActionDispatch::IntegrationTest

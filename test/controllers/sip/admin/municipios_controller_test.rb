@@ -1,5 +1,4 @@
 require_relative "../../../test_helper"
-require_relative "../../../models/sip/municipio_test"
 
 module Sip
   class MunicipiosControllerTest < ActionDispatch::IntegrationTest
