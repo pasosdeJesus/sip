@@ -24,6 +24,18 @@ module Sip
       assert_not pais.valid?
       pais.fechacreacion='2004-01-01'
       assert pais.valid?
+
+      pais.fechacreacion_localizada ='01/Ene/2004'
+      assert pais.valid?
+      assert pais.fechacreacion.to_s == '2004-01-01'
+
+      pais.latitud = 1.7
+      assert pais.valid?
+
+      pais.latitud_localizado = "1,8"
+      assert pais.valid?
+      assert pais.latitud == 1.8
+
       pais.fechadeshabilitacion='2000-01-01'
       assert_not pais.valid?
       pais.fechadeshabilitacion='2005-01-01'

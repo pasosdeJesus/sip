@@ -56,8 +56,7 @@ test:
     - RAILS_ENV=test bin/rails assets:precompile
     - cd ../..
   script:
-    - CONFIG_HOSTS=www.example.com bin/rails test
-    - cd test/dummy && CONFIG_HOSTS=127.0.0.1 bin/rails test:system
+    - bin/regresion.sh
     - ./cc-test-reporter after-build -t simplecov --exit-code $?
 
 sast:

@@ -48,3 +48,5 @@ coverage/
 # Otros
 test/dummy/db/datos-basicas.sql
 test/dummy/app/javascript/controllers/sip
+cobertura-unitarias
+test/dummy/cobertura-sistema

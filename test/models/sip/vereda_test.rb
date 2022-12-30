@@ -27,9 +27,8 @@ module Sip
     end
 
     test "existente" do
-      skip
-      vereda = Vereda.where(id: 0).take
-      assert_equal(vereda.nombre, "SIN INFORMACIÓN")
+      vereda = Vereda.where(id: 1).take
+      assert_equal(vereda.nombre, "Nuevo Morichal")
     end
 
   end

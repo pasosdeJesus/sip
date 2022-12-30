@@ -98,13 +98,13 @@ module Sip
           end
 
 
-          # A partir de datos como para ubicacinpre los valida
+          # A partir de datos como para ubicacionpre los valida
           # y crea una ubicacionpre y retorna su id o retorna id de una 
           # ubicación existente hasta donde logre validar.
           # Si usa_latlon es falso y la ubicación con lugar
           # es válida ignora las que recibe y pone unas
           # de acuerdo al pais, departamento, municipio y clase
-          # La latitud y longitud que recibe no debe estar localizadas
+          # La latitud y longitud que recibe no deben estar localizadas
           # Retorna id de ubicación que encuentra o que crea o nil si tiene problema
           def buscar_o_agregar(pais_id, departamento_id, municipio_id,
                                     clase_id, lugar, sitio, tsitio_id,
@@ -203,8 +203,8 @@ module Sip
 
             # Latitud, longitud, tipo de sitio no modificables por usuario 
             # para ubicaciones hasta centro poblado.  
-            # En ubicaciones con lugar y/o sitio modificables por cualquier
-            # usuario del sistema.
+            # Las ubicacionespre con lugar y/o sitio son modificables por 
+            # cualquier usuario del sistema.
             # Al buscar lugar y sitio se ignora capitalización así como
             # espacios al comienzo o final y espacios redundantes
             w.delete(:tsitio_id)
@@ -246,11 +246,12 @@ module Sip
               end
             end
             # Preparamos tsitio_id
-            tsitio_id = tsitio_id.to_i > 0 ? tsitio_id.to_i : nil
             if tsitio_id && Sip::Tsitio.where(id: tsitio_id.to_i).count == 0
-              puts 'Problema, no se encontró tsitio_id esperado ' + tsitio_id
+              puts 'Problema, no se encontró tsitio_id esperado ' + 
+                tsitio_id.to_s
               return nil
             end
+            tsitio_id = tsitio_id.to_i > 0 ? tsitio_id.to_i : nil
 
             if sitio.to_s.strip == ''
               ubi = Sip::Ubicacionpre.where(w).

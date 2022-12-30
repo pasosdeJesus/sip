@@ -100,7 +100,7 @@ group :test do
   # Problemas con simplecov 0.18 que en travis genera:
   # Error: json: cannot unmarshal object into Go struct field input.coverage of type []formatters.NullInt
   # https://github.com/codeclimate/test-reporter/issues/418
-  gem "simplecov", "~> 0.10", "< 0.18"
+  gem "simplecov"#, "~> 0.10", "< 0.18"
 
   gem "spork" # Un proceso para cada prueba -- acelera
 end
