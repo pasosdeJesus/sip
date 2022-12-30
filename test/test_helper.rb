@@ -1,6 +1,7 @@
 ENV['RAILS_ENV'] ||= 'test'
 
 require 'simplecov'  # usará .simplecov de raiz
+Rails.application.eager_load! if ENV['COVERAGE']
 require_relative 'dummy/config/environment'
 require 'rails/test_help'
 

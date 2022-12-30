@@ -49,7 +49,7 @@ module Sip
           end
 
 
-          # Remplaza grupoper por elejido en autocompletación
+          # Remplaza grupoper por elegido en autocompletación
           def remplazar
           end
 

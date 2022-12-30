@@ -11,5 +11,14 @@ elsif (ENV["CONFIG_HOSTS"] == "127.0.0.1")
   SimpleCov.coverage_dir "cobertura-sistema"
 end
 
-SimpleCov.start
+SimpleCov.start do
+  enable_coverage :branch
+  primary_coverage :branch
+  enable_coverage_for_eval
+  filters.clear # This will remove default :root_filter and :bundler_filter 
+  add_filter do |src|
+    !(src.filename =~ /^#{SimpleCov.root}/) unless src.filename =~ /sip/
+  end
+  add_filter "/test/"
+end
 
