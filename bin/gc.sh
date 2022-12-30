@@ -67,24 +67,11 @@ if (test "$SINMIG" != "1") then {
   } fi;
 } fi;
 
-(cd $rutaap; RAILS_ENV=test bin/rails db:drop db:setup; RAILS_ENV=test bin/rails db:migrate sip:indices)
-if (test "$?" != "0") then {
-  echo "No puede preparse base de prueba";
-  exit 1;
-} fi;
-
-CONFIG_HOSTS=www.example.com bin/rails test
+bin/regresion.sh
 if (test "$?" != "0") then {
   echo "No pasaron pruebas de regresion";
   exit 1;
 } fi;
-
-(cd $rutaap; CONFIG_HOSTS=127.0.0.1 bin/rails test:system)
-if (test "$?" != "0") then {
-  echo "No pasaron pruebas del sistema";
-  exit 1;
-} fi;
-
 
 (cd $rutaap; RAILS_ENV=test bin/rails db:schema:dump)
 
