@@ -1,5 +1,9 @@
 # Motor para Sistemas de Información estilo Pasos de Jesús - sip
 
+**Este motor es obsoleto, el nuevo que se basa en este se llama msip y se
+desarrolla en https://gitlab.com/pasosdeJesus/msip*
+
+
 [![Revisado por Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com) Pruebas y seguridad:[![Estado Construcción](https://gitlab.com/pasosdeJesus/sip/badges/main/pipeline.svg)](https://gitlab.com/pasosdeJesus/sip/-/pipelines?page=1&scope=all&ref=main) [![Mantenibilidad](https://api.codeclimate.com/v1/badges/fa979bbb3fc3d52a9d6f/maintainability)](https://codeclimate.com/github/pasosdeJesus/sip/maintainability) [![Cobertura de Pruebas](https://api.codeclimate.com/v1/badges/fa979bbb3fc3d52a9d6f/test_coverage)](https://codeclimate.com/github/pasosdeJesus/sip/test_coverage) 
 
 
