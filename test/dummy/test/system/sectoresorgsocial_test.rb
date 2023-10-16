@@ -28,7 +28,7 @@ class SectoresorgsocialTest < ApplicationSystemTestCase
     click_link 'Tablas básicas'
     click_link 'Sectores de organizaciones sociales'
     fill_in 'filtro_busnombre', with: 'INDÍGENAS'
-    assert_content 'Sectores de organizaciones sociales: 1'
+    assert_content 'Sectores de organizaciones sociales: 3'
     find_button('Filtrar').click
     assert_content 'Sectores de organizaciones sociales: 1'
     accept_confirm do
