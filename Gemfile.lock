@@ -177,7 +177,7 @@ GEM
       activesupport (>= 6.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    io-console (0.7.1)
+    io-console (0.7.2)
     irb (1.11.1)
       rdoc
       reline (>= 0.4.2)
@@ -204,7 +204,7 @@ GEM
     mime-types-data (3.2023.1205)
     mini_mime (1.1.5)
     mini_portile2 (2.8.5)
-    minitest (5.21.1)
+    minitest (5.21.2)
     minitest-reporters (1.6.1)
       ansi
       builder
