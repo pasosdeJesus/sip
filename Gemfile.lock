@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/kreeti/kt-paperclip.git
-  revision: 1c6dfe65e73fb6bdd7a1ae326b551b45c501e5c5
+  revision: ff04ddc779102550b46aa6bb86b1632e36423574
   specs:
-    kt-paperclip (7.2.1)
+    kt-paperclip (7.2.2)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       marcel (~> 1.0.1)
@@ -166,7 +166,7 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.24.0)
-    parser (3.3.0.4)
+    parser (3.3.0.5)
       ast (~> 2.4.1)
       racc
     pg (1.5.4)
@@ -349,4 +349,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.5.4
+   2.5.5
