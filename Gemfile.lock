@@ -110,7 +110,7 @@ GEM
       execjs (~> 2.0)
     bcrypt (3.1.20)
     bindex (0.8.1)
-    bootsnap (1.17.1)
+    bootsnap (1.18.1)
       msgpack (~> 1.2)
     brakeman (6.1.1)
       racc
