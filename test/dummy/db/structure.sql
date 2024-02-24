@@ -634,11 +634,11 @@ UNION
 --
 
 CREATE MATERIALIZED VIEW public.sip_mundep AS
- SELECT sip_mundep_sinorden.idlocal,
-    sip_mundep_sinorden.nombre,
-    to_tsvector('spanish'::regconfig, public.unaccent(sip_mundep_sinorden.nombre)) AS mundep
+ SELECT idlocal,
+    nombre,
+    to_tsvector('spanish'::regconfig, public.unaccent(nombre)) AS mundep
    FROM public.sip_mundep_sinorden
-  ORDER BY (sip_mundep_sinorden.nombre COLLATE public.es_co_utf_8)
+  ORDER BY (nombre COLLATE public.es_co_utf_8)
   WITH NO DATA;
 
 
