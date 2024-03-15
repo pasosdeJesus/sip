@@ -53,54 +53,22 @@ function actuno {
 
 if (test "$SALTASIP" != "1") then {
   echo "**** sip"
-  actuno sip-2.0 test/dummy
-  actuno sip test/dummy
-} fi;
-
-# Usan solo sip
-if (test "$SALTASIPD" != "1") then {
-  echo "**** sipd"
-  actuno sipd test/dummy
-} fi;
-
-
-if (test "$SALTAJN316" != "1") then {
-  echo "**** jn316"
-  actuno jn316_gen test/dummy; 
+  actuno sip-2.1 test/dummy
 } fi;
 
 if (test "$SALTAMR519" != "1") then {
   echo "**** mr519"
-  actuno mr519_gen-2.0 test/dummy; 
-  actuno mr519_gen test/dummy; 
+  actuno mr519_gen-2.1 test/dummy; 
 } fi;
 
 if (test "$SALTAHEB412" != "1") then {
   echo "**** heb412"
-  actuno heb412_gen-2.0 test/dummy; 
-  actuno heb412_gen test/dummy; 
-  actuno heb412
-} fi;
-
-if (test "$SALTACOR1440" != "1") then {
-  echo "**** cor1440"
-  actuno cor1440_gen test/dummy; 
-  actuno cor1440; 
-  actuno cor1440_pdJ; 
-  actuno si_codacop
-} fi;
-
-if (test "$SALTASAL7711" != "1") then {
-  echo "**** sal7711"
-  actuno sal7711_gen test/dummy; 
-  actuno sal7711; 
-  actuno sal7711_web test/dummy; 
+  actuno heb412_gen-2.1 test/dummy; 
 } fi;
 
 if (test "$SALTASIVEL2GEN" != "1") then {
   echo "**** sivel"
-  actuno sivel2_gen-2.0 test/dummy; 
-  actuno sivel2_gen test/dummy; 
+  actuno sivel2_gen-2.1 test/dummy; 
 } fi;
 
 if (test "$SALTAAPO214" != "1") then {
@@ -110,41 +78,5 @@ if (test "$SALTAAPO214" != "1") then {
 
 if (test "$SALTASIVEL2" != "1") then {
   echo "**** sivel"
-  actuno sivel2-2.0; 
-  actuno sivel2
-  actuno siaddhh;
-  actuno si_bdhn
+  actuno sivel2-2.1; 
 } fi;
-
-# Usan 3 o más motores
-if (test "$SALTASIANZORC" != "1") then {
-  actuno si_anzorc; 
-} fi;
-
-if (test "$SALTASIASOM" != "1") then {
-  actuno si_asom
-} fi;
-
-if (test "$SALTASIIAP" != "1") then {
-  actuno si_iap; 
-} fi;
-
-if (test "$SALTASIFASOL" != "1") then {
-  actuno si_fasol; 
-} fi;
-
-if (test "$SALTASIVELSJR" != "1") then {
-  echo "**** sivelsjr"
-  actuno sivel2_sjr test/dummy; 
-} fi;
-
-if (test "$SALTAMIND" != "1") then {
-  echo "**** mind"
-  actuno sivel2_mujeresindigenas;
-} fi;
-
-# Usan 4 motores
-#actuno si_jrslac; 
-#actuno sivel2_sjrven; 
-actuno si_jrscol
-
