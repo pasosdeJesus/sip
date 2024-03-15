@@ -71,11 +71,6 @@ if (test "$SALTASIVEL2GEN" != "1") then {
   actuno sivel2_gen-2.1 test/dummy; 
 } fi;
 
-if (test "$SALTAAPO214" != "1") then {
-  echo "**** apo214"
-  actuno apo214 test/dummy; 
-} fi;
-
 if (test "$SALTASIVEL2" != "1") then {
   echo "**** sivel"
   actuno sivel2-2.1; 
