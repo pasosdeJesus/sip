@@ -16,7 +16,11 @@
     <div class="form-actions">
       <%= f.button :submit, 'Crear respaldo y descargar', 
         class: 'btn btn-sm btn-primary',
-        'data-turbo' => false %>
+        data: {
+          turbo: false,
+          'disable_with': false
+        }
+      %>
       <%= link_to t('.cancel', :default => 'Inicio'),
         main_app.root_path, :class => 'btn' %>
     </div>
