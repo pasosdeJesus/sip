@@ -24,7 +24,7 @@ Sip::Engine.routes.draw do
   post "/respaldo7z" => 'respaldo7z#create'
   get "/tablasbasicas" => 'hogar#tablasbasicas'
   get "/temausuario" => 'admin/temas#temausuario'
-  get '/ubicaciones/nuevo' => 'ubicaciones#nuevo', as: :nueva_ubicacion
+  get '/ubicaciones/nuevo' => 'ubicaciones#nuevo', alias: :nueva_ubicacion
   get '/tipoclase' => 'admin/clases#tipo_clase'
   get '/ubicacionespre_mundep' => 'ubicacionespre#mundep'
 
