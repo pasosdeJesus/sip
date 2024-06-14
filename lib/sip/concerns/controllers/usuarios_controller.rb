@@ -121,7 +121,7 @@ module Sip
               :idioma, 
               :email, 
               :tema_id, 
-              :encrypted_password, 
+              :encrypted_password,
               :fechacreacion_localizada, 
               :fechadeshabilitacion_localizada, 
               :reset_password_token, 
