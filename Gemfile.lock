@@ -212,7 +212,7 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
-    msgpack (1.7.2)
+    msgpack (1.7.3)
     net-imap (0.4.16)
       date
       net-protocol
@@ -431,4 +431,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.5.20
+   2.5.21
