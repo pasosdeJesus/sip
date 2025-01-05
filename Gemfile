@@ -6,6 +6,8 @@ gemspec
 
 gem "babel-transpiler"
 
+gem "bigdecimal"
+
 gem "bootsnap", ">= 1.4.4", require: false
 
 gem "cancancan"                 # Control de acceso
@@ -26,6 +28,8 @@ gem "kt-paperclip",                 # Anexos
   git: "https://github.com/kreeti/kt-paperclip.git"
   #git: "https://github.com/vtamara/paperclip.git", branch: "fix-ruby3"
   #path: "../tmp/paperclip"
+
+gem "mutex_m"
 
 gem "nokogiri", ">=1.11.1"
 
@@ -59,6 +63,8 @@ gem "will_paginate"             # Pagina listados
 
 
 group :development, :test do
+  gem "benchmark"
+
   gem "brakeman"
 
   gem "bundler-audit"
