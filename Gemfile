@@ -97,6 +97,8 @@ group :test do
 
   gem "cuprite"
 
+  gem "drb"
+
   gem "minitest"
 
   gem "minitest-reporters"

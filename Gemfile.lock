@@ -168,6 +168,7 @@ GEM
     dotenv-rails (3.1.7)
       dotenv (= 3.1.7)
       railties (>= 6.1)
+    drb (2.2.1)
     erubi (1.13.1)
     execjs (2.10.0)
     ferrum (0.15)
@@ -411,6 +412,7 @@ DEPENDENCIES
   devise
   devise-i18n
   dotenv-rails
+  drb
   jbuilder (>= 2.7)
   jsbundling-rails
   kt-paperclip!

@@ -199,12 +199,7 @@ EOF
       rr = "app/javascript/controllers/#{motor}"
       nr=File.join(FileUtils.pwd, rr)
       if File.exist?(nr) 
-        if File.symlink?(nr)
-          FileUtils.rm(nr)
-        else
-          puts "** Ya existe directorio #{nr}. No se crea enlace a #{rutac}"
-          return
-        end
+        FileUtils.rm_rf(nr)
       end
       FileUtils.ln_sf(rutac, nr) 
       if cgitignore != [] && !cgitignore.include?(rr)
