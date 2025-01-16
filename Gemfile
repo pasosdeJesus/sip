@@ -16,6 +16,8 @@ gem "cocoon", git: "https://github.com/vtamara/cocoon.git", branch: "new_id_with
 
 gem "coffee-rails"              # CoffeeScript para recursos .js.coffee
 
+gem 'concurrent-ruby', '1.3.4' # https://stackoverflow.com/questions/79360526/uninitialized-constant-activesupportloggerthreadsafelevellogger-nameerror
+
 gem "devise"                    # Autenticación
 
 gem "devise-i18n"               # Localización e Internacionalización
