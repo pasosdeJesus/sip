@@ -165,9 +165,9 @@ GEM
       devise (>= 4.9.0)
       rails-i18n
     docile (1.4.1)
-    dotenv (3.1.7)
-    dotenv-rails (3.1.7)
-      dotenv (= 3.1.7)
+    dotenv (3.1.8)
+    dotenv-rails (3.1.8)
+      dotenv (= 3.1.8)
       railties (>= 6.1)
     drb (2.2.1)
     erubi (1.13.1)
@@ -210,7 +210,7 @@ GEM
     mime-types (3.6.2)
       logger
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2025.0402)
+    mime-types-data (3.2025.0408)
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
     minitest (5.25.5)
@@ -236,7 +236,7 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     parallel (1.26.3)
-    parser (3.3.7.4)
+    parser (3.3.8.0)
       ast (~> 2.4.1)
       racc
     pg (1.5.9)
@@ -320,7 +320,7 @@ GEM
       rubocop-ast (>= 1.44.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.44.0)
+    rubocop-ast (1.44.1)
       parser (>= 3.3.7.2)
       prism (~> 1.4)
     rubocop-minitest (0.38.0)
@@ -457,4 +457,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   2.6.7
+   2.6.8
